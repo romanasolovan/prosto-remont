@@ -1,0 +1,106 @@
+.header {
+  position: sticky;
+  top: 0;
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-grey-200);
+  z-index: var(--z-sticky);
+  padding: var(--space-md) 0;
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--color-black);
+  transition: opacity var(--transition-fast);
+}
+
+.logo:hover {
+  opacity: 0.7;
+  color: var(--color-black);
+}
+
+/* Desktop Navigation */
+.desktopNav {
+  display: none;
+}
+
+.navList {
+  display: flex;
+  gap: var(--space-lg);
+  list-style: none;
+  align-items: center;
+}
+
+.navLink {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-grey-700);
+  transition: color var(--transition-fast);
+  padding: var(--space-xs) 0;
+  position: relative;
+}
+
+.navLink::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-black);
+  transition: width var(--transition-base);
+}
+
+.navLink:hover {
+  color: var(--color-black);
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+/* Mobile Menu Button */
+.mobileMenuButton {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-xs);
+  z-index: calc(var(--z-modal) + 1);
+}
+
+.hamburger {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-black);
+  transition: all var(--transition-base);
+}
+
+/* Desktop breakpoint */
+@media (min-width: 768px) {
+  .header {
+    padding: var(--space-lg) 0;
+  }
+
+  .desktopNav {
+    display: block;
+  }
+
+  .mobileMenuButton {
+    display: none;
+  }
+}
