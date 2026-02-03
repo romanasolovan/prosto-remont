@@ -1,23 +1,24 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/navigation";
 import styles from "./MobileMenu.module.css";
 
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/services", label: "Services" },
-  { href: "/projects", label: "Projects" },
-  { href: "/process", label: "Process" },
-  { href: "/contact", label: "Contact" },
-];
+interface NavLink {
+  href: string;
+  label: string;
+}
 
 interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
+  navLinks: NavLink[];
 }
 
-export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
+export default function MobileMenu({
+  isOpen,
+  onClose,
+  navLinks,
+}: MobileMenuProps) {
   return (
     <>
       {/* Overlay */}

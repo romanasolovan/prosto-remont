@@ -1,6 +1,9 @@
+import { useTranslations } from "next-intl";
 import styles from "./Footer.module.css";
 
 export default function Footer() {
+  const t = useTranslations("footer");
+  const tNav = useTranslations("navigation");
   const currentYear = new Date().getFullYear();
 
   return (
@@ -9,32 +12,29 @@ export default function Footer() {
         <div className={styles.footerContent}>
           <div className={styles.footerSection}>
             <h3 className={styles.footerTitle}>RENOVATE</h3>
-            <p className={styles.footerText}>
-              Premium renovation and construction services for residential and
-              commercial properties.
-            </p>
+            <p className={styles.footerText}>{t("description")}</p>
           </div>
 
           <div className={styles.footerSection}>
-            <h4 className={styles.footerHeading}>Quick Links</h4>
+            <h4 className={styles.footerHeading}>{t("quickLinks")}</h4>
             <ul className={styles.footerLinks}>
               <li>
-                <a href="/about">About</a>
+                <a href="/about">{tNav("about")}</a>
               </li>
               <li>
-                <a href="/services">Services</a>
+                <a href="/services">{tNav("services")}</a>
               </li>
               <li>
-                <a href="/projects">Projects</a>
+                <a href="/projects">{tNav("projects")}</a>
               </li>
               <li>
-                <a href="/process">Process</a>
+                <a href="/process">{tNav("process")}</a>
               </li>
             </ul>
           </div>
 
           <div className={styles.footerSection}>
-            <h4 className={styles.footerHeading}>Contact</h4>
+            <h4 className={styles.footerHeading}>{t("contactInfo")}</h4>
             <ul className={styles.footerLinks}>
               <li>
                 <a href="mailto:info@renovate.com">info@renovate.com</a>
@@ -47,7 +47,7 @@ export default function Footer() {
         </div>
 
         <div className={styles.footerBottom}>
-          <p>&copy; {currentYear} Renovate. All rights reserved.</p>
+          <p>{t("copyright", { year: currentYear })}</p>
         </div>
       </div>
     </footer>

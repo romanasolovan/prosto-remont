@@ -1,0 +1,189 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "projects": "Projects",
+    "process": "Process",
+    "contact": "Contact"
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "startProject": "Start Your Project",
+    "contactUs": "Contact Us Today",
+    "exploreServices": "Explore Our Services",
+    "viewPortfolio": "View Our Portfolio",
+    "understandProcess": "Understand Our Process"
+  },
+  "home": {
+    "hero": {
+      "title": "Transform Your Space",
+      "subtitle": "Premium renovation services that bring your vision to life with precision and care."
+    },
+    "about": {
+      "title": "About Us",
+      "description": "With decades of experience in residential and commercial renovation, we deliver exceptional craftsmanship and attention to detail in every project. Our team of skilled professionals is committed to transforming spaces while maintaining the highest standards of quality."
+    },
+    "services": {
+      "title": "Our Services",
+      "description": "From complete home renovations to specialized commercial projects, we offer comprehensive services tailored to your needs. Kitchen remodeling, bathroom upgrades, basement finishing, and full property transformations—we handle it all with expertise."
+    },
+    "projects": {
+      "title": "Our Projects",
+      "description": "Discover our portfolio of completed renovations that showcase our commitment to excellence. Each project reflects our dedication to quality, innovative design, and client satisfaction. View real transformations from concept to completion."
+    },
+    "process": {
+      "title": "Our Process",
+      "description": "We believe in transparency and collaboration. Our streamlined process ensures your project runs smoothly from initial consultation through final walkthrough. Clear communication, detailed planning, and meticulous execution define our approach."
+    },
+    "contact": {
+      "title": "Get In Touch",
+      "description": "Ready to start your renovation journey? Contact us today for a consultation. We're here to answer your questions, discuss your vision, and provide expert guidance every step of the way."
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "About Us",
+      "subtitle": "Building excellence through experience, integrity, and craftsmanship."
+    },
+    "story": {
+      "title": "Our Story",
+      "content": "Founded with a passion for transforming spaces, our company has grown from a small team of dedicated craftsmen to a full-service renovation firm trusted by homeowners and businesses alike. Every project we undertake reflects our commitment to quality and our respect for the spaces we work in."
+    },
+    "values": {
+      "title": "Our Values",
+      "content": "We believe in honest communication, transparent pricing, and delivering results that exceed expectations. Our team consists of licensed professionals who take pride in their work and treat every space as if it were their own."
+    },
+    "why": {
+      "title": "Why Choose Us",
+      "content": "With years of experience, a portfolio of successful projects, and a dedication to staying current with industry trends and techniques, we bring both expertise and innovation to every renovation. Your satisfaction is our measure of success."
+    }
+  },
+  "services": {
+    "hero": {
+      "title": "Our Services",
+      "subtitle": "Comprehensive renovation solutions for every space and vision."
+    },
+    "list": {
+      "kitchen": {
+        "title": "Kitchen Renovation",
+        "description": "Complete kitchen transformations including cabinetry, countertops, appliances, and layout optimization."
+      },
+      "bathroom": {
+        "title": "Bathroom Remodeling",
+        "description": "Luxurious bathroom upgrades with modern fixtures, tile work, and spa-inspired design."
+      },
+      "basement": {
+        "title": "Basement Finishing",
+        "description": "Convert unused basement space into functional living areas, home offices, or entertainment zones."
+      },
+      "fullHome": {
+        "title": "Full Home Renovation",
+        "description": "Comprehensive whole-home transformations that reimagine your entire living space."
+      },
+      "commercial": {
+        "title": "Commercial Projects",
+        "description": "Professional renovation services for offices, retail spaces, and commercial properties."
+      },
+      "carpentry": {
+        "title": "Custom Carpentry",
+        "description": "Bespoke woodwork, built-ins, and custom solutions tailored to your specific needs."
+      }
+    }
+  },
+  "projects": {
+    "hero": {
+      "title": "Our Projects",
+      "subtitle": "A showcase of our finest work and transformations."
+    },
+    "categories": {
+      "residential": "Residential",
+      "commercial": "Commercial"
+    },
+    "list": {
+      "modernKitchen": "Modern Kitchen Remodel",
+      "downtownOffice": "Downtown Office Space",
+      "masterBathroom": "Master Bathroom Suite",
+      "historicHome": "Historic Home Restoration",
+      "retailStore": "Retail Store Renovation",
+      "basementConversion": "Basement Conversion"
+    }
+  },
+  "process": {
+    "hero": {
+      "title": "Our Process",
+      "subtitle": "A clear, collaborative approach from concept to completion."
+    },
+    "steps": {
+      "consultation": {
+        "title": "Initial Consultation",
+        "description": "We meet with you to understand your vision, needs, and budget. This is where ideas begin to take shape."
+      },
+      "design": {
+        "title": "Design & Planning",
+        "description": "Our team creates detailed plans and designs, ensuring every detail aligns with your goals."
+      },
+      "proposal": {
+        "title": "Proposal & Contract",
+        "description": "We provide a transparent proposal with timeline and pricing, followed by contract finalization."
+      },
+      "construction": {
+        "title": "Construction",
+        "description": "Our skilled craftsmen bring the design to life with precision and care, keeping you informed throughout."
+      },
+      "walkthrough": {
+        "title": "Final Walkthrough",
+        "description": "We review the completed project with you, ensuring every detail meets your expectations."
+      }
+    }
+  },
+  "contact": {
+    "hero": {
+      "title": "Contact Us",
+      "subtitle": "Let's discuss your renovation project and bring your vision to life."
+    },
+    "getInTouch": {
+      "title": "Get In Touch",
+      "description": "We're here to answer your questions and provide expert guidance for your renovation project."
+    },
+    "details": {
+      "email": "Email",
+      "phone": "Phone",
+      "hours": "Office Hours",
+      "hoursValue": "Monday - Friday: 8:00 AM - 6:00 PM\nSaturday: 9:00 AM - 4:00 PM"
+    },
+    "formNote": "Contact form will be implemented in future development phase"
+  },
+  "footer": {
+    "description": "Premium renovation and construction services for residential and commercial properties.",
+    "quickLinks": "Quick Links",
+    "contactInfo": "Contact",
+    "copyright": "© {year} Renovate. All rights reserved."
+  },
+  "metadata": {
+    "home": {
+      "title": "Premium Renovation Services | Transform Your Space",
+      "description": "Professional renovation and construction services for residential and commercial properties. Quality craftsmanship and exceptional results."
+    },
+    "about": {
+      "title": "About Us | Premium Renovation Services",
+      "description": "Learn about our experienced team, values, and commitment to excellence in renovation and construction."
+    },
+    "services": {
+      "title": "Our Services | Premium Renovation",
+      "description": "Comprehensive renovation solutions including kitchen remodeling, bathroom upgrades, basement finishing, and commercial projects."
+    },
+    "projects": {
+      "title": "Our Projects | Renovation Portfolio",
+      "description": "Explore our portfolio of completed renovation projects showcasing quality craftsmanship and design excellence."
+    },
+    "process": {
+      "title": "Our Process | How We Work",
+      "description": "Discover our streamlined renovation process from initial consultation to final walkthrough."
+    },
+    "contact": {
+      "title": "Contact Us | Get A Quote",
+      "description": "Contact our renovation experts for a consultation. We're ready to bring your vision to life."
+    }
+  }
+}

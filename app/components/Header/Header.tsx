@@ -1,21 +1,24 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/navigation";
 import styles from "./Header.module.css";
 import MobileMenu from "../MobileMenu/MobileMenu";
-
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/services", label: "Services" },
-  { href: "/projects", label: "Projects" },
-  { href: "/process", label: "Process" },
-  { href: "/contact", label: "Contact" },
-];
+import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const t = useTranslations("navigation");
+
+  const navLinks = [
+    { href: "/", label: t("home") },
+    { href: "/about", label: t("about") },
+    { href: "/services", label: t("services") },
+    { href: "/projects", label: t("projects") },
+    { href: "/process", label: t("process") },
+    { href: "/contact", label: t("contact") },
+  ];
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -43,17 +46,21 @@ export default function Header() {
               </ul>
             </nav>
 
-            {/* Mobile Menu Toggle */}
-            <button
-              className={styles.mobileMenuButton}
-              onClick={toggleMobileMenu}
-              aria-label="Toggle mobile menu"
-              aria-expanded={mobileMenuOpen}
-            >
-              <span className={styles.hamburger}></span>
-              <span className={styles.hamburger}></span>
-              <span className={styles.hamburger}></span>
-            </button>
+            <div className={styles.headerActions}>
+              <LanguageSwitcher />
+
+              {/* Mobile Menu Toggle */}
+              <button
+                className={styles.mobileMenuButton}
+                onClick={toggleMobileMenu}
+                aria-label="Toggle mobile menu"
+                aria-expanded={mobileMenuOpen}
+              >
+                <span className={styles.hamburger}></span>
+                <span className={styles.hamburger}></span>
+                <span className={styles.hamburger}></span>
+              </button>
+            </div>
           </div>
         </div>
       </header>
@@ -61,6 +68,7 @@ export default function Header() {
       <MobileMenu
         isOpen={mobileMenuOpen}
         onClose={() => setMobileMenuOpen(false)}
+        navLinks={navLinks}
       />
     </>
   );

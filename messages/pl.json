@@ -1,0 +1,189 @@
+{
+  "navigation": {
+    "home": "Strona główna",
+    "about": "O nas",
+    "services": "Usługi",
+    "projects": "Projekty",
+    "process": "Proces",
+    "contact": "Kontakt"
+  },
+  "common": {
+    "learnMore": "Dowiedz się więcej",
+    "startProject": "Rozpocznij projekt",
+    "contactUs": "Skontaktuj się z nami",
+    "exploreServices": "Poznaj nasze usługi",
+    "viewPortfolio": "Zobacz nasze portfolio",
+    "understandProcess": "Poznaj nasz proces"
+  },
+  "home": {
+    "hero": {
+      "title": "Przekształć swoją przestrzeń",
+      "subtitle": "Profesjonalne usługi remontowe, które realizują twoją wizję z precyzją i dbałością o szczegóły."
+    },
+    "about": {
+      "title": "O nas",
+      "description": "Z wieloletnim doświadczeniem w remontach mieszkalnych i komercyjnych, oferujemy wyjątkowe rzemiosło i dbałość o szczegóły w każdym projekcie. Nasz zespół wykwalifikowanych specjalistów angażuje się w przekształcanie przestrzeni przy zachowaniu najwyższych standardów jakości."
+    },
+    "services": {
+      "title": "Nasze usługi",
+      "description": "Od kompleksowych remontów domów po specjalistyczne projekty komercyjne, oferujemy kompleksowe usługi dostosowane do twoich potrzeb. Remont kuchni, modernizacja łazienek, wykończenie piwnicy i kompleksowe przekształcenia nieruchomości—zajmujemy się tym wszystkim z profesjonalizmem."
+    },
+    "projects": {
+      "title": "Nasze projekty",
+      "description": "Odkryj nasze portfolio zrealizowanych remontów, które pokazują nasze zaangażowanie w doskonałość. Każdy projekt odzwierciedla nasze oddanie jakości, innowacyjnemu projektowaniu i satysfakcji klienta. Zobacz prawdziwe przekształcenia od koncepcji do realizacji."
+    },
+    "process": {
+      "title": "Nasz proces",
+      "description": "Wierzymy w transparentność i współpracę. Nasz usprawniony proces zapewnia, że twój projekt przebiega płynnie od wstępnej konsultacji do końcowego odbioru. Jasna komunikacja, szczegółowe planowanie i staranne wykonanie definiują nasze podejście."
+    },
+    "contact": {
+      "title": "Skontaktuj się",
+      "description": "Gotowy rozpocząć swoją przygodę z remontem? Skontaktuj się z nami już dziś w celu konsultacji. Jesteśmy tutaj, aby odpowiedzieć na twoje pytania, omówić twoją wizję i zapewnić fachowe wsparcie na każdym etapie."
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "O nas",
+      "subtitle": "Budujemy doskonałość poprzez doświadczenie, uczciwość i rzemiosło."
+    },
+    "story": {
+      "title": "Nasza historia",
+      "content": "Założona z pasją do przekształcania przestrzeni, nasza firma rozrosła się z małego zespołu oddanych rzemieślników do pełnowymiarowej firmy remontowej, której ufają właściciele domów i przedsiębiorcy. Każdy projekt, który podejmujemy, odzwierciedla nasze zaangażowanie w jakość i szacunek dla przestrzeni, w których pracujemy."
+    },
+    "values": {
+      "title": "Nasze wartości",
+      "content": "Wierzymy w uczciwą komunikację, transparentne ceny i dostarczanie rezultatów przekraczających oczekiwania. Nasz zespół składa się z licencjonowanych profesjonalistów, którzy są dumni ze swojej pracy i traktują każdą przestrzeń jak własną."
+    },
+    "why": {
+      "title": "Dlaczego my",
+      "content": "Z wieloletnim doświadczeniem, portfolio udanych projektów i zaangażowaniem w śledzenie trendów i technik branżowych, wnosimy zarówno wiedzę, jak i innowacje do każdego remontu. Twoja satysfakcja jest naszą miarą sukcesu."
+    }
+  },
+  "services": {
+    "hero": {
+      "title": "Nasze usługi",
+      "subtitle": "Kompleksowe rozwiązania remontowe dla każdej przestrzeni i wizji."
+    },
+    "list": {
+      "kitchen": {
+        "title": "Remont kuchni",
+        "description": "Kompleksowe przekształcenia kuchni, w tym szafki, blaty, urządzenia i optymalizacja układu."
+      },
+      "bathroom": {
+        "title": "Modernizacja łazienek",
+        "description": "Luksusowe modernizacje łazienek z nowoczesnymi armaturami, płytkami i designem inspirowanym spa."
+      },
+      "basement": {
+        "title": "Wykończenie piwnicy",
+        "description": "Przekształcenie niewykorzystanej przestrzeni piwnicy w funkcjonalne pomieszczenia mieszkalne, biura domowe lub strefy rozrywki."
+      },
+      "fullHome": {
+        "title": "Kompleksowy remont domu",
+        "description": "Kompleksowe przekształcenia całego domu, które na nowo definiują twoją przestrzeń życiową."
+      },
+      "commercial": {
+        "title": "Projekty komercyjne",
+        "description": "Profesjonalne usługi remontowe dla biur, przestrzeni handlowych i nieruchomości komercyjnych."
+      },
+      "carpentry": {
+        "title": "Stolarka na wymiar",
+        "description": "Ekskluzywne prace stolarskie, zabudowy i niestandardowe rozwiązania dostosowane do twoich konkretnych potrzeb."
+      }
+    }
+  },
+  "projects": {
+    "hero": {
+      "title": "Nasze projekty",
+      "subtitle": "Pokaz naszych najlepszych prac i przekształceń."
+    },
+    "categories": {
+      "residential": "Mieszkaniowe",
+      "commercial": "Komercyjne"
+    },
+    "list": {
+      "modernKitchen": "Nowoczesny remont kuchni",
+      "downtownOffice": "Przestrzeń biurowa w centrum",
+      "masterBathroom": "Główna łazienka",
+      "historicHome": "Renowacja zabytkowego domu",
+      "retailStore": "Remont sklepu detalicznego",
+      "basementConversion": "Przekształcenie piwnicy"
+    }
+  },
+  "process": {
+    "hero": {
+      "title": "Nasz proces",
+      "subtitle": "Jasne, oparte na współpracy podejście od koncepcji do realizacji."
+    },
+    "steps": {
+      "consultation": {
+        "title": "Wstępna konsultacja",
+        "description": "Spotykamy się z tobą, aby zrozumieć twoją wizję, potrzeby i budżet. To tutaj zaczynają się kształtować pomysły."
+      },
+      "design": {
+        "title": "Projekt i planowanie",
+        "description": "Nasz zespół tworzy szczegółowe plany i projekty, zapewniając, że każdy szczegół jest zgodny z twoimi celami."
+      },
+      "proposal": {
+        "title": "Oferta i umowa",
+        "description": "Przedstawiamy transparentną ofertę z harmonogramem i wyceną, a następnie finalizujemy umowę."
+      },
+      "construction": {
+        "title": "Budowa",
+        "description": "Nasi wykwalifikowani rzemieślnicy realizują projekt z precyzją i starannością, informując cię na bieżąco."
+      },
+      "walkthrough": {
+        "title": "Końcowy odbiór",
+        "description": "Przeglądamy ukończony projekt z tobą, upewniając się, że każdy szczegół spełnia twoje oczekiwania."
+      }
+    }
+  },
+  "contact": {
+    "hero": {
+      "title": "Kontakt",
+      "subtitle": "Porozmawiajmy o twoim projekcie remontowym i wcielmy twoją wizję w życie."
+    },
+    "getInTouch": {
+      "title": "Skontaktuj się",
+      "description": "Jesteśmy tutaj, aby odpowiedzieć na twoje pytania i zapewnić fachowe wsparcie dla twojego projektu remontowego."
+    },
+    "details": {
+      "email": "E-mail",
+      "phone": "Telefon",
+      "hours": "Godziny otwarcia",
+      "hoursValue": "Poniedziałek - Piątek: 8:00 - 18:00\nSobota: 9:00 - 16:00"
+    },
+    "formNote": "Formularz kontaktowy zostanie zaimplementowany w przyszłej fazie rozwoju"
+  },
+  "footer": {
+    "description": "Profesjonalne usługi remontowe i budowlane dla nieruchomości mieszkalnych i komercyjnych.",
+    "quickLinks": "Szybkie linki",
+    "contactInfo": "Kontakt",
+    "copyright": "© {year} Renovate. Wszelkie prawa zastrzeżone."
+  },
+  "metadata": {
+    "home": {
+      "title": "Profesjonalne usługi remontowe | Przekształć swoją przestrzeń",
+      "description": "Profesjonalne usługi remontowe i budowlane dla nieruchomości mieszkalnych i komercyjnych. Wysokiej jakości rzemiosło i wyjątkowe rezultaty."
+    },
+    "about": {
+      "title": "O nas | Profesjonalne usługi remontowe",
+      "description": "Poznaj nasz doświadczony zespół, wartości i zaangażowanie w doskonałość w remontach i budownictwie."
+    },
+    "services": {
+      "title": "Nasze usługi | Remont premium",
+      "description": "Kompleksowe rozwiązania remontowe, w tym remont kuchni, modernizacja łazienek, wykończenie piwnicy i projekty komercyjne."
+    },
+    "projects": {
+      "title": "Nasze projekty | Portfolio remontów",
+      "description": "Zapoznaj się z naszym portfolio ukończonych projektów remontowych prezentujących wysokiej jakości rzemiosło i doskonałość projektową."
+    },
+    "process": {
+      "title": "Nasz proces | Jak pracujemy",
+      "description": "Odkryj nasz usprawniony proces remontowy od wstępnej konsultacji do końcowego odbioru."
+    },
+    "contact": {
+      "title": "Kontakt | Zapytaj o wycenę",
+      "description": "Skontaktuj się z naszymi ekspertami remontowymi w celu konsultacji. Jesteśmy gotowi wcielić twoją wizję w życie."
+    }
+  }
+}

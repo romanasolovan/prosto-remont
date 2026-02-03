@@ -70,6 +70,13 @@
   width: 100%;
 }
 
+/* Header Actions */
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
 /* Mobile Menu Button */
 .mobileMenuButton {
   display: flex;
@@ -98,6 +105,7 @@
 
   .desktopNav {
     display: block;
+    flex: 1;
   }
 
   .mobileMenuButton {
