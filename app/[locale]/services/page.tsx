@@ -1,36 +1,49 @@
+import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
 import styles from "./services.module.css";
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "metadata.services" });
+
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
+}
+
 export default function Services() {
+  const t = useTranslations("services");
+
   const services = [
     {
-      title: "Kitchen Renovation",
-      description:
-        "Complete kitchen transformations including cabinetry, countertops, appliances, and layout optimization.",
+      title: t("list.kitchen.title"),
+      description: t("list.kitchen.description"),
     },
     {
-      title: "Bathroom Remodeling",
-      description:
-        "Luxurious bathroom upgrades with modern fixtures, tile work, and spa-inspired design.",
+      title: t("list.bathroom.title"),
+      description: t("list.bathroom.description"),
     },
     {
-      title: "Basement Finishing",
-      description:
-        "Convert unused basement space into functional living areas, home offices, or entertainment zones.",
+      title: t("list.basement.title"),
+      description: t("list.basement.description"),
     },
     {
-      title: "Full Home Renovation",
-      description:
-        "Comprehensive whole-home transformations that reimagine your entire living space.",
+      title: t("list.fullHome.title"),
+      description: t("list.fullHome.description"),
     },
     {
-      title: "Commercial Projects",
-      description:
-        "Professional renovation services for offices, retail spaces, and commercial properties.",
+      title: t("list.commercial.title"),
+      description: t("list.commercial.description"),
     },
     {
-      title: "Custom Carpentry",
-      description:
-        "Bespoke woodwork, built-ins, and custom solutions tailored to your specific needs.",
+      title: t("list.carpentry.title"),
+      description: t("list.carpentry.description"),
     },
   ];
 
@@ -38,10 +51,8 @@ export default function Services() {
     <div className={styles.servicesPage}>
       <section className={styles.hero}>
         <div className="container">
-          <h1>Our Services</h1>
-          <p className={styles.subtitle}>
-            Comprehensive renovation solutions for every space and vision.
-          </p>
+          <h1>{t("hero.title")}</h1>
+          <p className={styles.subtitle}>{t("hero.subtitle")}</p>
         </div>
       </section>
 

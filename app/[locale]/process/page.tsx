@@ -1,36 +1,50 @@
+import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
 import styles from "./process.module.css";
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "metadata.process" });
+
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
+}
+
 export default function Process() {
+  const t = useTranslations("process");
+
   const steps = [
     {
       number: "01",
-      title: "Initial Consultation",
-      description:
-        "We meet with you to understand your vision, needs, and budget. This is where ideas begin to take shape.",
+      title: t("steps.consultation.title"),
+      description: t("steps.consultation.description"),
     },
     {
       number: "02",
-      title: "Design & Planning",
-      description:
-        "Our team creates detailed plans and designs, ensuring every detail aligns with your goals.",
+      title: t("steps.design.title"),
+      description: t("steps.design.description"),
     },
     {
       number: "03",
-      title: "Proposal & Contract",
-      description:
-        "We provide a transparent proposal with timeline and pricing, followed by contract finalization.",
+      title: t("steps.proposal.title"),
+      description: t("steps.proposal.description"),
     },
     {
       number: "04",
-      title: "Construction",
-      description:
-        "Our skilled craftsmen bring the design to life with precision and care, keeping you informed throughout.",
+      title: t("steps.construction.title"),
+      description: t("steps.construction.description"),
     },
     {
       number: "05",
-      title: "Final Walkthrough",
-      description:
-        "We review the completed project with you, ensuring every detail meets your expectations.",
+      title: t("steps.walkthrough.title"),
+      description: t("steps.walkthrough.description"),
     },
   ];
 
@@ -38,10 +52,8 @@ export default function Process() {
     <div className={styles.processPage}>
       <section className={styles.hero}>
         <div className="container">
-          <h1>Our Process</h1>
-          <p className={styles.subtitle}>
-            A clear, collaborative approach from concept to completion.
-          </p>
+          <h1>{t("hero.title")}</h1>
+          <p className={styles.subtitle}>{t("hero.subtitle")}</p>
         </div>
       </section>
 

@@ -1,23 +1,44 @@
+import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
 import styles from "./projects.module.css";
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "metadata.projects" });
+
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
+}
+
 export default function Projects() {
+  const t = useTranslations("projects");
+  const tCategories = useTranslations("projects.categories");
+
   const projects = [
-    { title: "Modern Kitchen Remodel", category: "Residential" },
-    { title: "Downtown Office Space", category: "Commercial" },
-    { title: "Master Bathroom Suite", category: "Residential" },
-    { title: "Historic Home Restoration", category: "Residential" },
-    { title: "Retail Store Renovation", category: "Commercial" },
-    { title: "Basement Conversion", category: "Residential" },
+    { title: t("list.modernKitchen"), category: tCategories("residential") },
+    { title: t("list.downtownOffice"), category: tCategories("commercial") },
+    { title: t("list.masterBathroom"), category: tCategories("residential") },
+    { title: t("list.historicHome"), category: tCategories("residential") },
+    { title: t("list.retailStore"), category: tCategories("commercial") },
+    {
+      title: t("list.basementConversion"),
+      category: tCategories("residential"),
+    },
   ];
 
   return (
     <div className={styles.projectsPage}>
       <section className={styles.hero}>
         <div className="container">
-          <h1>Our Projects</h1>
-          <p className={styles.subtitle}>
-            A showcase of our finest work and transformations.
-          </p>
+          <h1>{t("hero.title")}</h1>
+          <p className={styles.subtitle}>{t("hero.subtitle")}</p>
         </div>
       </section>
 
