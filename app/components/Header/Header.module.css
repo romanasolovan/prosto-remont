@@ -11,7 +11,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-lg);
+  gap: var(--space-md); /* Reduced from var(--space-lg) */
 }
 
 .logo {
@@ -21,6 +21,7 @@
   letter-spacing: 0.05em;
   color: var(--color-black);
   transition: opacity var(--transition-fast);
+  flex-shrink: 0;
 }
 
 .logo:hover {
@@ -35,7 +36,7 @@
 
 .navList {
   display: flex;
-  gap: var(--space-lg);
+  gap: var(--space-md); /* Reduced from var(--space-lg) for tighter spacing */
   list-style: none;
   align-items: center;
 }
@@ -49,6 +50,7 @@
   transition: color var(--transition-fast);
   padding: var(--space-xs) 0;
   position: relative;
+  white-space: nowrap;
 }
 
 .navLink::after {
@@ -74,7 +76,10 @@
 .headerActions {
   display: flex;
   align-items: center;
-  gap: var(--space-md);
+  gap: var(
+    --space-sm
+  ); /* Reduced gap between language switcher and mobile button */
+  flex-shrink: 0;
 }
 
 /* Mobile Menu Button */
@@ -103,12 +108,37 @@
     padding: var(--space-lg) 0;
   }
 
+  .headerContent {
+    gap: var(--space-lg);
+  }
+
   .desktopNav {
     display: block;
     flex: 1;
+    margin-left: var(--space-xl); /* Space after logo */
+    margin-right: auto; /* Push language switcher to the right */
+  }
+
+  .navList {
+    gap: var(--space-lg); /* More spacious on desktop */
+  }
+
+  .headerActions {
+    gap: 0; /* No gap needed on desktop since only language switcher shows */
   }
 
   .mobileMenuButton {
     display: none;
+  }
+}
+
+/* Large desktop - even more refined spacing */
+@media (min-width: 1024px) {
+  .navList {
+    gap: var(--space-xl);
+  }
+
+  .desktopNav {
+    margin-left: var(--space-2xl);
   }
 }

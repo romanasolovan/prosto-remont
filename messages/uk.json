@@ -185,5 +185,73 @@
       "title": "Зв'яжіться з нами | Отримайте пропозицію",
       "description": "Зв'яжіться з нашими експертами з ремонту для консультації. Ми готові втілити ваше бачення в життя."
     }
+  },
+  "form": {
+    "title": "Запитати про розцінку",
+    "subtitle": "Заповніть форму нижче, і ми зв'яжемося з вами протягом 24 годин.",
+    "fields": {
+      "fullName": "Повне ім'я",
+      "phone": "Контактний телефон",
+      "email": "Адреса електронної пошти",
+      "interestedIn": "Мене цікавить",
+      "renovationType": "Тип ремонту",
+      "renovationObject": "Об'єкт ремонту",
+      "workDescription": "Опис робіт (м²)",
+      "attachments": "Вкладення до робіт",
+      "startDate": "Коли можна почати?",
+      "location": "Місцезнаходження",
+      "additionalComments": "Додатковий коментар"
+    },
+    "placeholders": {
+      "fullName": "Введіть ваше повне ім'я",
+      "phone": "+380 12 345 6789",
+      "email": "vasha.poshta@pryklad.ua",
+      "interestedIn": "Виберіть опцію",
+      "renovationType": "Виберіть тип ремонту",
+      "renovationObject": "Виберіть тип об'єкта",
+      "workDescription": "наприклад, 75 м²",
+      "startDate": "Виберіть дату",
+      "location": "Місто, Вулиця, Будівля",
+      "additionalComments": "Будь-яка додаткова інформація, яку ви хотіли б повідомити..."
+    },
+    "options": {
+      "interestedIn": {
+        "newConstruction": "Оздоблення (нове будівництво)",
+        "renovation": "Ремонт (існуюча нерухомість)"
+      },
+      "renovationType": {
+        "turnkeyNoProject": "Під ключ без проекту",
+        "turnkeyWithProject": "Під ключ з проектом",
+        "refresh": "Оновлення",
+        "repairs": "Виправлення / Ремонт"
+      },
+      "renovationObject": {
+        "house": "Будинок",
+        "apartment": "Квартира",
+        "serviceSpace": "Сервісне приміщення",
+        "office": "Офіс",
+        "bathroom": "Ванна кімната",
+        "room": "Кімната"
+      }
+    },
+    "validation": {
+      "required": "Це поле обов'язкове",
+      "emailInvalid": "Будь ласка, введіть дійсну адресу електронної пошти",
+      "phoneInvalid": "Будь ласка, введіть дійсний номер телефону",
+      "fileTooLarge": "Розмір файлу не повинен перевищувати 100МБ",
+      "tooManyFiles": "Ви можете завантажити максимум 10 файлів",
+      "invalidFileType": "Дозволені лише файли PDF, JPG, PNG та DOCX",
+      "dateInvalid": "Будь ласка, виберіть дійсну дату"
+    },
+    "fileUpload": {
+      "dragDrop": "Перетягніть файли сюди або клацніть для вибору",
+      "selectedFiles": "Вибрані файли",
+      "removeFile": "Видалити",
+      "supportedFormats": "Підтримувані формати: PDF, JPG, PNG, DOCX (макс. 100МБ на файл, до 10 файлів)"
+    },
+    "submit": "Відправити запит",
+    "submitting": "Відправка...",
+    "successMessage": "Дякуємо! Ваш запит успішно відправлено.",
+    "errorMessage": "Щось пішло не так. Спробуйте ще раз."
   }
 }

@@ -185,5 +185,73 @@
       "title": "Contact Us | Get A Quote",
       "description": "Contact our renovation experts for a consultation. We're ready to bring your vision to life."
     }
+  },
+  "form": {
+    "title": "Request a Quote",
+    "subtitle": "Fill out the form below and we'll get back to you within 24 hours.",
+    "fields": {
+      "fullName": "Full Name",
+      "phone": "Contact Phone",
+      "email": "Email Address",
+      "interestedIn": "I'm interested in",
+      "renovationType": "Renovation Type",
+      "renovationObject": "Renovation Object",
+      "workDescription": "Work Description (m²)",
+      "attachments": "Attachments",
+      "startDate": "When can we start?",
+      "location": "Location",
+      "additionalComments": "Additional Comments"
+    },
+    "placeholders": {
+      "fullName": "Enter your full name",
+      "phone": "+1 (234) 567-890",
+      "email": "your.email@example.com",
+      "interestedIn": "Select an option",
+      "renovationType": "Select renovation type",
+      "renovationObject": "Select object type",
+      "workDescription": "e.g., 75 m²",
+      "startDate": "Select a date",
+      "location": "City, Street, Building",
+      "additionalComments": "Any additional information you'd like to share..."
+    },
+    "options": {
+      "interestedIn": {
+        "newConstruction": "Finishing (new construction)",
+        "renovation": "Renovation (existing property)"
+      },
+      "renovationType": {
+        "turnkeyNoProject": "Turnkey without project",
+        "turnkeyWithProject": "Turnkey with project",
+        "refresh": "Refresh",
+        "repairs": "Repairs / Fixes"
+      },
+      "renovationObject": {
+        "house": "House",
+        "apartment": "Apartment",
+        "serviceSpace": "Service Space",
+        "office": "Office",
+        "bathroom": "Bathroom",
+        "room": "Room"
+      }
+    },
+    "validation": {
+      "required": "This field is required",
+      "emailInvalid": "Please enter a valid email address",
+      "phoneInvalid": "Please enter a valid phone number",
+      "fileTooLarge": "File size must not exceed 100MB",
+      "tooManyFiles": "You can upload a maximum of 10 files",
+      "invalidFileType": "Only PDF, JPG, PNG, and DOCX files are allowed",
+      "dateInvalid": "Please select a valid date"
+    },
+    "fileUpload": {
+      "dragDrop": "Drag and drop files here, or click to select",
+      "selectedFiles": "Selected files",
+      "removeFile": "Remove",
+      "supportedFormats": "Supported formats: PDF, JPG, PNG, DOCX (max 100MB per file, up to 10 files)"
+    },
+    "submit": "Submit Request",
+    "submitting": "Submitting...",
+    "successMessage": "Thank you! Your request has been submitted successfully.",
+    "errorMessage": "Something went wrong. Please try again."
   }
 }

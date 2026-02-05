@@ -185,5 +185,73 @@
       "title": "Kontakt | Zapytaj o wycenę",
       "description": "Skontaktuj się z naszymi ekspertami remontowymi w celu konsultacji. Jesteśmy gotowi wcielić twoją wizję w życie."
     }
+  },
+  "form": {
+    "title": "Zapytaj o wycenę",
+    "subtitle": "Wypełnij poniższy formularz, a skontaktujemy się z Tobą w ciągu 24 godzin.",
+    "fields": {
+      "fullName": "Imię i Nazwisko",
+      "phone": "Telefon kontaktowy",
+      "email": "Adres e-mail",
+      "interestedIn": "Interesuje mnie",
+      "renovationType": "Typ remontu",
+      "renovationObject": "Obiekt remontu",
+      "workDescription": "Opis prac zleconych (m²)",
+      "attachments": "Załączniki do prac",
+      "startDate": "Od kiedy można zacząć?",
+      "location": "Lokalizacja",
+      "additionalComments": "Komentarz dodatkowy"
+    },
+    "placeholders": {
+      "fullName": "Wprowadź imię i nazwisko",
+      "phone": "+48 123 456 789",
+      "email": "twoj.email@przyklad.pl",
+      "interestedIn": "Wybierz opcję",
+      "renovationType": "Wybierz typ remontu",
+      "renovationObject": "Wybierz typ obiektu",
+      "workDescription": "np. 75 m²",
+      "startDate": "Wybierz datę",
+      "location": "Miasto, Ulica, Budynek",
+      "additionalComments": "Dodatkowe informacje, które chciałbyś przekazać..."
+    },
+    "options": {
+      "interestedIn": {
+        "newConstruction": "Wykończenia (rynek pierwotny)",
+        "renovation": "Remont (rynek wtórny)"
+      },
+      "renovationType": {
+        "turnkeyNoProject": "Pod klucz bez projektu",
+        "turnkeyWithProject": "Pod klucz z projektem",
+        "refresh": "Odświeżanie",
+        "repairs": "Poprawki / Naprawa"
+      },
+      "renovationObject": {
+        "house": "Dom",
+        "apartment": "Mieszkanie",
+        "serviceSpace": "Lokal usługowy",
+        "office": "Biuro",
+        "bathroom": "Łazienka",
+        "room": "Pokój"
+      }
+    },
+    "validation": {
+      "required": "To pole jest wymagane",
+      "emailInvalid": "Wprowadź poprawny adres e-mail",
+      "phoneInvalid": "Wprowadź poprawny numer telefonu",
+      "fileTooLarge": "Rozmiar pliku nie może przekraczać 100MB",
+      "tooManyFiles": "Możesz przesłać maksymalnie 10 plików",
+      "invalidFileType": "Dozwolone są tylko pliki PDF, JPG, PNG i DOCX",
+      "dateInvalid": "Wybierz poprawną datę"
+    },
+    "fileUpload": {
+      "dragDrop": "Przeciągnij i upuść pliki tutaj lub kliknij, aby wybrać",
+      "selectedFiles": "Wybrane pliki",
+      "removeFile": "Usuń",
+      "supportedFormats": "Obsługiwane formaty: PDF, JPG, PNG, DOCX (maks. 100MB na plik, do 10 plików)"
+    },
+    "submit": "Wyślij zapytanie",
+    "submitting": "Wysyłanie...",
+    "successMessage": "Dziękujemy! Twoje zapytanie zostało wysłane pomyślnie.",
+    "errorMessage": "Coś poszło nie tak. Spróbuj ponownie."
   }
 }

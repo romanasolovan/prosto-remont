@@ -19,28 +19,45 @@
   margin: 0 auto;
 }
 
+.formSection {
+  padding: var(--space-3xl) 0;
+  background-color: var(--color-white);
+}
+
+.infoSection {
+  padding: var(--space-3xl) 0;
+  background-color: var(--color-grey-100);
+}
+
 .contactGrid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-3xl);
-  max-width: 1000px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
 .contactInfo h2 {
   margin-bottom: var(--space-md);
+  text-align: center;
 }
 
 .contactInfo > p {
   font-size: var(--text-lg);
   color: var(--color-grey-700);
   margin-bottom: var(--space-xl);
+  text-align: center;
 }
 
 .contactDetails {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: var(--space-xl);
+}
+
+.contactItem {
+  text-align: center;
+  padding: var(--space-xl);
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-grey-200);
 }
 
 .contactItem h4 {
@@ -48,13 +65,18 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--color-grey-600);
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-md);
 }
 
 .contactItem a {
   font-size: var(--text-lg);
   color: var(--color-black);
   font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+.contactItem a:hover {
+  color: var(--color-grey-600);
 }
 
 .contactItem p {
@@ -64,34 +86,8 @@
   margin: 0;
 }
 
-.formPlaceholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.formBox {
-  width: 100%;
-  min-height: 400px;
-  background-color: var(--color-grey-100);
-  border: 2px dashed var(--color-grey-300);
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-xl);
-}
-
-.formNote {
-  font-size: var(--text-base);
-  color: var(--color-grey-600);
-  text-align: center;
-  font-style: italic;
-  margin: 0;
-}
-
 @media (min-width: 768px) {
-  .contactGrid {
-    grid-template-columns: 1fr 1fr;
+  .contactDetails {
+    grid-template-columns: repeat(3, 1fr);
   }
 }

@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import styles from "./contact.module.css";
+import ContactForm from "@/app/components/ContactForm/ContactForm";
 
 export async function generateMetadata({
   params,
@@ -30,7 +31,13 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="section-spacing">
+      {/* Contact Form Section */}
+      <section className={styles.formSection}>
+        <ContactForm />
+      </section>
+
+      {/* Contact Information Section */}
+      <section className={styles.infoSection}>
         <div className="container">
           <div className={styles.contactGrid}>
             <div className={styles.contactInfo}>
@@ -54,12 +61,6 @@ export default function Contact() {
                     {tDetails("hoursValue")}
                   </p>
                 </div>
-              </div>
-            </div>
-
-            <div className={styles.formPlaceholder}>
-              <div className={styles.formBox}>
-                <p className={styles.formNote}>{t("formNote")}</p>
               </div>
             </div>
           </div>
