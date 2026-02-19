@@ -1,8 +1,10 @@
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
+// import { Link } from "@/navigation";
 import styles from "./contact.module.css";
 import ContactForm from "@/app/components/ContactForm/ContactForm";
+// import ClientOpinions from "@/app/components/ClientOpinions/LeaveCommentForm";
 
 export async function generateMetadata({
   params,
@@ -24,33 +26,21 @@ export default function Contact() {
 
   return (
     <div className={styles.contactPage}>
-      {/* Hero Section */}
-      <section className={styles.hero}>
-        <div className="container">
-          <div className={styles.heroContent}>
-            <h1 className={styles.heroTitle}>{t("hero.title")}</h1>
-            <p className={styles.heroSubtitle}>{t("hero.subtitle")}</p>
-          </div>
-        </div>
-      </section>
-
       {/* Main Contact Section */}
       <section className={styles.mainSection}>
         <div className="container">
           <div className={styles.contentGrid}>
-            {/* Left Column - Contact Info & Trust Signals */}
-            <div className={styles.infoColumn}>
-              <div className={styles.infoCard}>
-                <h2 className={styles.infoTitle}>{t("getInTouch.title")}</h2>
-                <p className={styles.infoDescription}>
-                  {t("getInTouch.description")}
-                </p>
+            {/* Left Column - Info & Opinions */}
+            <div className={styles.leftColumn}>
+              {/* Get in Touch Section */}
+              <div className={styles.infoSection}>
+                <h1 className={styles.pageTitle}>{t("hero.title")}</h1>
+                <p className={styles.pageDescription}>{t("hero.subtitle")}</p>
 
                 <div className={styles.contactDetails}>
                   <div className={styles.contactItem}>
-                    <div className={styles.iconWrapper}>
+                    <div className={styles.contactIcon}>
                       <svg
-                        className={styles.icon}
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -63,16 +53,22 @@ export default function Contact() {
                         />
                       </svg>
                     </div>
-                    <div className={styles.contactItemContent}>
-                      <h4>{tDetails("email")}</h4>
-                      <a href="mailto:info@renovate.com">info@renovate.com</a>
+                    <div className={styles.contactContent}>
+                      <span className={styles.contactLabel}>
+                        {tDetails("email")}
+                      </span>
+                      <a
+                        href="mailto:info@renovate.com"
+                        className={styles.contactValue}
+                      >
+                        info@renovate.com
+                      </a>
                     </div>
                   </div>
 
                   <div className={styles.contactItem}>
-                    <div className={styles.iconWrapper}>
+                    <div className={styles.contactIcon}>
                       <svg
-                        className={styles.icon}
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -85,16 +81,19 @@ export default function Contact() {
                         />
                       </svg>
                     </div>
-                    <div className={styles.contactItemContent}>
-                      <h4>{tDetails("phone")}</h4>
-                      <a href="tel:+1234567890">+1 (234) 567-890</a>
+                    <div className={styles.contactContent}>
+                      <span className={styles.contactLabel}>
+                        {tDetails("phone")}
+                      </span>
+                      <a href="tel:+1234567890" className={styles.contactValue}>
+                        +1 (234) 567-890
+                      </a>
                     </div>
                   </div>
 
                   <div className={styles.contactItem}>
-                    <div className={styles.iconWrapper}>
+                    <div className={styles.contactIcon}>
                       <svg
-                        className={styles.icon}
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -107,39 +106,46 @@ export default function Contact() {
                         />
                       </svg>
                     </div>
-                    <div className={styles.contactItemContent}>
-                      <h4>{tDetails("hours")}</h4>
-                      <p>{tDetails("hoursValue")}</p>
+                    <div className={styles.contactContent}>
+                      <span className={styles.contactLabel}>
+                        {tDetails("hours")}
+                      </span>
+                      <span className={styles.contactValue}>
+                        {tDetails("hoursValue")}
+                      </span>
                     </div>
                   </div>
                 </div>
+              </div>
 
-                {/* Trust Signals */}
-                <div className={styles.trustSignals}>
-                  <div className={styles.trustItem}>
-                    <div className={styles.trustNumber}>24h</div>
-                    <div className={styles.trustLabel}>Response Time</div>
-                  </div>
-                  <div className={styles.trustItem}>
-                    <div className={styles.trustNumber}>500+</div>
-                    <div className={styles.trustLabel}>Projects Completed</div>
-                  </div>
-                  <div className={styles.trustItem}>
-                    <div className={styles.trustNumber}>15+</div>
-                    <div className={styles.trustLabel}>Years Experience</div>
-                  </div>
-                </div>
+              {/* Client Opinions Redirect Card */}
+              <div className={styles.opinionsRedirect}>
+                <h3 className={styles.opinionsTitle}>
+                  Our Clients&apos; Opinions
+                </h3>
+                <p className={styles.opinionsText}>
+                  See what our satisfied clients have to say about their
+                  renovation experience.
+                </p>
+                <a href="#client-opinions" className={styles.opinionsButton}>
+                  View Reviews
+                </a>
               </div>
             </div>
 
             {/* Right Column - Form */}
-            <div className={styles.formColumn}>
-              <div className={styles.formCard}>
+            <div className={styles.rightColumn}>
+              <div className={styles.formWrapper}>
                 <ContactForm />
               </div>
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Client Opinions Section */}
+      <section id="client-opinions" className={styles.opinionsSection}>
+        {/* <ClientOpinions /> */}
       </section>
     </div>
   );

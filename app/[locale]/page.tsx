@@ -8,84 +8,123 @@ export default function Home() {
 
   return (
     <div className={styles.home}>
-      {/* Hero Section */}
+      {/* Hero Section with Image */}
       <section className={styles.hero}>
-        <div className="container">
-          <h1 className={styles.heroTitle}>{t("hero.title")}</h1>
-          <p className={styles.heroSubtitle}>{t("hero.subtitle")}</p>
-          <Link href="/contact" className="btn btn-primary">
-            {tCommon("startProject")}
-          </Link>
+        <div className={styles.heroImageWrapper}>
+          <div className={styles.heroImage} />
+          <div className={styles.heroOverlay} />
+        </div>
+        <div className={styles.heroContent}>
+          <div className="container">
+            <div className={styles.heroText}>
+              <h1 className={styles.heroTitle}>{t("hero.title")}</h1>
+              <p className={styles.heroSubtitle}>{t("hero.subtitle")}</p>
+              <div className={styles.heroActions}>
+                <Link
+                  href="/contact"
+                  className={`btn btn-primary ${styles.heroButton}`}
+                >
+                  {tCommon("startProject")}
+                </Link>
+                <Link
+                  href="/projects"
+                  className={`btn btn-secondary ${styles.heroButtonSecondary}`}
+                >
+                  {tCommon("viewPortfolio")}
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* About Preview */}
-      <section
-        className={`${styles.previewSection} section-spacing`}
-        id="about"
-      >
+      <section className={styles.previewSection} id="about">
         <div className="container">
-          <h2>{t("about.title")}</h2>
-          <p>{t("about.description")}</p>
-          <Link href="/about" className="btn btn-secondary">
-            {tCommon("learnMore")}
-          </Link>
+          <div className={styles.sectionContent}>
+            <div className={styles.sectionLabel}>About</div>
+            <h2 className={styles.sectionTitle}>{t("about.title")}</h2>
+            <p className={styles.sectionDescription}>
+              {t("about.description")}
+            </p>
+            <Link href="/about" className={styles.sectionLink}>
+              {tCommon("learnMore")}
+              <span className={styles.linkArrow}>→</span>
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* Services Preview */}
       <section
-        className={`${styles.previewSection} ${styles.alternateBackground} section-spacing`}
+        className={`${styles.previewSection} ${styles.darkSection}`}
         id="services"
       >
         <div className="container">
-          <h2>{t("services.title")}</h2>
-          <p>{t("services.description")}</p>
-          <Link href="/services" className="btn btn-secondary">
-            {tCommon("exploreServices")}
-          </Link>
+          <div className={styles.sectionContent}>
+            <div className={styles.sectionLabel}>Services</div>
+            <h2 className={styles.sectionTitle}>{t("services.title")}</h2>
+            <p className={styles.sectionDescription}>
+              {t("services.description")}
+            </p>
+            <Link href="/services" className={styles.sectionLink}>
+              {tCommon("exploreServices")}
+              <span className={styles.linkArrow}>→</span>
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* Projects Preview */}
-      <section
-        className={`${styles.previewSection} section-spacing`}
-        id="projects"
-      >
+      <section className={styles.previewSection} id="projects">
         <div className="container">
-          <h2>{t("projects.title")}</h2>
-          <p>{t("projects.description")}</p>
-          <Link href="/projects" className="btn btn-secondary">
-            {tCommon("viewPortfolio")}
-          </Link>
+          <div className={styles.sectionContent}>
+            <div className={styles.sectionLabel}>Portfolio</div>
+            <h2 className={styles.sectionTitle}>{t("projects.title")}</h2>
+            <p className={styles.sectionDescription}>
+              {t("projects.description")}
+            </p>
+            <Link href="/projects" className={styles.sectionLink}>
+              {tCommon("viewPortfolio")}
+              <span className={styles.linkArrow}>→</span>
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* Process Preview */}
       <section
-        className={`${styles.previewSection} ${styles.alternateBackground} section-spacing`}
+        className={`${styles.previewSection} ${styles.darkSection}`}
         id="process"
       >
         <div className="container">
-          <h2>{t("process.title")}</h2>
-          <p>{t("process.description")}</p>
-          <Link href="/process" className="btn btn-secondary">
-            {tCommon("understandProcess")}
-          </Link>
+          <div className={styles.sectionContent}>
+            <div className={styles.sectionLabel}>Process</div>
+            <h2 className={styles.sectionTitle}>{t("process.title")}</h2>
+            <p className={styles.sectionDescription}>
+              {t("process.description")}
+            </p>
+            <Link href="/process" className={styles.sectionLink}>
+              {tCommon("understandProcess")}
+              <span className={styles.linkArrow}>→</span>
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* Contact Preview */}
-      <section
-        className={`${styles.previewSection} section-spacing`}
-        id="contact"
-      >
+      {/* Contact CTA */}
+      <section className={styles.ctaSection}>
         <div className="container">
-          <h2>{t("contact.title")}</h2>
-          <p>{t("contact.description")}</p>
-          <Link href="/contact" className="btn btn-primary">
-            {tCommon("contactUs")}
-          </Link>
+          <div className={styles.ctaContent}>
+            <h2 className={styles.ctaTitle}>{t("contact.title")}</h2>
+            <p className={styles.ctaDescription}>{t("contact.description")}</p>
+            <Link
+              href="/contact"
+              className={`btn btn-primary ${styles.ctaButton}`}
+            >
+              {tCommon("contactUs")}
+            </Link>
+          </div>
         </div>
       </section>
     </div>
