@@ -1,84 +1,77 @@
 .formContainer {
-  width: 100%;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-grey-200);
+  border-radius: 22px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
 }
 
 .formHeader {
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--space-xl);
 }
 
-.formHeader h2 {
-  font-size: var(--text-2xl);
+.formTitle {
+  font-size: 19px;
   font-weight: 600;
   color: var(--color-black);
-  margin-bottom: var(--space-sm);
   letter-spacing: -0.01em;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
 }
 
-.formHeader p {
+.formSubtitle {
+  font-size: 13px;
   color: var(--color-grey-600);
-  font-size: var(--text-base);
-  line-height: var(--line-height-relaxed);
   margin: 0;
+  line-height: 1.5;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
+  gap: 16px;
 }
 
-/* Form Group - CRITICAL: Fixed height for validation stability */
+/* CRITICAL: Form Group with Stable Error Slot */
 .formGroup {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
-  position: relative;
 }
 
 .label {
   font-weight: 500;
-  font-size: var(--text-sm);
+  font-size: 14px;
   color: var(--color-grey-800);
-  margin-bottom: 2px;
+  margin-bottom: 7px;
   letter-spacing: 0.01em;
+  line-height: 1.4;
 }
 
 .required {
-  color: var(--color-black);
-  font-weight: 600;
+  color: var(--color-grey-500);
+  font-weight: 500;
+  margin-left: 2px;
 }
 
-/* Input Base Styles */
+/* Input Styles */
 .input,
 .select,
 .textarea {
   width: 100%;
-  padding: 14px 16px;
-  font-size: var(--text-base);
+  padding: 12px 14px;
+  font-size: 15px;
   font-family: var(--font-body);
   color: var(--color-grey-900);
   background-color: var(--color-white);
   border: 1.5px solid var(--color-grey-300);
-  border-radius: var(--radius-md);
+  border-radius: 10px;
   transition: all var(--transition-fast);
   outline: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.input:hover,
-.select:hover,
-.textarea:hover {
-  border-color: var(--color-grey-500);
-}
-
-.input:focus,
-.select:focus,
-.textarea:focus {
-  border-color: var(--color-black);
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+  line-height: 1.5;
+  height: 46px;
 }
 
 .input::placeholder,
@@ -86,51 +79,71 @@
   color: var(--color-grey-400);
 }
 
-/* Select Specific Styles */
+.input:hover,
+.select:hover,
+.textarea:hover {
+  border-color: var(--color-grey-400);
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  border-color: var(--color-black);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.04);
+}
+
+/* Select Dropdown */
 .select {
   cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23404040' d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Cpath fill='%23404040' d='M7 10L2 5h10z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: right 14px center;
-  padding-right: 40px;
+  background-position: right 12px center;
+  padding-right: 36px;
 }
 
 .select:focus {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23000000' d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Cpath fill='%23000000' d='M7 10L2 5h10z'/%3E%3C/svg%3E");
 }
 
 /* Textarea */
 .textarea {
   resize: vertical;
   min-height: 120px;
-  line-height: var(--line-height-relaxed);
+  height: auto;
+  padding: 12px 14px;
+  line-height: 1.6;
 }
 
-/* Error Message - CRITICAL: Uses min-height for layout stability */
-.error {
-  color: #d32f2f;
-  font-size: var(--text-sm);
-  font-weight: 500;
-  min-height: 20px;
+/* CRITICAL: Stable Error Slot - ALWAYS reserves space */
+.errorSlot {
+  min-height: 18px;
+  margin-top: 5px;
   display: flex;
   align-items: center;
-  gap: 6px;
-  margin-top: 4px;
+}
+
+.error {
+  font-size: 13px;
+  color: #d32f2f;
+  font-weight: 500;
+  line-height: 1.4;
+  opacity: 0;
+  transform: translateY(-2px);
+  transition: all 0.2s ease-out;
+}
+
+.error.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .error::before {
-  content: "⚠";
-  font-size: 14px;
+  content: "⚠ ";
+  font-size: 12px;
+  margin-right: 2px;
 }
 
-/* Error State for Inputs */
-.input:invalid:not(:placeholder-shown),
-.select:invalid,
-.textarea:invalid:not(:placeholder-shown) {
-  border-color: #d32f2f;
-}
-
-/* File Upload Styles */
+/* File Upload */
 .fileUploadArea {
   position: relative;
   margin-top: 4px;
@@ -150,51 +163,39 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: var(--space-2xl) var(--space-lg);
+  padding: var(--space-xl);
   border: 2px dashed var(--color-grey-300);
-  border-radius: var(--radius-md);
+  border-radius: 10px;
   background-color: var(--color-grey-100);
   cursor: pointer;
   transition: all var(--transition-base);
   text-align: center;
   color: var(--color-grey-600);
-  min-height: 140px;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 120px;
 }
 
 .fileLabel:hover {
-  border-color: var(--color-grey-500);
+  border-color: var(--color-grey-400);
   background-color: var(--color-grey-200);
-  transform: translateY(-2px);
-}
-
-.fileLabel:active {
-  transform: translateY(0);
 }
 
 .uploadIcon {
-  width: 40px;
-  height: 40px;
-  margin-bottom: var(--space-md);
+  width: 36px;
+  height: 36px;
+  margin-bottom: var(--space-sm);
   color: var(--color-grey-500);
-  transition: color var(--transition-fast);
-}
-
-.fileLabel:hover .uploadIcon {
-  color: var(--color-grey-700);
 }
 
 .fileLabel span {
-  font-size: var(--text-base);
+  font-size: 14px;
   font-weight: 500;
 }
 
 .fileHint {
-  font-size: var(--text-xs);
+  font-size: 12px;
   color: var(--color-grey-500);
-  margin-top: var(--space-sm);
-  margin-bottom: 0;
-  line-height: var(--line-height-normal);
+  margin-top: 6px;
+  line-height: 1.4;
   min-height: 16px;
 }
 
@@ -203,14 +204,14 @@
   margin-top: var(--space-md);
   padding: var(--space-md);
   background-color: var(--color-grey-100);
-  border-radius: var(--radius-md);
+  border-radius: 10px;
   border: 1px solid var(--color-grey-200);
 }
 
 .fileListTitle {
   font-weight: 600;
-  font-size: var(--text-sm);
-  margin-bottom: var(--space-md);
+  font-size: 13px;
+  margin-bottom: var(--space-sm);
   color: var(--color-grey-800);
 }
 
@@ -218,18 +219,11 @@
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  padding: var(--space-sm) var(--space-md);
+  padding: 10px;
   background-color: var(--color-white);
-  border-radius: var(--radius-sm);
-  margin-bottom: var(--space-sm);
+  border-radius: 8px;
+  margin-bottom: 8px;
   border: 1px solid var(--color-grey-200);
-  transition: all var(--transition-fast);
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.fileItem:hover {
-  border-color: var(--color-grey-300);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .fileItem:last-child {
@@ -238,7 +232,7 @@
 
 .fileName {
   flex: 1;
-  font-size: var(--text-sm);
+  font-size: 14px;
   color: var(--color-grey-800);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -247,23 +241,22 @@
 }
 
 .fileSize {
-  font-size: var(--text-xs);
+  font-size: 12px;
   color: var(--color-grey-500);
   flex-shrink: 0;
 }
 
 .removeFileButton {
   padding: 6px 12px;
-  font-size: var(--text-xs);
+  font-size: 12px;
   color: var(--color-grey-700);
   background-color: transparent;
   border: 1px solid var(--color-grey-300);
-  border-radius: var(--radius-sm);
+  border-radius: 6px;
   cursor: pointer;
   transition: all var(--transition-fast);
   font-weight: 500;
   flex-shrink: 0;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .removeFileButton:hover {
@@ -275,15 +268,16 @@
 /* Success and Error Messages */
 .successMessage,
 .errorMessage {
-  padding: var(--space-md) var(--space-lg);
-  border-radius: var(--radius-md);
-  margin-bottom: var(--space-xl);
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-bottom: var(--space-lg);
   font-weight: 500;
+  font-size: 14px;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-sm);
+  gap: 8px;
   animation: slideDown 0.3s ease-out;
 }
 
@@ -306,7 +300,7 @@
 
 .successMessage::before {
   content: "✓";
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
 }
 
@@ -318,27 +312,25 @@
 
 .errorMessage::before {
   content: "✕";
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
 }
 
-/* Submit Button - Uses global .btn .btn-primary but with overrides */
+/* Submit Button */
 .form button[type="submit"] {
   width: 100%;
-  padding: 16px 32px;
-  font-size: var(--text-base);
+  padding: 14px 28px;
+  font-size: 15px;
   font-weight: 600;
-  margin-top: var(--space-md);
-  border-radius: var(--radius-md);
+  margin-top: 8px;
+  border-radius: 10px;
   transition: all var(--transition-base);
-  position: relative;
-  overflow: hidden;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  height: 46px;
 }
 
 .form button[type="submit"]:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 .form button[type="submit"]:active:not(:disabled) {
@@ -346,32 +338,31 @@
 }
 
 .form button[type="submit"]:disabled {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
-/* Responsive Adjustments */
+/* Responsive */
 @media (min-width: 768px) {
-  .formHeader h2 {
-    font-size: var(--text-3xl);
+  .formContainer {
+    padding: 28px;
+  }
+
+  .formTitle {
+    font-size: 20px;
+  }
+
+  .formSubtitle {
+    font-size: 14px;
   }
 
   .form {
-    gap: var(--space-xl);
+    gap: 18px;
   }
 
   .form button[type="submit"] {
     width: auto;
-    min-width: 200px;
+    min-width: 180px;
     align-self: flex-start;
   }
-}
-
-/* Focus visible for accessibility */
-.input:focus-visible,
-.select:focus-visible,
-.textarea:focus-visible,
-.removeFileButton:focus-visible {
-  outline: 2px solid var(--color-black);
-  outline-offset: 2px;
 }

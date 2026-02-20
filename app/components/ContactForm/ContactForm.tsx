@@ -29,13 +29,21 @@ const ALLOWED_FILE_TYPES = [
   "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 ];
 
+// Stable Error Slot Component
+const ErrorSlot = ({ error }: { error?: string }) => (
+  <div className={styles.errorSlot}>
+    <div className={`${styles.error} ${error ? styles.visible : ""}`}>
+      {error || "\u00A0"}
+    </div>
+  </div>
+);
+
 export default function ContactForm() {
   const t = useTranslations("form");
   const [submitStatus, setSubmitStatus] = useState<
     "idle" | "success" | "error"
   >("idle");
 
-  // Create validation schema using translations
   const validationSchema = Yup.object({
     fullName: Yup.string().required(t("validation.required")),
     phone: Yup.string()
@@ -77,17 +85,10 @@ export default function ContactForm() {
     { setSubmitting, resetForm }: FormikHelpers<FormValues>,
   ) => {
     try {
-      // Log form data for now
-      console.log("Form submitted with values:", values);
-      console.log("Files:", values.attachments);
-
-      // Simulate API call
+      console.log("Form submitted:", values);
       await new Promise((resolve) => setTimeout(resolve, 1000));
-
       setSubmitStatus("success");
       resetForm();
-
-      // Reset success message after 5 seconds
       setTimeout(() => setSubmitStatus("idle"), 5000);
     } catch (error) {
       console.error("Submission error:", error);
@@ -104,13 +105,11 @@ export default function ContactForm() {
   ) => {
     const files = Array.from(event.target.files || []);
 
-    // Validate file count
     if (currentFiles.length + files.length > MAX_FILES) {
       alert(t("validation.tooManyFiles"));
       return;
     }
 
-    // Validate each file
     const validFiles = files.filter((file) => {
       if (file.size > MAX_FILE_SIZE) {
         alert(`${file.name}: ${t("validation.fileTooLarge")}`);
@@ -138,8 +137,8 @@ export default function ContactForm() {
   return (
     <div className={styles.formContainer}>
       <div className={styles.formHeader}>
-        <h2>{t("title")}</h2>
-        <p>{t("subtitle")}</p>
+        <h2 className={styles.formTitle}>{t("title")}</h2>
+        <p className={styles.formSubtitle}>{t("subtitle")}</p>
       </div>
 
       {submitStatus === "success" && (
@@ -170,11 +169,9 @@ export default function ContactForm() {
                 placeholder={t("placeholders.fullName")}
                 className={styles.input}
               />
-              <ErrorMessage
-                name="fullName"
-                component="div"
-                className={styles.error}
-              />
+              <ErrorMessage name="fullName">
+                {(msg) => <ErrorSlot error={msg} />}
+              </ErrorMessage>
             </div>
 
             {/* Phone */}
@@ -189,11 +186,9 @@ export default function ContactForm() {
                 placeholder={t("placeholders.phone")}
                 className={styles.input}
               />
-              <ErrorMessage
-                name="phone"
-                component="div"
-                className={styles.error}
-              />
+              <ErrorMessage name="phone">
+                {(msg) => <ErrorSlot error={msg} />}
+              </ErrorMessage>
             </div>
 
             {/* Email */}
@@ -208,11 +203,9 @@ export default function ContactForm() {
                 placeholder={t("placeholders.email")}
                 className={styles.input}
               />
-              <ErrorMessage
-                name="email"
-                component="div"
-                className={styles.error}
-              />
+              <ErrorMessage name="email">
+                {(msg) => <ErrorSlot error={msg} />}
+              </ErrorMessage>
             </div>
 
             {/* Interested In */}
@@ -235,11 +228,9 @@ export default function ContactForm() {
                   {t("options.interestedIn.renovation")}
                 </option>
               </Field>
-              <ErrorMessage
-                name="interestedIn"
-                component="div"
-                className={styles.error}
-              />
+              <ErrorMessage name="interestedIn">
+                {(msg) => <ErrorSlot error={msg} />}
+              </ErrorMessage>
             </div>
 
             {/* Renovation Type */}
@@ -268,11 +259,9 @@ export default function ContactForm() {
                   {t("options.renovationType.repairs")}
                 </option>
               </Field>
-              <ErrorMessage
-                name="renovationType"
-                component="div"
-                className={styles.error}
-              />
+              <ErrorMessage name="renovationType">
+                {(msg) => <ErrorSlot error={msg} />}
+              </ErrorMessage>
             </div>
 
             {/* Renovation Object */}
@@ -307,11 +296,9 @@ export default function ContactForm() {
                   {t("options.renovationObject.room")}
                 </option>
               </Field>
-              <ErrorMessage
-                name="renovationObject"
-                component="div"
-                className={styles.error}
-              />
+              <ErrorMessage name="renovationObject">
+                {(msg) => <ErrorSlot error={msg} />}
+              </ErrorMessage>
             </div>
 
             {/* Work Description */}
@@ -326,11 +313,9 @@ export default function ContactForm() {
                 placeholder={t("placeholders.workDescription")}
                 className={styles.input}
               />
-              <ErrorMessage
-                name="workDescription"
-                component="div"
-                className={styles.error}
-              />
+              <ErrorMessage name="workDescription">
+                {(msg) => <ErrorSlot error={msg} />}
+              </ErrorMessage>
             </div>
 
             {/* File Upload */}
@@ -408,11 +393,9 @@ export default function ContactForm() {
                 name="startDate"
                 className={styles.input}
               />
-              <ErrorMessage
-                name="startDate"
-                component="div"
-                className={styles.error}
-              />
+              <ErrorMessage name="startDate">
+                {(msg) => <ErrorSlot error={msg} />}
+              </ErrorMessage>
             </div>
 
             {/* Location */}
@@ -428,11 +411,9 @@ export default function ContactForm() {
                 placeholder={t("placeholders.location")}
                 className={styles.input}
               />
-              <ErrorMessage
-                name="location"
-                component="div"
-                className={styles.error}
-              />
+              <ErrorMessage name="location">
+                {(msg) => <ErrorSlot error={msg} />}
+              </ErrorMessage>
             </div>
 
             {/* Additional Comments */}
@@ -448,11 +429,9 @@ export default function ContactForm() {
                 rows={5}
                 className={styles.textarea}
               />
-              <ErrorMessage
-                name="additionalComments"
-                component="div"
-                className={styles.error}
-              />
+              <ErrorMessage name="additionalComments">
+                {(msg) => <ErrorSlot error={msg} />}
+              </ErrorMessage>
             </div>
 
             {/* Submit Button */}

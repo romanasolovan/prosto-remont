@@ -181,9 +181,9 @@
       "title": "Nasz proces | Jak pracujemy",
       "description": "Odkryj nasz usprawniony proces remontowy od wstępnej konsultacji do końcowego odbioru."
     },
-    "contact": {
-      "title": "Kontakt | Zapytaj o wycenę",
-      "description": "Skontaktuj się z naszymi ekspertami remontowymi w celu konsultacji. Jesteśmy gotowi wcielić twoją wizję w życie."
+    "getContact": {
+      "title": "Kontakt",
+      "description": "Skontaktuj się z naszym zespołem w Warszawie."
     }
   },
   "form": {
@@ -253,5 +253,27 @@
     "submitting": "Wysyłanie...",
     "successMessage": "Dziękujemy! Twoje zapytanie zostało wysłane pomyślnie.",
     "errorMessage": "Coś poszło nie tak. Spróbuj ponownie."
+  },
+  "getContact": {
+    "title": "Skontaktuj się",
+    "description": "Jesteśmy tutaj, aby pomóc zrealizować Twoją wizję remontu. Wypełnij formularz lub skontaktuj się bezpośrednio.",
+    "getInTouch": {
+      "title": "Informacje kontaktowe",
+      "description": "Skontaktuj się, aby omówić swój projekt i otrzymać spersonalizowaną konsultację."
+    },
+    "details": {
+      "email": "E-mail",
+      "phone": "Telefon",
+      "hours": "Godziny otwarcia",
+      "hoursValue": "Poniedziałek – Piątek: 8:00 – 18:00\nSobota: 9:00 – 16:00"
+    },
+    "social": {
+      "title": "Śledź nas"
+    },
+    "opinions": {
+      "title": "Opinie naszych klientów",
+      "description": "Zobacz, co nasi zadowoleni klienci mówią o swoim doświadczeniu remontowym.",
+      "cta": "Przeczytaj opinie"
+    }
   }
 }

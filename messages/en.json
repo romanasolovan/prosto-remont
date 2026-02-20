@@ -181,9 +181,9 @@
       "title": "Our Process | How We Work",
       "description": "Discover our streamlined renovation process from initial consultation to final walkthrough."
     },
-    "contact": {
-      "title": "Contact Us | Get A Quote",
-      "description": "Contact our renovation experts for a consultation. We're ready to bring your vision to life."
+    "getContact": {
+      "title": "Contact",
+      "description": "Get in touch with our team in Warsaw."
     }
   },
   "form": {
@@ -253,5 +253,27 @@
     "submitting": "Submitting...",
     "successMessage": "Thank you! Your request has been submitted successfully.",
     "errorMessage": "Something went wrong. Please try again."
+  },
+  "getContact": {
+    "title": "Get in Touch",
+    "description": "We're here to help bring your renovation vision to life. Fill out the form or contact us directly.",
+    "getInTouch": {
+      "title": "Contact Information",
+      "description": "Reach out to discuss your project and receive a personalized consultation."
+    },
+    "details": {
+      "email": "Email",
+      "phone": "Phone",
+      "hours": "Office Hours",
+      "hoursValue": "Monday – Friday: 8:00 AM – 6:00 PM\nSaturday: 9:00 AM – 4:00 PM"
+    },
+    "social": {
+      "title": "Follow Us"
+    },
+    "opinions": {
+      "title": "Our Clients' Opinions",
+      "description": "See what our satisfied clients have to say about their renovation experience.",
+      "cta": "Read Reviews"
+    }
   }
 }
