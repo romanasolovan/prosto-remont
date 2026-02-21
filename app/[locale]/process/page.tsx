@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import styles from "./process.module.css";
+import ContactForm from "@/app/components/ContactForm/ContactForm";
 
 export async function generateMetadata({
   params,
@@ -69,6 +70,20 @@ export default function Process() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ✅ Request a Quote form moved here */}
+      <section className={styles.quoteSection}>
+        <div className="container">
+          <div className={styles.quoteHeader}>
+            <h2 className={styles.quoteTitle}>{t("quote.title")}</h2>
+            <p className={styles.quoteDescription}>{t("quote.description")}</p>
+          </div>
+
+          <div className={styles.formWrap}>
+            <ContactForm />
           </div>
         </div>
       </section>

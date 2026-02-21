@@ -110,33 +110,37 @@
     }
   },
   "process": {
-    "hero": {
-      "title": "Our Process",
-      "subtitle": "A clear, collaborative approach from concept to completion."
+  "hero": {
+    "title": "Our Process",
+    "subtitle": "A clear, collaborative approach from concept to completion."
+  },
+  "steps": {
+    "consultation": {
+      "title": "Initial Consultation",
+      "description": "We meet with you to understand your vision, needs, and budget. This is where ideas begin to take shape."
     },
-    "steps": {
-      "consultation": {
-        "title": "Initial Consultation",
-        "description": "We meet with you to understand your vision, needs, and budget. This is where ideas begin to take shape."
-      },
-      "design": {
-        "title": "Design & Planning",
-        "description": "Our team creates detailed plans and designs, ensuring every detail aligns with your goals."
-      },
-      "proposal": {
-        "title": "Proposal & Contract",
-        "description": "We provide a transparent proposal with timeline and pricing, followed by contract finalization."
-      },
-      "construction": {
-        "title": "Construction",
-        "description": "Our skilled craftsmen bring the design to life with precision and care, keeping you informed throughout."
-      },
-      "walkthrough": {
-        "title": "Final Walkthrough",
-        "description": "We review the completed project with you, ensuring every detail meets your expectations."
-      }
+    "design": {
+      "title": "Design & Planning",
+      "description": "Our team creates detailed plans and designs, ensuring every detail aligns with your goals."
+    },
+    "proposal": {
+      "title": "Proposal & Contract",
+      "description": "We provide a transparent proposal with timeline and pricing, followed by contract finalization."
+    },
+    "construction": {
+      "title": "Construction",
+      "description": "Our skilled craftsmen bring the design to life with precision and care, keeping you informed throughout."
+    },
+    "walkthrough": {
+      "title": "Final Walkthrough",
+      "description": "We review the completed project with you, ensuring every detail meets your expectations."
     }
   },
+  "quote": {
+    "title": "Request a Quote",
+    "description": "Tell us about your project and we’ll get back to you with the next steps."
+  }
+},
   "contact": {
     "hero": {
       "title": "Contact Us",

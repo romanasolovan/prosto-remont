@@ -135,7 +135,11 @@
         "title": "Końcowy odbiór",
         "description": "Przeglądamy ukończony projekt z tobą, upewniając się, że każdy szczegół spełnia twoje oczekiwania."
       }
-    }
+    }, 
+    "quote": {
+  "title": "Poproś o wycenę",
+  "description": "Opisz swój projekt, a skontaktujemy się z Tobą z kolejnymi krokami."
+}
   },
   "contact": {
     "hero": {

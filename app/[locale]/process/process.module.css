@@ -64,3 +64,33 @@
     font-size: var(--text-5xl);
   }
 }
+
+/* Request a Quote section */
+.quoteSection {
+  padding: var(--space-3xl) 0;
+  background: var(--color-white);
+  border-top: 1px solid var(--color-grey-200);
+}
+
+.quoteHeader {
+  text-align: center;
+  max-width: 64ch;
+  margin: 0 auto var(--space-2xl);
+}
+
+.quoteTitle {
+  margin: 0 0 8px 0;
+  color: var(--color-black);
+}
+
+.quoteDescription {
+  margin: 0 auto;
+  color: var(--color-grey-600);
+  line-height: var(--line-height-relaxed);
+  font-size: var(--text-base);
+}
+
+.formWrap {
+  max-width: 760px; /* keeps the long form elegant */
+  margin: 0 auto;
+}
