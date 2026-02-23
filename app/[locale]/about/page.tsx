@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import styles from "./about.module.css";
+import ClientOpinions from "@/app/components/ClientOpinions/ClientOpinions";
 
 export async function generateMetadata({
   params,
@@ -22,27 +23,39 @@ export default function About() {
 
   return (
     <div className={styles.aboutPage}>
-      <section className={styles.hero}>
+      {/* Centered header, refined */}
+      <header className={styles.pageHeader}>
         <div className="container">
-          <h1>{t("hero.title")}</h1>
-          <p className={styles.subtitle}>{t("hero.subtitle")}</p>
+          <h1 className={styles.pageTitle}>{t("hero.title")}</h1>
+          <p className={styles.pageDescription}>{t("hero.subtitle")}</p>
         </div>
-      </section>
+      </header>
 
-      <section className="section-spacing">
+      <main className={styles.main}>
         <div className="container">
-          <div className={styles.content}>
-            <h2>{t("story.title")}</h2>
-            <p>{t("story.content")}</p>
+          <section className={styles.contentGrid}>
+            <article className={styles.card}>
+              <h2 className={styles.cardTitle}>{t("story.title")}</h2>
+              <p className={styles.cardText}>{t("story.content")}</p>
+            </article>
 
-            <h2>{t("values.title")}</h2>
-            <p>{t("values.content")}</p>
+            <article className={styles.card}>
+              <h2 className={styles.cardTitle}>{t("values.title")}</h2>
+              <p className={styles.cardText}>{t("values.content")}</p>
+            </article>
 
-            <h2>{t("why.title")}</h2>
-            <p>{t("why.content")}</p>
-          </div>
+            <article className={styles.card}>
+              <h2 className={styles.cardTitle}>{t("why.title")}</h2>
+              <p className={styles.cardText}>{t("why.content")}</p>
+            </article>
+          </section>
         </div>
-      </section>
+
+        {/* Opinions section on About page */}
+        <section className={styles.opinionsSection} id="opinions">
+          <ClientOpinions />
+        </section>
+      </main>
     </div>
   );
 }

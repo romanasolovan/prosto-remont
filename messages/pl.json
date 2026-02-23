@@ -279,5 +279,41 @@
       "description": "Zobacz, co nasi zadowoleni klienci mówią o swoim doświadczeniu remontowym.",
       "cta": "Przeczytaj opinie"
     }
+  }, 
+  "clientOpinions": {
+  "title": "Opinie klientów",
+  "cta": {
+    "leaveReview": "Dodaj opinię"
+  },
+  "reviewCount": "{count, plural, =0 {Brak opinii} one {# opinia} few {# opinie} other {# opinii}}",
+  "aria": {
+    "stars": "Średnia ocena",
+    "rating": "Ocena: {rating} na 5"
   }
+}, 
+"leaveComment": {
+  "title": "Podziel się opinią",
+  "description": "Opowiedz nam o swoim doświadczeniu z remontem i współpracą z naszym zespołem.",
+  "fields": {
+    "name": "Twoje imię",
+    "rating": "Twoja ocena",
+    "comment": "Twoja opinia"
+  },
+  "placeholders": {
+    "name": "Wpisz swoje imię",
+    "comment": "Opisz swoje doświadczenie z naszymi usługami remontowymi..."
+  },
+  "buttons": {
+    "cancel": "Anuluj",
+    "submit": "Wyślij opinię"
+  },
+  "validation": {
+    "requiredName": "Imię jest wymagane",
+    "requiredRating": "Wybierz ocenę",
+    "requiredComment": "Opinia jest wymagana"
+  },
+  "aria": {
+    "selectRating": "Wybierz ocenę: {rating} gwiazdek"
+  }
+}
 }

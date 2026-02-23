@@ -110,37 +110,37 @@
     }
   },
   "process": {
-  "hero": {
-    "title": "Our Process",
-    "subtitle": "A clear, collaborative approach from concept to completion."
-  },
-  "steps": {
-    "consultation": {
-      "title": "Initial Consultation",
-      "description": "We meet with you to understand your vision, needs, and budget. This is where ideas begin to take shape."
+    "hero": {
+      "title": "Our Process",
+      "subtitle": "A clear, collaborative approach from concept to completion."
     },
-    "design": {
-      "title": "Design & Planning",
-      "description": "Our team creates detailed plans and designs, ensuring every detail aligns with your goals."
+    "steps": {
+      "consultation": {
+        "title": "Initial Consultation",
+        "description": "We meet with you to understand your vision, needs, and budget. This is where ideas begin to take shape."
+      },
+      "design": {
+        "title": "Design & Planning",
+        "description": "Our team creates detailed plans and designs, ensuring every detail aligns with your goals."
+      },
+      "proposal": {
+        "title": "Proposal & Contract",
+        "description": "We provide a transparent proposal with timeline and pricing, followed by contract finalization."
+      },
+      "construction": {
+        "title": "Construction",
+        "description": "Our skilled craftsmen bring the design to life with precision and care, keeping you informed throughout."
+      },
+      "walkthrough": {
+        "title": "Final Walkthrough",
+        "description": "We review the completed project with you, ensuring every detail meets your expectations."
+      }
     },
-    "proposal": {
-      "title": "Proposal & Contract",
-      "description": "We provide a transparent proposal with timeline and pricing, followed by contract finalization."
-    },
-    "construction": {
-      "title": "Construction",
-      "description": "Our skilled craftsmen bring the design to life with precision and care, keeping you informed throughout."
-    },
-    "walkthrough": {
-      "title": "Final Walkthrough",
-      "description": "We review the completed project with you, ensuring every detail meets your expectations."
+    "quote": {
+      "title": "Request a Quote",
+      "description": "Tell us about your project and we’ll get back to you with the next steps."
     }
   },
-  "quote": {
-    "title": "Request a Quote",
-    "description": "Tell us about your project and we’ll get back to you with the next steps."
-  }
-},
   "contact": {
     "hero": {
       "title": "Contact Us",
@@ -278,6 +278,42 @@
       "title": "Our Clients' Opinions",
       "description": "See what our satisfied clients have to say about their renovation experience.",
       "cta": "Read Reviews"
+    }
+  },
+  "clientOpinions": {
+    "title": "Client opinions",
+    "cta": {
+      "leaveReview": "Leave a review"
+    },
+    "reviewCount": "{count, plural, =0 {No reviews} one {# review} other {# reviews}}",
+    "aria": {
+      "stars": "Average rating",
+      "rating": "Rating: {rating} out of 5"
+    }
+  },
+  "leaveComment": {
+    "title": "Share your experience",
+    "description": "Tell us about your renovation experience with our team.",
+    "fields": {
+      "name": "Your name",
+      "rating": "Your rating",
+      "comment": "Your review"
+    },
+    "placeholders": {
+      "name": "Enter your name",
+      "comment": "Share your experience with our renovation services..."
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "submit": "Submit review"
+    },
+    "validation": {
+      "requiredName": "Name is required",
+      "requiredRating": "Please select a rating",
+      "requiredComment": "Comment is required"
+    },
+    "aria": {
+      "selectRating": "Select {rating} star rating"
     }
   }
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import styles from "./ClientOpinions.module.css";
 import LeaveCommentForm from "./LeaveCommentForm";
 
@@ -15,8 +15,8 @@ interface Comment {
 
 export default function ClientOpinions() {
   const t = useTranslations("clientOpinions");
+  const locale = useLocale();
 
-  // Mock initial comments (will be replaced with database/API later)
   const [comments, setComments] = useState<Comment[]>([
     {
       id: "1",
@@ -64,17 +64,28 @@ export default function ClientOpinions() {
         ).toFixed(1)
       : "0.0";
 
+  const reviewLabel = t("reviewCount", { count: comments.length });
+
+  const formatDate = (isoDate: string) => {
+    const d = new Date(isoDate);
+    return new Intl.DateTimeFormat(locale, {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }).format(d);
+  };
+
   return (
     <div className={styles.opinionsContainer}>
       <div className="container">
-        {/* Header */}
         <div className={styles.header}>
           <div className={styles.headerContent}>
-            <h2 className={styles.title}>Client Testimonials</h2>
+            <h2 className={styles.title}>{t("title")}</h2>
+
             <div className={styles.stats}>
               <div className={styles.rating}>
                 <span className={styles.ratingNumber}>{averageRating}</span>
-                <div className={styles.stars}>
+                <div className={styles.stars} aria-label={t("aria.stars")}>
                   {[...Array(5)].map((_, i) => (
                     <svg
                       key={i}
@@ -85,15 +96,15 @@ export default function ClientOpinions() {
                       }
                       fill="currentColor"
                       viewBox="0 0 20 20"
+                      aria-hidden="true"
                     >
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                   ))}
                 </div>
               </div>
-              <span className={styles.reviewCount}>
-                {comments.length} {comments.length === 1 ? "Review" : "Reviews"}
-              </span>
+
+              <span className={styles.reviewCount}>{reviewLabel}</span>
             </div>
           </div>
 
@@ -102,12 +113,11 @@ export default function ClientOpinions() {
               onClick={() => setShowForm(true)}
               className={styles.leaveReviewButton}
             >
-              Leave a Review
+              {t("cta.leaveReview")}
             </button>
           )}
         </div>
 
-        {/* Leave Comment Form */}
         {showForm && (
           <div className={styles.formSection}>
             <LeaveCommentForm
@@ -117,7 +127,6 @@ export default function ClientOpinions() {
           </div>
         )}
 
-        {/* Comments Grid */}
         <div className={styles.commentsGrid}>
           {comments.map((comment) => (
             <div key={comment.id} className={styles.commentCard}>
@@ -129,15 +138,15 @@ export default function ClientOpinions() {
                   <div>
                     <div className={styles.authorName}>{comment.name}</div>
                     <div className={styles.commentDate}>
-                      {new Date(comment.date).toLocaleDateString("en-US", {
-                        month: "long",
-                        day: "numeric",
-                        year: "numeric",
-                      })}
+                      {formatDate(comment.date)}
                     </div>
                   </div>
                 </div>
-                <div className={styles.commentRating}>
+
+                <div
+                  className={styles.commentRating}
+                  aria-label={t("aria.rating", { rating: comment.rating })}
+                >
                   {[...Array(5)].map((_, i) => (
                     <svg
                       key={i}
@@ -148,12 +157,14 @@ export default function ClientOpinions() {
                       }
                       fill="currentColor"
                       viewBox="0 0 20 20"
+                      aria-hidden="true"
                     >
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                   ))}
                 </div>
               </div>
+
               <p className={styles.commentText}>{comment.comment}</p>
             </div>
           ))}
