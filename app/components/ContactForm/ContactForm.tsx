@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
+import { Formik, Form, Field, FormikHelpers } from "formik";
 import * as Yup from "yup";
 import { useState } from "react";
 import styles from "./ContactForm.module.css";
@@ -154,7 +154,7 @@ export default function ContactForm() {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        {({ isSubmitting, setFieldValue, values }) => (
+        {({ isSubmitting, setFieldValue, values, errors, touched }) => (
           <Form className={styles.form}>
             {/* Full Name */}
             <div className={styles.formGroup}>
@@ -169,9 +169,11 @@ export default function ContactForm() {
                 placeholder={t("placeholders.fullName")}
                 className={styles.input}
               />
-              <ErrorMessage name="fullName">
-                {(msg) => <ErrorSlot error={msg} />}
-              </ErrorMessage>
+              <ErrorSlot
+                error={
+                  touched.fullName ? (errors.fullName as string) : undefined
+                }
+              />
             </div>
 
             {/* Phone */}
@@ -186,9 +188,9 @@ export default function ContactForm() {
                 placeholder={t("placeholders.phone")}
                 className={styles.input}
               />
-              <ErrorMessage name="phone">
-                {(msg) => <ErrorSlot error={msg} />}
-              </ErrorMessage>
+              <ErrorSlot
+                error={touched.phone ? (errors.phone as string) : undefined}
+              />
             </div>
 
             {/* Email */}
@@ -203,9 +205,9 @@ export default function ContactForm() {
                 placeholder={t("placeholders.email")}
                 className={styles.input}
               />
-              <ErrorMessage name="email">
-                {(msg) => <ErrorSlot error={msg} />}
-              </ErrorMessage>
+              <ErrorSlot
+                error={touched.email ? (errors.email as string) : undefined}
+              />
             </div>
 
             {/* Interested In */}
@@ -228,9 +230,13 @@ export default function ContactForm() {
                   {t("options.interestedIn.renovation")}
                 </option>
               </Field>
-              <ErrorMessage name="interestedIn">
-                {(msg) => <ErrorSlot error={msg} />}
-              </ErrorMessage>
+              <ErrorSlot
+                error={
+                  touched.interestedIn
+                    ? (errors.interestedIn as string)
+                    : undefined
+                }
+              />
             </div>
 
             {/* Renovation Type */}
@@ -259,9 +265,13 @@ export default function ContactForm() {
                   {t("options.renovationType.repairs")}
                 </option>
               </Field>
-              <ErrorMessage name="renovationType">
-                {(msg) => <ErrorSlot error={msg} />}
-              </ErrorMessage>
+              <ErrorSlot
+                error={
+                  touched.renovationType
+                    ? (errors.renovationType as string)
+                    : undefined
+                }
+              />
             </div>
 
             {/* Renovation Object */}
@@ -296,9 +306,13 @@ export default function ContactForm() {
                   {t("options.renovationObject.room")}
                 </option>
               </Field>
-              <ErrorMessage name="renovationObject">
-                {(msg) => <ErrorSlot error={msg} />}
-              </ErrorMessage>
+              <ErrorSlot
+                error={
+                  touched.renovationObject
+                    ? (errors.renovationObject as string)
+                    : undefined
+                }
+              />
             </div>
 
             {/* Work Description */}
@@ -313,9 +327,13 @@ export default function ContactForm() {
                 placeholder={t("placeholders.workDescription")}
                 className={styles.input}
               />
-              <ErrorMessage name="workDescription">
-                {(msg) => <ErrorSlot error={msg} />}
-              </ErrorMessage>
+              <ErrorSlot
+                error={
+                  touched.workDescription
+                    ? (errors.workDescription as string)
+                    : undefined
+                }
+              />
             </div>
 
             {/* File Upload */}
@@ -393,9 +411,11 @@ export default function ContactForm() {
                 name="startDate"
                 className={styles.input}
               />
-              <ErrorMessage name="startDate">
-                {(msg) => <ErrorSlot error={msg} />}
-              </ErrorMessage>
+              <ErrorSlot
+                error={
+                  touched.startDate ? (errors.startDate as string) : undefined
+                }
+              />
             </div>
 
             {/* Location */}
@@ -411,9 +431,11 @@ export default function ContactForm() {
                 placeholder={t("placeholders.location")}
                 className={styles.input}
               />
-              <ErrorMessage name="location">
-                {(msg) => <ErrorSlot error={msg} />}
-              </ErrorMessage>
+              <ErrorSlot
+                error={
+                  touched.location ? (errors.location as string) : undefined
+                }
+              />
             </div>
 
             {/* Additional Comments */}
@@ -429,9 +451,13 @@ export default function ContactForm() {
                 rows={5}
                 className={styles.textarea}
               />
-              <ErrorMessage name="additionalComments">
-                {(msg) => <ErrorSlot error={msg} />}
-              </ErrorMessage>
+              <ErrorSlot
+                error={
+                  touched.additionalComments
+                    ? (errors.additionalComments as string)
+                    : undefined
+                }
+              />
             </div>
 
             {/* Submit Button */}

@@ -116,7 +116,7 @@
 
 /* CRITICAL: Stable Error Slot - ALWAYS reserves space */
 .errorSlot {
-  min-height: 18px;
+  min-height: 20px;
   margin-top: 5px;
   display: flex;
   align-items: center;
