@@ -309,11 +309,19 @@
   },
   "validation": {
     "requiredName": "Imię jest wymagane",
-    "requiredRating": "Wybierz ocenę",
-    "requiredComment": "Opinia jest wymagana"
+  "nameMin": "Imię musi mieć co najmniej {count} znaki",
+  "nameMax": "Imię może mieć maksymalnie {count} znaków",
+  "requiredRating": "Proszę wybrać ocenę",
+  "requiredComment": "Opinia jest wymagana",
+  "commentMin": "Opinia musi mieć co najmniej {count} znaków",
+  "commentMax": "Opinia może mieć maksymalnie {count} znaków"
   },
   "aria": {
     "selectRating": "Wybierz ocenę: {rating} gwiazdek"
-  }
+  },
+  "success": {
+  "title": "Dziękujemy!",
+  "message": "Twoja opinia została wysłana i zostanie opublikowana po krótkiej weryfikacji."
+}
 }
 }

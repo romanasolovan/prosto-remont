@@ -309,11 +309,19 @@
     },
     "validation": {
       "requiredName": "Name is required",
-      "requiredRating": "Please select a rating",
-      "requiredComment": "Comment is required"
+  "nameMin": "Name must be at least {count} characters",
+  "nameMax": "Name must be at most {count} characters",
+  "requiredRating": "Please select a rating",
+  "requiredComment": "Comment is required",
+  "commentMin": "Comment must be at least {count} characters",
+  "commentMax": "Comment must be at most {count} characters"
     },
     "aria": {
       "selectRating": "Select {rating} star rating"
-    }
+    },
+    "success": {
+  "title": "Thank you!",
+  "message": "Your review has been submitted and will be published after a quick review."
+}
   }
 }
