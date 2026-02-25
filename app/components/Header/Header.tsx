@@ -6,6 +6,7 @@ import { Link } from "@/navigation";
 import styles from "./Header.module.css";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
+import Image from "next/image";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -30,7 +31,13 @@ export default function Header() {
         <div className="container">
           <div className={styles.headerContent}>
             <Link href="/" className={styles.logo}>
-              RENOVATE
+              <Image
+                src="/LOGO_FULL.svg"
+                alt="Prosto Remont logo"
+                width={150}
+                height={50}
+                priority
+              />
             </Link>
 
             {/* Desktop Navigation */}
