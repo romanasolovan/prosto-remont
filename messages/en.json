@@ -323,5 +323,10 @@
   "title": "Thank you!",
   "message": "Your review has been submitted and will be published after a quick review."
 }
-  }
+  },
+  "callWidget": {
+  "title": "Call us",
+  "cta": "Call {phone}",
+  "closeLabel": "Close call widget"
+}
 }

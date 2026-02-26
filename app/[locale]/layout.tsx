@@ -7,6 +7,7 @@ import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import { locales, type Locale } from "@/i18n/request";
 import type { Metadata } from "next";
+import CallWidget from "../components/CallWidget/CallWidget";
 
 const inter = Inter({
   subsets: ["latin", "cyrillic"],
@@ -76,6 +77,12 @@ export default async function LocaleLayout({ children, params }: Props) {
             <Header />
             <main style={{ flex: "1" }}>{children}</main>
             <Footer />
+
+            {/* ✅ site-wide call widget */}
+            <CallWidget
+              phoneDisplay="+48 515 678 017"
+              phoneTel="+48515678017"
+            />
           </div>
         </NextIntlClientProvider>
       </body>

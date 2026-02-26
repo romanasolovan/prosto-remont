@@ -323,5 +323,10 @@
   "title": "Dziękujemy!",
   "message": "Twoja opinia została wysłana i zostanie opublikowana po krótkiej weryfikacji."
 }
+}, 
+"callWidget": {
+  "title": "Porozmawiaj z nami",
+  "cta": "Zadzwoń {phone}",
+  "closeLabel": "Zamknij okno połączenia"
 }
 }
