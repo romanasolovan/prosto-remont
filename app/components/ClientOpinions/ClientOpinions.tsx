@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import styles from "./ClientOpinions.module.css";
 import LeaveCommentForm from "./LeaveCommentForm";
@@ -16,81 +16,122 @@ interface Comment {
 export default function ClientOpinions() {
   const t = useTranslations("clientOpinions");
   const locale = useLocale();
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
+  const successTimerRef = useRef<number | null>(null);
 
-  const [comments, setComments] = useState<Comment[]>([
-    {
-      id: "1",
-      name: "Sarah Johnson",
-      rating: 5,
-      comment:
-        "Exceptional work on our kitchen renovation. The team was professional, punctual, and the quality exceeded our expectations.",
-      date: "2024-01-15",
-    },
-    {
-      id: "2",
-      name: "Michael Chen",
-      rating: 5,
-      comment:
-        "From design to completion, everything was handled with care and precision. Our new bathroom is exactly what we envisioned.",
-      date: "2024-01-10",
-    },
-    {
-      id: "3",
-      name: "Emma Rodriguez",
-      rating: 4,
-      comment:
-        "Great experience overall. The renovation transformed our living space beautifully. Highly recommend their services.",
-      date: "2024-01-05",
-    },
-  ]);
+  const initialComments = useMemo<Comment[]>(() => {
+    return [
+      {
+        id: "1",
+        name: "Sarah Johnson",
+        rating: 5,
+        comment:
+          "Exceptional work on our kitchen renovation. The team was professional, punctual, and the quality exceeded our expectations.",
+        date: "2024-01-15",
+      },
+      {
+        id: "2",
+        name: "Michael Chen",
+        rating: 5,
+        comment:
+          "From design to completion, everything was handled with care and precision. Our new bathroom is exactly what we envisioned.",
+        date: "2024-01-10",
+      },
+      {
+        id: "3",
+        name: "Emma Rodriguez",
+        rating: 4,
+        comment:
+          "Great experience overall. The renovation transformed our living space beautifully. Highly recommend their services.",
+        date: "2024-01-05",
+      },
+    ];
+  }, [locale]);
 
+  const [comments] = useState<Comment[]>(initialComments);
   const [showForm, setShowForm] = useState(false);
+  const [showSuccessNotice, setShowSuccessNotice] = useState(false);
 
-  const handleNewComment = (commentData: Omit<Comment, "id" | "date">) => {
-    const newComment: Comment = {
-      ...commentData,
-      id: Date.now().toString(),
-      date: new Date().toISOString().split("T")[0],
+  useEffect(() => {
+    return () => {
+      if (successTimerRef.current) {
+        window.clearTimeout(successTimerRef.current);
+      }
     };
+  }, []);
 
-    setComments([newComment, ...comments]);
+  const handleOpenForm = () => {
+    setShowForm(true);
+  };
+
+  const handleCloseForm = () => {
     setShowForm(false);
+    requestAnimationFrame(() => {
+      triggerRef.current?.focus();
+    });
+  };
+
+  const handleNewComment = () => {
+    setShowForm(false);
+    setShowSuccessNotice(true);
+
+    if (successTimerRef.current) {
+      window.clearTimeout(successTimerRef.current);
+    }
+
+    successTimerRef.current = window.setTimeout(() => {
+      setShowSuccessNotice(false);
+    }, 5000);
+
+    requestAnimationFrame(() => {
+      triggerRef.current?.focus();
+    });
   };
 
   const averageRating =
     comments.length > 0
       ? (
-          comments.reduce((sum, c) => sum + c.rating, 0) / comments.length
+          comments.reduce((sum, comment) => sum + comment.rating, 0) /
+          comments.length
         ).toFixed(1)
       : "0.0";
 
   const reviewLabel = t("reviewCount", { count: comments.length });
 
   const formatDate = (isoDate: string) => {
-    const d = new Date(isoDate);
+    const date = new Date(
+      isoDate.includes("T") ? isoDate : `${isoDate}T00:00:00`,
+    );
+
     return new Intl.DateTimeFormat(locale, {
       year: "numeric",
       month: "long",
       day: "numeric",
-    }).format(d);
+    }).format(date);
   };
 
   return (
-    <div className={styles.opinionsContainer}>
+    <section
+      className={styles.opinionsContainer}
+      aria-labelledby="reviews-title"
+    >
       <div className="container">
         <div className={styles.header}>
           <div className={styles.headerContent}>
-            <h2 className={styles.title}>{t("title")}</h2>
+            <h2 id="reviews-title" className={styles.title}>
+              {t("title")}
+            </h2>
 
             <div className={styles.stats}>
               <div className={styles.rating}>
                 <span className={styles.ratingNumber}>{averageRating}</span>
+
                 <div className={styles.stars} aria-label={t("aria.stars")}>
-                  {[...Array(5)].map((_, i) => (
+                  {[...Array(5)].map((_, index) => (
                     <svg
-                      key={i}
+                      key={index}
                       className={
-                        i < Math.round(Number(averageRating))
+                        index < Math.round(Number(averageRating))
                           ? styles.starFilled
                           : styles.starEmpty
                       }
@@ -108,33 +149,35 @@ export default function ClientOpinions() {
             </div>
           </div>
 
-          {!showForm && (
-            <button
-              onClick={() => setShowForm(true)}
-              className={styles.leaveReviewButton}
-            >
-              {t("cta.leaveReview")}
-            </button>
-          )}
+          <button
+            ref={triggerRef}
+            onClick={handleOpenForm}
+            className={styles.leaveReviewButton}
+            type="button"
+          >
+            {t("cta.leaveReview")}
+          </button>
         </div>
 
-        {showForm && (
-          <div className={styles.formSection}>
-            <LeaveCommentForm
-              onSubmit={handleNewComment}
-              onCancel={() => setShowForm(false)}
-            />
+        {showSuccessNotice && (
+          <div
+            className={styles.successNotice}
+            role="status"
+            aria-live="polite"
+          >
+            {t("success.reviewSubmitted")}
           </div>
         )}
 
         <div className={styles.commentsGrid}>
           {comments.map((comment) => (
-            <div key={comment.id} className={styles.commentCard}>
+            <article key={comment.id} className={styles.commentCard}>
               <div className={styles.commentHeader}>
                 <div className={styles.commentAuthor}>
-                  <div className={styles.authorAvatar}>
-                    {comment.name.charAt(0)}
+                  <div className={styles.authorAvatar} aria-hidden="true">
+                    {comment.name.charAt(0).toUpperCase()}
                   </div>
+
                   <div>
                     <div className={styles.authorName}>{comment.name}</div>
                     <div className={styles.commentDate}>
@@ -147,11 +190,11 @@ export default function ClientOpinions() {
                   className={styles.commentRating}
                   aria-label={t("aria.rating", { rating: comment.rating })}
                 >
-                  {[...Array(5)].map((_, i) => (
+                  {[...Array(5)].map((_, index) => (
                     <svg
-                      key={i}
+                      key={index}
                       className={
-                        i < comment.rating
+                        index < comment.rating
                           ? styles.starFilled
                           : styles.starEmpty
                       }
@@ -166,10 +209,17 @@ export default function ClientOpinions() {
               </div>
 
               <p className={styles.commentText}>{comment.comment}</p>
-            </div>
+            </article>
           ))}
         </div>
+
+        {showForm && (
+          <LeaveCommentForm
+            onSubmit={handleNewComment}
+            onCancel={handleCloseForm}
+          />
+        )}
       </div>
-    </div>
+    </section>
   );
 }

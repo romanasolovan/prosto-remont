@@ -192,3 +192,15 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+.successNotice {
+  margin-bottom: var(--space-xl);
+  padding: 14px 16px;
+  border: 1px solid rgba(20, 83, 45, 0.18);
+  background: #f3f7f4;
+  color: #1f5133;
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  animation: popIn 220ms ease-out;
+}

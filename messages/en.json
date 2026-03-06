@@ -289,6 +289,9 @@
     "aria": {
       "stars": "Average rating",
       "rating": "Rating: {rating} out of 5"
+    },
+    "success": {
+      "reviewSubmitted": "Thank you. Your review has been submitted and will be published after a quick review."
     }
   },
   "leaveComment": {
@@ -305,28 +308,30 @@
     },
     "buttons": {
       "cancel": "Cancel",
-      "submit": "Submit review"
+      "submit": "Submit review",
+      "submitting": "Submitting..."
     },
     "validation": {
       "requiredName": "Name is required",
-  "nameMin": "Name must be at least {count} characters",
-  "nameMax": "Name must be at most {count} characters",
-  "requiredRating": "Please select a rating",
-  "requiredComment": "Comment is required",
-  "commentMin": "Comment must be at least {count} characters",
-  "commentMax": "Comment must be at most {count} characters"
+      "nameMin": "Name must be at least {count} characters",
+      "nameMax": "Name must be at most {count} characters",
+      "requiredRating": "Please select a rating",
+      "requiredComment": "Review is required",
+      "commentMin": "Review must be at least {count} characters",
+      "commentMax": "Review must be at most {count} characters"
     },
     "aria": {
-      "selectRating": "Select {rating} star rating"
+      "selectRating": "Select {rating} star rating",
+      "closeModal": "Close review form"
     },
     "success": {
-  "title": "Thank you!",
-  "message": "Your review has been submitted and will be published after a quick review."
-}
+      "title": "Thank you!",
+      "reviewSubmitted": "Your review has been submitted and will be published after a quick review."
+    }
   },
   "callWidget": {
-  "title": "Call us",
-  "cta": "Call {phone}",
-  "closeLabel": "Close call widget"
-}
+    "title": "Call us",
+    "cta": "Call {phone}",
+    "closeLabel": "Close call widget"
+  }
 }

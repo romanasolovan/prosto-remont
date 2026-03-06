@@ -281,52 +281,57 @@
     }
   }, 
   "clientOpinions": {
-  "title": "Opinie klientów",
-  "cta": {
-    "leaveReview": "Dodaj opinię"
+    "title": "Opinie klientów",
+    "cta": {
+      "leaveReview": "Dodaj opinię"
+    },
+    "reviewCount": "{count, plural, =0 {Brak opinii} one {# opinia} few {# opinie} many {# opinii} other {# opinii}}",
+    "aria": {
+      "stars": "Średnia ocena",
+      "rating": "Ocena: {rating} z 5"
+    },
+    "success": {
+      "reviewSubmitted": "Dziękujemy. Twoja opinia została przesłana i zostanie opublikowana po krótkiej weryfikacji."
+    }
   },
-  "reviewCount": "{count, plural, =0 {Brak opinii} one {# opinia} few {# opinie} other {# opinii}}",
-  "aria": {
-    "stars": "Średnia ocena",
-    "rating": "Ocena: {rating} na 5"
+  "leaveComment": {
+    "title": "Podziel się swoją opinią",
+    "description": "Opowiedz nam o swoich doświadczeniach z naszą ekipą remontową.",
+    "fields": {
+      "name": "Twoje imię",
+      "rating": "Twoja ocena",
+      "comment": "Twoja opinia"
+    },
+    "placeholders": {
+      "name": "Wpisz swoje imię",
+      "comment": "Opisz swoje doświadczenia z naszymi usługami remontowymi..."
+    },
+    "buttons": {
+      "cancel": "Anuluj",
+      "submit": "Wyślij opinię",
+      "submitting": "Wysyłanie..."
+    },
+    "validation": {
+      "requiredName": "Imię jest wymagane",
+      "nameMin": "Imię musi mieć co najmniej {count} znaki",
+      "nameMax": "Imię może mieć maksymalnie {count} znaków",
+      "requiredRating": "Wybierz ocenę",
+      "requiredComment": "Opinia jest wymagana",
+      "commentMin": "Opinia musi mieć co najmniej {count} znaków",
+      "commentMax": "Opinia może mieć maksymalnie {count} znaków"
+    },
+    "aria": {
+      "selectRating": "Wybierz ocenę {rating} gwiazdek",
+      "closeModal": "Zamknij formularz opinii"
+    },
+    "success": {
+      "title": "Dziękujemy!",
+      "reviewSubmitted": "Twoja opinia została przesłana i zostanie opublikowana po krótkiej weryfikacji."
+    }
+  },
+  "callWidget": {
+    "title": "Zadzwoń do nas",
+    "cta": "Zadzwoń {phone}",
+    "closeLabel": "Zamknij widżet połączenia"
   }
-}, 
-"leaveComment": {
-  "title": "Podziel się opinią",
-  "description": "Opowiedz nam o swoim doświadczeniu z remontem i współpracą z naszym zespołem.",
-  "fields": {
-    "name": "Twoje imię",
-    "rating": "Twoja ocena",
-    "comment": "Twoja opinia"
-  },
-  "placeholders": {
-    "name": "Wpisz swoje imię",
-    "comment": "Opisz swoje doświadczenie z naszymi usługami remontowymi..."
-  },
-  "buttons": {
-    "cancel": "Anuluj",
-    "submit": "Wyślij opinię"
-  },
-  "validation": {
-    "requiredName": "Imię jest wymagane",
-  "nameMin": "Imię musi mieć co najmniej {count} znaki",
-  "nameMax": "Imię może mieć maksymalnie {count} znaków",
-  "requiredRating": "Proszę wybrać ocenę",
-  "requiredComment": "Opinia jest wymagana",
-  "commentMin": "Opinia musi mieć co najmniej {count} znaków",
-  "commentMax": "Opinia może mieć maksymalnie {count} znaków"
-  },
-  "aria": {
-    "selectRating": "Wybierz ocenę: {rating} gwiazdek"
-  },
-  "success": {
-  "title": "Dziękujemy!",
-  "message": "Twoja opinia została wysłana i zostanie opublikowana po krótkiej weryfikacji."
-}
-}, 
-"callWidget": {
-  "title": "Porozmawiaj z nami",
-  "cta": "Zadzwoń {phone}",
-  "closeLabel": "Zamknij okno połączenia"
-}
 }
