@@ -39,10 +39,10 @@ export default function Contact() {
                   {t("details.email")}
                 </span>
                 <a
-                  href="mailto:info@renovate.com"
+                  href="mailto:pro100twojremont@gmail.com"
                   className={styles.contactValue}
                 >
-                  info@renovate.com
+                  pro100twojremont@gmail.com
                 </a>
               </div>
 
@@ -50,8 +50,8 @@ export default function Contact() {
                 <span className={styles.contactLabel}>
                   {t("details.phone")}
                 </span>
-                <a href="tel:+48123456789" className={styles.contactValue}>
-                  +48 123 456 789
+                <a href="tel:+48796444113" className={styles.contactValue}>
+                  +48 796 444 113
                 </a>
               </div>
 

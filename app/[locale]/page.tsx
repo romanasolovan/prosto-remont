@@ -42,7 +42,7 @@ export default function Home() {
       <section className={styles.previewSection} id="about">
         <div className="container">
           <div className={styles.sectionContent}>
-            <div className={styles.sectionLabel}>About</div>
+            <div className={styles.sectionLabel}>{t("labels.about")}</div>
             <h2 className={styles.sectionTitle}>{t("about.title")}</h2>
             <p className={styles.sectionDescription}>
               {t("about.description")}
@@ -62,7 +62,7 @@ export default function Home() {
       >
         <div className="container">
           <div className={styles.sectionContent}>
-            <div className={styles.sectionLabel}>Services</div>
+            <div className={styles.sectionLabel}>{t("labels.services")}</div>
             <h2 className={styles.sectionTitle}>{t("services.title")}</h2>
             <p className={styles.sectionDescription}>
               {t("services.description")}
@@ -79,7 +79,7 @@ export default function Home() {
       <section className={styles.previewSection} id="projects">
         <div className="container">
           <div className={styles.sectionContent}>
-            <div className={styles.sectionLabel}>Portfolio</div>
+            <div className={styles.sectionLabel}>{t("labels.projects")}</div>
             <h2 className={styles.sectionTitle}>{t("projects.title")}</h2>
             <p className={styles.sectionDescription}>
               {t("projects.description")}
@@ -99,7 +99,7 @@ export default function Home() {
       >
         <div className="container">
           <div className={styles.sectionContent}>
-            <div className={styles.sectionLabel}>Process</div>
+            <div className={styles.sectionLabel}>{t("labels.process")}</div>
             <h2 className={styles.sectionTitle}>{t("process.title")}</h2>
             <p className={styles.sectionDescription}>
               {t("process.description")}

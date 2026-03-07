@@ -3,231 +3,252 @@
     "home": "Strona główna",
     "about": "O nas",
     "services": "Usługi",
-    "projects": "Projekty",
+    "projects": "Realizacje",
     "process": "Proces",
     "contact": "Kontakt"
   },
   "common": {
     "learnMore": "Dowiedz się więcej",
-    "startProject": "Rozpocznij projekt",
+    "startProject": "Rozpocznij swój projekt",
     "contactUs": "Skontaktuj się z nami",
-    "exploreServices": "Poznaj nasze usługi",
-    "viewPortfolio": "Zobacz nasze portfolio",
-    "understandProcess": "Poznaj nasz proces"
+    "exploreServices": "Poznaj usługi",
+    "viewPortfolio": "Zobacz realizacje",
+    "understandProcess": "Zobacz, jak pracujemy"
   },
   "home": {
+    "labels": {
+      "about": "O nas",
+      "services": "Usługi",
+      "projects": "Realizacje",
+      "process": "Proces"
+    },
     "hero": {
-      "title": "Przekształć swoją przestrzeń",
-      "subtitle": "Profesjonalne usługi remontowe, które realizują twoją wizję z precyzją i dbałością o szczegóły."
+      "title": "Twoja przestrzeń. Wykończona z precyzją.",
+      "subtitle": "Realizujemy kompleksowe wykończenia mieszkań, domów i lokali usługowych. Stawiamy na rzetelność, przejrzystą komunikację i efekt końcowy, który naprawdę odpowiada Twoim oczekiwaniom."
     },
     "about": {
-      "title": "O nas",
-      "description": "Z wieloletnim doświadczeniem w remontach mieszkalnych i komercyjnych, oferujemy wyjątkowe rzemiosło i dbałość o szczegóły w każdym projekcie. Nasz zespół wykwalifikowanych specjalistów angażuje się w przekształcanie przestrzeni przy zachowaniu najwyższych standardów jakości."
+      "title": "Więcej niż remont",
+      "description": "Mieszkanie, dom czy przestrzeń biznesowa to coś więcej niż metry kwadratowe. To miejsce, w którym żyjesz, odpoczywasz, pracujesz i tworzysz swoją codzienność. Pomagamy przekształcać surowe wnętrza w funkcjonalne i estetyczne przestrzenie, które odzwierciedlają Twój styl życia."
     },
     "services": {
-      "title": "Nasze usługi",
-      "description": "Od kompleksowych remontów domów po specjalistyczne projekty komercyjne, oferujemy kompleksowe usługi dostosowane do twoich potrzeb. Remont kuchni, modernizacja łazienek, wykończenie piwnicy i kompleksowe przekształcenia nieruchomości—zajmujemy się tym wszystkim z profesjonalizmem."
+      "title": "Kompleksowe wykończenia wnętrz",
+      "description": "Od pierwszej konsultacji i przygotowania kosztorysu, aż po ostatnie detale wykończenia — oferujemy kompleksową realizację prac remontowych i wykończeniowych. Dbamy o dobrą organizację pracy, jakość wykonania oraz sprawny przebieg każdego etapu projektu."
     },
     "projects": {
-      "title": "Nasze projekty",
-      "description": "Odkryj nasze portfolio zrealizowanych remontów, które pokazują nasze zaangażowanie w doskonałość. Każdy projekt odzwierciedla nasze oddanie jakości, innowacyjnemu projektowaniu i satysfakcji klienta. Zobacz prawdziwe przekształcenia od koncepcji do realizacji."
+      "title": "Realizacje, które najlepiej pokazują naszą pracę",
+      "description": "Każdy projekt to efekt współpracy, doświadczenia i dbałości o detale. W naszym portfolio znajdują się zarówno nowoczesne mieszkania, jak i przestrzenie komercyjne, które łączą estetykę, funkcjonalność i wysoką jakość wykonania."
     },
     "process": {
-      "title": "Nasz proces",
-      "description": "Wierzymy w transparentność i współpracę. Nasz usprawniony proces zapewnia, że twój projekt przebiega płynnie od wstępnej konsultacji do końcowego odbioru. Jasna komunikacja, szczegółowe planowanie i staranne wykonanie definiują nasze podejście."
+      "title": "Przejrzysty proces realizacji",
+      "description": "Dobry remont wymaga dobrej organizacji. Nasz proces pracy jest uporządkowany i przejrzysty — od pierwszego kontaktu i wizyty na miejscu, przez planowanie prac i dobór materiałów, aż po realizację i finalne wykończenie wnętrza."
     },
     "contact": {
-      "title": "Skontaktuj się",
-      "description": "Gotowy rozpocząć swoją przygodę z remontem? Skontaktuj się z nami już dziś w celu konsultacji. Jesteśmy tutaj, aby odpowiedzieć na twoje pytania, omówić twoją wizję i zapewnić fachowe wsparcie na każdym etapie."
+      "title": "Porozmawiajmy o Twoim projekcie",
+      "description": "Planujesz remont lub wykończenie mieszkania? Skontaktuj się z nami, aby omówić szczegóły projektu i zrobić pierwszy krok w stronę przestrzeni, która będzie w pełni dopasowana do Twoich potrzeb."
     }
   },
   "about": {
     "hero": {
-      "title": "O nas",
-      "subtitle": "Budujemy doskonałość poprzez doświadczenie, uczciwość i rzemiosło."
+      "title": "O PRO100 Twój Remont",
+      "subtitle": "Rzetelne remonty i wykończenia wnętrz oparte na zaufaniu, jakości i dobrej organizacji pracy."
     },
     "story": {
-      "title": "Nasza historia",
-      "content": "Założona z pasją do przekształcania przestrzeni, nasza firma rozrosła się z małego zespołu oddanych rzemieślników do pełnowymiarowej firmy remontowej, której ufają właściciele domów i przedsiębiorcy. Każdy projekt, który podejmujemy, odzwierciedla nasze zaangażowanie w jakość i szacunek dla przestrzeni, w których pracujemy."
+      "title": "Kim jesteśmy",
+      "content": "PRO100 Twój Remont to firma specjalizująca się w kompleksowych remontach i wykończeniach wnętrz mieszkań, domów oraz lokali usługowych. Pomagamy naszym klientom przekształcać puste lub niewykończone przestrzenie w komfortowe, funkcjonalne i dopracowane wnętrza."
     },
     "values": {
       "title": "Nasze wartości",
-      "content": "Wierzymy w uczciwą komunikację, transparentne ceny i dostarczanie rezultatów przekraczających oczekiwania. Nasz zespół składa się z licencjonowanych profesjonalistów, którzy są dumni ze swojej pracy i traktują każdą przestrzeń jak własną."
+      "content": "W naszej pracy stawiamy na rzetelność, jasną komunikację, szacunek dla przestrzeni klienta, odpowiedzialność za efekt końcowy oraz dobrą organizację całego procesu. Każdy projekt realizujemy z pełnym zaangażowaniem, profesjonalizmem i dbałością o codzienny komfort osób, które będą korzystać z gotowego wnętrza."
     },
     "why": {
-      "title": "Dlaczego my",
-      "content": "Z wieloletnim doświadczeniem, portfolio udanych projektów i zaangażowaniem w śledzenie trendów i technik branżowych, wnosimy zarówno wiedzę, jak i innowacje do każdego remontu. Twoja satysfakcja jest naszą miarą sukcesu."
+      "title": "Dlaczego klienci wybierają nas",
+      "content": "Klienci wybierają nas, ponieważ szukają zespołu, któremu mogą zaufać. Doceniają nas za przejrzysty proces współpracy, dobrą komunikację oraz odpowiedzialne podejście do realizacji projektu. Pomagamy w wyborze materiałów, doradzamy rozwiązania i dbamy o to, aby każdy etap prac przebiegał sprawnie. Najważniejszy jest jednak efekt końcowy — przestrzeń, która spełnia oczekiwania i daje komfort na co dzień."
+    },
+    "stats": {
+      "title": "Doświadczenie potwierdzone realizacjami",
+      "projects": "ponad 50 zrealizowanych projektów „pod klucz”",
+      "clients": "ponad 100 zadowolonych klientów",
+      "area": "ponad 20 000 m² wykonanych prac wykończeniowych",
+      "years": "ponad 5 lat doświadczenia na rynku polskim"
     }
   },
   "services": {
     "hero": {
       "title": "Nasze usługi",
-      "subtitle": "Kompleksowe rozwiązania remontowe dla każdej przestrzeni i wizji."
+      "subtitle": "Kompleksowe usługi remontowe i wykończeniowe dla mieszkań, domów oraz przestrzeni komercyjnych."
+    },
+    "intro": {
+      "title": "Co oferujemy",
+      "description": "Oferujemy kompleksowe usługi remontowe i wykończeniowe dla mieszkań, domów oraz przestrzeni komercyjnych. Nasza oferta skierowana jest do klientów, którzy oczekują profesjonalnej realizacji, dobrej organizacji pracy oraz wysokiej jakości wykonania."
     },
     "list": {
       "kitchen": {
-        "title": "Remont kuchni",
-        "description": "Kompleksowe przekształcenia kuchni, w tym szafki, blaty, urządzenia i optymalizacja układu."
+        "title": "Kompleksowe wykończenia „pod klucz”",
+        "description": "Realizacja pełnego wykończenia wnętrz — od przygotowania przestrzeni po finalne elementy wykończeniowe."
       },
       "bathroom": {
-        "title": "Modernizacja łazienek",
-        "description": "Luksusowe modernizacje łazienek z nowoczesnymi armaturami, płytkami i designem inspirowanym spa."
+        "title": "Remonty i modernizacje wnętrz",
+        "description": "Kompleksowe remonty dostosowane do potrzeb klienta oraz stanu technicznego nieruchomości."
       },
       "basement": {
-        "title": "Wykończenie piwnicy",
-        "description": "Przekształcenie niewykorzystanej przestrzeni piwnicy w funkcjonalne pomieszczenia mieszkalne, biura domowe lub strefy rozrywki."
+        "title": "Malowanie i wykończenie ścian",
+        "description": "Malowanie tradycyjne i natryskowe, gładzie oraz przygotowanie powierzchni."
       },
       "fullHome": {
-        "title": "Kompleksowy remont domu",
-        "description": "Kompleksowe przekształcenia całego domu, które na nowo definiują twoją przestrzeń życiową."
+        "title": "Zabudowy z płyt g-k",
+        "description": "Ściany działowe, sufity podwieszane oraz zabudowy wnętrz."
       },
       "commercial": {
-        "title": "Projekty komercyjne",
-        "description": "Profesjonalne usługi remontowe dla biur, przestrzeni handlowych i nieruchomości komercyjnych."
+        "title": "Podłogi, płytki i detale wykończeniowe",
+        "description": "Profesjonalny montaż paneli podłogowych, układanie płytek, montaż drzwi oraz innych elementów wykończeniowych, które dopełniają wnętrze."
       },
       "carpentry": {
-        "title": "Stolarka na wymiar",
-        "description": "Ekskluzywne prace stolarskie, zabudowy i niestandardowe rozwiązania dostosowane do twoich konkretnych potrzeb."
+        "title": "Instalacje, nadzór i wsparcie materiałowe",
+        "description": "Prace elektryczne i hydrauliczne, nadzór nad realizacją, pomoc przy odbiorze mieszkań od dewelopera oraz wsparcie w wyborze i zakupie materiałów."
       }
     }
   },
   "projects": {
     "hero": {
-      "title": "Nasze projekty",
-      "subtitle": "Pokaz naszych najlepszych prac i przekształceń."
+      "title": "Nasze realizacje",
+      "subtitle": "Kolekcja zrealizowanych przestrzeni, które pokazują nasz standard pracy, dbałość o detale i jakość wykonania."
+    },
+    "intro": {
+      "title": "Przestrzenie, które pokazują nasz standard",
+      "description": "Nasze projekty pokazują, jak różnorodne przestrzenie możemy przekształcać — od mieszkań prywatnych po wnętrza komercyjne. Każda realizacja to efekt współpracy z klientem, doświadczenia zespołu oraz dbałości o detale."
     },
     "categories": {
-      "residential": "Mieszkaniowe",
-      "commercial": "Komercyjne"
+      "residential": "Projekty mieszkaniowe",
+      "commercial": "Projekty komercyjne"
     },
     "list": {
-      "modernKitchen": "Nowoczesny remont kuchni",
-      "downtownOffice": "Przestrzeń biurowa w centrum",
-      "masterBathroom": "Główna łazienka",
-      "historicHome": "Renowacja zabytkowego domu",
-      "retailStore": "Remont sklepu detalicznego",
-      "basementConversion": "Przekształcenie piwnicy"
+      "modernKitchen": "Nowoczesne wykończenie mieszkania",
+      "downtownOffice": "Komercyjne wykończenie wnętrza",
+      "masterBathroom": "Projekt wykończenia łazienki",
+      "historicHome": "Remont i modernizacja domu",
+      "retailStore": "Metamorfoza lokalu usługowego",
+      "basementConversion": "Indywidualna transformacja wnętrza"
     }
   },
   "process": {
     "hero": {
-      "title": "Nasz proces",
-      "subtitle": "Jasne, oparte na współpracy podejście od koncepcji do realizacji."
+      "title": "Jak wygląda współpraca",
+      "subtitle": "Przejrzysty i uporządkowany proces — od pierwszego kontaktu do gotowej przestrzeni."
     },
     "steps": {
       "consultation": {
-        "title": "Wstępna konsultacja",
-        "description": "Spotykamy się z tobą, aby zrozumieć twoją wizję, potrzeby i budżet. To tutaj zaczynają się kształtować pomysły."
+        "title": "Konsultacja",
+        "description": "Kontaktujesz się z nami telefonicznie lub przez wiadomość i opowiadasz o swojej przestrzeni, potrzebach oraz oczekiwaniach. To pierwszy krok, który pozwala nam określić kierunek realizacji."
       },
       "design": {
-        "title": "Projekt i planowanie",
-        "description": "Nasz zespół tworzy szczegółowe plany i projekty, zapewniając, że każdy szczegół jest zgodny z twoimi celami."
+        "title": "Ocena i wycena",
+        "description": "Spotykamy się na miejscu, oceniamy zakres prac oraz stan nieruchomości, a następnie przygotowujemy kosztorys oparty na rzeczywistych potrzebach projektu."
       },
       "proposal": {
-        "title": "Oferta i umowa",
-        "description": "Przedstawiamy transparentną ofertę z harmonogramem i wyceną, a następnie finalizujemy umowę."
+        "title": "Ustalenia i organizacja",
+        "description": "Ustalamy harmonogram, zakres prac oraz szczegóły współpracy. Dzięki temu cały proces jest jasny, uporządkowany i dobrze przygotowany."
       },
       "construction": {
-        "title": "Budowa",
-        "description": "Nasi wykwalifikowani rzemieślnicy realizują projekt z precyzją i starannością, informując cię na bieżąco."
+        "title": "Realizacja prac",
+        "description": "Organizujemy materiały, przygotowujemy przestrzeń i rozpoczynamy realizację zgodnie z ustalonym planem, dbając o jakość wykonania i sprawny przebieg każdego etapu."
       },
       "walkthrough": {
-        "title": "Końcowy odbiór",
-        "description": "Przeglądamy ukończony projekt z tobą, upewniając się, że każdy szczegół spełnia twoje oczekiwania."
+        "title": "Zakończenie i odbiór",
+        "description": "Na końcu wspólnie sprawdzamy efekt realizacji, dopinamy ostatnie szczegóły i przekazujemy gotową przestrzeń zgodną z ustalonym standardem."
       }
-    }, 
+    },
     "quote": {
-  "title": "Poproś o wycenę",
-  "description": "Opisz swój projekt, a skontaktujemy się z Tobą z kolejnymi krokami."
-}
+      "title": "Poproś o wycenę",
+      "description": "Opisz swoją nieruchomość, potrzeby oraz zakres prac, a my skontaktujemy się z Tobą, aby omówić kolejne kroki i zaproponować najlepiej dopasowane rozwiązanie."
+    }
   },
   "contact": {
     "hero": {
       "title": "Kontakt",
-      "subtitle": "Porozmawiajmy o twoim projekcie remontowym i wcielmy twoją wizję w życie."
+      "subtitle": "Porozmawiajmy o remoncie, wykończeniu wnętrza lub zmianach, które chcesz wprowadzić w swojej przestrzeni."
     },
     "getInTouch": {
-      "title": "Skontaktuj się",
-      "description": "Jesteśmy tutaj, aby odpowiedzieć na twoje pytania i zapewnić fachowe wsparcie dla twojego projektu remontowego."
+      "title": "Skontaktuj się z nami",
+      "description": "Jeśli planujesz remont, wykończenie „pod klucz” lub metamorfozę wnętrza, jesteśmy gotowi do rozmowy. Skontaktuj się z nami, aby omówić swój projekt, zadać pytania lub umówić pierwszą konsultację."
     },
     "details": {
       "email": "E-mail",
       "phone": "Telefon",
-      "hours": "Godziny otwarcia",
-      "hoursValue": "Poniedziałek - Piątek: 8:00 - 18:00\nSobota: 9:00 - 16:00"
+      "hours": "Godziny pracy",
+      "hoursValue": "Poniedziałek – Piątek: 8:00 – 18:00\nSobota: 9:00 – 16:00"
     },
-    "formNote": "Formularz kontaktowy zostanie zaimplementowany w przyszłej fazie rozwoju"
+    "formNote": "Formularz kontaktowy znajduje się poniżej."
   },
   "footer": {
-    "description": "Profesjonalne usługi remontowe i budowlane dla nieruchomości mieszkalnych i komercyjnych.",
+    "description": "Kompleksowe remonty i wykończenia wnętrz mieszkań, domów oraz przestrzeni komercyjnych.",
     "quickLinks": "Szybkie linki",
     "contactInfo": "Kontakt",
-    "copyright": "© {year} Renovate. Wszelkie prawa zastrzeżone."
+    "copyright": "© {year} PRO100 Twój Remont. Wszelkie prawa zastrzeżone."
   },
   "metadata": {
     "home": {
-      "title": "Profesjonalne usługi remontowe | Przekształć swoją przestrzeń",
-      "description": "Profesjonalne usługi remontowe i budowlane dla nieruchomości mieszkalnych i komercyjnych. Wysokiej jakości rzemiosło i wyjątkowe rezultaty."
+      "title": "PRO100 Twój Remont | Remonty i wykończenia wnętrz pod klucz",
+      "description": "Kompleksowe remonty i wykończenia wnętrz mieszkań, domów oraz przestrzeni komercyjnych. Jasna komunikacja, rzetelna realizacja i wysoka jakość wykonania."
     },
     "about": {
-      "title": "O nas | Profesjonalne usługi remontowe",
-      "description": "Poznaj nasz doświadczony zespół, wartości i zaangażowanie w doskonałość w remontach i budownictwie."
+      "title": "O PRO100 Twój Remont",
+      "description": "Poznaj naszą firmę, wartości, doświadczenie oraz powody, dla których klienci powierzają nam remonty i wykończenia wnętrz."
     },
     "services": {
-      "title": "Nasze usługi | Remont premium",
-      "description": "Kompleksowe rozwiązania remontowe, w tym remont kuchni, modernizacja łazienek, wykończenie piwnicy i projekty komercyjne."
+      "title": "Nasze usługi | PRO100 Twój Remont",
+      "description": "Poznaj nasze usługi remontowe i wykończeniowe dla mieszkań, domów oraz przestrzeni komercyjnych."
     },
     "projects": {
-      "title": "Nasze projekty | Portfolio remontów",
-      "description": "Zapoznaj się z naszym portfolio ukończonych projektów remontowych prezentujących wysokiej jakości rzemiosło i doskonałość projektową."
+      "title": "Nasze realizacje | PRO100 Twój Remont",
+      "description": "Zobacz realizacje mieszkań i przestrzeni komercyjnych, które odzwierciedlają naszą jakość wykonania i standard pracy."
     },
     "process": {
-      "title": "Nasz proces | Jak pracujemy",
-      "description": "Odkryj nasz usprawniony proces remontowy od wstępnej konsultacji do końcowego odbioru."
+      "title": "Jak pracujemy | PRO100 Twój Remont",
+      "description": "Poznaj nasz krok po kroku zaplanowany proces współpracy — od pierwszego kontaktu aż po zakończenie realizacji."
     },
     "getContact": {
-      "title": "Kontakt",
-      "description": "Skontaktuj się z naszym zespołem w Warszawie."
+      "title": "Kontakt | PRO100 Twój Remont",
+      "description": "Skontaktuj się z naszym zespołem w Warszawie, aby omówić swój remont lub projekt wykończenia wnętrza."
     }
   },
   "form": {
-    "title": "Zapytaj o wycenę",
-    "subtitle": "Wypełnij poniższy formularz, a skontaktujemy się z Tobą w ciągu 24 godzin.",
+    "title": "Poproś o wycenę",
+    "subtitle": "Wypełnij formularz poniżej, a skontaktujemy się z Tobą, aby omówić kolejne kroki.",
     "fields": {
-      "fullName": "Imię i Nazwisko",
-      "phone": "Telefon kontaktowy",
+      "fullName": "Imię i nazwisko",
+      "phone": "Numer telefonu",
       "email": "Adres e-mail",
       "interestedIn": "Interesuje mnie",
-      "renovationType": "Typ remontu",
-      "renovationObject": "Obiekt remontu",
-      "workDescription": "Opis prac zleconych (m²)",
-      "attachments": "Załączniki do prac",
-      "startDate": "Od kiedy można zacząć?",
-      "location": "Lokalizacja",
-      "additionalComments": "Komentarz dodatkowy"
+      "renovationType": "Rodzaj prac",
+      "renovationObject": "Typ nieruchomości",
+      "workDescription": "Powierzchnia / zakres prac (m²)",
+      "attachments": "Załączniki",
+      "startDate": "Preferowany termin rozpoczęcia",
+      "location": "Lokalizacja projektu",
+      "additionalComments": "Wiadomość / szczegóły projektu"
     },
     "placeholders": {
-      "fullName": "Wprowadź imię i nazwisko",
+      "fullName": "Wpisz imię i nazwisko",
       "phone": "+48 123 456 789",
       "email": "twoj.email@przyklad.pl",
       "interestedIn": "Wybierz opcję",
-      "renovationType": "Wybierz typ remontu",
-      "renovationObject": "Wybierz typ obiektu",
+      "renovationType": "Wybierz rodzaj prac",
+      "renovationObject": "Wybierz typ nieruchomości",
       "workDescription": "np. 75 m²",
       "startDate": "Wybierz datę",
-      "location": "Miasto, Ulica, Budynek",
-      "additionalComments": "Dodatkowe informacje, które chciałbyś przekazać..."
+      "location": "Miasto, ulica, budynek",
+      "additionalComments": "Opisz krótko swój projekt..."
     },
     "options": {
       "interestedIn": {
-        "newConstruction": "Wykończenia (rynek pierwotny)",
-        "renovation": "Remont (rynek wtórny)"
+        "newConstruction": "Wykończenie (nowa nieruchomość)",
+        "renovation": "Remont (istniejąca nieruchomość)"
       },
       "renovationType": {
         "turnkeyNoProject": "Pod klucz bez projektu",
         "turnkeyWithProject": "Pod klucz z projektem",
-        "refresh": "Odświeżanie",
-        "repairs": "Poprawki / Naprawa"
+        "refresh": "Odświeżenie wnętrza",
+        "repairs": "Poprawki / naprawy"
       },
       "renovationObject": {
         "house": "Dom",
@@ -242,44 +263,44 @@
       "required": "To pole jest wymagane",
       "emailInvalid": "Wprowadź poprawny adres e-mail",
       "phoneInvalid": "Wprowadź poprawny numer telefonu",
-      "fileTooLarge": "Rozmiar pliku nie może przekraczać 100MB",
+      "fileTooLarge": "Rozmiar pliku nie może przekraczać 100 MB",
       "tooManyFiles": "Możesz przesłać maksymalnie 10 plików",
-      "invalidFileType": "Dozwolone są tylko pliki PDF, JPG, PNG i DOCX",
+      "invalidFileType": "Dozwolone są wyłącznie pliki PDF, JPG, PNG i DOCX",
       "dateInvalid": "Wybierz poprawną datę"
     },
     "fileUpload": {
-      "dragDrop": "Przeciągnij i upuść pliki tutaj lub kliknij, aby wybrać",
+      "dragDrop": "Przeciągnij i upuść pliki tutaj lub kliknij, aby je wybrać",
       "selectedFiles": "Wybrane pliki",
       "removeFile": "Usuń",
-      "supportedFormats": "Obsługiwane formaty: PDF, JPG, PNG, DOCX (maks. 100MB na plik, do 10 plików)"
+      "supportedFormats": "Obsługiwane formaty: PDF, JPG, PNG, DOCX (maks. 100 MB na plik, do 10 plików)"
     },
     "submit": "Wyślij zapytanie",
     "submitting": "Wysyłanie...",
-    "successMessage": "Dziękujemy! Twoje zapytanie zostało wysłane pomyślnie.",
+    "successMessage": "Dziękujemy. Twoje zapytanie zostało wysłane pomyślnie.",
     "errorMessage": "Coś poszło nie tak. Spróbuj ponownie."
   },
   "getContact": {
-    "title": "Skontaktuj się",
-    "description": "Jesteśmy tutaj, aby pomóc zrealizować Twoją wizję remontu. Wypełnij formularz lub skontaktuj się bezpośrednio.",
+    "title": "Kontakt",
+    "description": "Jeśli planujesz remont, wykończenie „pod klucz” lub metamorfozę wnętrza, jesteśmy gotowi do rozmowy. Skontaktuj się z nami, aby omówić swój projekt, zadać pytania lub umówić pierwszą konsultację.",
     "getInTouch": {
       "title": "Informacje kontaktowe",
-      "description": "Skontaktuj się, aby omówić swój projekt i otrzymać spersonalizowaną konsultację."
+      "description": "Skontaktuj się z nami, aby porozmawiać o swoim projekcie i otrzymać indywidualną konsultację."
     },
     "details": {
       "email": "E-mail",
       "phone": "Telefon",
-      "hours": "Godziny otwarcia",
+      "hours": "Godziny pracy",
       "hoursValue": "Poniedziałek – Piątek: 8:00 – 18:00\nSobota: 9:00 – 16:00"
     },
     "social": {
-      "title": "Śledź nas"
+      "title": "Obserwuj nas"
     },
     "opinions": {
-      "title": "Opinie naszych klientów",
-      "description": "Zobacz, co nasi zadowoleni klienci mówią o swoim doświadczeniu remontowym.",
+      "title": "Opinie klientów",
+      "description": "Zobacz, co nasi klienci mówią o współpracy z nami i o przestrzeniach, które wspólnie udało się stworzyć.",
       "cta": "Przeczytaj opinie"
     }
-  }, 
+  },
   "clientOpinions": {
     "title": "Opinie klientów",
     "cta": {
@@ -296,7 +317,7 @@
   },
   "leaveComment": {
     "title": "Podziel się swoją opinią",
-    "description": "Opowiedz nam o swoich doświadczeniach z naszą ekipą remontową.",
+    "description": "Opowiedz nam o swoich doświadczeniach ze współpracy z naszą ekipą.",
     "fields": {
       "name": "Twoje imię",
       "rating": "Twoja ocena",
@@ -304,7 +325,7 @@
     },
     "placeholders": {
       "name": "Wpisz swoje imię",
-      "comment": "Opisz swoje doświadczenia z naszymi usługami remontowymi..."
+      "comment": "Opisz swoje doświadczenia związane z naszymi usługami..."
     },
     "buttons": {
       "cancel": "Anuluj",

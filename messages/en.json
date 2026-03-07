@@ -10,229 +10,250 @@
   "common": {
     "learnMore": "Learn More",
     "startProject": "Start Your Project",
-    "contactUs": "Contact Us Today",
-    "exploreServices": "Explore Our Services",
-    "viewPortfolio": "View Our Portfolio",
-    "understandProcess": "Understand Our Process"
+    "contactUs": "Contact Us",
+    "exploreServices": "Explore Services",
+    "viewPortfolio": "View Projects",
+    "understandProcess": "See the Process"
   },
   "home": {
+    "labels": {
+      "about": "About",
+      "services": "Services",
+      "projects": "Projects",
+      "process": "Process"
+    },
     "hero": {
-      "title": "Transform Your Space",
-      "subtitle": "Premium renovation services that bring your vision to life with precision and care."
+      "title": "Your Space, Finished with Precision, Built Around You",
+      "subtitle": "We deliver turnkey renovation and interior finishing for apartments, homes, and commercial spaces — with clear communication, reliable execution, and a result that feels truly yours."
     },
     "about": {
-      "title": "About Us",
-      "description": "With decades of experience in residential and commercial renovation, we deliver exceptional craftsmanship and attention to detail in every project. Our team of skilled professionals is committed to transforming spaces while maintaining the highest standards of quality."
+      "title": "More Than Renovation",
+      "description": "Your apartment, house, or business space is more than walls and square meters. It is your lifestyle, your comfort, your peace, and the atmosphere you return to every day. We help transform raw interiors into spaces that reflect who you are and how you want to live."
     },
     "services": {
-      "title": "Our Services",
-      "description": "From complete home renovations to specialized commercial projects, we offer comprehensive services tailored to your needs. Kitchen remodeling, bathroom upgrades, basement finishing, and full property transformations—we handle it all with expertise."
+      "title": "Complete Interior Finishing, One Trusted Team",
+      "description": "From planning and cost estimation to finishing works and final details, we provide comprehensive renovation and fit-out services under one roof. Our work combines technical precision, practical coordination, and a strong focus on quality, so every stage moves forward with confidence."
     },
     "projects": {
-      "title": "Our Projects",
-      "description": "Discover our portfolio of completed renovations that showcase our commitment to excellence. Each project reflects our dedication to quality, innovative design, and client satisfaction. View real transformations from concept to completion."
+      "title": "Spaces That Speak for Themselves",
+      "description": "Every completed project tells a story of transformation. From modern apartments to commercial interiors, our portfolio reflects careful workmanship, functional thinking, and a commitment to creating spaces that look right, feel right, and work beautifully in everyday life."
     },
     "process": {
-      "title": "Our Process",
-      "description": "We believe in transparency and collaboration. Our streamlined process ensures your project runs smoothly from initial consultation through final walkthrough. Clear communication, detailed planning, and meticulous execution define our approach."
+      "title": "A Clear Process from First Contact to Final Result",
+      "description": "Good renovation starts with good structure. Our process is designed to make every step understandable and well organized — from consultation and on-site assessment to scheduling, coordination, material support, and execution. Clear stages mean fewer surprises and better results."
     },
     "contact": {
-      "title": "Get In Touch",
-      "description": "Ready to start your renovation journey? Contact us today for a consultation. We're here to answer your questions, discuss your vision, and provide expert guidance every step of the way."
+      "title": "Let’s Talk About Your Space",
+      "description": "Whether you are planning a full turnkey fit-out, a renovation, or selected finishing works, we are here to guide you. Reach out to discuss your project, ask questions, and take the first step toward a space designed around your needs."
     }
   },
   "about": {
     "hero": {
-      "title": "About Us",
-      "subtitle": "Building excellence through experience, integrity, and craftsmanship."
+      "title": "About PRO100 Twój Remont",
+      "subtitle": "Reliable renovation and interior finishing built on trust, quality, and organized execution."
     },
     "story": {
-      "title": "Our Story",
-      "content": "Founded with a passion for transforming spaces, our company has grown from a small team of dedicated craftsmen to a full-service renovation firm trusted by homeowners and businesses alike. Every project we undertake reflects our commitment to quality and our respect for the spaces we work in."
+      "title": "Who We Are",
+      "content": "We are a renovation and interior finishing company focused on delivering complete, high-quality spaces for people who want more than construction work — they want clarity, trust, and a result they can truly enjoy. We work on apartments, homes, and commercial interiors, helping clients turn empty or unfinished spaces into places with character, comfort, and purpose."
     },
     "values": {
       "title": "Our Values",
-      "content": "We believe in honest communication, transparent pricing, and delivering results that exceed expectations. Our team consists of licensed professionals who take pride in their work and treat every space as if it were their own."
+      "content": "We believe in reliability, clear communication, respect for the client’s space, accountable workmanship, and organized execution. Every project is approached with care, professionalism, and attention to the real experience of the people who will live or work in the finished space."
     },
     "why": {
-      "title": "Why Choose Us",
-      "content": "With years of experience, a portfolio of successful projects, and a dedication to staying current with industry trends and techniques, we bring both expertise and innovation to every renovation. Your satisfaction is our measure of success."
+      "title": "Why People Choose Us",
+      "content": "Clients choose us because they want a team that combines craftsmanship with trust. We help make the renovation process easier to understand, stay in contact throughout the work, support material decisions, and deliver spaces that feel complete — not just finished."
+    },
+    "stats": {
+      "title": "Built on Experience. Proven by Results.",
+      "projects": "50+ turnkey projects completed",
+      "clients": "100+ satisfied clients",
+      "area": "20,000+ m² of finishing work delivered",
+      "years": "5+ years on the Polish market"
     }
   },
   "services": {
     "hero": {
       "title": "Our Services",
-      "subtitle": "Comprehensive renovation solutions for every space and vision."
+      "subtitle": "Comprehensive renovation and interior finishing for apartments, homes, and commercial spaces."
+    },
+    "intro": {
+      "title": "What We Provide",
+      "description": "We provide renovation and interior finishing services for apartments, homes, and commercial properties. Our offer is designed for clients who want dependable execution, thoughtful coordination, and a final result that is both visually strong and practically complete."
     },
     "list": {
       "kitchen": {
-        "title": "Kitchen Renovation",
-        "description": "Complete kitchen transformations including cabinetry, countertops, appliances, and layout optimization."
+        "title": "Turnkey Interior Finishing",
+        "description": "Complete finishing solutions for new apartments, houses, and commercial spaces — from preparation and technical works to final details."
       },
       "bathroom": {
-        "title": "Bathroom Remodeling",
-        "description": "Luxurious bathroom upgrades with modern fixtures, tile work, and spa-inspired design."
+        "title": "Renovation and Reconstruction",
+        "description": "Interior renovation tailored to the condition of the space and the client’s goals, whether the project involves modernization, redesign, or full transformation."
       },
       "basement": {
-        "title": "Basement Finishing",
-        "description": "Convert unused basement space into functional living areas, home offices, or entertainment zones."
+        "title": "Painting and Wall Finishing",
+        "description": "Traditional and spray painting, plastering, smoothing, and surface preparation that create a clean, high-quality base and finish."
       },
       "fullHome": {
-        "title": "Full Home Renovation",
-        "description": "Comprehensive whole-home transformations that reimagine your entire living space."
+        "title": "Drywall and Ceiling Systems",
+        "description": "Partition walls, plasterboard structures, suspended ceilings, and custom interior build-outs shaped around the layout and function of the space."
       },
       "commercial": {
-        "title": "Commercial Projects",
-        "description": "Professional renovation services for offices, retail spaces, and commercial properties."
+        "title": "Flooring, Tiling, and Finishing Details",
+        "description": "Professional installation of flooring systems, tile works, interior doors, and other finishing elements that complete the space with precision and consistency."
       },
       "carpentry": {
-        "title": "Custom Carpentry",
-        "description": "Bespoke woodwork, built-ins, and custom solutions tailored to your specific needs."
+        "title": "Electrical, Plumbing, and Material Support",
+        "description": "Core technical installations, renovation supervision, developer unit handover support, and assistance with organizing and purchasing materials."
       }
     }
   },
   "projects": {
     "hero": {
       "title": "Our Projects",
-      "subtitle": "A showcase of our finest work and transformations."
+      "subtitle": "A collection of completed spaces shaped by craftsmanship, structure, and care."
+    },
+    "intro": {
+      "title": "Spaces That Reflect Our Standard",
+      "description": "Our projects reflect the range of spaces we help transform — from private apartments and homes to client-facing commercial interiors. Each one is a practical collaboration between vision, workmanship, and execution."
     },
     "categories": {
-      "residential": "Residential",
-      "commercial": "Commercial"
+      "residential": "Residential Projects",
+      "commercial": "Commercial Projects"
     },
     "list": {
-      "modernKitchen": "Modern Kitchen Remodel",
-      "downtownOffice": "Downtown Office Space",
-      "masterBathroom": "Master Bathroom Suite",
-      "historicHome": "Historic Home Restoration",
-      "retailStore": "Retail Store Renovation",
-      "basementConversion": "Basement Conversion"
+      "modernKitchen": "Modern Apartment Finishing",
+      "downtownOffice": "Commercial Interior Fit-Out",
+      "masterBathroom": "Bathroom Finishing Project",
+      "historicHome": "Home Renovation and Modernization",
+      "retailStore": "Service Space Transformation",
+      "basementConversion": "Custom Interior Transformation"
     }
   },
   "process": {
     "hero": {
       "title": "Our Process",
-      "subtitle": "A clear, collaborative approach from concept to completion."
+      "subtitle": "A clear, organized path from first contact to finished space."
     },
     "steps": {
       "consultation": {
-        "title": "Initial Consultation",
-        "description": "We meet with you to understand your vision, needs, and budget. This is where ideas begin to take shape."
+        "title": "Consultation",
+        "description": "You contact us by phone or message and tell us about your space, your needs, and your goals. This first conversation helps define the direction of the project."
       },
       "design": {
-        "title": "Design & Planning",
-        "description": "Our team creates detailed plans and designs, ensuring every detail aligns with your goals."
+        "title": "Assessment & Estimate",
+        "description": "We visit the site, assess the condition and scope of work, and prepare a cost estimate based on the real needs of the project."
       },
       "proposal": {
-        "title": "Proposal & Contract",
-        "description": "We provide a transparent proposal with timeline and pricing, followed by contract finalization."
+        "title": "Coordination & Agreement",
+        "description": "We reserve the timeline, discuss the stages of work, confirm the details, and finalize cooperation through a clear agreement."
       },
       "construction": {
-        "title": "Construction",
-        "description": "Our skilled craftsmen bring the design to life with precision and care, keeping you informed throughout."
+        "title": "Start of Works",
+        "description": "We organize materials, prepare the site, and begin the renovation step by step with structured execution and ongoing coordination."
       },
       "walkthrough": {
-        "title": "Final Walkthrough",
-        "description": "We review the completed project with you, ensuring every detail meets your expectations."
+        "title": "Completion & Handover",
+        "description": "We review the completed work with you, confirm the final details, and make sure the finished space meets the agreed standard."
       }
     },
     "quote": {
       "title": "Request a Quote",
-      "description": "Tell us about your project and we’ll get back to you with the next steps."
+      "description": "Tell us about your property, your goals, and the type of work you need. We will review your request, discuss the next steps, and help you move toward a well-planned renovation with clarity from the very beginning."
     }
   },
   "contact": {
     "hero": {
       "title": "Contact Us",
-      "subtitle": "Let's discuss your renovation project and bring your vision to life."
+      "subtitle": "Let’s talk about your renovation, finishing work, or interior transformation."
     },
     "getInTouch": {
-      "title": "Get In Touch",
-      "description": "We're here to answer your questions and provide expert guidance for your renovation project."
+      "title": "Get in Touch",
+      "description": "If you are planning a renovation, turnkey finishing, or interior transformation, we are ready to talk. Reach out to discuss your project, ask questions, or arrange the first consultation."
     },
     "details": {
       "email": "Email",
       "phone": "Phone",
-      "hours": "Office Hours",
-      "hoursValue": "Monday - Friday: 8:00 AM - 6:00 PM\nSaturday: 9:00 AM - 4:00 PM"
+      "hours": "Working Hours",
+      "hoursValue": "Monday – Friday: 8:00 AM – 6:00 PM\nSaturday: 9:00 AM – 4:00 PM"
     },
-    "formNote": "Contact form will be implemented in future development phase"
+    "formNote": "The contact form is available below."
   },
   "footer": {
-    "description": "Premium renovation and construction services for residential and commercial properties.",
+    "description": "Comprehensive renovation and interior finishing for apartments, homes, and commercial spaces.",
     "quickLinks": "Quick Links",
     "contactInfo": "Contact",
-    "copyright": "© {year} Renovate. All rights reserved."
+    "copyright": "© {year} PRO100 Twój Remont. All rights reserved."
   },
   "metadata": {
     "home": {
-      "title": "Premium Renovation Services | Transform Your Space",
-      "description": "Professional renovation and construction services for residential and commercial properties. Quality craftsmanship and exceptional results."
+      "title": "PRO100 Twój Remont | Turnkey Renovation and Interior Finishing",
+      "description": "Comprehensive renovation and interior finishing for apartments, homes, and commercial spaces. Clear communication, reliable execution, and quality results."
     },
     "about": {
-      "title": "About Us | Premium Renovation Services",
-      "description": "Learn about our experienced team, values, and commitment to excellence in renovation and construction."
+      "title": "About PRO100 Twój Remont",
+      "description": "Learn about our company, values, experience, and the reasons clients trust us with renovation and finishing projects."
     },
     "services": {
-      "title": "Our Services | Premium Renovation",
-      "description": "Comprehensive renovation solutions including kitchen remodeling, bathroom upgrades, basement finishing, and commercial projects."
+      "title": "Our Services | PRO100 Twój Remont",
+      "description": "Explore our renovation and interior finishing services for apartments, homes, and commercial spaces."
     },
     "projects": {
-      "title": "Our Projects | Renovation Portfolio",
-      "description": "Explore our portfolio of completed renovation projects showcasing quality craftsmanship and design excellence."
+      "title": "Our Projects | PRO100 Twój Remont",
+      "description": "See a collection of completed residential and commercial projects shaped by quality workmanship and thoughtful execution."
     },
     "process": {
-      "title": "Our Process | How We Work",
-      "description": "Discover our streamlined renovation process from initial consultation to final walkthrough."
+      "title": "Our Process | PRO100 Twój Remont",
+      "description": "Discover our step-by-step renovation process, from first consultation to project completion."
     },
     "getContact": {
-      "title": "Contact",
-      "description": "Get in touch with our team in Warsaw."
+      "title": "Contact | PRO100 Twój Remont",
+      "description": "Get in touch with our team in Warsaw to discuss your renovation or interior finishing project."
     }
   },
   "form": {
     "title": "Request a Quote",
-    "subtitle": "Fill out the form below and we'll get back to you within 24 hours.",
+    "subtitle": "Fill out the form below and we will get back to you to discuss the next steps.",
     "fields": {
       "fullName": "Full Name",
-      "phone": "Contact Phone",
+      "phone": "Phone Number",
       "email": "Email Address",
-      "interestedIn": "I'm interested in",
-      "renovationType": "Renovation Type",
-      "renovationObject": "Renovation Object",
-      "workDescription": "Work Description (m²)",
+      "interestedIn": "I am interested in",
+      "renovationType": "Type of Work",
+      "renovationObject": "Property Type",
+      "workDescription": "Area / Scope of Work (m²)",
       "attachments": "Attachments",
-      "startDate": "When can we start?",
-      "location": "Location",
-      "additionalComments": "Additional Comments"
+      "startDate": "Preferred Start Date",
+      "location": "Project Location",
+      "additionalComments": "Message / Project Details"
     },
     "placeholders": {
       "fullName": "Enter your full name",
-      "phone": "+1 (234) 567-890",
+      "phone": "+48 123 456 789",
       "email": "your.email@example.com",
       "interestedIn": "Select an option",
-      "renovationType": "Select renovation type",
-      "renovationObject": "Select object type",
-      "workDescription": "e.g., 75 m²",
+      "renovationType": "Select type of work",
+      "renovationObject": "Select property type",
+      "workDescription": "e.g. 75 m²",
       "startDate": "Select a date",
-      "location": "City, Street, Building",
-      "additionalComments": "Any additional information you'd like to share..."
+      "location": "City, street, building",
+      "additionalComments": "Tell us more about your project..."
     },
     "options": {
       "interestedIn": {
-        "newConstruction": "Finishing (new construction)",
+        "newConstruction": "Finishing (new property)",
         "renovation": "Renovation (existing property)"
       },
       "renovationType": {
-        "turnkeyNoProject": "Turnkey without project",
-        "turnkeyWithProject": "Turnkey with project",
-        "refresh": "Refresh",
-        "repairs": "Repairs / Fixes"
+        "turnkeyNoProject": "Turnkey without design",
+        "turnkeyWithProject": "Turnkey with design",
+        "refresh": "Interior refresh",
+        "repairs": "Repairs / fixes"
       },
       "renovationObject": {
         "house": "House",
         "apartment": "Apartment",
-        "serviceSpace": "Service Space",
+        "serviceSpace": "Service space",
         "office": "Office",
         "bathroom": "Bathroom",
         "room": "Room"
@@ -242,7 +263,7 @@
       "required": "This field is required",
       "emailInvalid": "Please enter a valid email address",
       "phoneInvalid": "Please enter a valid phone number",
-      "fileTooLarge": "File size must not exceed 100MB",
+      "fileTooLarge": "File size must not exceed 100 MB",
       "tooManyFiles": "You can upload a maximum of 10 files",
       "invalidFileType": "Only PDF, JPG, PNG, and DOCX files are allowed",
       "dateInvalid": "Please select a valid date"
@@ -251,16 +272,16 @@
       "dragDrop": "Drag and drop files here, or click to select",
       "selectedFiles": "Selected files",
       "removeFile": "Remove",
-      "supportedFormats": "Supported formats: PDF, JPG, PNG, DOCX (max 100MB per file, up to 10 files)"
+      "supportedFormats": "Supported formats: PDF, JPG, PNG, DOCX (max 100 MB per file, up to 10 files)"
     },
     "submit": "Submit Request",
     "submitting": "Submitting...",
-    "successMessage": "Thank you! Your request has been submitted successfully.",
+    "successMessage": "Thank you. Your request has been submitted successfully.",
     "errorMessage": "Something went wrong. Please try again."
   },
   "getContact": {
-    "title": "Get in Touch",
-    "description": "We're here to help bring your renovation vision to life. Fill out the form or contact us directly.",
+    "title": "Contact Us",
+    "description": "If you are planning a renovation, turnkey finishing, or interior transformation, we are ready to talk. Reach out to discuss your project, ask questions, or arrange the first consultation.",
     "getInTouch": {
       "title": "Contact Information",
       "description": "Reach out to discuss your project and receive a personalized consultation."
@@ -268,22 +289,22 @@
     "details": {
       "email": "Email",
       "phone": "Phone",
-      "hours": "Office Hours",
+      "hours": "Working Hours",
       "hoursValue": "Monday – Friday: 8:00 AM – 6:00 PM\nSaturday: 9:00 AM – 4:00 PM"
     },
     "social": {
       "title": "Follow Us"
     },
     "opinions": {
-      "title": "Our Clients' Opinions",
-      "description": "See what our satisfied clients have to say about their renovation experience.",
+      "title": "Client Opinions",
+      "description": "See what our clients say about working with us and the spaces we helped bring to life.",
       "cta": "Read Reviews"
     }
   },
   "clientOpinions": {
-    "title": "Client opinions",
+    "title": "Client Opinions",
     "cta": {
-      "leaveReview": "Leave a review"
+      "leaveReview": "Leave a Review"
     },
     "reviewCount": "{count, plural, =0 {No reviews} one {# review} other {# reviews}}",
     "aria": {
@@ -295,12 +316,12 @@
     }
   },
   "leaveComment": {
-    "title": "Share your experience",
+    "title": "Share Your Experience",
     "description": "Tell us about your renovation experience with our team.",
     "fields": {
-      "name": "Your name",
-      "rating": "Your rating",
-      "comment": "Your review"
+      "name": "Your Name",
+      "rating": "Your Rating",
+      "comment": "Your Review"
     },
     "placeholders": {
       "name": "Enter your name",
@@ -308,7 +329,7 @@
     },
     "buttons": {
       "cancel": "Cancel",
-      "submit": "Submit review",
+      "submit": "Submit Review",
       "submitting": "Submitting..."
     },
     "validation": {
@@ -325,12 +346,12 @@
       "closeModal": "Close review form"
     },
     "success": {
-      "title": "Thank you!",
+      "title": "Thank You!",
       "reviewSubmitted": "Your review has been submitted and will be published after a quick review."
     }
   },
   "callWidget": {
-    "title": "Call us",
+    "title": "Call Us",
     "cta": "Call {phone}",
     "closeLabel": "Close call widget"
   }
