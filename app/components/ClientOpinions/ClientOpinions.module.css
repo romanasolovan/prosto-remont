@@ -2,205 +2,338 @@
   width: 100%;
 }
 
-/* Header */
+/* ── header ── */
 .header {
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
-  margin-bottom: var(--space-3xl);
+  gap: clamp(20px, 3vw, 32px);
+  margin-bottom: clamp(40px, 6vw, 72px);
 }
 
 .headerContent {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  gap: 20px;
 }
 
 .title {
-  font-size: var(--text-3xl);
-  font-weight: 600;
-  color: var(--color-black);
-  letter-spacing: -0.02em;
   margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: #0f0f0f;
 }
 
+/* ── stats ── */
 .stats {
   display: flex;
   align-items: center;
-  gap: var(--space-lg);
+  gap: clamp(12px, 2vw, 20px);
+  flex-wrap: wrap;
 }
 
 .rating {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: 10px;
 }
 
 .ratingNumber {
-  font-size: var(--text-3xl);
-  font-weight: 700;
-  color: var(--color-black);
-  font-family: var(--font-heading);
-  letter-spacing: -0.02em;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  font-weight: 300;
+  color: #0f0f0f;
+  letter-spacing: -0.04em;
+  line-height: 1;
 }
 
 .stars {
   display: flex;
-  gap: 2px;
+  gap: 3px;
 }
 
 .stars svg {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
 }
 
 .starFilled {
-  color: #fbbf24;
+  color: #0f0f0f;
 }
 
 .starEmpty {
-  color: var(--color-grey-300);
+  color: rgba(15, 15, 15, 0.18);
 }
 
 .reviewCount {
-  font-size: var(--text-sm);
-  color: var(--color-grey-600);
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
   font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #999;
 }
 
+/* ── leave review button ── */
 .leaveReviewButton {
-  padding: var(--space-sm) var(--space-xl);
-  background-color: var(--color-black);
-  color: var(--color-white);
-  border: none;
-  border-radius: var(--radius-md);
-  font-size: var(--text-base);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 32px;
+  background: #0f0f0f;
+  color: #f8f8f6;
+  border: 1.5px solid #0f0f0f;
+  border-radius: 100px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 11px;
   font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: all var(--transition-base);
+  overflow: hidden;
+  transition:
+    color 300ms ease,
+    background 300ms ease;
   align-self: flex-start;
+  white-space: nowrap;
+}
+
+/* silver shimmer on hover */
+.leaveReviewButton::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 100px;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(200, 200, 200, 0.25) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  transition: transform 500ms ease;
 }
 
 .leaveReviewButton:hover {
-  background-color: var(--color-grey-800);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: #1e1e1e;
+  color: #e8e8e8;
 }
 
-/* Form Section */
-.formSection {
-  margin-bottom: var(--space-3xl);
+.leaveReviewButton:hover::before {
+  transform: translateX(100%);
 }
 
-/* Comments Grid */
+.leaveReviewButton:focus-visible {
+  outline: 2px solid #0f0f0f;
+  outline-offset: 3px;
+}
+
+/* ── comments grid ── */
 .commentsGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-xl);
+  gap: 0;
+  border-top: 1px solid rgba(15, 15, 15, 0.1);
 }
 
+/* ── comment card ── */
 .commentCard {
-  background-color: var(--color-white);
-  border: 1px solid var(--color-grey-200);
-  border-radius: var(--radius-lg);
-  padding: var(--space-xl);
-  transition: all var(--transition-base);
+  position: relative;
+  background: transparent;
+  border-bottom: 1px solid rgba(15, 15, 15, 0.08);
+  padding: clamp(28px, 4.5vw, 44px) clamp(4px, 1vw, 8px);
+  transition: background 280ms ease;
+  overflow: hidden;
+}
+
+.commentCard::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, #0f0f0f 0%, #c8c8c8 100%);
+  transition: width 480ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .commentCard:hover {
-  border-color: var(--color-grey-300);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  background: rgba(255, 255, 255, 0.65);
 }
 
+.commentCard:hover::before {
+  width: 100%;
+}
+
+/* ghost large quote mark */
+.commentCard::after {
+  content: "\201C";
+  position: absolute;
+  bottom: -14px;
+  right: clamp(4px, 2vw, 20px);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(5rem, 10vw, 7.5rem);
+  font-weight: 300;
+  color: rgba(15, 15, 15, 0.06);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── comment header ── */
 .commentHeader {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: var(--space-md);
-  gap: var(--space-md);
+  margin-bottom: clamp(16px, 2.5vw, 22px);
+  gap: 12px;
 }
 
 .commentAuthor {
   display: flex;
   align-items: center;
-  gap: var(--space-md);
+  gap: 14px;
+  min-width: 0;
 }
 
 .authorAvatar {
-  width: 48px;
-  height: 48px;
-  background-color: var(--color-black);
-  color: var(--color-white);
+  width: 40px;
+  height: 40px;
+  background: #0f0f0f;
+  color: #f8f8f6;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 600;
-  font-size: var(--text-lg);
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.1rem;
   flex-shrink: 0;
+  letter-spacing: 0;
 }
 
 .authorName {
-  font-weight: 600;
-  color: var(--color-black);
-  font-size: var(--text-base);
+  font-family: "DM Sans", sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: #0f0f0f;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .commentDate {
-  font-size: var(--text-xs);
-  color: var(--color-grey-500);
-  margin-top: 2px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-top: 3px;
 }
 
 .commentRating {
   display: flex;
   gap: 2px;
   flex-shrink: 0;
+  align-items: center;
 }
 
 .commentRating svg {
-  width: 16px;
-  height: 16px;
+  width: 13px;
+  height: 13px;
 }
 
+/* ── comment text ── */
 .commentText {
-  font-size: var(--text-base);
-  color: var(--color-grey-700);
-  line-height: var(--line-height-relaxed);
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.875rem, 1.2vw, 0.9375rem);
+  color: #444;
+  line-height: 1.9;
   margin: 0;
+  font-weight: 300;
 }
 
-/* Responsive */
+/* ── success notice ── */
+.successNotice {
+  margin-bottom: clamp(20px, 3vw, 32px);
+  padding: 14px 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border-left: 2px solid #0f0f0f;
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: #0f0f0f;
+  animation: slideIn 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── tablet ≥ 768px ── */
 @media (min-width: 768px) {
   .header {
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
   }
 
-  .title {
-    font-size: var(--text-4xl);
+  .leaveReviewButton {
+    align-self: flex-end;
+    flex-shrink: 0;
   }
 
   .commentsGrid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .commentCard:nth-child(odd) {
+    border-right: 1px solid rgba(15, 15, 15, 0.08);
+  }
+
+  .commentCard {
+    padding: clamp(28px, 4vw, 44px) clamp(20px, 3vw, 32px);
+  }
 }
 
+/* ── desktop ≥ 1024px ── */
 @media (min-width: 1024px) {
   .commentsGrid {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  .commentCard:nth-child(odd) {
+    border-right: none;
+  }
+
+  .commentCard:not(:nth-child(3n)) {
+    border-right: 1px solid rgba(15, 15, 15, 0.08);
+  }
 }
 
-.successNotice {
-  margin-bottom: var(--space-xl);
-  padding: 14px 16px;
-  border: 1px solid rgba(20, 83, 45, 0.18);
-  background: #f3f7f4;
-  color: #1f5133;
-  border-radius: var(--radius-md);
-  font-size: var(--text-sm);
-  font-weight: 500;
-  animation: popIn 220ms ease-out;
+/* ── reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .commentCard::before,
+  .leaveReviewButton::before,
+  .commentCard,
+  .leaveReviewButton {
+    transition: none;
+  }
+  .successNotice {
+    animation: none;
+  }
 }

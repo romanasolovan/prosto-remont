@@ -22,19 +22,19 @@ export default function About() {
   const t = useTranslations("about");
 
   return (
-    <div className={styles.aboutPage}>
-      {/* Centered header, refined */}
-      <header className={styles.pageHeader}>
+    <main className={styles.aboutPage}>
+      <section className={styles.aboutSection} aria-labelledby="about-title">
         <div className="container">
-          <h1 className={styles.pageTitle}>{t("hero.title")}</h1>
-          <p className={styles.pageDescription}>{t("hero.subtitle")}</p>
-        </div>
-      </header>
+          <div className={styles.aboutIntro}>
+            <span className={styles.eyebrow}>{t("hero.title")}</span>
+            <h1 id="about-title" className={styles.mainTitle}>
+              {t("story.title")}
+            </h1>
+            <p className={styles.mainDescription}>{t("hero.subtitle")}</p>
+          </div>
 
-      <main className={styles.main}>
-        <div className="container">
-          <section className={styles.contentGrid}>
-            <article className={styles.card}>
+          <div className={styles.contentGrid}>
+            <article className={`${styles.card} ${styles.storyCard}`}>
               <h2 className={styles.cardTitle}>{t("story.title")}</h2>
               <p className={styles.cardText}>{t("story.content")}</p>
             </article>
@@ -48,14 +48,13 @@ export default function About() {
               <h2 className={styles.cardTitle}>{t("why.title")}</h2>
               <p className={styles.cardText}>{t("why.content")}</p>
             </article>
-          </section>
+          </div>
         </div>
+      </section>
 
-        {/* Opinions section on About page */}
-        <section className={styles.opinionsSection} id="opinions">
-          <ClientOpinions />
-        </section>
-      </main>
-    </div>
+      <section className={styles.opinionsSection} id="opinions">
+        <ClientOpinions />
+      </section>
+    </main>
   );
 }
