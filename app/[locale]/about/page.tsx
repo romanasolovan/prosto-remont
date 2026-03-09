@@ -1,218 +1,14 @@
-// import { useTranslations } from "next-intl";
-// import { getTranslations } from "next-intl/server";
-// import type { Metadata } from "next";
-// import styles from "./about.module.css";
-// import ClientOpinions from "@/app/components/ClientOpinions/ClientOpinions";
-
-// /* stat icons */
-// const StatIcons = {
-//   projects: (
-//     <svg
-//       viewBox="0 0 40 40"
-//       fill="none"
-//       stroke="currentColor"
-//       strokeWidth="1.4"
-//       strokeLinecap="round"
-//       strokeLinejoin="round"
-//       aria-hidden="true"
-//     >
-//       <rect x="6" y="14" width="28" height="20" rx="1" />
-//       <path d="M14 14V10a6 6 0 0 1 12 0v4" />
-//       <path d="M6 21h28" />
-//     </svg>
-//   ),
-//   clients: (
-//     <svg
-//       viewBox="0 0 40 40"
-//       fill="none"
-//       stroke="currentColor"
-//       strokeWidth="1.4"
-//       strokeLinecap="round"
-//       strokeLinejoin="round"
-//       aria-hidden="true"
-//     >
-//       <circle cx="14" cy="14" r="4.5" />
-//       <circle cx="26" cy="14" r="4.5" />
-//       <path d="M6 30c1.5-4.5 5.5-7 10-7" />
-//       <path d="M34 30c-1.5-4.5-5.5-7-10-7" />
-//     </svg>
-//   ),
-//   area: (
-//     <svg
-//       viewBox="0 0 40 40"
-//       fill="none"
-//       stroke="currentColor"
-//       strokeWidth="1.4"
-//       strokeLinecap="round"
-//       strokeLinejoin="round"
-//       aria-hidden="true"
-//     >
-//       <rect x="7" y="7" width="26" height="26" rx="1" />
-//       <path d="M7 18h26M18 7v26" />
-//     </svg>
-//   ),
-//   years: (
-//     <svg
-//       viewBox="0 0 40 40"
-//       fill="none"
-//       stroke="currentColor"
-//       strokeWidth="1.4"
-//       strokeLinecap="round"
-//       strokeLinejoin="round"
-//       aria-hidden="true"
-//     >
-//       <circle cx="20" cy="20" r="13" />
-//       <path d="M20 12v8l5 3" />
-//     </svg>
-//   ),
-// };
-
-// export async function generateMetadata({
-//   params,
-// }: {
-//   params: Promise<{ locale: string }>;
-// }): Promise<Metadata> {
-//   const { locale } = await params;
-//   const t = await getTranslations({ locale, namespace: "metadata.about" });
-
-//   return {
-//     title: t("title"),
-//     description: t("description"),
-//   };
-// }
-
-// export default function About() {
-//   const t = useTranslations("about");
-
-//   const stats = [
-//     {
-//       key: "projects",
-//       icon: StatIcons.projects,
-//       value: t("stats.projects"),
-//     },
-//     {
-//       key: "clients",
-//       icon: StatIcons.clients,
-//       value: t("stats.clients"),
-//     },
-//     {
-//       key: "area",
-//       icon: StatIcons.area,
-//       value: t("stats.area"),
-//     },
-//     {
-//       key: "years",
-//       icon: StatIcons.years,
-//       value: t("stats.years"),
-//     },
-//   ];
-
-//   return (
-//     <main className={styles.aboutPage}>
-//       <section className={styles.heroSection} aria-labelledby="about-title">
-//         <div className="container">
-//           <div className={styles.heroInner}>
-//             <div className={styles.heroCopy}>
-//               <span className={styles.eyebrow}>{t("story.title")}</span>
-//               <h1 id="about-title" className={styles.heroTitle}>
-//                 {t("hero.title")}
-//               </h1>
-//               <p className={styles.heroSub}>{t("hero.subtitle")}</p>
-//             </div>
-
-//             <div className={styles.heroAccent} aria-hidden="true">
-//               <div className={styles.heroAccentLine} />
-//               <div className={styles.heroAccentBox} />
-//             </div>
-//           </div>
-//         </div>
-//       </section>
-
-//       <section className={styles.statsSection} aria-labelledby="stats-title">
-//         <div className="container">
-//           <div className={styles.statsHeader}>
-//             <p id="stats-title" className={styles.statsSectionLabel}>
-//               {t("stats.title")}
-//             </p>
-//           </div>
-
-//           <div className={styles.statsGrid}>
-//             {stats.map(({ key, icon, value }, index) => (
-//               <article
-//                 key={key}
-//                 className={styles.statCard}
-//                 style={{ ["--delay" as string]: `${index * 120}ms` }}
-//               >
-//                 <div className={styles.statIcon}>{icon}</div>
-//                 <p className={styles.statValue}>{value}</p>
-//               </article>
-//             ))}
-//           </div>
-//         </div>
-//       </section>
-
-//       <section className={styles.storySection} aria-labelledby="story-title">
-//         <div className="container">
-//           <div className={styles.storyGrid}>
-//             <article className={styles.storyCard}>
-//               <span className={styles.sectionIndex} aria-hidden="true">
-//                 01
-//               </span>
-//               <h2 id="story-title" className={styles.sectionTitle}>
-//                 {t("story.title")}
-//               </h2>
-//               <p className={styles.sectionText}>{t("story.content")}</p>
-//             </article>
-
-//             <article className={styles.storyCard}>
-//               <span className={styles.sectionIndex} aria-hidden="true">
-//                 02
-//               </span>
-//               <h2 className={styles.sectionTitle}>{t("values.title")}</h2>
-//               <p className={styles.sectionText}>{t("values.content")}</p>
-//             </article>
-//           </div>
-//         </div>
-//       </section>
-
-//       <section className={styles.whySection} aria-labelledby="why-title">
-//         <div className="container">
-//           <div className={styles.whyLayout}>
-//             <article className={styles.whyCard}>
-//               <span
-//                 className={`${styles.sectionIndex} ${styles.sectionIndexLight}`}
-//                 aria-hidden="true"
-//               >
-//                 03
-//               </span>
-//               <h2 id="why-title" className={styles.sectionTitleLight}>
-//                 {t("why.title")}
-//               </h2>
-//               <p className={styles.sectionTextLight}>{t("why.content")}</p>
-//             </article>
-
-//             <div className={styles.opinionsShell}>
-//               <ClientOpinions />
-//             </div>
-//           </div>
-//         </div>
-//       </section>
-//     </main>
-//   );
-// }
-
 import { useTranslations } from "next-intl";
 import styles from "./about.module.css";
 import ClientOpinions from "@/app/components/ClientOpinions/ClientOpinions";
 
-/* stat icons */
 const StatIcons = {
   projects: (
     <svg
       viewBox="0 0 48 48"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.6"
+      strokeWidth="1.4"
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
@@ -228,7 +24,7 @@ const StatIcons = {
       viewBox="0 0 48 48"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.65"
+      strokeWidth="1.4"
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
@@ -246,7 +42,7 @@ const StatIcons = {
       viewBox="0 0 48 48"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.6"
+      strokeWidth="1.4"
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
@@ -262,7 +58,7 @@ const StatIcons = {
       viewBox="0 0 48 48"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.8"
+      strokeWidth="1.4"
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
@@ -277,83 +73,89 @@ export default function About() {
   const t = useTranslations("about");
 
   const stats = [
-    {
-      key: "projects",
-      icon: StatIcons.projects,
-      text: t("stats.projects"),
-    },
-    {
-      key: "clients",
-      icon: StatIcons.clients,
-      text: t("stats.clients"),
-    },
-    {
-      key: "area",
-      icon: StatIcons.area,
-      text: t("stats.area"),
-    },
-    {
-      key: "years",
-      icon: StatIcons.years,
-      text: t("stats.years"),
-    },
+    { key: "projects", icon: StatIcons.projects, text: t("stats.projects") },
+    { key: "clients", icon: StatIcons.clients, text: t("stats.clients") },
+    { key: "area", icon: StatIcons.area, text: t("stats.area") },
+    { key: "years", icon: StatIcons.years, text: t("stats.years") },
   ];
 
   return (
     <main className={styles.aboutPage}>
+      {/* ── STATS ── */}
       <section
         className={styles.statsSection}
         aria-labelledby="about-stats-title"
       >
+        <div className={styles.statsBackground} aria-hidden="true">
+          <span className={styles.bgWord}>Craft</span>
+        </div>
+
         <div className="container">
           <div className={styles.statsInner}>
-            <h1 id="about-stats-title" className={styles.statsTitle}>
-              {t("stats.title")}
-            </h1>
+            <div className={styles.statsMeta}>
+              <span className={styles.statsEyebrow}>About us</span>
+              <h1 id="about-stats-title" className={styles.statsTitle}>
+                {t("stats.title")}
+              </h1>
+            </div>
 
             <div className={styles.statsGrid}>
-              {stats.map((stat) => (
-                <article key={stat.key} className={styles.statCard}>
-                  <div className={styles.statIcon}>{stat.icon}</div>
+              {stats.map((stat, i) => (
+                <article
+                  key={stat.key}
+                  className={styles.statCard}
+                  style={{ "--i": i } as React.CSSProperties}
+                >
+                  <div className={styles.statIconWrap}>
+                    <div className={styles.statIcon}>{stat.icon}</div>
+                  </div>
                   <p className={styles.statText}>{stat.text}</p>
+                  <div className={styles.statLine} aria-hidden="true" />
                 </article>
               ))}
             </div>
           </div>
         </div>
       </section>
+
+      {/* ── STORY & VALUES ── */}
       <section
         className={styles.storyValuesSection}
         aria-labelledby="about-story-title"
       >
         <div className="container">
           <div className={styles.storyValuesInner}>
-            <article
-              className={`${styles.storyValuesCard} ${styles.storyCard}`}
-            >
-              <div className={styles.storyValuesContent}>
-                <h2 id="about-story-title" className={styles.storyValuesTitle}>
+            <article className={`${styles.svCard} ${styles.storyCard}`}>
+              <div className={styles.svCardInner}>
+                <span className={styles.svLabel}>01</span>
+                <h2 id="about-story-title" className={styles.svTitle}>
                   {t("story.title")}
                 </h2>
-                <p className={styles.storyValuesText}>{t("story.content")}</p>
+                <p className={styles.svText}>{t("story.content")}</p>
               </div>
+              <div className={styles.svAccent} aria-hidden="true" />
             </article>
 
-            <article
-              className={`${styles.storyValuesCard} ${styles.valuesCard}`}
-            >
-              <div className={styles.storyValuesContent}>
-                <h2 className={styles.storyValuesTitle}>{t("values.title")}</h2>
-                <p className={styles.storyValuesText}>{t("values.content")}</p>
+            <article className={`${styles.svCard} ${styles.valuesCard}`}>
+              <div className={styles.svCardInner}>
+                <span className={styles.svLabel}>02</span>
+                <h2 className={styles.svTitle}>{t("values.title")}</h2>
+                <p className={styles.svText}>{t("values.content")}</p>
               </div>
+              <div className={styles.svAccent} aria-hidden="true" />
             </article>
           </div>
         </div>
       </section>
+
+      {/* ── WHY + OPINIONS ── */}
       <section className={styles.whySection} aria-labelledby="about-why-title">
         <div className="container">
           <div className={styles.whySectionInner}>
             <article className={styles.whyCard}>
+              <span className={styles.whyIndex} aria-hidden="true">
+                03
+              </span>
               <div className={styles.whyCardContent}>
                 <h2 id="about-why-title" className={styles.whyTitle}>
                   {t("why.title")}

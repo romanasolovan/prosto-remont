@@ -1,54 +1,57 @@
 .opinionsContainer {
   width: 100%;
-  color: #f3f1eb;
+  color: #f0ede6;
 }
 
+/* ─────────────────────────
+   HEADER
+───────────────────────── */
 .header {
   display: flex;
   flex-direction: column;
-  gap: clamp(20px, 3vw, 30px);
-  margin-bottom: clamp(28px, 4vw, 42px);
-  padding-bottom: clamp(20px, 3vw, 26px);
+  gap: clamp(18px, 3vw, 24px);
+  margin-bottom: clamp(28px, 4vw, 40px);
+  padding-bottom: clamp(18px, 3vw, 24px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .headerContent {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 }
 
 .title {
   margin: 0;
   max-width: 12ch;
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-size: clamp(1.9rem, 4vw, 3rem);
   font-weight: 300;
   line-height: 1;
   letter-spacing: -0.025em;
-  color: #f3f1eb;
+  color: #f0ede6;
 }
 
 .stats {
   display: flex;
   align-items: center;
-  gap: clamp(12px, 2vw, 18px);
+  gap: clamp(10px, 2vw, 16px);
   flex-wrap: wrap;
 }
 
 .rating {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 9px;
 }
 
 .ratingNumber {
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(1.8rem, 3vw, 2.3rem);
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
   font-weight: 300;
   line-height: 1;
   letter-spacing: -0.04em;
-  color: #f3f1eb;
+  color: #f0ede6;
 }
 
 .stars {
@@ -57,184 +60,190 @@
 }
 
 .stars svg {
-  width: 15px;
-  height: 15px;
+  width: 13px;
+  height: 13px;
 }
 
 .starFilled {
-  color: #f3f1eb;
+  color: #c5a882;
 }
 
 .starEmpty {
-  color: rgba(243, 241, 235, 0.18);
+  color: rgba(240, 237, 230, 0.15);
 }
 
 .reviewCount {
   font-family: "DM Sans", sans-serif;
   font-size: 10px;
   font-weight: 500;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(243, 241, 235, 0.5);
+  color: rgba(240, 237, 230, 0.4);
 }
 
+/* ─────────────────────────
+   CTA BUTTON
+───────────────────────── */
 .leaveReviewButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 48px;
+  min-height: 46px;
   padding: 0 22px;
   align-self: flex-start;
-  border: 1px solid rgba(243, 241, 235, 0.22);
-  background: #f3f1eb;
-  color: #111111;
+  border: 1px solid rgba(197, 168, 130, 0.38);
+  background: transparent;
+  color: #c5a882;
   border-radius: 999px;
   font-family: "DM Sans", sans-serif;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 500;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   cursor: pointer;
   transition:
-    transform 240ms ease,
-    background-color 240ms ease,
-    color 240ms ease,
+    transform 240ms cubic-bezier(0.22, 1, 0.36, 1),
+    background 240ms ease,
     border-color 240ms ease,
+    color 240ms ease,
     box-shadow 240ms ease;
 }
 
 .leaveReviewButton:hover {
   transform: translateY(-2px);
-  background: #ffffff;
-  color: #111111;
-  border-color: rgba(243, 241, 235, 0.3);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.14);
+  background: rgba(197, 168, 130, 0.1);
+  border-color: rgba(197, 168, 130, 0.65);
+  color: #d4bc9a;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .leaveReviewButton:focus-visible {
-  outline: 2px solid #f3f1eb;
+  outline: 2px solid rgba(197, 168, 130, 0.6);
   outline-offset: 4px;
 }
 
+/* ─────────────────────────
+   SUCCESS NOTICE
+───────────────────────── */
 .successNotice {
-  margin-bottom: clamp(20px, 3vw, 28px);
-  padding: 14px 18px;
-  border-left: 2px solid #f3f1eb;
-  background: rgba(255, 255, 255, 0.08);
+  margin-bottom: 24px;
+  padding: 12px 18px;
+  border-left: 2px solid #c5a882;
+  background: rgba(197, 168, 130, 0.08);
+  border-radius: 18px;
   font-family: "DM Sans", sans-serif;
   font-size: 12px;
   letter-spacing: 0.04em;
-  color: #f3f1eb;
+  color: rgba(240, 237, 230, 0.82);
 }
 
+/* ─────────────────────────
+   COMMENTS GRID
+───────────────────────── */
 .commentsGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
+  gap: 12px;
 }
 
 .commentCard {
   position: relative;
-  min-height: 100%;
-  padding: clamp(22px, 3vw, 30px);
+  padding: clamp(20px, 3vw, 28px);
   border-radius: 28px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.05) 0%,
-    rgba(255, 255, 255, 0.025) 100%
-  );
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.03);
   transition:
-    transform 280ms ease,
-    background 280ms ease,
-    box-shadow 280ms ease;
+    transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    background 300ms ease,
+    box-shadow 300ms ease,
+    border-color 300ms ease;
   overflow: hidden;
 }
 
 .commentCard::before {
   content: "";
   position: absolute;
-  inset: 0 auto auto 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    rgba(243, 241, 235, 0.9) 0%,
-    rgba(243, 241, 235, 0.24) 65%,
-    transparent 100%
-  );
+  top: 0;
+  left: 18px;
+  width: clamp(32px, 5vw, 48px);
+  height: 2px;
+  background: #c5a882;
+  border-radius: 999px;
+  transition: width 340ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .commentCard::after {
   content: "\201C";
   position: absolute;
-  right: clamp(16px, 2vw, 22px);
+  right: 18px;
   bottom: -10px;
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(4.6rem, 8vw, 6.8rem);
+  font-size: clamp(4rem, 7vw, 6rem);
   line-height: 1;
   font-weight: 300;
-  color: rgba(243, 241, 235, 0.06);
+  color: rgba(240, 237, 230, 0.05);
   pointer-events: none;
   user-select: none;
 }
 
 .commentCard:hover {
-  transform: translateY(-4px);
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.08) 0%,
-    rgba(255, 255, 255, 0.04) 100%
-  );
-  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.14);
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.055);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+  border-color: rgba(197, 168, 130, 0.12);
+}
+
+.commentCard:hover::before {
+  width: clamp(56px, 9vw, 88px);
 }
 
 .commentHeader {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 14px;
-  margin-bottom: 18px;
+  gap: 12px;
+  margin-bottom: 14px;
 }
 
 .commentAuthor {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 11px;
   min-width: 0;
 }
 
 .authorAvatar {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f3f1eb;
-  color: #111111;
+  background: rgba(197, 168, 130, 0.14);
+  color: #c5a882;
   font-family: "Cormorant Garamond", serif;
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-style: italic;
   font-weight: 300;
   border-radius: 50%;
+  border: 1px solid rgba(197, 168, 130, 0.2);
 }
 
 .authorName {
   font-family: "DM Sans", sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.86rem;
   font-weight: 500;
-  color: #f3f1eb;
+  color: #f0ede6;
   letter-spacing: 0.01em;
 }
 
 .commentDate {
-  margin-top: 4px;
+  margin-top: 3px;
   font-family: "DM Sans", sans-serif;
   font-size: 10px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(243, 241, 235, 0.44);
+  color: rgba(240, 237, 230, 0.34);
 }
 
 .commentRating {
@@ -245,25 +254,28 @@
 }
 
 .commentRating svg {
-  width: 13px;
-  height: 13px;
+  width: 11px;
+  height: 11px;
 }
 
 .commentText {
   margin: 0;
   max-width: 34ch;
   font-family: "DM Sans", sans-serif;
-  font-size: clamp(0.9rem, 1.05vw, 0.96rem);
-  line-height: 1.9;
+  font-size: clamp(0.87rem, 1vw, 0.93rem);
+  line-height: 1.94;
   font-weight: 300;
-  color: rgba(243, 241, 235, 0.78);
+  color: rgba(240, 237, 230, 0.66);
 }
 
+/* ─────────────────────────
+   TABLET
+───────────────────────── */
 @media (min-width: 768px) {
   .header {
     flex-direction: row;
     justify-content: space-between;
-    align-items: end;
+    align-items: flex-end;
   }
 
   .leaveReviewButton {
@@ -273,20 +285,31 @@
 
   .commentsGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
+    gap: 14px;
   }
 }
 
+/* ─────────────────────────
+   DESKTOP
+───────────────────────── */
 @media (min-width: 1024px) {
   .commentsGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: stretch;
   }
+
+  .commentCard {
+    padding: 26px 24px;
+  }
 }
 
+/* ─────────────────────────
+   REDUCED MOTION
+───────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .leaveReviewButton,
-  .commentCard {
+  .commentCard,
+  .commentCard::before {
     transition: none;
   }
 

@@ -210,9 +210,7 @@ export default function LeaveCommentForm({
                     id="name"
                     name="name"
                     value={values.name}
-                    onChange={(event) => {
-                      handleChange(event);
-                    }}
+                    onChange={handleChange}
                     onBlur={handleBlur}
                     placeholder={t("placeholders.name")}
                     className={styles.input}
@@ -274,6 +272,7 @@ export default function LeaveCommentForm({
                               event.key === "ArrowUp"
                             ) {
                               event.preventDefault();
+
                               const nextRating =
                                 values.rating > 0
                                   ? Math.min(values.rating + 1, 5)
@@ -292,6 +291,7 @@ export default function LeaveCommentForm({
                               event.key === "ArrowDown"
                             ) {
                               event.preventDefault();
+
                               const nextRating =
                                 values.rating > 1
                                   ? Math.max(values.rating - 1, 1)

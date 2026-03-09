@@ -19,8 +19,8 @@ export default function ClientOpinions() {
   const triggerRef = useRef<HTMLButtonElement | null>(null);
   const successTimerRef = useRef<number | null>(null);
 
-  const initialComments = useMemo<Comment[]>(() => {
-    return [
+  const initialComments = useMemo<Comment[]>(
+    () => [
       {
         id: "1",
         name: "Sarah Johnson",
@@ -45,8 +45,9 @@ export default function ClientOpinions() {
           "Great experience overall. The renovation transformed our living space beautifully. Highly recommend their services.",
         date: "2024-01-05",
       },
-    ];
-  }, [locale]);
+    ],
+    [locale],
+  );
 
   const [comments] = useState<Comment[]>(initialComments);
   const [showForm, setShowForm] = useState(false);
