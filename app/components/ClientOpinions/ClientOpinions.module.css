@@ -6,26 +6,26 @@
 .header {
   display: flex;
   flex-direction: column;
-  gap: clamp(22px, 3vw, 34px);
-  margin-bottom: clamp(36px, 5vw, 64px);
-  padding-bottom: clamp(22px, 3vw, 28px);
+  gap: clamp(20px, 3vw, 30px);
+  margin-bottom: clamp(28px, 4vw, 42px);
+  padding-bottom: clamp(20px, 3vw, 26px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .headerContent {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 16px;
 }
 
 .title {
   margin: 0;
+  max-width: 12ch;
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(2rem, 4.2vw, 3.4rem);
+  font-size: clamp(2rem, 4vw, 3.2rem);
   font-weight: 300;
-  font-style: italic;
-  letter-spacing: -0.02em;
-  line-height: 1.03;
+  line-height: 1;
+  letter-spacing: -0.025em;
   color: #f3f1eb;
 }
 
@@ -44,11 +44,11 @@
 
 .ratingNumber {
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  font-size: clamp(1.8rem, 3vw, 2.3rem);
   font-weight: 300;
-  color: #f3f1eb;
-  letter-spacing: -0.04em;
   line-height: 1;
+  letter-spacing: -0.04em;
+  color: #f3f1eb;
 }
 
 .stars {
@@ -82,12 +82,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 50px;
-  padding: 0 24px;
+  min-height: 48px;
+  padding: 0 22px;
   align-self: flex-start;
   border: 1px solid rgba(243, 241, 235, 0.22);
   background: #f3f1eb;
   color: #111111;
+  border-radius: 999px;
   font-family: "DM Sans", sans-serif;
   font-size: 11px;
   font-weight: 500;
@@ -107,6 +108,7 @@
   background: #ffffff;
   color: #111111;
   border-color: rgba(243, 241, 235, 0.3);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.14);
 }
 
 .leaveReviewButton:focus-visible {
@@ -115,8 +117,8 @@
 }
 
 .successNotice {
-  margin-bottom: clamp(22px, 3vw, 30px);
-  padding: 15px 18px;
+  margin-bottom: clamp(20px, 3vw, 28px);
+  padding: 14px 18px;
   border-left: 2px solid #f3f1eb;
   background: rgba(255, 255, 255, 0.08);
   font-family: "DM Sans", sans-serif;
@@ -128,13 +130,14 @@
 .commentsGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 18px;
+  gap: 16px;
 }
 
 .commentCard {
   position: relative;
   min-height: 100%;
-  padding: clamp(24px, 3vw, 32px);
+  padding: clamp(22px, 3vw, 30px);
+  border-radius: 28px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: linear-gradient(
     180deg,
@@ -168,7 +171,7 @@
   right: clamp(16px, 2vw, 22px);
   bottom: -10px;
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(4.8rem, 9vw, 7rem);
+  font-size: clamp(4.6rem, 8vw, 6.8rem);
   line-height: 1;
   font-weight: 300;
   color: rgba(243, 241, 235, 0.06);
@@ -183,6 +186,7 @@
     rgba(255, 255, 255, 0.08) 0%,
     rgba(255, 255, 255, 0.04) 100%
   );
+  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.14);
 }
 
 .commentHeader {
@@ -249,7 +253,7 @@
   margin: 0;
   max-width: 34ch;
   font-family: "DM Sans", sans-serif;
-  font-size: clamp(0.9rem, 1.12vw, 0.96rem);
+  font-size: clamp(0.9rem, 1.05vw, 0.96rem);
   line-height: 1.9;
   font-weight: 300;
   color: rgba(243, 241, 235, 0.78);
@@ -269,13 +273,13 @@
 
   .commentsGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 22px;
+    gap: 18px;
   }
 }
 
 @media (min-width: 1024px) {
   .commentsGrid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: stretch;
   }
 }
