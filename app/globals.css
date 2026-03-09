@@ -12,6 +12,31 @@
   --color-grey-100: #f5f5f5;
   --color-white: #ffffff;
 
+  /* Premium Warm Neutral Palette */
+  --color-ivory-50: #f7f6f2;
+  --color-ivory-100: #f5f3ee;
+  --color-ivory-200: #f1eee8;
+  --color-stone-300: #efede8;
+  --color-stone-400: #e7e2d9;
+
+  --color-charcoal-900: #1c1b18;
+  --color-charcoal-800: #252320;
+  --color-charcoal-700: #2e2b26;
+  --color-charcoal-600: #302d28;
+
+  --color-sand-500: #c5a882;
+  --color-sand-400: #d4bc9a;
+  --color-sand-300: rgba(197, 168, 130, 0.3);
+  --color-sand-200: rgba(197, 168, 130, 0.16);
+  --color-sand-100: rgba(197, 168, 130, 0.08);
+
+  --color-olive-500: #555c3f;
+  --color-olive-300: rgba(85, 92, 63, 0.16);
+  --color-olive-200: rgba(85, 92, 63, 0.08);
+
+  --color-cream-text: #f0ede6;
+  --color-muted-warm: #5a5650;
+
   /* Spacing Scale */
   --space-xs: 0.5rem; /* 8px */
   --space-sm: 1rem; /* 16px */

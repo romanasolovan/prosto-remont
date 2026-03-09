@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/navigation";
 import styles from "./Header.module.css";
@@ -10,6 +10,10 @@ import Image from "next/image";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isCompact, setIsCompact] = useState(false);
+  const [headerHeight, setHeaderHeight] = useState(0);
+
+  const headerRef = useRef<HTMLElement | null>(null);
   const t = useTranslations("navigation");
 
   const navLinks = [
@@ -21,26 +25,67 @@ export default function Header() {
     { href: "/contact", label: t("contact") },
   ];
 
+  useEffect(() => {
+    const updateHeaderHeight = () => {
+      if (headerRef.current) {
+        setHeaderHeight(headerRef.current.offsetHeight);
+      }
+    };
+
+    const handleScroll = () => {
+      setIsCompact(window.scrollY > 24);
+    };
+
+    updateHeaderHeight();
+    handleScroll();
+
+    window.addEventListener("resize", updateHeaderHeight);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("resize", updateHeaderHeight);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+
+    const handleResize = () => {
+      if (headerRef.current) {
+        setHeaderHeight(headerRef.current.offsetHeight);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, [mobileMenuOpen]);
+
   const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
+    setMobileMenuOpen((prev) => !prev);
   };
 
   return (
     <>
-      <header className={styles.header}>
+      <header
+        ref={headerRef}
+        className={`${styles.header} ${isCompact ? styles.headerCompact : ""}`}
+      >
         <div className="container">
           <div className={styles.headerContent}>
             <Link href="/" className={styles.logo}>
               <Image
                 src="/LOGO_FULL.svg"
                 alt="Prosto Remont logo"
-                width={150}
-                height={50}
+                width={180}
+                height={60}
                 priority
+                style={{ width: "100%", height: "auto" }}
               />
             </Link>
 
-            {/* Desktop Navigation */}
             <nav className={styles.desktopNav}>
               <ul className={styles.navList}>
                 {navLinks.map((link) => (
@@ -56,9 +101,10 @@ export default function Header() {
             <div className={styles.headerActions}>
               <LanguageSwitcher />
 
-              {/* Mobile Menu Toggle */}
               <button
-                className={styles.mobileMenuButton}
+                className={`${styles.mobileMenuButton} ${
+                  mobileMenuOpen ? styles.mobileMenuButtonOpen : ""
+                }`}
                 onClick={toggleMobileMenu}
                 aria-label="Toggle mobile menu"
                 aria-expanded={mobileMenuOpen}
@@ -76,6 +122,7 @@ export default function Header() {
         isOpen={mobileMenuOpen}
         onClose={() => setMobileMenuOpen(false)}
         navLinks={navLinks}
+        topOffset={headerHeight}
       />
     </>
   );
