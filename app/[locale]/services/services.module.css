@@ -1,53 +1,69 @@
 .servicesPage {
+  --services-hero-bg: var(--color-grey-100);
+  --services-text-soft: var(--color-grey-600);
+  --services-text-body: var(--color-grey-700);
+  --services-card-border: var(--color-grey-200);
+  --services-card-border-hover: var(--color-grey-400);
+  --services-grid-gap: 32px;
+  --services-card-padding: 48px;
+  --services-grid-width: 1000px;
+  --services-hero-top: 96px;
+  --services-hero-bottom: 64px;
+  --services-subtitle-width: 600px;
+
   width: 100%;
 }
 
 .hero {
-  background-color: var(--color-grey-100);
-  padding: var(--space-3xl) 0 var(--space-2xl);
+  padding: var(--services-hero-top) 0 var(--services-hero-bottom);
   text-align: center;
+  background-color: var(--services-hero-bg);
 }
 
 .hero h1 {
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-24);
 }
 
 .subtitle {
-  font-size: var(--text-xl);
-  color: var(--color-grey-600);
-  max-width: 600px;
+  max-width: var(--services-subtitle-width);
   margin: 0 auto;
+  color: var(--services-text-soft);
+  font-size: 20px;
+  line-height: var(--line-height-normal);
 }
 
 .servicesGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-lg);
-  max-width: 1000px;
+  gap: var(--services-grid-gap);
+  max-width: var(--services-grid-width);
   margin: 0 auto;
 }
 
 .serviceCard {
-  padding: var(--space-xl);
-  border: 1px solid var(--color-grey-200);
+  padding: var(--services-card-padding);
+  border: 1px solid var(--services-card-border);
   border-radius: var(--radius-md);
-  transition: all var(--transition-base);
+  transition:
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
 }
 
 .serviceCard:hover {
-  border-color: var(--color-grey-400);
+  border-color: var(--services-card-border-hover);
   box-shadow: var(--shadow-md);
 }
 
 .serviceCard h3 {
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-24);
   color: var(--color-black);
 }
 
 .serviceCard p {
-  color: var(--color-grey-700);
-  line-height: var(--line-height-relaxed);
   margin-bottom: 0;
+  color: var(--services-text-body);
+  line-height: var(--line-height-relaxed);
 }
 
 @media (min-width: 768px) {

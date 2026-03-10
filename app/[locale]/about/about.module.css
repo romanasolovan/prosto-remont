@@ -1,7 +1,19 @@
-/* ════════════════════════════════════════════════
-   PAGE SHELL
-════════════════════════════════════════════════ */
 .aboutPage {
+  --about-bg-start: var(--color-ivory-50);
+  --about-bg-end: var(--color-stone-300);
+  --about-dark-text: var(--color-cream-text);
+  --about-soft-text: rgba(240, 237, 230, 0.72);
+  --about-soft-text-muted: rgba(240, 237, 230, 0.66);
+  --about-accent: var(--color-sand-500);
+  --about-accent-strong: var(--color-sand-400);
+  --about-olive: var(--color-olive-500);
+  --about-card-border: rgba(255, 255, 255, 0.06);
+  --about-panel-border: rgba(17, 17, 14, 0.06);
+  --about-panel-shadow: 0 24px 50px rgba(17, 17, 14, 0.045);
+  --about-panel-shadow-hover: 0 30px 65px rgba(17, 17, 14, 0.08);
+  --about-ring-size: clamp(120px, 16vw, 180px);
+  --about-accent-glow-size: clamp(120px, 20vw, 180px);
+
   width: 100%;
   min-height: 100vh;
   overflow-x: hidden;
@@ -16,53 +28,49 @@
       rgba(180, 180, 180, 0.08) 0%,
       transparent 50%
     ),
-    linear-gradient(180deg, #f7f6f2 0%, #efede8 100%);
+    linear-gradient(180deg, var(--about-bg-start) 0%, var(--about-bg-end) 100%);
 }
 
-/* ════════════════════════════════════════════════
-   STATS SECTION
-════════════════════════════════════════════════ */
 .statsSection {
   position: relative;
-  min-height: 100svh;
   display: flex;
   align-items: center;
+  min-height: 100svh;
   padding: clamp(72px, 10vw, 120px) 0;
-  background: linear-gradient(160deg, #1c1b18 0%, #252320 55%, #2e2b26 100%);
   overflow: hidden;
+  background: var(--gradient-stats-surface);
 }
 
-/* giant ghost word behind everything */
 .statsBackground {
   position: absolute;
   inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   pointer-events: none;
   user-select: none;
-  overflow: hidden;
 }
 
 .bgWord {
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(18vw, 28vw, 36vw);
-  font-weight: 300;
-  font-style: italic;
-  line-height: 1;
-  letter-spacing: -0.04em;
+  transform: translateY(6%);
   color: rgba(255, 255, 255, 0.028);
   white-space: nowrap;
-  transform: translateY(6%);
+  font-family: var(--font-display);
+  font-size: clamp(18vw, 28vw, 36vw);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.04em;
 }
 
 .statsInner {
   position: relative;
-  z-index: 1;
-  width: 100%;
+  z-index: var(--z-base);
   display: flex;
   flex-direction: column;
   gap: clamp(36px, 7vw, 72px);
+  width: 100%;
 }
 
 .statsMeta {
@@ -72,50 +80,49 @@
 }
 
 .statsEyebrow {
-  font-family: "DM Sans", sans-serif;
+  color: rgba(197, 168, 130, 0.75);
+  font-family: var(--font-ui);
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: rgba(197, 168, 130, 0.75);
 }
 
 .statsTitle {
-  margin: 0;
   max-width: 16ch;
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(2.4rem, 6vw, 5.4rem);
+  margin: 0;
+  color: var(--about-dark-text);
+  text-wrap: balance;
+  font-family: var(--font-display);
+  font-size: clamp(38px, 6vw, 86px);
   font-weight: 300;
   line-height: 0.95;
   letter-spacing: -0.035em;
-  color: #f0ede6;
-  text-wrap: balance;
 }
 
-/* responsive row */
 .statsGrid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   align-items: stretch;
+  justify-content: center;
   gap: clamp(14px, 2.5vw, 22px);
 }
 
 .statCard {
   position: relative;
-  flex: 1 1 calc(50% - 14px);
-  min-width: 140px;
-  max-width: 260px;
   display: flex;
+  flex: 1 1 calc(50% - 14px);
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   gap: clamp(12px, 2vw, 16px);
+  min-width: 140px;
+  max-width: 260px;
   padding: clamp(18px, 3vw, 28px) clamp(12px, 2vw, 18px);
   background: transparent;
   transition:
     transform 260ms ease,
-    background 320ms ease;
+    background var(--transition-smooth);
 }
 
 .statCard:hover {
@@ -127,27 +134,27 @@
 }
 
 .statIcon {
-  width: clamp(56px, 14vw, 72px);
-  height: clamp(56px, 14vw, 72px);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #c5a882;
-  border-radius: 50%;
+  width: clamp(56px, 14vw, 72px);
+  height: clamp(56px, 14vw, 72px);
+  color: var(--about-accent);
+  border-radius: var(--radius-circle);
   background: transparent;
-  transition:
-    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
-    color 320ms ease,
-    opacity 320ms ease,
-    background-color 320ms ease,
-    box-shadow 320ms ease;
   animation: iconFloat 6s ease-in-out infinite;
   animation-delay: calc(var(--i, 0) * 0.4s);
+  transition:
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    color var(--transition-smooth),
+    opacity var(--transition-smooth),
+    background-color var(--transition-smooth),
+    box-shadow var(--transition-smooth);
 }
 
 .statCard:hover .statIcon {
   transform: translateY(-4px) scale(1.08);
-  color: #d4bc9a;
+  color: var(--about-accent-strong);
   opacity: 0.84;
   background: rgba(255, 255, 255, 0.035);
   box-shadow:
@@ -161,8 +168,8 @@
   filter: drop-shadow(0 4px 10px rgba(17, 17, 17, 0.08));
   transition:
     transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
-    filter 320ms ease,
-    opacity 320ms ease;
+    filter var(--transition-smooth),
+    opacity var(--transition-smooth);
 }
 
 .statCard:hover .statIcon svg {
@@ -171,15 +178,15 @@
 }
 
 .statText {
-  margin: 0;
   max-width: 14ch;
+  margin: 0;
+  color: var(--about-soft-text);
   text-align: center;
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(1rem, 2.6vw, 1.22rem);
-  font-weight: 300;
+  font-family: var(--font-display);
+  font-size: clamp(16px, 2.6vw, 20px);
   font-style: italic;
+  font-weight: 300;
   line-height: 1.32;
-  color: rgba(240, 237, 230, 0.72);
 }
 
 .statLine {
@@ -189,7 +196,7 @@
   width: 0;
   height: 1px;
   transform: translateX(-50%);
-  background: #c5a882;
+  background: var(--about-accent);
   transition: width 400ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -197,22 +204,10 @@
   width: min(72%, 160px);
 }
 
-@keyframes iconFloat {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
-}
-
-/* ════════════════════════════════════════════════
-   STORY & VALUES SECTION
-════════════════════════════════════════════════ */
 .storyValuesSection {
   position: relative;
   padding: clamp(88px, 12vw, 150px) 0;
+  overflow: hidden;
   background:
     radial-gradient(
       circle at 15% 20%,
@@ -224,34 +219,37 @@
       rgba(85, 92, 63, 0.08) 0%,
       transparent 30%
     ),
-    linear-gradient(180deg, #f5f3ee 0%, #f1eee8 100%);
-  overflow: hidden;
+    linear-gradient(
+      180deg,
+      var(--color-ivory-100) 0%,
+      var(--color-ivory-200) 100%
+    );
 }
 
 .storyValuesSection::before,
 .storyValuesSection::after {
   content: "";
   position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
+  border-radius: var(--radius-circle);
   filter: blur(2px);
+  pointer-events: none;
 }
 
 .storyValuesSection::before {
-  width: clamp(180px, 28vw, 320px);
-  height: clamp(180px, 28vw, 320px);
   top: 10%;
   left: -8%;
-  border: 1px solid rgba(197, 168, 130, 0.16);
+  width: clamp(180px, 28vw, 320px);
+  height: clamp(180px, 28vw, 320px);
+  border: 1px solid var(--color-sand-200);
   opacity: 0.8;
 }
 
 .storyValuesSection::after {
-  width: clamp(140px, 22vw, 260px);
-  height: clamp(140px, 22vw, 260px);
   right: -4%;
   bottom: 8%;
-  border: 1px solid rgba(85, 92, 63, 0.16);
+  width: clamp(140px, 22vw, 260px);
+  height: clamp(140px, 22vw, 260px);
+  border: 1px solid var(--color-olive-300);
   opacity: 0.7;
 }
 
@@ -262,7 +260,6 @@
   gap: clamp(20px, 3vw, 30px);
 }
 
-/* architectural guide line through the section */
 .storyValuesInner::before {
   content: "";
   position: absolute;
@@ -270,6 +267,8 @@
   left: 50%;
   width: min(90%, 920px);
   height: 1px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
   background: linear-gradient(
     90deg,
     transparent 0%,
@@ -278,40 +277,32 @@
     rgba(26, 25, 22, 0.08) 82%,
     transparent 100%
   );
-  transform: translate(-50%, -50%);
-  pointer-events: none;
 }
 
-/* cards */
 .svCard {
   position: relative;
   width: 100%;
   overflow: hidden;
-  border: 1px solid rgba(17, 17, 14, 0.06);
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.86) 0%,
-    rgba(255, 255, 255, 0.56) 100%
-  );
+  isolation: isolate;
+  border: 1px solid var(--about-panel-border);
+  background: var(--gradient-story-surface);
   box-shadow:
-    0 24px 50px rgba(17, 17, 14, 0.045),
+    var(--about-panel-shadow),
     inset 0 1px 0 rgba(255, 255, 255, 0.76);
   transition:
-    transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 420ms ease,
-    border-color 420ms ease,
-    background 420ms ease;
-  isolation: isolate;
+    transform var(--transition-lift),
+    box-shadow var(--transition-lift),
+    border-color var(--transition-lift),
+    background var(--transition-lift);
 }
 
 .svCard:hover {
-  box-shadow:
-    0 30px 65px rgba(17, 17, 14, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
   border-color: rgba(197, 168, 130, 0.18);
+  box-shadow:
+    var(--about-panel-shadow-hover),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
-/* different silhouettes */
 .storyCard {
   align-self: flex-start;
   border-radius: 42px 42px 120px 42px;
@@ -322,7 +313,6 @@
   border-radius: 120px 42px 42px 42px;
 }
 
-/* directional entrance feeling */
 .storyCard:hover {
   transform: translateX(10px) translateY(-4px);
 }
@@ -334,97 +324,93 @@
 .svCardInner {
   position: relative;
   z-index: 2;
-  padding: clamp(30px, 6vw, 56px) clamp(24px, 5vw, 50px);
   display: flex;
   flex-direction: column;
   gap: 18px;
+  padding: clamp(30px, 6vw, 56px) clamp(24px, 5vw, 50px);
 }
 
-/* large soft number */
 .svLabel {
   display: block;
   margin-bottom: -4px;
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(3.6rem, 8vw, 6.4rem);
-  font-weight: 300;
+  color: rgba(197, 168, 130, 0.2);
+  font-family: var(--font-display);
+  font-size: clamp(58px, 8vw, 102px);
   font-style: italic;
+  font-weight: 300;
   line-height: 0.9;
   letter-spacing: -0.05em;
-  color: rgba(197, 168, 130, 0.2);
 }
 
-/* titles */
 .svTitle {
-  margin: 0;
   max-width: 11ch;
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(2.1rem, 4.4vw, 3.8rem);
+  margin: 0;
+  color: #1a1916;
+  text-wrap: balance;
+  font-family: var(--font-display);
+  font-size: clamp(34px, 4.4vw, 61px);
   font-weight: 300;
   line-height: 0.96;
   letter-spacing: -0.03em;
-  color: #1a1916;
-  text-wrap: balance;
 }
 
-/* body */
 .svText {
-  margin: 0;
   max-width: 43ch;
-  font-family: "DM Sans", sans-serif;
-  font-size: clamp(0.94rem, 1.08vw, 1.02rem);
-  line-height: 1.92;
+  margin: 0;
+  color: var(--color-muted-warm);
+  font-family: var(--font-ui);
+  font-size: clamp(15px, 1.08vw, 16px);
   font-weight: 300;
-  color: #5a5650;
+  line-height: 1.92;
 }
 
-/* left/right accent */
 .svAccent {
   position: absolute;
-  inset: auto auto 0 0;
-  width: clamp(120px, 20vw, 180px);
-  height: clamp(120px, 20vw, 180px);
-  border-radius: 50%;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  width: var(--about-accent-glow-size);
+  height: var(--about-accent-glow-size);
+  transform: translate(-28%, 30%);
+  border-radius: var(--radius-circle);
+  pointer-events: none;
   background: radial-gradient(
     circle,
     rgba(197, 168, 130, 0.16) 0%,
     rgba(197, 168, 130, 0.04) 45%,
     transparent 72%
   );
-  transform: translate(-28%, 30%);
-  z-index: 1;
-  pointer-events: none;
 }
 
 .valuesCard .svAccent {
-  inset: auto 0 0 auto;
+  right: 0;
+  left: auto;
+  transform: translate(28%, 30%);
   background: radial-gradient(
     circle,
     rgba(85, 92, 63, 0.14) 0%,
     rgba(85, 92, 63, 0.04) 45%,
     transparent 72%
   );
-  transform: translate(28%, 30%);
 }
 
-/* decorative architectural ring */
 .svCard::before {
   content: "";
   position: absolute;
-  width: clamp(120px, 16vw, 180px);
-  height: clamp(120px, 16vw, 180px);
-  border-radius: 50%;
-  border: 1px solid rgba(17, 17, 14, 0.06);
   top: -42px;
   right: -42px;
   z-index: 0;
+  width: var(--about-ring-size);
+  height: var(--about-ring-size);
+  border: 1px solid var(--about-panel-border);
+  border-radius: var(--radius-circle);
 }
 
 .valuesCard::before {
-  left: -42px;
   right: auto;
+  left: -42px;
 }
 
-/* subtle vertical guide */
 .svCard::after {
   content: "";
   position: absolute;
@@ -432,7 +418,7 @@
   bottom: 28px;
   left: 0;
   width: 3px;
-  border-radius: 0 999px 999px 0;
+  border-radius: 0 var(--radius-pill) var(--radius-pill) 0;
   background: linear-gradient(
     180deg,
     rgba(197, 168, 130, 0.9) 0%,
@@ -441,9 +427,9 @@
 }
 
 .valuesCard::after {
-  left: auto;
   right: 0;
-  border-radius: 999px 0 0 999px;
+  left: auto;
+  border-radius: var(--radius-pill) 0 0 var(--radius-pill);
   background: linear-gradient(
     180deg,
     rgba(85, 92, 63, 0.72) 0%,
@@ -451,12 +437,9 @@
   );
 }
 
-/* ════════════════════════════════════════════════
-   WHY + OPINIONS
-════════════════════════════════════════════════ */
 .whySection {
   padding: 0 0 clamp(96px, 12vw, 148px);
-  background: #f5f3ee;
+  background: var(--color-ivory-100);
 }
 
 .whySectionInner {
@@ -465,88 +448,44 @@
   gap: clamp(16px, 2.5vw, 22px);
 }
 
-.whyCard {
-  position: relative;
-  overflow: hidden;
-  border-radius: 40px;
-  padding: clamp(32px, 6vw, 52px) clamp(28px, 5vw, 52px);
-  background: linear-gradient(148deg, #1c1b18 0%, #26241f 60%, #302d28 100%);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 24px 56px rgba(10, 9, 8, 0.28);
-}
-
-.whyCard::before {
-  content: "";
-  position: absolute;
-  inset: 0 auto auto 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    #c5a882 0%,
-    rgba(197, 168, 130, 0.3) 50%,
-    transparent 100%
-  );
-}
-
-.whyIndex {
-  position: absolute;
-  top: clamp(24px, 4vw, 36px);
-  right: clamp(24px, 4vw, 40px);
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(4rem, 8vw, 7rem);
-  font-weight: 300;
-  font-style: italic;
-  line-height: 1;
-  letter-spacing: -0.04em;
-  color: rgba(255, 255, 255, 0.04);
-  pointer-events: none;
-  user-select: none;
-}
-
-.whyCardContent {
-  position: relative;
-  z-index: 1;
-}
-
-.whyTitle {
-  margin: 0 0 20px;
-  max-width: 14ch;
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(2.2rem, 5vw, 4rem);
-  font-weight: 300;
-  line-height: 0.97;
-  letter-spacing: -0.03em;
-  color: #f0ede6;
-  text-wrap: balance;
-}
-
-.whyText {
-  margin: 0;
-  max-width: 42ch;
-  font-family: "DM Sans", sans-serif;
-  font-size: clamp(0.94rem, 1.1vw, 1.02rem);
-  line-height: 1.94;
-  font-weight: 300;
-  color: rgba(240, 237, 230, 0.66);
-}
-
+.whyCard,
 .opinionsWrapper {
   position: relative;
   overflow: hidden;
-  border-radius: 40px;
-  padding: clamp(28px, 5vw, 44px) clamp(26px, 4.5vw, 44px);
-  background: linear-gradient(148deg, #1c1b18 0%, #26241f 60%, #302d28 100%);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 24px 56px rgba(10, 9, 8, 0.24);
+  border: 1px solid var(--about-card-border);
+  border-radius: var(--radius-xl);
+  background: var(--gradient-dark-surface);
 }
 
+.whyCard {
+  padding: clamp(32px, 6vw, 52px) clamp(28px, 5vw, 52px);
+  box-shadow: var(--shadow-soft-dark-strong);
+}
+
+.opinionsWrapper {
+  padding: clamp(28px, 5vw, 44px) clamp(26px, 4.5vw, 44px);
+  box-shadow: var(--shadow-soft-dark);
+}
+
+.whyCard::before,
 .opinionsWrapper::before {
   content: "";
   position: absolute;
   inset: 0 auto auto 0;
   width: 100%;
   height: 2px;
+}
+
+.whyCard::before {
+  background: linear-gradient(
+    90deg,
+    var(--about-accent) 0%,
+    rgba(197, 168, 130, 0.3) 50%,
+    transparent 100%
+  );
+}
+
+.opinionsWrapper::before {
   background: linear-gradient(
     90deg,
     rgba(197, 168, 130, 0.5) 0%,
@@ -555,9 +494,48 @@
   );
 }
 
-/* ════════════════════════════════════════════════
-   TABLET  ≥ 768px
-════════════════════════════════════════════════ */
+.whyIndex {
+  position: absolute;
+  top: clamp(24px, 4vw, 36px);
+  right: clamp(24px, 4vw, 40px);
+  color: rgba(255, 255, 255, 0.04);
+  pointer-events: none;
+  user-select: none;
+  font-family: var(--font-display);
+  font-size: clamp(64px, 8vw, 112px);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.whyCardContent {
+  position: relative;
+  z-index: var(--z-base);
+}
+
+.whyTitle {
+  max-width: 14ch;
+  margin: 0 0 20px;
+  color: var(--about-dark-text);
+  text-wrap: balance;
+  font-family: var(--font-display);
+  font-size: clamp(35px, 5vw, 64px);
+  font-weight: 300;
+  line-height: 0.97;
+  letter-spacing: -0.03em;
+}
+
+.whyText {
+  max-width: 42ch;
+  margin: 0;
+  color: var(--about-soft-text-muted);
+  font-family: var(--font-ui);
+  font-size: clamp(15px, 1.1vw, 16px);
+  font-weight: 300;
+  line-height: 1.94;
+}
+
 @media (min-width: 768px) {
   .statsGrid {
     justify-content: space-between;
@@ -577,7 +555,7 @@
   }
 
   .statText {
-    font-size: clamp(1rem, 1.8vw, 1.16rem);
+    font-size: clamp(16px, 1.8vw, 19px);
   }
 
   .storyValuesInner {
@@ -606,9 +584,6 @@
   }
 }
 
-/* ════════════════════════════════════════════════
-   DESKTOP  ≥ 1024px
-════════════════════════════════════════════════ */
 @media (min-width: 1024px) {
   .statsTitle {
     max-width: 22ch;
@@ -622,10 +597,10 @@
 
   .statCard {
     flex: 1 1 0;
+    gap: 18px;
     min-width: 0;
     max-width: none;
     padding: 34px 20px;
-    gap: 18px;
   }
 
   .statIcon {
@@ -634,7 +609,7 @@
   }
 
   .statText {
-    font-size: clamp(1.04rem, 1.15vw, 1.2rem);
+    font-size: clamp(17px, 1.15vw, 19px);
   }
 
   .storyValuesSection {
@@ -663,19 +638,19 @@
   }
 
   .svTitle {
-    font-size: clamp(2.5rem, 3.2vw, 4.2rem);
+    font-size: clamp(40px, 3.2vw, 67px);
   }
 
   .svText {
     max-width: 52ch;
-    font-size: 1rem;
+    font-size: 16px;
   }
 
   .whySectionInner {
     display: grid;
     grid-template-columns: 0.8fr 1.2fr;
-    gap: 18px;
     align-items: start;
+    gap: 18px;
   }
 
   .whyCard {
@@ -688,9 +663,6 @@
   }
 }
 
-/* ════════════════════════════════════════════════
-   REDUCED MOTION
-════════════════════════════════════════════════ */
 @media (prefers-reduced-motion: reduce) {
   .statIcon {
     animation: none;
@@ -702,12 +674,20 @@
   .storyCard:hover,
   .valuesCard:hover,
   .statIcon,
-  .statIcon svg {
-    transition: none;
+  .statIcon svg,
+  .statLine {
     transform: none;
+    transition: none;
+  }
+}
+
+@keyframes iconFloat {
+  0%,
+  100% {
+    transform: translateY(0);
   }
 
-  .statLine {
-    transition: none;
+  50% {
+    transform: translateY(-5px);
   }
 }

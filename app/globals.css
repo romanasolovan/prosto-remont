@@ -1,6 +1,15 @@
 :root {
-  /* Colors - Black + Neutral Greys */
+  /* fonts */
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Inter", sans-serif;
+  --font-display: "Cormorant Garamond", serif;
+  --font-ui: "DM Sans", sans-serif;
+
+  /* base colors */
   --color-black: #000000;
+  --color-white: #ffffff;
+
+  /* neutral greys */
   --color-grey-900: #1a1a1a;
   --color-grey-800: #2d2d2d;
   --color-grey-700: #404040;
@@ -10,20 +19,21 @@
   --color-grey-300: #d4d4d4;
   --color-grey-200: #e5e5e5;
   --color-grey-100: #f5f5f5;
-  --color-white: #ffffff;
 
-  /* Premium Warm Neutral Palette */
+  /* warm neutrals */
   --color-ivory-50: #f7f6f2;
   --color-ivory-100: #f5f3ee;
   --color-ivory-200: #f1eee8;
   --color-stone-300: #efede8;
   --color-stone-400: #e7e2d9;
 
+  /* dark palette */
   --color-charcoal-900: #1c1b18;
   --color-charcoal-800: #252320;
   --color-charcoal-700: #2e2b26;
   --color-charcoal-600: #302d28;
 
+  /* accents */
   --color-sand-500: #c5a882;
   --color-sand-400: #d4bc9a;
   --color-sand-300: rgba(197, 168, 130, 0.3);
@@ -37,68 +47,112 @@
   --color-cream-text: #f0ede6;
   --color-muted-warm: #5a5650;
 
-  /* Spacing Scale */
-  --space-xs: 0.5rem; /* 8px */
-  --space-sm: 1rem; /* 16px */
-  --space-md: 1.5rem; /* 24px */
-  --space-lg: 2rem; /* 32px */
-  --space-xl: 3rem; /* 48px */
-  --space-2xl: 4rem; /* 64px */
-  --space-3xl: 6rem; /* 96px */
+  /* semantic aliases */
+  --color-text: var(--color-grey-900);
+  --color-text-soft: var(--color-grey-700);
+  --color-bg: var(--color-white);
+  --color-border-soft: rgba(17, 17, 14, 0.06);
+  --color-focus: var(--color-black);
 
-  /* Typography */
-  --font-heading: "Playfair Display", serif;
-  --font-body: "Inter", sans-serif;
+  /* spacing */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-14: 14px;
+  --space-16: 16px;
+  --space-18: 18px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-28: 28px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-56: 56px;
+  --space-64: 64px;
+  --space-72: 72px;
+  --space-96: 96px;
+  --space-110: 110px;
+  --space-120: 120px;
+  --space-150: 150px;
 
-  --text-xs: 0.75rem; /* 12px */
-  --text-sm: 0.875rem; /* 14px */
-  --text-base: 1rem; /* 16px */
-  --text-lg: 1.125rem; /* 18px */
-  --text-xl: 1.25rem; /* 20px */
-  --text-2xl: 1.5rem; /* 24px */
-  --text-3xl: 2rem; /* 32px */
-  --text-4xl: 2.5rem; /* 40px */
-  --text-5xl: 3rem; /* 48px */
+  /* typography */
+  --text-12: 12px;
+  --text-14: 14px;
+  --text-16: 16px;
+  --text-18: 18px;
+  --text-20: 20px;
+  --text-24: 24px;
+  --text-32: 32px;
+  --text-40: 40px;
+  --text-48: 48px;
 
   --line-height-tight: 1.2;
   --line-height-normal: 1.5;
   --line-height-relaxed: 1.75;
 
-  /* Layout */
-  --max-width-sm: 640px;
-  --max-width-md: 768px;
-  --max-width-lg: 1024px;
-  --max-width-xl: 1280px;
-  --max-width-content: 1200px;
+  /* layout */
+  --container-width: 1200px;
+  --container-padding-mobile: 24px;
+  --container-padding-desktop: 32px;
 
-  /* Border Radius */
+  /* radius */
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
+  --radius-xl: 40px;
+  --radius-pill: 999px;
+  --radius-circle: 50%;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  /* shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-soft-dark: 0 24px 56px rgba(10, 9, 8, 0.24);
+  --shadow-soft-dark-strong: 0 24px 56px rgba(10, 9, 8, 0.28);
 
-  /* Z-index Layers */
+  /* layers */
   --z-base: 1;
   --z-dropdown: 100;
   --z-sticky: 200;
   --z-modal: 300;
   --z-overlay: 400;
 
-  /* Transitions */
+  /* motion */
   --transition-fast: 150ms ease-in-out;
   --transition-base: 250ms ease-in-out;
   --transition-slow: 350ms ease-in-out;
+  --transition-smooth: 320ms ease;
+  --transition-lift: 420ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* common gradients */
+  --gradient-dark-surface: linear-gradient(
+    148deg,
+    var(--color-charcoal-900) 0%,
+    #26241f 60%,
+    var(--color-charcoal-600) 100%
+  );
+
+  --gradient-stats-surface: linear-gradient(
+    160deg,
+    var(--color-charcoal-900) 0%,
+    var(--color-charcoal-800) 55%,
+    var(--color-charcoal-700) 100%
+  );
+
+  --gradient-story-surface: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.86) 0%,
+    rgba(255, 255, 255, 0.56) 100%
+  );
 }
 
-/* Reset & Base Styles */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+* {
   margin: 0;
   padding: 0;
 }
@@ -110,55 +164,25 @@ html {
 }
 
 body {
-  font-family: var(--font-body);
-  font-size: var(--text-base);
-  line-height: var(--line-height-normal);
-  color: var(--color-grey-900);
-  background-color: var(--color-white);
   min-height: 100vh;
+  font-family: var(--font-body);
+  font-size: var(--text-16);
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+  background-color: var(--color-bg);
 }
 
-/* Typography */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-heading);
-  font-weight: 600;
-  line-height: var(--line-height-tight);
-  color: var(--color-black);
-  margin-bottom: var(--space-md);
+img,
+svg {
+  display: block;
+  max-width: 100%;
 }
 
-h1 {
-  font-size: var(--text-4xl);
-}
-
-h2 {
-  font-size: var(--text-3xl);
-}
-
-h3 {
-  font-size: var(--text-2xl);
-}
-
-h4 {
-  font-size: var(--text-xl);
-}
-
-h5 {
-  font-size: var(--text-lg);
-}
-
-h6 {
-  font-size: var(--text-base);
-}
-
-p {
-  margin-bottom: var(--space-md);
-  color: var(--color-grey-700);
+button,
+input,
+textarea,
+select {
+  font: inherit;
 }
 
 a {
@@ -171,51 +195,92 @@ a:hover {
   color: var(--color-grey-600);
 }
 
-a:focus-visible {
-  outline: 2px solid var(--color-black);
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
-  border-radius: var(--radius-sm);
 }
 
-/* Global Container Styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: var(--space-24);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: var(--line-height-tight);
+  color: var(--color-black);
+}
+
+h1 {
+  font-size: var(--text-40);
+}
+
+h2 {
+  font-size: var(--text-32);
+}
+
+h3 {
+  font-size: var(--text-24);
+}
+
+h4 {
+  font-size: var(--text-20);
+}
+
+h5 {
+  font-size: var(--text-18);
+}
+
+h6 {
+  font-size: var(--text-16);
+}
+
+p {
+  margin-bottom: var(--space-24);
+  color: var(--color-text-soft);
+}
+
 .container {
   width: 100%;
-  max-width: var(--max-width-content);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: var(--space-md);
-  padding-right: var(--space-md);
+  max-width: var(--container-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-mobile);
 }
 
-@media (min-width: 768px) {
-  .container {
-    padding-left: var(--space-lg);
-    padding-right: var(--space-lg);
-  }
-}
-
-/* Global Button Styles */
 .btn {
-  display: inline-block;
-  padding: var(--space-sm) var(--space-lg);
-  font-family: var(--font-body);
-  font-size: var(--text-base);
-  font-weight: 500;
-  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-16) var(--space-32);
   border: 2px solid transparent;
   border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: all var(--transition-base);
+  font-family: var(--font-body);
+  font-size: var(--text-16);
+  font-weight: 500;
+  text-align: center;
   text-decoration: none;
+  transition:
+    color var(--transition-base),
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    transform var(--transition-base);
 }
 
 .btn:focus-visible {
-  outline: 2px solid var(--color-black);
+  outline: 2px solid var(--color-focus);
   outline-offset: 4px;
 }
 
-/* Primary Button */
-/* .btn-primary {
+.btn-primary {
+  position: relative;
+  overflow: hidden;
   background-color: var(--color-black);
   color: var(--color-white);
   border-color: var(--color-black);
@@ -225,13 +290,6 @@ a:focus-visible {
   background-color: var(--color-grey-800);
   border-color: var(--color-grey-800);
   color: var(--color-white);
-} */
-
-/* Enhanced Button Styles - Add to existing global.css */
-
-.btn-primary {
-  position: relative;
-  overflow: hidden;
 }
 
 .btn-primary::before {
@@ -241,12 +299,12 @@ a:focus-visible {
   left: 50%;
   width: 0;
   height: 0;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   background: rgba(255, 255, 255, 0.1);
   transform: translate(-50%, -50%);
   transition:
-    width 0.6s,
-    height 0.6s;
+    width 600ms,
+    height 600ms;
 }
 
 .btn-primary:hover::before {
@@ -258,7 +316,6 @@ a:focus-visible {
   transform: scale(0.98);
 }
 
-/* Secondary Button */
 .btn-secondary {
   background-color: var(--color-white);
   color: var(--color-black);
@@ -270,59 +327,30 @@ a:focus-visible {
   color: var(--color-black);
 }
 
-/* Ghost Button */
 .btn-ghost {
+  padding: var(--space-16) var(--space-24);
   background-color: transparent;
   color: var(--color-grey-700);
   border-color: transparent;
-  padding: var(--space-sm) var(--space-md);
 }
 
 .btn-ghost:hover {
-  color: var(--color-black);
   background-color: var(--color-grey-100);
+  color: var(--color-black);
 }
 
-/* Responsive Typography */
-@media (min-width: 768px) {
-  h1 {
-    font-size: var(--text-5xl);
-  }
-
-  h2 {
-    font-size: var(--text-4xl);
-  }
-
-  h3 {
-    font-size: var(--text-3xl);
-  }
-}
-
-/* ============================================
-   ACCESSIBILITY IMPROVEMENTS
-   ============================================ */
 .sr-only {
   position: absolute;
   width: 1px;
   height: 1px;
-  padding: 0;
   margin: -1px;
+  padding: 0;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
   white-space: nowrap;
-  border-width: 0;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 
-/* Focus visible styles for interactive elements */
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
-  outline: 2px solid var(--color-black);
-  outline-offset: 2px;
-}
-
-/* Utility Classes */
 .text-center {
   text-align: center;
 }
@@ -332,13 +360,31 @@ select:focus-visible {
 }
 
 .section-spacing {
-  padding-top: var(--space-3xl);
-  padding-bottom: var(--space-3xl);
+  padding-top: var(--space-96);
+  padding-bottom: var(--space-96);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-inline: var(--container-padding-desktop);
+  }
+
+  h1 {
+    font-size: var(--text-48);
+  }
+
+  h2 {
+    font-size: var(--text-40);
+  }
+
+  h3 {
+    font-size: var(--text-32);
+  }
 }
 
 @media (max-width: 767px) {
   .section-spacing {
-    padding-top: var(--space-2xl);
-    padding-bottom: var(--space-2xl);
+    padding-top: var(--space-64);
+    padding-bottom: var(--space-64);
   }
 }

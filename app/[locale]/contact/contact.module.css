@@ -1,94 +1,103 @@
 .contactPage {
+  --contact-card-radius: 20px;
+  --contact-item-radius: 16px;
+  --contact-social-size: 44px;
+  --contact-icon-size: 20px;
+  --contact-header-top: 32px;
+  --contact-header-bottom: 24px;
+  --contact-row-top: 64px;
+  --contact-row-bottom: 48px;
+  --contact-row-gap: 18px;
+  --contact-section-gap: 12px;
+  --contact-border: var(--color-grey-200);
+  --contact-text-soft: var(--color-grey-600);
+  --contact-label: var(--color-grey-500);
+  --contact-card-bg: var(--color-white);
+
   width: 100%;
   background: var(--color-white);
 }
 
-/* Title + description centered, tight, elegant */
 .pageHeader {
-  padding: var(--space-lg) 0 var(--space-md);
+  padding: var(--contact-header-top) 0 var(--contact-header-bottom);
   text-align: center;
-  border-bottom: 1px solid var(--color-grey-200);
+  border-bottom: 1px solid var(--contact-border);
 }
 
 .pageTitle {
   margin: 0;
-  font-size: 28px;
-  line-height: 1.18;
-  font-weight: 600;
-  letter-spacing: -0.02em;
   color: var(--color-black);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
 }
 
 .pageDescription {
-  margin: 6px auto 0;
   max-width: 64ch;
+  margin: 6px auto 0;
+  color: var(--contact-text-soft);
   font-size: 14px;
   line-height: 1.55;
-  color: var(--color-grey-600);
 }
 
-/* Asymmetrical row: info (outlined) + map (no outline) */
 .contactRow {
-  padding: var(--space-2xl) 0 var(--space-xl);
   display: grid;
   grid-template-columns: 1fr;
-  gap: 18px;
+  gap: var(--contact-row-gap);
+  padding: var(--contact-row-top) 0 var(--contact-row-bottom);
 }
 
-/* Left column is outlined card */
 .infoCard {
-  border: 1px solid var(--color-grey-200);
-  border-radius: 20px;
-  background: var(--color-white);
-  box-shadow: var(--shadow-sm);
   padding: 18px;
+  border: 1px solid var(--contact-border);
+  border-radius: var(--contact-card-radius);
+  background: var(--contact-card-bg);
+  box-shadow: var(--shadow-sm);
 }
 
-/* Right column is NOT outlined */
 .mapArea {
-  /* no border, no shadow, no background */
   min-height: 260px;
 }
 
-/* Headings */
 .sectionTitle {
-  margin: 0 0 14px 0;
-  font-size: 18px;
-  line-height: 1.25;
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  margin: 0 0 14px;
   color: var(--color-black);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
 }
 
-/* Contact list */
 .contactList {
   display: grid;
-  gap: 12px;
+  gap: var(--contact-section-gap);
 }
 
 .contactItem {
   padding: 12px 14px;
-  border: 1px solid var(--color-grey-200);
-  border-radius: 16px;
+  border: 1px solid var(--contact-border);
+  border-radius: var(--contact-item-radius);
   background: var(--color-white);
 }
 
-.contactLabel {
+.contactLabel,
+.socialLabel {
   display: block;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 600;
-  color: var(--color-grey-500);
   margin-bottom: 6px;
+  color: var(--contact-label);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .contactValue {
   display: block;
-  font-size: 15px;
-  line-height: 1.45;
-  font-weight: 500;
   color: var(--color-grey-900);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.45;
   text-decoration: none;
   transition: color var(--transition-fast);
 }
@@ -97,76 +106,67 @@ a.contactValue:hover {
   color: var(--color-black);
 }
 
-/* Socials are now inside the left column */
 .socialInline {
   margin-top: 16px;
   padding-top: 14px;
-  border-top: 1px solid var(--color-grey-200);
+  border-top: 1px solid var(--contact-border);
 }
 
 .socialLabel {
-  margin: 0 0 10px 0;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 600;
-  color: var(--color-grey-500);
+  margin-bottom: 10px;
 }
 
 .socialLinksLeft {
   display: flex;
-  gap: 12px;
   flex-wrap: wrap;
+  gap: 12px;
 }
 
-/* Social icon button */
 .socialLink {
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--color-grey-200);
+  width: var(--contact-social-size);
+  height: var(--contact-social-size);
+  border: 1px solid var(--contact-border);
+  border-radius: var(--radius-pill);
   background: var(--color-white);
   color: var(--color-grey-900);
+  box-shadow: var(--shadow-sm);
   transition:
     transform var(--transition-fast),
     background-color var(--transition-fast),
     border-color var(--transition-fast),
     color var(--transition-fast);
-  box-shadow: var(--shadow-xs);
 }
 
 .socialLink svg {
-  width: 20px;
-  height: 20px;
+  width: var(--contact-icon-size);
+  height: var(--contact-icon-size);
 }
 
 .socialLink:hover {
   transform: translateY(-1px);
-  background: var(--color-black);
   border-color: var(--color-black);
+  background: var(--color-black);
   color: var(--color-white);
 }
 
-/* Map wrapper — polished but not outlined as a "card" */
 .mapWrapper {
   width: 100%;
   height: 100%;
-  border-radius: 20px;
   overflow: hidden;
+  border-radius: var(--contact-card-radius);
   background: var(--color-grey-100);
 }
 
 .mapIframe {
+  display: block;
   width: 100%;
   height: 100%;
   border: 0;
-  display: block;
 }
 
-/* Tablet/Desktop: asymmetrical columns + equal height */
 @media (min-width: 768px) {
   .pageTitle {
     font-size: 30px;
@@ -174,8 +174,8 @@ a.contactValue:hover {
 
   .contactRow {
     grid-template-columns: 0.9fr 1.5fr;
+    align-items: stretch;
     gap: 22px;
-    align-items: stretch; /* key: equal-height columns */
   }
 
   .infoCard {
@@ -186,9 +186,7 @@ a.contactValue:hover {
     min-height: unset;
   }
 
-  /* allow map to stretch to match left card height */
   .mapWrapper {
-    height: 100%;
     min-height: 100%;
   }
 }
@@ -197,6 +195,6 @@ a.contactValue:hover {
   .contactRow {
     grid-template-columns: 0.85fr 1.55fr;
     gap: 28px;
-    padding: var(--space-3xl) 0 var(--space-2xl);
+    padding: 96px 0 64px;
   }
 }

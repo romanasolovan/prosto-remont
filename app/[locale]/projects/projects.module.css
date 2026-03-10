@@ -1,59 +1,76 @@
 .projectsPage {
+  --projects-hero-bg: var(--color-grey-100);
+  --projects-text-soft: var(--color-grey-600);
+  --projects-card-border: var(--color-grey-200);
+  --projects-image-bg: var(--color-grey-300);
+  --projects-grid-gap: 48px;
+  --projects-card-radius: var(--radius-md);
+  --projects-card-padding: 32px;
+  --projects-category-size: 12px;
+  --projects-hero-top: 96px;
+  --projects-hero-bottom: 64px;
+  --projects-subtitle-width: 600px;
+
   width: 100%;
 }
 
 .hero {
-  background-color: var(--color-grey-100);
-  padding: var(--space-3xl) 0 var(--space-2xl);
+  padding: var(--projects-hero-top) 0 var(--projects-hero-bottom);
   text-align: center;
+  background-color: var(--projects-hero-bg);
 }
 
 .hero h1 {
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-24);
 }
 
 .subtitle {
-  font-size: var(--text-xl);
-  color: var(--color-grey-600);
-  max-width: 600px;
+  max-width: var(--projects-subtitle-width);
   margin: 0 auto;
+  color: var(--projects-text-soft);
+  font-size: 20px;
+  line-height: var(--line-height-normal);
 }
 
 .projectsGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-xl);
+  gap: var(--projects-grid-gap);
 }
 
 .projectCard {
-  border-radius: var(--radius-md);
   overflow: hidden;
-  border: 1px solid var(--color-grey-200);
-  transition: all var(--transition-base);
+  border: 1px solid var(--projects-card-border);
+  border-radius: var(--projects-card-radius);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    border-color var(--transition-base);
 }
 
 .projectCard:hover {
-  box-shadow: var(--shadow-lg);
   transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
 }
 
 .projectImage {
   width: 100%;
   aspect-ratio: 16 / 10;
-  background-color: var(--color-grey-300);
+  background-color: var(--projects-image-bg);
 }
 
 .projectInfo {
-  padding: var(--space-lg);
+  padding: var(--projects-card-padding);
 }
 
 .projectCategory {
   display: inline-block;
-  font-size: var(--text-xs);
-  text-transform: uppercase;
+  margin-bottom: var(--space-16);
+  color: var(--projects-text-soft);
+  font-size: var(--projects-category-size);
+  font-weight: 500;
   letter-spacing: 0.1em;
-  color: var(--color-grey-600);
-  margin-bottom: var(--space-sm);
+  text-transform: uppercase;
 }
 
 .projectInfo h3 {

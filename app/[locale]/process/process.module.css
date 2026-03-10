@@ -1,96 +1,103 @@
 .processPage {
+  --process-hero-bg: var(--color-grey-100);
+  --process-section-border: var(--color-grey-200);
+  --process-text-soft: var(--color-grey-600);
+  --process-text-body: var(--color-grey-700);
+  --process-step-max-width: 800px;
+  --process-form-max-width: 760px;
+
   width: 100%;
 }
 
 .hero {
-  background-color: var(--color-grey-100);
-  padding: var(--space-3xl) 0 var(--space-2xl);
+  padding: 96px 0 64px;
   text-align: center;
+  background-color: var(--process-hero-bg);
 }
 
 .hero h1 {
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-24);
 }
 
 .subtitle {
-  font-size: var(--text-xl);
-  color: var(--color-grey-600);
   max-width: 600px;
   margin: 0 auto;
+  color: var(--process-text-soft);
+  font-size: 20px;
+  line-height: var(--line-height-normal);
 }
 
 .stepsContainer {
-  max-width: 800px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: var(--space-2xl);
+  gap: 64px;
+  max-width: var(--process-step-max-width);
+  margin: 0 auto;
 }
 
 .step {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: var(--space-lg);
-  padding-bottom: var(--space-2xl);
-  border-bottom: 1px solid var(--color-grey-200);
+  gap: 32px;
+  padding-bottom: 64px;
+  border-bottom: 1px solid var(--process-section-border);
 }
 
 .step:last-child {
-  border-bottom: none;
   padding-bottom: 0;
+  border-bottom: none;
 }
 
 .stepNumber {
-  font-family: var(--font-heading);
-  font-size: var(--text-4xl);
-  font-weight: 700;
   color: var(--color-grey-300);
+  font-family: var(--font-heading);
+  font-size: 40px;
+  font-weight: 700;
   line-height: 1;
 }
 
 .stepContent h3 {
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-24);
   color: var(--color-black);
 }
 
 .stepContent p {
-  color: var(--color-grey-700);
-  line-height: var(--line-height-relaxed);
   margin-bottom: 0;
+  color: var(--process-text-body);
+  line-height: var(--line-height-relaxed);
 }
 
-@media (min-width: 768px) {
-  .stepNumber {
-    font-size: var(--text-5xl);
-  }
-}
-
-/* Request a Quote section */
 .quoteSection {
-  padding: var(--space-3xl) 0;
+  padding: 96px 0;
+  border-top: 1px solid var(--process-section-border);
   background: var(--color-white);
-  border-top: 1px solid var(--color-grey-200);
 }
 
 .quoteHeader {
-  text-align: center;
   max-width: 64ch;
-  margin: 0 auto var(--space-2xl);
+  margin: 0 auto 64px;
+  text-align: center;
 }
 
 .quoteTitle {
-  margin: 0 0 8px 0;
+  margin: 0 0 8px;
   color: var(--color-black);
 }
 
 .quoteDescription {
   margin: 0 auto;
-  color: var(--color-grey-600);
+  color: var(--process-text-soft);
+  font-size: 16px;
   line-height: var(--line-height-relaxed);
-  font-size: var(--text-base);
 }
 
 .formWrap {
-  max-width: 760px; /* keeps the long form elegant */
+  max-width: var(--process-form-max-width);
   margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .stepNumber {
+    font-size: 48px;
+  }
 }
