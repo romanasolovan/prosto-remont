@@ -224,7 +224,6 @@
   overflow: hidden;
 }
 
-/* floating architecture marks */
 .storyValuesSection::before,
 .storyValuesSection::after {
   content: "";
@@ -260,7 +259,6 @@
   gap: clamp(24px, 4vw, 34px);
 }
 
-/* center drafting axis */
 .storyValuesInner::before {
   content: "";
   position: absolute;
@@ -280,7 +278,6 @@
   pointer-events: none;
 }
 
-/* floating side markers */
 .storyValuesInner::after {
   content: "";
   position: absolute;
@@ -300,7 +297,6 @@
   pointer-events: none;
 }
 
-/* base panel */
 .svCard {
   position: relative;
   width: 100%;
@@ -315,7 +311,6 @@
   isolation: isolate;
 }
 
-/* story panel — warm ivory */
 .storyCard {
   align-self: flex-start;
   background: linear-gradient(
@@ -330,7 +325,6 @@
   border-radius: 34px 34px 110px 34px;
 }
 
-/* values panel — slightly moodier pearl/stone */
 .valuesCard {
   align-self: flex-end;
   background: linear-gradient(
@@ -364,11 +358,10 @@
   gap: 18px;
 }
 
-/* layered number */
 .svLabel {
   display: block;
   margin-bottom: -6px;
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--font-display);
   font-size: clamp(4.2rem, 9vw, 7.4rem);
   font-weight: 300;
   font-style: italic;
@@ -384,7 +377,7 @@
 .svTitle {
   margin: 0;
   max-width: 10ch;
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--font-display);
   font-size: clamp(2.2rem, 4.8vw, 4.2rem);
   font-weight: 300;
   line-height: 0.94;
@@ -396,14 +389,13 @@
 .svText {
   margin: 0;
   max-width: 44ch;
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-ui);
   font-size: clamp(0.94rem, 1.08vw, 1.03rem);
   line-height: 1.95;
   font-weight: 300;
   color: #5d5953;
 }
 
-/* blueprint-style frame */
 .svAccent {
   position: absolute;
   inset: 20px;
@@ -413,7 +405,6 @@
   z-index: 0;
 }
 
-/* inner soft glow */
 .storyCard .svAccent::before,
 .valuesCard .svAccent::before {
   content: "";
@@ -444,7 +435,6 @@
   );
 }
 
-/* signature side line */
 .svCard::before {
   content: "";
   position: absolute;
@@ -472,7 +462,6 @@
   );
 }
 
-/* secondary floating outline */
 .svCard::after {
   content: "";
   position: absolute;
@@ -493,71 +482,138 @@
 /* WHY & REVIEWS SECTION */
 
 .whySection {
+  position: relative;
   padding: 0 0 clamp(96px, 12vw, 148px);
-  background: var(--color-ivory-100);
+  overflow: hidden;
+  background:
+    radial-gradient(
+      ellipse 52% 36% at 14% 20%,
+      rgba(197, 168, 130, 0.08) 0%,
+      transparent 62%
+    ),
+    radial-gradient(
+      ellipse 34% 28% at 88% 82%,
+      rgba(85, 92, 63, 0.06) 0%,
+      transparent 64%
+    ),
+    linear-gradient(
+      180deg,
+      var(--color-ivory-100) 0%,
+      var(--color-stone-300) 100%
+    );
+}
+
+.whySection::before,
+.whySection::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.whySection::before {
+  top: 18%;
+  left: -4%;
+  width: clamp(160px, 20vw, 260px);
+  height: clamp(160px, 20vw, 260px);
+  border: 1px solid rgba(197, 168, 130, 0.12);
+  border-radius: var(--radius-circle);
+  opacity: 0.7;
+}
+
+.whySection::after {
+  right: -3%;
+  bottom: 10%;
+  width: clamp(120px, 15vw, 210px);
+  height: clamp(120px, 15vw, 210px);
+  border: 1px solid rgba(85, 92, 63, 0.1);
+  border-radius: 28px;
+  transform: rotate(14deg);
+  opacity: 0.6;
 }
 
 .whySectionInner {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: clamp(16px, 2.5vw, 22px);
-}
-
-.whyCard,
-.opinionsWrapper {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid var(--about-card-border);
-  border-radius: var(--radius-xl);
-  background: var(--gradient-dark-surface);
+  gap: clamp(24px, 4vw, 32px);
 }
 
 .whyCard {
-  padding: clamp(32px, 6vw, 52px) clamp(28px, 5vw, 52px);
-  box-shadow: var(--shadow-soft-dark-strong);
+  position: relative;
+  overflow: hidden;
+  padding: clamp(32px, 6vw, 56px) clamp(26px, 5vw, 52px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 34px 34px 108px 34px;
+  background:
+    radial-gradient(
+      circle at 16% 18%,
+      rgba(197, 168, 130, 0.14) 0%,
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 92% 86%,
+      rgba(85, 92, 63, 0.08) 0%,
+      transparent 30%
+    ),
+    linear-gradient(
+      160deg,
+      var(--color-charcoal-900) 0%,
+      #26231f 54%,
+      var(--color-charcoal-600) 100%
+    );
+  box-shadow:
+    var(--shadow-soft-dark-strong),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  isolation: isolate;
+  transition:
+    transform var(--transition-lift),
+    box-shadow var(--transition-slow),
+    border-color var(--transition-slow);
 }
 
-.opinionsWrapper {
-  padding: clamp(28px, 5vw, 44px) clamp(26px, 4.5vw, 44px);
-  box-shadow: var(--shadow-soft-dark);
-}
-
-.whyCard::before,
-.opinionsWrapper::before {
-  content: "";
-  position: absolute;
-  inset: 0 auto auto 0;
-  width: 100%;
-  height: 2px;
+.whyCard:hover {
+  transform: translateY(-6px);
+  border-color: rgba(197, 168, 130, 0.16);
+  box-shadow:
+    0 30px 68px rgba(10, 9, 8, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .whyCard::before {
-  background: linear-gradient(
-    90deg,
-    var(--about-accent) 0%,
-    rgba(197, 168, 130, 0.3) 50%,
-    transparent 100%
-  );
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 22px 22px 72px 22px;
+  pointer-events: none;
 }
 
-.opinionsWrapper::before {
-  background: linear-gradient(
-    90deg,
-    rgba(197, 168, 130, 0.5) 0%,
-    rgba(197, 168, 130, 0.12) 50%,
-    transparent 100%
+.whyCard::after {
+  content: "";
+  position: absolute;
+  top: -56px;
+  right: -34px;
+  width: clamp(140px, 18vw, 220px);
+  height: clamp(140px, 18vw, 220px);
+  border-radius: var(--radius-circle);
+  background: radial-gradient(
+    circle,
+    rgba(197, 168, 130, 0.16) 0%,
+    rgba(197, 168, 130, 0.05) 40%,
+    transparent 72%
   );
+  pointer-events: none;
 }
 
 .whyIndex {
   position: absolute;
-  top: clamp(24px, 4vw, 36px);
-  right: clamp(24px, 4vw, 40px);
-  color: rgba(255, 255, 255, 0.04);
+  top: clamp(18px, 3vw, 30px);
+  right: clamp(20px, 3vw, 34px);
+  color: rgba(255, 255, 255, 0.05);
   pointer-events: none;
   user-select: none;
   font-family: var(--font-display);
-  font-size: clamp(64px, 8vw, 112px);
+  font-size: clamp(68px, 9vw, 120px);
   font-style: italic;
   font-weight: 300;
   line-height: 1;
@@ -569,26 +625,63 @@
   z-index: var(--z-base);
 }
 
+.whyCardContent::before {
+  content: "";
+  display: block;
+  width: clamp(56px, 10vw, 88px);
+  height: 1px;
+  margin-bottom: 18px;
+  background: linear-gradient(
+    90deg,
+    rgba(197, 168, 130, 0.95) 0%,
+    rgba(197, 168, 130, 0.22) 100%
+  );
+}
+
 .whyTitle {
-  max-width: 14ch;
-  margin: 0 0 20px;
+  max-width: 11ch;
+  margin: 0 0 18px;
   color: var(--about-dark-text);
   text-wrap: balance;
   font-family: var(--font-display);
-  font-size: clamp(35px, 5vw, 64px);
+  font-size: clamp(2.2rem, 5vw, 4.35rem);
   font-weight: 300;
-  line-height: 0.97;
-  letter-spacing: -0.03em;
+  line-height: 0.96;
+  letter-spacing: -0.035em;
 }
 
 .whyText {
-  max-width: 42ch;
+  max-width: 38ch;
   margin: 0;
-  color: var(--about-soft-text-muted);
+  color: rgba(240, 237, 230, 0.7);
   font-family: var(--font-ui);
-  font-size: clamp(15px, 1.1vw, 16px);
+  font-size: clamp(0.95rem, 1.1vw, 1rem);
   font-weight: 300;
-  line-height: 1.94;
+  line-height: 1.92;
+}
+
+.opinionsWrapper {
+  position: relative;
+  padding-top: clamp(8px, 2vw, 16px);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.opinionsWrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: clamp(72px, 12vw, 122px);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(34, 34, 30, 0.48) 0%,
+    rgba(34, 34, 30, 0.08) 100%
+  );
 }
 
 @media (min-width: 768px) {
@@ -703,18 +796,18 @@
 
   .whySectionInner {
     display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
+    grid-template-columns: minmax(280px, 0.92fr) minmax(0, 1.08fr);
     align-items: start;
-    gap: 18px;
+    gap: clamp(22px, 2vw, 30px);
   }
 
   .whyCard {
     min-height: 100%;
-    padding: 48px 46px;
+    padding: 48px 46px 50px;
   }
 
   .opinionsWrapper {
-    padding: 40px 42px;
+    padding-top: 10px;
   }
 }
 
@@ -730,7 +823,9 @@
   .valuesCard:hover,
   .statIcon,
   .statIcon svg,
-  .statLine {
+  .statLine,
+  .whyCard,
+  .whyCard:hover {
     transform: none;
     transition: none;
   }
