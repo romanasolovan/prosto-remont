@@ -2,8 +2,15 @@
   position: fixed;
   left: 0;
   right: 0;
+  z-index: var(--z-modal);
 
-  background: linear-gradient(180deg, var(--color-white), #fafafa);
+  background:
+    radial-gradient(
+      ellipse 80% 50% at 0% 0%,
+      rgba(197, 168, 130, 0.08) 0%,
+      transparent 54%
+    ),
+    linear-gradient(180deg, #f6f2eb 0%, #eee8df 100%);
 
   transform: translateY(calc(-100% - 24px));
   opacity: 0;
@@ -14,8 +21,18 @@
     transform var(--transition-base),
     opacity var(--transition-fast),
     visibility var(--transition-fast);
+}
 
-  z-index: var(--z-modal);
+.mobileMenu::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(17, 17, 14, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 17, 14, 0.02) 1px, transparent 1px);
+  background-size: 42px 42px;
+  opacity: 0.2;
 }
 
 .mobileMenu.open {
@@ -24,11 +41,13 @@
   visibility: visible;
   pointer-events: auto;
 
-  border-bottom: 1px solid var(--color-grey-200);
-  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(17, 17, 14, 0.08);
+  box-shadow: 0 18px 30px rgba(17, 17, 14, 0.08);
 }
 
 .navList {
+  position: relative;
+  z-index: 1;
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -37,22 +56,48 @@
 
 .navLink {
   display: block;
+  position: relative;
+
   padding: 16px 0;
+  border-bottom: 1px solid rgba(17, 17, 14, 0.08);
+
   font-size: 20px;
   font-weight: 500;
   letter-spacing: -0.01em;
-  color: var(--color-grey-800);
-  border-bottom: 1px solid var(--color-grey-200);
+  color: #3f3b35;
+
   transition:
     padding-left var(--transition-fast),
     color var(--transition-fast),
-    opacity var(--transition-fast);
+    opacity var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.navLink::before {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: 50%;
+  width: 0;
+  height: 1px;
+  transform: translateY(-50%);
+  background: linear-gradient(
+    90deg,
+    rgba(197, 168, 130, 0.88) 0%,
+    rgba(17, 17, 14, 0.5) 100%
+  );
+  transition: width var(--transition-fast);
 }
 
 .navLink:hover {
-  padding-left: 6px;
-  color: var(--color-black);
+  padding-left: 8px;
+  color: #171612;
   opacity: 1;
+  transform: translateX(1px);
+}
+
+.navLink:hover::before {
+  width: 16px;
 }
 
 .navList li:last-child .navLink {

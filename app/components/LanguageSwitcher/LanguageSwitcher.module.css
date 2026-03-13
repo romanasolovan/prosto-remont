@@ -7,44 +7,62 @@
   align-items: center;
   gap: 8px;
 
-  border: 1px solid var(--color-grey-200);
-  background: linear-gradient(
-    135deg,
-    var(--color-white),
-    var(--color-grey-100)
-  );
-
-  padding: 8px 12px;
   min-height: 42px;
+  padding: 8px 12px;
 
   border-radius: 999px;
   cursor: pointer;
 
-  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(17, 17, 14, 0.08);
+  background:
+    radial-gradient(
+      120% 120% at 30% 24%,
+      rgba(197, 168, 130, 0.12) 0%,
+      rgba(197, 168, 130, 0.03) 46%,
+      transparent 74%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.88) 0%,
+      rgba(241, 236, 229, 0.82) 100%
+    );
+
+  box-shadow:
+    0 10px 22px rgba(17, 17, 14, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
 
   transition:
     border-color var(--transition-fast),
     box-shadow var(--transition-fast),
-    transform var(--transition-fast);
+    transform var(--transition-fast),
+    background-color var(--transition-fast);
 }
 
 .currentLocale:hover {
-  border-color: var(--color-grey-300);
-  box-shadow: var(--shadow-md);
+  border-color: rgba(197, 168, 130, 0.3);
+  box-shadow:
+    0 14px 26px rgba(17, 17, 14, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.84);
   transform: translateY(-1px);
 }
 
 .currentLocaleText {
   font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: var(--color-grey-800);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #3f3b35;
 }
 
 .chevron {
   font-size: 12px;
-  color: var(--color-grey-600);
-  transition: transform var(--transition-fast);
+  color: rgba(197, 168, 130, 0.95);
+  transition:
+    transform var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.currentLocale:hover .chevron {
+  color: #171612;
 }
 
 .chevronOpen {
@@ -55,25 +73,40 @@
   position: absolute;
   top: calc(100% + 8px);
   right: 0;
+  z-index: var(--z-dropdown);
 
   min-width: 180px;
+  overflow: hidden;
 
-  background: var(--color-white);
-  border: 1px solid var(--color-grey-200);
-  border-radius: 14px;
+  border: 1px solid rgba(17, 17, 14, 0.08);
+  border-radius: 16px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.94) 0%,
+    rgba(245, 240, 233, 0.9) 100%
+  );
 
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 18px 34px rgba(17, 17, 14, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.82);
 
   opacity: 0;
   visibility: hidden;
   transform: translateY(-6px);
+
   transition:
     opacity var(--transition-fast),
     transform var(--transition-fast),
     visibility var(--transition-fast);
+}
 
-  overflow: hidden;
-  z-index: var(--z-dropdown);
+.dropdown::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(17, 17, 14, 0.05);
+  border-radius: 10px;
+  pointer-events: none;
 }
 
 .dropdownOpen {
@@ -96,37 +129,40 @@
 
   padding: 10px 12px;
 
-  background: none;
   border: none;
   border-radius: 10px;
+  background: none;
 
   text-align: left;
   cursor: pointer;
 
-  transition: background-color var(--transition-fast);
+  transition:
+    background-color var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 .localeButton:hover {
-  background: var(--color-grey-100);
+  background: rgba(197, 168, 130, 0.1);
+  transform: translateX(2px);
 }
 
 .localeButton.active {
-  background: var(--color-grey-100);
+  background: rgba(197, 168, 130, 0.12);
 }
 
 .localeCode {
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: var(--color-grey-800);
+  color: #3f3b35;
 }
 
 .localeName {
   font-size: 14px;
-  color: var(--color-grey-700);
+  color: #5f5a54;
 }
 
 .localeButton.active .localeName,
 .localeButton.active .localeCode {
-  color: var(--color-black);
+  color: #171612;
 }
