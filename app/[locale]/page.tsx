@@ -8,17 +8,20 @@ export default function Home() {
 
   return (
     <div className={styles.home}>
-      {/* Hero Section with Image */}
       <section className={styles.hero}>
-        <div className={styles.heroImageWrapper}>
-          <div className={styles.heroImage} />
-          <div className={styles.heroOverlay} />
+        <div className={styles.heroDecor} aria-hidden="true">
+          <span className={styles.heroRoofLeft} />
+          <span className={styles.heroRoofRight} />
+          <span className={styles.heroBaseLine} />
+          <span className={styles.heroVertical} />
         </div>
-        <div className={styles.heroContent}>
-          <div className="container">
-            <div className={styles.heroText}>
+
+        <div className="container">
+          <div className={styles.heroInner}>
+            <div className={styles.heroContent}>
               <h1 className={styles.heroTitle}>{t("hero.title")}</h1>
               <p className={styles.heroSubtitle}>{t("hero.subtitle")}</p>
+
               <div className={styles.heroActions}>
                 <Link
                   href="/contact"
@@ -26,96 +29,146 @@ export default function Home() {
                 >
                   {tCommon("startProject")}
                 </Link>
-                <Link
-                  href="/projects"
-                  className={`btn btn-secondary ${styles.heroButtonSecondary}`}
-                >
+
+                <Link href="/projects" className={styles.heroLink}>
                   {tCommon("viewPortfolio")}
+                  <span className={styles.linkArrow}>→</span>
                 </Link>
+              </div>
+            </div>
+
+            <div className={styles.heroPanels} aria-hidden="true">
+              <div className={`${styles.heroPanel} ${styles.heroPanelLarge}`}>
+                <span className={styles.panelNumber}>01</span>
+              </div>
+              <div className={`${styles.heroPanel} ${styles.heroPanelTall}`}>
+                <span className={styles.panelNumber}>02</span>
+              </div>
+              <div className={`${styles.heroPanel} ${styles.heroPanelSmall}`}>
+                <span className={styles.panelNumber}>03</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* About Preview */}
       <section className={styles.previewSection} id="about">
         <div className="container">
-          <div className={styles.sectionContent}>
-            <div className={styles.sectionLabel}>{t("labels.about")}</div>
-            <h2 className={styles.sectionTitle}>{t("about.title")}</h2>
-            <p className={styles.sectionDescription}>
-              {t("about.description")}
-            </p>
-            <Link href="/about" className={styles.sectionLink}>
-              {tCommon("learnMore")}
-              <span className={styles.linkArrow}>→</span>
-            </Link>
+          <div className={styles.previewRow}>
+            <div className={styles.previewText}>
+              <span className={styles.sectionLabel}>{t("labels.about")}</span>
+              <h2 className={styles.sectionTitle}>{t("about.title")}</h2>
+              <p className={styles.sectionDescription}>
+                {t("about.description")}
+              </p>
+              <Link href="/about" className={styles.sectionLink}>
+                {tCommon("learnMore")}
+                <span className={styles.linkArrow}>→</span>
+              </Link>
+            </div>
+
+            <div className={styles.aboutCard}>
+              <div className={styles.aboutCardMain}>
+                <span className={styles.cardNumber}>01</span>
+              </div>
+              <div className={styles.aboutCardSide} />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Services Preview */}
-      <section
-        className={`${styles.previewSection} ${styles.darkSection}`}
-        id="services"
-      >
+      <section className={styles.previewSection} id="services">
         <div className="container">
-          <div className={styles.sectionContent}>
-            <div className={styles.sectionLabel}>{t("labels.services")}</div>
-            <h2 className={styles.sectionTitle}>{t("services.title")}</h2>
-            <p className={styles.sectionDescription}>
-              {t("services.description")}
-            </p>
-            <Link href="/services" className={styles.sectionLink}>
-              {tCommon("exploreServices")}
-              <span className={styles.linkArrow}>→</span>
-            </Link>
+          <div className={`${styles.previewRow} ${styles.reverseRow}`}>
+            <div className={styles.servicesBoard}>
+              <div className={styles.serviceMiniCard}>
+                <span className={styles.cardNumber}>01</span>
+              </div>
+              <div className={styles.serviceMiniCard}>
+                <span className={styles.cardNumber}>02</span>
+              </div>
+              <div className={styles.serviceMiniCard}>
+                <span className={styles.cardNumber}>03</span>
+              </div>
+              <div className={styles.serviceMiniCard}>
+                <span className={styles.cardNumber}>04</span>
+              </div>
+            </div>
+
+            <div className={styles.previewText}>
+              <span className={styles.sectionLabel}>
+                {t("labels.services")}
+              </span>
+              <h2 className={styles.sectionTitle}>{t("services.title")}</h2>
+              <p className={styles.sectionDescription}>
+                {t("services.description")}
+              </p>
+              <Link href="/services" className={styles.sectionLink}>
+                {tCommon("exploreServices")}
+                <span className={styles.linkArrow}>→</span>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Projects Preview */}
       <section className={styles.previewSection} id="projects">
         <div className="container">
-          <div className={styles.sectionContent}>
-            <div className={styles.sectionLabel}>{t("labels.projects")}</div>
-            <h2 className={styles.sectionTitle}>{t("projects.title")}</h2>
-            <p className={styles.sectionDescription}>
-              {t("projects.description")}
-            </p>
-            <Link href="/projects" className={styles.sectionLink}>
-              {tCommon("viewPortfolio")}
-              <span className={styles.linkArrow}>→</span>
-            </Link>
+          <div className={styles.previewRow}>
+            <div className={styles.previewText}>
+              <span className={styles.sectionLabel}>
+                {t("labels.projects")}
+              </span>
+              <h2 className={styles.sectionTitle}>{t("projects.title")}</h2>
+              <p className={styles.sectionDescription}>
+                {t("projects.description")}
+              </p>
+              <Link href="/projects" className={styles.sectionLink}>
+                {tCommon("viewPortfolio")}
+                <span className={styles.linkArrow}>→</span>
+              </Link>
+            </div>
+
+            <div className={styles.projectsCard}>
+              <div className={styles.projectsFrameOuter}>
+                <div className={styles.projectsFrameInner} />
+              </div>
+              <span className={styles.projectsNumber}>03</span>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Process Preview */}
-      <section
-        className={`${styles.previewSection} ${styles.darkSection}`}
-        id="process"
-      >
+      <section className={styles.previewSection} id="process">
         <div className="container">
-          <div className={styles.sectionContent}>
-            <div className={styles.sectionLabel}>{t("labels.process")}</div>
-            <h2 className={styles.sectionTitle}>{t("process.title")}</h2>
-            <p className={styles.sectionDescription}>
-              {t("process.description")}
-            </p>
-            <Link href="/process" className={styles.sectionLink}>
-              {tCommon("understandProcess")}
-              <span className={styles.linkArrow}>→</span>
-            </Link>
+          <div className={`${styles.previewRow} ${styles.reverseRow}`}>
+            <div className={styles.processRail}>
+              <span className={styles.processStep}>01</span>
+              <span className={styles.processStep}>02</span>
+              <span className={styles.processStep}>03</span>
+              <span className={styles.processStep}>04</span>
+              <span className={styles.processStep}>05</span>
+            </div>
+
+            <div className={styles.previewText}>
+              <span className={styles.sectionLabel}>{t("labels.process")}</span>
+              <h2 className={styles.sectionTitle}>{t("process.title")}</h2>
+              <p className={styles.sectionDescription}>
+                {t("process.description")}
+              </p>
+              <Link href="/process" className={styles.sectionLink}>
+                {tCommon("understandProcess")}
+                <span className={styles.linkArrow}>→</span>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Contact CTA */}
       <section className={styles.ctaSection}>
         <div className="container">
-          <div className={styles.ctaContent}>
+          <div className={styles.ctaCard}>
+            <div className={styles.ctaLine} aria-hidden="true" />
             <h2 className={styles.ctaTitle}>{t("contact.title")}</h2>
             <p className={styles.ctaDescription}>{t("contact.description")}</p>
             <Link
