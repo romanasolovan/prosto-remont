@@ -1,119 +1,436 @@
 .contactPage {
-  --contact-card-radius: 20px;
-  --contact-item-radius: 16px;
-  --contact-social-size: 44px;
+  --contact-bg-start: var(--color-ivory-50);
+  --contact-bg-end: var(--color-stone-300);
+  --contact-dark-text: var(--color-cream-text);
+  --contact-soft-text: rgba(240, 237, 230, 0.72);
+  --contact-soft-text-muted: rgba(240, 237, 230, 0.64);
+  --contact-accent: var(--color-sand-500);
+  --contact-accent-strong: var(--color-sand-400);
+  --contact-olive: var(--color-olive-500);
+  --contact-panel-border: rgba(17, 17, 14, 0.06);
+  --contact-card-border: rgba(255, 255, 255, 0.06);
+  --contact-light-shadow: 0 24px 50px rgba(17, 17, 14, 0.05);
+  --contact-light-shadow-hover: 0 30px 65px rgba(17, 17, 14, 0.08);
+  --contact-dark-shadow: 0 30px 68px rgba(10, 9, 8, 0.28);
+  --contact-radius-lg: 34px;
+  --contact-radius-xl: 110px;
+  --contact-social-size: 48px;
   --contact-icon-size: 20px;
-  --contact-header-top: 32px;
-  --contact-header-bottom: 24px;
-  --contact-row-top: 64px;
-  --contact-row-bottom: 48px;
-  --contact-row-gap: 18px;
-  --contact-section-gap: 12px;
-  --contact-border: var(--color-grey-200);
-  --contact-text-soft: var(--color-grey-600);
-  --contact-label: var(--color-grey-500);
-  --contact-card-bg: var(--color-white);
 
   width: 100%;
-  background: var(--color-white);
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(
+      ellipse 120% 80% at 0% 0%,
+      rgba(220, 220, 220, 0.14) 0%,
+      transparent 52%
+    ),
+    radial-gradient(
+      ellipse 80% 60% at 100% 100%,
+      rgba(180, 180, 180, 0.08) 0%,
+      transparent 50%
+    ),
+    linear-gradient(
+      180deg,
+      var(--contact-bg-start) 0%,
+      var(--contact-bg-end) 100%
+    );
+}
+
+/* HERO / HEADER */
+
+.heroSection {
+  position: relative;
+  padding: clamp(84px, 10vw, 124px) 0 clamp(96px, 12vw, 148px);
+  overflow: hidden;
+  background:
+    radial-gradient(
+      ellipse 52% 36% at 14% 20%,
+      rgba(197, 168, 130, 0.08) 0%,
+      transparent 62%
+    ),
+    radial-gradient(
+      ellipse 34% 28% at 88% 82%,
+      rgba(85, 92, 63, 0.06) 0%,
+      transparent 64%
+    ),
+    linear-gradient(
+      180deg,
+      var(--color-ivory-100) 0%,
+      var(--color-stone-300) 100%
+    );
+}
+
+.heroSection::before,
+.heroSection::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.heroSection::before {
+  top: 10%;
+  left: -4%;
+  width: clamp(160px, 20vw, 260px);
+  height: clamp(160px, 20vw, 260px);
+  border: 1px solid rgba(197, 168, 130, 0.12);
+  border-radius: 50%;
+  opacity: 0.75;
+}
+
+.heroSection::after {
+  right: -3%;
+  bottom: 8%;
+  width: clamp(120px, 16vw, 220px);
+  height: clamp(120px, 16vw, 220px);
+  border: 1px solid rgba(85, 92, 63, 0.12);
+  border-radius: 28px;
+  transform: rotate(14deg);
+  opacity: 0.65;
+}
+
+.heroBackground {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+
+.bgWord {
+  transform: translateY(-4%);
+  color: rgba(255, 255, 255, 0.16);
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-size: clamp(18vw, 26vw, 34vw);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  opacity: 0.22;
 }
 
 .pageHeader {
-  padding: var(--contact-header-top) 0 var(--contact-header-bottom);
-  text-align: center;
-  border-bottom: 1px solid var(--contact-border);
+  position: relative;
+  z-index: var(--z-base);
+  padding-bottom: clamp(36px, 5vw, 54px);
+}
+
+.headerMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 760px;
+}
+
+.pageEyebrow {
+  color: rgba(197, 168, 130, 0.84);
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
 }
 
 .pageTitle {
   margin: 0;
-  color: var(--color-black);
-  font-size: 28px;
-  font-weight: 600;
-  line-height: 1.18;
-  letter-spacing: -0.02em;
+  color: #171612;
+  text-wrap: balance;
+  font-family: var(--font-display);
+  font-size: clamp(42px, 7vw, 86px);
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
 }
 
 .pageDescription {
-  max-width: 64ch;
-  margin: 6px auto 0;
-  color: var(--contact-text-soft);
-  font-size: 14px;
-  line-height: 1.55;
+  max-width: 52ch;
+  margin: 0;
+  color: #5d5953;
+  font-family: var(--font-ui);
+  font-size: clamp(0.96rem, 1.1vw, 1.04rem);
+  font-weight: 300;
+  line-height: 1.9;
 }
+
+/* CONTENT GRID */
 
 .contactRow {
+  position: relative;
+  z-index: var(--z-base);
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--contact-row-gap);
-  padding: var(--contact-row-top) 0 var(--contact-row-bottom);
+  gap: clamp(22px, 3vw, 30px);
 }
 
-.infoCard {
-  padding: 18px;
-  border: 1px solid var(--contact-border);
-  border-radius: var(--contact-card-radius);
-  background: var(--contact-card-bg);
-  box-shadow: var(--shadow-sm);
+/* GENERIC CARD FEEL */
+
+.darkCard,
+.lightCard {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 420ms ease,
+    border-color 420ms ease;
 }
 
-.mapArea {
-  min-height: 260px;
+.darkCard:hover,
+.lightCard:hover {
+  transform: translateY(-6px);
 }
+
+/* LEFT CARD - DARK */
+
+.infoCard.darkCard {
+  border: 1px solid var(--contact-card-border);
+  border-radius: 34px 34px 108px 34px;
+  background:
+    radial-gradient(
+      circle at 16% 18%,
+      rgba(197, 168, 130, 0.14) 0%,
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 92% 86%,
+      rgba(85, 92, 63, 0.08) 0%,
+      transparent 30%
+    ),
+    linear-gradient(
+      160deg,
+      var(--color-charcoal-900) 0%,
+      #26231f 54%,
+      var(--color-charcoal-600) 100%
+    );
+  box-shadow:
+    var(--contact-dark-shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.infoCard.darkCard:hover {
+  border-color: rgba(197, 168, 130, 0.16);
+  box-shadow:
+    0 34px 74px rgba(10, 9, 8, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.infoCard.darkCard::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 22px 22px 72px 22px;
+  pointer-events: none;
+}
+
+.infoCard.darkCard::after {
+  content: "";
+  position: absolute;
+  top: -56px;
+  right: -34px;
+  width: clamp(140px, 18vw, 220px);
+  height: clamp(140px, 18vw, 220px);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(197, 168, 130, 0.16) 0%,
+    rgba(197, 168, 130, 0.05) 40%,
+    transparent 72%
+  );
+  pointer-events: none;
+}
+
+.cardInner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: clamp(28px, 5vw, 46px) clamp(22px, 4vw, 42px);
+}
+
+.cardAccent {
+  position: absolute;
+  top: 24px;
+  bottom: 24px;
+  left: 0;
+  width: 4px;
+  border-radius: 0 999px 999px 0;
+  background: linear-gradient(
+    180deg,
+    rgba(197, 168, 130, 0.95) 0%,
+    rgba(197, 168, 130, 0.16) 100%
+  );
+  z-index: 1;
+}
+
+.cardLabel {
+  display: block;
+  margin-bottom: -2px;
+  color: rgba(197, 168, 130, 0.16);
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 8vw, 6.6rem);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 0.82;
+  letter-spacing: -0.055em;
+}
+
+/* RIGHT CARD - LIGHT */
+
+.mapArea.lightCard {
+  border: 1px solid rgba(17, 17, 14, 0.07);
+  border-radius: 110px 34px 34px 34px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.88) 0%,
+    rgba(243, 240, 233, 0.72) 100%
+  );
+  box-shadow:
+    var(--contact-light-shadow),
+    0 2px 0 rgba(85, 92, 63, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.78);
+}
+
+.mapArea.lightCard:hover {
+  border-color: rgba(85, 92, 63, 0.16);
+  box-shadow: var(--contact-light-shadow-hover);
+}
+
+.mapArea.lightCard::before {
+  content: "";
+  position: absolute;
+  top: 24px;
+  bottom: 24px;
+  right: 0;
+  width: 4px;
+  border-radius: 999px 0 0 999px;
+  background: linear-gradient(
+    180deg,
+    rgba(85, 92, 63, 0.78) 0%,
+    rgba(85, 92, 63, 0.14) 100%
+  );
+}
+
+.mapArea.lightCard::after {
+  content: "";
+  position: absolute;
+  top: -46px;
+  left: -46px;
+  width: clamp(110px, 16vw, 180px);
+  height: clamp(110px, 16vw, 180px);
+  border-radius: 50%;
+  border: 1px solid rgba(17, 17, 14, 0.05);
+  pointer-events: none;
+}
+
+.mapCardInner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  height: 100%;
+  padding: clamp(28px, 5vw, 42px);
+}
+
+.mapArea .cardLabel {
+  color: rgba(85, 92, 63, 0.16);
+}
+
+/* TITLES */
 
 .sectionTitle {
-  margin: 0 0 14px;
-  color: var(--color-black);
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.25;
-  letter-spacing: -0.01em;
+  margin: 0;
+  max-width: 12ch;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 300;
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
 }
+
+.infoCard .sectionTitle {
+  color: var(--contact-dark-text);
+}
+
+.mapArea .sectionTitle {
+  color: #171612;
+}
+
+/* CONTACT LIST */
 
 .contactList {
   display: grid;
-  gap: var(--contact-section-gap);
+  gap: 12px;
 }
 
 .contactItem {
-  padding: 12px 14px;
-  border: 1px solid var(--contact-border);
-  border-radius: var(--contact-item-radius);
-  background: var(--color-white);
+  position: relative;
+  padding: 16px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.025);
+  transition:
+    transform 260ms ease,
+    border-color var(--transition-smooth),
+    background var(--transition-smooth),
+    box-shadow var(--transition-smooth);
+}
+
+.contactItem:hover {
+  transform: translateY(-3px);
+  border-color: rgba(197, 168, 130, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: inset 0 0 0 1px rgba(197, 168, 130, 0.04);
 }
 
 .contactLabel,
 .socialLabel {
   display: block;
-  margin-bottom: 6px;
-  color: var(--contact-label);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
+}
+
+.infoCard .contactLabel,
+.infoCard .socialLabel {
+  color: rgba(197, 168, 130, 0.72);
 }
 
 .contactValue {
   display: block;
-  color: var(--color-grey-900);
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 1.45;
+  font-family: var(--font-ui);
+  font-size: clamp(0.98rem, 1.1vw, 1.04rem);
+  font-weight: 300;
+  line-height: 1.7;
   text-decoration: none;
-  transition: color var(--transition-fast);
+  transition:
+    color var(--transition-smooth),
+    opacity var(--transition-smooth);
 }
 
-a.contactValue:hover {
-  color: var(--color-black);
+.infoCard .contactValue {
+  color: var(--contact-soft-text);
+}
+
+.infoCard a.contactValue:hover {
+  color: var(--contact-accent-strong);
 }
 
 .socialInline {
-  margin-top: 16px;
-  padding-top: 14px;
-  border-top: 1px solid var(--contact-border);
-}
-
-.socialLabel {
-  margin-bottom: 10px;
+  margin-top: 8px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .socialLinksLeft {
@@ -128,16 +445,16 @@ a.contactValue:hover {
   justify-content: center;
   width: var(--contact-social-size);
   height: var(--contact-social-size);
-  border: 1px solid var(--contact-border);
-  border-radius: var(--radius-pill);
-  background: var(--color-white);
-  color: var(--color-grey-900);
-  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.025);
+  color: var(--contact-soft-text);
   transition:
-    transform var(--transition-fast),
-    background-color var(--transition-fast),
-    border-color var(--transition-fast),
-    color var(--transition-fast);
+    transform 260ms ease,
+    border-color var(--transition-smooth),
+    background-color var(--transition-smooth),
+    color var(--transition-smooth),
+    box-shadow var(--transition-smooth);
 }
 
 .socialLink svg {
@@ -146,55 +463,118 @@ a.contactValue:hover {
 }
 
 .socialLink:hover {
-  transform: translateY(-1px);
-  border-color: var(--color-black);
-  background: var(--color-black);
-  color: var(--color-white);
+  transform: translateY(-3px);
+  border-color: rgba(197, 168, 130, 0.24);
+  background: rgba(197, 168, 130, 0.08);
+  color: var(--contact-accent-strong);
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.14),
+    inset 0 0 0 1px rgba(197, 168, 130, 0.06);
 }
 
+/* MAP */
+
 .mapWrapper {
+  position: relative;
   width: 100%;
+  min-height: 320px;
   height: 100%;
   overflow: hidden;
-  border-radius: var(--contact-card-radius);
+  border-radius: 24px;
+  border: 1px solid rgba(17, 17, 14, 0.06);
   background: var(--color-grey-100);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    0 12px 28px rgba(17, 17, 14, 0.06);
+}
+
+.mapWrapper::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(17, 17, 14, 0.05);
+  border-radius: 18px;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .mapIframe {
   display: block;
   width: 100%;
   height: 100%;
+  min-height: 320px;
   border: 0;
+  filter: saturate(0.82) contrast(1.02);
 }
 
+/* TABLET */
+
 @media (min-width: 768px) {
-  .pageTitle {
-    font-size: 30px;
+  .pageHeader {
+    padding-bottom: 42px;
   }
 
   .contactRow {
-    grid-template-columns: 0.9fr 1.5fr;
+    grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.1fr);
     align-items: stretch;
-    gap: 22px;
   }
 
-  .infoCard {
-    padding: 20px;
+  .cardInner,
+  .mapCardInner {
+    min-height: 100%;
   }
 
-  .mapArea {
-    min-height: unset;
-  }
-
-  .mapWrapper {
+  .mapWrapper,
+  .mapIframe {
     min-height: 100%;
   }
 }
 
+/* DESKTOP */
+
 @media (min-width: 1024px) {
+  .pageTitle {
+    max-width: 12ch;
+  }
+
   .contactRow {
-    grid-template-columns: 0.85fr 1.55fr;
-    gap: 28px;
-    padding: 96px 0 64px;
+    grid-template-columns: minmax(320px, 0.86fr) minmax(0, 1.14fr);
+    gap: 30px;
+  }
+
+  .infoCard.darkCard:hover {
+    transform: translateX(12px) translateY(-8px) rotate(-0.35deg);
+  }
+
+  .mapArea.lightCard:hover {
+    transform: translateX(-12px) translateY(-8px) rotate(0.35deg);
+  }
+
+  .cardInner {
+    padding: 42px 38px 40px;
+  }
+
+  .mapCardInner {
+    padding: 40px 38px;
+  }
+
+  .mapWrapper {
+    min-height: 520px;
+  }
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+  .darkCard,
+  .lightCard,
+  .contactItem,
+  .socialLink,
+  .darkCard:hover,
+  .lightCard:hover,
+  .contactItem:hover,
+  .socialLink:hover {
+    transform: none;
+    transition: none;
   }
 }
