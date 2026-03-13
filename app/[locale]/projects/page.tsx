@@ -36,25 +36,55 @@ export default function Projects() {
   return (
     <div className={styles.projectsPage}>
       <section className={styles.hero}>
+        <div className={styles.heroBackground} aria-hidden="true">
+          <span className={styles.bgWord}>Projects</span>
+        </div>
+
         <div className="container">
-          <h1>{t("hero.title")}</h1>
-          <p className={styles.subtitle}>{t("hero.subtitle")}</p>
+          <div className={styles.heroInner}>
+            <span className={styles.heroEyebrow}>{t("hero.title")}</span>
+            <h1 className={styles.heroTitle}>{t("hero.title")}</h1>
+            <p className={styles.subtitle}>{t("hero.subtitle")}</p>
+          </div>
         </div>
       </section>
 
-      <section className="section-spacing">
+      <section className={styles.projectsSection}>
         <div className="container">
-          <div className={styles.projectsGrid}>
+          <div className={styles.projectsIntro}>
+            <span className={styles.projectsEyebrow}>Selected work</span>
+            <h2 className={styles.projectsTitle}>{t("hero.title")}</h2>
+          </div>
+
+          <div className={styles.projectsList}>
             {projects.map((project, index) => (
-              <div key={index} className={styles.projectCard}>
-                <div className={styles.projectImage}></div>
-                <div className={styles.projectInfo}>
-                  <span className={styles.projectCategory}>
-                    {project.category}
-                  </span>
-                  <h3>{project.title}</h3>
+              <article
+                key={index}
+                className={`${styles.projectRow} ${
+                  index % 2 === 0 ? styles.rowLeft : styles.rowRight
+                }`}
+              >
+                <div className={styles.projectFrame}>
+                  <div className={styles.projectMedia}>
+                    <div className={styles.projectImage} />
+                    <span className={styles.projectIndex}>
+                      {(index + 1).toString().padStart(2, "0")}
+                    </span>
+                  </div>
+
+                  <div className={styles.projectContent}>
+                    <div className={styles.projectPlaque}>
+                      <span className={styles.projectCategory}>
+                        {project.category}
+                      </span>
+                    </div>
+
+                    <h3 className={styles.projectTitle}>{project.title}</h3>
+                  </div>
+
+                  <span className={styles.projectAccent} aria-hidden="true" />
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         </div>
