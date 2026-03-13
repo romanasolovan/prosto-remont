@@ -52,38 +52,70 @@ export default function Process() {
   return (
     <div className={styles.processPage}>
       <section className={styles.hero}>
+        <div className={styles.heroBackground} aria-hidden="true">
+          <span className={styles.bgWord}>Process</span>
+        </div>
+
         <div className="container">
-          <h1>{t("hero.title")}</h1>
-          <p className={styles.subtitle}>{t("hero.subtitle")}</p>
+          <div className={styles.heroInner}>
+            <span className={styles.heroEyebrow}>{t("hero.title")}</span>
+            <h1 className={styles.heroTitle}>{t("hero.title")}</h1>
+            <p className={styles.subtitle}>{t("hero.subtitle")}</p>
+          </div>
         </div>
       </section>
 
-      <section className="section-spacing">
+      <section className={styles.stepsSection}>
         <div className="container">
+          <div className={styles.stepsIntro}>
+            <span className={styles.stepsEyebrow}>01 — 05</span>
+            <h2 className={styles.stepsTitle}>{t("hero.title")}</h2>
+          </div>
+
           <div className={styles.stepsContainer}>
             {steps.map((step, index) => (
-              <div key={index} className={styles.step}>
-                <div className={styles.stepNumber}>{step.number}</div>
-                <div className={styles.stepContent}>
-                  <h3>{step.title}</h3>
-                  <p>{step.description}</p>
+              <article
+                key={step.number}
+                className={`${styles.step} ${
+                  index % 2 === 0 ? styles.stepLeft : styles.stepRight
+                }`}
+              >
+                <div className={styles.stepRail} aria-hidden="true">
+                  <span className={styles.stepDot} />
+                  {index !== steps.length - 1 && (
+                    <span className={styles.stepLine} />
+                  )}
                 </div>
-              </div>
+
+                <div className={styles.stepCard}>
+                  <div className={styles.stepCardInner}>
+                    <span className={styles.stepNumber}>{step.number}</span>
+                    <div className={styles.stepContent}>
+                      <h3>{step.title}</h3>
+                      <p>{step.description}</p>
+                    </div>
+                  </div>
+                </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ✅ Request a Quote form moved here */}
       <section className={styles.quoteSection}>
         <div className="container">
-          <div className={styles.quoteHeader}>
-            <h2 className={styles.quoteTitle}>{t("quote.title")}</h2>
-            <p className={styles.quoteDescription}>{t("quote.description")}</p>
-          </div>
+          <div className={styles.quoteShell}>
+            <div className={styles.quoteHeader}>
+              <span className={styles.quoteEyebrow}>Next step</span>
+              <h2 className={styles.quoteTitle}>{t("quote.title")}</h2>
+              <p className={styles.quoteDescription}>
+                {t("quote.description")}
+              </p>
+            </div>
 
-          <div className={styles.formWrap}>
-            <ContactForm />
+            <div className={styles.formWrap}>
+              <ContactForm />
+            </div>
           </div>
         </div>
       </section>
