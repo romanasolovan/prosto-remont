@@ -1,5 +1,6 @@
 "use client";
-import { useEffect, useRef } from "react";
+
+import { useEffect, useId, useRef } from "react";
 import styles from "./ServiceModal.module.css";
 
 export interface ServiceDetail {
@@ -20,62 +21,78 @@ export default function ServiceModal({ service, onClose }: Props) {
   const overlayRef = useRef<HTMLDivElement>(null);
   const closeBtnRef = useRef<HTMLButtonElement>(null);
   const touchStartY = useRef(0);
+  const titleId = useId();
 
   useEffect(() => {
     if (!service) return;
-    closeBtnRef.current?.focus();
-    const scrollY = window.scrollY;
+
+    const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    closeBtnRef.current?.focus();
+
     return () => {
-      document.body.style.overflow = "";
-      window.scrollTo(0, scrollY);
+      document.body.style.overflow = previousOverflow;
     };
   }, [service]);
 
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+    if (!service) return;
+
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
     };
+
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
-  }, [onClose]);
+  }, [service, onClose]);
+
+  if (!service) return null;
 
   return (
     <div
       ref={overlayRef}
-      className={`${styles.overlay} ${service ? styles.open : ""}`}
+      className={`${styles.overlay} ${styles.open}`}
       role="dialog"
       aria-modal="true"
-      aria-labelledby="modal-title"
-      onClick={(e) => {
-        if (e.target === overlayRef.current) onClose();
+      aria-labelledby={titleId}
+      onClick={(event) => {
+        if (event.target === overlayRef.current) {
+          onClose();
+        }
       }}
     >
       <div
         className={styles.modal}
-        onTouchStart={(e) => {
-          touchStartY.current = e.touches[0].clientY;
+        onTouchStart={(event) => {
+          touchStartY.current = event.touches[0].clientY;
         }}
-        onTouchEnd={(e) => {
-          if (e.changedTouches[0].clientY - touchStartY.current > 60) onClose();
+        onTouchEnd={(event) => {
+          const deltaY = event.changedTouches[0].clientY - touchStartY.current;
+          if (deltaY > 60) {
+            onClose();
+          }
         }}
       >
         <div className={styles.gridBg} aria-hidden="true" />
         <div className={styles.diagAccent} aria-hidden="true" />
 
-        {/* Drag handle — mobile only */}
         <div className={styles.handle} aria-hidden="true">
           <span />
         </div>
 
         <div className={styles.head}>
-          <div className={styles.eyebrow}>{service?.eyebrow}</div>
+          <div className={styles.eyebrow}>{service.eyebrow}</div>
+
           <div className={styles.numRow}>
             <span className={styles.num}>
-              {String((service?.index ?? 0) + 1).padStart(2, "0")}
+              {String(service.index + 1).padStart(2, "0")}
             </span>
+
             <button
               ref={closeBtnRef}
+              type="button"
               className={styles.close}
               onClick={onClose}
               aria-label="Close service detail"
@@ -91,33 +108,39 @@ export default function ServiceModal({ service, onClose }: Props) {
               </svg>
             </button>
           </div>
+
           <span className={styles.rule} aria-hidden="true" />
         </div>
 
         <div className={styles.body}>
-          <h3 id="modal-title" className={styles.title}>
-            {service?.title}
+          <h3 id={titleId} className={styles.title}>
+            {service.title}
           </h3>
-          <p className={styles.desc}>{service?.desc}</p>
+
+          <p className={styles.desc}>{service.desc}</p>
 
           <div className={styles.specs}>
-            {service?.specs.map((sp, i) => (
-              <div key={i} className={styles.specCard}>
-                <span className={styles.specLabel}>{sp.label}</span>
-                <span className={styles.specVal}>{sp.value}</span>
+            {service.specs.map((spec) => (
+              <div
+                key={`${spec.label}-${spec.value}`}
+                className={styles.specCard}
+              >
+                <span className={styles.specLabel}>{spec.label}</span>
+                <span className={styles.specVal}>{spec.value}</span>
               </div>
             ))}
           </div>
 
           <ul className={styles.steps}>
-            {service?.steps.map((st, i) => (
-              <li key={i} className={styles.step}>
+            {service.steps.map((step, index) => (
+              <li key={`${step.title}-${index}`} className={styles.step}>
                 <span className={styles.stepNum}>
-                  {String(i + 1).padStart(2, "0")}
+                  {String(index + 1).padStart(2, "0")}
                 </span>
+
                 <div className={styles.stepText}>
-                  <strong>{st.title}</strong>
-                  {st.body}
+                  <strong>{step.title}</strong>
+                  {step.body}
                 </div>
               </li>
             ))}

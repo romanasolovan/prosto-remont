@@ -1,8 +1,15 @@
-/* Only visible on pointer devices */
 @media (pointer: coarse) {
   .cursor {
     display: none;
   }
+}
+
+:global(html).cursorEnabled,
+:global(html).cursorEnabled body,
+:global(html).cursorEnabled a,
+:global(html).cursorEnabled button,
+:global(html).cursorEnabled [role="button"] {
+  cursor: none;
 }
 
 .cursor {
@@ -10,17 +17,15 @@
   top: 0;
   left: 0;
   z-index: 9999;
-  pointer-events: none;
   width: 12px;
   height: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(-100px, -100px, 0);
+  transition: opacity 180ms ease;
+  will-change: transform;
 }
 
-/* Hide system cursor on desktop */
-:global(body:has(.cursor)) {
-  cursor: none;
-}
-
-/* Cross */
 .cross {
   position: absolute;
   top: 50%;
@@ -34,29 +39,29 @@
     opacity 220ms ease;
 }
 
-.cross::before {
+.cross::before,
+.cross::after {
   content: "";
   position: absolute;
-  left: 50%;
+  background: #0e0d0b;
+}
+
+.cross::before {
   top: 0;
+  left: 50%;
   width: 1px;
   height: 100%;
-  background: #0e0d0b;
   transform: translateX(-50%);
 }
 
 .cross::after {
-  content: "";
-  position: absolute;
   top: 50%;
   left: 0;
-  height: 1px;
   width: 100%;
-  background: #0e0d0b;
+  height: 1px;
   transform: translateY(-50%);
 }
 
-/* Ring */
 .ring {
   position: absolute;
   top: 50%;
@@ -67,39 +72,39 @@
   border-radius: 50%;
   transform: translate(-50%, -50%);
   transition:
-    width 280ms cubic-bezier(0.22, 1, 0.36, 1),
-    height 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    width 240ms cubic-bezier(0.22, 1, 0.36, 1),
+    height 240ms cubic-bezier(0.22, 1, 0.36, 1),
     border-color 220ms ease;
 }
 
-/* Label */
 .label {
   position: absolute;
   top: 50%;
   left: calc(50% + 14px);
   transform: translateY(-50%);
+  opacity: 0;
+  white-space: nowrap;
   font-family: "Barlow Condensed", sans-serif;
   font-size: 9px;
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: rgba(14, 13, 11, 0.55);
-  white-space: nowrap;
-  opacity: 0;
   transition: opacity 180ms ease;
 }
 
-/* States */
 .hover .cross {
   width: 6px;
   height: 6px;
 }
+
 .hover .ring {
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
 }
+
 .hover .label {
-  opacity: 1;
+  opacity: 0;
 }
 
 .card .cross {
@@ -107,12 +112,23 @@
   height: 4px;
   opacity: 0.4;
 }
+
 .card .ring {
-  width: 52px;
-  height: 52px;
+  width: 50px;
+  height: 50px;
   border-color: #b89a70;
 }
+
 .card .label {
   opacity: 1;
   color: #b89a70;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cross,
+  .ring,
+  .label,
+  .cursor {
+    transition: none;
+  }
 }
