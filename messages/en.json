@@ -73,41 +73,46 @@
     }
   },
   "services": {
-    "hero": {
-      "title": "Our Services",
-      "subtitle": "Comprehensive renovation and interior finishing for apartments, homes, and commercial spaces."
-    },
-    "intro": {
-      "title": "What We Provide",
-      "description": "We provide renovation and interior finishing services for apartments, homes, and commercial properties. Our offer is designed for clients who want dependable execution, thoughtful coordination, and a final result that is both visually strong and practically complete."
-    },
-    "list": {
-      "kitchen": {
-        "title": "Turnkey Interior Finishing",
-        "description": "Complete finishing solutions for new apartments, houses, and commercial spaces — from preparation and technical works to final details."
-      },
-      "bathroom": {
-        "title": "Renovation and Reconstruction",
-        "description": "Interior renovation tailored to the condition of the space and the client’s goals, whether the project involves modernization, redesign, or full transformation."
-      },
-      "basement": {
-        "title": "Painting and Wall Finishing",
-        "description": "Traditional and spray painting, plastering, smoothing, and surface preparation that create a clean, high-quality base and finish."
-      },
-      "fullHome": {
-        "title": "Drywall and Ceiling Systems",
-        "description": "Partition walls, plasterboard structures, suspended ceilings, and custom interior build-outs shaped around the layout and function of the space."
-      },
-      "commercial": {
-        "title": "Flooring, Tiling, and Finishing Details",
-        "description": "Professional installation of flooring systems, tile works, interior doors, and other finishing elements that complete the space with precision and consistency."
-      },
-      "carpentry": {
-        "title": "Electrical, Plumbing, and Material Support",
-        "description": "Core technical installations, renovation supervision, developer unit handover support, and assistance with organizing and purchasing materials."
-      }
-    }
+  "hero": {
+    "eyebrow": "Architectural scope",
+    "title": "Our Services",
+    "titleItalic": "built with care",
+    "subtitle": "Comprehensive renovation and interior finishing for apartments, homes, and commercial spaces."
   },
+  "intro": {
+    "title": "What We Provide",
+    "description": "We provide renovation and interior finishing services for apartments, homes, and commercial properties. Our offer is designed for clients who want dependable execution, thoughtful coordination, and a final result that is both visually strong and practically complete."
+  },
+  "section": {
+    "title": "Service Matrix"
+  },
+  "list": {
+    "kitchen": {
+      "title": "Turnkey Interior Finishing",
+      "description": "Complete finishing solutions for new apartments, houses, and commercial spaces — from preparation and technical works to final details."
+    },
+    "bathroom": {
+      "title": "Renovation and Reconstruction",
+      "description": "Interior renovation tailored to the condition of the space and the client’s goals, whether the project involves modernization, redesign, or full transformation."
+    },
+    "basement": {
+      "title": "Painting and Wall Finishing",
+      "description": "Traditional and spray painting, plastering, smoothing, and surface preparation that create a clean, high-quality base and finish."
+    },
+    "fullHome": {
+      "title": "Drywall and Ceiling Systems",
+      "description": "Partition walls, plasterboard structures, suspended ceilings, and custom interior build-outs shaped around the layout and function of the space."
+    },
+    "commercial": {
+      "title": "Flooring, Tiling, and Finishing Details",
+      "description": "Professional installation of flooring systems, tile works, interior doors, and other finishing elements that complete the space with precision and consistency."
+    },
+    "carpentry": {
+      "title": "Electrical, Plumbing, and Material Support",
+      "description": "Core technical installations, renovation supervision, developer unit handover support, and assistance with organizing and purchasing materials."
+    }
+  }
+},
   "projects": {
     "hero": {
       "title": "Our Projects",

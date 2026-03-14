@@ -73,41 +73,46 @@
     }
   },
   "services": {
-    "hero": {
-      "title": "Nasze usługi",
-      "subtitle": "Kompleksowe usługi remontowe i wykończeniowe dla mieszkań, domów oraz przestrzeni komercyjnych."
-    },
-    "intro": {
-      "title": "Co oferujemy",
-      "description": "Oferujemy kompleksowe usługi remontowe i wykończeniowe dla mieszkań, domów oraz przestrzeni komercyjnych. Nasza oferta skierowana jest do klientów, którzy oczekują profesjonalnej realizacji, dobrej organizacji pracy oraz wysokiej jakości wykonania."
-    },
-    "list": {
-      "kitchen": {
-        "title": "Kompleksowe wykończenia „pod klucz”",
-        "description": "Realizacja pełnego wykończenia wnętrz — od przygotowania przestrzeni po finalne elementy wykończeniowe."
-      },
-      "bathroom": {
-        "title": "Remonty i modernizacje wnętrz",
-        "description": "Kompleksowe remonty dostosowane do potrzeb klienta oraz stanu technicznego nieruchomości."
-      },
-      "basement": {
-        "title": "Malowanie i wykończenie ścian",
-        "description": "Malowanie tradycyjne i natryskowe, gładzie oraz przygotowanie powierzchni."
-      },
-      "fullHome": {
-        "title": "Zabudowy z płyt g-k",
-        "description": "Ściany działowe, sufity podwieszane oraz zabudowy wnętrz."
-      },
-      "commercial": {
-        "title": "Podłogi, płytki i detale wykończeniowe",
-        "description": "Profesjonalny montaż paneli podłogowych, układanie płytek, montaż drzwi oraz innych elementów wykończeniowych, które dopełniają wnętrze."
-      },
-      "carpentry": {
-        "title": "Instalacje, nadzór i wsparcie materiałowe",
-        "description": "Prace elektryczne i hydrauliczne, nadzór nad realizacją, pomoc przy odbiorze mieszkań od dewelopera oraz wsparcie w wyborze i zakupie materiałów."
-      }
-    }
+  "hero": {
+    "eyebrow": "zakres architektoniczny",
+    "title": "Nasze usługi",
+    "titleItalic": "wykonane z dbałością",
+    "subtitle": "Kompleksowe remonty i wykończenia wnętrz mieszkań, domów oraz przestrzeni komercyjnych."
   },
+  "intro": {
+    "title": "Co oferujemy",
+    "description": "Oferujemy remonty i usługi wykończenia wnętrz mieszkań, domów oraz nieruchomości komercyjnych. Nasza oferta jest skierowana do klientów, którzy oczekują rzetelnej realizacji, przemyślanej koordynacji i końcowego efektu, który jest jednocześnie estetyczny i w pełni funkcjonalny."
+  },
+  "section": {
+    "title": "Zakres usług"
+  },
+  "list": {
+    "kitchen": {
+      "title": "Kompleksowe wykończenie wnętrz pod klucz",
+      "description": "Kompletne rozwiązania wykończeniowe dla nowych mieszkań, domów i przestrzeni komercyjnych — od przygotowania i prac technicznych po ostatnie detale."
+    },
+    "bathroom": {
+      "title": "Remont i przebudowa",
+      "description": "Remont wnętrz dopasowany do stanu przestrzeni i celów klienta, niezależnie od tego, czy projekt obejmuje modernizację, przeprojektowanie czy pełną transformację."
+    },
+    "basement": {
+      "title": "Malowanie i wykończenie ścian",
+      "description": "Malowanie tradycyjne i natryskowe, tynkowanie, wygładzanie oraz przygotowanie powierzchni, które tworzą czystą, wysokiej jakości bazę i wykończenie."
+    },
+    "fullHome": {
+      "title": "Systemy zabudowy g-k i sufitów",
+      "description": "Ścianki działowe, konstrukcje z płyt gipsowo-kartonowych, sufity podwieszane i niestandardowe zabudowy wnętrz dopasowane do układu i funkcji przestrzeni."
+    },
+    "commercial": {
+      "title": "Podłogi, płytki i detale wykończeniowe",
+      "description": "Profesjonalny montaż systemów podłogowych, płytek, drzwi wewnętrznych i innych elementów wykończeniowych, które dopełniają przestrzeń z precyzją i spójnością."
+    },
+    "carpentry": {
+      "title": "Instalacje elektryczne, hydrauliczne i wsparcie materiałowe",
+      "description": "Podstawowe instalacje techniczne, nadzór remontowy, wsparcie przy odbiorze mieszkań deweloperskich oraz pomoc w organizacji i zakupie materiałów."
+    }
+  }
+},
   "projects": {
     "hero": {
       "title": "Nasze realizacje",
