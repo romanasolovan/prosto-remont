@@ -28,13 +28,13 @@ export default function Contact() {
         </div>
 
         <div className="container">
-          <header className={styles.pageHeader}>
+          {/* <header className={styles.pageHeader}>
             <div className={styles.headerMeta}>
               <span className={styles.pageEyebrow}>{t("title")}</span>
               <h1 className={styles.pageTitle}>{t("title")}</h1>
               <p className={styles.pageDescription}>{t("description")}</p>
             </div>
-          </header>
+          </header> */}
 
           <section className={styles.contactRow}>
             <div className={`${styles.infoCard} ${styles.darkCard}`}>
