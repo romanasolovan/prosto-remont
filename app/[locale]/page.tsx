@@ -3,6 +3,7 @@ import { Link } from "@/navigation";
 import styles from "./page.module.css";
 import TrustedBrands from "../components/TrustedBrands/TrustedBrands";
 import HomeHero from "../components/Home/HomeHero/HomeHero";
+import WhyChooseUs from "../components/Home/WhyChooseUs/WhyChooseUs";
 
 export default function Home() {
   const t = useTranslations("home");
@@ -12,33 +13,7 @@ export default function Home() {
     <div className={styles.home}>
       <HomeHero />
       <TrustedBrands />
-
-      <section className={styles.previewSection} id="about">
-        <div className="container">
-          <div className={styles.previewRow}>
-            <div className={styles.previewText}>
-              <span className={styles.sectionLabel}>{t("labels.about")}</span>
-              <h2 className={styles.sectionTitle}>{t("about.title")}</h2>
-              <p className={styles.sectionDescription}>
-                {t("about.description")}
-              </p>
-              <Link href="/about" className={styles.sectionLink}>
-                {tCommon("learnMore")}
-                <span className={styles.linkArrow} aria-hidden="true">
-                  →
-                </span>
-              </Link>
-            </div>
-
-            <div className={styles.aboutCard} aria-hidden="true">
-              <div className={styles.aboutCardMain}>
-                <span className={styles.cardNumber}>01</span>
-              </div>
-              <div className={styles.aboutCardSide} />
-            </div>
-          </div>
-        </div>
-      </section>
+      <WhyChooseUs />
 
       <section className={styles.previewSection} id="services">
         <div className="container">
