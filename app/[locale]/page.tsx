@@ -2,8 +2,9 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/navigation";
 import styles from "./page.module.css";
 import TrustedBrands from "../components/TrustedBrands/TrustedBrands";
-import HomeHero from "../components/Home/HomeHero/HomeHero";
-import WhyChooseUs from "../components/Home/WhyChooseUs/WhyChooseUs";
+import HomeHero from "../components/home/HomeHero/HomeHero";
+import WhyChooseUs from "../components/home/WhyChooseUs/WhyChooseUs";
+import TestimonialsPreview from "../components/home/TestimonialsPreview/TestimonialsPreview";
 
 export default function Home() {
   const t = useTranslations("home");
@@ -14,6 +15,7 @@ export default function Home() {
       <HomeHero />
       <TrustedBrands />
       <WhyChooseUs />
+      <TestimonialsPreview />
 
       <section className={styles.previewSection} id="services">
         <div className="container">
