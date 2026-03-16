@@ -1,10 +1,10 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/navigation";
 import styles from "./page.module.css";
-import TrustedBrands from "../components/TrustedBrands/TrustedBrands";
-import HomeHero from "../components/home/HomeHero/HomeHero";
-import WhyChooseUs from "../components/home/WhyChooseUs/WhyChooseUs";
-import TestimonialsPreview from "../components/home/TestimonialsPreview/TestimonialsPreview";
+import TrustedBrands from "@/app/components/TrustedBrands/TrustedBrands";
+import HomeHero from "@/app/components/home/HomeHero/HomeHero";
+import WhyChooseUs from "@/app/components/home/WhyChooseUs/WhyChooseUs";
+import TestimonialsPreview from "@/app/components/home/TestimonialsPreview/TestimonialsPreview";
 
 export default function Home() {
   const t = useTranslations("home");
