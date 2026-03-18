@@ -1,4 +1,3 @@
-import { useTranslations } from "next-intl";
 import { Link } from "@/navigation";
 import styles from "./page.module.css";
 import TrustedBrands from "@/components/home/TrustedBrands/TrustedBrands";
@@ -11,31 +10,33 @@ import ProjectsPreview from "@/components/home/ProjectsPreview/ProjectsPreview";
 import ProcessPreview from "@/components/home/ProcessPreview/ProcessPreview";
 
 export default function Home() {
-  const t = useTranslations("home");
-  const tCommon = useTranslations("common");
-
   return (
     <div className={styles.home}>
       <HomeHero />
       <TrustedBrands />
       <WhyChooseUs />
-      <ClientOpinionsPreview />
-      <QuoteHighlight />
       <ServicesPreview />
       <ProjectsPreview />
+      <ClientOpinionsPreview />
+      <QuoteHighlight />
       <ProcessPreview />
 
       <section className={styles.ctaSection}>
         <div className="container">
           <div className={styles.ctaCard}>
             <div className={styles.ctaLine} aria-hidden="true" />
-            <h2 className={styles.ctaTitle}>{t("contact.title")}</h2>
-            <p className={styles.ctaDescription}>{t("contact.description")}</p>
+            <h2 className={styles.ctaTitle}>
+              Ready to shape your next renovation?
+            </h2>
+            <p className={styles.ctaDescription}>
+              Start with a clear conversation, explore the process, and take the
+              next step with confidence.
+            </p>
             <Link
-              href="/contact"
+              href="/process"
               className={`btn btn-primary ${styles.ctaButton}`}
             >
-              {tCommon("contactUs")}
+              Request a Quote
             </Link>
           </div>
         </div>

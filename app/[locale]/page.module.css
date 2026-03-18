@@ -34,7 +34,9 @@
   background: var(--paper);
 }
 
+/* CLEAN UP ALL SECTION  */
 /* HERO section */
+
 .hero::before,
 .trustedSection::before {
   content: "";
@@ -1380,4 +1382,35 @@
   to {
     transform: translateX(-50%);
   }
+}
+
+.ctaSecondary {
+  position: relative;
+  z-index: 2;
+  margin-top: 18px;
+}
+
+.ctaSecondaryLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(232, 228, 216, 0.72);
+  transition:
+    gap 220ms ease,
+    color 200ms ease;
+}
+
+.ctaSecondaryLink:hover {
+  gap: 14px;
+  color: rgba(232, 228, 216, 0.92);
+}
+
+.ctaSecondaryLink:hover .linkArrow {
+  transform: translateX(3px);
 }
