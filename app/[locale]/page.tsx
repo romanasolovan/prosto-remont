@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/navigation";
 import styles from "./page.module.css";
-import TrustedBrands from "@/components/TrustedBrands/TrustedBrands";
+import TrustedBrands from "@/components/home/TrustedBrands/TrustedBrands";
 import HomeHero from "@/components/home/HomeHero/HomeHero";
 import WhyChooseUs from "@/components/home/WhyChooseUs/WhyChooseUs";
 import ClientOpinionsPreview from "@/components/home/ClientOpinionsPreview/ClientOpinionsPreview";

@@ -1,4 +1,4 @@
-import styles from "@/app/[locale]/page.module.css";
+import styles from "./TrustedBrands.module.css";
 
 const trustedBrands = [
   { name: "Atelier North", mark: "AN" },
