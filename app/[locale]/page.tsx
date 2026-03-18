@@ -6,6 +6,7 @@ import HomeHero from "@/components/home/HomeHero/HomeHero";
 import WhyChooseUs from "@/components/home/WhyChooseUs/WhyChooseUs";
 import ClientOpinionsPreview from "@/components/home/ClientOpinionsPreview/ClientOpinionsPreview";
 import QuoteHighlight from "@/components/home/QuoteHighlight/QuoteHighlight";
+import ServicesPreview from "@/components/home/ServicesPreview/ServicesPreview";
 
 export default function Home() {
   const t = useTranslations("home");
@@ -18,43 +19,7 @@ export default function Home() {
       <WhyChooseUs />
       <ClientOpinionsPreview />
       <QuoteHighlight />
-
-      <section className={styles.previewSection} id="services">
-        <div className="container">
-          <div className={`${styles.previewRow} ${styles.reverseRow}`}>
-            <div className={styles.servicesBoard} aria-hidden="true">
-              <div className={styles.serviceMiniCard}>
-                <span className={styles.cardNumber}>01</span>
-              </div>
-              <div className={styles.serviceMiniCard}>
-                <span className={styles.cardNumber}>02</span>
-              </div>
-              <div className={styles.serviceMiniCard}>
-                <span className={styles.cardNumber}>03</span>
-              </div>
-              <div className={styles.serviceMiniCard}>
-                <span className={styles.cardNumber}>04</span>
-              </div>
-            </div>
-
-            <div className={styles.previewText}>
-              <span className={styles.sectionLabel}>
-                {t("labels.services")}
-              </span>
-              <h2 className={styles.sectionTitle}>{t("services.title")}</h2>
-              <p className={styles.sectionDescription}>
-                {t("services.description")}
-              </p>
-              <Link href="/services" className={styles.sectionLink}>
-                {tCommon("exploreServices")}
-                <span className={styles.linkArrow} aria-hidden="true">
-                  →
-                </span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ServicesPreview />
 
       <section className={styles.previewSection} id="projects">
         <div className="container">
