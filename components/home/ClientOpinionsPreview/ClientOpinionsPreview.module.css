@@ -1,7 +1,7 @@
 .clientOpinionsPreviewSection {
   position: relative;
   overflow: hidden;
-  padding: clamp(68px, 10vw, 140px) 0;
+  padding: clamp(72px, 10vw, 144px) 0;
   background:
     linear-gradient(var(--grid) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid) 1px, transparent 1px),
@@ -17,12 +17,35 @@
 }
 
 .clientOpinionsPreviewIntro {
-  max-width: 760px;
-  margin-bottom: clamp(28px, 5vw, 40px);
+  max-width: 780px;
+  margin-bottom: clamp(30px, 5vw, 42px);
+}
+
+.sectionLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 10px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--sand);
+}
+
+.sectionLabel::before {
+  content: "";
+  display: block;
+  width: 18px;
+  height: 1px;
+  flex-shrink: 0;
+  background: var(--sand);
+  opacity: 0.65;
 }
 
 .clientOpinionsPreviewTitle {
-  max-width: 12ch;
+  max-width: 13ch;
   margin: 0 0 14px;
   font-family: "Barlow Condensed", sans-serif;
   font-size: clamp(32px, 5vw, 64px);
@@ -35,7 +58,7 @@
 }
 
 .clientOpinionsPreviewDescription {
-  max-width: 52ch;
+  max-width: 54ch;
   margin: 0;
   font-family: "Barlow", sans-serif;
   font-size: clamp(13px, 1vw, 15px);
@@ -135,14 +158,16 @@
 .clientOpinionsPreviewCard {
   position: relative;
   overflow: hidden;
-  padding: clamp(22px, 3vw, 30px);
+  min-height: 220px;
+  padding: clamp(24px, 3vw, 30px);
   border: 0.5px solid var(--ink-10);
   border-radius: var(--r-xl) var(--r-sm) var(--r-lg) var(--r-sm);
   background: var(--panel-light);
   box-shadow: var(--shadow-light);
   transition:
     border-color 250ms ease,
-    transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 250ms ease;
 }
 
 .clientOpinionsPreviewCard::before {
@@ -166,6 +191,19 @@
   background-size: 22px 22px;
 }
 
+.clientOpinionsPreviewQuoteMark {
+  position: absolute;
+  right: 18px;
+  bottom: -10px;
+  z-index: 0;
+  user-select: none;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(72px, 7vw, 92px);
+  font-weight: 200;
+  line-height: 1;
+  color: rgba(184, 154, 112, 0.12);
+}
+
 .clientOpinionsPreviewCardHeader {
   position: relative;
   z-index: 1;
@@ -173,7 +211,7 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .clientOpinionsPreviewAuthor {
@@ -228,11 +266,11 @@
 .clientOpinionsPreviewText {
   position: relative;
   z-index: 1;
-  max-width: 36ch;
+  max-width: 37ch;
   margin: 0;
   font-family: "Barlow", sans-serif;
   font-size: clamp(14px, 1vw, 15px);
-  line-height: 1.85;
+  line-height: 1.86;
   font-weight: 300;
   color: var(--ink-60);
 }
@@ -248,12 +286,20 @@
   .clientOpinionsPreviewGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .clientOpinionsPreviewCard {
+    min-height: 236px;
+  }
 }
 
 @media (hover: hover) {
   .clientOpinionsPreviewCard:hover {
     border-color: var(--ink-20);
     transform: translateY(-4px);
+    box-shadow:
+      0 2px 0 rgba(14, 13, 11, 0.06),
+      0 22px 50px rgba(14, 13, 11, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.82);
   }
 }
 

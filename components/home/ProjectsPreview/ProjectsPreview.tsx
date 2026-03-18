@@ -8,22 +8,16 @@ export default function ProjectsPreview() {
 
   const projects = [
     {
-      number: "01",
-      title: "Private Apartment",
-      description:
-        "A refined interior direction shaped around light, layout, and daily flow.",
-    },
-    {
       number: "02",
       title: "Family House",
       description:
-        "A renovation approach focused on warmth, function, and long-term comfort.",
+        "A renovation approach centered on warmth, function, and long-term comfort for everyday living.",
     },
     {
       number: "03",
       title: "Commercial Space",
       description:
-        "A clear visual identity supported by practical planning and spatial clarity.",
+        "A clearer visual identity supported by practical planning, atmosphere, and spatial balance.",
     },
   ];
 
@@ -33,8 +27,17 @@ export default function ProjectsPreview() {
         <div className={styles.inner}>
           <div className={styles.content}>
             <span className={styles.label}>{t("labels.projects")}</span>
-            <h2 className={styles.title}>{t("projects.title")}</h2>
-            <p className={styles.description}>{t("projects.description")}</p>
+
+            <h2 className={styles.title}>
+              Selected work that reflects clarity, atmosphere, and careful
+              execution
+            </h2>
+
+            <p className={styles.description}>
+              Projects should show more than surface appeal. They should reflect
+              proportion, intention, and the quality of decisions behind the
+              finished result.
+            </p>
 
             <Link href="/projects" className={styles.link}>
               {tCommon("viewPortfolio")}
@@ -49,11 +52,19 @@ export default function ProjectsPreview() {
               <div className={styles.featuredFrameOuter}>
                 <div className={styles.featuredFrameInner} />
               </div>
+
+              <div className={styles.featuredMeta}>
+                <span className={styles.featuredMetaNumber}>01</span>
+                <span className={styles.featuredMetaLabel}>
+                  Private Apartment
+                </span>
+              </div>
+
               <span className={styles.featuredNumber}>01</span>
             </article>
 
             <div className={styles.sideGrid}>
-              {projects.slice(1).map((project) => (
+              {projects.map((project) => (
                 <article key={project.number} className={styles.projectCard}>
                   <span className={styles.projectNumber}>{project.number}</span>
                   <h3 className={styles.projectTitle}>{project.title}</h3>

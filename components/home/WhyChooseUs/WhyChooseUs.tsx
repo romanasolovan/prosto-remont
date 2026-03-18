@@ -5,21 +5,22 @@ const pillars = [
     number: "01",
     title: "Tailored Approach",
     description:
-      "Every project begins with context, constraints, and goals, so the solution feels intentional rather than generic.",
+      "Every project begins with context, constraints, and goals, so each solution feels intentional, relevant, and carefully shaped.",
   },
   {
     number: "02",
     title: "Clear Communication",
     description:
-      "From first contact to final delivery, each step is structured to feel transparent, calm, and easy to follow.",
+      "From first contact to final delivery, the process is structured to feel transparent, calm, and easy to navigate.",
   },
   {
     number: "03",
     title: "Architectural Precision",
     description:
-      "A refined process, careful detailing, and visual discipline help create outcomes that feel elevated and considered.",
+      "Careful detailing, visual discipline, and a considered process create outcomes that feel refined, balanced, and enduring.",
   },
 ];
+
 export default function WhyChooseUs() {
   return (
     <section
@@ -29,13 +30,16 @@ export default function WhyChooseUs() {
       <div className="container">
         <div className={styles.whyIntro}>
           <span className={styles.sectionLabel}>Why choose us</span>
+
           <h2 className={styles.whyTitle} id="why-choose-us-title">
-            Thoughtful design, clear structure, and a client-focused process
+            Design-led thinking, structured guidance, and a more considered way
+            to renovate
           </h2>
+
           <p className={styles.whyDescription}>
-            The homepage should do more than introduce the studio. It should
-            quickly show the qualities that make working with you feel premium,
-            reliable, and well considered.
+            The strongest projects rely on more than taste alone. They need
+            clarity, trust, and a process that feels as thoughtful as the final
+            result.
           </p>
         </div>
 

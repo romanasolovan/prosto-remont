@@ -24,7 +24,7 @@
 
   position: relative;
   overflow: hidden;
-  padding: clamp(68px, 10vw, 140px) 0;
+  padding: clamp(72px, 10vw, 144px) 0;
   background:
     linear-gradient(var(--grid) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid) 1px, transparent 1px),
@@ -41,11 +41,11 @@
 
 .inner {
   display: grid;
-  gap: clamp(28px, 5vw, 48px);
+  gap: clamp(30px, 5vw, 52px);
 }
 
 .content {
-  max-width: 580px;
+  max-width: 620px;
 }
 
 .label {
@@ -72,6 +72,7 @@
 }
 
 .title {
+  max-width: 13ch;
   margin: 0 0 14px;
   font-family: "Barlow Condensed", sans-serif;
   font-size: clamp(30px, 4.8vw, 60px);
@@ -84,7 +85,7 @@
 }
 
 .description {
-  max-width: 44ch;
+  max-width: 48ch;
   margin: 0 0 22px;
   font-family: "Barlow", sans-serif;
   font-size: clamp(13px, 1vw, 15px);
@@ -137,7 +138,8 @@
   box-shadow: var(--shadow-light);
   transition:
     border-color 250ms ease,
-    transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 250ms ease;
 }
 
 .featuredCard::after,
@@ -154,7 +156,7 @@
 }
 
 .featuredCard {
-  min-height: clamp(240px, 34vw, 420px);
+  min-height: clamp(250px, 34vw, 430px);
   border-radius: var(--r-lg) var(--r-sm) var(--r-xl) var(--r-sm);
 }
 
@@ -182,6 +184,43 @@
   transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.featuredMeta {
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  z-index: 2;
+  display: grid;
+  gap: 6px;
+}
+
+.featuredMetaNumber {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sand);
+}
+
+.featuredMetaNumber::after {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: rgba(184, 154, 112, 0.45);
+}
+
+.featuredMetaLabel {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(20px, 2vw, 28px);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
 .featuredNumber {
   position: absolute;
   right: 14px;
@@ -203,8 +242,8 @@
 }
 
 .projectCard {
-  min-height: 180px;
-  padding: 24px 22px 22px;
+  min-height: 190px;
+  padding: 26px 22px 22px;
   border-radius: var(--r-sm) var(--r-xl) var(--r-sm) var(--r-lg);
 }
 
@@ -220,7 +259,9 @@
 .projectNumber {
   position: relative;
   z-index: 1;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   margin-bottom: 24px;
   font-family: "Barlow Condensed", sans-serif;
   font-size: 11px;
@@ -228,6 +269,13 @@
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--sand);
+}
+
+.projectNumber::after {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: rgba(184, 154, 112, 0.45);
 }
 
 .projectTitle {
@@ -247,12 +295,12 @@
 .projectDescription {
   position: relative;
   z-index: 1;
-  max-width: 30ch;
+  max-width: 31ch;
   margin: 0;
   font-family: "Barlow", sans-serif;
   font-size: clamp(13px, 1vw, 14px);
   font-weight: 300;
-  line-height: 1.8;
+  line-height: 1.82;
   color: var(--ink-60);
 }
 
@@ -273,7 +321,7 @@
 
   .projectCard {
     min-height: 0;
-    padding: 28px 24px 24px;
+    padding: 30px 24px 24px;
   }
 }
 
@@ -282,6 +330,10 @@
   .projectCard:hover {
     border-color: var(--ink-20);
     transform: translateY(-4px);
+    box-shadow:
+      0 2px 0 rgba(14, 13, 11, 0.06),
+      0 22px 50px rgba(14, 13, 11, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.82);
   }
 
   .featuredCard:hover .featuredFrameInner {

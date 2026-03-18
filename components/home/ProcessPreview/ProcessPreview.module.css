@@ -21,7 +21,7 @@
 
   position: relative;
   overflow: hidden;
-  padding: clamp(68px, 10vw, 140px) 0;
+  padding: clamp(72px, 10vw, 144px) 0;
   background:
     linear-gradient(var(--grid) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid) 1px, transparent 1px),
@@ -38,7 +38,7 @@
 
 .inner {
   display: grid;
-  gap: clamp(28px, 5vw, 48px);
+  gap: clamp(30px, 5vw, 52px);
 }
 
 .rail {
@@ -49,7 +49,7 @@
   justify-content: space-around;
   gap: 12px;
   overflow: hidden;
-  padding: clamp(22px, 3vw, 32px) clamp(16px, 2.5vw, 24px);
+  padding: clamp(24px, 3vw, 34px) clamp(16px, 2.5vw, 24px);
   border: 0.5px solid var(--ink-10);
   border-radius: var(--r-lg) var(--r-sm) var(--r-lg) var(--r-sm);
   background: var(--panel-light);
@@ -108,7 +108,7 @@
 }
 
 .content {
-  max-width: 560px;
+  max-width: 600px;
 }
 
 .label {
@@ -135,6 +135,7 @@
 }
 
 .title {
+  max-width: 13ch;
   margin: 0 0 14px;
   font-family: "Barlow Condensed", sans-serif;
   font-size: clamp(30px, 4.8vw, 60px);
@@ -147,7 +148,7 @@
 }
 
 .description {
-  max-width: 44ch;
+  max-width: 47ch;
   margin: 0 0 22px;
   font-family: "Barlow", sans-serif;
   font-size: clamp(13px, 1vw, 15px);
@@ -187,8 +188,8 @@
 
 @media (min-width: 900px) {
   .inner {
-    grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr);
-    gap: clamp(32px, 4vw, 48px);
+    grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
+    gap: clamp(32px, 4vw, 50px);
     align-items: center;
   }
 }
@@ -209,5 +210,9 @@
 
   .rail::after {
     display: none;
+  }
+
+  .title {
+    max-width: 100%;
   }
 }

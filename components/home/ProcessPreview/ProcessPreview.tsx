@@ -3,8 +3,7 @@ import { Link } from "@/navigation";
 import styles from "./ProcessPreview.module.css";
 
 export default function ProcessPreview() {
-  const t = useTranslations("home");
-  const tCommon = useTranslations("common");
+  const t = useTranslations("common");
 
   const steps = ["01", "02", "03", "04", "05"];
 
@@ -21,12 +20,19 @@ export default function ProcessPreview() {
           </div>
 
           <div className={styles.content}>
-            <span className={styles.label}>{t("labels.process")}</span>
-            <h2 className={styles.title}>{t("process.title")}</h2>
-            <p className={styles.description}>{t("process.description")}</p>
+            <span className={styles.label}>Process</span>
+
+            <h2 className={styles.title}>
+              A clearer process creates calmer decisions and better outcomes
+            </h2>
+
+            <p className={styles.description}>
+              From first inquiry to final direction, each stage is structured to
+              feel transparent, considered, and easy to move through.
+            </p>
 
             <Link href="/process" className={styles.link}>
-              {tCommon("understandProcess")}
+              {t("understandProcess")}
               <span className={styles.linkArrow} aria-hidden="true">
                 →
               </span>

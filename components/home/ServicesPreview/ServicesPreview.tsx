@@ -11,25 +11,25 @@ export default function ServicesPreview() {
       number: "01",
       title: "Renovation Planning",
       description:
-        "Structured guidance from the first idea to a clear renovation direction.",
+        "Structured guidance that turns early ideas, practical constraints, and priorities into a clear direction.",
     },
     {
       number: "02",
       title: "Interior Design",
       description:
-        "Refined visual concepts shaped around space, function, and atmosphere.",
+        "Refined concepts shaped around atmosphere, proportion, and the way a space should feel and function.",
     },
     {
       number: "03",
       title: "Project Coordination",
       description:
-        "A calmer process with aligned communication, priorities, and execution.",
+        "A calmer process built on aligned communication, thoughtful sequencing, and clearer decision-making.",
     },
     {
       number: "04",
       title: "Tailored Solutions",
       description:
-        "Recommendations shaped around your goals, property type, and timeline.",
+        "Recommendations adapted to your property type, renovation scope, timeline, and long-term goals.",
     },
   ];
 
@@ -39,8 +39,16 @@ export default function ServicesPreview() {
         <div className={styles.inner}>
           <div className={styles.content}>
             <span className={styles.label}>{t("labels.services")}</span>
-            <h2 className={styles.title}>{t("services.title")}</h2>
-            <p className={styles.description}>{t("services.description")}</p>
+
+            <h2 className={styles.title}>
+              Services shaped around clarity, design, and real project needs
+            </h2>
+
+            <p className={styles.description}>
+              Every project benefits from structure as much as style. These
+              service areas are designed to support better decisions, smoother
+              execution, and a more considered final result.
+            </p>
 
             <Link href="/services" className={styles.link}>
               {tCommon("exploreServices")}

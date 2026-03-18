@@ -78,13 +78,13 @@ export default function ClientOpinionsPreview() {
             className={styles.clientOpinionsPreviewTitle}
             id="client-opinions-preview-title"
           >
-            Real trust comes from the experience clients remember
+            Confidence is built through the experience clients carry away
           </h2>
 
           <p className={styles.clientOpinionsPreviewDescription}>
-            A selection of client feedback helps visitors feel the quality of
-            the process, the communication, and the final result before they
-            even reach out.
+            Good projects leave an impression long after completion. These
+            selected reviews reflect the clarity, care, and trust that shape the
+            process as much as the final result.
           </p>
         </div>
 
@@ -146,6 +146,13 @@ export default function ClientOpinionsPreview() {
               key={comment.id}
               className={styles.clientOpinionsPreviewCard}
             >
+              <div
+                className={styles.clientOpinionsPreviewQuoteMark}
+                aria-hidden="true"
+              >
+                “
+              </div>
+
               <div className={styles.clientOpinionsPreviewCardHeader}>
                 <div className={styles.clientOpinionsPreviewAuthor}>
                   <div
