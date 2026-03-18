@@ -45,7 +45,6 @@
 }
 
 .whyTitle {
-  max-width: 14ch;
   margin: 0 0 14px;
   font-family: "Barlow Condensed", sans-serif;
   font-size: clamp(32px, 5vw, 64px);

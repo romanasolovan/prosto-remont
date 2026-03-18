@@ -4,7 +4,7 @@
   padding: clamp(30px, 5vw, 52px) 0 clamp(38px, 6vw, 64px);
   border-top: 0.5px solid var(--ink-06);
   border-bottom: 0.5px solid var(--ink-06);
-  background: rgba(14, 13, 11, 0.015);
+  background: var(--ink-40);
 }
 
 .trustedSection::before {
