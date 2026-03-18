@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/navigation";
-import styles from "@/app/[locale]/page.module.css";
+import styles from "./HomeHero.module.css";
 
 export default function HomeHero() {
   const t = useTranslations("home");

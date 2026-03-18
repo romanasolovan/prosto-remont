@@ -1,4 +1,4 @@
-import styles from "@/app/[locale]/page.module.css";
+import styles from "./WhyChooseUs.module.css";
 
 const pillars = [
   {
