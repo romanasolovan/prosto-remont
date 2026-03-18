@@ -18,12 +18,17 @@ export default function HomeHero() {
       <div className="container">
         <div className={styles.heroInner}>
           <div className={styles.heroContent}>
+            <span className={styles.heroEyebrow}>
+              Architecture / Interiors / Renovation
+            </span>
+
             <h1 className={styles.heroTitle}>{t("hero.title")}</h1>
+
             <p className={styles.heroSubtitle}>{t("hero.subtitle")}</p>
 
             <div className={styles.heroActions}>
               <Link
-                href="/contact"
+                href="/process"
                 className={`btn btn-primary ${styles.heroButton}`}
               >
                 {tCommon("startProject")}
@@ -36,15 +41,29 @@ export default function HomeHero() {
                 </span>
               </Link>
             </div>
+
+            <div className={styles.heroMeta}>
+              <span className={styles.heroMetaItem}>
+                Tailored project guidance
+              </span>
+              <span className={styles.heroMetaDivider} aria-hidden="true" />
+              <span className={styles.heroMetaItem}>Clear process</span>
+              <span className={styles.heroMetaDivider} aria-hidden="true" />
+              <span className={styles.heroMetaItem}>
+                Client-focused approach
+              </span>
+            </div>
           </div>
 
           <div className={styles.heroPanels} aria-hidden="true">
             <div className={`${styles.heroPanel} ${styles.heroPanelLarge}`}>
               <span className={styles.panelNumber}>01</span>
             </div>
+
             <div className={`${styles.heroPanel} ${styles.heroPanelTall}`}>
               <span className={styles.panelNumber}>02</span>
             </div>
+
             <div className={`${styles.heroPanel} ${styles.heroPanelSmall}`}>
               <span className={styles.panelNumber}>03</span>
             </div>
