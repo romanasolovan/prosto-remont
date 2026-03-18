@@ -5,8 +5,8 @@ import { useTranslations } from "next-intl";
 import styles from "./services.module.css";
 import ServiceModal, {
   type ServiceDetail,
-} from "@/app/components/Services/ServiceModal";
-import CustomCursor from "@/app/components/CustomCursor/CustomCursor";
+} from "@/components/Services/ServiceModal";
+import CustomCursor from "@/components/CustomCursor/CustomCursor";
 
 type StaticDetail = Omit<ServiceDetail, "index" | "title">;
 

@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import styles from "./process.module.css";
-import ContactForm from "@/app/components/ContactForm/ContactForm";
+import ContactForm from "@/components/ContactForm/ContactForm";
 
 export async function generateMetadata({
   params,

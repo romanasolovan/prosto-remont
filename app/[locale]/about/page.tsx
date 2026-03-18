@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 import styles from "./about.module.css";
-import ClientOpinions from "@/app/components/ClientOpinions/ClientOpinions";
+import ClientOpinions from "@/components/ClientOpinions/ClientOpinions";
 
 const StatIcons = {
   projects: (

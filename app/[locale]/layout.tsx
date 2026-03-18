@@ -3,11 +3,11 @@ import { getMessages, getTranslations } from "next-intl/server";
 import { Inter, Playfair_Display } from "next/font/google";
 import { notFound } from "next/navigation";
 import "../globals.css";
-import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 import { locales, type Locale } from "@/i18n/routing";
 import type { Metadata } from "next";
-import CallWidget from "../components/CallWidget/CallWidget";
+import CallWidget from "../../components/CallWidget/CallWidget";
 
 const inter = Inter({
   subsets: ["latin", "cyrillic"],
