@@ -1,28 +1,15 @@
-import { getRequestConfig } from "next-intl/server";
+import {getRequestConfig} from "next-intl/server";
+import {hasLocale} from "next-intl";
+import {routing} from "./routing";
 
-export const locales = ["en", "pl", "uk", "ru"] as const;
-export type Locale = (typeof locales)[number];
-
-export const defaultLocale: Locale = "en";
-
-export const localeLabels: Record<Locale, string> = {
-  en: "English",
-  pl: "Polski",
-  uk: "Українська",
-  ru: "Русский",
-};
-
-export default getRequestConfig(async ({ requestLocale }) => {
-  // This typically corresponds to the `[locale]` segment
-  let locale = await requestLocale;
-
-  // Ensure that a valid locale is used
-  if (!locale || !locales.includes(locale as Locale)) {
-    locale = defaultLocale;
-  }
+export default getRequestConfig(async ({requestLocale}) => {
+  const requested = await requestLocale;
+  const locale = hasLocale(routing.locales, requested)
+    ? requested
+    : routing.defaultLocale;
 
   return {
     locale,
-    messages: (await import(`../messages/${locale}.json`)).default,
+    messages: (await import(`../messages/${locale}.json`)).default
   };
 });

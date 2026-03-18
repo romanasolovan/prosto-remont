@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "next/navigation";
 import { usePathname, useRouter } from "@/navigation";
-import { locales, localeLabels, type Locale } from "@/i18n/request";
+import { locales, localeLabels, type Locale } from "@/i18n/routing";
 import styles from "./LanguageSwitcher.module.css";
 
 export default function LanguageSwitcher() {

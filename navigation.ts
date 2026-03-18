@@ -1,6 +1,5 @@
-import { createNavigation } from "next-intl/navigation";
-// import { routing } from "./routing";
-import { locales } from "./i18n/request";
+import {createNavigation} from "next-intl/navigation";
+import {routing} from "./i18n/routing";
 
-export const { Link, redirect, usePathname, useRouter, getPathname } =
-  createNavigation({ locales });
+export const {Link, redirect, usePathname, useRouter, getPathname} =
+  createNavigation(routing);

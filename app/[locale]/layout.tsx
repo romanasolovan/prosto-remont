@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import "../globals.css";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
-import { locales, type Locale } from "@/i18n/request";
+import { locales, type Locale } from "@/i18n/routing";
 import type { Metadata } from "next";
 import CallWidget from "../components/CallWidget/CallWidget";
 
