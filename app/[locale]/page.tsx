@@ -8,6 +8,7 @@ import ClientOpinionsPreview from "@/components/home/ClientOpinionsPreview/Clien
 import QuoteHighlight from "@/components/home/QuoteHighlight/QuoteHighlight";
 import ServicesPreview from "@/components/home/ServicesPreview/ServicesPreview";
 import ProjectsPreview from "@/components/home/ProjectsPreview/ProjectsPreview";
+import ProcessPreview from "@/components/home/ProcessPreview/ProcessPreview";
 
 export default function Home() {
   const t = useTranslations("home");
@@ -22,34 +23,7 @@ export default function Home() {
       <QuoteHighlight />
       <ServicesPreview />
       <ProjectsPreview />
-
-      <section className={styles.previewSection} id="process">
-        <div className="container">
-          <div className={`${styles.previewRow} ${styles.reverseRow}`}>
-            <div className={styles.processRail} aria-hidden="true">
-              <span className={styles.processStep}>01</span>
-              <span className={styles.processStep}>02</span>
-              <span className={styles.processStep}>03</span>
-              <span className={styles.processStep}>04</span>
-              <span className={styles.processStep}>05</span>
-            </div>
-
-            <div className={styles.previewText}>
-              <span className={styles.sectionLabel}>{t("labels.process")}</span>
-              <h2 className={styles.sectionTitle}>{t("process.title")}</h2>
-              <p className={styles.sectionDescription}>
-                {t("process.description")}
-              </p>
-              <Link href="/process" className={styles.sectionLink}>
-                {tCommon("understandProcess")}
-                <span className={styles.linkArrow} aria-hidden="true">
-                  →
-                </span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ProcessPreview />
 
       <section className={styles.ctaSection}>
         <div className="container">
