@@ -5,6 +5,7 @@ import TrustedBrands from "@/components/home/TrustedBrands/TrustedBrands";
 import HomeHero from "@/components/home/HomeHero/HomeHero";
 import WhyChooseUs from "@/components/home/WhyChooseUs/WhyChooseUs";
 import ClientOpinionsPreview from "@/components/home/ClientOpinionsPreview/ClientOpinionsPreview";
+import QuoteHighlight from "@/components/home/QuoteHighlight/QuoteHighlight";
 
 export default function Home() {
   const t = useTranslations("home");
@@ -16,6 +17,7 @@ export default function Home() {
       <TrustedBrands />
       <WhyChooseUs />
       <ClientOpinionsPreview />
+      <QuoteHighlight />
 
       <section className={styles.previewSection} id="services">
         <div className="container">
