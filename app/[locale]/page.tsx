@@ -7,6 +7,7 @@ import WhyChooseUs from "@/components/home/WhyChooseUs/WhyChooseUs";
 import ClientOpinionsPreview from "@/components/home/ClientOpinionsPreview/ClientOpinionsPreview";
 import QuoteHighlight from "@/components/home/QuoteHighlight/QuoteHighlight";
 import ServicesPreview from "@/components/home/ServicesPreview/ServicesPreview";
+import ProjectsPreview from "@/components/home/ProjectsPreview/ProjectsPreview";
 
 export default function Home() {
   const t = useTranslations("home");
@@ -20,35 +21,7 @@ export default function Home() {
       <ClientOpinionsPreview />
       <QuoteHighlight />
       <ServicesPreview />
-
-      <section className={styles.previewSection} id="projects">
-        <div className="container">
-          <div className={styles.previewRow}>
-            <div className={styles.previewText}>
-              <span className={styles.sectionLabel}>
-                {t("labels.projects")}
-              </span>
-              <h2 className={styles.sectionTitle}>{t("projects.title")}</h2>
-              <p className={styles.sectionDescription}>
-                {t("projects.description")}
-              </p>
-              <Link href="/projects" className={styles.sectionLink}>
-                {tCommon("viewPortfolio")}
-                <span className={styles.linkArrow} aria-hidden="true">
-                  →
-                </span>
-              </Link>
-            </div>
-
-            <div className={styles.projectsCard} aria-hidden="true">
-              <div className={styles.projectsFrameOuter}>
-                <div className={styles.projectsFrameInner} />
-              </div>
-              <span className={styles.projectsNumber}>03</span>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ProjectsPreview />
 
       <section className={styles.previewSection} id="process">
         <div className="container">
