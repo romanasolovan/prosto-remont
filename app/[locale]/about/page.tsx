@@ -1,6 +1,8 @@
 import { useTranslations } from "next-intl";
 import styles from "./about.module.css";
 import ClientOpinions from "@/components/ClientOpinions/ClientOpinions";
+import TrustedBrands from "@/components/home/TrustedBrands/TrustedBrands";
+import WhyChooseUs from "@/components/home/WhyChooseUs/WhyChooseUs";
 
 const StatIcons = {
   projects: (
@@ -81,8 +83,15 @@ export default function About() {
 
   return (
     <main className={styles.aboutPage}>
-      {/* ── STATS ── */}
+      <div className={styles.pageDecor} aria-hidden="true">
+        <span className={styles.decorLeft} />
+        <span className={styles.decorLeftSoft} />
+        <span className={styles.decorRight} />
+        <span className={styles.decorRightSoft} />
+      </div>
+
       <section
+        id="stats"
         className={styles.statsSection}
         aria-labelledby="about-stats-title"
       >
@@ -93,10 +102,13 @@ export default function About() {
         <div className="container">
           <div className={styles.statsInner}>
             <div className={styles.statsMeta}>
-              <span className={styles.statsEyebrow}>About us</span>
+              <span className={styles.statsEyebrow}>{t("stats.eyebrow")}</span>
+
               <h1 id="about-stats-title" className={styles.statsTitle}>
                 {t("stats.title")}
               </h1>
+
+              <p className={styles.statsLead}>{t("stats.description")}</p>
             </div>
 
             <div className={styles.statsGrid}>
@@ -104,11 +116,16 @@ export default function About() {
                 <article
                   key={stat.key}
                   className={styles.statCard}
-                  style={{ "--i": i } as React.CSSProperties}
+                  style={{ ["--i" as string]: i }}
                 >
-                  <div className={styles.statIconWrap}>
-                    <div className={styles.statIcon}>{stat.icon}</div>
+                  <div className={styles.statTop}>
+                    <span className={styles.statIndex}>0{i + 1}</span>
+
+                    <div className={styles.statIconWrap}>
+                      <div className={styles.statIcon}>{stat.icon}</div>
+                    </div>
                   </div>
+
                   <p className={styles.statText}>{stat.text}</p>
                   <div className={styles.statLine} aria-hidden="true" />
                 </article>
@@ -118,8 +135,8 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── STORY & VALUES ── */}
       <section
+        id="story"
         className={styles.storyValuesSection}
         aria-labelledby="about-story-title"
       >
@@ -148,18 +165,33 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── WHY + OPINIONS ── */}
-      <section className={styles.whySection} aria-labelledby="about-why-title">
+      <div id="trusted">
+        <TrustedBrands />
+      </div>
+
+      <div id="why-choose-us">
+        <WhyChooseUs />
+      </div>
+
+      <section
+        id="why"
+        className={styles.whySection}
+        aria-labelledby="about-why-title"
+      >
         <div className="container">
           <div className={styles.whySectionInner}>
             <article className={styles.whyCard}>
               <span className={styles.whyIndex} aria-hidden="true">
                 03
               </span>
+
               <div className={styles.whyCardContent}>
+                <span className={styles.whyEyebrow}>{t("why.eyebrow")}</span>
+
                 <h2 id="about-why-title" className={styles.whyTitle}>
                   {t("why.title")}
                 </h2>
+
                 <p className={styles.whyText}>{t("why.content")}</p>
               </div>
             </article>

@@ -42,6 +42,34 @@ export default function HomeHero() {
               </Link>
             </div>
 
+            <div
+              className={styles.heroSectionNav}
+              aria-label={t("hero.sectionNavLabel")}
+            >
+              <Link href="/about#stats" className={styles.heroSectionChip}>
+                {t("hero.sectionLinks.stats")}
+              </Link>
+
+              <Link href="/about#story" className={styles.heroSectionChip}>
+                {t("hero.sectionLinks.story")}
+              </Link>
+
+              <Link href="/about#trusted" className={styles.heroSectionChip}>
+                {t("hero.sectionLinks.trusted")}
+              </Link>
+
+              <Link
+                href="/about#why-choose-us"
+                className={styles.heroSectionChip}
+              >
+                {t("hero.sectionLinks.whyChooseUs")}
+              </Link>
+
+              <Link href="/about#why" className={styles.heroSectionChip}>
+                {t("hero.sectionLinks.reviews")}
+              </Link>
+            </div>
+
             <div className={styles.heroMeta}>
               <span className={styles.heroMetaItem}>
                 Tailored project guidance

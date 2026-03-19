@@ -31,7 +31,15 @@
     },
     "hero": {
       "title": "Twoja przestrzeń. Wykończona z precyzją.",
-      "subtitle": "Realizujemy kompleksowe wykończenia mieszkań, domów i lokali usługowych. Stawiamy na rzetelność, przejrzystą komunikację i efekt końcowy, który naprawdę odpowiada Twoim oczekiwaniom."
+      "subtitle": "Realizujemy kompleksowe wykończenia mieszkań, domów i lokali usługowych. Stawiamy na rzetelność, przejrzystą komunikację i efekt końcowy, który naprawdę odpowiada Twoim oczekiwaniom.",
+      "sectionNavLabel": "Sekcje strony o nas",
+      "sectionLinks": {
+        "stats": "Statystyki",
+        "story": "Historia",
+        "trusted": "Zaufali nam",
+        "whyChooseUs": "Dlaczego my",
+        "reviews": "Opinie klientów"
+      }
     },
     "about": {
       "title": "Więcej niż remont",
@@ -59,6 +67,15 @@
       "title": "O PRO100 Twój Remont",
       "subtitle": "Rzetelne remonty i wykończenia wnętrz oparte na zaufaniu, jakości i dobrej organizacji pracy."
     },
+    "stats": {
+      "eyebrow": "O nas",
+      "title": "Doświadczenie potwierdzone realizacjami",
+      "description": "Realizujemy projekty remontowe i wykończeniowe w sposób uporządkowany, estetyczny i przejrzysty — od pierwszej rozmowy aż po finalny efekt.",
+      "projects": "ponad 50 zrealizowanych projektów „pod klucz”",
+      "clients": "ponad 100 zadowolonych klientów",
+      "area": "ponad 20 000 m² wykonanych prac wykończeniowych",
+      "years": "ponad 5 lat doświadczenia na rynku polskim"
+    },
     "story": {
       "title": "Kim jesteśmy",
       "content": "PRO100 Twój Remont to firma specjalizująca się w kompleksowych remontach i wykończeniach wnętrz mieszkań, domów oraz lokali usługowych. Pomagamy naszym klientom przekształcać puste lub niewykończone przestrzenie w komfortowe, funkcjonalne i dopracowane wnętrza."
@@ -67,59 +84,78 @@
       "title": "Nasze wartości",
       "content": "W naszej pracy stawiamy na rzetelność, jasną komunikację, szacunek dla przestrzeni klienta, odpowiedzialność za efekt końcowy oraz dobrą organizację całego procesu. Każdy projekt realizujemy z pełnym zaangażowaniem, profesjonalizmem i dbałością o codzienny komfort osób, które będą korzystać z gotowego wnętrza."
     },
+    "trustedBrands": {
+      "eyebrow": "Zaufali nam",
+      "title": "Wybrani klienci i partnerzy zorientowani na jakość designu",
+      "description": "Starannie dobrana prezentacja marek, która podkreśla zaufanie, współpracę i przemyślane podejście do projektów remontowych i wykończeniowych.",
+      "regionLabel": "Marki i partnerzy"
+    },
+    "whyChooseUs": {
+      "eyebrow": "Dlaczego warto nas wybrać",
+      "title": "Projektowe myślenie, uporządkowany proces i bardziej przemyślany sposób realizacji remontu",
+      "description": "Najlepsze realizacje wymagają czegoś więcej niż dobrego gustu. Potrzebują jasnego procesu, zaufania i podejścia, które jest tak samo dopracowane jak końcowy efekt.",
+      "pillars": {
+        "first": {
+          "title": "Indywidualne podejście",
+          "description": "Każdy projekt zaczyna się od kontekstu, ograniczeń i celów, dzięki czemu każde rozwiązanie jest celowe, trafne i starannie dopasowane."
+        },
+        "second": {
+          "title": "Jasna komunikacja",
+          "description": "Od pierwszego kontaktu aż po zakończenie prac proces współpracy jest uporządkowany, przejrzysty i łatwy do zrozumienia."
+        },
+        "third": {
+          "title": "Architektoniczna precyzja",
+          "description": "Dbałość o detal, dyscyplina wizualna i przemyślany sposób pracy tworzą efekty, które są eleganckie, spójne i trwałe."
+        }
+      }
+    },
     "why": {
+      "eyebrow": "Dlaczego klienci wybierają nas",
       "title": "Dlaczego klienci wybierają nas",
       "content": "Klienci wybierają nas, ponieważ szukają zespołu, któremu mogą zaufać. Doceniają nas za przejrzysty proces współpracy, dobrą komunikację oraz odpowiedzialne podejście do realizacji projektu. Pomagamy w wyborze materiałów, doradzamy rozwiązania i dbamy o to, aby każdy etap prac przebiegał sprawnie. Najważniejszy jest jednak efekt końcowy — przestrzeń, która spełnia oczekiwania i daje komfort na co dzień."
-    },
-    "stats": {
-      "title": "Doświadczenie potwierdzone realizacjami",
-      "projects": "ponad 50 zrealizowanych projektów „pod klucz”",
-      "clients": "ponad 100 zadowolonych klientów",
-      "area": "ponad 20 000 m² wykonanych prac wykończeniowych",
-      "years": "ponad 5 lat doświadczenia na rynku polskim"
     }
   },
   "services": {
-  "hero": {
-    "eyebrow": "zakres architektoniczny",
-    "title": "Nasze usługi",
-    "titleItalic": "wykonane z dbałością",
-    "subtitle": "Kompleksowe remonty i wykończenia wnętrz mieszkań, domów oraz przestrzeni komercyjnych."
-  },
-  "intro": {
-    "title": "Co oferujemy",
-    "description": "Oferujemy remonty i usługi wykończenia wnętrz mieszkań, domów oraz nieruchomości komercyjnych. Nasza oferta jest skierowana do klientów, którzy oczekują rzetelnej realizacji, przemyślanej koordynacji i końcowego efektu, który jest jednocześnie estetyczny i w pełni funkcjonalny."
-  },
-  "section": {
-    "title": "Zakres usług"
-  },
-  "list": {
-    "kitchen": {
-      "title": "Kompleksowe wykończenie wnętrz pod klucz",
-      "description": "Kompletne rozwiązania wykończeniowe dla nowych mieszkań, domów i przestrzeni komercyjnych — od przygotowania i prac technicznych po ostatnie detale."
+    "hero": {
+      "eyebrow": "zakres architektoniczny",
+      "title": "Nasze usługi",
+      "titleItalic": "wykonane z dbałością",
+      "subtitle": "Kompleksowe remonty i wykończenia wnętrz mieszkań, domów oraz przestrzeni komercyjnych."
     },
-    "bathroom": {
-      "title": "Remont i przebudowa",
-      "description": "Remont wnętrz dopasowany do stanu przestrzeni i celów klienta, niezależnie od tego, czy projekt obejmuje modernizację, przeprojektowanie czy pełną transformację."
+    "intro": {
+      "title": "Co oferujemy",
+      "description": "Oferujemy remonty i usługi wykończenia wnętrz mieszkań, domów oraz nieruchomości komercyjnych. Nasza oferta jest skierowana do klientów, którzy oczekują rzetelnej realizacji, przemyślanej koordynacji i końcowego efektu, który jest jednocześnie estetyczny i w pełni funkcjonalny."
     },
-    "basement": {
-      "title": "Malowanie i wykończenie ścian",
-      "description": "Malowanie tradycyjne i natryskowe, tynkowanie, wygładzanie oraz przygotowanie powierzchni, które tworzą czystą, wysokiej jakości bazę i wykończenie."
+    "section": {
+      "title": "Zakres usług"
     },
-    "fullHome": {
-      "title": "Systemy zabudowy g-k i sufitów",
-      "description": "Ścianki działowe, konstrukcje z płyt gipsowo-kartonowych, sufity podwieszane i niestandardowe zabudowy wnętrz dopasowane do układu i funkcji przestrzeni."
-    },
-    "commercial": {
-      "title": "Podłogi, płytki i detale wykończeniowe",
-      "description": "Profesjonalny montaż systemów podłogowych, płytek, drzwi wewnętrznych i innych elementów wykończeniowych, które dopełniają przestrzeń z precyzją i spójnością."
-    },
-    "carpentry": {
-      "title": "Instalacje elektryczne, hydrauliczne i wsparcie materiałowe",
-      "description": "Podstawowe instalacje techniczne, nadzór remontowy, wsparcie przy odbiorze mieszkań deweloperskich oraz pomoc w organizacji i zakupie materiałów."
+    "list": {
+      "kitchen": {
+        "title": "Kompleksowe wykończenie wnętrz pod klucz",
+        "description": "Kompletne rozwiązania wykończeniowe dla nowych mieszkań, domów i przestrzeni komercyjnych — od przygotowania i prac technicznych po ostatnie detale."
+      },
+      "bathroom": {
+        "title": "Remont i przebudowa",
+        "description": "Remont wnętrz dopasowany do stanu przestrzeni i celów klienta, niezależnie od tego, czy projekt obejmuje modernizację, przeprojektowanie czy pełną transformację."
+      },
+      "basement": {
+        "title": "Malowanie i wykończenie ścian",
+        "description": "Malowanie tradycyjne i natryskowe, tynkowanie, wygładzanie oraz przygotowanie powierzchni, które tworzą czystą, wysokiej jakości bazę i wykończenie."
+      },
+      "fullHome": {
+        "title": "Systemy zabudowy g-k i sufitów",
+        "description": "Ścianki działowe, konstrukcje z płyt gipsowo-kartonowych, sufity podwieszane i niestandardowe zabudowy wnętrz dopasowane do układu i funkcji przestrzeni."
+      },
+      "commercial": {
+        "title": "Podłogi, płytki i detale wykończeniowe",
+        "description": "Profesjonalny montaż systemów podłogowych, płytek, drzwi wewnętrznych i innych elementów wykończeniowych, które dopełniają przestrzeń z precyzją i spójnością."
+      },
+      "carpentry": {
+        "title": "Instalacje elektryczne, hydrauliczne i wsparcie materiałowe",
+        "description": "Podstawowe instalacje techniczne, nadzór remontowy, wsparcie przy odbiorze mieszkań deweloperskich oraz pomoc w organizacji i zakupie materiałów."
+      }
     }
-  }
-},
+  },
   "projects": {
     "hero": {
       "title": "Nasze realizacje",

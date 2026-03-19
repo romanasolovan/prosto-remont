@@ -16,10 +16,10 @@
   },
   "common": {
     "learnMore": "Learn More",
-    "startProject": "Start Your Project",
+    "startProject": "Start project",
     "contactUs": "Contact Us",
     "exploreServices": "Explore Services",
-    "viewPortfolio": "View Projects",
+    "viewPortfolio": "View portfolio",
     "understandProcess": "See the Process"
   },
   "home": {
@@ -30,8 +30,16 @@
       "process": "Process"
     },
     "hero": {
-      "title": "Your Space, Finished with Precision, Built Around You",
-      "subtitle": "We deliver turnkey renovation and interior finishing for apartments, homes, and commercial spaces — with clear communication, reliable execution, and a result that feels truly yours."
+      "title": "Spaces shaped with clarity, craft, and intention",
+      "subtitle": "Architecture, interiors, and renovation support designed to feel refined, structured, and easy to navigate.",
+      "sectionNavLabel": "About page sections",
+      "sectionLinks": {
+        "stats": "Studio stats",
+        "story": "Story",
+        "trusted": "Trusted by",
+        "whyChooseUs": "Why choose us",
+        "reviews": "Client voice"
+      }
     },
     "about": {
       "title": "More Than Renovation",
@@ -59,6 +67,15 @@
       "title": "About PRO100 Twój Remont",
       "subtitle": "Reliable renovation and interior finishing built on trust, quality, and organized execution."
     },
+    "stats": {
+      "eyebrow": "About us",
+      "title": "Built on experience. Proven by results.",
+      "description": "We shape renovation and interior projects through a process that feels structured, elegant, and easy to follow from first conversation to final outcome.",
+      "projects": "50+ turnkey projects completed",
+      "clients": "100+ satisfied clients",
+      "area": "20,000+ m² of finishing work delivered",
+      "years": "5+ years on the Polish market"
+    },
     "story": {
       "title": "Who We Are",
       "content": "We are a renovation and interior finishing company focused on delivering complete, high-quality spaces for people who want more than construction work — they want clarity, trust, and a result they can truly enjoy. We work on apartments, homes, and commercial interiors, helping clients turn empty or unfinished spaces into places with character, comfort, and purpose."
@@ -67,59 +84,78 @@
       "title": "Our Values",
       "content": "We believe in reliability, clear communication, respect for the client’s space, accountable workmanship, and organized execution. Every project is approached with care, professionalism, and attention to the real experience of the people who will live or work in the finished space."
     },
+    "trustedBrands": {
+      "eyebrow": "Trusted by",
+      "title": "Selected clients and design-focused partners",
+      "description": "A curated brand rail that signals trust, collaboration, and a careful approach to design-led renovation work.",
+      "regionLabel": "Trusted brands"
+    },
+    "whyChooseUs": {
+      "eyebrow": "Why choose us",
+      "title": "Design-led thinking, structured guidance, and a more considered way to renovate",
+      "description": "The strongest projects rely on more than taste alone. They need clarity, trust, and a process that feels as thoughtful as the final result.",
+      "pillars": {
+        "first": {
+          "title": "Tailored Approach",
+          "description": "Every project begins with context, constraints, and goals, so each solution feels intentional, relevant, and carefully shaped."
+        },
+        "second": {
+          "title": "Clear Communication",
+          "description": "From first contact to final delivery, the process is structured to feel transparent, calm, and easy to navigate."
+        },
+        "third": {
+          "title": "Architectural Precision",
+          "description": "Careful detailing, visual discipline, and a considered process create outcomes that feel refined, balanced, and enduring."
+        }
+      }
+    },
     "why": {
+      "eyebrow": "Why people choose us",
       "title": "Why People Choose Us",
       "content": "Clients choose us because they want a team that combines craftsmanship with trust. We help make the renovation process easier to understand, stay in contact throughout the work, support material decisions, and deliver spaces that feel complete — not just finished."
-    },
-    "stats": {
-      "title": "Built on Experience. Proven by Results.",
-      "projects": "50+ turnkey projects completed",
-      "clients": "100+ satisfied clients",
-      "area": "20,000+ m² of finishing work delivered",
-      "years": "5+ years on the Polish market"
     }
   },
   "services": {
-  "hero": {
-    "eyebrow": "Architectural scope",
-    "title": "Our Services",
-    "titleItalic": "built with care",
-    "subtitle": "Comprehensive renovation and interior finishing for apartments, homes, and commercial spaces."
-  },
-  "intro": {
-    "title": "What We Provide",
-    "description": "We provide renovation and interior finishing services for apartments, homes, and commercial properties. Our offer is designed for clients who want dependable execution, thoughtful coordination, and a final result that is both visually strong and practically complete."
-  },
-  "section": {
-    "title": "Service Matrix"
-  },
-  "list": {
-    "kitchen": {
-      "title": "Turnkey Interior Finishing",
-      "description": "Complete finishing solutions for new apartments, houses, and commercial spaces — from preparation and technical works to final details."
+    "hero": {
+      "eyebrow": "Architectural scope",
+      "title": "Our Services",
+      "titleItalic": "built with care",
+      "subtitle": "Comprehensive renovation and interior finishing for apartments, homes, and commercial spaces."
     },
-    "bathroom": {
-      "title": "Renovation and Reconstruction",
-      "description": "Interior renovation tailored to the condition of the space and the client’s goals, whether the project involves modernization, redesign, or full transformation."
+    "intro": {
+      "title": "What We Provide",
+      "description": "We provide renovation and interior finishing services for apartments, homes, and commercial properties. Our offer is designed for clients who want dependable execution, thoughtful coordination, and a final result that is both visually strong and practically complete."
     },
-    "basement": {
-      "title": "Painting and Wall Finishing",
-      "description": "Traditional and spray painting, plastering, smoothing, and surface preparation that create a clean, high-quality base and finish."
+    "section": {
+      "title": "Service Matrix"
     },
-    "fullHome": {
-      "title": "Drywall and Ceiling Systems",
-      "description": "Partition walls, plasterboard structures, suspended ceilings, and custom interior build-outs shaped around the layout and function of the space."
-    },
-    "commercial": {
-      "title": "Flooring, Tiling, and Finishing Details",
-      "description": "Professional installation of flooring systems, tile works, interior doors, and other finishing elements that complete the space with precision and consistency."
-    },
-    "carpentry": {
-      "title": "Electrical, Plumbing, and Material Support",
-      "description": "Core technical installations, renovation supervision, developer unit handover support, and assistance with organizing and purchasing materials."
+    "list": {
+      "kitchen": {
+        "title": "Turnkey Interior Finishing",
+        "description": "Complete finishing solutions for new apartments, houses, and commercial spaces — from preparation and technical works to final details."
+      },
+      "bathroom": {
+        "title": "Renovation and Reconstruction",
+        "description": "Interior renovation tailored to the condition of the space and the client’s goals, whether the project involves modernization, redesign, or full transformation."
+      },
+      "basement": {
+        "title": "Painting and Wall Finishing",
+        "description": "Traditional and spray painting, plastering, smoothing, and surface preparation that create a clean, high-quality base and finish."
+      },
+      "fullHome": {
+        "title": "Drywall and Ceiling Systems",
+        "description": "Partition walls, plasterboard structures, suspended ceilings, and custom interior build-outs shaped around the layout and function of the space."
+      },
+      "commercial": {
+        "title": "Flooring, Tiling, and Finishing Details",
+        "description": "Professional installation of flooring systems, tile works, interior doors, and other finishing elements that complete the space with precision and consistency."
+      },
+      "carpentry": {
+        "title": "Electrical, Plumbing, and Material Support",
+        "description": "Core technical installations, renovation supervision, developer unit handover support, and assistance with organizing and purchasing materials."
+      }
     }
-  }
-},
+  },
   "projects": {
     "hero": {
       "title": "Our Projects",

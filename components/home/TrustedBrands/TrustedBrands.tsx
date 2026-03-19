@@ -1,11 +1,12 @@
+import { useTranslations } from "next-intl";
+import styles from "./TrustedBrands.module.css";
+
 type Brand = {
   name: string;
   mark: string;
   logoSrc?: string;
   logoAlt?: string;
 };
-
-import styles from "./TrustedBrands.module.css";
 
 const trustedBrands: Brand[] = [
   { name: "Atelier North", mark: "AN" },
@@ -41,6 +42,8 @@ function BrandItem({ brand }: { brand: Brand }) {
 }
 
 export default function TrustedBrands() {
+  const t = useTranslations("about.trustedBrands");
+
   return (
     <section
       className={styles.trustedSection}
@@ -49,22 +52,19 @@ export default function TrustedBrands() {
       <div className="container">
         <div className={styles.trustedInner}>
           <div className={styles.trustedHeader}>
-            <span className={styles.sectionLabel}>Trusted by</span>
+            <span className={styles.sectionLabel}>{t("eyebrow")}</span>
 
             <h2 className={styles.trustedTitle} id="trusted-by-title">
-              Selected clients and design-focused partners
+              {t("title")}
             </h2>
 
-            <p className={styles.trustedDescription}>
-              A curated brand rail that signals trust, collaboration, and a
-              careful approach to design-led renovation work.
-            </p>
+            <p className={styles.trustedDescription}>{t("description")}</p>
           </div>
 
           <div
             className={styles.trustedCarousel}
             role="region"
-            aria-label="Trusted brands"
+            aria-label={t("regionLabel")}
           >
             <div className={styles.trustedTrack}>
               <ul className={styles.trustedList}>

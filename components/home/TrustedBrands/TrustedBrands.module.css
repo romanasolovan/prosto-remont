@@ -1,25 +1,43 @@
 .trustedSection {
+  --ink: #0e0d0b;
+  --ink-60: rgba(14, 13, 11, 0.6);
+  --ink-40: rgba(14, 13, 11, 0.4);
+  --ink-20: rgba(14, 13, 11, 0.2);
+  --ink-10: rgba(14, 13, 11, 0.1);
+  --ink-06: rgba(14, 13, 11, 0.06);
+  --paper: #f5f2eb;
+  --paper-2: #f1ede6;
+  --sand: #b89a70;
+  --grid: rgba(14, 13, 11, 0.048);
+
   position: relative;
   overflow: hidden;
-  padding: clamp(30px, 5vw, 52px) 0 clamp(38px, 6vw, 64px);
+  padding: clamp(48px, 7vw, 72px) 0;
   border-top: 0.5px solid var(--ink-06);
   border-bottom: 0.5px solid var(--ink-06);
-  background: var(--ink-40);
-}
-
-.trustedSection::before {
-  opacity: 0.7;
+  background:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+    linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+  background-size:
+    40px 40px,
+    40px 40px,
+    auto;
+  background-position:
+    -1px -1px,
+    -1px -1px,
+    0 0;
 }
 
 .trustedInner {
   position: relative;
   z-index: 1;
   display: grid;
-  gap: clamp(18px, 3vw, 28px);
+  gap: clamp(22px, 4vw, 30px);
 }
 
 .trustedHeader {
-  max-width: 560px;
+  max-width: 620px;
 }
 
 .sectionLabel {
@@ -28,9 +46,9 @@
   gap: 9px;
   margin-bottom: 10px;
   font-family: "Barlow Condensed", sans-serif;
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 500;
-  letter-spacing: 0.32em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--sand);
 }
@@ -46,24 +64,24 @@
 }
 
 .trustedTitle {
-  margin: 0 0 10px;
+  margin: 0 0 12px;
   font-family: "Barlow Condensed", sans-serif;
-  font-size: clamp(24px, 4vw, 42px);
-  font-weight: 300;
+  font-size: clamp(28px, 4.8vw, 54px);
+  font-weight: 200;
   line-height: 0.94;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   text-transform: uppercase;
   text-wrap: balance;
   color: var(--ink);
 }
 
 .trustedDescription {
-  max-width: 48ch;
+  max-width: 52ch;
   margin: 0;
   font-family: "Barlow", sans-serif;
-  font-size: clamp(13px, 1vw, 14px);
+  font-size: clamp(14px, 1vw, 15px);
   font-weight: 300;
-  line-height: 1.82;
+  line-height: 1.85;
   color: var(--ink-60);
 }
 
@@ -92,11 +110,7 @@
   width: max-content;
   gap: 0;
   will-change: transform;
-  animation: trustedMarquee 36s linear infinite;
-}
-
-.trustedCarousel:hover .trustedTrack {
-  animation-play-state: paused;
+  animation: trustedMarquee 34s linear infinite;
 }
 
 .trustedList {
@@ -113,6 +127,7 @@
   align-items: center;
   gap: 10px;
   flex: 0 0 auto;
+  min-height: 72px;
   padding: 0 clamp(16px, 2.5vw, 32px);
   border-right: 0.5px solid var(--ink-06);
 }
@@ -121,27 +136,38 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: clamp(32px, 4vw, 40px);
-  height: clamp(32px, 4vw, 40px);
+  width: clamp(36px, 4vw, 42px);
+  height: clamp(36px, 4vw, 42px);
   flex-shrink: 0;
   border: 0.5px solid var(--ink-10);
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82);
   transition:
     transform 240ms ease,
-    border-color 220ms ease;
+    border-color 220ms ease,
+    background 220ms ease;
 }
 
 .trustedItem:hover .brandBadge {
   transform: translateY(-2px);
   border-color: var(--ink-20);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.brandLogo {
+  display: block;
+  max-width: 70%;
+  max-height: 70%;
+  object-fit: contain;
 }
 
 .brandMark {
-  font-family: "Playfair Display", serif;
+  font-family: "Barlow Condensed", sans-serif;
   font-size: clamp(12px, 1.4vw, 14px);
-  font-style: italic;
-  font-weight: 400;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: var(--ink-60);
 }
 
@@ -155,10 +181,35 @@
   color: var(--ink-40);
 }
 
-/* TRUSTED adaptive */
+@keyframes trustedMarquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
 
 @media (max-width: 599px) {
   .trustedItem {
     padding: 0 clamp(12px, 3vw, 20px);
+  }
+
+  .trustedTrack {
+    animation-duration: 26s;
+  }
+}
+
+@media (hover: hover) {
+  .trustedCarousel:hover .trustedTrack {
+    animation-play-state: paused;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trustedTrack {
+    animation: none;
+    transform: none;
   }
 }
