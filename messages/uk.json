@@ -5,7 +5,14 @@
     "services": "Послуги",
     "projects": "Проєкти",
     "process": "Процес",
-    "contact": "Контакти"
+    "contact": "Контакти",
+    "requestQuote": "Отримати кошторис"
+  },
+  "mobileMenu": {
+    "eyebrow": "Navigation",
+    "quoteText": "Tell us about your renovation project",
+    "footerNote": "Thoughtful renovation, beautifully made.",
+    "close": "Close menu"
   },
   "common": {
     "learnMore": "Дізнатися більше",

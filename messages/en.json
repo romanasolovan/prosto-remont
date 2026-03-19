@@ -5,7 +5,14 @@
     "services": "Services",
     "projects": "Projects",
     "process": "Process",
-    "contact": "Contact"
+    "contact": "Contact",
+    "requestQuote": "Request a Quote"
+  },
+  "mobileMenu": {
+    "eyebrow": "Navigation",
+    "quoteText": "Tell us about your renovation project",
+    "footerNote": "Thoughtful renovation, beautifully made.",
+    "close": "Close menu"
   },
   "common": {
     "learnMore": "Learn More",

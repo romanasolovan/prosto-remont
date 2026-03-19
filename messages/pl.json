@@ -5,7 +5,14 @@
     "services": "Usługi",
     "projects": "Realizacje",
     "process": "Proces",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "requestQuote": "Poproś o wycenę"
+  },
+  "mobileMenu": {
+    "eyebrow": "Navigation",
+    "quoteText": "Tell us about your renovation project",
+    "footerNote": "Thoughtful renovation, beautifully made.",
+    "close": "Close menu"
   },
   "common": {
     "learnMore": "Dowiedz się więcej",
