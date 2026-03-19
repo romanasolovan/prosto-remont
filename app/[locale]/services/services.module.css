@@ -805,3 +805,35 @@
     transform: none;
   }
 }
+
+.servicesLead {
+  max-width: 42ch;
+  margin: 0;
+  font-family: "Barlow", sans-serif;
+  font-size: clamp(14px, 1.05vw, 16px);
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--ink-60);
+}
+
+.servicePanel {
+  grid-column: 1 / -1;
+  cursor: pointer;
+  transition: transform 260ms ease;
+}
+
+.panelBody p {
+  max-width: 34ch;
+  margin: 0;
+  font-family: "Barlow", sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--ink-60);
+}
+
+@media (max-width: 599px) {
+  .servicesLead {
+    max-width: 100%;
+  }
+}

@@ -116,68 +116,261 @@
     }
   },
   "services": {
-    "hero": {
-      "eyebrow": "zakres architektoniczny",
-      "title": "Nasze usługi",
-      "titleItalic": "wykonane z dbałością",
-      "subtitle": "Kompleksowe remonty i wykończenia wnętrz mieszkań, domów oraz przestrzeni komercyjnych."
+  "hero": {
+    "eyebrow": "zakres architektoniczny",
+    "title": "Nasze usługi",
+    "titleItalic": "wykonane z dbałością",
+    "subtitle": "Kompleksowe remonty i wykończenia wnętrz mieszkań, domów oraz przestrzeni komercyjnych."
+  },
+  "intro": {
+    "title": "Co oferujemy",
+    "description": "Oferujemy remonty i usługi wykończenia wnętrz mieszkań, domów oraz nieruchomości komercyjnych. Nasza oferta jest skierowana do klientów, którzy oczekują rzetelnej realizacji, przemyślanej koordynacji i końcowego efektu, który jest jednocześnie estetyczny i w pełni funkcjonalny."
+  },
+  "section": {
+    "eyebrow": "zakres architektoniczny",
+    "title": "Zakres usług",
+    "description": "Przejrzysty przegląd usług remontowych i wykończeniowych, zaprojektowany tak, aby był elegancki, zrozumiały i łatwy do odkrywania.",
+    "count": "06 specjalizacji",
+    "matrixLabel": "matryca usług",
+    "viewDetail": "zobacz szczegóły",
+    "openDetailAria": "Zobacz szczegóły usługi {title}"
+  },
+  "modal": {
+    "closeAria": "Zamknij szczegóły usługi"
+  },
+  "list": {
+    "kitchen": {
+      "title": "Kompleksowe wykończenie wnętrz pod klucz",
+      "description": "Kompletne rozwiązania wykończeniowe dla nowych mieszkań, domów i przestrzeni komercyjnych — od przygotowania i prac technicznych po ostatnie detale."
     },
-    "intro": {
-      "title": "Co oferujemy",
-      "description": "Oferujemy remonty i usługi wykończenia wnętrz mieszkań, domów oraz nieruchomości komercyjnych. Nasza oferta jest skierowana do klientów, którzy oczekują rzetelnej realizacji, przemyślanej koordynacji i końcowego efektu, który jest jednocześnie estetyczny i w pełni funkcjonalny."
+    "bathroom": {
+      "title": "Remont i przebudowa",
+      "description": "Remont wnętrz dopasowany do stanu przestrzeni i celów klienta, niezależnie od tego, czy projekt obejmuje modernizację, przeprojektowanie czy pełną transformację."
     },
-    "section": {
-      "title": "Zakres usług"
+    "basement": {
+      "title": "Malowanie i wykończenie ścian",
+      "description": "Malowanie tradycyjne i natryskowe, tynkowanie, wygładzanie oraz przygotowanie powierzchni, które tworzą czystą, wysokiej jakości bazę i wykończenie."
     },
-    "list": {
-      "kitchen": {
-        "title": "Kompleksowe wykończenie wnętrz pod klucz",
-        "description": "Kompletne rozwiązania wykończeniowe dla nowych mieszkań, domów i przestrzeni komercyjnych — od przygotowania i prac technicznych po ostatnie detale."
+    "fullHome": {
+      "title": "Systemy zabudowy g-k i sufitów",
+      "description": "Ścianki działowe, konstrukcje z płyt gipsowo-kartonowych, sufity podwieszane i niestandardowe zabudowy wnętrz dopasowane do układu i funkcji przestrzeni."
+    },
+    "commercial": {
+      "title": "Podłogi, płytki i detale wykończeniowe",
+      "description": "Profesjonalny montaż systemów podłogowych, płytek, drzwi wewnętrznych i innych elementów wykończeniowych, które dopełniają przestrzeń z precyzją i spójnością."
+    },
+    "carpentry": {
+      "title": "Instalacje elektryczne, hydrauliczne i wsparcie materiałowe",
+      "description": "Podstawowe instalacje techniczne, nadzór remontowy, wsparcie przy odbiorze mieszkań deweloperskich oraz pomoc w organizacji i zakupie materiałów."
+    }
+  },
+  "details": {
+    "kitchen": {
+      "eyebrow": "Wykończenie wnętrz",
+      "desc": "Kompleksowa usługa dla nowych i istniejących wnętrz, realizowana z dbałością o przejrzysty proces, techniczną jakość i dopracowany efekt końcowy.",
+      "specs": {
+        "scope": { "label": "Zakres", "value": "Pełne wykończenie wnętrza" },
+        "timeline": { "label": "Czas", "value": "Zależny od projektu" },
+        "support": { "label": "Wsparcie", "value": "Materiały i koordynacja" }
       },
-      "bathroom": {
-        "title": "Remont i przebudowa",
-        "description": "Remont wnętrz dopasowany do stanu przestrzeni i celów klienta, niezależnie od tego, czy projekt obejmuje modernizację, przeprojektowanie czy pełną transformację."
+      "steps": {
+        "first": {
+          "title": "Ocena",
+          "body": "Analizujemy przestrzeń, ustalamy zakres prac i dopasowujemy realizację do potrzeb oraz oczekiwań klienta."
+        },
+        "second": {
+          "title": "Planowanie",
+          "body": "Porządkujemy kolejność prac, materiały i wymagania techniczne jeszcze przed rozpoczęciem realizacji."
+        },
+        "third": {
+          "title": "Realizacja",
+          "body": "Wykonujemy prace z dbałością o jakość wykończenia, detal i spójny efekt końcowy."
+        }
+      }
+    },
+    "bathroom": {
+      "eyebrow": "Usługa remontowa",
+      "desc": "Remont łazienek i stref mokrych prowadzony z techniczną precyzją, dbałością o trwałość i czyste wykończenie.",
+      "specs": {
+        "scope": { "label": "Zakres", "value": "Remont stref mokrych" },
+        "timeline": { "label": "Czas", "value": "Zależny od projektu" },
+        "support": { "label": "Wsparcie", "value": "Technika i wykończenie" }
       },
-      "basement": {
-        "title": "Malowanie i wykończenie ścian",
-        "description": "Malowanie tradycyjne i natryskowe, tynkowanie, wygładzanie oraz przygotowanie powierzchni, które tworzą czystą, wysokiej jakości bazę i wykończenie."
+      "steps": {
+        "first": {
+          "title": "Inspekcja",
+          "body": "Sprawdzamy stan przestrzeni, potrzeby instalacyjne i wymagania wykończeniowe przed określeniem właściwego zakresu."
+        },
+        "second": {
+          "title": "Przygotowanie",
+          "body": "Organizujemy prace techniczne, przygotowanie podłoża i materiały w odpowiedniej kolejności."
+        },
+        "third": {
+          "title": "Wykończenie",
+          "body": "Oddajemy gotową łazienkę z dbałością o hydroizolację, dokładność montażu i końcowy detal."
+        }
+      }
+    },
+    "basement": {
+      "eyebrow": "Wykończenie ścian",
+      "desc": "Czyste przygotowanie i wykończenie powierzchni ściennych, które buduje wizualną bazę wnętrza z precyzją i spójnością.",
+      "specs": {
+        "scope": { "label": "Zakres", "value": "Ściany i powierzchnie" },
+        "timeline": { "label": "Czas", "value": "Zależny od projektu" },
+        "support": { "label": "Wsparcie", "value": "Przygotowanie i finisz" }
       },
-      "fullHome": {
-        "title": "Systemy zabudowy g-k i sufitów",
-        "description": "Ścianki działowe, konstrukcje z płyt gipsowo-kartonowych, sufity podwieszane i niestandardowe zabudowy wnętrz dopasowane do układu i funkcji przestrzeni."
+      "steps": {
+        "first": {
+          "title": "Ocena powierzchni",
+          "body": "Sprawdzamy stan ścian, nierówności i potrzeby przygotowawcze przed rozpoczęciem prac wykończeniowych."
+        },
+        "second": {
+          "title": "Doprecyzowanie",
+          "body": "Wykonujemy gładzenie, wyrównanie, poprawki i przygotowanie powierzchni pod finalne wykończenie."
+        },
+        "third": {
+          "title": "Zakończenie",
+          "body": "Kończymy prace czystym, równym i gotowym do użytkowania efektem."
+        }
+      }
+    },
+    "fullHome": {
+      "eyebrow": "Systemy wnętrz",
+      "desc": "Zabudowy g-k, sufity i elementy kształtujące układ wnętrza, wspierające zarówno funkcję, jak i kompozycję przestrzeni.",
+      "specs": {
+        "scope": { "label": "Zakres", "value": "Zabudowy i sufity" },
+        "timeline": { "label": "Czas", "value": "Zależny od projektu" },
+        "support": { "label": "Wsparcie", "value": "Układ i dopasowanie techniczne" }
       },
-      "commercial": {
-        "title": "Podłogi, płytki i detale wykończeniowe",
-        "description": "Profesjonalny montaż systemów podłogowych, płytek, drzwi wewnętrznych i innych elementów wykończeniowych, które dopełniają przestrzeń z precyzją i spójnością."
+      "steps": {
+        "first": {
+          "title": "Analiza układu",
+          "body": "Oceniamy plan przestrzeni, proporcje oraz techniczne wymagania wnętrza."
+        },
+        "second": {
+          "title": "Wykonanie",
+          "body": "Tworzymy konstrukcje, przegrody i systemy sufitowe z zachowaniem właściwej kolejności i precyzji."
+        },
+        "third": {
+          "title": "Integracja",
+          "body": "Przygotowujemy całość pod oświetlenie, wykończenie i kolejne etapy prac wnętrzarskich."
+        }
+      }
+    },
+    "commercial": {
+      "eyebrow": "Realizacja komercyjna",
+      "desc": "Wykończenia przestrzeni komercyjnych prowadzone z odpowiednią strukturą, koordynacją i uwagą na funkcjonowanie miejsca.",
+      "specs": {
+        "scope": { "label": "Zakres", "value": "Wnętrza komercyjne" },
+        "timeline": { "label": "Czas", "value": "Zależny od projektu" },
+        "support": { "label": "Wsparcie", "value": "Realizacja i koordynacja" }
       },
-      "carpentry": {
-        "title": "Instalacje elektryczne, hydrauliczne i wsparcie materiałowe",
-        "description": "Podstawowe instalacje techniczne, nadzór remontowy, wsparcie przy odbiorze mieszkań deweloperskich oraz pomoc w organizacji i zakupie materiałów."
+      "steps": {
+        "first": {
+          "title": "Założenia",
+          "body": "Określamy potrzeby biznesowe, układ funkcjonalny i wymagania wykończeniowe, które wyznaczają zakres projektu."
+        },
+        "second": {
+          "title": "Koordynacja",
+          "body": "Porządkujemy prace techniczne, etapy realizacji i pakiety wykończeniowe, aby zapewnić sprawne wykonanie."
+        },
+        "third": {
+          "title": "Oddanie",
+          "body": "Finalizujemy przestrzeń z naciskiem na użyteczność, jakość wykonania i spójność całości."
+        }
+      }
+    },
+    "carpentry": {
+      "eyebrow": "Wsparcie techniczne",
+      "desc": "Podstawowe instalacje i koordynacja remontu, które pomagają prowadzić cały projekt z większą jasnością i kontrolą.",
+      "specs": {
+        "scope": { "label": "Zakres", "value": "Instalacje i wsparcie" },
+        "timeline": { "label": "Czas", "value": "Zależny od projektu" },
+        "support": { "label": "Wsparcie", "value": "Technika i materiały" }
+      },
+      "steps": {
+        "first": {
+          "title": "Przegląd",
+          "body": "Określamy potrzeby instalacyjne i organizacyjne niezbędne do właściwego przygotowania projektu."
+        },
+        "second": {
+          "title": "Organizacja",
+          "body": "Koordynujemy materiały, zadania techniczne i logikę prac na miejscu realizacji."
+        },
+        "third": {
+          "title": "Wykonanie",
+          "body": "Dbamy o to, aby prace wspierały cały projekt i jego końcowy rezultat."
+        }
       }
     }
-  },
+  }
+},
   "projects": {
-    "hero": {
-      "title": "Nasze realizacje",
-      "subtitle": "Kolekcja zrealizowanych przestrzeni, które pokazują nasz standard pracy, dbałość o detale i jakość wykonania."
+  "hero": {
+    "eyebrow": "Wybrane realizacje",
+    "title": "Nasze realizacje",
+    "subtitle": "Kolekcja zrealizowanych przestrzeni, które pokazują nasz standard pracy, dbałość o detale i jakość wykonania.",
+    "bgWord": "Realizacje"
+  },
+  "intro": {
+    "title": "Przestrzenie, które pokazują nasz standard",
+    "description": "Nasze projekty pokazują, jak różnorodne przestrzenie możemy przekształcać — od mieszkań prywatnych po wnętrza komercyjne. Każda realizacja to efekt współpracy z klientem, doświadczenia zespołu oraz dbałości o detale."
+  },
+  "section": {
+    "eyebrow": "Archiwum realizacji",
+    "title": "Wybrane projekty, które odzwierciedlają nasz standard",
+    "description": "Starannie dobrany przegląd przestrzeni ukształtowanych przez jakość wykonania, funkcjonalne myślenie i wyraźny kierunek wizualny."
+  },
+  "categories": {
+    "residential": "Projekty mieszkaniowe",
+    "commercial": "Projekty komercyjne"
+  },
+  "list": {
+    "modernKitchen": "Nowoczesne wykończenie mieszkania",
+    "downtownOffice": "Komercyjne wykończenie wnętrza",
+    "masterBathroom": "Projekt wykończenia łazienki",
+    "historicHome": "Remont i modernizacja domu",
+    "retailStore": "Metamorfoza lokalu usługowego",
+    "basementConversion": "Indywidualna transformacja wnętrza"
+  },
+  "details": {
+    "modernKitchen": {
+      "description": "Współczesny projekt mieszkaniowy oparty na równowadze, czytelności materiałów i spokojnej atmosferze codziennego życia."
     },
-    "intro": {
-      "title": "Przestrzenie, które pokazują nasz standard",
-      "description": "Nasze projekty pokazują, jak różnorodne przestrzenie możemy przekształcać — od mieszkań prywatnych po wnętrza komercyjne. Każda realizacja to efekt współpracy z klientem, doświadczenia zespołu oraz dbałości o detale."
+    "downtownOffice": {
+      "description": "Wnętrze komercyjne zaprojektowane wokół wyraźnej tożsamości wizualnej, praktycznego układu i bardziej pewnego wizerunku wobec klientów."
     },
-    "categories": {
-      "residential": "Projekty mieszkaniowe",
-      "commercial": "Projekty komercyjne"
+    "masterBathroom": {
+      "description": "Metamorfoza łazienki oparta na detalu, proporcji i czystszym, bardziej dopracowanym języku wykończenia."
     },
-    "list": {
-      "modernKitchen": "Nowoczesne wykończenie mieszkania",
-      "downtownOffice": "Komercyjne wykończenie wnętrza",
-      "masterBathroom": "Projekt wykończenia łazienki",
-      "historicHome": "Remont i modernizacja domu",
-      "retailStore": "Metamorfoza lokalu usługowego",
-      "basementConversion": "Indywidualna transformacja wnętrza"
+    "historicHome": {
+      "description": "Kompleksowy remont domu, który wprowadził strukturę, ciepło i nowoczesny komfort do istniejącej przestrzeni mieszkalnej."
+    },
+    "retailStore": {
+      "description": "Przestrzeń usługowa zaprojektowana tak, aby wspierać doświadczenie użytkownika, czytelność wnętrza i płynność funkcjonowania."
+    },
+    "basementConversion": {
+      "description": "Indywidualna transformacja wnętrza, która zamieniła niewykorzystaną powierzchnię w bardziej wartościową i spójną strefę życia."
     }
   },
+  "preview": {
+    "title": "Wybrane realizacje, które pokazują klarowność, atmosferę i staranne wykonanie",
+    "description": "Projekty powinny pokazywać więcej niż tylko atrakcyjny wygląd. Powinny odzwierciedlać proporcję, intencję i jakość decyzji stojących za efektem końcowym.",
+    "featured": {
+      "label": "Prywatne mieszkanie"
+    },
+    "secondary": {
+      "first": {
+        "title": "Dom rodzinny",
+        "description": "Podejście remontowe skoncentrowane na cieple, funkcji i długoterminowym komforcie codziennego życia."
+      },
+      "second": {
+        "title": "Przestrzeń komercyjna",
+        "description": "Wyraźniejsza tożsamość wizualna wsparta praktycznym planowaniem, atmosferą i równowagą przestrzeni."
+      }
+    }
+  }
+},
   "process": {
     "hero": {
       "title": "Jak wygląda współpraca",

@@ -4,20 +4,19 @@ import styles from "./ProjectsPreview.module.css";
 
 export default function ProjectsPreview() {
   const t = useTranslations("home");
+  const tProjects = useTranslations("projects.preview");
   const tCommon = useTranslations("common");
 
   const projects = [
     {
       number: "02",
-      title: "Family House",
-      description:
-        "A renovation approach centered on warmth, function, and long-term comfort for everyday living.",
+      title: tProjects("secondary.first.title"),
+      description: tProjects("secondary.first.description"),
     },
     {
       number: "03",
-      title: "Commercial Space",
-      description:
-        "A clearer visual identity supported by practical planning, atmosphere, and spatial balance.",
+      title: tProjects("secondary.second.title"),
+      description: tProjects("secondary.second.description"),
     },
   ];
 
@@ -28,16 +27,9 @@ export default function ProjectsPreview() {
           <div className={styles.content}>
             <span className={styles.label}>{t("labels.projects")}</span>
 
-            <h2 className={styles.title}>
-              Selected work that reflects clarity, atmosphere, and careful
-              execution
-            </h2>
+            <h2 className={styles.title}>{tProjects("title")}</h2>
 
-            <p className={styles.description}>
-              Projects should show more than surface appeal. They should reflect
-              proportion, intention, and the quality of decisions behind the
-              finished result.
-            </p>
+            <p className={styles.description}>{tProjects("description")}</p>
 
             <Link href="/projects" className={styles.link}>
               {tCommon("viewPortfolio")}
@@ -56,7 +48,7 @@ export default function ProjectsPreview() {
               <div className={styles.featuredMeta}>
                 <span className={styles.featuredMetaNumber}>01</span>
                 <span className={styles.featuredMetaLabel}>
-                  Private Apartment
+                  {tProjects("featured.label")}
                 </span>
               </div>
 

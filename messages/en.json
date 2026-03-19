@@ -115,69 +115,316 @@
       "content": "Clients choose us because they want a team that combines craftsmanship with trust. We help make the renovation process easier to understand, stay in contact throughout the work, support material decisions, and deliver spaces that feel complete — not just finished."
     }
   },
-  "services": {
-    "hero": {
-      "eyebrow": "Architectural scope",
-      "title": "Our Services",
-      "titleItalic": "built with care",
-      "subtitle": "Comprehensive renovation and interior finishing for apartments, homes, and commercial spaces."
+"services": {
+  "hero": {
+    "eyebrow": "Architectural scope",
+    "title": "Our Services",
+    "titleItalic": "built with care",
+    "subtitle": "Comprehensive renovation and interior finishing for apartments, homes, and commercial spaces."
+  },
+  "intro": {
+    "title": "What We Provide",
+    "description": "We provide renovation and interior finishing services for apartments, homes, and commercial properties. Our offer is designed for clients who want dependable execution, thoughtful coordination, and a final result that is both visually strong and practically complete."
+  },
+  "section": {
+    "eyebrow": "Architectural scope",
+    "title": "Service Matrix",
+    "description": "A clear overview of our renovation and finishing services, designed to feel refined, easy to understand, and simple to explore.",
+    "count": "06 specialisations",
+    "matrixLabel": "service matrix",
+    "viewDetail": "view detail",
+    "openDetailAria": "View details for {title}"
+  },
+  "modal": {
+    "closeAria": "Close service detail"
+  },
+  "list": {
+    "kitchen": {
+      "title": "Turnkey Interior Finishing",
+      "description": "Complete finishing solutions for new apartments, houses, and commercial spaces — from preparation and technical works to final details."
     },
-    "intro": {
-      "title": "What We Provide",
-      "description": "We provide renovation and interior finishing services for apartments, homes, and commercial properties. Our offer is designed for clients who want dependable execution, thoughtful coordination, and a final result that is both visually strong and practically complete."
+    "bathroom": {
+      "title": "Renovation and Reconstruction",
+      "description": "Interior renovation tailored to the condition of the space and the client’s goals, whether the project involves modernization, redesign, or full transformation."
     },
-    "section": {
-      "title": "Service Matrix"
+    "basement": {
+      "title": "Painting and Wall Finishing",
+      "description": "Traditional and spray painting, plastering, smoothing, and surface preparation that create a clean, high-quality base and finish."
     },
-    "list": {
-      "kitchen": {
-        "title": "Turnkey Interior Finishing",
-        "description": "Complete finishing solutions for new apartments, houses, and commercial spaces — from preparation and technical works to final details."
+    "fullHome": {
+      "title": "Drywall and Ceiling Systems",
+      "description": "Partition walls, plasterboard structures, suspended ceilings, and custom interior build-outs shaped around the layout and function of the space."
+    },
+    "commercial": {
+      "title": "Flooring, Tiling, and Finishing Details",
+      "description": "Professional installation of flooring systems, tile works, interior doors, and other finishing elements that complete the space with precision and consistency."
+    },
+    "carpentry": {
+      "title": "Electrical, Plumbing, and Material Support",
+      "description": "Core technical installations, renovation supervision, developer unit handover support, and assistance with organizing and purchasing materials."
+    }
+  },
+  "details": {
+    "kitchen": {
+      "eyebrow": "Interior finishing",
+      "desc": "A complete service for new or existing interiors, delivered through a clear process, technical care, and a polished final result.",
+      "specs": {
+        "scope": {
+          "label": "Scope",
+          "value": "Full interior finish"
+        },
+        "timeline": {
+          "label": "Timeline",
+          "value": "Project based"
+        },
+        "support": {
+          "label": "Support",
+          "value": "Materials + coordination"
+        }
       },
-      "bathroom": {
-        "title": "Renovation and Reconstruction",
-        "description": "Interior renovation tailored to the condition of the space and the client’s goals, whether the project involves modernization, redesign, or full transformation."
+      "steps": {
+        "first": {
+          "title": "Assessment",
+          "body": "We review the space, define the scope, and align the work with your needs and expectations."
+        },
+        "second": {
+          "title": "Planning",
+          "body": "We organise the order of works, materials, and technical requirements before execution begins."
+        },
+        "third": {
+          "title": "Delivery",
+          "body": "We complete the work with attention to finish quality, detail, and final visual consistency."
+        }
+      }
+    },
+    "bathroom": {
+      "eyebrow": "Renovation service",
+      "desc": "Bathroom and wet-area work delivered with care, technical precision, and a focus on durability and clean detailing.",
+      "specs": {
+        "scope": {
+          "label": "Scope",
+          "value": "Wet-area renovation"
+        },
+        "timeline": {
+          "label": "Timeline",
+          "value": "Project based"
+        },
+        "support": {
+          "label": "Support",
+          "value": "Technical + finish guidance"
+        }
       },
-      "basement": {
-        "title": "Painting and Wall Finishing",
-        "description": "Traditional and spray painting, plastering, smoothing, and surface preparation that create a clean, high-quality base and finish."
+      "steps": {
+        "first": {
+          "title": "Inspection",
+          "body": "We assess the space, installation needs, and finish conditions before defining the right scope."
+        },
+        "second": {
+          "title": "Preparation",
+          "body": "We organise technical works, substrate preparation, and materials in the correct sequence."
+        },
+        "third": {
+          "title": "Finish",
+          "body": "We deliver the completed bathroom with attention to waterproofing, alignment, and final detailing."
+        }
+      }
+    },
+    "basement": {
+      "eyebrow": "Wall finishing",
+      "desc": "Clean wall preparation and finishing work that builds the visual base of the interior with consistency and care.",
+      "specs": {
+        "scope": {
+          "label": "Scope",
+          "value": "Walls + surfaces"
+        },
+        "timeline": {
+          "label": "Timeline",
+          "value": "Project based"
+        },
+        "support": {
+          "label": "Support",
+          "value": "Preparation + finish"
+        }
       },
-      "fullHome": {
-        "title": "Drywall and Ceiling Systems",
-        "description": "Partition walls, plasterboard structures, suspended ceilings, and custom interior build-outs shaped around the layout and function of the space."
+      "steps": {
+        "first": {
+          "title": "Surface check",
+          "body": "We inspect wall condition, unevenness, and preparation requirements before finish work begins."
+        },
+        "second": {
+          "title": "Refinement",
+          "body": "We perform smoothing, patching, levelling, and preparation to create a strong finish base."
+        },
+        "third": {
+          "title": "Completion",
+          "body": "We complete the final finish with a clean, even result ready for everyday use."
+        }
+      }
+    },
+    "fullHome": {
+      "eyebrow": "Interior systems",
+      "desc": "Drywall, ceiling, and layout-defining structures designed to support both the function and composition of the interior.",
+      "specs": {
+        "scope": {
+          "label": "Scope",
+          "value": "Drywall + ceilings"
+        },
+        "timeline": {
+          "label": "Timeline",
+          "value": "Project based"
+        },
+        "support": {
+          "label": "Support",
+          "value": "Layout + technical fit"
+        }
       },
-      "commercial": {
-        "title": "Flooring, Tiling, and Finishing Details",
-        "description": "Professional installation of flooring systems, tile works, interior doors, and other finishing elements that complete the space with precision and consistency."
+      "steps": {
+        "first": {
+          "title": "Layout review",
+          "body": "We examine the intended layout, proportions, and technical needs of the space."
+        },
+        "second": {
+          "title": "Build-out",
+          "body": "We construct framing, partitions, and ceiling systems with precision and proper sequencing."
+        },
+        "third": {
+          "title": "Integration",
+          "body": "We prepare the system for lighting, finishes, and the next stages of the interior works."
+        }
+      }
+    },
+    "commercial": {
+      "eyebrow": "Commercial execution",
+      "desc": "Commercial finishing and fit-out work delivered with structure, coordination, and attention to the operational needs of the space.",
+      "specs": {
+        "scope": {
+          "label": "Scope",
+          "value": "Commercial interiors"
+        },
+        "timeline": {
+          "label": "Timeline",
+          "value": "Project based"
+        },
+        "support": {
+          "label": "Support",
+          "value": "Execution + coordination"
+        }
       },
-      "carpentry": {
-        "title": "Electrical, Plumbing, and Material Support",
-        "description": "Core technical installations, renovation supervision, developer unit handover support, and assistance with organizing and purchasing materials."
+      "steps": {
+        "first": {
+          "title": "Briefing",
+          "body": "We define the business, layout, and finish requirements that shape the project scope."
+        },
+        "second": {
+          "title": "Coordination",
+          "body": "We organise technical works, site sequencing, and finish packages to support efficient delivery."
+        },
+        "third": {
+          "title": "Turnover",
+          "body": "We complete the space with attention to usability, finish quality, and overall consistency."
+        }
+      }
+    },
+    "carpentry": {
+      "eyebrow": "Technical support",
+      "desc": "Core installation support and renovation coordination that help the full project move forward with greater clarity and control.",
+      "specs": {
+        "scope": {
+          "label": "Scope",
+          "value": "Installations + support"
+        },
+        "timeline": {
+          "label": "Timeline",
+          "value": "Project based"
+        },
+        "support": {
+          "label": "Support",
+          "value": "Technical + material help"
+        }
+      },
+      "steps": {
+        "first": {
+          "title": "Review",
+          "body": "We identify the installation and support requirements needed to prepare the project properly."
+        },
+        "second": {
+          "title": "Organisation",
+          "body": "We coordinate the materials, technical tasks, and site logic needed for smooth execution."
+        },
+        "third": {
+          "title": "Delivery",
+          "body": "We ensure the work is completed in a way that supports the wider project and final result."
+        }
       }
     }
-  },
+  }
+},
   "projects": {
-    "hero": {
-      "title": "Our Projects",
-      "subtitle": "A collection of completed spaces shaped by craftsmanship, structure, and care."
+  "hero": {
+    "eyebrow": "Selected work",
+    "title": "Our Projects",
+    "subtitle": "A collection of completed spaces shaped by craftsmanship, structure, and care.",
+    "bgWord": "Projects"
+  },
+  "intro": {
+    "title": "Spaces That Reflect Our Standard",
+    "description": "Our projects reflect the range of spaces we help transform — from private apartments and homes to client-facing commercial interiors. Each one is a practical collaboration between vision, workmanship, and execution."
+  },
+  "section": {
+    "eyebrow": "Portfolio archive",
+    "title": "Selected projects that reflect our standard",
+    "description": "A curated overview of spaces shaped through careful execution, functional thinking, and a clear visual direction."
+  },
+  "categories": {
+    "residential": "Residential Projects",
+    "commercial": "Commercial Projects"
+  },
+  "list": {
+    "modernKitchen": "Modern Apartment Finishing",
+    "downtownOffice": "Commercial Interior Fit-Out",
+    "masterBathroom": "Bathroom Finishing Project",
+    "historicHome": "Home Renovation and Modernization",
+    "retailStore": "Service Space Transformation",
+    "basementConversion": "Custom Interior Transformation"
+  },
+  "details": {
+    "modernKitchen": {
+      "description": "A contemporary residential project focused on balance, material clarity, and a calm everyday atmosphere."
     },
-    "intro": {
-      "title": "Spaces That Reflect Our Standard",
-      "description": "Our projects reflect the range of spaces we help transform — from private apartments and homes to client-facing commercial interiors. Each one is a practical collaboration between vision, workmanship, and execution."
+    "downtownOffice": {
+      "description": "A commercial interior shaped around visual identity, practical planning, and a more confident client-facing experience."
     },
-    "categories": {
-      "residential": "Residential Projects",
-      "commercial": "Commercial Projects"
+    "masterBathroom": {
+      "description": "A bathroom transformation built around detail, proportion, and a cleaner, more refined finish language."
     },
-    "list": {
-      "modernKitchen": "Modern Apartment Finishing",
-      "downtownOffice": "Commercial Interior Fit-Out",
-      "masterBathroom": "Bathroom Finishing Project",
-      "historicHome": "Home Renovation and Modernization",
-      "retailStore": "Service Space Transformation",
-      "basementConversion": "Custom Interior Transformation"
+    "historicHome": {
+      "description": "A full-home renovation that brought structure, warmth, and modern comfort into an existing residential setting."
+    },
+    "retailStore": {
+      "description": "A service-oriented commercial space designed to support both experience, clarity, and operational flow."
+    },
+    "basementConversion": {
+      "description": "A custom interior transformation that turned underused square footage into a more valuable and coherent living zone."
     }
   },
+  "preview": {
+    "title": "Selected work that reflects clarity, atmosphere, and careful execution",
+    "description": "Projects should show more than surface appeal. They should reflect proportion, intention, and the quality of decisions behind the finished result.",
+    "featured": {
+      "label": "Private Apartment"
+    },
+    "secondary": {
+      "first": {
+        "title": "Family House",
+        "description": "A renovation approach centered on warmth, function, and long-term comfort for everyday living."
+      },
+      "second": {
+        "title": "Commercial Space",
+        "description": "A clearer visual identity supported by practical planning, atmosphere, and spatial balance."
+      }
+    }
+  }
+},
   "process": {
     "hero": {
       "title": "Our Process",

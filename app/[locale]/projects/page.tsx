@@ -22,12 +22,33 @@ export default function Projects() {
   const tCategories = useTranslations("projects.categories");
 
   const projects = [
-    { title: t("list.modernKitchen"), category: tCategories("residential") },
-    { title: t("list.downtownOffice"), category: tCategories("commercial") },
-    { title: t("list.masterBathroom"), category: tCategories("residential") },
-    { title: t("list.historicHome"), category: tCategories("residential") },
-    { title: t("list.retailStore"), category: tCategories("commercial") },
     {
+      key: "modernKitchen",
+      title: t("list.modernKitchen"),
+      category: tCategories("residential"),
+    },
+    {
+      key: "downtownOffice",
+      title: t("list.downtownOffice"),
+      category: tCategories("commercial"),
+    },
+    {
+      key: "masterBathroom",
+      title: t("list.masterBathroom"),
+      category: tCategories("residential"),
+    },
+    {
+      key: "historicHome",
+      title: t("list.historicHome"),
+      category: tCategories("residential"),
+    },
+    {
+      key: "retailStore",
+      title: t("list.retailStore"),
+      category: tCategories("commercial"),
+    },
+    {
+      key: "basementConversion",
       title: t("list.basementConversion"),
       category: tCategories("residential"),
     },
@@ -36,13 +57,14 @@ export default function Projects() {
   return (
     <div className={styles.projectsPage}>
       <section className={styles.hero}>
+        <div className={styles.heroGrid} aria-hidden="true" />
         <div className={styles.heroBackground} aria-hidden="true">
-          <span className={styles.bgWord}>Projects</span>
+          <span className={styles.bgWord}>{t("hero.bgWord")}</span>
         </div>
 
         <div className="container">
           <div className={styles.heroInner}>
-            <span className={styles.heroEyebrow}>{t("hero.title")}</span>
+            <span className={styles.heroEyebrow}>{t("hero.eyebrow")}</span>
             <h1 className={styles.heroTitle}>{t("hero.title")}</h1>
             <p className={styles.subtitle}>{t("hero.subtitle")}</p>
           </div>
@@ -52,14 +74,17 @@ export default function Projects() {
       <section className={styles.projectsSection}>
         <div className="container">
           <div className={styles.projectsIntro}>
-            <span className={styles.projectsEyebrow}>Selected work</span>
-            <h2 className={styles.projectsTitle}>{t("hero.title")}</h2>
+            <span className={styles.projectsEyebrow}>
+              {t("section.eyebrow")}
+            </span>
+            <h2 className={styles.projectsTitle}>{t("section.title")}</h2>
+            <p className={styles.projectsLead}>{t("section.description")}</p>
           </div>
 
           <div className={styles.projectsList}>
             {projects.map((project, index) => (
               <article
-                key={index}
+                key={project.key}
                 className={`${styles.projectRow} ${
                   index % 2 === 0 ? styles.rowLeft : styles.rowRight
                 }`}
@@ -80,6 +105,10 @@ export default function Projects() {
                     </div>
 
                     <h3 className={styles.projectTitle}>{project.title}</h3>
+
+                    <p className={styles.projectText}>
+                      {t(`details.${project.key}.description`)}
+                    </p>
                   </div>
 
                   <span className={styles.projectAccent} aria-hidden="true" />

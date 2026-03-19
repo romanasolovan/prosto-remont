@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef } from "react";
+import { useTranslations } from "next-intl";
 import styles from "./ServiceModal.module.css";
 
 export interface ServiceDetail {
@@ -18,6 +19,7 @@ interface Props {
 }
 
 export default function ServiceModal({ service, onClose }: Props) {
+  const t = useTranslations("services.modal");
   const overlayRef = useRef<HTMLDivElement>(null);
   const closeBtnRef = useRef<HTMLButtonElement>(null);
   const touchStartY = useRef(0);
@@ -39,9 +41,7 @@ export default function ServiceModal({ service, onClose }: Props) {
     if (!service) return;
 
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        onClose();
-      }
+      if (event.key === "Escape") onClose();
     };
 
     document.addEventListener("keydown", onKey);
@@ -58,9 +58,7 @@ export default function ServiceModal({ service, onClose }: Props) {
       aria-modal="true"
       aria-labelledby={titleId}
       onClick={(event) => {
-        if (event.target === overlayRef.current) {
-          onClose();
-        }
+        if (event.target === overlayRef.current) onClose();
       }}
     >
       <div
@@ -70,9 +68,7 @@ export default function ServiceModal({ service, onClose }: Props) {
         }}
         onTouchEnd={(event) => {
           const deltaY = event.changedTouches[0].clientY - touchStartY.current;
-          if (deltaY > 60) {
-            onClose();
-          }
+          if (deltaY > 60) onClose();
         }}
       >
         <div className={styles.gridBg} aria-hidden="true" />
@@ -95,7 +91,7 @@ export default function ServiceModal({ service, onClose }: Props) {
               type="button"
               className={styles.close}
               onClick={onClose}
-              aria-label="Close service detail"
+              aria-label={t("closeAria")}
             >
               <svg
                 viewBox="0 0 12 12"
