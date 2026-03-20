@@ -23,18 +23,19 @@ export default function Contact() {
   return (
     <div className={styles.contactPage}>
       <section className={styles.heroSection}>
+        <div className={styles.heroGrid} aria-hidden="true" />
         <div className={styles.heroBackground} aria-hidden="true">
-          <span className={styles.bgWord}>Contact</span>
+          <span className={styles.bgWord}>{t("hero.bgWord")}</span>
         </div>
 
         <div className="container">
-          {/* <header className={styles.pageHeader}>
+          <header className={styles.pageHeader}>
             <div className={styles.headerMeta}>
-              <span className={styles.pageEyebrow}>{t("title")}</span>
-              <h1 className={styles.pageTitle}>{t("title")}</h1>
-              <p className={styles.pageDescription}>{t("description")}</p>
+              <span className={styles.pageEyebrow}>{t("hero.eyebrow")}</span>
+              <h1 className={styles.pageTitle}>{t("hero.title")}</h1>
+              <p className={styles.pageDescription}>{t("hero.subtitle")}</p>
             </div>
-          </header> */}
+          </header>
 
           <section className={styles.contactRow}>
             <div className={`${styles.infoCard} ${styles.darkCard}`}>
@@ -42,6 +43,9 @@ export default function Contact() {
               <div className={styles.cardInner}>
                 <span className={styles.cardLabel}>01</span>
                 <h2 className={styles.sectionTitle}>{t("getInTouch.title")}</h2>
+                <p className={styles.sectionDescription}>
+                  {t("getInTouch.description")}
+                </p>
 
                 <div className={styles.contactList}>
                   <div className={styles.contactItem}>
@@ -133,11 +137,12 @@ export default function Contact() {
 
             <div
               className={`${styles.mapArea} ${styles.lightCard}`}
-              aria-label="Office location map"
+              aria-label={t("map.ariaLabel")}
             >
               <div className={styles.mapCardInner}>
                 <span className={styles.cardLabel}>02</span>
-                <h2 className={styles.sectionTitle}>{t("getInTouch.title")}</h2>
+                <h2 className={styles.sectionTitle}>{t("map.title")}</h2>
+                <p className={styles.mapDescription}>{t("map.description")}</p>
 
                 <div className={styles.mapWrapper}>
                   <iframe
@@ -146,7 +151,7 @@ export default function Contact() {
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title="Office Location"
+                    title={t("map.iframeTitle")}
                   />
                 </div>
               </div>

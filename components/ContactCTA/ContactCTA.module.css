@@ -1,0 +1,162 @@
+.ctaSection {
+  --ink: #0e0d0b;
+  --ink-60: rgba(14, 13, 11, 0.6);
+  --ink-20: rgba(14, 13, 11, 0.2);
+  --ink-10: rgba(14, 13, 11, 0.1);
+  --ink-06: rgba(14, 13, 11, 0.06);
+  --grid: rgba(14, 13, 11, 0.048);
+  --paper: #f5f2eb;
+  --paper-2: #ece7de;
+  --sand: #b89a70;
+  --r-sm: 3px;
+  --r-xl: 36px;
+
+  position: relative;
+  overflow: hidden;
+  padding: clamp(72px, 10vw, 132px) 0;
+  background:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+    linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+  background-size:
+    40px 40px,
+    40px 40px,
+    auto;
+  background-position:
+    -1px -1px,
+    -1px -1px,
+    0 0;
+}
+
+.ctaCard {
+  position: relative;
+  overflow: hidden;
+  border: 0.5px solid var(--ink-10);
+  border-radius: var(--r-sm) var(--r-sm) 110px var(--r-sm);
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.86) 0%,
+    rgba(241, 237, 230, 0.74) 100%
+  );
+  box-shadow:
+    0 2px 0 rgba(14, 13, 11, 0.05),
+    0 22px 54px rgba(14, 13, 11, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.82);
+  isolation: isolate;
+}
+
+.ctaCard::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 0.5px solid var(--ink-06);
+  border-radius: 20px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ctaGrid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.45;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.ctaLine {
+  position: absolute;
+  top: 24px;
+  bottom: 24px;
+  left: 0;
+  width: 3px;
+  border-radius: 0 999px 999px 0;
+  background: linear-gradient(
+    180deg,
+    rgba(184, 154, 112, 0.96) 0%,
+    rgba(184, 154, 112, 0.16) 100%
+  );
+  z-index: 2;
+}
+
+.ctaContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  padding: clamp(30px, 6vw, 56px) clamp(22px, 5vw, 52px);
+}
+
+.ctaEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--sand);
+}
+
+.ctaEyebrow::before {
+  content: "";
+  width: 18px;
+  height: 1px;
+  background: var(--sand);
+  opacity: 0.65;
+}
+
+.ctaTitle {
+  max-width: 12ch;
+  margin: 0;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(34px, 5vw, 64px);
+  font-weight: 200;
+  line-height: 0.94;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.ctaDescription {
+  max-width: 42ch;
+  margin: 0;
+  font-family: "Barlow", sans-serif;
+  font-size: clamp(14px, 1.05vw, 16px);
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--ink-60);
+}
+
+.ctaButton {
+  margin-top: 8px;
+}
+
+@media (min-width: 1024px) {
+  .ctaCard:hover {
+    transform: translateY(-6px);
+    transition:
+      transform 320ms ease,
+      box-shadow 320ms ease,
+      border-color 320ms ease;
+    box-shadow:
+      0 2px 0 rgba(14, 13, 11, 0.06),
+      0 30px 68px rgba(14, 13, 11, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.84);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ctaCard,
+  .ctaCard:hover {
+    transform: none;
+    transition: none;
+  }
+}

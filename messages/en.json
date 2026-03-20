@@ -14,14 +14,15 @@
     "footerNote": "Thoughtful renovation, beautifully made.",
     "close": "Close menu"
   },
-  "common": {
-    "learnMore": "Learn More",
-    "startProject": "Start project",
-    "contactUs": "Contact Us",
-    "exploreServices": "Explore Services",
-    "viewPortfolio": "View portfolio",
-    "understandProcess": "See the Process"
-  },
+ "common": {
+  "learnMore": "Learn More",
+  "startProject": "Start project",
+  "contactUs": "Contact Us",
+  "exploreServices": "Explore Services",
+  "viewPortfolio": "View portfolio",
+  "understandProcess": "See the Process",
+  "requestQuote": "Request a Quote"
+},
   "home": {
     "labels": {
       "about": "About",
@@ -474,6 +475,11 @@
     },
     "formNote": "The contact form is available below."
   },
+  "contactCta": {
+  "eyebrow": "Next step",
+  "title": "Ready to shape your next renovation?",
+  "description": "Start with a clear conversation, explore the process, and take the next step with confidence."
+},
   "footer": {
     "description": "Comprehensive renovation and interior finishing for apartments, homes, and commercial spaces.",
     "quickLinks": "Quick Links",
@@ -574,28 +580,40 @@
     "successMessage": "Thank you. Your request has been submitted successfully.",
     "errorMessage": "Something went wrong. Please try again."
   },
-  "getContact": {
+ "getContact": {
+  "hero": {
+    "eyebrow": "Get in touch",
     "title": "Contact Us",
-    "description": "If you are planning a renovation, turnkey finishing, or interior transformation, we are ready to talk. Reach out to discuss your project, ask questions, or arrange the first consultation.",
-    "getInTouch": {
-      "title": "Contact Information",
-      "description": "Reach out to discuss your project and receive a personalized consultation."
-    },
-    "details": {
-      "email": "Email",
-      "phone": "Phone",
-      "hours": "Working Hours",
-      "hoursValue": "Monday – Friday: 8:00 AM – 6:00 PM\nSaturday: 9:00 AM – 4:00 PM"
-    },
-    "social": {
-      "title": "Follow Us"
-    },
-    "opinions": {
-      "title": "Client Opinions",
-      "description": "See what our clients say about working with us and the spaces we helped bring to life.",
-      "cta": "Read Reviews"
-    }
+    "subtitle": "Let’s talk about your renovation, finishing work, or interior transformation.",
+    "bgWord": "Contact"
   },
+  "title": "Contact Us",
+  "description": "If you are planning a renovation, turnkey finishing, or interior transformation, we are ready to talk. Reach out to discuss your project, ask questions, or arrange the first consultation.",
+  "getInTouch": {
+    "title": "Get in Touch",
+    "description": "Reach out to discuss your project, ask questions, and take the first step toward a space shaped around your needs."
+  },
+  "details": {
+    "email": "Email",
+    "phone": "Phone",
+    "hours": "Working Hours",
+    "hoursValue": "Monday – Friday: 8:00 AM – 6:00 PM\nSaturday: 9:00 AM – 4:00 PM"
+  },
+  "social": {
+    "title": "Follow Us"
+  },
+  "map": {
+    "title": "Our Location",
+    "description": "We work from Warsaw and support renovation and finishing projects across the region.",
+    "ariaLabel": "Office location map",
+    "iframeTitle": "Office Location"
+  },
+  "opinions": {
+    "title": "Client Opinions",
+    "description": "See what our clients say about working with us and the spaces we helped bring to life.",
+    "cta": "Read Reviews"
+  }
+},
   "clientOpinions": {
     "title": "Client Opinions",
     "cta": {

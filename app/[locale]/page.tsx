@@ -1,4 +1,3 @@
-import { Link } from "@/navigation";
 import styles from "./page.module.css";
 import TrustedBrands from "@/components/home/TrustedBrands/TrustedBrands";
 import HomeHero from "@/components/home/HomeHero/HomeHero";
@@ -8,6 +7,7 @@ import QuoteHighlight from "@/components/home/QuoteHighlight/QuoteHighlight";
 import ServicesPreview from "@/components/home/ServicesPreview/ServicesPreview";
 import ProjectsPreview from "@/components/home/ProjectsPreview/ProjectsPreview";
 import ProcessPreview from "@/components/home/ProcessPreview/ProcessPreview";
+import ContactCTA from "@/components/ContactCTA/ContactCTA";
 
 export default function Home() {
   return (
@@ -21,26 +21,7 @@ export default function Home() {
       <QuoteHighlight />
       <ProcessPreview />
 
-      <section className={styles.ctaSection}>
-        <div className="container">
-          <div className={styles.ctaCard}>
-            <div className={styles.ctaLine} aria-hidden="true" />
-            <h2 className={styles.ctaTitle}>
-              Ready to shape your next renovation?
-            </h2>
-            <p className={styles.ctaDescription}>
-              Start with a clear conversation, explore the process, and take the
-              next step with confidence.
-            </p>
-            <Link
-              href="/process"
-              className={`btn btn-primary ${styles.ctaButton}`}
-            >
-              Request a Quote
-            </Link>
-          </div>
-        </div>
-      </section>
+      <ContactCTA />
     </div>
   );
 }
