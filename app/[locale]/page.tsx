@@ -20,7 +20,6 @@ export default function Home() {
       <ClientOpinionsPreview />
       <QuoteHighlight />
       <ProcessPreview />
-
       <ContactCTA />
     </div>
   );
