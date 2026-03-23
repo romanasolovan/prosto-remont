@@ -29,44 +29,41 @@ export default function Header() {
   ];
 
   useEffect(() => {
-    const updateHeaderHeight = () => {
-      if (headerRef.current) {
-        setHeaderHeight(headerRef.current.offsetHeight);
-      }
-    };
-
     const handleScroll = () => {
       setIsCompact(window.scrollY > 24);
     };
 
-    updateHeaderHeight();
     handleScroll();
-
-    window.addEventListener("resize", updateHeaderHeight);
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
-      window.removeEventListener("resize", updateHeaderHeight);
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   useEffect(() => {
-    if (!mobileMenuOpen) return;
+    if (!headerRef.current) return;
+
+    const node = headerRef.current;
 
     const updateHeaderHeight = () => {
-      if (headerRef.current) {
-        setHeaderHeight(headerRef.current.offsetHeight);
-      }
+      setHeaderHeight(node.offsetHeight);
     };
 
     updateHeaderHeight();
+
+    const resizeObserver = new ResizeObserver(() => {
+      updateHeaderHeight();
+    });
+
+    resizeObserver.observe(node);
     window.addEventListener("resize", updateHeaderHeight);
 
     return () => {
+      resizeObserver.disconnect();
       window.removeEventListener("resize", updateHeaderHeight);
     };
-  }, [mobileMenuOpen]);
+  }, []);
 
   useEffect(() => {
     const html = document.documentElement;
@@ -224,6 +221,12 @@ export default function Header() {
           </div>
         </div>
       </header>
+
+      <div
+        className={styles.headerSpacer}
+        style={{ height: `${headerHeight}px` }}
+        aria-hidden="true"
+      />
 
       <MobileMenu
         isOpen={mobileMenuOpen}
