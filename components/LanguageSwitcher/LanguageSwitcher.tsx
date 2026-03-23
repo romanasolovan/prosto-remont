@@ -50,7 +50,9 @@ export default function LanguageSwitcher() {
     <div className={styles.languageSwitcher} ref={wrapperRef}>
       <button
         type="button"
-        className={`${styles.currentLocale} ${open ? styles.currentLocaleOpen : ""}`}
+        className={`${styles.currentLocale} ${
+          open ? styles.currentLocaleOpen : ""
+        }`}
         onClick={() => setOpen((prev) => !prev)}
         aria-expanded={open}
         aria-haspopup="listbox"

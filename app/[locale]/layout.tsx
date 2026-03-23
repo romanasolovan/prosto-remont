@@ -78,7 +78,6 @@ export default async function LocaleLayout({ children, params }: Props) {
             <main style={{ flex: "1" }}>{children}</main>
             <Footer />
 
-            {/* ✅ site-wide call widget */}
             <CallWidget
               phoneDisplay="+48 515 678 017"
               phoneTel="+48515678017"

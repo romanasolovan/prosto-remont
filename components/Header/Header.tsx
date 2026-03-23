@@ -54,23 +54,51 @@ export default function Header() {
   useEffect(() => {
     if (!mobileMenuOpen) return;
 
-    const handleResize = () => {
+    const updateHeaderHeight = () => {
       if (headerRef.current) {
         setHeaderHeight(headerRef.current.offsetHeight);
       }
     };
 
-    handleResize();
-    window.addEventListener("resize", handleResize);
+    updateHeaderHeight();
+    window.addEventListener("resize", updateHeaderHeight);
 
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", updateHeaderHeight);
+    };
+  }, [mobileMenuOpen]);
+
+  useEffect(() => {
+    const html = document.documentElement;
+    const body = document.body;
+
+    if (mobileMenuOpen) {
+      html.style.overflow = "hidden";
+      body.style.overflow = "hidden";
+      body.style.touchAction = "none";
+    } else {
+      html.style.overflow = "";
+      body.style.overflow = "";
+      body.style.touchAction = "";
+    }
+
+    return () => {
+      html.style.overflow = "";
+      body.style.overflow = "";
+      body.style.touchAction = "";
+    };
   }, [mobileMenuOpen]);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen((prev) => !prev);
   };
 
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+  };
+
   const openQuoteModal = () => {
+    setMobileMenuOpen(false);
     setIsQuoteModalOpen(true);
   };
 
@@ -87,7 +115,9 @@ export default function Header() {
     <>
       <header
         ref={headerRef}
-        className={`${styles.header} ${isCompact ? styles.headerCompact : ""}`}
+        className={`${styles.header} ${isCompact ? styles.headerCompact : ""} ${
+          mobileMenuOpen ? styles.headerMenuOpen : ""
+        }`}
       >
         <div className={styles.headerDecor} aria-hidden="true">
           <span className={styles.headerLineLeft} />
@@ -100,7 +130,12 @@ export default function Header() {
             <div className={styles.headerGlow} aria-hidden="true" />
 
             <div className={styles.headerContent}>
-              <Link href="/" className={styles.logo}>
+              <Link
+                href="/"
+                className={styles.logo}
+                onClick={closeMobileMenu}
+                aria-label="Prosto Remont home"
+              >
                 <Image
                   src="/LOGO_FULL.svg"
                   alt="Prosto Remont logo"
@@ -173,8 +208,11 @@ export default function Header() {
                     mobileMenuOpen ? styles.mobileMenuButtonOpen : ""
                   }`}
                   onClick={toggleMobileMenu}
-                  aria-label="Toggle mobile menu"
+                  aria-label={
+                    mobileMenuOpen ? "Close mobile menu" : "Open mobile menu"
+                  }
                   aria-expanded={mobileMenuOpen}
+                  aria-controls="mobile-navigation"
                   type="button"
                 >
                   <span className={styles.hamburger}></span>
@@ -189,7 +227,7 @@ export default function Header() {
 
       <MobileMenu
         isOpen={mobileMenuOpen}
-        onClose={() => setMobileMenuOpen(false)}
+        onClose={closeMobileMenu}
         navLinks={navLinks}
         topOffset={headerHeight}
         onQuoteClick={openQuoteModal}

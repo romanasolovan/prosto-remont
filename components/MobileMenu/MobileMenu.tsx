@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { CSSProperties, useEffect, useRef } from "react";
 import { Link, usePathname } from "@/navigation";
 import { useTranslations } from "next-intl";
 import styles from "./MobileMenu.module.css";
@@ -26,7 +26,6 @@ export default function MobileMenu({
   onQuoteClick,
 }: MobileMenuProps) {
   const touchStart = useRef<number | null>(null);
-  const panelRef = useRef<HTMLElement | null>(null);
   const pathname = usePathname();
 
   const tNav = useTranslations("navigation");
@@ -70,6 +69,13 @@ export default function MobileMenu({
     return pathname === href || pathname.startsWith(`${href}/`);
   };
 
+  const menuTop = Math.max(topOffset - 1, 0);
+
+  const menuStyle = {
+    top: `${menuTop}px`,
+    ["--mobile-menu-top" as string]: `${menuTop}px`,
+  } as CSSProperties;
+
   return (
     <>
       <div
@@ -79,92 +85,97 @@ export default function MobileMenu({
       />
 
       <nav
-        ref={panelRef}
+        id="mobile-navigation"
         className={`${styles.mobileMenu} ${isOpen ? styles.open : ""}`}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
-        style={{ top: `${topOffset - 2}px` }}
+        style={menuStyle}
         aria-label={tMenu("eyebrow")}
+        aria-hidden={!isOpen}
       >
         <div className={styles.menuShell}>
           <div className={styles.menuGlow} aria-hidden="true" />
 
-          <div className={styles.menuTop}>
-            <p className={styles.menuEyebrow}>{tMenu("eyebrow")}</p>
+          <div className={styles.menuScrollArea}>
+            <div className={styles.menuTop}>
+              <p className={styles.menuEyebrow}>{tMenu("eyebrow")}</p>
+
+              <button
+                type="button"
+                onClick={onClose}
+                className={styles.closeButton}
+                aria-label={tMenu("close")}
+              >
+                <span></span>
+                <span></span>
+              </button>
+            </div>
 
             <button
               type="button"
-              onClick={onClose}
-              className={styles.closeButton}
-              aria-label={tMenu("close")}
+              onClick={handleQuoteAction}
+              className={styles.quoteCard}
             >
-              <span></span>
-              <span></span>
-            </button>
-          </div>
+              <span className={styles.quoteCardAura} aria-hidden="true" />
+              <span className={styles.quoteCardShine} aria-hidden="true" />
 
-          <button
-            type="button"
-            onClick={handleQuoteAction}
-            className={styles.quoteCard}
-          >
-            <span className={styles.quoteCardAura} aria-hidden="true" />
-            <span className={styles.quoteCardShine} aria-hidden="true" />
-
-            <span className={styles.quoteCardIcon} aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M12 5v14M5 12h14"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </span>
-
-            <span className={styles.quoteCardContent}>
-              <span className={styles.quoteCardTitle}>
-                {tNav("requestQuote")}
+              <span className={styles.quoteCardIcon} aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 5v14M5 12h14"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                  />
+                </svg>
               </span>
-              <span className={styles.quoteCardText}>{tMenu("quoteText")}</span>
-            </span>
 
-            <span className={styles.quoteCardArrow} aria-hidden="true">
-              ↗
-            </span>
-          </button>
+              <span className={styles.quoteCardContent}>
+                <span className={styles.quoteCardTitle}>
+                  {tNav("requestQuote")}
+                </span>
+                <span className={styles.quoteCardText}>
+                  {tMenu("quoteText")}
+                </span>
+              </span>
 
-          <ul className={styles.navList}>
-            {navLinks.map((link, index) => {
-              const isActive = isActiveLink(link.href);
+              <span className={styles.quoteCardArrow} aria-hidden="true">
+                ↗
+              </span>
+            </button>
 
-              return (
-                <li
-                  key={link.href}
-                  className={styles.navItem}
-                  style={{ animationDelay: `${index * 45}ms` }}
-                >
-                  <Link
-                    href={link.href}
-                    className={`${styles.navLink} ${
-                      isActive ? styles.navLinkActive : ""
-                    }`}
-                    onClick={onClose}
-                    aria-current={isActive ? "page" : undefined}
+            <ul className={styles.navList}>
+              {navLinks.map((link, index) => {
+                const isActive = isActiveLink(link.href);
+
+                return (
+                  <li
+                    key={link.href}
+                    className={styles.navItem}
+                    style={{ animationDelay: `${index * 45}ms` }}
                   >
-                    <span className={styles.navLinkLabel}>{link.label}</span>
-                    <span className={styles.navLinkArrow} aria-hidden="true">
-                      →
-                    </span>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+                    <Link
+                      href={link.href}
+                      className={`${styles.navLink} ${
+                        isActive ? styles.navLinkActive : ""
+                      }`}
+                      onClick={onClose}
+                      aria-current={isActive ? "page" : undefined}
+                    >
+                      <span className={styles.navLinkLabel}>{link.label}</span>
+                      <span className={styles.navLinkArrow} aria-hidden="true">
+                        →
+                      </span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
 
-          <div className={styles.menuFooterNote}>
-            <span className={styles.menuFooterLine} aria-hidden="true" />
-            <p>{tMenu("footerNote")}</p>
+            <div className={styles.menuFooterNote}>
+              <span className={styles.menuFooterLine} aria-hidden="true" />
+              <p>{tMenu("footerNote")}</p>
+            </div>
           </div>
         </div>
       </nav>

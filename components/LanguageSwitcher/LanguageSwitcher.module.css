@@ -1,15 +1,20 @@
 .languageSwitcher {
   position: relative;
   z-index: 30;
-  flex-shrink: 0;
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .currentLocale {
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 9px;
+  justify-content: center;
+  gap: 8px;
+  min-width: 0;
   min-height: 44px;
+  max-width: 100%;
   padding: 8px 12px 8px 10px;
   border-radius: 999px;
   cursor: pointer;
@@ -84,6 +89,7 @@
   justify-content: center;
   width: 24px;
   height: 24px;
+  flex: 0 0 24px;
   border-radius: 999px;
   border: 1px solid rgba(162, 142, 106, 0.26);
   background: rgba(255, 255, 255, 0.76);
@@ -99,15 +105,18 @@
 .currentLocaleText {
   position: relative;
   z-index: 1;
+  min-width: 0;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.12em;
   color: #433c33;
+  white-space: nowrap;
 }
 
 .chevron {
   position: relative;
   z-index: 1;
+  flex: 0 0 auto;
   font-size: 12px;
   color: rgba(125, 141, 106, 0.95);
   transition:
@@ -304,13 +313,60 @@
 }
 
 @media (max-width: 479px) {
+  .currentLocale {
+    gap: 6px;
+    min-height: 40px;
+    padding: 7px 10px 7px 8px;
+  }
+
+  .currentLocaleBadge {
+    width: 22px;
+    height: 22px;
+    flex-basis: 22px;
+    font-size: 10px;
+  }
+
+  .currentLocaleText {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+
+  .chevron {
+    font-size: 11px;
+  }
+
   .dropdown {
     right: -6px;
     min-width: 196px;
   }
+}
+
+@media (max-width: 380px) {
+  .currentLocale {
+    gap: 5px;
+    min-height: 38px;
+    padding: 6px 9px 6px 7px;
+  }
+
+  .currentLocaleBadge {
+    width: 20px;
+    height: 20px;
+    flex-basis: 20px;
+    font-size: 9px;
+  }
 
   .currentLocaleText {
-    letter-spacing: 0.1em;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+
+  .chevron {
+    font-size: 10px;
+  }
+
+  .dropdown {
+    right: -10px;
+    min-width: 188px;
   }
 }
 
