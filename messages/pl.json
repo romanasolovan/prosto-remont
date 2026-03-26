@@ -14,7 +14,7 @@
     "footerNote": "Thoughtful renovation, beautifully made.",
     "close": "Close menu"
   },
-  "common": {
+ "common": {
   "learnMore": "Dowiedz się więcej",
   "startProject": "Rozpocznij swój projekt",
   "contactUs": "Skontaktuj się z nami",
@@ -22,6 +22,17 @@
   "viewPortfolio": "Zobacz realizacje",
   "understandProcess": "Zobacz, jak pracujemy",
   "requestQuote": "Poproś o wycenę"
+},
+"quoteHighlight": {
+  "eyebrow": "Poproś o wycenę",
+  "title": "Rozpocznij swój projekt remontowy z większą klarownością",
+  "description": "Przekaż kilka informacji o swoim projekcie i planowanym terminie. Nasz zespół przeanalizuje zgłoszenie i wskaże jasny kolejny krok, aby remont mógł ruszyć z pewnością.",
+  "steps": {
+    "first": "Opowiedz nam o swoim projekcie",
+    "second": "Otrzymaj dopasowaną odpowiedź",
+    "third": "Przejdź dalej z jasnym planem"
+  },
+  "viewProcess": "Zobacz cały proces"
 },
   "home": {
     "labels": {

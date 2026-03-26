@@ -23,6 +23,17 @@
   "understandProcess": "See the Process",
   "requestQuote": "Request a Quote"
 },
+"quoteHighlight": {
+  "eyebrow": "Request a quote",
+  "title": "Start your renovation project with clarity",
+  "description": "Share a few details about your project and timeline. Our team will review your request and provide a clear next step so your renovation can move forward with confidence.",
+  "steps": {
+    "first": "Tell us about your project",
+    "second": "Receive a tailored response",
+    "third": "Move forward with a clear plan"
+  },
+  "viewProcess": "View full process"
+},
   "home": {
     "labels": {
       "about": "About",
