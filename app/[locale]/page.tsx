@@ -16,6 +16,7 @@ import QuoteRequestModal from "@/components/QuoteRequestModal/QuoteRequestModal"
 
 import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
+import HomeMobileSectionNavigator from "@/components/home/HomeMobileSectionNavigator/HomeMobileSectionNavigator";
 
 type SectionItem = {
   id: string;
@@ -85,6 +86,15 @@ export default function Home() {
         activeSection={activeSection}
         navLabel={t("pagination.navLabel")}
       />
+
+      <HomeMobileSectionNavigator
+        sections={sections}
+        activeSection={activeSection}
+        triggerLabel={t("pagination.mobileTrigger")}
+        title={t("pagination.mobileTitle")}
+        closeLabel={t("pagination.mobileClose")}
+      />
+
       <section
         id="hero"
         className={`${styles.pageSection} ${styles.heroSection}`}

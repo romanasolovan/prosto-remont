@@ -37,6 +37,9 @@
   "home": {
      "pagination": {
       "navLabel": "Homepage sections",
+      "mobileTrigger": "Explore page",
+"mobileTitle": "Page sections",
+"mobileClose": "Close section navigator",
     "hero": "Welcome",
     "trusted": "Trust",
     "why": "Why Us",
