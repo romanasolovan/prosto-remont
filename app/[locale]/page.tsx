@@ -1,6 +1,8 @@
 "use client";
 
 import styles from "./page.module.css";
+import HomeSidePagination from "@/components/home/HomeSidePagination/HomeSidePagination";
+
 import TrustedBrands from "@/components/home/TrustedBrands/TrustedBrands";
 import HomeHero from "@/components/home/HomeHero/HomeHero";
 import WhyChooseUs from "@/components/home/WhyChooseUs/WhyChooseUs";
@@ -11,25 +13,117 @@ import ProjectsPreview from "@/components/home/ProjectsPreview/ProjectsPreview";
 import ProcessPreview from "@/components/home/ProcessPreview/ProcessPreview";
 import ContactCTA from "@/components/ContactCTA/ContactCTA";
 import QuoteRequestModal from "@/components/QuoteRequestModal/QuoteRequestModal";
-import { useState } from "react";
+
+import { useTranslations } from "next-intl";
+import { useEffect, useMemo, useState } from "react";
+
+type SectionItem = {
+  id: string;
+  label: string;
+};
 
 export default function Home() {
+  const t = useTranslations("home");
+
+  const [activeSection, setActiveSection] = useState("hero");
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
+
   const openQuoteModal = () => setIsQuoteModalOpen(true);
   const closeQuoteModal = () => setIsQuoteModalOpen(false);
 
+  const sections: SectionItem[] = useMemo(
+    () => [
+      { id: "hero", label: t("pagination.hero") },
+      { id: "trusted", label: t("pagination.trusted") },
+      { id: "why", label: t("pagination.why") },
+      { id: "services", label: t("pagination.services") },
+      { id: "projects", label: t("pagination.projects") },
+      { id: "reviews", label: t("pagination.reviews") },
+      { id: "quote", label: t("pagination.quote") },
+      { id: "process", label: t("pagination.process") },
+      { id: "contact", label: t("pagination.contact") },
+    ],
+    [t],
+  );
+
+  useEffect(() => {
+    const sectionElements = sections
+      .map((section) => document.getElementById(section.id))
+      .filter((element): element is HTMLElement => element !== null);
+
+    if (sectionElements.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleSections = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+        if (visibleSections.length > 0) {
+          setActiveSection(visibleSections[0].target.id);
+        }
+      },
+      {
+        root: null,
+        rootMargin: "-20% 0px -35% 0px",
+        threshold: [0.2, 0.35, 0.5, 0.65],
+      },
+    );
+
+    sectionElements.forEach((element) => observer.observe(element));
+
+    return () => {
+      sectionElements.forEach((element) => observer.unobserve(element));
+      observer.disconnect();
+    };
+  }, [sections]);
+
   return (
     <div className={styles.home}>
-      <HomeHero />
-      <TrustedBrands />
-      <WhyChooseUs />
-      <ServicesPreview />
-      <ProjectsPreview />
-      <ClientOpinionsPreview />
-      <QuoteHighlight onOpenQuoteModal={openQuoteModal} />
-      {isQuoteModalOpen && <QuoteRequestModal onClose={closeQuoteModal} />}
-      <ProcessPreview />
-      <ContactCTA />
+      <HomeSidePagination
+        sections={sections}
+        activeSection={activeSection}
+        navLabel={t("pagination.navLabel")}
+      />
+      <section
+        id="hero"
+        className={`${styles.pageSection} ${styles.heroSection}`}
+      >
+        <HomeHero />
+      </section>
+
+      <section id="trusted" className={styles.pageSection}>
+        <TrustedBrands />
+      </section>
+
+      <section id="why" className={styles.pageSection}>
+        <WhyChooseUs />
+      </section>
+
+      <section id="services" className={styles.pageSection}>
+        <ServicesPreview />
+      </section>
+
+      <section id="projects" className={styles.pageSection}>
+        <ProjectsPreview />
+      </section>
+
+      <section id="reviews" className={styles.pageSection}>
+        <ClientOpinionsPreview />
+      </section>
+
+      <section id="quote" className={styles.pageSection}>
+        <QuoteHighlight onOpenQuoteModal={openQuoteModal} />
+        {isQuoteModalOpen && <QuoteRequestModal onClose={closeQuoteModal} />}
+      </section>
+
+      <section id="process" className={styles.pageSection}>
+        <ProcessPreview />
+      </section>
+
+      <section id="contact" className={styles.pageSection}>
+        <ContactCTA />
+      </section>
     </div>
   );
 }

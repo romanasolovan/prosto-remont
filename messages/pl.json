@@ -35,6 +35,18 @@
   "viewProcess": "Zobacz cały proces"
 },
   "home": {
+     "pagination": {
+      "navLabel": "Homepage sections",
+    "hero": "Welcome",
+    "trusted": "Trust",
+    "why": "Why Us",
+    "services": "Services",
+    "projects": "Projects",
+    "reviews": "Reviews",
+    "quote": "Quote",
+    "process": "Process",
+    "contact": "Contact"
+  },
     "labels": {
       "about": "O nas",
       "services": "Usługi",

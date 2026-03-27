@@ -34,7 +34,19 @@
   },
   "viewProcess": "Переглянути весь процес"
 },
-  "home": {
+  "home": { 
+    "pagination": {
+      "navLabel": "Homepage sections",
+    "hero": "Welcome",
+    "trusted": "Trust",
+    "why": "Why Us",
+    "services": "Services",
+    "projects": "Projects",
+    "reviews": "Reviews",
+    "quote": "Quote",
+    "process": "Process",
+    "contact": "Contact"
+  },
     "labels": {
       "about": "Про нас",
       "services": "Послуги",

@@ -21,7 +21,7 @@ export default function ProjectsPreview() {
   ];
 
   return (
-    <section className={styles.projectsPreview} id="projects">
+    <div className={styles.projectsPreview} id="projects">
       <div className="container">
         <div className={styles.inner}>
           <div className={styles.content}>
@@ -69,6 +69,6 @@ export default function ProjectsPreview() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

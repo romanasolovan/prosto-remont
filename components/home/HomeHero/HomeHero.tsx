@@ -7,7 +7,7 @@ export default function HomeHero() {
   const tCommon = useTranslations("common");
 
   return (
-    <section className={styles.hero}>
+    <div className={styles.hero}>
       <div className={styles.heroDecor} aria-hidden="true">
         <span className={styles.heroRoofLeft} />
         <span className={styles.heroRoofRight} />
@@ -98,6 +98,6 @@ export default function HomeHero() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

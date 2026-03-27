@@ -1,0 +1,104 @@
+.sidePagination {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .sidePagination {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    z-index: 30;
+    transform: translateY(-50%);
+    display: block;
+  }
+
+  .sidePaginationList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+    padding: 14px 10px;
+    list-style: none;
+    border: 0.5px solid var(--ink-08);
+    border-radius: 999px;
+    background: rgba(245, 242, 235, 0.72);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 28px rgba(14, 13, 11, 0.08);
+  }
+
+  .sidePaginationItem {
+    display: flex;
+  }
+
+  .sidePaginationButton {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: 28px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .sidePaginationDot {
+    width: 12px;
+    height: 12px;
+    border: 1px solid var(--ink-40);
+    border-radius: 999px;
+    background: transparent;
+    transition:
+      transform 220ms ease,
+      background 220ms ease,
+      border-color 220ms ease,
+      box-shadow 220ms ease;
+  }
+
+  .sidePaginationLabel {
+    position: absolute;
+    right: calc(100% + 12px);
+    top: 50%;
+    transform: translateY(-50%) translateX(8px);
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
+    padding: 8px 10px;
+    border: 0.5px solid var(--ink-10);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--ink-80);
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transition:
+      opacity 180ms ease,
+      transform 180ms ease;
+  }
+
+  .sidePaginationButton:hover .sidePaginationLabel,
+  .sidePaginationButton:focus-visible .sidePaginationLabel,
+  .active .sidePaginationLabel {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+
+  .sidePaginationButton:hover .sidePaginationDot,
+  .sidePaginationButton:focus-visible .sidePaginationDot {
+    border-color: var(--sand);
+    transform: scale(1.08);
+  }
+
+  .active .sidePaginationDot {
+    background: var(--sand);
+    border-color: var(--sand);
+    box-shadow: 0 0 0 4px var(--sand-faint);
+    transform: scale(1.12);
+  }
+
+  .sidePaginationButton:focus-visible {
+    outline: none;
+  }
+}

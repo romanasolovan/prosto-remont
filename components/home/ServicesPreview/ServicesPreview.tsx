@@ -34,7 +34,7 @@ export default function ServicesPreview() {
   ];
 
   return (
-    <section className={styles.servicesPreview} id="services">
+    <div className={styles.servicesPreview} id="services">
       <div className="container">
         <div className={styles.inner}>
           <div className={styles.content}>
@@ -69,6 +69,6 @@ export default function ServicesPreview() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

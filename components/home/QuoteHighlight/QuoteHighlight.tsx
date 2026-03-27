@@ -21,7 +21,7 @@ export default function QuoteHighlight({
   ];
 
   return (
-    <section className={styles.quoteHighlight}>
+    <div className={styles.quoteHighlight}>
       <div className="container">
         <div className={styles.inner}>
           <div className={styles.gridBg} aria-hidden="true" />
@@ -61,6 +61,6 @@ export default function QuoteHighlight({
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

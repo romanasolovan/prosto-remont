@@ -35,6 +35,18 @@
   "viewProcess": "View full process"
 },
   "home": {
+     "pagination": {
+      "navLabel": "Homepage sections",
+    "hero": "Welcome",
+    "trusted": "Trust",
+    "why": "Why Us",
+    "services": "Services",
+    "projects": "Projects",
+    "reviews": "Reviews",
+    "quote": "Quote",
+    "process": "Process",
+    "contact": "Contact"
+  },
     "labels": {
       "about": "About",
       "services": "Services",
@@ -74,6 +86,7 @@
       "description": "Whether you are planning a full turnkey fit-out, a renovation, or selected finishing works, we are here to guide you. Reach out to discuss your project, ask questions, and take the first step toward a space designed around your needs."
     }
   },
+  
   "about": {
     "hero": {
       "title": "About PRO100 Twój Remont",

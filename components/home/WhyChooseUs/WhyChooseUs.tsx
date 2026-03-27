@@ -23,10 +23,7 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    <section
-      className={styles.whySection}
-      aria-labelledby="why-choose-us-title"
-    >
+    <div className={styles.whySection} aria-labelledby="why-choose-us-title">
       <div className="container">
         <div className={styles.whyIntro}>
           <span className={styles.sectionLabel}>{t("eyebrow")}</span>
@@ -48,6 +45,6 @@ export default function WhyChooseUs() {
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }

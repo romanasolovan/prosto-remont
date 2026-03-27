@@ -8,7 +8,7 @@ export default function ProcessPreview() {
   const steps = ["01", "02", "03", "04", "05"];
 
   return (
-    <section className={styles.processPreview} id="process">
+    <div className={styles.processPreview} id="process">
       <div className="container">
         <div className={styles.inner}>
           <div className={styles.rail} aria-hidden="true">
@@ -40,6 +40,6 @@ export default function ProcessPreview() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
