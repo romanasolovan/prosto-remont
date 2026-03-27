@@ -57,8 +57,8 @@
       "process": "Process"
     },
     "hero": {
-      "title": "Spaces shaped with clarity, craft, and intention",
-      "subtitle": "Architecture, interiors, and renovation support designed to feel refined, structured, and easy to navigate.",
+      "title": "Your space. Finished with precision.",
+     "subtitle": "We deliver complete interior finishing for apartments, houses, and commercial spaces — with clear communication, a responsible approach, and a result that fully reflects your expectations.",
       "sectionNavLabel": "About page sections",
       "sectionLinks": {
         "stats": "Studio stats",
@@ -89,7 +89,6 @@
       "description": "Whether you are planning a full turnkey fit-out, a renovation, or selected finishing works, we are here to guide you. Reach out to discuss your project, ask questions, and take the first step toward a space designed around your needs."
     }
   },
-  
   "about": {
     "hero": {
       "title": "About PRO100 Twój Remont",
