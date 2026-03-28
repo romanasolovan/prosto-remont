@@ -553,6 +553,18 @@
     "errorMessage": "Coś poszło nie tak. Spróbuj ponownie."
   },
   "getContact": {
+    "hero": {
+    "eyebrow": "Skontaktuj się z nami",
+    "title": "Kontakt",
+    "subtitle": "Porozmawiajmy o Twoim remoncie, pracach wykończeniowych lub metamorfozie wnętrza.",
+    "bgWord": "Kontakt"
+  },
+  "map": {
+    "title": "Nasza lokalizacja",
+    "description": "Pracujemy w Warszawie i realizujemy projekty remontowe oraz wykończeniowe w całym regionie.",
+    "ariaLabel": "Mapa lokalizacji biura",
+    "iframeTitle": "Lokalizacja biura"
+  },
     "title": "Kontakt",
     "description": "Jeśli planujesz remont, wykończenie „pod klucz” lub metamorfozę wnętrza, jesteśmy gotowi do rozmowy. Skontaktuj się z nami, aby omówić swój projekt, zadać pytania lub umówić pierwszą konsultację.",
     "getInTouch": {
