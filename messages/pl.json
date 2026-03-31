@@ -19,7 +19,7 @@
   "learnMore": "Dowiedz się więcej",
   "startProject": "Rozpocznij swój projekt",
   "contactUs": "Skontaktuj się z nami",
-  "exploreServices": "Poznaj usługi",
+  "exploreServices": "Usługi",
   "viewPortfolio": "Zobacz realizacje",
   "understandProcess": "Zobacz, jak pracujemy",
   "requestQuote": "Poproś o wycenę"
@@ -58,16 +58,22 @@
       "process": "Proces"
     },
     "hero": {
-      "title": "Twoja przestrzeń. Wykończona z precyzją.",
-      "subtitle": "Realizujemy kompleksowe wykończenia mieszkań, domów i lokali usługowych. Stawiamy na rzetelność, przejrzystą komunikację i efekt końcowy, który naprawdę odpowiada Twoim oczekiwaniom.",
-      "sectionNavLabel": "Sekcje strony o nas",
-      "sectionLinks": {
-        "stats": "Statystyki",
-        "story": "Historia",
-        "trusted": "Zaufali nam",
-        "whyChooseUs": "Dlaczego my",
-        "reviews": "Opinie klientów"
+      "eyebrow": "Renowacja wnętrz premium",
+      "titleLineOne": "Twoja przestrzeń.",
+      "titleLineTwo": "Wykończona z precyzją.",
+      "statsAriaLabel": "Najważniejsze osiągnięcia firmy",
+      "trust": {
+        "protection": "Ochrona na każdym etapie",
+        "precision": "Dokładność w każdym detalu",
+        "process": "Jasny i uporządkowany proces",
+        "finish": "Efekt, który budzi zaufanie"
       }
+    },
+    "stats": {
+      "projects": "50+ zrealizowanych projektów",
+      "clients": "100+ zadowolonych klientów",
+      "area": "20 000+ m² wykonanych prac",
+      "years": "5+ lat w Polsce"
     },
     "about": {
       "title": "Więcej niż remont",
