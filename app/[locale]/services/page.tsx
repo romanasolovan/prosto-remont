@@ -6,7 +6,6 @@ import styles from "./services.module.css";
 import ServiceModal, {
   type ServiceDetail,
 } from "@/components/Services/ServiceModal";
-import CustomCursor from "@/components/CustomCursor/CustomCursor";
 
 export default function ServicesClient() {
   const t = useTranslations("services");
@@ -107,8 +106,6 @@ export default function ServicesClient() {
 
   return (
     <>
-      <CustomCursor />
-
       <div className={styles.servicesPage}>
         <section className={styles.hero}>
           <div className={styles.heroGrid} aria-hidden="true" />

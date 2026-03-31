@@ -26,6 +26,7 @@ export default function Header() {
     { href: "/projects", label: t("projects") },
     { href: "/process", label: t("process") },
     { href: "/contact", label: t("contact") },
+    { href: "/reviews", label: t("reviews") },
   ];
 
   useEffect(() => {
