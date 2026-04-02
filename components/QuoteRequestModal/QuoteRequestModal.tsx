@@ -46,9 +46,9 @@ export default function QuoteRequestModal({ onClose }: QuoteRequestModalProps) {
         aria-labelledby="quote-modal-title"
         aria-describedby="quote-modal-description"
       >
-        <div className={styles.modalHeader}>
+        <div className={styles.modalTopBar}>
           <div className={styles.modalHeaderCopy}>
-            <p className={styles.eyebrow}>PRO100REMONT</p>
+            <p className={styles.eyebrow}>pro100remont</p>
             <h2 id="quote-modal-title" className={styles.modalTitle}>
               {t("title")}
             </h2>
@@ -63,7 +63,8 @@ export default function QuoteRequestModal({ onClose }: QuoteRequestModalProps) {
             className={styles.closeButton}
             aria-label="Close quote request form"
           >
-            ×
+            <span className={styles.closeButtonLine} />
+            <span className={styles.closeButtonLine} />
           </button>
         </div>
 

@@ -50,28 +50,30 @@ export default function LanguageSwitcher() {
     <div className={styles.languageSwitcher} ref={wrapperRef}>
       <button
         type="button"
-        className={`${styles.currentLocale} ${
-          open ? styles.currentLocaleOpen : ""
-        }`}
+        className={`${styles.trigger} ${open ? styles.triggerOpen : ""}`}
         onClick={() => setOpen((prev) => !prev)}
         aria-expanded={open}
         aria-haspopup="listbox"
         aria-controls={dropdownId}
         aria-label="Change language"
       >
-        <span className={styles.currentLocaleBadge} aria-hidden="true">
-          {currentLocale.slice(0, 1).toUpperCase()}
-        </span>
+        <span className={styles.triggerInner}>
+          <span className={styles.triggerCode}>{currentLocale}</span>
 
-        <span className={styles.currentLocaleText}>
-          {currentLocale.toUpperCase()}
-        </span>
-
-        <span
-          className={`${styles.chevron} ${open ? styles.chevronOpen : ""}`}
-          aria-hidden="true"
-        >
-          ▾
+          <span
+            className={`${styles.chevron} ${open ? styles.chevronOpen : ""}`}
+            aria-hidden="true"
+          >
+            <svg viewBox="0 0 16 16" fill="none">
+              <path
+                d="M4 6.5L8 10L12 6.5"
+                stroke="currentColor"
+                strokeWidth="1.4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </span>
         </span>
       </button>
 
@@ -79,7 +81,7 @@ export default function LanguageSwitcher() {
         id={dropdownId}
         className={`${styles.dropdown} ${open ? styles.dropdownOpen : ""}`}
       >
-        <ul className={styles.localeList} aria-label="Languages">
+        <ul className={styles.localeList} aria-label="Languages" role="listbox">
           {locales.map((locale) => {
             const isActive = locale === currentLocale;
 
@@ -89,30 +91,33 @@ export default function LanguageSwitcher() {
                   type="button"
                   onClick={() => handleLocaleChange(locale)}
                   className={`${styles.localeButton} ${
-                    isActive ? styles.active : ""
+                    isActive ? styles.localeButtonActive : ""
                   }`}
                   aria-current={isActive ? "true" : undefined}
                 >
-                  <span className={styles.localeBadge}>
-                    {locale.toUpperCase()}
-                  </span>
+                  <span className={styles.localeCode}>{locale}</span>
 
                   <span className={styles.localeMeta}>
                     <span className={styles.localeName}>
                       {localeLabels[locale]}
                     </span>
-                    <span className={styles.localeHint}>
-                      {locale.toUpperCase()}
-                    </span>
                   </span>
 
                   <span
-                    className={`${styles.localeCheck} ${
-                      isActive ? styles.localeCheckVisible : ""
+                    className={`${styles.localeMark} ${
+                      isActive ? styles.localeMarkVisible : ""
                     }`}
                     aria-hidden="true"
                   >
-                    •
+                    <svg viewBox="0 0 16 16" fill="none">
+                      <path
+                        d="M3.5 8.5L6.5 11.5L12.5 4.5"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
                   </span>
                 </button>
               </li>

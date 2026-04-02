@@ -117,16 +117,8 @@ export default function Header() {
           mobileMenuOpen ? styles.headerMenuOpen : ""
         }`}
       >
-        <div className={styles.headerDecor} aria-hidden="true">
-          <span className={styles.headerLineLeft} />
-          <span className={styles.headerLineRight} />
-          <span className={styles.headerBaseLine} />
-        </div>
-
         <div className="container">
           <div className={styles.headerShell}>
-            <div className={styles.headerGlow} aria-hidden="true" />
-
             <div className={styles.headerContent}>
               <Link
                 href="/"
@@ -174,32 +166,77 @@ export default function Header() {
                   type="button"
                   onClick={openQuoteModal}
                   className={styles.quoteButton}
+                  aria-label={t("requestQuote")}
                   aria-haspopup="dialog"
                   aria-expanded={isQuoteModalOpen}
                 >
-                  <span className={styles.quoteButtonAura} aria-hidden="true" />
-                  <span
-                    className={styles.quoteButtonShine}
-                    aria-hidden="true"
-                  />
+                  <span className={styles.quoteButtonInner}>
+                    <span className={styles.quotePlus} aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path
+                          d="M12 6.5V17.5M6.5 12H17.5"
+                          stroke="currentColor"
+                          strokeWidth="1.35"
+                          strokeLinecap="round"
+                        />
+                      </svg>
+                    </span>
 
-                  <span className={styles.quoteButtonIcon} aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none">
-                      <path
-                        d="M12 5v14M5 12h14"
-                        stroke="currentColor"
-                        strokeWidth="1.8"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                  </span>
+                    <span className={styles.quoteIcon} aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <rect
+                          x="4.75"
+                          y="4.75"
+                          width="11.25"
+                          height="14.5"
+                          rx="1.1"
+                          stroke="currentColor"
+                          strokeWidth="1.45"
+                        />
 
-                  <span className={styles.quoteButtonText}>
-                    {t("requestQuote")}
+                        <path
+                          d="M7.4 8.1H13.35"
+                          stroke="currentColor"
+                          strokeWidth="1.25"
+                          strokeLinecap="round"
+                        />
+                        <path
+                          d="M7.4 11.35H12.55"
+                          stroke="currentColor"
+                          strokeWidth="1.25"
+                          strokeLinecap="round"
+                        />
+                        <path
+                          d="M7.4 14.6H11.85"
+                          stroke="currentColor"
+                          strokeWidth="1.25"
+                          strokeLinecap="round"
+                        />
+
+                        <path
+                          d="M11.55 16.95L17.9 10.6"
+                          stroke="currentColor"
+                          strokeWidth="1.7"
+                          strokeLinecap="round"
+                        />
+                        <path
+                          d="M16.95 9.65L18.9 11.6"
+                          stroke="currentColor"
+                          strokeWidth="1.7"
+                          strokeLinecap="round"
+                        />
+                        <path
+                          d="M10.95 17.55L11.55 16.95L12.55 17.95L11.95 18.55L10.55 18.95L10.95 17.55Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </span>
                   </span>
                 </button>
 
-                <LanguageSwitcher />
+                <div className={styles.languageSwitcherWrap}>
+                  <LanguageSwitcher />
+                </div>
 
                 <button
                   className={`${styles.mobileMenuButton} ${
