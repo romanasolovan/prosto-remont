@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/navigation";
 import styles from "./Header.module.css";
@@ -9,13 +9,26 @@ import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 import QuoteRequestModal from "@/components/QuoteRequestModal/QuoteRequestModal";
 import Image from "next/image";
 
+interface MobileMenuGeometry {
+  top: number;
+  left: number;
+  width: number;
+}
+
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isCompact, setIsCompact] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(0);
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
+  const [menuGeometry, setMenuGeometry] = useState<MobileMenuGeometry>({
+    top: 0,
+    left: 0,
+    width: 0,
+  });
 
   const headerRef = useRef<HTMLElement | null>(null);
+  const headerShellRef = useRef<HTMLDivElement | null>(null);
+
   const t = useTranslations("navigation");
   const pathname = usePathname();
 
@@ -87,6 +100,59 @@ export default function Header() {
     };
   }, [mobileMenuOpen]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const updateMenuGeometry = () => {
+    if (!headerShellRef.current) return;
+
+    const rect = headerShellRef.current.getBoundingClientRect();
+
+    setMenuGeometry({
+      top: Math.max(rect.bottom - 1, 0),
+      left: rect.left,
+      width: rect.width,
+    });
+  };
+
+  useLayoutEffect(() => {
+    updateMenuGeometry();
+  }, [isCompact, mobileMenuOpen]);
+
+  useEffect(() => {
+    updateMenuGeometry();
+
+    const handleScroll = () => updateMenuGeometry();
+    const handleResize = () => updateMenuGeometry();
+
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    let resizeObserver: ResizeObserver | null = null;
+
+    if (headerShellRef.current) {
+      resizeObserver = new ResizeObserver(() => {
+        updateMenuGeometry();
+      });
+
+      resizeObserver.observe(headerShellRef.current);
+    }
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleScroll);
+      resizeObserver?.disconnect();
+    };
+  }, []);
+
   const toggleMobileMenu = () => {
     setMobileMenuOpen((prev) => !prev);
   };
@@ -118,7 +184,7 @@ export default function Header() {
         }`}
       >
         <div className="container">
-          <div className={styles.headerShell}>
+          <div ref={headerShellRef} className={styles.headerShell}>
             <div className={styles.headerContent}>
               <Link
                 href="/"
@@ -270,7 +336,7 @@ export default function Header() {
         isOpen={mobileMenuOpen}
         onClose={closeMobileMenu}
         navLinks={navLinks}
-        topOffset={headerHeight}
+        geometry={menuGeometry}
         onQuoteClick={openQuoteModal}
       />
 

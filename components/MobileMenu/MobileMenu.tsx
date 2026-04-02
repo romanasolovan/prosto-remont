@@ -10,11 +10,17 @@ interface NavLink {
   label: string;
 }
 
+interface MobileMenuGeometry {
+  top: number;
+  left: number;
+  width: number;
+}
+
 interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
   navLinks: NavLink[];
-  topOffset: number;
+  geometry: MobileMenuGeometry;
   onQuoteClick?: () => void;
 }
 
@@ -22,7 +28,7 @@ export default function MobileMenu({
   isOpen,
   onClose,
   navLinks,
-  topOffset,
+  geometry,
   onQuoteClick,
 }: MobileMenuProps) {
   const touchStart = useRef<number | null>(null);
@@ -69,11 +75,10 @@ export default function MobileMenu({
     return pathname === href || pathname.startsWith(`${href}/`);
   };
 
-  const menuTop = Math.max(topOffset - 1, 0);
-
-  const menuStyle = {
-    top: `${menuTop}px`,
-    ["--mobile-menu-top" as string]: `${menuTop}px`,
+  const sharedStyle = {
+    ["--mobile-menu-top" as string]: `${geometry.top}px`,
+    ["--mobile-menu-left" as string]: `${geometry.left}px`,
+    ["--mobile-menu-width" as string]: `${geometry.width}px`,
   } as CSSProperties;
 
   return (
@@ -81,6 +86,7 @@ export default function MobileMenu({
       <div
         className={`${styles.backdrop} ${isOpen ? styles.backdropOpen : ""}`}
         onClick={onClose}
+        style={sharedStyle}
         aria-hidden="true"
       />
 
@@ -89,13 +95,11 @@ export default function MobileMenu({
         className={`${styles.mobileMenu} ${isOpen ? styles.open : ""}`}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
-        style={menuStyle}
+        style={sharedStyle}
         aria-label={tMenu("eyebrow")}
         aria-hidden={!isOpen}
       >
         <div className={styles.menuShell}>
-          <div className={styles.menuGlow} aria-hidden="true" />
-
           <div className={styles.menuScrollArea}>
             <div className={styles.menuTop}>
               <p className={styles.menuEyebrow}>{tMenu("eyebrow")}</p>
@@ -116,16 +120,50 @@ export default function MobileMenu({
               onClick={handleQuoteAction}
               className={styles.quoteCard}
             >
-              <span className={styles.quoteCardAura} aria-hidden="true" />
-              <span className={styles.quoteCardShine} aria-hidden="true" />
-
               <span className={styles.quoteCardIcon} aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M12 5v14M5 12h14"
+                  <rect
+                    x="4.75"
+                    y="4.75"
+                    width="11.25"
+                    height="14.5"
+                    rx="1.1"
                     stroke="currentColor"
-                    strokeWidth="1.8"
+                    strokeWidth="1.45"
+                  />
+                  <path
+                    d="M7.4 8.1H13.35"
+                    stroke="currentColor"
+                    strokeWidth="1.25"
                     strokeLinecap="round"
+                  />
+                  <path
+                    d="M7.4 11.35H12.55"
+                    stroke="currentColor"
+                    strokeWidth="1.25"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M7.4 14.6H11.85"
+                    stroke="currentColor"
+                    strokeWidth="1.25"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M11.55 16.95L17.9 10.6"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M16.95 9.65L18.9 11.6"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M10.95 17.55L11.55 16.95L12.55 17.95L11.95 18.55L10.55 18.95L10.95 17.55Z"
+                    fill="currentColor"
                   />
                 </svg>
               </span>
