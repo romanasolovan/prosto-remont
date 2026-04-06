@@ -20,10 +20,7 @@ export default function ContactCTA() {
 
             <p className={styles.ctaDescription}>{t("description")}</p>
 
-            <Link
-              href="/process"
-              className={`btn btn-primary ${styles.ctaButton}`}
-            >
+            <Link href="/process" className={styles.ctaButton}>
               {tCommon("requestQuote")}
             </Link>
           </div>
