@@ -34,7 +34,7 @@ export default function ServicesPreview() {
   ];
 
   return (
-    <div className={styles.servicesPreview} id="services">
+    <section className={styles.servicesPreview} id="services">
       <div className="container">
         <div className={styles.inner}>
           <div className={styles.content}>
@@ -58,7 +58,7 @@ export default function ServicesPreview() {
             </Link>
           </div>
 
-          <div className={styles.grid} aria-hidden="true">
+          <div className={styles.grid}>
             {services.map((service) => (
               <article key={service.number} className={styles.card}>
                 <span className={styles.cardNumber}>{service.number}</span>
@@ -69,6 +69,6 @@ export default function ServicesPreview() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
