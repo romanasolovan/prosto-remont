@@ -1,8 +1,13 @@
+"use client";
+
 import { useTranslations } from "next-intl";
 import { Link } from "@/navigation";
+import HeroStatIcons from "./HeroStatIcons";
 import styles from "./HomeHero.module.css";
 
-const StatIcons = {
+type StatIconKey = "projects" | "clients" | "area" | "years";
+
+const StatIcons: Record<StatIconKey, React.ReactNode> = {
   projects: (
     <svg
       viewBox="0 0 48 48"
@@ -74,11 +79,11 @@ export default function HomeHero() {
   const tCommon = useTranslations("common");
 
   const stats = [
-    { key: "projects", icon: StatIcons.projects, text: t("stats.projects") },
-    { key: "clients", icon: StatIcons.clients, text: t("stats.clients") },
-    { key: "area", icon: StatIcons.area, text: t("stats.area") },
-    { key: "years", icon: StatIcons.years, text: t("stats.years") },
-  ];
+    { key: "projects", icon: StatIcons.projects, label: t("stats.projects") },
+    { key: "clients", icon: StatIcons.clients, label: t("stats.clients") },
+    { key: "area", icon: StatIcons.area, label: t("stats.area") },
+    { key: "years", icon: StatIcons.years, label: t("stats.years") },
+  ] as const;
 
   return (
     <section className={styles.hero} aria-labelledby="home-hero-title">
@@ -98,7 +103,7 @@ export default function HomeHero() {
               </span>
             </h1>
 
-            <Link href="/services" className={styles.button}>
+            <Link href="/services" className={styles.buttonDesktop}>
               <span className={styles.buttonInner}>
                 <span className={styles.buttonText}>
                   {tCommon("exploreServices")}
@@ -107,26 +112,22 @@ export default function HomeHero() {
             </Link>
           </div>
 
-          <div className={styles.metaRow}>
-            <ul
-              className={styles.statsRow}
-              aria-label={t("hero.statsAriaLabel")}
-            >
-              {stats.map((item, index) => (
-                <li
-                  key={item.key}
-                  className={styles.statItem}
-                  style={{ animationDelay: `${index * 90}ms` }}
-                >
-                  <span className={styles.iconCircle} aria-hidden="true">
-                    {item.icon}
-                  </span>
-                  <span className={styles.statText}>{item.text}</span>
-                </li>
-              ))}
-            </ul>
+          <HeroStatIcons items={stats} ariaLabel={t("hero.statsAriaLabel")} />
 
-            <p className={styles.eyebrow}>{t("hero.eyebrow")}</p>
+          <div className={styles.bottomRow}>
+            <p className={styles.eyebrow}>
+              <span>{t("hero.eyebrowLineOne")}</span>
+              <span>{t("hero.eyebrowLineTwo")}</span>
+              <span>{t("hero.eyebrowLineThree")}</span>
+            </p>
+
+            <Link href="/services" className={styles.buttonMobile}>
+              <span className={styles.buttonInner}>
+                <span className={styles.buttonText}>
+                  {tCommon("exploreServices")}
+                </span>
+              </span>
+            </Link>
           </div>
         </div>
       </div>

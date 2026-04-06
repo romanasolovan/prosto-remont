@@ -35,11 +35,11 @@
   --color-muted-warm: #5a5650;
 
   /* semantic aliases */
-  --color-text: var(--color-grey-900);
-  --color-text-soft: var(--color-grey-700);
-  --color-bg: var(--color-white);
-  --color-border-soft: rgba(17, 17, 14, 0.06);
-  --color-focus: var(--color-black);
+  --color-text: #f5f4f0;
+  --color-text-soft: rgba(245, 244, 240, 0.72);
+  --color-bg: #0b0d0f;
+  --color-border-soft: rgba(255, 255, 255, 0.08);
+  --color-focus: rgba(255, 255, 255, 0.92);
 
   /* spacing */
   --space-4: 4px;
@@ -158,7 +158,7 @@ body {
   font-size: var(--text-16);
   line-height: var(--line-height-normal);
   color: var(--color-text);
-  background-color: var(--color-bg);
+  background: linear-gradient(180deg, #090b0d 0%, #0b0d0f 100%);
 }
 
 img,
@@ -197,7 +197,7 @@ h6 {
   font-family: var(--font-heading);
   font-weight: 600;
   line-height: var(--line-height-tight);
-  color: var(--color-black);
+  color: var(--color-white);
 }
 
 h1 {

@@ -5,8 +5,8 @@ import { useTranslations } from "next-intl";
 import styles from "./CallWidget.module.css";
 
 type Props = {
-  phoneDisplay: string; // "+48 515 678 017"
-  phoneTel: string; // "+48515678017"
+  phoneDisplay: string;
+  phoneTel: string;
 };
 
 export default function CallWidget({ phoneDisplay, phoneTel }: Props) {

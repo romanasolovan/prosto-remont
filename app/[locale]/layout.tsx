@@ -79,8 +79,8 @@ export default async function LocaleLayout({ children, params }: Props) {
             <Footer />
 
             <CallWidget
-              phoneDisplay="+48 515 678 017"
-              phoneTel="+48515678017"
+              phoneDisplay="+48 796 444 113"
+              phoneTel="+48796444113"
             />
           </div>
         </NextIntlClientProvider>

@@ -58,6 +58,9 @@
       "process": "Process"
     },
     "hero": {
+      "eyebrowLineOne": "Premium",
+      "eyebrowLineTwo": "Interior",
+      "eyebrowLineThree": "Renovation",
       "eyebrow": "Premium interior renovation",
       "titleLineOne": "Your space.",
       "titleLineTwo": "Finished with precision.",

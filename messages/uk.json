@@ -58,6 +58,9 @@
       "process": "Процес"
     },
    "hero": {
+    "eyebrowLineOne": "Преміальний",
+      "eyebrowLineTwo": "ремонт",
+      "eyebrowLineThree": "інтер’єрів",
       "eyebrow": "Преміальний ремонт інтер’єрів",
       "titleLineOne": "Ваш простір.",
       "titleLineTwo": "Завершений з точністю.",
