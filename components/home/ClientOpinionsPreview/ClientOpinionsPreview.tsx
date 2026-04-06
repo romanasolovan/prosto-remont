@@ -66,7 +66,7 @@ export default function ClientOpinionsPreview() {
   };
 
   return (
-    <div
+    <section
       className={styles.clientOpinionsPreviewSection}
       aria-labelledby="client-opinions-preview-title"
     >
@@ -202,6 +202,6 @@ export default function ClientOpinionsPreview() {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
