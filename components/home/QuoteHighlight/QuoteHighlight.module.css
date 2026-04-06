@@ -1,49 +1,38 @@
 .quoteHighlight {
-  --ink: #0e0d0b;
-  --ink-60: rgba(14, 13, 11, 0.6);
-  --ink-30: rgba(14, 13, 11, 0.3);
-  --ink-12: rgba(14, 13, 11, 0.12);
-  --ink-08: rgba(14, 13, 11, 0.08);
-  --ink-06: rgba(14, 13, 11, 0.06);
-  --grid: rgba(14, 13, 11, 0.048);
-  --paper: #f5f2eb;
-  --paper-2: #ede9e0;
-  --sand: #b89a70;
-  --olive: #4a5030;
+  --bg-main: #101419;
+  --bg-soft: #181d23;
+  --ink: #f5f4f0;
+  --ink-soft: rgba(245, 244, 240, 0.74);
+  --ink-muted: rgba(245, 244, 240, 0.5);
+  --line-soft: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.16);
 
   position: relative;
   overflow: hidden;
-  padding: clamp(80px, 10vw, 140px) 0;
+  padding: clamp(84px, 10vw, 150px) 0;
   background:
-    linear-gradient(var(--grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid) 1px, transparent 1px),
-    linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
-  background-size:
-    40px 40px,
-    40px 40px,
-    auto;
-  background-position:
-    -1px -1px,
-    -1px -1px,
-    0 0;
+    radial-gradient(
+      circle at top left,
+      rgba(255, 255, 255, 0.04),
+      transparent 28%
+    ),
+    linear-gradient(180deg, var(--bg-main) 0%, var(--bg-soft) 100%);
 }
 
 .inner {
   position: relative;
-  max-width: 980px;
+  max-width: 1040px;
   margin: 0 auto;
   overflow: hidden;
-  border: 0.5px solid var(--ink-08);
-  border-radius: 4px 4px 110px 4px;
+  border: 1px solid var(--line-soft);
   background: linear-gradient(
-    160deg,
-    rgba(255, 255, 255, 0.86) 0%,
-    rgba(241, 237, 230, 0.74) 100%
+    180deg,
+    rgba(255, 255, 255, 0.035) 0%,
+    rgba(255, 255, 255, 0.018) 100%
   );
   box-shadow:
-    0 2px 0 rgba(14, 13, 11, 0.05),
-    0 22px 54px rgba(14, 13, 11, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.82);
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 22px 56px rgba(0, 0, 0, 0.18);
   isolation: isolate;
 }
 
@@ -52,8 +41,7 @@
   position: absolute;
   inset: 14px;
   z-index: 1;
-  border: 0.5px solid var(--ink-06);
-  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
   pointer-events: none;
 }
 
@@ -61,12 +49,12 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  opacity: 0.45;
+  opacity: 0.28;
   pointer-events: none;
   background-image:
-    linear-gradient(var(--grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-  background-size: 24px 24px;
+    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
 
 .diagonal {
@@ -74,8 +62,8 @@
   top: 0;
   left: 0;
   z-index: 1;
-  width: 52px;
-  height: 52px;
+  width: 62px;
+  height: 62px;
   overflow: hidden;
   pointer-events: none;
 }
@@ -83,26 +71,25 @@
 .diagonal::after {
   content: "";
   position: absolute;
-  top: 12px;
-  left: -24px;
-  width: 74px;
+  top: 14px;
+  left: -26px;
+  width: 86px;
   height: 1px;
-  background: var(--sand);
-  opacity: 0.45;
+  background: rgba(255, 255, 255, 0.2);
   transform: rotate(45deg);
 }
 
 .accentLine {
   position: absolute;
-  top: 24px;
-  bottom: 24px;
+  top: 22px;
+  bottom: 22px;
   left: 0;
   width: 3px;
   border-radius: 0 999px 999px 0;
   background: linear-gradient(
     180deg,
-    rgba(184, 154, 112, 0.96) 0%,
-    rgba(184, 154, 112, 0.16) 100%
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0.12) 100%
   );
   z-index: 2;
 }
@@ -128,14 +115,14 @@
   font-weight: 500;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--sand);
+  color: rgba(245, 244, 240, 0.68);
 }
 
 .eyebrow::before {
   content: "";
   width: 18px;
   height: 1px;
-  background: var(--sand);
+  background: currentColor;
   opacity: 0.65;
 }
 
@@ -144,7 +131,7 @@
   margin: 16px auto 14px;
   font-family: "Barlow Condensed", sans-serif;
   font-size: clamp(36px, 5vw, 64px);
-  font-weight: 200;
+  font-weight: 300;
   line-height: 0.94;
   text-transform: uppercase;
   letter-spacing: -0.03em;
@@ -159,7 +146,7 @@
   font-size: clamp(14px, 1.05vw, 16px);
   line-height: 1.85;
   font-weight: 300;
-  color: var(--ink-60);
+  color: var(--ink-soft);
 }
 
 .steps {
@@ -171,22 +158,15 @@
 .step {
   display: flex;
   align-items: center;
-  gap: 12px;
-  min-height: 70px;
+  gap: 14px;
+  min-height: 74px;
   padding: 16px 18px;
-  border: 0.5px solid var(--ink-08);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.34);
+  border: 1px solid var(--line-soft);
+  background: rgba(255, 255, 255, 0.022);
   transition:
     transform 220ms ease,
     border-color 220ms ease,
     background 220ms ease;
-}
-
-.step:hover {
-  transform: translateY(-2px);
-  border-color: var(--ink-12);
-  background: rgba(255, 255, 255, 0.46);
 }
 
 .stepNumber {
@@ -195,7 +175,7 @@
   font-size: 16px;
   font-weight: 500;
   letter-spacing: 0.14em;
-  color: var(--sand);
+  color: rgba(245, 244, 240, 0.58);
 }
 
 .stepText {
@@ -204,7 +184,7 @@
   font-size: 14px;
   font-weight: 300;
   line-height: 1.7;
-  color: var(--ink-60);
+  color: var(--ink-soft);
 }
 
 .actions {
@@ -217,6 +197,29 @@
 
 .primaryButton {
   min-width: 220px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 32px;
+  border: 1px solid var(--line-strong);
+  background:
+    radial-gradient(
+      circle at 30% 30%,
+      rgba(255, 255, 255, 0.14),
+      rgba(255, 255, 255, 0.04) 72%
+    ),
+    rgba(255, 255, 255, 0.04);
+  color: var(--ink);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    background 220ms ease;
 }
 
 .secondaryLink {
@@ -229,7 +232,7 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--ink-60);
+  color: var(--ink-soft);
   transition:
     color 200ms ease,
     gap 220ms ease;
@@ -249,13 +252,19 @@
   transform: translateX(3px);
 }
 
+.primaryButton:focus-visible,
+.secondaryLink:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.24);
+  outline-offset: 4px;
+}
+
 @media (min-width: 768px) {
   .steps {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .step {
-    min-height: 94px;
+    min-height: 104px;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
@@ -267,28 +276,36 @@
   }
 }
 
-@media (min-width: 1024px) {
-  .inner:hover {
-    transform: translateY(-6px);
-    transition:
-      transform 320ms ease,
-      box-shadow 320ms ease,
-      border-color 320ms ease;
-    box-shadow:
-      0 2px 0 rgba(14, 13, 11, 0.06),
-      0 30px 68px rgba(14, 13, 11, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.84);
+@media (hover: hover) {
+  .step:hover {
+    transform: translateY(-2px);
+    border-color: var(--line-strong);
+    background: rgba(255, 255, 255, 0.032);
+  }
+
+  .primaryButton:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.24);
+    background:
+      radial-gradient(
+        circle at 30% 30%,
+        rgba(255, 255, 255, 0.18),
+        rgba(255, 255, 255, 0.05) 72%
+      ),
+      rgba(255, 255, 255, 0.05);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .inner,
-  .inner:hover,
   .step,
-  .step:hover,
+  .primaryButton,
   .secondaryLink,
   .linkArrow {
-    transform: none;
     transition: none;
+  }
+
+  .step:hover,
+  .primaryButton:hover {
+    transform: none;
   }
 }

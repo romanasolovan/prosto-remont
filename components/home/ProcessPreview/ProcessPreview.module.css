@@ -1,44 +1,50 @@
 .processPreview {
-  --ink: #0e0d0b;
-  --ink-60: rgba(14, 13, 11, 0.6);
-  --ink-20: rgba(14, 13, 11, 0.2);
-  --ink-10: rgba(14, 13, 11, 0.1);
-  --grid: rgba(14, 13, 11, 0.048);
-  --paper: #f5f2eb;
-  --paper-2: #ede9e0;
-  --paper-3: #e8e3d8;
-  --sand: #b89a70;
-  --r-sm: 3px;
-  --r-lg: 26px;
-  --panel-light: linear-gradient(
-    160deg,
-    rgba(255, 255, 255, 0.85) 0%,
-    rgba(241, 237, 230, 0.7) 100%
-  );
-  --shadow-light:
-    0 2px 0 rgba(14, 13, 11, 0.06), 0 18px 44px rgba(14, 13, 11, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  --bg-top: #0e1216;
+  --bg-bottom: #171c22;
+  --ink: #f5f4f0;
+  --ink-soft: rgba(245, 244, 240, 0.74);
+  --ink-muted: rgba(245, 244, 240, 0.48);
+  --line-soft: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.16);
 
   position: relative;
   overflow: hidden;
-  padding: clamp(72px, 10vw, 144px) 0;
+  padding: clamp(80px, 10vw, 150px) 0;
   background:
-    linear-gradient(var(--grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid) 1px, transparent 1px),
-    linear-gradient(180deg, var(--paper-2) 0%, var(--paper-3) 100%);
-  background-size:
-    40px 40px,
-    40px 40px,
-    auto;
-  background-position:
-    -1px -1px,
-    -1px -1px,
-    0 0;
+    linear-gradient(180deg, rgba(255, 255, 255, 0.018) 0%, transparent 28%),
+    linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
+}
+
+.processPreview::before {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 18%,
+    rgba(255, 255, 255, 0.08) 82%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.processPreview::after {
+  content: "";
+  position: absolute;
+  top: -10rem;
+  right: -8rem;
+  width: 24rem;
+  height: 24rem;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 50%;
+  pointer-events: none;
 }
 
 .inner {
   display: grid;
-  gap: clamp(30px, 5vw, 52px);
+  gap: clamp(34px, 5vw, 56px);
 }
 
 .rail {
@@ -46,57 +52,49 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-around;
-  gap: 12px;
-  overflow: hidden;
-  padding: clamp(24px, 3vw, 34px) clamp(16px, 2.5vw, 24px);
-  border: 0.5px solid var(--ink-10);
-  border-radius: var(--r-lg) var(--r-sm) var(--r-lg) var(--r-sm);
-  background: var(--panel-light);
-  box-shadow: var(--shadow-light);
+  justify-content: center;
+  gap: 12px 16px;
+  padding: 0 0 22px;
 }
 
 .rail::before {
   content: "";
   position: absolute;
-  inset: 0;
-  opacity: 0.45;
-  pointer-events: none;
-  background-image:
-    linear-gradient(var(--grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-  background-size: 20px 20px;
-}
-
-.rail::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: clamp(28px, 5vw, 48px);
-  left: clamp(28px, 5vw, 48px);
+  left: 0;
+  right: 0;
+  top: calc(50% - 11px);
   height: 1px;
-  transform: translateY(-50%);
-  pointer-events: none;
   background: linear-gradient(
     90deg,
-    var(--sand) 0%,
-    rgba(184, 154, 112, 0.06) 100%
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(255, 255, 255, 0.16) 20%,
+    rgba(255, 255, 255, 0.16) 80%,
+    rgba(255, 255, 255, 0.04) 100%
   );
+  pointer-events: none;
 }
 
 .step {
   position: relative;
   z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: clamp(48px, 7vw, 68px);
-  height: clamp(48px, 7vw, 68px);
+  display: grid;
+  place-items: center;
+  width: clamp(50px, 7vw, 70px);
+  height: clamp(50px, 7vw, 70px);
   flex-shrink: 0;
-  border: 0.5px solid var(--ink-20);
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
-  color: var(--ink-60);
+  border: 1px solid var(--line-soft);
+  background:
+    radial-gradient(
+      circle at 30% 30%,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.03) 72%
+    ),
+    rgba(255, 255, 255, 0.025);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 10px 24px rgba(0, 0, 0, 0.16);
+  color: rgba(245, 244, 240, 0.72);
   font-family: "Barlow Condensed", sans-serif;
   font-size: clamp(13px, 1.4vw, 16px);
   font-weight: 400;
@@ -104,24 +102,25 @@
   transition:
     border-color 220ms ease,
     transform 250ms ease,
-    color 220ms ease;
+    color 220ms ease,
+    background 220ms ease;
 }
 
 .content {
-  max-width: 600px;
+  max-width: 620px;
 }
 
 .label {
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   font-family: "Barlow Condensed", sans-serif;
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 500;
-  letter-spacing: 0.32em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--sand);
+  color: rgba(245, 244, 240, 0.68);
 }
 
 .label::before {
@@ -130,7 +129,7 @@
   width: 18px;
   height: 1px;
   flex-shrink: 0;
-  background: var(--sand);
+  background: currentColor;
   opacity: 0.65;
 }
 
@@ -141,10 +140,9 @@
   font-size: clamp(30px, 4.8vw, 60px);
   font-weight: 300;
   line-height: 0.94;
-  letter-spacing: -0.015em;
-  text-transform: uppercase;
-  text-wrap: balance;
+  letter-spacing: -0.02em;
   color: var(--ink);
+  text-wrap: balance;
 }
 
 .description {
@@ -154,7 +152,7 @@
   font-size: clamp(13px, 1vw, 15px);
   font-weight: 300;
   line-height: 1.85;
-  color: var(--ink-60);
+  color: var(--ink-soft);
 }
 
 .link {
@@ -168,9 +166,7 @@
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--ink);
-  transition:
-    gap 220ms ease,
-    color 200ms ease;
+  transition: gap 220ms ease;
 }
 
 .link:hover {
@@ -192,27 +188,55 @@
     gap: clamp(32px, 4vw, 50px);
     align-items: center;
   }
+
+  .rail {
+    padding: 0;
+    min-height: 220px;
+    align-content: center;
+  }
+
+  .rail::before {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .content {
+    justify-self: end;
+  }
 }
 
 @media (hover: hover) {
   .step:hover {
-    border-color: var(--sand);
+    border-color: var(--line-strong);
     color: var(--ink);
     transform: translateY(-3px);
+    background:
+      radial-gradient(
+        circle at 30% 30%,
+        rgba(255, 255, 255, 0.14),
+        rgba(255, 255, 255, 0.04) 72%
+      ),
+      rgba(255, 255, 255, 0.04);
   }
 }
 
 @media (max-width: 599px) {
-  .rail {
-    gap: 10px;
-    justify-content: center;
-  }
-
-  .rail::after {
+  .rail::before {
     display: none;
   }
 
   .title {
     max-width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .step,
+  .linkArrow {
+    transition: none;
+  }
+
+  .step:hover {
+    transform: none;
   }
 }

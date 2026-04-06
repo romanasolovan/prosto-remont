@@ -21,7 +21,7 @@ export default function QuoteHighlight({
   ];
 
   return (
-    <div className={styles.quoteHighlight}>
+    <section className={styles.quoteHighlight}>
       <div className="container">
         <div className={styles.inner}>
           <div className={styles.gridBg} aria-hidden="true" />
@@ -46,7 +46,7 @@ export default function QuoteHighlight({
           <div className={styles.actions}>
             <button
               type="button"
-              className={`btn btn-primary ${styles.primaryButton}`}
+              className={styles.primaryButton}
               onClick={onOpenQuoteModal}
             >
               {tCommon("requestQuote")}
@@ -61,6 +61,6 @@ export default function QuoteHighlight({
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
