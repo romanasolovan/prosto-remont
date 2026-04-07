@@ -1,22 +1,19 @@
 .contactPage {
-  --ink: #0e0d0b;
-  --ink-60: rgba(14, 13, 11, 0.6);
-  --ink-30: rgba(14, 13, 11, 0.3);
-  --ink-12: rgba(14, 13, 11, 0.12);
-  --ink-06: rgba(14, 13, 11, 0.06);
-  --grid: rgba(14, 13, 11, 0.048);
-  --paper: #f5f2eb;
-  --paper-2: #ede9e0;
-  --paper-3: #e7e1d7;
-  --sand: #b89a70;
-  --olive: #4a5030;
-  --dark-ink: #f2eee6;
-  --dark-soft: rgba(242, 238, 230, 0.72);
+  --bg-main: #0d1115;
+  --bg-soft: #151a20;
+  --bg-deep: #1b2128;
+  --ink: #f5f4f0;
+  --ink-soft: rgba(245, 244, 240, 0.76);
+  --ink-muted: rgba(245, 244, 240, 0.5);
+  --line-soft: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.16);
+  --dark-ink: #f5f4f0;
+  --dark-soft: rgba(245, 244, 240, 0.74);
 
   width: 100%;
   min-height: 100vh;
   overflow-x: clip;
-  background: linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+  background: linear-gradient(180deg, var(--bg-main) 0%, var(--bg-soft) 100%);
 }
 
 /* HERO */
@@ -26,17 +23,17 @@
   padding: clamp(88px, 11vw, 132px) 0 clamp(96px, 12vw, 148px);
   overflow: hidden;
   background:
-    linear-gradient(var(--grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid) 1px, transparent 1px),
-    linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
-  background-size:
-    40px 40px,
-    40px 40px,
-    auto;
-  background-position:
-    -1px -1px,
-    -1px -1px,
-    0 0;
+    radial-gradient(
+      circle at 12% 0%,
+      rgba(255, 255, 255, 0.04),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 100% 86%,
+      rgba(255, 255, 255, 0.03),
+      transparent 34%
+    ),
+    linear-gradient(180deg, var(--bg-main) 0%, var(--bg-deep) 100%);
 }
 
 .heroSection::before,
@@ -47,29 +44,32 @@
 }
 
 .heroSection::before {
-  top: 0;
-  left: 0;
-  width: 2px;
-  height: 120%;
-  background: rgba(14, 13, 11, 0.04);
-  transform: rotate(38deg) translateX(6vw);
-  transform-origin: top left;
+  top: -6rem;
+  left: -8rem;
+  width: 22rem;
+  height: 22rem;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 50%;
 }
 
 .heroSection::after {
-  top: 0;
-  right: 0;
-  width: 2px;
-  height: 120%;
-  background: rgba(14, 13, 11, 0.03);
-  transform: rotate(-38deg) translateX(-18vw);
-  transform-origin: top right;
+  right: -10rem;
+  bottom: -10rem;
+  width: 28rem;
+  height: 28rem;
+  border: 1px solid rgba(255, 255, 255, 0.035);
+  border-radius: 50%;
 }
 
 .heroGrid {
   position: absolute;
   inset: 0;
   pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.016) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.016) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.84), transparent 95%);
 }
 
 .heroBackground {
@@ -84,11 +84,11 @@
 }
 
 .bgWord {
-  transform: translateY(-6%);
-  color: rgba(14, 13, 11, 0.03);
+  transform: translateY(-8%);
+  color: rgba(255, 255, 255, 0.04);
   white-space: nowrap;
   font-family: "Barlow Condensed", sans-serif;
-  font-size: clamp(18vw, 26vw, 34vw);
+  font-size: clamp(18vw, 25vw, 32vw);
   font-weight: 200;
   line-height: 0.9;
   letter-spacing: -0.05em;
@@ -112,7 +112,7 @@
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  color: var(--sand);
+  color: rgba(245, 244, 240, 0.68);
   font-family: "Barlow Condensed", sans-serif;
   font-size: 10px;
   font-weight: 500;
@@ -124,7 +124,7 @@
   content: "";
   width: 18px;
   height: 1px;
-  background: var(--sand);
+  background: currentColor;
   opacity: 0.65;
 }
 
@@ -134,7 +134,7 @@
   text-wrap: balance;
   font-family: "Barlow Condensed", sans-serif;
   font-size: clamp(42px, 7vw, 86px);
-  font-weight: 200;
+  font-weight: 300;
   line-height: 0.92;
   letter-spacing: -0.03em;
   text-transform: uppercase;
@@ -143,7 +143,7 @@
 .pageDescription {
   max-width: 52ch;
   margin: 0;
-  color: var(--ink-60);
+  color: var(--ink-soft);
   font-family: "Barlow", sans-serif;
   font-size: clamp(14px, 1.05vw, 16px);
   font-weight: 300;
@@ -170,25 +170,27 @@
   transition:
     transform 380ms cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 320ms ease,
-    border-color 320ms ease;
+    border-color 320ms ease,
+    background 320ms ease;
 }
 
 .infoCard.darkCard {
-  border: 0.5px solid rgba(255, 255, 255, 0.06);
-  border-radius: 4px 4px 110px 4px;
-  background: linear-gradient(160deg, #171511 0%, #201d18 56%, #2a2721 100%);
+  border: 1px solid var(--line-soft);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.035) 0%,
+    rgba(255, 255, 255, 0.016) 100%
+  );
   box-shadow:
-    0 2px 0 rgba(14, 13, 11, 0.18),
-    0 30px 68px rgba(14, 13, 11, 0.24),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 22px 48px rgba(0, 0, 0, 0.18);
 }
 
 .infoCard.darkCard::before {
   content: "";
   position: absolute;
   inset: 14px;
-  border: 0.5px solid rgba(255, 255, 255, 0.06);
-  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
   pointer-events: none;
 }
 
@@ -202,33 +204,30 @@
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(184, 154, 112, 0.16) 0%,
-    rgba(184, 154, 112, 0.05) 40%,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.03) 40%,
     transparent 72%
   );
   pointer-events: none;
 }
 
 .mapArea.lightCard {
-  border: 0.5px solid rgba(14, 13, 11, 0.1);
-  border-radius: 110px 4px 4px 4px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   background: linear-gradient(
-    160deg,
-    rgba(255, 255, 255, 0.86) 0%,
-    rgba(242, 238, 231, 0.72) 100%
+    180deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.02) 100%
   );
   box-shadow:
-    0 2px 0 rgba(14, 13, 11, 0.05),
-    0 20px 48px rgba(14, 13, 11, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 18px 42px rgba(0, 0, 0, 0.16);
 }
 
 .mapArea.lightCard::before {
   content: "";
   position: absolute;
   inset: 14px;
-  border: 0.5px solid rgba(14, 13, 11, 0.06);
-  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
   pointer-events: none;
 }
 
@@ -252,8 +251,8 @@
   border-radius: 0 999px 999px 0;
   background: linear-gradient(
     180deg,
-    rgba(184, 154, 112, 0.95) 0%,
-    rgba(184, 154, 112, 0.16) 100%
+    rgba(255, 255, 255, 0.92) 0%,
+    rgba(255, 255, 255, 0.12) 100%
   );
   z-index: 1;
 }
@@ -268,8 +267,8 @@
   border-radius: 999px 0 0 999px;
   background: linear-gradient(
     180deg,
-    rgba(74, 80, 48, 0.82) 0%,
-    rgba(74, 80, 48, 0.16) 100%
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(255, 255, 255, 0.08) 100%
   );
   z-index: 1;
 }
@@ -282,11 +281,11 @@
   font-weight: 200;
   line-height: 0.84;
   letter-spacing: -0.05em;
-  color: rgba(184, 154, 112, 0.14);
+  color: rgba(255, 255, 255, 0.08);
 }
 
 .mapArea .cardLabel {
-  color: rgba(74, 80, 48, 0.14);
+  color: rgba(255, 255, 255, 0.08);
 }
 
 .sectionTitle {
@@ -294,17 +293,14 @@
   max-width: 12ch;
   font-family: "Barlow Condensed", sans-serif;
   font-size: clamp(32px, 4.2vw, 56px);
-  font-weight: 200;
+  font-weight: 300;
   line-height: 0.96;
   letter-spacing: -0.03em;
   text-transform: uppercase;
   text-wrap: balance;
 }
 
-.infoCard .sectionTitle {
-  color: var(--dark-ink);
-}
-
+.infoCard .sectionTitle,
 .mapArea .sectionTitle {
   color: var(--ink);
 }
@@ -319,12 +315,9 @@
   line-height: 1.8;
 }
 
-.infoCard .sectionDescription {
-  color: var(--dark-soft);
-}
-
+.infoCard .sectionDescription,
 .mapArea .mapDescription {
-  color: var(--ink-60);
+  color: var(--ink-soft);
 }
 
 /* CONTACT LIST */
@@ -337,9 +330,8 @@
 .contactItem {
   position: relative;
   padding: 16px 18px;
-  border: 0.5px solid rgba(255, 255, 255, 0.08);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.022);
   transition:
     transform 220ms ease,
     border-color 220ms ease,
@@ -348,8 +340,8 @@
 
 .contactItem:hover {
   transform: translateY(-2px);
-  border-color: rgba(184, 154, 112, 0.16);
-  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--line-strong);
+  background: rgba(255, 255, 255, 0.038);
 }
 
 .contactLabel,
@@ -361,11 +353,7 @@
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-}
-
-.infoCard .contactLabel,
-.infoCard .socialLabel {
-  color: rgba(184, 154, 112, 0.74);
+  color: rgba(245, 244, 240, 0.56);
 }
 
 .contactValue {
@@ -375,14 +363,11 @@
   font-weight: 300;
   line-height: 1.7;
   text-decoration: none;
-}
-
-.infoCard .contactValue {
   color: var(--dark-soft);
 }
 
-.infoCard a.contactValue:hover {
-  color: #f5f2eb;
+a.contactValue:hover {
+  color: #ffffff;
 }
 
 /* SOCIAL */
@@ -390,7 +375,7 @@
 .socialInline {
   margin-top: 8px;
   padding-top: 18px;
-  border-top: 0.5px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .socialLinksLeft {
@@ -405,9 +390,15 @@
   justify-content: center;
   width: 46px;
   height: 46px;
-  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.025);
+  background:
+    radial-gradient(
+      circle at 30% 30%,
+      rgba(255, 255, 255, 0.12),
+      rgba(255, 255, 255, 0.03) 72%
+    ),
+    rgba(255, 255, 255, 0.022);
   color: var(--dark-soft);
   transition:
     transform 220ms ease,
@@ -423,9 +414,9 @@
 
 .socialLink:hover {
   transform: translateY(-2px);
-  border-color: rgba(184, 154, 112, 0.24);
-  background: rgba(184, 154, 112, 0.08);
-  color: #f5f2eb;
+  border-color: var(--line-strong);
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
 }
 
 /* MAP */
@@ -436,20 +427,18 @@
   min-height: 320px;
   height: 100%;
   overflow: hidden;
-  border-radius: 20px;
-  border: 0.5px solid rgba(14, 13, 11, 0.08);
-  background: #e5e0d7;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.7),
-    0 12px 28px rgba(14, 13, 11, 0.06);
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 12px 28px rgba(0, 0, 0, 0.12);
 }
 
 .mapWrapper::before {
   content: "";
   position: absolute;
   inset: 12px;
-  border: 0.5px solid rgba(14, 13, 11, 0.05);
-  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
   pointer-events: none;
   z-index: 1;
 }
@@ -460,7 +449,7 @@
   height: 100%;
   min-height: 320px;
   border: 0;
-  filter: saturate(0.82) contrast(1.02);
+  filter: grayscale(0.22) saturate(0.72) contrast(1.02) brightness(0.88);
 }
 
 /* TABLET */
@@ -486,11 +475,13 @@
   }
 
   .infoCard.darkCard:hover {
-    transform: translateX(10px) translateY(-8px);
+    transform: translateX(8px) translateY(-6px);
+    border-color: var(--line-strong);
   }
 
   .mapArea.lightCard:hover {
-    transform: translateX(-10px) translateY(-8px);
+    transform: translateX(-8px) translateY(-6px);
+    border-color: var(--line-strong);
   }
 
   .mapWrapper {

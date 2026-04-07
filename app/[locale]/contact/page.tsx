@@ -21,7 +21,7 @@ export default function Contact() {
   const t = useTranslations("getContact");
 
   return (
-    <div className={styles.contactPage}>
+    <main className={styles.contactPage}>
       <section className={styles.heroSection}>
         <div className={styles.heroGrid} aria-hidden="true" />
         <div className={styles.heroBackground} aria-hidden="true">
@@ -159,6 +159,6 @@ export default function Contact() {
           </section>
         </div>
       </section>
-    </div>
+    </main>
   );
 }
