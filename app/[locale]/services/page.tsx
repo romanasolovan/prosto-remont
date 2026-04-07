@@ -120,7 +120,7 @@ export default function ServicesClient() {
                 y1="260"
                 x2="300"
                 y2="20"
-                stroke="rgba(14,13,11,0.04)"
+                stroke="rgba(255,255,255,0.04)"
                 strokeWidth="1"
               />
               <line
@@ -128,7 +128,7 @@ export default function ServicesClient() {
                 y1="320"
                 x2="380"
                 y2="0"
-                stroke="rgba(14,13,11,0.025)"
+                stroke="rgba(255,255,255,0.025)"
                 strokeWidth="0.5"
               />
               <line
@@ -136,7 +136,7 @@ export default function ServicesClient() {
                 y1="0"
                 x2="840"
                 y2="260"
-                stroke="rgba(14,13,11,0.04)"
+                stroke="rgba(255,255,255,0.04)"
                 strokeWidth="1"
               />
               <line
@@ -144,7 +144,7 @@ export default function ServicesClient() {
                 y1="0"
                 x2="900"
                 y2="300"
-                stroke="rgba(14,13,11,0.025)"
+                stroke="rgba(255,255,255,0.025)"
                 strokeWidth="0.5"
               />
             </svg>
