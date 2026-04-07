@@ -55,7 +55,7 @@ export default function Projects() {
   ];
 
   return (
-    <div className={styles.projectsPage}>
+    <main className={styles.projectsPage}>
       <section className={styles.hero}>
         <div className={styles.heroGrid} aria-hidden="true" />
         <div className={styles.heroBackground} aria-hidden="true">
@@ -118,6 +118,6 @@ export default function Projects() {
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }
