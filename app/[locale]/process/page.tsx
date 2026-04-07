@@ -50,8 +50,9 @@ export default function Process() {
   ];
 
   return (
-    <div className={styles.processPage}>
+    <main className={styles.processPage}>
       <section className={styles.hero}>
+        <div className={styles.heroGrid} aria-hidden="true" />
         <div className={styles.heroBackground} aria-hidden="true">
           <span className={styles.bgWord}>Process</span>
         </div>
@@ -119,6 +120,6 @@ export default function Process() {
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }
