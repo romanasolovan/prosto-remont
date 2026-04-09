@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
+import { Link } from "@/navigation";
 import styles from "./about.module.css";
-import ClientOpinions from "@/components/ClientOpinions/ClientOpinions";
 import TrustedBrands from "@/components/home/TrustedBrands/TrustedBrands";
 import WhyChooseUs from "@/components/home/WhyChooseUs/WhyChooseUs";
 
@@ -193,12 +193,15 @@ export default function About() {
                 </h2>
 
                 <p className={styles.whyText}>{t("why.content")}</p>
+
+                <Link href="/reviews" className={styles.reviewLink}>
+                  Read client opinions
+                  <span className={styles.reviewLinkArrow} aria-hidden="true">
+                    →
+                  </span>
+                </Link>
               </div>
             </article>
-
-            <div className={styles.opinionsWrapper}>
-              <ClientOpinions />
-            </div>
           </div>
         </div>
       </section>

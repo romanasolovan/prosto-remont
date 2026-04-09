@@ -22,7 +22,8 @@
   overflow: hidden;
   border: 1px solid rgba(36, 36, 36, 0.08);
   border-radius: 32px;
-  background:
+  background-color: black;
+  /* background:
     radial-gradient(
       circle at top left,
       rgba(255, 255, 255, 0.82) 0%,
@@ -32,7 +33,7 @@
       180deg,
       rgba(249, 249, 248, 0.98) 0%,
       rgba(238, 238, 236, 0.96) 100%
-    );
+    ); */
   box-shadow:
     0 28px 80px rgba(8, 10, 14, 0.22),
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
