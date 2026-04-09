@@ -211,7 +211,9 @@ export default function ClientOpinions() {
 
       {showForm && (
         <LeaveCommentForm
-          onSubmit={handleNewComment}
+          onSubmit={async () => {
+            handleNewComment();
+          }}
           onCancel={handleCloseForm}
         />
       )}
