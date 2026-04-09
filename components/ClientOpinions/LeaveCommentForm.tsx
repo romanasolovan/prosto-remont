@@ -11,6 +11,8 @@ export interface LeaveCommentFormProps {
     name: string;
     rating: number;
     comment: string;
+    location: string;
+    photo: File | null;
   }) => void | Promise<void>;
   onCancel: () => void;
 }
@@ -19,6 +21,8 @@ type FormValues = {
   name: string;
   rating: number;
   comment: string;
+  location: string;
+  photo: File | null;
 };
 
 const NAME_MIN = 2;
@@ -45,12 +49,15 @@ export default function LeaveCommentForm({
   const [isSuccessVisible, setIsSuccessVisible] = useState(false);
 
   const firstInputRef = useRef<HTMLInputElement | null>(null);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
   const shakeTimeoutRef = useRef<number | null>(null);
 
   const initialValues: FormValues = {
     name: "",
     rating: 0,
     comment: "",
+    location: "",
+    photo: null,
   };
 
   const triggerShake = () => {
@@ -112,6 +119,11 @@ export default function LeaveCommentForm({
           .required(t("validation.requiredComment"))
           .min(COMMENT_MIN, t("validation.commentMin", { count: COMMENT_MIN }))
           .max(COMMENT_MAX, t("validation.commentMax", { count: COMMENT_MAX })),
+        location: Yup.string()
+          .transform((value) =>
+            typeof value === "string" ? value.trim() : value,
+          )
+          .required("Location is required."),
       }),
     [t],
   );
@@ -211,6 +223,8 @@ export default function LeaveCommentForm({
                 name: values.name.trim(),
                 rating: values.rating,
                 comment: values.comment.trim(),
+                location: values.location.trim(),
+                photo: values.photo,
               });
 
               helpers.resetForm();
@@ -288,54 +302,72 @@ export default function LeaveCommentForm({
                   </div>
 
                   <div className={styles.formGroup}>
+                    <label htmlFor="location" className={styles.label}>
+                      Location <span className={styles.required}>*</span>
+                    </label>
+
+                    <input
+                      type="text"
+                      id="location"
+                      name="location"
+                      value={values.location}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      placeholder="City or project location"
+                      className={styles.input}
+                      autoComplete="address-level2"
+                      aria-invalid={Boolean(
+                        (touched.location || attemptedSubmit) &&
+                        errors.location,
+                      )}
+                      aria-describedby="location-error"
+                    />
+
+                    <ErrorSlot
+                      id="location-error"
+                      error={
+                        touched.location || attemptedSubmit
+                          ? (errors.location as string)
+                          : ""
+                      }
+                    />
+                  </div>
+
+                  <div className={styles.formGroup}>
                     <span className={styles.label}>
                       {t("fields.rating")}{" "}
                       <span className={styles.required}>*</span>
                     </span>
 
                     <div
-                      className={styles.ratingInput}
+                      className={styles.ratingRow}
                       role="radiogroup"
                       aria-label={t("fields.rating")}
-                      aria-describedby="rating-error"
                     >
                       {[1, 2, 3, 4, 5].map((star) => {
-                        const checked = values.rating === star;
+                        const isActive =
+                          star <= (hoveredRating || values.rating);
 
                         return (
                           <button
                             key={star}
                             type="button"
-                            role="radio"
-                            aria-checked={checked}
-                            tabIndex={
-                              checked || (values.rating === 0 && star === 1)
-                                ? 0
-                                : -1
-                            }
-                            onClick={() => {
-                              setFieldValue("rating", star, false);
-                              setFieldTouched("rating", false, false);
-
-                              if (attemptedSubmit) {
-                                setAttemptedSubmit(false);
-                              }
-                            }}
+                            className={`${styles.starButton} ${
+                              isActive ? styles.starButtonActive : ""
+                            }`}
                             onMouseEnter={() => setHoveredRating(star)}
                             onMouseLeave={() => setHoveredRating(0)}
-                            className={styles.starButton}
-                            aria-label={t("aria.selectRating", {
-                              rating: star,
-                            })}
+                            onClick={() => {
+                              setFieldValue("rating", star);
+                              setFieldTouched("rating", true, false);
+                            }}
+                            aria-label={`${star} / 5`}
+                            aria-checked={values.rating === star}
+                            role="radio"
                           >
                             <svg
-                              className={
-                                star <= (hoveredRating || values.rating)
-                                  ? styles.starFilled
-                                  : styles.starEmpty
-                              }
-                              fill="currentColor"
                               viewBox="0 0 20 20"
+                              fill="currentColor"
                               aria-hidden="true"
                             >
                               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -348,7 +380,7 @@ export default function LeaveCommentForm({
                     <ErrorSlot
                       id="rating-error"
                       error={
-                        attemptedSubmit && values.rating < 1
+                        touched.rating || attemptedSubmit
                           ? (errors.rating as string)
                           : ""
                       }
@@ -368,42 +400,89 @@ export default function LeaveCommentForm({
                       onChange={handleChange}
                       onBlur={handleBlur}
                       placeholder={t("placeholders.comment")}
-                      rows={5}
                       className={styles.textarea}
+                      rows={6}
                       maxLength={COMMENT_MAX}
                       aria-invalid={Boolean(
                         (touched.comment || attemptedSubmit) && errors.comment,
                       )}
-                      aria-describedby="comment-meta comment-error"
+                      aria-describedby="comment-error"
                     />
 
-                    <div id="comment-meta" className={styles.metaRow}>
-                      <span className={styles.helperText}>
-                        {t("validation.commentMin", { count: COMMENT_MIN })}
-                      </span>
-                      <span className={styles.counter}>
+                    <div className={styles.metaRow}>
+                      <ErrorSlot
+                        id="comment-error"
+                        error={
+                          touched.comment || attemptedSubmit
+                            ? (errors.comment as string)
+                            : ""
+                        }
+                      />
+
+                      <span className={styles.charCount}>
                         {commentLength}/{COMMENT_MAX}
                       </span>
                     </div>
-
-                    <ErrorSlot
-                      id="comment-error"
-                      error={
-                        touched.comment || attemptedSubmit
-                          ? (errors.comment as string)
-                          : ""
-                      }
-                    />
                   </div>
 
-                  <div className={styles.buttonGroup}>
+                  <div className={styles.formGroup}>
+                    <span className={styles.label}>Photo</span>
+
+                    <div className={styles.fileUploadShell}>
+                      <input
+                        ref={fileInputRef}
+                        type="file"
+                        accept="image/*"
+                        className={styles.fileInput}
+                        onChange={(event) => {
+                          const file = event.currentTarget.files?.[0] ?? null;
+                          setFieldValue("photo", file);
+                        }}
+                      />
+
+                      <button
+                        type="button"
+                        className={styles.fileUploadLabel}
+                        onClick={() => fileInputRef.current?.click()}
+                      >
+                        <span className={styles.uploadIcon} aria-hidden="true">
+                          +
+                        </span>
+                        <span>
+                          {values.photo ? values.photo.name : "Add a photo"}
+                        </span>
+                      </button>
+
+                      <span className={styles.uploadHint}>
+                        Optional. This is only a visual frontend foundation for
+                        now.
+                      </span>
+
+                      {values.photo && (
+                        <div className={styles.selectedFile}>
+                          <span className={styles.selectedFileName}>
+                            {values.photo.name}
+                          </span>
+
+                          <button
+                            type="button"
+                            className={styles.removeFileButton}
+                            onClick={() => setFieldValue("photo", null)}
+                          >
+                            Remove
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className={styles.formActions}>
                     <button
                       type="button"
                       onClick={onCancel}
                       className={styles.cancelButton}
-                      disabled={isSubmitting}
                     >
-                      {t("buttons.cancel")}
+                      Cancel
                     </button>
 
                     <button
@@ -411,9 +490,7 @@ export default function LeaveCommentForm({
                       className={styles.submitButton}
                       disabled={isSubmitting}
                     >
-                      {isSubmitting
-                        ? t("buttons.submitting")
-                        : t("buttons.submit")}
+                      {isSubmitting ? "Sending..." : "Submit review"}
                     </button>
                   </div>
                 </form>
