@@ -104,30 +104,7 @@
   position: relative;
   overflow: hidden;
   padding: 10px 0 6px;
-  /* mask-image: linear-gradient(
-    90deg,
-    transparent 0%,
-    black 7%,
-    black 93%,
-    transparent 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    90deg,
-    transparent 0%,
-    black 7%,
-    black 93%,
-    transparent 100%
-  ); */
 }
-
-/* .trustedTrack {
-  display: flex;
-  width: max-content;
-  gap: 0;
-  will-change: transform;
-  transform: translate3d(0, 0, 0);
-  animation: trustedMarquee 42s linear infinite;
-} */
 
 .trustedTrack {
   display: inline-flex;
@@ -239,6 +216,24 @@
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--ink-56);
+}
+
+.brandLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brandLink:hover .brandBadge,
+.brandLink:focus-visible .brandBadge {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+.brandLink:focus-visible {
+  outline: none;
 }
 
 @keyframes trustedMarquee {

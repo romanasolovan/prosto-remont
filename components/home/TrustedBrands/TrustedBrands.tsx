@@ -1,12 +1,14 @@
 import { useTranslations } from "next-intl";
 import styles from "./TrustedBrands.module.css";
 import Image from "next/image";
+import Link from "next/link";
 
 type Brand = {
   name: string;
   mark: string;
   logoSrc?: string;
   logoAlt?: string;
+  href?: string;
 };
 
 const trustedBrands: Brand[] = [
@@ -15,60 +17,69 @@ const trustedBrands: Brand[] = [
     mark: "DS",
     logoSrc: "/trusted/DarSportSpace.webp",
     logoAlt: "Dar Sport Space Logo",
+    href: "/projects#dar-sport-space",
   },
   {
     name: "Element",
     mark: "EL",
     logoSrc: "/trusted/Element.webp",
     logoAlt: "Element Logo",
+    href: "/projects#element",
   },
   {
     name: "GrindHouse Gym",
     mark: "GHG",
     logoSrc: "/trusted/GrindHouseGym.webp",
     logoAlt: "Grind House Gym Logo",
+    href: "/projects#grind-house-gym",
   },
   {
     name: "Manaland",
     mark: "M",
     logoSrc: "/trusted/Manaland.webp",
     logoAlt: "Manaland Logo",
+    href: "/projects#manaland",
   },
   {
     name: "Marinero Hair",
     mark: "MH",
     logoSrc: "/trusted/MarineroHair.webp",
     logoAlt: "Marinero Hair Logo",
+    href: "/projects#marinero-hair",
   },
   {
     name: "Peachy Reformer Wellness",
     mark: "PRW",
     logoSrc: "/trusted/PeachyReformerWellness.webp",
     logoAlt: "Peachy Reformer Wellness Logo",
+    href: "/projects#peachy-reformer-wellness",
   },
   {
     name: "Premium Ikra",
     mark: "PI",
     logoSrc: "/trusted/PremiumIkra.webp",
     logoAlt: "Premium Ikra Logo",
+    href: "/projects#premium-ikra",
   },
   {
     name: "SKILL | Shaurma, Kebab, Grill",
     mark: "SSKG",
     logoSrc: "/trusted/SkillShaurmaKebabGrill.webp",
     logoAlt: "SKILL | Shaurma, Kebab, Grill Logo",
+    href: "/projects#slill-shaurma-kebab-grill",
   },
   {
     name: "The Sadovsky Barbershop",
     mark: "TSB",
     logoSrc: "/trusted/TheSadovskyBarbershop.webp",
     logoAlt: "The Sadovsky Barbershop Logo",
+    href: "/projects#the-sadovsky-barbershop",
   },
 ];
 
 function BrandItem({ brand }: { brand: Brand }) {
-  return (
-    <li className={styles.trustedItem}>
+  const content = (
+    <>
       <div className={styles.brandBadge}>
         {brand.logoSrc ? (
           <Image
@@ -86,6 +97,18 @@ function BrandItem({ brand }: { brand: Brand }) {
       </div>
 
       <span className={styles.brandName}>{brand.name}</span>
+    </>
+  );
+
+  return (
+    <li className={styles.trustedItem}>
+      {brand.href ? (
+        <Link href={brand.href} className={styles.brandLink}>
+          {content}
+        </Link>
+      ) : (
+        content
+      )}
     </li>
   );
 }
