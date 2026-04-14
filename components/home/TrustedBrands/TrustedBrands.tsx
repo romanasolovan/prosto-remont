@@ -75,7 +75,7 @@ function BrandItem({ brand }: { brand: Brand }) {
             src={brand.logoSrc}
             alt={brand.logoAlt || `${brand.name} logo`}
             fill
-            sizes="46px"
+            sizes="(max-width: 767px) 44px, 48px"
             className={styles.brandLogo}
           />
         ) : (
