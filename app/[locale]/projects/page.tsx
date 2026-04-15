@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import styles from "./projects.module.css";
+import ProjectCardCarousel from "@/components/Projects/ProjectCardCarousel/ProjectCardCarousel";
 
 export async function generateMetadata({
   params,
@@ -54,6 +55,15 @@ export default function Projects() {
     },
   ];
 
+  const projectImages: Record<string, string[]> = {
+    modernKitchen: [
+      "/projects/modern-kitchen-1.jpg",
+      "/projects/modern-kitchen-2.jpg",
+      "/projects/modern-kitchen-3.jpg",
+      "/projects/modern-kitchen-4.jpg",
+    ],
+  };
+
   return (
     <main className={styles.projectsPage}>
       <section className={styles.hero}>
@@ -91,7 +101,15 @@ export default function Projects() {
               >
                 <div className={styles.projectFrame}>
                   <div className={styles.projectMedia}>
-                    <div className={styles.projectImage} />
+                    {project.key === "modernKitchen" ? (
+                      <ProjectCardCarousel
+                        images={projectImages.modernKitchen}
+                        alt={project.title}
+                      />
+                    ) : (
+                      <div className={styles.projectImage} />
+                    )}
+
                     <span className={styles.projectIndex}>
                       {(index + 1).toString().padStart(2, "0")}
                     </span>
