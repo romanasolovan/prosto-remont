@@ -66,7 +66,7 @@ export default function Projects() {
 
   return (
     <main className={styles.projectsPage}>
-      <section className={styles.hero}>
+      {/* <section className={styles.hero}>
         <div className={styles.heroGrid} aria-hidden="true" />
         <div className={styles.heroBackground} aria-hidden="true">
           <span className={styles.bgWord}>{t("hero.bgWord")}</span>
@@ -79,7 +79,7 @@ export default function Projects() {
             <p className={styles.subtitle}>{t("hero.subtitle")}</p>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className={styles.projectsSection}>
         <div className="container">

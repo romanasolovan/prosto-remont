@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/navigation";
 import styles from "./about.module.css";
 import TrustedBrands from "@/components/home/TrustedBrands/TrustedBrands";
-import WhyChooseUs from "@/components/home/WhyChooseUs/WhyChooseUs";
+// import WhyChooseUs from "@/components/home/WhyChooseUs/WhyChooseUs";
 
 const StatIcons = {
   projects: (
@@ -169,9 +169,9 @@ export default function About() {
         <TrustedBrands />
       </div>
 
-      <div id="why-choose-us">
+      {/* <div id="why-choose-us">
         <WhyChooseUs />
-      </div>
+      </div> */}
 
       <section
         id="why"
