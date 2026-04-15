@@ -1,4 +1,6 @@
-import type { ReactNode } from "react";
+"use client";
+
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/navigation";
 import styles from "./WhyChooseUs.module.css";
@@ -62,6 +64,8 @@ const PillarIcons: Record<PillarKey, ReactNode> = {
 
 export default function WhyChooseUs() {
   const t = useTranslations("about.whyChooseUs");
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   const pillars = [
     {
@@ -84,8 +88,37 @@ export default function WhyChooseUs() {
     },
   ];
 
+  useEffect(() => {
+    const node = sectionRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(false);
+
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              setIsVisible(true);
+            });
+          });
+        } else {
+          setIsVisible(false);
+        }
+      },
+      {
+        threshold: 0.35,
+      },
+    );
+
+    observer.observe(node);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       className={styles.whySection}
       aria-labelledby="why-choose-us-title"
     >
@@ -104,9 +137,9 @@ export default function WhyChooseUs() {
 
             <p className={styles.whyDescription}>{t("description")}</p>
 
-            <Link href="/about" className="btn-round btn-round--md">
+            <Link href="/about" className="btn-round btn-round--lg">
               <span className="btn-round__inner">
-                <span className="btn-round__text btn-round__text--md">
+                <span className="btn-round__text btn-round__text--lg">
                   {t("button")}
                 </span>
               </span>
@@ -114,10 +147,15 @@ export default function WhyChooseUs() {
           </div>
 
           <div className={styles.whyGrid}>
-            {pillars.map((pillar) => (
+            {pillars.map((pillar, index) => (
               <article
-                className={`${styles.whyCard} ${pillar.tone}`}
+                className={`${styles.whyCard} ${pillar.tone} ${
+                  isVisible ? styles.isVisible : ""
+                }`}
                 key={pillar.key}
+                style={
+                  { ["--card-index" as string]: index } as React.CSSProperties
+                }
               >
                 <div className={styles.whyCardHead}>
                   <div className={styles.iconCircle} aria-hidden="true">

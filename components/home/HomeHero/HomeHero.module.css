@@ -163,7 +163,7 @@
   .topRow {
     grid-template-columns: minmax(0, max-content) auto;
     gap: clamp(5rem, 12vw, 12rem);
-    align-items: start;
+    /* align-items: start; */
     justify-content: start;
   }
 

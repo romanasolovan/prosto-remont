@@ -393,50 +393,6 @@ p {
     transform: none;
   }
 }
-/* 
-.btn:focus-visible {
-  outline: 2px solid var(--color-focus);
-  outline-offset: 4px;
-}
-
-.btn-primary {
-  background-color: var(--color-black);
-  color: var(--color-white);
-  border-color: var(--color-black);
-}
-
-.btn-primary:hover {
-  background-color: var(--color-grey-800);
-  border-color: var(--color-grey-800);
-  color: var(--color-white);
-}
-
-.btn-primary:active {
-  transform: scale(0.98);
-}
-
-.btn-secondary {
-  background-color: var(--color-white);
-  color: var(--color-black);
-  border-color: var(--color-black);
-}
-
-.btn-secondary:hover {
-  background-color: var(--color-grey-100);
-  color: var(--color-black);
-}
-
-.btn-ghost {
-  padding: var(--space-16) var(--space-24);
-  background-color: transparent;
-  color: var(--color-grey-700);
-  border-color: transparent;
-}
-
-.btn-ghost:hover {
-  background-color: var(--color-grey-100);
-  color: var(--color-black);
-} */
 
 .sr-only {
   position: absolute;
