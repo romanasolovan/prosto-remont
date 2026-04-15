@@ -240,26 +240,160 @@ p {
   padding-inline: var(--container-padding-mobile);
 }
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-16) var(--space-32);
-  border: 2px solid transparent;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  font-family: var(--font-body);
-  font-size: var(--text-16);
-  font-weight: 500;
-  text-align: center;
+/* ROUND CTA */
+
+.btn-round {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: 5.4rem;
+  aspect-ratio: 1;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-circle);
+  background: rgba(255, 255, 255, 0.045);
+  color: var(--color-text);
   text-decoration: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 14px 28px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   transition:
-    color var(--transition-base),
-    background-color var(--transition-base),
-    border-color var(--transition-base),
-    transform var(--transition-base);
+    transform var(--transition-smooth),
+    background-color var(--transition-smooth),
+    border-color var(--transition-smooth),
+    box-shadow var(--transition-smooth);
 }
 
+.btn-round::after {
+  content: "";
+  position: absolute;
+  inset: 0.55rem;
+  border-radius: var(--radius-circle);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  pointer-events: none;
+}
+
+.btn-round:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.26);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 22px 44px rgba(0, 0, 0, 0.3);
+}
+
+.btn-round:active {
+  transform: scale(0.99);
+}
+
+.btn-round:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.24);
+  outline-offset: 4px;
+}
+
+.btn-round__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+}
+
+.btn-round__text {
+  display: block;
+  width: 100%;
+  max-width: 3.7rem;
+  text-align: center;
+  text-wrap: balance;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.62rem;
+}
+
+/* size modifiers */
+
+.btn-round--sm {
+  width: 5.4rem;
+}
+
+.btn-round--md {
+  width: clamp(6.5rem, 12vw, 8rem);
+}
+
+.btn-round--lg {
+  width: clamp(11rem, 17vw, 13rem);
+}
+
+.btn-round__text--sm {
+  max-width: 3.7rem;
+  font-size: 0.62rem;
+}
+
+.btn-round__text--md {
+  max-width: 6rem;
+  font-size: 0.8rem;
+}
+
+.btn-round__text--lg {
+  max-width: 6.2rem;
+  font-size: 0.88rem;
+}
+
+/* optional pulse modifier for hero desktop CTA */
+
+.btn-round--pulse {
+  animation: btn-round-pulse 2.8s ease-in-out infinite;
+}
+
+@keyframes btn-round-pulse {
+  0%,
+  100% {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      0 14px 28px rgba(0, 0, 0, 0.22);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      0 20px 40px rgba(0, 0, 0, 0.28);
+  }
+}
+
+@media (min-width: 1200px) {
+  .btn-round--lg {
+    width: 14rem;
+  }
+
+  .btn-round__text--md,
+  .btn-round__text--lg {
+    max-width: 6.2rem;
+    font-size: 0.88rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-round {
+    transition: none;
+  }
+
+  .btn-round--pulse {
+    animation: none;
+  }
+
+  .btn-round:hover,
+  .btn-round:active {
+    transform: none;
+  }
+}
+/* 
 .btn:focus-visible {
   outline: 2px solid var(--color-focus);
   outline-offset: 4px;
@@ -302,7 +436,7 @@ p {
 .btn-ghost:hover {
   background-color: var(--color-grey-100);
   color: var(--color-black);
-}
+} */
 
 .sr-only {
   position: absolute;

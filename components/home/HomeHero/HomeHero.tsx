@@ -103,9 +103,12 @@ export default function HomeHero() {
               </span>
             </h1>
 
-            <Link href="/services" className={styles.buttonDesktop}>
-              <span className={styles.buttonInner}>
-                <span className={styles.buttonText}>
+            <Link
+              href="/services"
+              className={`btn-round btn-round--lg btn-round--pulse ${styles.buttonDesktop}`}
+            >
+              <span className="btn-round__inner">
+                <span className="btn-round__text btn-round__text--md">
                   {tCommon("exploreServices")}
                 </span>
               </span>
@@ -121,9 +124,12 @@ export default function HomeHero() {
               <span>{t("hero.eyebrowLineThree")}</span>
             </p>
 
-            <Link href="/services" className={styles.buttonMobile}>
-              <span className={styles.buttonInner}>
-                <span className={styles.buttonText}>
+            <Link
+              href="/services"
+              className={`btn-round btn-round--sm ${styles.buttonMobile}`}
+            >
+              <span className="btn-round__inner">
+                <span className="btn-round__text btn-round__text--sm">
                   {tCommon("exploreServices")}
                 </span>
               </span>
