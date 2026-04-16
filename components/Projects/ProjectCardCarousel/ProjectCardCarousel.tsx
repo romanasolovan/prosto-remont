@@ -18,11 +18,14 @@ export default function ProjectCardCarousel({
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        setImagesPerPage(2);
-      } else {
-        setImagesPerPage(1);
-      }
+      const nextImagesPerPage = window.innerWidth >= 768 ? 2 : 1;
+
+      setImagesPerPage((prev) => {
+        if (prev !== nextImagesPerPage) {
+          setPage(0);
+        }
+        return nextImagesPerPage;
+      });
     };
 
     handleResize();
@@ -41,36 +44,44 @@ export default function ProjectCardCarousel({
     return result;
   }, [images, imagesPerPage]);
 
-  // When breakpoint changes from mobile to tablet, number of pages changes.
-  //  useEffect(() => {
-  //    setPage(0);
-  //  }, [imagesPerPage]);
+  const safePage = page >= pages.length ? 0 : page;
 
   useEffect(() => {
     if (pages.length <= 1) return;
 
-    const interval = setInterval(() => {
-      setPage((prevPage) => (prevPage + 1) % pages.length);
+    const interval = window.setInterval(() => {
+      setPage((prevPage) => {
+        const currentPage = prevPage >= pages.length ? 0 : prevPage;
+        return (currentPage + 1) % pages.length;
+      });
     }, 3000);
 
-    return () => clearInterval(interval);
+    return () => window.clearInterval(interval);
   }, [pages.length]);
-
-  const currentImages = pages[page] ?? [];
 
   return (
     <div className={styles.carousel}>
       <div className={styles.viewport}>
-        <div className={styles.grid}>
-          {currentImages.map((src, index) => (
-            <div className={styles.imageWrap} key={`${src}-${index}`}>
-              <Image
-                src={src}
-                alt={`${alt} ${index + 1}`}
-                fill
-                className={styles.image}
-                sizes="(max-width: 899px) 100vw, 50vw"
-              />
+        <div
+          className={styles.track}
+          style={{ transform: `translateX(-${safePage * 100}%)` }}
+        >
+          {pages.map((pageImages, pageIndex) => (
+            <div className={styles.slide} key={pageIndex}>
+              <div className={styles.grid}>
+                {pageImages.map((src, index) => (
+                  <div className={styles.imageWrap} key={`${src}-${index}`}>
+                    <Image
+                      src={src}
+                      alt={`${alt} ${pageIndex * imagesPerPage + index + 1}`}
+                      fill
+                      className={styles.image}
+                      sizes="(max-width: 767px) 100vw, 50vw"
+                      priority={pageIndex === 0}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         </div>
@@ -82,10 +93,12 @@ export default function ProjectCardCarousel({
             <button
               key={index}
               type="button"
-              className={`${styles.dot} ${index === page ? styles.active : ""}`}
+              className={`${styles.dot} ${
+                index === safePage ? styles.active : ""
+              }`}
               onClick={() => setPage(index)}
               aria-label={`Go to image group ${index + 1}`}
-              aria-pressed={index === page}
+              aria-pressed={index === safePage}
             />
           ))}
         </div>
