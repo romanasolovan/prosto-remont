@@ -74,6 +74,9 @@ export default function Footer() {
                   <li>
                     <Link href="/process">{tNav("process")}</Link>
                   </li>
+                  <li>
+                    <Link href="/reviews">{tNav("reviews")}</Link>
+                  </li>
                 </ul>
 
                 <h4 className={styles.footerHeading}>Social Media</h4>
@@ -162,7 +165,10 @@ export default function Footer() {
 
                 <ul className={styles.footerLinks}>
                   <li>
-                    <a href="mailto:pro100twojremont@gmail.com">
+                    <a
+                      href="mailto:pro100twojremont@gmail.com"
+                      className={styles.emailLink}
+                    >
                       pro100twojremont@gmail.com
                     </a>
                   </li>
