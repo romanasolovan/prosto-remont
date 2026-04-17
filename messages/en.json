@@ -100,59 +100,89 @@
     }
   },
   "about": {
-    "hero": {
-      "title": "About PRO100 Twój Remont",
-      "subtitle": "Reliable renovation and interior finishing built on trust, quality, and organized execution."
-    },
-    "stats": {
-      "eyebrow": "About us",
-      "title": "Built on experience. Proven by results.",
-      "description": "We shape renovation and interior projects through a process that feels structured, elegant, and easy to follow from first conversation to final outcome.",
-      "projects": "50+ turnkey projects completed",
-      "clients": "100+ satisfied clients",
-      "area": "20,000+ m² of finishing work delivered",
-      "years": "5+ years on the Polish market"
-    },
-    "story": {
-      "title": "Who We Are",
-      "content": "We are a renovation and interior finishing company focused on delivering complete, high-quality spaces for people who want more than construction work — they want clarity, trust, and a result they can truly enjoy. We work on apartments, homes, and commercial interiors, helping clients turn empty or unfinished spaces into places with character, comfort, and purpose."
-    },
-    "values": {
-      "title": "Our Values",
-      "content": "We believe in reliability, clear communication, respect for the client’s space, accountable workmanship, and organized execution. Every project is approached with care, professionalism, and attention to the real experience of the people who will live or work in the finished space."
-    },
-    "trustedBrands": {
-      "eyebrow": "Trusted by clients",
-  "title": "Our projects combine quality, functionality, and refined design.",
-  "description": "Experience, precision, and a responsible approach to every project are why clients who expect the highest standard choose us.",
-  "regionLabel": "Brands and partners"
-    },
-    "whyChooseUs": {
-      "eyebrow": "Why choose us",
-      "title": "Design-led thinking, structured guidance, and a more considered way to renovate",
-      "button": "About us",
-      "description": "The strongest projects rely on more than taste alone. They need clarity, trust, and a process that feels as thoughtful as the final result.",
-      "pillars": {
-        "first": {
-          "title": "Tailored Approach",
-          "description": "Every project begins with context, constraints, and goals, so each solution feels intentional, relevant, and carefully shaped."
-        },
-        "second": {
-          "title": "Clear Communication",
-          "description": "From first contact to final delivery, the process is structured to feel transparent, calm, and easy to navigate."
-        },
-        "third": {
-          "title": "Architectural Precision",
-          "description": "Careful detailing, visual discipline, and a considered process create outcomes that feel refined, balanced, and enduring."
-        }
+  "hero": {
+    "title": "About PRO100 Twój Remont",
+    "subtitle": "Reliable renovation and interior finishing built on trust, quality, and organized execution."
+  },
+
+  "stats": {
+    "eyebrow": "About us",
+    "title": "Built on experience. Proven by results.",
+    "description": "We shape renovation and interior projects through a process that feels structured, elegant, and easy to follow from first conversation to final outcome.",
+    "projects": "50+ turnkey projects completed",
+    "clients": "100+ satisfied clients",
+    "area": "20,000+ m² of finishing work delivered",
+    "years": "5+ years on the Polish market"
+  },
+
+  "story": {
+    "eyebrow": "Our story",
+    "title": "Who We Are",
+    "content": "We are a renovation and interior finishing company focused on delivering complete, high-quality spaces for people who want more than construction work — they want clarity, trust, and a result they can truly enjoy. We work on apartments, homes, and commercial interiors, helping clients turn empty or unfinished spaces into places with character, comfort, and purpose."
+  },
+
+  "values": {
+    "eyebrow": "Our values",
+    "title": "Our Values",
+    "content": "We believe in reliability, clear communication, respect for the client’s space, accountable workmanship, and organized execution.",
+
+    "items": {
+      "first": {
+        "title": "Reliability",
+        "text": "We deliver what we promise, maintaining consistency and accountability at every stage of the project."
+      },
+      "second": {
+        "title": "Precision",
+        "text": "Every detail is approached with care, ensuring the final result feels refined, balanced, and complete."
+      },
+      "third": {
+        "title": "Partnership",
+        "text": "We work closely with our clients, creating a process that feels clear, collaborative, and supportive."
       }
-    },
-    "why": {
-      "eyebrow": "Why people choose us",
-      "title": "Why People Choose Us",
-      "content": "Clients choose us because they want a team that combines craftsmanship with trust. We help make the renovation process easier to understand, stay in contact throughout the work, support material decisions, and deliver spaces that feel complete — not just finished."
     }
   },
+
+  "cta": {
+    "eyebrow": "Client experience",
+    "title": "See what it’s like to work with us",
+    "description": "Explore real feedback from clients who trusted us with their homes and interiors, and see how the process felt from their perspective.",
+    "button": "Read client opinions"
+  },
+
+  "trustedBrands": {
+    "eyebrow": "Trusted by clients",
+    "title": "Our projects combine quality, functionality, and refined design.",
+    "description": "Experience, precision, and a responsible approach to every project are why clients who expect the highest standard choose us.",
+    "regionLabel": "Brands and partners"
+  },
+
+  "whyChooseUs": {
+    "eyebrow": "Why choose us",
+    "title": "Design-led thinking, structured guidance, and a more considered way to renovate",
+    "button": "About us",
+    "description": "The strongest projects rely on more than taste alone. They need clarity, trust, and a process that feels as thoughtful as the final result.",
+    "pillars": {
+      "first": {
+        "title": "Tailored Approach",
+        "description": "Every project begins with context, constraints, and goals, so each solution feels intentional, relevant, and carefully shaped."
+      },
+      "second": {
+        "title": "Clear Communication",
+        "description": "From first contact to final delivery, the process is structured to feel transparent, calm, and easy to navigate."
+      },
+      "third": {
+        "title": "Architectural Precision",
+        "description": "Careful detailing, visual discipline, and a considered process create outcomes that feel refined, balanced, and enduring."
+      }
+    }
+  },
+
+  "why": {
+    "eyebrow": "Why people choose us",
+    "title": "Why People Choose Us",
+    "content": "Clients choose us because they want a team that combines craftsmanship with trust. We help make the renovation process easier to understand, stay in contact throughout the work, support material decisions, and deliver spaces that feel complete — not just finished."
+  }
+},
 "services": {
   "hero": {
     "eyebrow": "Architectural scope",

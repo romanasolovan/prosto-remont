@@ -102,55 +102,85 @@
   "about": {
     "hero": {
       "title": "O PRO100 Twój Remont",
-      "subtitle": "Rzetelne remonty i wykończenia wnętrz oparte na zaufaniu, jakości i dobrej organizacji pracy."
+      "subtitle": "Rzetelne remonty i wykończenia wnętrz oparte na zaufaniu, jakości i dobrze zorganizowanej realizacji."
     },
+
     "stats": {
       "eyebrow": "O nas",
-      "title": "Doświadczenie potwierdzone realizacjami",
-      "description": "Realizujemy projekty remontowe i wykończeniowe w sposób uporządkowany, estetyczny i przejrzysty — od pierwszej rozmowy aż po finalny efekt.",
-      "projects": "ponad 50 zrealizowanych projektów „pod klucz”",
-      "clients": "ponad 100 zadowolonych klientów",
-      "area": "ponad 20 000 m² wykonanych prac wykończeniowych",
-      "years": "ponad 5 lat doświadczenia na rynku polskim"
+      "title": "Zbudowane na doświadczeniu. Potwierdzone efektami.",
+      "description": "Realizujemy projekty remontowe i wykończeniowe w sposób uporządkowany, elegancki i przejrzysty — od pierwszej rozmowy aż po finalny efekt.",
+      "projects": "Ponad 50 kompleksowych realizacji",
+      "clients": "Ponad 100 zadowolonych klientów",
+      "area": "Ponad 20 000 m² wykonanych prac wykończeniowych",
+      "years": "Ponad 5 lat na rynku polskim"
     },
+
     "story": {
+      "eyebrow": "Nasza historia",
       "title": "Kim jesteśmy",
-      "content": "PRO100 Twój Remont to firma specjalizująca się w kompleksowych remontach i wykończeniach wnętrz mieszkań, domów oraz lokali usługowych. Pomagamy naszym klientom przekształcać puste lub niewykończone przestrzenie w komfortowe, funkcjonalne i dopracowane wnętrza."
+      "content": "Jesteśmy firmą zajmującą się remontami i wykończeniem wnętrz, która tworzy kompleksowe, wysokiej jakości przestrzenie dla osób oczekujących czegoś więcej niż samej realizacji — oczekujących przejrzystości, zaufania i efektu, który naprawdę daje satysfakcję. Pracujemy przy mieszkaniach, domach oraz wnętrzach komercyjnych, pomagając przekształcać puste lub niewykończone przestrzenie w miejsca z charakterem, komfortem i funkcją."
     },
+
     "values": {
+      "eyebrow": "Nasze wartości",
       "title": "Nasze wartości",
-      "content": "W naszej pracy stawiamy na rzetelność, jasną komunikację, szacunek dla przestrzeni klienta, odpowiedzialność za efekt końcowy oraz dobrą organizację całego procesu. Każdy projekt realizujemy z pełnym zaangażowaniem, profesjonalizmem i dbałością o codzienny komfort osób, które będą korzystać z gotowego wnętrza."
-    },
-    "trustedBrands": {
-      "eyebrow": "Zaufali nam",
-      "title": "Nasze realizacje to połączenie jakości, funkcjonalności i dopracowanego designu.",
-      "description": "Doświadczenie, precyzja i odpowiedzialne podejście do każdego projektu sprawiają, że wybierają nas klienci oczekujący najwyższego standardu.",
-      "regionLabel": "Marki i partnerzy"
-    },
-    "whyChooseUs": {
-      "eyebrow": "Dlaczego warto nas wybrać",
-      "title": "Projektowe myślenie, uporządkowany proces i bardziej przemyślany sposób realizacji remontu",
-      "button": "O Nas",
-      "description": "Najlepsze realizacje wymagają czegoś więcej niż dobrego gustu. Potrzebują jasnego procesu, zaufania i podejścia, które jest tak samo dopracowane jak końcowy efekt.",
-      "pillars": {
+      "content": "Wierzymy w rzetelność, jasną komunikację, szacunek do przestrzeni klienta, odpowiedzialne wykonanie oraz dobrze zorganizowany proces realizacji.",
+
+      "items": {
         "first": {
-          "title": "Indywidualne podejście",
-          "description": "Każdy projekt zaczyna się od kontekstu, ograniczeń i celów, dzięki czemu każde rozwiązanie jest celowe, trafne i starannie dopasowane."
+          "title": "Rzetelność",
+          "text": "Realizujemy to, co obiecujemy, dbając o spójność i odpowiedzialność na każdym etapie projektu."
         },
         "second": {
-          "title": "Jasna komunikacja",
-          "description": "Od pierwszego kontaktu aż po zakończenie prac proces współpracy jest uporządkowany, przejrzysty i łatwy do zrozumienia."
+          "title": "Precyzja",
+          "text": "Każdy detal opracowujemy z dbałością, aby końcowy efekt był dopracowany, harmonijny i kompletny."
         },
         "third": {
-          "title": "Architektoniczna precyzja",
-          "description": "Dbałość o detal, dyscyplina wizualna i przemyślany sposób pracy tworzą efekty, które są eleganckie, spójne i trwałe."
+          "title": "Partnerstwo",
+          "text": "Współpracujemy z klientami na każdym etapie, tworząc proces przejrzysty, wspierający i oparty na współdziałaniu."
         }
       }
     },
+
+    "cta": {
+      "eyebrow": "Doświadczenie klientów",
+      "title": "Zobacz, jak wygląda współpraca z nami",
+      "description": "Poznaj opinie klientów, którzy powierzyli nam swoje wnętrza i zobacz, jak przebiegał cały proces z ich perspektywy.",
+      "button": "Zobacz opinie klientów"
+    },
+
+    "trustedBrands": {
+      "eyebrow": "Zaufanie klientów",
+      "title": "Nasze projekty łączą jakość, funkcjonalność i dopracowany design.",
+      "description": "Doświadczenie, precyzja i odpowiedzialne podejście do każdego projektu sprawiają, że wybierają nas klienci oczekujący najwyższego standardu.",
+      "regionLabel": "Marki i partnerzy"
+    },
+
+    "whyChooseUs": {
+      "eyebrow": "Dlaczego my",
+      "title": "Projektowe podejście, uporządkowany proces i bardziej świadomy sposób realizacji remontów",
+      "button": "O nas",
+      "description": "Najlepsze realizacje wymagają czegoś więcej niż dobrego gustu — potrzebują jasności, zaufania i procesu, który jest równie dopracowany jak efekt końcowy.",
+      "pillars": {
+        "first": {
+          "title": "Indywidualne podejście",
+          "description": "Każdy projekt zaczynamy od analizy kontekstu, ograniczeń i celów, dzięki czemu rozwiązania są przemyślane i dopasowane."
+        },
+        "second": {
+          "title": "Jasna komunikacja",
+          "description": "Od pierwszego kontaktu po realizację dbamy o przejrzysty, spokojny i łatwy do zrozumienia proces."
+        },
+        "third": {
+          "title": "Precyzja wykonania",
+          "description": "Dbałość o detale, spójność wizualna i przemyślany proces tworzą efekty trwałe i dopracowane."
+        }
+      }
+    },
+
     "why": {
-      "eyebrow": "Dlaczego klienci wybierają nas",
-      "title": "Dlaczego klienci wybierają nas",
-      "content": "Klienci wybierają nas, ponieważ szukają zespołu, któremu mogą zaufać. Doceniają nas za przejrzysty proces współpracy, dobrą komunikację oraz odpowiedzialne podejście do realizacji projektu. Pomagamy w wyborze materiałów, doradzamy rozwiązania i dbamy o to, aby każdy etap prac przebiegał sprawnie. Najważniejszy jest jednak efekt końcowy — przestrzeń, która spełnia oczekiwania i daje komfort na co dzień."
+      "eyebrow": "Dlaczego nas wybierają",
+      "title": "Dlaczego klienci nas wybierają",
+      "content": "Klienci wybierają nas, ponieważ łączymy rzemiosło z zaufaniem. Upraszczamy proces remontu, pozostajemy w stałym kontakcie, pomagamy w wyborze materiałów i tworzymy przestrzenie, które są nie tylko wykończone, ale w pełni dopracowane."
     }
   },
   "services": {
