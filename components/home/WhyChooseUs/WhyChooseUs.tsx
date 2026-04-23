@@ -13,15 +13,14 @@ const PillarIcons: Record<PillarKey, ReactNode> = {
       viewBox="0 0 48 48"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.4"
+      strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
     >
-      <path d="M14 31l17-17" />
-      <path d="M28 11l9 9" />
-      <path d="M12 36l6-1 19-19-5-5-19 19-1 6z" />
-      <path d="M26 13l9 9" />
+      <path d="M16 31.5 31.5 16" />
+      <path d="M28.5 13 35 19.5" />
+      <path d="M13 35l6.5-1.5L35 18l-5-5-15.5 15.5L13 35z" />
     </svg>
   ),
   precision: (
@@ -29,18 +28,17 @@ const PillarIcons: Record<PillarKey, ReactNode> = {
       viewBox="0 0 48 48"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.4"
+      strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
     >
-      <circle cx="24" cy="24" r="11" />
-      <circle cx="24" cy="24" r="4" />
-      <path d="M24 13V9" />
-      <path d="M24 39v-4" />
-      <path d="M35 24h4" />
-      <path d="M9 24h4" />
-      <path d="M31.5 16.5l2.8-2.8" />
+      <circle cx="24" cy="24" r="10" />
+      <circle cx="24" cy="24" r="3.5" />
+      <path d="M24 14V9" />
+      <path d="M24 39v-5" />
+      <path d="M34 24h5" />
+      <path d="M9 24h5" />
     </svg>
   ),
   clarity: (
@@ -48,16 +46,15 @@ const PillarIcons: Record<PillarKey, ReactNode> = {
       viewBox="0 0 48 48"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.4"
+      strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
     >
-      <rect x="13" y="11" width="22" height="26" rx="2" />
-      <path d="M18 19h12" />
-      <path d="M18 24h12" />
-      <path d="M18 29h8" />
-      <path d="M31 14.5l4.5 4.5" />
+      <rect x="14" y="11" width="20" height="26" rx="2.5" />
+      <path d="M19 18h10" />
+      <path d="M19 24h10" />
+      <path d="M19 30h7" />
     </svg>
   ),
 };
@@ -72,19 +69,16 @@ export default function WhyChooseUs() {
       key: "craft" as const,
       title: t("pillars.first.title"),
       description: t("pillars.first.description"),
-      tone: styles.cardDark,
     },
     {
       key: "precision" as const,
       title: t("pillars.second.title"),
       description: t("pillars.second.description"),
-      tone: styles.cardWarm,
     },
     {
       key: "clarity" as const,
       title: t("pillars.third.title"),
       description: t("pillars.third.description"),
-      tone: styles.cardLight,
     },
   ];
 
@@ -106,13 +100,10 @@ export default function WhyChooseUs() {
           setIsVisible(false);
         }
       },
-      {
-        threshold: 0.35,
-      },
+      { threshold: 0.3 },
     );
 
     observer.observe(node);
-
     return () => observer.disconnect();
   }, []);
 
@@ -120,27 +111,35 @@ export default function WhyChooseUs() {
     <section
       ref={sectionRef}
       className={styles.whySection}
-      aria-labelledby="why-choose-us-title"
+      aria-labelledby="why-choose-us-eyebrow"
     >
-      <div className={styles.gridFade} aria-hidden="true" />
-      <div className={styles.orbitTop} aria-hidden="true" />
-      <div className={styles.orbitBottom} aria-hidden="true" />
+      <div className={styles.sectionGlow} aria-hidden="true" />
 
       <div className="container">
         <div className={styles.whyShell}>
-          <div className={styles.whyIntro}>
-            <span className={styles.sectionLabel}>{t("eyebrow")}</span>
+          <div className={styles.whyHero}>
+            <div className={styles.whyHeroCopy}>
+              <span className={styles.sectionLabel} id="why-choose-us-eyebrow">
+                {t("eyebrow")}
+              </span>
 
-            <h2 className={styles.whyTitle} id="why-choose-us-title">
-              {t("title")}
-            </h2>
+              <p className={styles.whyDescription}>{t("description")}</p>
 
-            <p className={styles.whyDescription}>{t("description")}</p>
+              <div className={styles.breadcrumbMock} aria-hidden="true">
+                <span>Home</span>
+                <span className={styles.breadcrumbDivider}>→</span>
+                <span>About us</span>
+              </div>
+            </div>
 
-            <Link href="/about" className="btn-round btn-round--lg">
-              <span className="btn-round__inner">
-                <span className="btn-round__text btn-round__text--lg">
-                  {t("button")}
+            <Link
+              href="/about"
+              className={styles.planetLink}
+              aria-label={t("button")}
+            >
+              <span className={styles.planetShell}>
+                <span className={styles.planetCore}>
+                  <span className={styles.planetText}>{t("button")}</span>
                 </span>
               </span>
             </Link>
@@ -149,21 +148,17 @@ export default function WhyChooseUs() {
           <div className={styles.whyGrid}>
             {pillars.map((pillar, index) => (
               <article
-                className={`${styles.whyCard} ${pillar.tone} ${
-                  isVisible ? styles.isVisible : ""
-                }`}
+                className={`${styles.whyCard} ${isVisible ? styles.isVisible : ""}`}
                 key={pillar.key}
                 style={
                   { ["--card-index" as string]: index } as React.CSSProperties
                 }
               >
-                <div className={styles.whyCardHead}>
-                  <div className={styles.iconCircle} aria-hidden="true">
-                    {PillarIcons[pillar.key]}
-                  </div>
-
-                  <h3 className={styles.whyCardTitle}>{pillar.title}</h3>
+                <div className={styles.whyCardIcon} aria-hidden="true">
+                  {PillarIcons[pillar.key]}
                 </div>
+
+                <h3 className={styles.whyCardTitle}>{pillar.title}</h3>
 
                 <p className={styles.whyCardDescription}>
                   {pillar.description}
