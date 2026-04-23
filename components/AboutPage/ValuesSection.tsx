@@ -2,8 +2,8 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import { ShieldCheck, Sparkles, Handshake } from "lucide-react";
-import styles from "@/app/[locale]/about/about.module.css";
+import { ShieldCheck, Sparkles, Handshake, Building2 } from "lucide-react";
+import styles from "./ValuesSection.module.css";
 
 export default function ValuesSection() {
   const t = useTranslations("about");
@@ -24,6 +24,11 @@ export default function ValuesSection() {
       title: t("values.items.third.title"),
       text: t("values.items.third.text"),
     },
+    {
+      icon: Building2,
+      title: t("values.items.fourth.title"),
+      text: t("values.items.fourth.text"),
+    },
   ];
 
   return (
@@ -35,18 +40,12 @@ export default function ValuesSection() {
         <div className={styles.valuesInner}>
           <motion.div
             className={styles.valuesIntro}
-            initial={{ opacity: 0, y: 36 }}
+            initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.7 }}
           >
             <span className={styles.valuesEyebrow}>{t("values.eyebrow")}</span>
-
-            <h2 id="about-values-title" className={styles.valuesTitle}>
-              {t("values.title")}
-            </h2>
-
-            <p className={styles.valuesDescription}>{t("values.content")}</p>
           </motion.div>
 
           <div className={styles.valuesGrid}>
@@ -56,21 +55,19 @@ export default function ValuesSection() {
               return (
                 <motion.article
                   key={index}
-                  className={styles.valueCard}
-                  initial={{ opacity: 0, y: 44 }}
+                  className={styles.valueItem}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.6, delay: index * 0.12 }}
+                  transition={{ duration: 0.55, delay: index * 0.12 }}
                 >
-                  <div className={styles.valueCardGlow} aria-hidden="true" />
+                  <div className={styles.valueItemInner}>
+                    <div className={styles.valueIconWrap} aria-hidden="true">
+                      <Icon className={styles.valueIcon} />
+                    </div>
 
-                  <div className={styles.valueIconWrap} aria-hidden="true">
-                    <Icon className={styles.valueIcon} />
-                  </div>
-
-                  <div className={styles.valueCardContent}>
-                    <h3 className={styles.valueCardTitle}>{value.title}</h3>
-                    <p className={styles.valueCardText}>{value.text}</p>
+                    <h3 className={styles.valueTitle}>{value.title}</h3>
+                    <p className={styles.valueText}>{value.text}</p>
                   </div>
                 </motion.article>
               );
