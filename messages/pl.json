@@ -118,7 +118,8 @@
     "story": {
       "eyebrow": "Nasza historia",
       "title": "Kim jesteśmy",
-      "content": "Jesteśmy firmą zajmującą się remontami i wykończeniem wnętrz, która tworzy kompleksowe, wysokiej jakości przestrzenie dla osób oczekujących czegoś więcej niż samej realizacji — oczekujących przejrzystości, zaufania i efektu, który naprawdę daje satysfakcję. Pracujemy przy mieszkaniach, domach oraz wnętrzach komercyjnych, pomagając przekształcać puste lub niewykończone przestrzenie w miejsca z charakterem, komfortem i funkcją."
+      "content": "Jesteśmy firmą zajmującą się remontami i wykończeniem wnętrz, która tworzy kompleksowe, wysokiej jakości przestrzenie dla osób oczekujących czegoś więcej niż samej realizacji — oczekujących przejrzystości, zaufania i efektu, który naprawdę daje satysfakcję. Pracujemy przy mieszkaniach, domach oraz wnętrzach komercyjnych, pomagając przekształcać puste lub niewykończone przestrzenie w miejsca z charakterem, komfortem i funkcją.", 
+      "button": "Zoback projekty"
     },
 
     "values": {

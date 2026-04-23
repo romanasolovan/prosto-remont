@@ -1,41 +1,68 @@
 "use client";
 
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import styles from "@/app/[locale]/about/about.module.css";
+import { Link } from "@/navigation";
+// import styles from "@/app/[locale]/about/about.module.css";
+import styles from "./StorySection.module.css";
 
 export default function StorySection() {
   const t = useTranslations("about");
 
   return (
-    <section className={styles.storySection}>
+    <section
+      className={styles.storySection}
+      aria-labelledby="about-story-title"
+    >
       <div className="container">
         <div className={styles.storyInner}>
-          {/* LEFT CONTENT */}
           <motion.div
-            className={styles.storyContent}
-            initial={{ opacity: 0, y: 60 }}
+            className={styles.storyMedia}
+            initial={{ opacity: 0, y: 48 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.8 }}
           >
-            <span className={styles.storyEyebrow}>{t("story.eyebrow")}</span>
+            <div className={styles.storyImageFrame}>
+              <div className={styles.storyImageWrap}>
+                <Image
+                  src="/about/aboutBg.jpg"
+                  alt={t("story.title")}
+                  fill
+                  className={styles.storyImage}
+                  sizes="(max-width: 767px) 100vw, 50vw"
+                  priority={false}
+                />
+                <div className={styles.storyImageOverlay} aria-hidden="true" />
+              </div>
 
-            <h2 className={styles.storyTitle}>{t("story.title")}</h2>
+              <div className={styles.storyBadge}>
+                <div className={styles.storyBadgeContent}>
+                  <span className={styles.storyBadgeEyebrow}>
+                    {t("story.eyebrow")}
+                  </span>
 
-            <p className={styles.storyText}>{t("story.content")}</p>
+                  <h2 id="about-story-title" className={styles.storyBadgeTitle}>
+                    {t("story.title")}
+                  </h2>
+                </div>
+              </div>
+            </div>
           </motion.div>
 
-          {/* RIGHT VISUAL */}
           <motion.div
-            className={styles.storyVisual}
-            initial={{ opacity: 0, scaleY: 0.6 }}
-            whileInView={{ opacity: 1, scaleY: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
+            className={styles.storyContent}
+            initial={{ opacity: 0, y: 48 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.8, delay: 0.12 }}
           >
-            <div className={styles.storyLine} />
-            <div className={styles.storyGlow} />
+            <p className={styles.storyText}>{t("story.content")}</p>
+
+            <Link href="/projects" className={styles.storyButton}>
+              {t("story.button")}
+            </Link>
           </motion.div>
         </div>
       </div>
