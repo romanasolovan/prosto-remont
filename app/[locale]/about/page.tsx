@@ -13,11 +13,7 @@ export default function AboutPage() {
       {/* <StatsHero /> */}
       <StorySection />
       <ValuesSection />
-
-      <div className={styles.trustedWrapper}>
-        <TrustedBrands />
-      </div>
-
+      <TrustedBrands />
       <ClientOpinionsCTA />
     </main>
   );

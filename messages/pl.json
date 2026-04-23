@@ -147,12 +147,28 @@
       }
     },
 
-    "cta": {
-      "eyebrow": "Doświadczenie klientów",
-      "title": "Zobacz, jak wygląda współpraca z nami",
-      "description": "Poznaj opinie klientów, którzy powierzyli nam swoje wnętrza i zobacz, jak przebiegał cały proces z ich perspektywy.",
-      "button": "Zobacz opinie klientów"
+   "cta": {
+  "eyebrow": "Porozmawiajmy",
+  "title": "Wybierz kolejny krok",
+  "description": "Niezależnie od tego, czy chcesz przeczytać opinie klientów, poprosić o wycenę, czy skontaktować się z nami bezpośrednio — tutaj zrobisz kolejny krok.",
+  "items": {
+    "first": {
+      "title": "Opinie klientów",
+      "text": "Zobacz, jak klienci opisują współpracę z nami, komunikację oraz efekt końcowy realizacji.",
+      "button": "Czytaj opinie"
     },
+    "second": {
+      "title": "Poproś o wycenę",
+      "text": "Opowiedz nam o swojej przestrzeni i potrzebach projektu, a pomożemy Ci przejść do kolejnego etapu.",
+      "button": "Poproś o wycenę"
+    },
+    "third": {
+      "title": "Skontaktuj się z nami",
+      "text": "Masz pytania lub chcesz omówić swój remont bezpośrednio? Napisz do nas i zacznijmy rozmowę.",
+      "button": "Kontakt"
+    }
+  }
+},
 
     "trustedBrands": {
       "eyebrow": "Zaufanie klientów",

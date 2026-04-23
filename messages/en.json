@@ -147,12 +147,28 @@
     }
   },
 
-  "cta": {
-    "eyebrow": "Client experience",
-    "title": "See what it’s like to work with us",
-    "description": "Explore real feedback from clients who trusted us with their homes and interiors, and see how the process felt from their perspective.",
-    "button": "Read client opinions"
-  },
+ "cta": {
+  "eyebrow": "Let’s talk",
+  "title": "Choose the next step",
+  "description": "Whether you want to read client feedback, request a quote, or get in touch directly, here is the best place to continue.",
+  "items": {
+    "first": {
+      "title": "Client opinions",
+      "text": "See how clients describe the process, communication, and final result after working with us.",
+      "button": "Read reviews"
+    },
+    "second": {
+      "title": "Request a quote",
+      "text": "Tell us about your space and project needs, and we will help you take the next step with clarity.",
+      "button": "Request a quote"
+    },
+    "third": {
+      "title": "Contact us",
+      "text": "Have questions or want to discuss your renovation directly? Reach out and let’s start the conversation.",
+      "button": "Contact us"
+    }
+  }
+},
 
   "trustedBrands": {
     "eyebrow": "Trusted by clients",
