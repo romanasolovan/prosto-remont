@@ -512,6 +512,17 @@
         "description": "A clearer visual identity supported by practical planning, atmosphere, and spatial balance."
       }
     }
+  },
+  "navigation": {
+    "backToProjects": "Back to all projects"
+  },
+  "projectDetails": {
+    "eyebrow": "Project structure",
+    "subprojectsTitle": "Spaces, zones, and project sections",
+    "subprojectsDescription": "Each project can include multiple interior areas, functional zones, or finishing stages. This structure makes the gallery easier to explore and prepares the content for future expansion."
+  },
+  "gallery": {
+    "empty": "Project gallery will be added soon."
   }
 },
   "process": {

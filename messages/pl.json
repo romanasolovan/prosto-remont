@@ -395,71 +395,82 @@
   }
 },
   "projects": {
-  "hero": {
-    "eyebrow": "Wybrane realizacje",
-    "title": "Nasze realizacje",
-    "subtitle": "Kolekcja zrealizowanych przestrzeni, które pokazują nasz standard pracy, dbałość o detale i jakość wykonania.",
-    "bgWord": "Realizacje"
-  },
-  "intro": {
-    "title": "Przestrzenie, które pokazują nasz standard",
-    "description": "Nasze projekty pokazują, jak różnorodne przestrzenie możemy przekształcać — od mieszkań prywatnych po wnętrza komercyjne. Każda realizacja to efekt współpracy z klientem, doświadczenia zespołu oraz dbałości o detale."
-  },
-  "section": {
-    "eyebrow": "Archiwum realizacji",
-    "title": "Wybrane projekty, które odzwierciedlają nasz standard",
-    "description": "Starannie dobrany przegląd przestrzeni ukształtowanych przez jakość wykonania, funkcjonalne myślenie i wyraźny kierunek wizualny."
-  },
-  "categories": {
-    "residential": "Projekty mieszkaniowe",
-    "commercial": "Projekty komercyjne"
-  },
-  "list": {
-    "modernKitchen": "Nowoczesne wykończenie mieszkania",
-    "downtownOffice": "Komercyjne wykończenie wnętrza",
-    "masterBathroom": "Projekt wykończenia łazienki",
-    "historicHome": "Remont i modernizacja domu",
-    "retailStore": "Metamorfoza lokalu usługowego",
-    "basementConversion": "Indywidualna transformacja wnętrza"
-  },
-  "details": {
-    "modernKitchen": {
-      "description": "Współczesny projekt mieszkaniowy oparty na równowadze, czytelności materiałów i spokojnej atmosferze codziennego życia."
+    "hero": {
+      "eyebrow": "Wybrane realizacje",
+      "title": "Nasze projekty",
+      "subtitle": "Kolekcja ukończonych przestrzeni ukształtowanych przez rzemiosło, strukturę i dbałość.",
+      "bgWord": "Projekty"
     },
-    "downtownOffice": {
-      "description": "Wnętrze komercyjne zaprojektowane wokół wyraźnej tożsamości wizualnej, praktycznego układu i bardziej pewnego wizerunku wobec klientów."
+    "intro": {
+      "title": "Przestrzenie odzwierciedlające nasz standard",
+      "description": "Nasze projekty pokazują zakres przestrzeni, które pomagamy przekształcać — od prywatnych mieszkań i domów po komercyjne wnętrza dla klientów. Każdy z nich to praktyczna współpraca wizji, wykonania i realizacji."
     },
-    "masterBathroom": {
-      "description": "Metamorfoza łazienki oparta na detalu, proporcji i czystszym, bardziej dopracowanym języku wykończenia."
+    "section": {
+      "eyebrow": "Archiwum portfolio",
+      "title": "Wybrane projekty odzwierciedlające nasz standard",
+      "description": "Starannie wybrany przegląd przestrzeni ukształtowanych przez dokładne wykonanie, funkcjonalne podejście i klarowny kierunek wizualny."
     },
-    "historicHome": {
-      "description": "Kompleksowy remont domu, który wprowadził strukturę, ciepło i nowoczesny komfort do istniejącej przestrzeni mieszkalnej."
+    "categories": {
+      "residential": "Projekty mieszkaniowe",
+      "commercial": "Projekty komercyjne"
     },
-    "retailStore": {
-      "description": "Przestrzeń usługowa zaprojektowana tak, aby wspierać doświadczenie użytkownika, czytelność wnętrza i płynność funkcjonowania."
+    "list": {
+      "modernKitchen": "Wykończenie nowoczesnego mieszkania",
+      "downtownOffice": "Wykończenie wnętrza komercyjnego",
+      "masterBathroom": "Projekt wykończenia łazienki",
+      "historicHome": "Renowacja i modernizacja domu",
+      "retailStore": "Transformacja przestrzeni usługowej",
+      "basementConversion": "Indywidualna transformacja wnętrza"
     },
-    "basementConversion": {
-      "description": "Indywidualna transformacja wnętrza, która zamieniła niewykorzystaną powierzchnię w bardziej wartościową i spójną strefę życia."
-    }
-  },
-  "preview": {
-    "title": "Wybrane realizacje, które pokazują klarowność, atmosferę i staranne wykonanie",
-    "description": "Projekty powinny pokazywać więcej niż tylko atrakcyjny wygląd. Powinny odzwierciedlać proporcję, intencję i jakość decyzji stojących za efektem końcowym.",
-    "featured": {
-      "label": "Prywatne mieszkanie"
-    },
-    "secondary": {
-      "first": {
-        "title": "Dom rodzinny",
-        "description": "Podejście remontowe skoncentrowane na cieple, funkcji i długoterminowym komforcie codziennego życia."
+    "details": {
+      "modernKitchen": {
+        "description": "Współczesny projekt mieszkalny skupiony na równowadze, klarowności materiałów i spokojnej atmosferze codzienności."
       },
-      "second": {
-        "title": "Przestrzeń komercyjna",
-        "description": "Wyraźniejsza tożsamość wizualna wsparta praktycznym planowaniem, atmosferą i równowagą przestrzeni."
+      "downtownOffice": {
+        "description": "Wnętrze komercyjne zaprojektowane wokół tożsamości wizualnej, praktycznego planowania i bardziej wyrazistego doświadczenia klienta."
+      },
+      "masterBathroom": {
+        "description": "Transformacja łazienki oparta na detalach, proporcji i bardziej dopracowanym języku wykończenia."
+      },
+      "historicHome": {
+        "description": "Kompleksowa renowacja domu, która wprowadziła strukturę, ciepło i nowoczesny komfort do istniejącej przestrzeni."
+      },
+      "retailStore": {
+        "description": "Przestrzeń komercyjna zorientowana na usługi, zaprojektowana z myślą o doświadczeniu, przejrzystości i płynności działania."
+      },
+      "basementConversion": {
+        "description": "Indywidualna transformacja wnętrza, która przekształciła niewykorzystaną przestrzeń w bardziej funkcjonalną i spójną strefę mieszkalną."
       }
+    },
+    "preview": {
+      "title": "Wybrane realizacje odzwierciedlające klarowność, atmosferę i staranne wykonanie",
+      "description": "Projekty powinny pokazywać więcej niż tylko wygląd. Powinny odzwierciedlać proporcje, intencję i jakość decyzji stojących za końcowym efektem.",
+      "featured": {
+        "label": "Prywatne mieszkanie"
+      },
+      "secondary": {
+        "first": {
+          "title": "Dom rodzinny",
+          "description": "Podejście do renowacji skoncentrowane na cieple, funkcjonalności i długoterminowym komforcie codziennego życia."
+        },
+        "second": {
+          "title": "Przestrzeń komercyjna",
+          "description": "Wyraźniejsza tożsamość wizualna wsparta praktycznym planowaniem, atmosferą i równowagą przestrzeni."
+        }
+      }
+    },
+    "navigation": {
+      "backToProjects": "Powrót do wszystkich projektów"
+    },
+    "projectDetails": {
+      "eyebrow": "Struktura projektu",
+      "subprojectsTitle": "Przestrzenie, strefy i sekcje projektu",
+      "subprojectsDescription": "Każdy projekt może obejmować wiele obszarów wnętrz, stref funkcjonalnych lub etapów wykończenia. Taka struktura ułatwia eksplorację galerii i przygotowuje treści na przyszłe rozszerzenia."
+    },
+    "gallery": {
+      "empty": "Galeria projektu zostanie wkrótce dodana."
     }
-  }
-},
+  },
   "process": {
     "hero": {
       "title": "Jak wygląda współpraca",
