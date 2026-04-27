@@ -445,6 +445,15 @@
     "preview": {
       "title": "Обрані роботи, що відображають ясність, атмосферу та ретельне виконання",
       "description": "Проєкти повинні показувати більше, ніж зовнішній вигляд. Вони мають відображати пропорції, намір і якість рішень, що стоять за результатом.",
+      "categories": {
+        "apartment": "Apartment renovation",
+        "house": "House renovation",
+        "bathroom": "Bathroom renovation",
+        "kitchen": "Kitchen renovation",
+        "commercial": "Commercial renovation",
+        "interior": "Interior finishing", 
+        "residential": "Residential"
+      },
       "featured": {
         "label": "Приватна квартира"
       },

@@ -499,6 +499,15 @@
   "preview": {
     "title": "Selected work that reflects clarity, atmosphere, and careful execution",
     "description": "Projects should show more than surface appeal. They should reflect proportion, intention, and the quality of decisions behind the finished result.",
+    "categories": {
+        "apartment": "Apartment renovation",
+        "house": "House renovation",
+        "bathroom": "Bathroom renovation",
+        "kitchen": "Kitchen renovation",
+        "commercial": "Commercial renovation",
+        "interior": "Interior finishing", 
+        "residential": "Residential"
+      },
     "featured": {
       "label": "Private Apartment"
     },

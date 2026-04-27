@@ -445,6 +445,15 @@
     "preview": {
       "title": "Избранные работы, отражающие ясность, атмосферу и тщательное исполнение",
       "description": "Проекты должны показывать больше, чем внешний вид. Они должны отражать пропорции, намерение и качество решений, лежащих в основе результата.",
+      "categories": {
+        "apartment": "Apartment renovation",
+        "house": "House renovation",
+        "bathroom": "Bathroom renovation",
+        "kitchen": "Kitchen renovation",
+        "commercial": "Commercial renovation",
+        "interior": "Interior finishing", 
+        "residential": "Residential"
+      },
       "featured": {
         "label": "Частная квартира"
       },

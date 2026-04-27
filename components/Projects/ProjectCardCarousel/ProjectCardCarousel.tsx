@@ -7,23 +7,31 @@ import styles from "./ProjectCardCarousel.module.css";
 type ProjectCardCarouselProps = {
   images: string[];
   alt: string;
+  mobileImagesPerPage?: number;
+  desktopImagesPerPage?: number;
+  sizes?: string;
 };
 
 export default function ProjectCardCarousel({
   images,
   alt,
+  mobileImagesPerPage = 1,
+  desktopImagesPerPage = 2,
+  sizes = "(max-width: 767px) 100vw, 50vw",
 }: ProjectCardCarouselProps) {
   const [page, setPage] = useState(0);
-  const [imagesPerPage, setImagesPerPage] = useState(1);
+  const [imagesPerPage, setImagesPerPage] = useState(mobileImagesPerPage);
 
   useEffect(() => {
     const handleResize = () => {
-      const nextImagesPerPage = window.innerWidth >= 768 ? 2 : 1;
+      const nextImagesPerPage =
+        window.innerWidth >= 768 ? desktopImagesPerPage : mobileImagesPerPage;
 
       setImagesPerPage((prev) => {
         if (prev !== nextImagesPerPage) {
           setPage(0);
         }
+
         return nextImagesPerPage;
       });
     };
@@ -32,7 +40,7 @@ export default function ProjectCardCarousel({
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [mobileImagesPerPage, desktopImagesPerPage]);
 
   const pages = useMemo(() => {
     const result: string[][] = [];
@@ -59,6 +67,10 @@ export default function ProjectCardCarousel({
     return () => window.clearInterval(interval);
   }, [pages.length]);
 
+  if (!images.length) {
+    return null;
+  }
+
   return (
     <div className={styles.carousel}>
       <div className={styles.viewport}>
@@ -68,19 +80,30 @@ export default function ProjectCardCarousel({
         >
           {pages.map((pageImages, pageIndex) => (
             <div className={styles.slide} key={pageIndex}>
-              <div className={styles.grid}>
-                {pageImages.map((src, index) => (
-                  <div className={styles.imageWrap} key={`${src}-${index}`}>
-                    <Image
-                      src={src}
-                      alt={`${alt} ${pageIndex * imagesPerPage + index + 1}`}
-                      fill
-                      className={styles.image}
-                      sizes="(max-width: 767px) 100vw, 50vw"
-                      priority={pageIndex === 0}
-                    />
-                  </div>
-                ))}
+              <div
+                className={styles.grid}
+                style={
+                  {
+                    "--images-per-page": pageImages.length,
+                  } as React.CSSProperties
+                }
+              >
+                {pageImages.map((src, index) => {
+                  const imageNumber = pageIndex * imagesPerPage + index + 1;
+
+                  return (
+                    <div className={styles.imageWrap} key={`${src}-${index}`}>
+                      <Image
+                        src={src}
+                        alt={`${alt} ${imageNumber}`}
+                        fill
+                        className={styles.image}
+                        sizes={sizes}
+                        priority={pageIndex === 0}
+                      />
+                    </div>
+                  );
+                })}
               </div>
             </div>
           ))}

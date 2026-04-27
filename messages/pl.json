@@ -445,6 +445,15 @@
     "preview": {
       "title": "Wybrane realizacje odzwierciedlające klarowność, atmosferę i staranne wykonanie",
       "description": "Projekty powinny pokazywać więcej niż tylko wygląd. Powinny odzwierciedlać proporcje, intencję i jakość decyzji stojących za końcowym efektem.",
+      "categories": {
+        "apartment": "Apartment renovation",
+        "house": "House renovation",
+        "bathroom": "Bathroom renovation",
+        "kitchen": "Kitchen renovation",
+        "commercial": "Commercial renovation",
+        "interior": "Interior finishing", 
+        "residential": "Residential"
+      },
       "featured": {
         "label": "Prywatne mieszkanie"
       },
