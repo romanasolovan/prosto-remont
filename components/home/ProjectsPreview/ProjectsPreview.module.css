@@ -1,347 +1,253 @@
 .projectsPreview {
   --bg-main: #0c1014;
-  --bg-deep: #151a20;
+  --bg-soft: #11171c;
   --ink: #f5f4f0;
-  --ink-soft: rgba(245, 244, 240, 0.74);
-  --ink-muted: rgba(245, 244, 240, 0.52);
-  --line-soft: rgba(255, 255, 255, 0.08);
-  --line-strong: rgba(255, 255, 255, 0.16);
+  --ink-soft: rgba(245, 244, 240, 0.72);
+  --ink-muted: rgba(245, 244, 240, 0.46);
+  --line-soft: rgba(255, 255, 255, 0.075);
+  --line-strong: rgba(255, 255, 255, 0.18);
 
   position: relative;
   overflow: hidden;
-  padding: clamp(84px, 10vw, 150px) 0;
+  padding: clamp(72px, 10vw, 144px) 0;
   background:
-    linear-gradient(
-      90deg,
-      transparent 0,
-      transparent calc(50% - 1px),
-      rgba(255, 255, 255, 0.035) calc(50% - 1px),
-      rgba(255, 255, 255, 0.035) 50%,
-      transparent 50%,
-      transparent 100%
-    ),
     radial-gradient(
-      circle at 12% 10%,
-      rgba(255, 255, 255, 0.045),
+      circle at 14% 8%,
+      rgba(255, 255, 255, 0.035),
       transparent 28%
     ),
-    linear-gradient(180deg, var(--bg-main) 0%, var(--bg-deep) 100%);
-}
-
-.projectsPreview::before,
-.projectsPreview::after {
-  content: "";
-  position: absolute;
-  pointer-events: none;
+    linear-gradient(180deg, var(--bg-main) 0%, var(--bg-soft) 100%);
 }
 
 .projectsPreview::before {
-  top: 12%;
-  left: -5%;
-  width: clamp(160px, 22vw, 280px);
-  height: clamp(160px, 22vw, 280px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 50%;
-}
-
-.projectsPreview::after {
-  right: -4%;
-  bottom: 12%;
-  width: clamp(120px, 16vw, 220px);
-  height: clamp(120px, 16vw, 220px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 24px;
-  transform: rotate(16deg);
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size:
+    100% 56px,
+    56px 100%;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 18%,
+    black 82%,
+    transparent
+  );
+  pointer-events: none;
 }
 
 .inner {
   position: relative;
   z-index: 1;
   display: grid;
-  gap: clamp(34px, 5vw, 58px);
+  gap: clamp(22px, 4vw, 40px);
 }
 
-.content {
-  max-width: 720px;
+.header {
+  display: flex;
+  justify-content: flex-start;
 }
 
-.label {
+.allProjectsLink,
+.projectLink {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 12px;
-  color: rgba(245, 244, 240, 0.66);
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-}
-
-.label::before {
-  content: "";
-  width: 18px;
-  height: 1px;
-  background: currentColor;
-}
-
-.title {
-  margin: 0 0 16px;
   color: var(--ink);
   font-family: "Barlow Condensed", sans-serif;
-  font-size: clamp(36px, 5vw, 64px);
   font-weight: 300;
-  line-height: 0.95;
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
-  text-wrap: balance;
-  text-align: end;
+  text-decoration: none;
+  transition:
+    gap 220ms ease,
+    color 220ms ease;
 }
 
-.description {
-  margin: 0;
-  color: var(--ink-soft);
+.allProjectsLink {
+  font-size: clamp(22px, 4.8vw, 42px);
+  letter-spacing: 0.01em;
+}
+
+.projectTabs {
+  display: flex;
+  align-items: center;
+  gap: clamp(22px, 7vw, 96px);
+  overflow-x: auto;
+  padding: 2px 0 12px;
+  scrollbar-width: none;
+}
+
+.projectTabs::-webkit-scrollbar {
+  display: none;
+}
+
+.projectTab {
+  position: relative;
+  flex: 0 0 auto;
+  padding: 0 0 12px;
+  border: 0;
+  background: transparent;
+  color: var(--ink-muted);
   font-family: "Barlow", sans-serif;
-  font-size: clamp(14px, 1.05vw, 16px);
+  font-size: clamp(15px, 4.2vw, 22px);
+  font-style: italic;
   font-weight: 300;
-  line-height: 1.85;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: color 220ms ease;
 }
 
-.previewList {
+.projectTab::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: min(100%, 130px);
+  height: 1px;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 260ms ease;
+}
+
+.activeTab {
+  color: var(--ink);
+}
+
+.activeTab::after {
+  transform: scaleX(1);
+}
+
+.showcase {
+  position: relative;
   display: grid;
   gap: 18px;
 }
 
-.previewCard {
-  min-width: 0;
-}
-
-.cardFrame {
-  position: relative;
-  display: grid;
-  overflow: hidden;
-  height: 100%;
+.carouselShell {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: clamp(8px, 1.6vw, 18px);
   border: 1px solid var(--line-soft);
-  border-radius: 22px;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.04) 0%,
-    rgba(255, 255, 255, 0.018) 100%
-  );
+  border-radius: clamp(18px, 3vw, 34px);
+  background: rgba(255, 255, 255, 0.028);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    0 18px 40px rgba(0, 0, 0, 0.14);
-  isolation: isolate;
-  transition:
-    transform 360ms cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 300ms ease,
-    background 300ms ease;
+    inset 0 1px 0 rgba(255, 255, 255, 0.055),
+    0 24px 60px rgba(0, 0, 0, 0.22);
 }
 
-.cardFrame::before {
-  content: "";
-  position: absolute;
-  inset: 14px;
-  z-index: 1;
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  pointer-events: none;
-}
-
-.cardMedia {
-  position: relative;
-  z-index: 2;
-  width: calc(100% - 36px);
-  margin: 18px 18px 0;
-  aspect-ratio: 16 / 10;
-  background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.14)),
-    linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.1) 0%,
-      rgba(70, 76, 84, 0.3) 44%,
-      rgba(255, 255, 255, 0.06) 100%
-    );
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 16px 28px rgba(0, 0, 0, 0.12);
-  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.cardContent {
-  position: relative;
-  z-index: 2;
-  padding: 22px;
-}
-
-.cardCategory {
-  display: inline-flex;
-  align-items: center;
-  min-height: 30px;
-  margin-bottom: 14px;
-  padding: 0 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
-  color: rgba(245, 244, 240, 0.58);
+.sideLabel {
+  justify-self: end;
+  color: rgba(245, 244, 240, 0.66);
   font-family: "Barlow Condensed", sans-serif;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-
-.cardTitle {
-  max-width: 13ch;
-  margin: 0 0 10px;
-  color: var(--ink);
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: clamp(26px, 3vw, 42px);
+  font-size: clamp(18px, 4.5vw, 28px);
   font-weight: 300;
-  line-height: 0.96;
-  letter-spacing: -0.03em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  text-wrap: balance;
 }
 
-.cardText {
-  max-width: 38ch;
-  margin: 0;
+.projectLink {
+  justify-self: center;
+  margin-top: -2px;
   color: var(--ink-soft);
-  font-family: "Barlow", sans-serif;
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 1.8;
+  font-size: clamp(14px, 3.8vw, 20px);
+  font-style: italic;
+  letter-spacing: 0.02em;
 }
 
-.cardIndex {
-  position: absolute;
-  right: 18px;
-  bottom: -12px;
-  z-index: 2;
-  user-select: none;
-  color: rgba(255, 255, 255, 0.08);
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: clamp(62px, 8vw, 108px);
-  font-weight: 200;
-  line-height: 0.85;
-  letter-spacing: -0.04em;
-}
-
-.link {
-  justify-self: start;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--ink);
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  transition: gap 220ms ease;
-}
-
-.linkArrow {
-  transition: transform 220ms ease;
-}
-
-@media (min-width: 900px) {
-  .content {
-    text-align: left;
+@media (max-width: 374px) {
+  .projectsPreview {
+    padding: 64px 0;
   }
 
-  .previewList {
-    grid-template-rows: repeat(2, minmax(0, 1fr));
+  .projectTabs {
     gap: 20px;
   }
 
-  .featured {
-    grid-row: span 2;
+  .allProjectsLink {
+    font-size: 22px;
   }
 
-  .featured .cardFrame {
-    min-height: 520px;
+  .carouselShell {
+    padding: 7px;
+    border-radius: 18px;
+  }
+}
+
+@media (min-width: 425px) {
+  .carouselShell {
+    padding: 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  .inner {
+    gap: 34px;
   }
 
-  .featured .cardMedia {
-    aspect-ratio: 16 / 9;
+  .projectTabs {
+    padding-left: clamp(18px, 5vw, 64px);
   }
 
-  .previewCard:not(.featured) .cardFrame {
-    grid-template-columns: 0.9fr 1fr;
-    align-items: center;
+  .projectTab {
+    font-size: clamp(18px, 2.6vw, 24px);
   }
 
-  .previewCard:not(.featured) .cardMedia {
-    height: calc(100% - 36px);
-    margin: 18px 0 18px 18px;
-    aspect-ratio: auto;
+  .carouselShell {
+    max-width: 980px;
+    padding: 14px;
   }
 
-  .previewCard:not(.featured) .cardContent {
-    padding: 22px 24px;
+  .sideLabel {
+    right: 0;
+    bottom: 4px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .carouselShell {
+    max-width: 1040px;
   }
 
-  .previewCard:not(.featured) .cardTitle {
-    font-size: clamp(24px, 2.2vw, 34px);
+  .projectLink {
+    margin-top: -8px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .carouselShell {
+    max-width: 1120px;
   }
 
-  .previewCard:not(.featured) .cardText {
-    font-size: 13px;
+  .projectTabs {
+    padding-left: 72px;
   }
+}
 
-  .cardFrame:hover {
-    transform: translateY(-8px);
-    border-color: var(--line-strong);
-  }
-
-  .cardFrame:hover .cardMedia {
-    transform: scale(1.025);
-  }
-
-  .link:hover {
+@media (hover: hover) {
+  .allProjectsLink:hover,
+  .projectLink:hover {
     gap: 16px;
+    color: var(--ink);
   }
 
-  .link:hover .linkArrow {
-    transform: translateX(4px);
+  .projectTab:hover {
+    color: var(--ink-soft);
+  }
+
+  .carouselShell:hover {
+    border-color: var(--line-strong);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cardFrame,
-  .cardMedia,
-  .link,
-  .linkArrow {
+  .allProjectsLink,
+  .projectLink,
+  .projectTab,
+  .projectTab::after {
     transition: none;
   }
-
-  .cardFrame:hover,
-  .cardFrame:hover .cardMedia,
-  .link:hover .linkArrow {
-    transform: none;
-  }
-}
-
-.cardFrame {
-  position: relative;
-}
-
-.cardMedia,
-.cardContent,
-.cardIndex {
-  position: relative;
-  z-index: 2;
-}
-
-.cardLink {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  border-radius: inherit;
-}
-
-.cardLink:focus-visible {
-  outline: 2px solid rgba(255, 255, 255, 0.85);
-  outline-offset: -6px;
 }

@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/navigation";
 import { projects } from "@/data/projects";
@@ -6,63 +9,68 @@ import styles from "./ProjectsPreview.module.css";
 
 export default function ProjectsPreview() {
   const t = useTranslations("home");
-  const tProjects = useTranslations("projects.preview");
   const tCommon = useTranslations("common");
 
-  const previewProjects = projects.slice(0, 2);
+  const previewProjects = projects.filter(
+    (project) => project.coverImages.length > 0,
+  );
+
+  const [activeProjectSlug, setActiveProjectSlug] = useState(
+    previewProjects[0]?.slug,
+  );
+
+  const activeProject = previewProjects.find(
+    (project) => project.slug === activeProjectSlug,
+  );
+
+  if (!activeProject) return null;
 
   return (
     <section className={styles.projectsPreview} id="projects">
       <div className="container">
         <div className={styles.inner}>
-          <div className={styles.content}>
-            <span className={styles.label}>{t("labels.projects")}</span>
-            <h2 className={styles.title}>{tProjects("title")}</h2>
-            <p className={styles.description}>{tProjects("description")}</p>
+          <div className={styles.header}>
+            <Link href="/projects" className={styles.allProjectsLink}>
+              {tCommon("viewPortfolio")}
+              <span aria-hidden="true">→</span>
+            </Link>
           </div>
 
-          <div className={styles.previewList}>
-            {previewProjects.map((project, index) => (
-              <article key={project.slug} className={styles.previewCard}>
-                <div className={styles.cardFrame}>
-                  <div className={styles.cardMedia}>
-                    <ProjectCardCarousel
-                      images={project.coverImages}
-                      alt={project.title}
-                      mobileImagesPerPage={1}
-                      desktopImagesPerPage={1}
-                      sizes="(max-width: 899px) 100vw, 50vw"
-                    />
-                  </div>
-
-                  <div className={styles.cardContent}>
-                    <span className={styles.cardCategory}>
-                      {tProjects(`categories.${project.category}`)}
-                    </span>
-
-                    <h3 className={styles.cardTitle}>{project.title}</h3>
-                    <p className={styles.cardText}>{project.description}</p>
-                  </div>
-
-                  <span className={styles.cardIndex} aria-hidden="true">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-
-                  <Link
-                    href={`/projects/${project.slug}`}
-                    className={styles.cardLink}
-                    aria-label={`View project: ${project.title}`}
-                  />
-                </div>
-              </article>
+          <div className={styles.projectTabs} aria-label="Project preview tabs">
+            {previewProjects.map((project) => (
+              <button
+                key={project.slug}
+                type="button"
+                className={`${styles.projectTab} ${
+                  project.slug === activeProjectSlug ? styles.activeTab : ""
+                }`}
+                onClick={() => setActiveProjectSlug(project.slug)}
+              >
+                {project.title}
+              </button>
             ))}
           </div>
 
-          <Link href="/projects" className={styles.link}>
-            {tCommon("viewPortfolio")}
-            <span className={styles.linkArrow} aria-hidden="true">
-              →
-            </span>
+          <div className={styles.showcase}>
+            <div className={styles.carouselShell}>
+              <ProjectCardCarousel
+                images={activeProject.coverImages}
+                alt={activeProject.title}
+                mobileImagesPerPage={1}
+                desktopImagesPerPage={1}
+                sizes="(max-width: 767px) 100vw, (max-width: 1199px) 90vw, 1120px"
+              />
+            </div>
+
+            <span className={styles.sideLabel}>{t("labels.projects")}</span>
+          </div>
+
+          <Link
+            href={`/projects/${activeProject.slug}`}
+            className={styles.projectLink}
+          >
+            View this project
+            <span aria-hidden="true">→</span>
           </Link>
         </div>
       </div>

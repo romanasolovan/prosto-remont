@@ -63,8 +63,18 @@ export const projects: Project[] = [
     category: "commercial",
     description:
       "A commercial interior transformation designed to improve workflow, comfort, and modern professional identity.",
-    coverImages: [],
-    galleryImages: [],
+    coverImages: [
+      "/projects/modern-kitchen-1.jpg",
+      "/projects/modern-kitchen-2.jpg",
+      "/projects/modern-kitchen-3.jpg",
+      "/projects/modern-kitchen-4.jpg",
+    ],
+    galleryImages: [
+      "/projects/modern-kitchen-1.jpg",
+      "/projects/modern-kitchen-2.jpg",
+      "/projects/modern-kitchen-3.jpg",
+      "/projects/modern-kitchen-4.jpg",
+    ],
     subprojects: [
       {
         slug: "meeting-room",
@@ -88,8 +98,18 @@ export const projects: Project[] = [
     category: "residential",
     description:
       "A spa-inspired bathroom renovation with premium surfaces, layered lighting, and improved usability.",
-    coverImages: [],
-    galleryImages: [],
+    coverImages: [
+      "/projects/modern-kitchen-1.jpg",
+      "/projects/modern-kitchen-2.jpg",
+      "/projects/modern-kitchen-3.jpg",
+      "/projects/modern-kitchen-4.jpg",
+    ],
+    galleryImages: [
+      "/projects/modern-kitchen-1.jpg",
+      "/projects/modern-kitchen-2.jpg",
+      "/projects/modern-kitchen-3.jpg",
+      "/projects/modern-kitchen-4.jpg",
+    ],
   },
   {
     slug: "historic-home",

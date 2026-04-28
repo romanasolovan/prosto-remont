@@ -5,12 +5,12 @@
 
 .viewport {
   width: 100%;
-  aspect-ratio: 16 / 10;
+  height: clamp(220px, 52vw, 560px);
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: clamp(12px, 2vw, 22px);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 16px 28px rgba(0, 0, 0, 0.12);
+    0 14px 26px rgba(0, 0, 0, 0.14);
 }
 
 .track {
@@ -51,18 +51,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  margin-top: 12px;
+  gap: 10px;
+  margin-top: clamp(12px, 2vw, 18px);
   position: relative;
   z-index: 5;
 }
 
 .dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border: 0;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(245, 244, 240, 0.28);
   cursor: pointer;
   transition:
     transform 200ms ease,
@@ -74,14 +74,9 @@
 }
 
 .active {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(245, 244, 240, 0.88);
+  transform: scale(1.15);
 }
-
-/* @media (min-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-} */
 
 @media (prefers-reduced-motion: reduce) {
   .track,

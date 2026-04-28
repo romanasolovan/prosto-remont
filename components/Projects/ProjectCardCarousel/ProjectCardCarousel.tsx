@@ -62,7 +62,7 @@ export default function ProjectCardCarousel({
         const currentPage = prevPage >= pages.length ? 0 : prevPage;
         return (currentPage + 1) % pages.length;
       });
-    }, 3000);
+    }, 4000);
 
     return () => window.clearInterval(interval);
   }, [pages.length]);
