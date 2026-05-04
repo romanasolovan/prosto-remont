@@ -1,49 +1,63 @@
 .projectsPreview {
-  --bg-main: #0c1014;
-  --bg-soft: #11171c;
-  --ink: #f5f4f0;
-  --ink-soft: rgba(245, 244, 240, 0.72);
-  --ink-muted: rgba(245, 244, 240, 0.46);
-  --line-soft: rgba(255, 255, 255, 0.075);
-  --line-strong: rgba(255, 255, 255, 0.18);
+  --bg-main: #0d1115;
+  --bg-soft: #151a20;
+  --bg-deep: #1b2128;
+
+  --ink: #eaeaea;
+  --ink-soft: rgba(234, 234, 234, 0.74);
+  --ink-muted: rgba(234, 234, 234, 0.46);
+
+  --line-soft: rgba(255, 255, 255, 0.06);
+  --line-strong: rgba(255, 255, 255, 0.12);
+
+  --accent: #acab9a;
 
   position: relative;
   overflow: hidden;
-  padding: clamp(72px, 10vw, 144px) 0;
+  padding: 76px 0;
+  color: var(--ink);
   background:
     radial-gradient(
-      circle at 14% 8%,
-      rgba(255, 255, 255, 0.035),
-      transparent 28%
+      circle at 12% 0%,
+      rgba(255, 255, 255, 0.045),
+      transparent 30%
     ),
-    linear-gradient(180deg, var(--bg-main) 0%, var(--bg-soft) 100%);
+    radial-gradient(
+      circle at 88% 82%,
+      rgba(130, 136, 145, 0.11),
+      transparent 32%
+    ),
+    linear-gradient(
+      135deg,
+      #08090b 0%,
+      var(--bg-main) 42%,
+      var(--bg-soft) 74%,
+      var(--bg-deep) 100%
+    );
 }
 
 .projectsPreview::before {
   content: "";
   position: absolute;
   inset: 0;
+  pointer-events: none;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-  background-size:
-    100% 56px,
-    56px 100%;
+    linear-gradient(rgba(255, 255, 255, 0.014) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.014) 1px, transparent 1px);
+  background-size: 72px 72px;
   mask-image: linear-gradient(
     to bottom,
-    transparent,
-    black 18%,
-    black 82%,
-    transparent
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.72) 54%,
+    transparent 100%
   );
-  pointer-events: none;
 }
 
 .inner {
   position: relative;
   z-index: 1;
   display: grid;
-  gap: clamp(22px, 4vw, 40px);
+  gap: 26px;
 }
 
 .header {
@@ -56,9 +70,11 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  width: fit-content;
   color: var(--ink);
   font-family: "Barlow Condensed", sans-serif;
   font-weight: 300;
+  line-height: 1;
   text-decoration: none;
   transition:
     gap 220ms ease,
@@ -66,16 +82,16 @@
 }
 
 .allProjectsLink {
-  font-size: clamp(22px, 4.8vw, 42px);
+  font-size: clamp(26px, 7vw, 48px);
   letter-spacing: 0.01em;
 }
 
 .projectTabs {
   display: flex;
   align-items: center;
-  gap: clamp(22px, 7vw, 96px);
+  gap: clamp(20px, 7vw, 82px);
   overflow-x: auto;
-  padding: 2px 0 12px;
+  padding: 2px 0 14px;
   scrollbar-width: none;
 }
 
@@ -86,17 +102,21 @@
 .projectTab {
   position: relative;
   flex: 0 0 auto;
-  padding: 0 0 12px;
+  padding: 0 0 11px;
   border: 0;
   background: transparent;
   color: var(--ink-muted);
   font-family: "Barlow", sans-serif;
-  font-size: clamp(15px, 4.2vw, 22px);
+  font-size: clamp(13px, 3.6vw, 18px);
   font-style: italic;
   font-weight: 300;
+  line-height: 1;
   letter-spacing: 0.02em;
+  white-space: nowrap;
   cursor: pointer;
-  transition: color 220ms ease;
+  transition:
+    color 220ms ease,
+    transform 220ms ease;
 }
 
 .projectTab::after {
@@ -104,12 +124,15 @@
   position: absolute;
   left: 0;
   bottom: 0;
-  width: min(100%, 130px);
+  width: min(100%, 112px);
   height: 1px;
-  background: var(--ink);
+  background: var(--accent);
+  opacity: 0;
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 260ms ease;
+  transition:
+    opacity 220ms ease,
+    transform 260ms ease;
 }
 
 .activeTab {
@@ -117,113 +140,142 @@
 }
 
 .activeTab::after {
+  opacity: 0.95;
   transform: scaleX(1);
 }
 
 .showcase {
   position: relative;
   display: grid;
-  gap: 18px;
+  gap: 16px;
 }
 
 .carouselShell {
+  position: relative;
   width: 100%;
-  max-width: 1080px;
+  max-width: 1060px;
   margin: 0 auto;
-  padding: clamp(8px, 1.6vw, 18px);
+  padding: clamp(8px, 1.7vw, 18px);
   border: 1px solid var(--line-soft);
-  border-radius: clamp(18px, 3vw, 34px);
-  background: rgba(255, 255, 255, 0.028);
+  border-radius: clamp(18px, 3.2vw, 32px);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.028),
+      rgba(255, 255, 255, 0.012)
+    ),
+    rgba(8, 10, 12, 0.42);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.055),
-    0 24px 60px rgba(0, 0, 0, 0.22);
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 20px 46px rgba(0, 0, 0, 0.2);
+  transition:
+    transform 300ms ease,
+    border-color 300ms ease,
+    box-shadow 300ms ease;
+}
+
+.carouselShell::before {
+  content: "";
+  position: absolute;
+  inset: clamp(8px, 1.7vw, 18px);
+  z-index: 1;
+  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.035);
+  border-radius: clamp(12px, 2.4vw, 22px);
 }
 
 .sideLabel {
   justify-self: end;
-  color: rgba(245, 244, 240, 0.66);
+  color: rgba(234, 234, 234, 0.58);
   font-family: "Barlow Condensed", sans-serif;
-  font-size: clamp(18px, 4.5vw, 28px);
+  font-size: clamp(16px, 4vw, 24px);
   font-weight: 300;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
 .projectLink {
   justify-self: center;
-  margin-top: -2px;
+  margin-top: -4px;
   color: var(--ink-soft);
-  font-size: clamp(14px, 3.8vw, 20px);
+  font-family: "Barlow", sans-serif;
+  font-size: clamp(13px, 3.6vw, 17px);
   font-style: italic;
+  font-weight: 300;
   letter-spacing: 0.02em;
 }
 
-@media (max-width: 374px) {
+@media (min-width: 375px) {
   .projectsPreview {
-    padding: 64px 0;
+    padding: 86px 0;
   }
 
-  .projectTabs {
-    gap: 20px;
+  .inner {
+    gap: 30px;
   }
 
-  .allProjectsLink {
-    font-size: 22px;
-  }
-
-  .carouselShell {
-    padding: 7px;
-    border-radius: 18px;
+  .projectTab {
+    font-size: clamp(14px, 3.4vw, 18px);
   }
 }
 
 @media (min-width: 425px) {
-  .carouselShell {
-    padding: 10px;
+  .projectTabs {
+    gap: clamp(26px, 8vw, 82px);
   }
 }
 
 @media (min-width: 768px) {
+  .projectsPreview {
+    padding: 108px 0;
+  }
+
   .inner {
-    gap: 34px;
+    gap: 36px;
   }
 
   .projectTabs {
-    padding-left: clamp(18px, 5vw, 64px);
+    padding-left: clamp(20px, 5vw, 68px);
+    gap: clamp(48px, 7vw, 92px);
   }
 
   .projectTab {
-    font-size: clamp(18px, 2.6vw, 24px);
-  }
-
-  .carouselShell {
-    max-width: 980px;
-    padding: 14px;
+    font-size: clamp(15px, 2vw, 19px);
   }
 
   .sideLabel {
+    position: absolute;
     right: 0;
-    bottom: 4px;
+    bottom: 6px;
+  }
+
+  .projectLink {
+    margin-top: -10px;
   }
 }
 
 @media (min-width: 1024px) {
   .carouselShell {
-    max-width: 1040px;
-  }
-
-  .projectLink {
-    margin-top: -8px;
+    max-width: 980px;
   }
 }
 
 @media (min-width: 1440px) {
-  .carouselShell {
-    max-width: 1120px;
+  .projectsPreview {
+    padding: 124px 0;
+  }
+
+  .inner {
+    gap: 40px;
   }
 
   .projectTabs {
-    padding-left: 72px;
+    padding-left: 84px;
+    gap: 88px;
+  }
+
+  .carouselShell {
+    max-width: 1040px;
   }
 }
 
@@ -236,10 +288,15 @@
 
   .projectTab:hover {
     color: var(--ink-soft);
+    transform: translateY(-1px);
   }
 
   .carouselShell:hover {
+    transform: translateY(-4px);
     border-color: var(--line-strong);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.05),
+      0 24px 52px rgba(0, 0, 0, 0.24);
   }
 }
 
@@ -247,7 +304,13 @@
   .allProjectsLink,
   .projectLink,
   .projectTab,
-  .projectTab::after {
+  .projectTab::after,
+  .carouselShell {
     transition: none;
+  }
+
+  .projectTab:hover,
+  .carouselShell:hover {
+    transform: none;
   }
 }
