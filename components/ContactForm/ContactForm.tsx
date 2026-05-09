@@ -88,8 +88,32 @@ export default function ContactForm({ onClose }: ContactFormProps) {
     { setSubmitting, resetForm }: FormikHelpers<FormValues>,
   ) => {
     try {
-      console.log("Form submitted:", values);
-      await new Promise((resolve) => setTimeout(resolve, 900));
+      const formData = new FormData();
+
+      formData.append("fullName", values.fullName);
+      formData.append("phone", values.phone);
+      formData.append("email", values.email);
+      formData.append("interestedIn", values.interestedIn);
+      formData.append("renovationType", values.renovationType);
+      formData.append("renovationObject", values.renovationObject);
+      formData.append("workDescription", values.workDescription);
+      formData.append("startDate", values.startDate);
+      formData.append("location", values.location);
+      formData.append("additionalComments", values.additionalComments);
+
+      values.attachments.forEach((file) => {
+        formData.append("attachments", file);
+      });
+
+      const response = await fetch("/api/quote-requests", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit quote request");
+      }
+
       setSubmitStatus("success");
       resetForm();
     } catch (error) {
