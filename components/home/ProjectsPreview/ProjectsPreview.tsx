@@ -19,59 +19,136 @@ export default function ProjectsPreview() {
     previewProjects[0]?.slug,
   );
 
-  const activeProject = previewProjects.find(
-    (project) => project.slug === activeProjectSlug,
+  const activeIndex = previewProjects.findIndex(
+    (p) => p.slug === activeProjectSlug,
   );
 
+  const activeProject = previewProjects[activeIndex];
+
   if (!activeProject) return null;
+
+  /* Zero-padded helpers */
+  const pad = (n: number) => String(n).padStart(2, "0");
 
   return (
     <section className={styles.projectsPreview} id="projects">
       <div className="container">
         <div className={styles.inner}>
-          <div className={styles.header}>
-            <Link href="/projects" className={styles.allProjectsLink}>
-              {tCommon("viewPortfolio")}
-              <span aria-hidden="true">→</span>
-            </Link>
+          {/* ── Header row ─────────────────────────────────── */}
+          <div className={styles.headerRow}>
+            <div className={styles.headerLeft}>
+              <span className={styles.sectionEyebrow}>
+                {t("labels.projects")}
+              </span>
+              <Link href="/projects" className={styles.allProjectsLink}>
+                {tCommon("viewPortfolio")}
+                <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+
+            {/* Total count — top-right */}
+            <span className={styles.projectCount} aria-hidden="true">
+              {pad(previewProjects.length)}&nbsp;Projects
+            </span>
           </div>
 
-          <div className={styles.projectTabs} aria-label="Project preview tabs">
-            {previewProjects.map((project) => (
+          {/* ── Numbered tab index ─────────────────────────── */}
+          <div
+            className={styles.projectTabs}
+            role="tablist"
+            aria-label="Select project"
+          >
+            {previewProjects.map((project, i) => (
               <button
                 key={project.slug}
                 type="button"
+                role="tab"
+                aria-selected={project.slug === activeProjectSlug}
                 className={`${styles.projectTab} ${
                   project.slug === activeProjectSlug ? styles.activeTab : ""
                 }`}
                 onClick={() => setActiveProjectSlug(project.slug)}
               >
-                {project.title}
+                <span className={styles.tabIndex} aria-hidden="true">
+                  {pad(i + 1)}
+                </span>
+                <span className={styles.tabName}>{project.title}</span>
               </button>
             ))}
           </div>
 
+          {/* ── Showcase ───────────────────────────────────── */}
           <div className={styles.showcase}>
-            <div className={styles.carouselShell}>
-              <ProjectCardCarousel
-                images={activeProject.coverImages}
-                alt={activeProject.title}
-                mobileImagesPerPage={1}
-                desktopImagesPerPage={1}
-                sizes="(max-width: 767px) 100vw, (max-width: 1199px) 90vw, 1120px"
-              />
+            {/* Photo-mount frame */}
+            <div className={styles.frameWrap}>
+              <div className={styles.imageFrame}>
+                <div className={styles.carouselShell}>
+                  <ProjectCardCarousel
+                    images={activeProject.coverImages}
+                    alt={activeProject.title}
+                    mobileImagesPerPage={1}
+                    desktopImagesPerPage={1}
+                    sizes="(max-width: 767px) 100vw, (max-width: 1199px) 90vw, 1120px"
+                  />
+                </div>
+
+                {/* Slide index counter — printed in corner */}
+                <span className={styles.slideCounter} aria-hidden="true">
+                  {pad(activeIndex + 1)}&nbsp;/&nbsp;
+                  {pad(previewProjects.length)}
+                </span>
+              </div>
             </div>
 
-            <span className={styles.sideLabel}>{t("labels.projects")}</span>
-          </div>
+            {/* Vertical meta sidebar (tablet+) */}
+            <div className={styles.metaColumn} aria-hidden="true">
+              <div className={styles.metaRule} />
+              <div className={styles.metaContent}>
+                <div className={styles.metaTop}>
+                  <span className={styles.metaEyebrow}>
+                    {t("labels.projects")}
+                  </span>
+                  <p className={styles.metaProjectTitle}>
+                    {activeProject.title}
+                  </p>
+                  {/* Tagline: use project.tagline if it exists, else a short fallback */}
+                  <p className={styles.metaTagline}>
+                    {(activeProject as { tagline?: string }).tagline ??
+                      "Premium renovation, refined to the last detail."}
+                  </p>
+                </div>
 
-          <Link
-            href={`/projects/${activeProject.slug}`}
-            className={styles.projectLink}
-          >
-            View this project
-            <span aria-hidden="true">→</span>
-          </Link>
+                <div className={styles.metaBottom}>
+                  <div className={styles.metaDivider} />
+                  {/* Ghost index number anchors the column visually */}
+                  <span className={styles.metaIndex}>
+                    {pad(activeIndex + 1)}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Caption bar below the frame */}
+            <div className={styles.captionBar}>
+              {/* Mobile only — shows title (hidden on tablet+) */}
+              <div className={styles.captionLeft}>
+                <span className={styles.projectLabel} aria-hidden="true">
+                  {t("labels.projects")}
+                </span>
+                <span className={styles.captionTitle}>
+                  {activeProject.title}
+                </span>
+              </div>
+
+              <Link
+                href={`/projects/${activeProject.slug}`}
+                className={styles.projectLink}
+              >
+                View project
+                <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </section>
