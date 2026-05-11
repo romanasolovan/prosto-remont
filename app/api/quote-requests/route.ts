@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { getPayload } from "payload";
 import config from "@payload-config";
 
+export const runtime = "nodejs";
+
 export async function POST(request: Request) {
   try {
     const formData = await request.formData();
@@ -29,7 +31,7 @@ export async function POST(request: Request) {
       });
 
       // Store the ID directly — no String() wrapper
-      uploadedMediaIds.push(uploadedFile.id as number);
+      uploadedMediaIds.push(uploadedFile.id);
     }
 
     const quoteRequest = await payload.create({

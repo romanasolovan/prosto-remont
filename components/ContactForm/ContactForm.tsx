@@ -454,6 +454,7 @@ export default function ContactForm({ onClose }: ContactFormProps) {
                     <div className={styles.fileUploadArea}>
                       <input
                         type="file"
+                        name="attachments"
                         id="attachments"
                         multiple
                         accept=".pdf,.jpg,.jpeg,.png,.docx"
