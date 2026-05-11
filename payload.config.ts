@@ -8,6 +8,7 @@ import sharp from "sharp";
 import { Users } from "./app/collections/users";
 import { Media } from "./app/collections/media";
 import { QuoteRequests } from "./app/collections/quoteRequests";
+import { vercelBlobStorage } from "@payloadcms/storage-vercel-blob";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -31,5 +32,13 @@ export default buildConfig({
     },
   }),
   sharp,
-  plugins: [],
+  plugins: [
+    vercelBlobStorage({
+      enabled: true,
+      collections: {
+        media: true,
+      },
+      token: process.env.BLOB_READ_WRITE_TOKEN || "",
+    }),
+  ],
 });
