@@ -8,7 +8,8 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build && payload migrate --yes",
+    "build": "next build",
+    "payload": "PAYLOAD_CONFIG_PATH=payload.config.ts payload", 
     "start": "next start",
     "lint": "eslint",
     "generate:types": "PAYLOAD_TSCONFIG_PATH=tsconfig.payload.json payload generate:types", 
