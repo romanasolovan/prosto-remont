@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && payload migrate --force",
     "start": "next start",
     "lint": "eslint",
     "generate:types": "PAYLOAD_TSCONFIG_PATH=tsconfig.payload.json payload generate:types", 
