@@ -11,7 +11,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "generate:types": "PAYLOAD_TSCONFIG_PATH=tsconfig.payload.json payload generate:types"
+    "generate:types": "PAYLOAD_TSCONFIG_PATH=tsconfig.payload.json payload generate:types", 
+    "migrate": "payload migrate"
   },
   "dependencies": {
     "@payloadcms/db-postgres": "^3.84.1",
