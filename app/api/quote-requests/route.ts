@@ -7,7 +7,7 @@ export async function POST(request: Request) {
     const formData = await request.formData();
     const payload = await getPayload({ config });
 
-    const uploadedMediaIds: string[] = [];
+    const uploadedMediaIds: number[] = [];
 
     const files = formData.getAll("attachments");
 
@@ -19,9 +19,7 @@ export async function POST(request: Request) {
 
       const uploadedFile = await payload.create({
         collection: "media",
-        data: {
-          alt: file.name,
-        },
+        data: { alt: file.name },
         file: {
           data: buffer,
           mimetype: file.type,
@@ -30,42 +28,49 @@ export async function POST(request: Request) {
         },
       });
 
-      uploadedMediaIds.push(String(uploadedFile.id));
+      // Store the ID directly — no String() wrapper
+      uploadedMediaIds.push(uploadedFile.id as number);
     }
 
     const quoteRequest = await payload.create({
-      collections: "quote-requests",
+      collection: "quote-requests",
       data: {
         fullName: String(formData.get("fullName") || ""),
         phone: String(formData.get("phone") || ""),
         email: String(formData.get("email") || ""),
-        interestedIn: String(formData.get("interestedIn") || ""),
-        renovationType: String(formData.get("renovationType") || ""),
-        renovationObject: String(formData.get("renovationObject") || ""),
+        // Cast to the exact literal union types Payload expects
+        interestedIn: String(formData.get("interestedIn") || "") as
+          | "newConstruction"
+          | "renovation",
+        renovationType: String(formData.get("renovationType") || "") as
+          | "turnkeyNoProject"
+          | "turnkeyWithProject"
+          | "refresh"
+          | "repairs",
+        renovationObject: String(formData.get("renovationObject") || "") as
+          | "house"
+          | "apartment"
+          | "serviceSpace"
+          | "office"
+          | "bathroom"
+          | "room",
         workDescription: String(formData.get("workDescription") || ""),
         attachments: uploadedMediaIds,
         startDate: String(formData.get("startDate") || ""),
         location: String(formData.get("location") || ""),
         additionalComments: String(formData.get("additionalComments") || ""),
-        status: "new",
+        status: "new" as const,
       },
     });
 
     return NextResponse.json(
-      {
-        success: true,
-        id: quoteRequest.id,
-      },
+      { success: true, id: quoteRequest.id },
       { status: 201 },
     );
   } catch (error) {
     console.error("Quote request submission failed:", error);
-
     return NextResponse.json(
-      {
-        success: false,
-        message: "Quote request submission failed.",
-      },
+      { success: false, message: "Quote request submission failed." },
       { status: 500 },
     );
   }
