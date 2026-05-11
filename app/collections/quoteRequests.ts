@@ -3,6 +3,13 @@ import type { CollectionConfig } from "payload";
 export const QuoteRequests: CollectionConfig = {
   slug: "quote-requests",
 
+  access: {
+    create: () => true,
+    read: ({ req }) => Boolean(req.user),
+    update: ({ req }) => Boolean(req.user),
+    delete: ({ req }) => Boolean(req.user),
+  },
+
   admin: {
     useAsTitle: "fullName",
     defaultColumns: [
