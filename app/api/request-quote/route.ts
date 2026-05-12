@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getPayload } from "payload";
 import config from "@payload-config";
+import { resend } from "@/lib/resend";
 
 export const runtime = "nodejs";
 
@@ -63,6 +64,27 @@ export async function POST(request: Request) {
         additionalComments: String(formData.get("additionalComments") || ""),
         status: "new" as const,
       },
+    });
+
+    await resend.emails.send({
+      from: process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev",
+      to: process.env.OWNER_EMAIL || "",
+      subject: "New quote request received",
+      html: `
+    <h2>New quote request received</h2>
+
+    <p><strong>Name:</strong> ${quoteRequest.fullName}</p>
+    <p><strong>Phone:</strong> ${quoteRequest.phone}</p>
+    <p><strong>Email:</strong> ${quoteRequest.email}</p>
+    <p><strong>Interested in:</strong> ${quoteRequest.interestedIn}</p>
+    <p><strong>Renovation type:</strong> ${quoteRequest.renovationType}</p>
+    <p><strong>Object:</strong> ${quoteRequest.renovationObject}</p>
+    <p><strong>Start date:</strong> ${quoteRequest.startDate}</p>
+    <p><strong>Location:</strong> ${quoteRequest.location}</p>
+    <p><strong>Comments:</strong> ${quoteRequest.additionalComments || "—"}</p>
+
+    <p>Open admin panel to review the request.</p>
+  `,
     });
 
     return NextResponse.json(

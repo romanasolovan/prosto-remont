@@ -105,7 +105,7 @@ export default function ContactForm({ onClose }: ContactFormProps) {
         formData.append("attachments", file);
       });
 
-      const response = await fetch("/api/quote-requests", {
+      const response = await fetch("/api/request-quote", {
         method: "POST",
         body: formData,
       });
