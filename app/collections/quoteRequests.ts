@@ -127,6 +127,14 @@ export const QuoteRequests: CollectionConfig = {
       label: "Owner Reminder Date",
     },
     {
+      name: "reminderSentAt",
+      type: "date",
+      label: "Reminder Sent At",
+      admin: {
+        readOnly: true,
+      },
+    },
+    {
       name: "internalNotes",
       type: "textarea",
       label: "Internal Notes",

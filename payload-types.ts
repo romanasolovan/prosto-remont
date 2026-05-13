@@ -182,6 +182,7 @@ export interface QuoteRequest {
   additionalComments?: string | null;
   status: 'new' | 'contacted' | 'estimate-sent' | 'accepted' | 'rejected' | 'completed';
   ownerReminderDate?: string | null;
+  reminderSentAt?: string | null;
   internalNotes?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -322,6 +323,7 @@ export interface QuoteRequestsSelect<T extends boolean = true> {
   additionalComments?: T;
   status?: T;
   ownerReminderDate?: T;
+  reminderSentAt?: T;
   internalNotes?: T;
   updatedAt?: T;
   createdAt?: T;
