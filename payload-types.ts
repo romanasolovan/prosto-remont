@@ -181,7 +181,13 @@ export interface QuoteRequest {
   location: string;
   additionalComments?: string | null;
   status: 'new' | 'contacted' | 'estimate-sent' | 'accepted' | 'rejected' | 'completed';
+  /**
+   * Set a follow-up date for this request.
+   */
   ownerReminderDate?: string | null;
+  /**
+   * Automatically set after a reminder email is sent.
+   */
   reminderSentAt?: string | null;
   internalNotes?: string | null;
   updatedAt: string;

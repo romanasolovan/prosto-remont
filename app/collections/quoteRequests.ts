@@ -125,6 +125,10 @@ export const QuoteRequests: CollectionConfig = {
       name: "ownerReminderDate",
       type: "date",
       label: "Owner Reminder Date",
+      admin: {
+        position: "sidebar",
+        description: "Set a follow-up date for this request.",
+      },
     },
     {
       name: "reminderSentAt",
@@ -132,6 +136,8 @@ export const QuoteRequests: CollectionConfig = {
       label: "Reminder Sent At",
       admin: {
         readOnly: true,
+        position: "sidebar",
+        description: "Automatically set after a reminder email is sent.",
       },
     },
     {
