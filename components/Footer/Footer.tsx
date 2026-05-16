@@ -71,9 +71,9 @@ export default function Footer() {
                   <li>
                     <Link href="/projects">{tNav("projects")}</Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link href="/process">{tNav("process")}</Link>
-                  </li>
+                  </li> */}
                   <li>
                     <Link href="/reviews">{tNav("reviews")}</Link>
                   </li>
