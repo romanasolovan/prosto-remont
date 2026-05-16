@@ -9,9 +9,8 @@ import WhyChooseUs from "@/components/home/WhyChooseUs/WhyChooseUs";
 import ClientOpinionsPreview from "@/components/home/ClientOpinionsPreview/ClientOpinionsPreview";
 import QuoteHighlight from "@/components/home/QuoteHighlight/QuoteHighlight";
 import ServicesPreview from "@/components/home/ServicesPreview/ServicesPreview";
-import ProjectsPreview from "@/components/home/ProjectsPreview/ProjectsPreview";
+// import ProjectsPreview from "@/components/home/ProjectsPreview/ProjectsPreview";
 import ProcessPreview from "@/components/home/ProcessPreview/ProcessPreview";
-import ContactCTA from "@/components/ContactCTA/ContactCTA";
 import QuoteRequestModal from "@/components/QuoteRequestModal/QuoteRequestModal";
 
 import { useTranslations } from "next-intl";
@@ -115,7 +114,7 @@ export default function Home() {
       </section>
 
       <section id="projects" className={styles.pageSection}>
-        <ProjectsPreview />
+        {/* <ProjectsPreview /> */}
       </section>
 
       <section id="reviews" className={styles.pageSection}>
@@ -129,10 +128,6 @@ export default function Home() {
 
       <section id="process" className={styles.pageSection}>
         <ProcessPreview />
-      </section>
-
-      <section id="contact" className={styles.pageSection}>
-        <ContactCTA />
       </section>
     </div>
   );

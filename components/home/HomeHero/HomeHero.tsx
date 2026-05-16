@@ -118,12 +118,6 @@ export default function HomeHero() {
           <HeroStatIcons items={stats} ariaLabel={t("hero.statsAriaLabel")} />
 
           <div className={styles.bottomRow}>
-            <p className={styles.eyebrow}>
-              <span>{t("hero.eyebrowLineOne")}</span>
-              <span>{t("hero.eyebrowLineTwo")}</span>
-              <span>{t("hero.eyebrowLineThree")}</span>
-            </p>
-
             <Link
               href="/services"
               className={`btn-round btn-round--sm ${styles.buttonMobile}`}
