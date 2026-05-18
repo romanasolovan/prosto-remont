@@ -18,47 +18,32 @@ export default function ClientOpinions() {
   const locale = useLocale();
   const triggerRef = useRef<HTMLButtonElement | null>(null);
   const successTimerRef = useRef<number | null>(null);
-
-  const initialComments = useMemo<Comment[]>(
-    () => [
-      {
-        id: "1",
-        name: "Sarah Johnson",
-        rating: 5,
-        comment:
-          "Exceptional work on our kitchen renovation. The team was professional, punctual, and the quality exceeded our expectations.",
-        date: "2024-01-15",
-      },
-      {
-        id: "2",
-        name: "Michael Chen",
-        rating: 5,
-        comment:
-          "From design to completion, everything was handled with care and precision. Our new bathroom is exactly what we envisioned.",
-        date: "2024-01-10",
-      },
-      {
-        id: "3",
-        name: "Emma Rodriguez",
-        rating: 4,
-        comment:
-          "Great experience overall. The renovation transformed our living space beautifully. Highly recommend their services.",
-        date: "2024-01-05",
-      },
-    ],
-    [locale],
-  );
-
-  const [comments] = useState<Comment[]>(initialComments);
+  const [comments, setComments] = useState<Comment[]>([]);
+  const [isLoadingReviews, setIsLoadingReviews] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const [showSuccessNotice, setShowSuccessNotice] = useState(false);
 
   useEffect(() => {
-    return () => {
-      if (successTimerRef.current) {
-        window.clearTimeout(successTimerRef.current);
+    const fetchApprovedReviews = async () => {
+      try {
+        const response = await fetch("/api/public/reviews");
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch reviews");
+        }
+
+        const data = await response.json();
+
+        setComments(data.reviews || []);
+      } catch (error) {
+        console.error("Failed to load approved reviews:", error);
+        setComments([]);
+      } finally {
+        setIsLoadingReviews(false);
       }
     };
+
+    fetchApprovedReviews();
   }, []);
 
   const handleOpenForm = () => {
