@@ -211,7 +211,27 @@ export default function ClientOpinions() {
 
       {showForm && (
         <LeaveCommentForm
-          onSubmit={async () => {
+          onSubmit={async (data) => {
+            const formData = new FormData();
+
+            formData.append("name", data.name);
+            formData.append("rating", String(data.rating));
+            formData.append("comment", data.comment);
+            formData.append("location", data.location);
+
+            if (data.photo) {
+              formData.append("photo", data.photo);
+            }
+
+            const response = await fetch("/api/submit-review", {
+              method: "POST",
+              body: formData,
+            });
+
+            if (!response.ok) {
+              throw new Error("Failed to submit review");
+            }
+
             handleNewComment();
           }}
           onCancel={handleCloseForm}
