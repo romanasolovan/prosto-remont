@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getPayload } from "payload";
 import config from "@payload-config";
+// import { translateReview } from "@/lib/translate-review";
 
 export const runtime = "nodejs";
 
@@ -33,13 +34,34 @@ export async function POST(request: Request) {
       photoId = uploadedPhoto.id;
     }
 
+    const originalComment = String(formData.get("comment") || "");
+
+    // let translations:
+    //   | {
+    //       en: string;
+    //       pl: string;
+    //       uk: string;
+    //       ru: string;
+    //     }
+    //   | undefined;
+
+    // try {
+    //   translations = await translateReview(originalComment);
+    // } catch (error) {
+    //   console.error("Review translation failed:", error);
+    // }
+
+    
+
+    // const translations = await translateReview(originalComment);
+
     const review = await payload.create({
       collection: "reviews",
       data: {
         name: String(formData.get("name") || ""),
         location: String(formData.get("location") || ""),
         rating: Number(formData.get("rating") || 0),
-        comment: String(formData.get("comment") || ""),
+        comment: originalComment,
         originalLanguage: "en",
         photo: photoId,
         status: "pending",
