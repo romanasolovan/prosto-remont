@@ -3,6 +3,7 @@
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/navigation";
 import styles from "./ClientOpinionsPreview.module.css";
+import { useEffect, useState } from "react";
 
 interface Comment {
   id: string;
@@ -16,32 +17,28 @@ export default function ClientOpinionsPreview() {
   const t = useTranslations("clientOpinions");
   const locale = useLocale();
 
-  const comments: Comment[] = [
-    {
-      id: "1",
-      name: "Sarah Johnson",
-      rating: 5,
-      comment:
-        "Exceptional work on our kitchen renovation. The team was professional, punctual, and the quality exceeded our expectations.",
-      date: "2024-01-15",
-    },
-    {
-      id: "2",
-      name: "Michael Chen",
-      rating: 5,
-      comment:
-        "From design to completion, everything was handled with care and precision. Our new bathroom is exactly what we envisioned.",
-      date: "2024-01-10",
-    },
-    {
-      id: "3",
-      name: "Emma Rodriguez",
-      rating: 4,
-      comment:
-        "Great experience overall. The renovation transformed our living space beautifully. Highly recommend their services.",
-      date: "2024-01-05",
-    },
-  ];
+  const [comments, setComments] = useState<Comment[]>([]);
+
+  useEffect(() => {
+    const fetchApprovedReviews = async () => {
+      try {
+        const response = await fetch("/api/public/reviews");
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch reviews");
+        }
+
+        const data = await response.json();
+
+        setComments(data.reviews || []);
+      } catch (error) {
+        console.error("Failed to load preview reviews:", error);
+        setComments([]);
+      }
+    };
+
+    fetchApprovedReviews();
+  }, []);
 
   const featuredComments = comments.slice(0, 2);
 
