@@ -10,6 +10,12 @@ interface Comment {
   name: string;
   rating: number;
   comment: string;
+  translations?: {
+    en?: string;
+    pl?: string;
+    uk?: string;
+    ru?: string;
+  };
   date: string;
 }
 
@@ -41,6 +47,13 @@ export default function ClientOpinionsPreview() {
   }, []);
 
   const featuredComments = comments.slice(0, 2);
+
+  const getLocalizedComment = (comment: Comment) => {
+    const translatedText =
+      comment.translations?.[locale as "en" | "pl" | "uk" | "ru"];
+
+    return translatedText || comment.comment;
+  };
 
   const averageRating =
     comments.length > 0
@@ -193,7 +206,7 @@ export default function ClientOpinionsPreview() {
               </div>
 
               <p className={styles.clientOpinionsPreviewText}>
-                {comment.comment}
+                {getLocalizedComment(comment)}
               </p>
             </article>
           ))}

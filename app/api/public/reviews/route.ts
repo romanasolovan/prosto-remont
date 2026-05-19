@@ -26,6 +26,7 @@ export async function GET() {
         name: review.name,
         rating: review.rating,
         comment: review.comment,
+        translations: review.translations,
         location: review.location,
         date: review.createdAt,
       })),

@@ -205,6 +205,15 @@ export interface Review {
   location: string;
   rating: number;
   comment: string;
+  /**
+   * Optional translated versions. If empty, the website will show the original review comment.
+   */
+  translations?: {
+    en?: string | null;
+    pl?: string | null;
+    uk?: string | null;
+    ru?: string | null;
+  };
   originalLanguage: 'en' | 'pl' | 'uk' | 'ru';
   photo?: (number | null) | Media;
   status: 'pending' | 'approved' | 'rejected';
@@ -367,6 +376,14 @@ export interface ReviewsSelect<T extends boolean = true> {
   location?: T;
   rating?: T;
   comment?: T;
+  translations?:
+    | T
+    | {
+        en?: T;
+        pl?: T;
+        uk?: T;
+        ru?: T;
+      };
   originalLanguage?: T;
   photo?: T;
   status?: T;

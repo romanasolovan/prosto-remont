@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import styles from "./ClientOpinions.module.css";
 import LeaveCommentForm from "./LeaveCommentForm";
@@ -10,6 +10,12 @@ interface Comment {
   name: string;
   rating: number;
   comment: string;
+  translations?: {
+    en?: string;
+    pl?: string;
+    uk?: string;
+    ru?: string;
+  };
   date: string;
 }
 
@@ -72,6 +78,13 @@ export default function ClientOpinions() {
     requestAnimationFrame(() => {
       triggerRef.current?.focus();
     });
+  };
+
+  const getLocalizedComment = (comment: Comment) => {
+    const translatedText =
+      comment.translations?.[locale as "en" | "pl" | "uk" | "ru"];
+
+    return translatedText || comment.comment;
   };
 
   const averageRating =
@@ -189,7 +202,7 @@ export default function ClientOpinions() {
               </div>
             </div>
 
-            <p className={styles.commentText}>{comment.comment}</p>
+            <p className={styles.commentText}>{getLocalizedComment(comment)}</p>
           </article>
         ))}
       </div>

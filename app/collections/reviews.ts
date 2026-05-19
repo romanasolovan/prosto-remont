@@ -44,6 +44,37 @@ export const Reviews: CollectionConfig = {
       label: "Review Comment",
     },
     {
+      name: "translations",
+      type: "group",
+      label: "Review Translations",
+      admin: {
+        description:
+          "Optional translated versions. If empty, the website will show the original review comment.",
+      },
+      fields: [
+        {
+          name: "en",
+          type: "textarea",
+          label: "English Translation",
+        },
+        {
+          name: "pl",
+          type: "textarea",
+          label: "Polish Translation",
+        },
+        {
+          name: "uk",
+          type: "textarea",
+          label: "Ukrainian Translation",
+        },
+        {
+          name: "ru",
+          type: "textarea",
+          label: "Russian Translation",
+        },
+      ],
+    },
+    {
       name: "originalLanguage",
       type: "select",
       required: true,
