@@ -2,8 +2,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
-import { projects } from "@/data/projects";
+import { getProjectBySlug } from "@/lib/getProjectBySlug";
 import styles from "./projectDetails.module.css";
+import Image from "next/image";
 
 type Props = {
   params: Promise<{
@@ -14,7 +15,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const project = projects.find((item) => item.slug === slug);
+  const project = await getProjectBySlug(slug);
 
   if (!project) {
     return {
@@ -37,7 +38,7 @@ export default async function ProjectDetailsPage({ params }: Props) {
     namespace: "projects.categories",
   });
 
-  const project = projects.find((item) => item.slug === slug);
+  const project = await getProjectBySlug(slug);
 
   if (!project) {
     notFound();
@@ -69,10 +70,12 @@ export default async function ProjectDetailsPage({ params }: Props) {
             {project.galleryImages.length > 0 ? (
               project.galleryImages.map((image, index) => (
                 <div key={`${image}-${index}`} className={styles.galleryCard}>
-                  <img
+                  <Image
                     src={image}
                     alt={`${project.title} image ${index + 1}`}
+                    fill
                     className={styles.galleryImage}
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
               ))
@@ -87,7 +90,7 @@ export default async function ProjectDetailsPage({ params }: Props) {
         </div>
       </section>
 
-      {project.subprojects && project.subprojects.length > 0 ? (
+      {/* {project.subprojects && project.subprojects.length > 0 ? (
         <section className={styles.subprojectsSection}>
           <div className="container">
             <div className={styles.sectionIntro}>
@@ -128,7 +131,7 @@ export default async function ProjectDetailsPage({ params }: Props) {
             </div>
           </div>
         </section>
-      ) : null}
+      ) : null} */}
     </main>
   );
 }

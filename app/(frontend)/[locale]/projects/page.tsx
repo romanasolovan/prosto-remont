@@ -2,7 +2,18 @@ import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import styles from "./projects.module.css";
 import ProjectCard from "@/components/Projects/ProjectCard/ProjectCard";
-import { projects } from "@/data/projects";
+import { getProjects } from "@/lib/getProjects";
+
+type PublicProject = {
+  id: string;
+  title: string;
+  slug: string;
+  category: "residential" | "commercial";
+  description: string;
+  coverImages: string[];
+  galleryImages: string[];
+  featured?: boolean;
+};
 
 export async function generateMetadata({
   params,
@@ -29,6 +40,8 @@ export default async function ProjectsPage({
     locale,
     namespace: "projects.categories",
   });
+
+  const projects: PublicProject[] = await getProjects();
 
   return (
     <main className={styles.projectsPage}>

@@ -116,6 +116,10 @@
   gap: 18px;
 }
 
+.galleryCard {
+  position: relative;
+}
+
 .galleryCard,
 .galleryPlaceholder {
   overflow: hidden;
