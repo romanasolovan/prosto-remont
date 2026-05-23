@@ -72,6 +72,7 @@ export interface Config {
     'quote-requests': QuoteRequest;
     reviews: Review;
     projects: Project;
+    services: Service;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -84,6 +85,7 @@ export interface Config {
     'quote-requests': QuoteRequestsSelect<false> | QuoteRequestsSelect<true>;
     reviews: ReviewsSelect<false> | ReviewsSelect<true>;
     projects: ProjectsSelect<false> | ProjectsSelect<true>;
+    services: ServicesSelect<false> | ServicesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -244,6 +246,39 @@ export interface Project {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services".
+ */
+export interface Service {
+  id: number;
+  title: string;
+  slug: string;
+  shortDescription: string;
+  fullDescription?: string | null;
+  category: 'kitchen' | 'bathroom' | 'basement' | 'fullHome' | 'commercial' | 'carpentry';
+  price?: string | null;
+  abbr?: string | null;
+  specs?:
+    | {
+        label: string;
+        value: string;
+        id?: string | null;
+      }[]
+    | null;
+  steps?:
+    | {
+        title: string;
+        body: string;
+        id?: string | null;
+      }[]
+    | null;
+  featured?: boolean | null;
+  status?: ('draft' | 'published') | null;
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -285,6 +320,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'projects';
         value: number | Project;
+      } | null)
+    | ({
+        relationTo: 'services';
+        value: number | Service;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -427,6 +466,38 @@ export interface ProjectsSelect<T extends boolean = true> {
   description?: T;
   coverImages?: T;
   galleryImages?: T;
+  featured?: T;
+  status?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services_select".
+ */
+export interface ServicesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  shortDescription?: T;
+  fullDescription?: T;
+  category?: T;
+  price?: T;
+  abbr?: T;
+  specs?:
+    | T
+    | {
+        label?: T;
+        value?: T;
+        id?: T;
+      };
+  steps?:
+    | T
+    | {
+        title?: T;
+        body?: T;
+        id?: T;
+      };
   featured?: T;
   status?: T;
   order?: T;
