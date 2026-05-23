@@ -4,7 +4,17 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
   serverExternalPackages: ["sharp", "@payloadcms/db-postgres", "drizzle-orm"],
+
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**.public.blob.vercel-storage.com",
+      },
+    ],
+  },
 };
 
 const withNextIntl = createNextIntlPlugin();
+
 export default withPayload(withNextIntl(nextConfig));

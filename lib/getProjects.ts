@@ -1,22 +1,18 @@
-export async function getProjects() {
-  try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/public/projects`,
-      {
-        cache: "no-store",
-      },
-    );
+import type { PublicProject } from "@/types/projects";
 
-    if (!response.ok) {
-      throw new Error("Failed to fetch projects");
-    }
+export async function getProjects(): Promise<PublicProject[]> {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_SITE_URL}/api/public/projects`,
+    {
+      cache: "no-store",
+    },
+  );
 
-    const data = await response.json();
-
-    return data.projects || [];
-  } catch (error) {
-    console.error("Projects fetch failed:", error);
-
+  if (!response.ok) {
     return [];
   }
+
+  const data = await response.json();
+
+  return data.projects || [];
 }

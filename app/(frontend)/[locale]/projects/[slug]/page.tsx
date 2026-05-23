@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { getProjectBySlug } from "@/lib/getProjectBySlug";
 import styles from "./projectDetails.module.css";
 import Image from "next/image";
+import type { PublicProject } from "@/types/projects";
 
 type Props = {
   params: Promise<{
@@ -44,6 +45,13 @@ export default async function ProjectDetailsPage({ params }: Props) {
     notFound();
   }
 
+  const typedProject: PublicProject = project;
+
+  const detailImages =
+    typedProject.galleryImages.length > 0
+      ? typedProject.galleryImages
+      : typedProject.coverImages;
+
   return (
     <main className={styles.projectDetailsPage}>
       <section className={styles.projectHero}>
@@ -54,12 +62,14 @@ export default async function ProjectDetailsPage({ params }: Props) {
 
           <div className={styles.heroInner}>
             <span className={styles.categoryBadge}>
-              {tCategories(project.category)}
+              {tCategories(typedProject.category)}
             </span>
 
-            <h1 className={styles.projectTitle}>{project.title}</h1>
+            <h1 className={styles.projectTitle}>{typedProject.title}</h1>
 
-            <p className={styles.projectDescription}>{project.description}</p>
+            <p className={styles.projectDescription}>
+              {typedProject.description}
+            </p>
           </div>
         </div>
       </section>
@@ -67,12 +77,12 @@ export default async function ProjectDetailsPage({ params }: Props) {
       <section className={styles.gallerySection}>
         <div className="container">
           <div className={styles.galleryGrid}>
-            {project.galleryImages.length > 0 ? (
-              project.galleryImages.map((image, index) => (
+            {detailImages.length > 0 ? (
+              detailImages.map((image, index) => (
                 <div key={`${image}-${index}`} className={styles.galleryCard}>
                   <Image
                     src={image}
-                    alt={`${project.title} image ${index + 1}`}
+                    alt={`${typedProject?.title} image ${index + 1}`}
                     fill
                     className={styles.galleryImage}
                     sizes="(max-width: 768px) 100vw, 50vw"
