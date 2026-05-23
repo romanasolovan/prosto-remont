@@ -1,11 +1,14 @@
 "use client";
 
-import { useState } from "react";
+// import { useState } from "react";
 import { useTranslations } from "next-intl";
 import styles from "./services.module.css";
 import ServiceModal, {
   type ServiceDetail,
 } from "@/components/Services/ServiceModal";
+
+import { useEffect, useState } from "react";
+import type { PublicService } from "@/types/services";
 
 export default function ServicesClient() {
   const t = useTranslations("services");
@@ -13,96 +16,59 @@ export default function ServicesClient() {
     null,
   );
 
-  const services = [
-    {
-      key: "kitchen",
-      title: t("list.kitchen.title"),
-      description: t("list.kitchen.description"),
-      variant: styles.heroPanel,
-      abbr: "K",
-    },
-    {
-      key: "bathroom",
-      title: t("list.bathroom.title"),
-      description: t("list.bathroom.description"),
-      variant: styles.darkPanel,
-      abbr: "B",
-    },
-    {
-      key: "basement",
-      title: t("list.basement.title"),
-      description: t("list.basement.description"),
-      variant: styles.compactPanel,
-      abbr: "BS",
-    },
-    {
-      key: "fullHome",
-      title: t("list.fullHome.title"),
-      description: t("list.fullHome.description"),
-      variant: styles.compactPanel,
-      abbr: "FH",
-    },
-    {
-      key: "commercial",
-      title: t("list.commercial.title"),
-      description: t("list.commercial.description"),
-      variant: styles.darkPanel,
-      abbr: "C",
-    },
-    {
-      key: "carpentry",
-      title: t("list.carpentry.title"),
-      description: t("list.carpentry.description"),
-      variant: styles.widePanel,
-      abbr: "CP",
-    },
-  ] as const;
+  const [services, setServices] = useState<PublicService[]>([]);
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const response = await fetch("/api/public/services");
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch services");
+        }
+
+        const data = await response.json();
+
+        setServices(data.services || []);
+      } catch (error) {
+        console.error("Failed to load services:", error);
+        setServices([]);
+      }
+    };
+
+    fetchServices();
+  }, []);
 
   const openModal = (index: number) => {
     const service = services[index];
     if (!service) return;
 
-    const baseKey = `details.${service.key}`;
-
     const modalService: ServiceDetail = {
       index,
       title: service.title,
-      eyebrow: t(`${baseKey}.eyebrow`),
-      desc: t(`${baseKey}.desc`),
-      specs: [
-        {
-          label: t(`${baseKey}.specs.scope.label`),
-          value: t(`${baseKey}.specs.scope.value`),
-        },
-        {
-          label: t(`${baseKey}.specs.timeline.label`),
-          value: t(`${baseKey}.specs.timeline.value`),
-        },
-        {
-          label: t(`${baseKey}.specs.support.label`),
-          value: t(`${baseKey}.specs.support.value`),
-        },
-      ],
-      steps: [
-        {
-          title: t(`${baseKey}.steps.first.title`),
-          body: t(`${baseKey}.steps.first.body`),
-        },
-        {
-          title: t(`${baseKey}.steps.second.title`),
-          body: t(`${baseKey}.steps.second.body`),
-        },
-        {
-          title: t(`${baseKey}.steps.third.title`),
-          body: t(`${baseKey}.steps.third.body`),
-        },
-      ],
+      eyebrow: service.price || "Service details",
+      desc: service.fullDescription || service.shortDescription,
+      specs: service.specs || [],
+      steps: service.steps || [],
     };
 
     setActiveService(modalService);
   };
 
   const closeModal = () => setActiveService(null);
+
+  const getPanelVariant = (index: number) => {
+    const variants = [
+      styles.heroPanel,
+      styles.darkPanel,
+      styles.compactPanel,
+      styles.compactPanel,
+      styles.darkPanel,
+      styles.widePanel,
+    ];
+
+    return variants[index % variants.length];
+  };
 
   return (
     <>
@@ -219,8 +185,8 @@ export default function ServicesClient() {
             <div className={styles.servicesBoard}>
               {services.map((service, index) => (
                 <article
-                  key={service.title}
-                  className={`${styles.servicePanel} ${service.variant}`}
+                  key={service.id}
+                  className={`${styles.servicePanel} ${getPanelVariant(index)}`}
                   data-cursor-card="true"
                   onClick={() => openModal(index)}
                   onKeyDown={(event) => {
@@ -244,7 +210,8 @@ export default function ServicesClient() {
                       </span>
 
                       <span className={styles.calloutCircle} aria-hidden="true">
-                        {service.abbr}
+                        {service.abbr ||
+                          service.title.slice(0, 2).toUpperCase()}
                       </span>
                     </div>
 
@@ -252,7 +219,7 @@ export default function ServicesClient() {
 
                     <div className={styles.panelBody}>
                       <h3>{service.title}</h3>
-                      <p>{service.description}</p>
+                      <p>{service.shortDescription}</p>
                     </div>
 
                     <div className={styles.panelMeta}>
