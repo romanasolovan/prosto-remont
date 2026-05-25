@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { Link } from "@/navigation";
-import HeroStatIcons from "./HeroStatIcons";
+// import HeroStatIcons from "./HeroStatIcons";
 import styles from "./HomeHero.module.css";
 
 type StatIconKey = "projects" | "clients" | "area" | "years";
@@ -78,12 +78,12 @@ export default function HomeHero() {
   const t = useTranslations("home");
   const tCommon = useTranslations("common");
 
-  const stats = [
-    { key: "projects", icon: StatIcons.projects, label: t("stats.projects") },
-    { key: "clients", icon: StatIcons.clients, label: t("stats.clients") },
-    { key: "area", icon: StatIcons.area, label: t("stats.area") },
-    { key: "years", icon: StatIcons.years, label: t("stats.years") },
-  ] as const;
+  // const stats = [
+  //   { key: "projects", icon: StatIcons.projects, label: t("stats.projects") },
+  //   { key: "clients", icon: StatIcons.clients, label: t("stats.clients") },
+  //   { key: "area", icon: StatIcons.area, label: t("stats.area") },
+  //   { key: "years", icon: StatIcons.years, label: t("stats.years") },
+  // ] as const;
 
   return (
     <section className={styles.hero} aria-labelledby="home-hero-title">
@@ -115,7 +115,7 @@ export default function HomeHero() {
             </Link>
           </div>
 
-          <HeroStatIcons items={stats} ariaLabel={t("hero.statsAriaLabel")} />
+          {/* <HeroStatIcons items={stats} ariaLabel={t("hero.statsAriaLabel")} /> */}
 
           <div className={styles.bottomRow}>
             <Link
