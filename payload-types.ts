@@ -170,6 +170,8 @@ export interface Media {
   focalY?: number | null;
 }
 /**
+ * Client Quote Requests submitted from the website form.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "quote-requests".
  */
@@ -186,20 +188,28 @@ export interface QuoteRequest {
   startDate: string;
   location: string;
   additionalComments?: string | null;
+  /**
+   * Use this to track the progress of the client request.
+   */
   status: 'new' | 'contacted' | 'estimate-sent' | 'accepted' | 'rejected' | 'completed';
   /**
-   * Set a follow-up date for this request.
+   * Choose when the owner should receive a follow-up reminder email.
    */
   ownerReminderDate?: string | null;
   /**
-   * Automatically set after a reminder email is sent.
+   * Automatically filled after the reminder email is sent.
    */
   reminderSentAt?: string | null;
+  /**
+   * Private notes for the team. These are never shown on the website.
+   */
   internalNotes?: string | null;
   updatedAt: string;
   createdAt: string;
 }
 /**
+ * Client reviews submitted from the website form. Only approved reviews appear publicly.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "reviews".
  */
@@ -220,42 +230,88 @@ export interface Review {
   };
   originalLanguage: 'en' | 'pl' | 'uk' | 'ru';
   photo?: (number | null) | Media;
+  /**
+   * Set to 'Approved' to show the review on the website. Keep as 'Pending' to hide it until you review the content.
+   */
   status: 'pending' | 'approved' | 'rejected';
+  /**
+   * Use this later to highlight selected reviews.
+   */
   featured?: boolean | null;
+  /**
+   * Private notes for the team. These are never shown on the website.
+   */
   internalNotes?: string | null;
   updatedAt: string;
   createdAt: string;
 }
 /**
+ * Projects displayed on the portfolio page.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "projects".
  */
 export interface Project {
   id: number;
   title: string;
+  /**
+   * Use lowercase words separated by hyphens, for example: modern-kitchen-renovation.
+   */
   slug: string;
   category: 'residential' | 'commercial';
   description: string;
+  /**
+   * Images used on the projects listing page.
+   */
   coverImages: (number | Media)[];
+  /**
+   * Images shown inside the individual project page.
+   */
   galleryImages?: (number | Media)[] | null;
+  /**
+   * Use this later for homepage featured projects.
+   */
   featured?: boolean | null;
+  /**
+   * Only published projects appear on the website.
+   */
   status?: ('draft' | 'published') | null;
+  /**
+   * Lower numbers appear first.
+   */
   order?: number | null;
   updatedAt: string;
   createdAt: string;
 }
 /**
+ * Services displayed on the services page and homepage preview.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "services".
  */
 export interface Service {
   id: number;
   title: string;
+  /**
+   * Use lowercase words separated by hyphens, for example: bathroom-renovation.
+   */
   slug: string;
+  /**
+   * Short text shown on service cards.
+   */
   shortDescription: string;
+  /**
+   * Longer text shown after the user opens the services details.
+   */
   fullDescription?: string | null;
   category: 'kitchen' | 'bathroom' | 'basement' | 'fullHome' | 'commercial' | 'carpentry';
+  /**
+   * Example: From 250 zł/m² or Custom quote.
+   */
   price?: string | null;
+  /**
+   * Short label shown in the circle, for example: K, B, FH.
+   */
   abbr?: string | null;
   specs?:
     | {
@@ -271,8 +327,17 @@ export interface Service {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Use this for homepage service preview.
+   */
   featured?: boolean | null;
+  /**
+   * Only published services appear on the website.
+   */
   status?: ('draft' | 'published') | null;
+  /**
+   * Lower numbers appear first.
+   */
   order?: number | null;
   updatedAt: string;
   createdAt: string;

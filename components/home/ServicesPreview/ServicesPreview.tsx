@@ -16,9 +16,9 @@ export default function ServicesPreview() {
       try {
         const response = await fetch("/api/public/services");
 
-        if (!response.ok) {
-          throw new Error("Failed to fetch services");
-        }
+        // if (!response.ok) {
+        //   throw new Error("Failed to fetch services");
+        // }
 
         const data = await response.json();
         setServices((data.services || []).slice(0, 4));

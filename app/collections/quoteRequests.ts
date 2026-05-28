@@ -20,6 +20,12 @@ export const QuoteRequests: CollectionConfig = {
       "createdAt",
     ],
     group: "Business",
+    description: "Client Quote Requests submitted from the website form.",
+  },
+
+  labels: {
+    singular: "Quote Request",
+    plural: "Quote Requests",
   },
 
   fields: [
@@ -111,7 +117,12 @@ export const QuoteRequests: CollectionConfig = {
       type: "select",
       required: true,
       defaultValue: "new",
-      label: "Status",
+      label: "Request Status",
+      admin: {
+        position: "sidebar",
+        description: "Use this to track the progress of the client request.",
+      },
+
       options: [
         { label: "New", value: "new" },
         { label: "Contacted", value: "contacted" },
@@ -124,26 +135,31 @@ export const QuoteRequests: CollectionConfig = {
     {
       name: "ownerReminderDate",
       type: "date",
-      label: "Owner Reminder Date",
+      label: "Follow-up Reminder Date",
       admin: {
         position: "sidebar",
-        description: "Set a follow-up date for this request.",
+        description:
+          "Choose when the owner should receive a follow-up reminder email.",
       },
     },
     {
       name: "reminderSentAt",
       type: "date",
-      label: "Reminder Sent At",
+      label: "Reminder Email Sent At",
       admin: {
         readOnly: true,
         position: "sidebar",
-        description: "Automatically set after a reminder email is sent.",
+        description: "Automatically filled after the reminder email is sent.",
       },
     },
     {
       name: "internalNotes",
       type: "textarea",
-      label: "Internal Notes",
+      label: "Owner Notes",
+      admin: {
+        description:
+          "Private notes for the team. These are never shown on the website.",
+      },
     },
   ],
 };

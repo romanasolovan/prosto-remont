@@ -14,6 +14,13 @@ export const Reviews: CollectionConfig = {
     useAsTitle: "name",
     defaultColumns: ["name", "rating", "location", "status", "createdAt"],
     group: "Business",
+    description:
+      "Client reviews submitted from the website form. Only approved reviews appear publicly.",
+  },
+
+  labels: {
+    singular: "Review",
+    plural: "Reviews",
   },
 
   fields: [
@@ -46,7 +53,7 @@ export const Reviews: CollectionConfig = {
     {
       name: "translations",
       type: "group",
-      label: "Review Translations",
+      label: "Website Translations",
       admin: {
         description:
           "Optional translated versions. If empty, the website will show the original review comment.",
@@ -98,7 +105,12 @@ export const Reviews: CollectionConfig = {
       type: "select",
       required: true,
       defaultValue: "pending",
-      label: "Status",
+      label: "Review Status",
+      admin: {
+        position: "sidebar",
+        description:
+          "Set to 'Approved' to show the review on the website. Keep as 'Pending' to hide it until you review the content.",
+      },
       options: [
         { label: "Pending Review", value: "pending" },
         { label: "Approved", value: "approved" },
@@ -109,12 +121,20 @@ export const Reviews: CollectionConfig = {
       name: "featured",
       type: "checkbox",
       defaultValue: false,
-      label: "Feature this review",
+      label: "Showed as featured review",
+      admin: {
+        position: "sidebar",
+        description: "Use this later to highlight selected reviews.",
+      },
     },
     {
       name: "internalNotes",
       type: "textarea",
-      label: "Internal Notes",
+      label: "Owner Notes",
+      admin: {
+        description:
+          "Private notes for the team. These are never shown on the website.",
+      },
     },
   ],
 };

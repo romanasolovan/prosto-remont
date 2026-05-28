@@ -14,6 +14,12 @@ export const Projects: CollectionConfig = {
     useAsTitle: "title",
     defaultColumns: ["title", "category", "featured", "status", "updatedAt"],
     group: "Business",
+    description: "Projects displayed on the portfolio page.",
+  },
+
+  labels: {
+    singular: "Project",
+    plural: "Projects",
   },
 
   fields: [
@@ -28,6 +34,11 @@ export const Projects: CollectionConfig = {
       type: "text",
       required: true,
       unique: true,
+      label: "URL Slug",
+      admin: {
+        description:
+          "Use lowercase words separated by hyphens, for example: modern-kitchen-renovation.",
+      },
     },
 
     {
@@ -58,6 +69,10 @@ export const Projects: CollectionConfig = {
       relationTo: "media",
       hasMany: true,
       required: true,
+      label: "Project Card Images",
+      admin: {
+        description: "Images used on the projects listing page.",
+      },
     },
 
     {
@@ -65,18 +80,31 @@ export const Projects: CollectionConfig = {
       type: "relationship",
       relationTo: "media",
       hasMany: true,
+      label: "Project Detail Gallery",
+      admin: {
+        description: "Images shown inside the individual project page.",
+      },
     },
 
     {
       name: "featured",
       type: "checkbox",
       defaultValue: false,
+      label: "Show on Homepage",
+      admin: {
+        description: "Use this later for homepage featured projects.",
+      },
     },
 
     {
       name: "status",
       type: "select",
       defaultValue: "draft",
+      label: "Published Status",
+      admin: {
+        position: "sidebar",
+        description: "Only published projects appear on the website.",
+      },
       options: [
         {
           label: "Draft",
@@ -93,6 +121,11 @@ export const Projects: CollectionConfig = {
       name: "order",
       type: "number",
       defaultValue: 0,
+      label: "Display Order",
+      admin: {
+        position: "sidebar",
+        description: "Lower numbers appear first.",
+      },
     },
   ],
 };
