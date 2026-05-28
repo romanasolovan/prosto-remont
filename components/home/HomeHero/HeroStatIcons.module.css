@@ -1,18 +1,36 @@
 .iconRow {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: stretch;
-  gap: 0.75rem;
-  margin: 0;
-  padding: 0;
+  grid-template-columns: 1fr;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+  margin: clamp(2.6rem, 6vw, 4.8rem) 0 0;
+  padding: clamp(1.4rem, 2.5vw, 2rem) clamp(0.75rem, 3vw, 2rem) 0;
   list-style: none;
   opacity: 0;
   transform: translateY(22px);
   animation: revealRow 900ms cubic-bezier(0.22, 1, 0.36, 1) 160ms forwards;
 }
 
+.iconRow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: min(100%, 18rem);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(245, 244, 240, 0.24),
+    rgba(245, 244, 240, 0.08),
+    transparent
+  );
+}
+
 .iconItem {
   display: flex;
+  min-width: 0;
   opacity: 0;
   transform: translateY(16px);
   animation: revealIcon 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -23,123 +41,158 @@
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
-  gap: 0.65rem;
-  padding: 0.75rem 0.8rem;
-  border-radius: 999px;
+  gap: 1rem;
   color: rgba(248, 248, 245, 0.96);
-  background:
-    radial-gradient(
-      circle at 20% 20%,
-      rgba(255, 255, 255, 0.08),
-      rgba(255, 255, 255, 0.025) 70%
-    ),
-    rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.07),
-    0 10px 26px rgba(0, 0, 0, 0.18);
 }
 
 .iconCircle {
   position: relative;
   display: grid;
   place-items: center;
-  width: 2.55rem;
-  height: 2.55rem;
+  width: 3.45rem;
+  height: 3.45rem;
+  flex-shrink: 0;
   border-radius: 50%;
-  color: rgba(248, 248, 245, 0.96);
-  background: rgba(255, 255, 255, 0.045);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(248, 248, 245, 0.95);
+  background: transparent;
+  border: 1px solid rgba(245, 244, 240, 0.22);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 0 26px rgba(0, 0, 0, 0.24);
+}
+
+.iconCircle::before {
+  content: "";
+  position: absolute;
+  inset: -0.42rem;
+  border-radius: 50%;
+  border: 1px solid rgba(245, 244, 240, 0.055);
 }
 
 .iconCircle svg {
-  width: 1rem;
-  height: 1rem;
+  width: 1.45rem;
+  height: 1.45rem;
 }
 
 .label {
   font-family: "Cormorant Garamond", "Times New Roman", serif;
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-style: italic;
   font-weight: 500;
   line-height: 1.08;
-  color: rgba(245, 244, 240, 0.86);
+  color: rgba(245, 244, 240, 0.88);
 }
 
 @media (min-width: 768px) {
   .iconRow {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    max-width: 46rem;
-    gap: 0.85rem;
+    gap: clamp(1.4rem, 2.4vw, 2.6rem);
+    max-width: calc(100% - 5rem);
+    margin-top: clamp(4.2rem, 7vw, 6rem);
+    padding-inline: clamp(1rem, 2.5vw, 2.5rem);
+    padding-top: clamp(1.6rem, 2.4vw, 2.2rem);
+  }
+
+  .iconRow::before {
+    left: clamp(1rem, 2.5vw, 2.5rem);
+    width: min(44vw, 36rem);
   }
 
   .statCard {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    text-align: center;
-    gap: 0.7rem;
-    padding: 1rem 0.7rem 1.05rem;
-    border-radius: 2rem;
+    gap: 1rem;
   }
 
   .iconCircle {
-    width: 4rem;
-    height: 4rem;
+    width: 4.15rem;
+    height: 4.15rem;
   }
 
   .iconCircle svg {
-    width: 1.35rem;
-    height: 1.35rem;
+    width: 1.7rem;
+    height: 1.7rem;
   }
 
   .label {
-    max-width: 10ch;
-    font-size: 0.92rem;
+    max-width: 12ch;
+    font-size: 1.08rem;
   }
 }
 
 @media (min-width: 1200px) {
   .iconRow {
-    max-width: 52rem;
+    max-width: calc(100% - 16rem);
+    gap: clamp(2rem, 3.2vw, 4rem);
+    margin-top: clamp(5rem, 7vw, 7rem);
+    padding-inline: clamp(1.5rem, 3vw, 3.5rem);
+  }
+
+  .iconRow::before {
+    left: clamp(1.5rem, 3vw, 3.5rem);
+    width: min(46vw, 42rem);
   }
 
   .iconCircle {
-    width: 4.6rem;
-    height: 4.6rem;
+    width: 4.75rem;
+    height: 4.75rem;
   }
 
   .iconCircle svg {
-    width: 1.6rem;
-    height: 1.6rem;
+    width: 1.95rem;
+    height: 1.95rem;
   }
 
   .label {
-    font-size: 1.02rem;
+    font-size: 1.18rem;
   }
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .statCard {
+  .statCard,
+  .iconCircle,
+  .iconCircle svg,
+  .label {
     transition:
       transform 320ms ease,
       border-color 320ms ease,
-      background 320ms ease,
+      color 320ms ease,
       box-shadow 320ms ease;
   }
 
   .statCard:hover {
-    transform: translateY(-3px);
-    border-color: rgba(255, 255, 255, 0.18);
-    background:
-      radial-gradient(
-        circle at 20% 20%,
-        rgba(255, 255, 255, 0.11),
-        rgba(255, 255, 255, 0.035) 70%
-      ),
-      rgba(255, 255, 255, 0.05);
+    transform: translateY(-6px) scale(1.04);
+  }
+
+  .statCard:hover .iconCircle {
+    border-color: rgba(245, 244, 240, 0.38);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.09),
-      0 16px 34px rgba(0, 0, 0, 0.24);
+      inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+      0 0 34px rgba(245, 244, 240, 0.07);
+  }
+
+  .statCard:hover .iconCircle svg {
+    transform: scale(1.12);
+  }
+
+  .statCard:hover .label {
+    color: rgba(248, 248, 245, 0.98);
+  }
+}
+@media (max-width: 374px) {
+  .iconRow {
+    gap: 0.78rem;
+  }
+
+  .statCard {
+    gap: 0.65rem;
+  }
+
+  .iconCircle {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .label {
+    font-size: 0.82rem;
   }
 }
 
@@ -151,11 +204,15 @@
     animation: none;
   }
 
-  .statCard {
+  .statCard,
+  .iconCircle,
+  .iconCircle svg,
+  .label {
     transition: none;
   }
 
-  .statCard:hover {
+  .statCard:hover,
+  .statCard:hover .iconCircle svg {
     transform: none;
   }
 }
