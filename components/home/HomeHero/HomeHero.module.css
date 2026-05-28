@@ -78,17 +78,25 @@
   min-height: 100svh;
   display: grid;
   align-content: center;
-  gap: 1.75rem;
+  gap: 1.55rem;
   padding: 5.75rem 0 3rem;
 }
 
 .topRow {
   display: grid;
-  gap: 1.5rem;
   justify-items: start;
+  max-width: min(100%, 44rem);
   opacity: 0;
   transform: translateY(22px);
   animation: rise 900ms cubic-bezier(0.22, 1, 0.36, 1) 80ms forwards;
+}
+
+.mobileCtaRow {
+  display: flex;
+  justify-content: flex-start;
+  opacity: 0;
+  transform: translateY(18px);
+  animation: rise 900ms cubic-bezier(0.22, 1, 0.36, 1) 160ms forwards;
 }
 
 .title {
@@ -118,23 +126,46 @@
   color: rgba(245, 244, 240, 0.84);
 }
 
+.buttonDesktop,
+.buttonMobile {
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+}
+
+.buttonDesktop::before,
+.buttonDesktop::after,
+.buttonMobile::before,
+.buttonMobile::after {
+  content: "";
+  position: absolute;
+  inset: -0.45rem;
+  z-index: -1;
+  border-radius: 50%;
+  border: 1px solid rgba(245, 244, 240, 0.18);
+  opacity: 0;
+  transform: scale(0.82);
+  pointer-events: none;
+}
+
+.buttonDesktop::before,
+.buttonMobile::before {
+  animation: quoteRipple 3.8s ease-out infinite;
+}
+
+.buttonDesktop::after,
+.buttonMobile::after {
+  animation: quoteRipple 3.8s ease-out 1.45s infinite;
+}
+
 .buttonDesktop {
   display: none;
 }
 
 .buttonMobile {
-  width: 5.4rem;
+  width: 7rem;
+  height: 7rem;
   flex-shrink: 0;
-}
-
-.bottomRow {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 1rem;
-  opacity: 0;
-  transform: translateY(22px);
-  animation: rise 900ms cubic-bezier(0.22, 1, 0.36, 1) 240ms forwards;
 }
 
 .eyebrow {
@@ -156,15 +187,12 @@
 
 @media (min-width: 768px) {
   .heroInner {
-    padding: 0;
+    padding: 0 0 3.5rem;
     gap: 3rem;
   }
 
   .topRow {
-    grid-template-columns: minmax(0, max-content) auto;
-    gap: clamp(5rem, 12vw, 12rem);
-    /* align-items: start; */
-    justify-content: start;
+    max-width: min(62vw, 50rem);
   }
 
   .title {
@@ -172,45 +200,30 @@
   }
 
   .titleLineOne {
-    font-size: clamp(4.8rem, 7.2vw, 7.2rem);
+    font-size: clamp(4.15rem, 6.3vw, 6.15rem);
   }
 
   .titleLineTwo {
-    font-size: clamp(2.25rem, 3.5vw, 3.4rem);
+    font-size: clamp(2.05rem, 3vw, 3rem);
   }
 
   .buttonDesktop {
     display: inline-grid;
-    justify-self: start;
-    margin-top: 0.35rem;
+    position: absolute;
+    top: 15%;
+    right: clamp(4.25rem, 7vw, 6rem);
+    width: 12.25rem;
+    height: 12.25rem;
+    z-index: 4;
   }
 
+  .mobileCtaRow,
   .buttonMobile {
     display: none;
   }
 
   .bottomRow {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: center;
-    gap: 2rem;
-  }
-
-  .eyebrow {
-    justify-self: end;
-    text-align: right;
-    font-size: 0.86rem;
-    line-height: 1.4;
-    letter-spacing: 0.12em;
-    color: var(--ink-muted);
-  }
-
-  .eyebrow span {
-    display: inline;
-  }
-
-  .eyebrow span + span::before {
-    content: " ";
+    display: none;
   }
 
   .orbitLeft {
@@ -229,12 +242,27 @@
 }
 
 @media (min-width: 1200px) {
+  .heroInner {
+    padding-bottom: 4rem;
+  }
+
+  .topRow {
+    max-width: min(64vw, 66rem);
+  }
+
   .titleLineOne {
-    font-size: clamp(6rem, 6vw, 8.4rem);
+    font-size: clamp(5.8rem, 5.7vw, 8.2rem);
   }
 
   .titleLineTwo {
-    font-size: clamp(2.5rem, 2.6vw, 3.8rem);
+    font-size: clamp(2.45rem, 2.55vw, 3.7rem);
+  }
+
+  .buttonDesktop {
+    top: 19%;
+    right: clamp(7.5rem, 10vw, 11rem);
+    width: 13.75rem;
+    height: 13.75rem;
   }
 
   .eyebrow {
@@ -280,5 +308,42 @@
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.08),
       0 20px 40px rgba(0, 0, 0, 0.28);
+  }
+}
+
+@keyframes quoteRipple {
+  0% {
+    opacity: 0;
+    transform: scale(0.82);
+  }
+
+  18% {
+    opacity: 0.38;
+  }
+
+  72% {
+    opacity: 0;
+    transform: scale(1.38);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.38);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .topRow,
+  .bottomRow {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .buttonDesktop::before,
+  .buttonDesktop::after,
+  .buttonMobile::before,
+  .buttonMobile::after {
+    animation: none;
   }
 }
