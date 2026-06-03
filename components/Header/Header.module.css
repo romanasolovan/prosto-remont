@@ -3,7 +3,7 @@
   inset: 0 0 auto 0;
   width: 100%;
   z-index: var(--z-overlay);
-  padding-top: 14px;
+  padding-top: 10px;
   transition:
     padding 220ms ease,
     transform 220ms ease;
@@ -12,6 +12,7 @@
 .headerSpacer {
   display: block;
   width: 100%;
+  background: #0b0d0f;
 }
 
 .headerCompact {
@@ -25,7 +26,7 @@
 .headerShell {
   position: relative;
   border: 1px solid rgba(80, 80, 80, 0.08);
-  border-radius: 30px;
+  border-radius: 26px;
   background: linear-gradient(
     135deg,
     rgba(244, 244, 242, 0.97) 0%,
@@ -65,7 +66,7 @@
   align-items: center;
   gap: 24px;
   min-width: 0;
-  padding: 14px 22px;
+  padding: 12px 22px;
 }
 
 /* Logo */
@@ -394,7 +395,7 @@
 
 @media (min-width: 768px) {
   .header {
-    padding-top: 16px;
+    padding-top: 12px;
   }
 
   .headerCompact {
@@ -403,7 +404,7 @@
 
   .headerContent {
     gap: 18px;
-    padding: 16px 22px;
+    padding: 12px 20px;
   }
 
   .headerActions {
@@ -435,7 +436,7 @@
   .header {
     position: sticky;
     z-index: var(--z-sticky);
-    padding-top: 16px;
+    padding-top: 12px;
   }
 
   .headerSpacer {
@@ -448,7 +449,7 @@
 
   .headerContent {
     gap: 24px;
-    padding: 14px 22px;
+    padding: 12px 22px;
   }
 
   .headerActions {

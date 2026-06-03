@@ -79,7 +79,7 @@
   display: grid;
   align-content: center;
   gap: 1.55rem;
-  padding: 5.75rem 0 3rem;
+  padding: 4.75rem 0 3rem;
 }
 
 .topRow {
@@ -187,8 +187,8 @@
 
 @media (min-width: 768px) {
   .heroInner {
-    padding: 0 0 3.5rem;
-    gap: 3rem;
+    padding: 0 0 3rem;
+    gap: 2.6rem;
   }
 
   .topRow {
