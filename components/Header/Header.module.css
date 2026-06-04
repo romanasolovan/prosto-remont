@@ -5,18 +5,18 @@
   z-index: var(--z-overlay);
   padding-top: 10px;
   transition:
-    padding 220ms ease,
-    transform 220ms ease;
+    padding 260ms ease,
+    transform 260ms ease;
 }
 
 .headerSpacer {
   display: block;
   width: 100%;
-  background: #0b0d0f;
+  background: transparent;
 }
 
 .headerCompact {
-  padding-top: 9px;
+  padding-top: 6px;
 }
 
 .headerMenuOpen {
@@ -39,6 +39,7 @@
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   transition:
+    transform 260ms ease,
     border-color 220ms ease,
     box-shadow 220ms ease,
     border-radius 220ms ease,
@@ -46,9 +47,15 @@
 }
 
 .headerCompact .headerShell {
+  transform: scale(0.965);
+  transform-origin: top center;
   box-shadow:
-    0 12px 24px rgba(10, 12, 16, 0.1),
+    0 10px 20px rgba(10, 12, 16, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.82);
+}
+
+.headerCompact:hover .headerShell {
+  transform: scale(1);
 }
 
 .headerMenuOpen .headerShell {
