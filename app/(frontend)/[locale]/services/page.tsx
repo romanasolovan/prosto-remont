@@ -73,7 +73,7 @@ export default function ServicesClient() {
   return (
     <>
       <div className={styles.servicesPage}>
-        <section className={styles.hero}>
+        {/* <section className={styles.hero}>
           <div className={styles.heroGrid} aria-hidden="true" />
           <div className={styles.heroDiagonals} aria-hidden="true">
             <svg
@@ -153,7 +153,7 @@ export default function ServicesClient() {
               <p className={styles.subtitle}>{t("hero.subtitle")}</p>
             </div>
           </div>
-        </section>
+        </section> */}
 
         <section className={styles.servicesSection}>
           <span className={styles.diagRule1} aria-hidden="true" />
