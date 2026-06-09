@@ -19,8 +19,8 @@ export const Services: CollectionConfig = {
   },
 
   labels: {
-    singular: "Service Category",
-    plural: "Service Categories",
+    singular: "Service",
+    plural: "Services",
   },
 
   fields: [
