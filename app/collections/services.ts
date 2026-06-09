@@ -41,24 +41,6 @@ export const Services: CollectionConfig = {
       },
     },
     {
-      name: "shortDescription",
-      type: "textarea",
-      required: true,
-      label: "Card Description",
-      admin: {
-        description: "Short text shown on service cards.",
-      },
-    },
-    {
-      name: "fullDescription",
-      type: "textarea",
-      label: "Modal / Full Description",
-      admin: {
-        description:
-          "Longer text shown after the user opens the services details.",
-      },
-    },
-    {
       name: "category",
       type: "select",
       required: true,
@@ -78,32 +60,6 @@ export const Services: CollectionConfig = {
       admin: {
         description: "Example: From 250 zł/m² or Custom quote.",
       },
-    },
-    {
-      name: "abbr",
-      type: "text",
-      label: "Card abbreviation",
-      admin: {
-        description: "Short label shown in the circle, for example: K, B, FH.",
-      },
-    },
-    {
-      name: "specs",
-      type: "array",
-      label: "Service Specs",
-      fields: [
-        { name: "label", type: "text", required: true },
-        { name: "value", type: "text", required: true },
-      ],
-    },
-    {
-      name: "steps",
-      type: "array",
-      label: "Process Steps",
-      fields: [
-        { name: "title", type: "text", required: true },
-        { name: "body", type: "textarea", required: true },
-      ],
     },
     {
       name: "featured",
