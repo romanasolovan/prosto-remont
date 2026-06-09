@@ -12,15 +12,15 @@ export const Services: CollectionConfig = {
 
   admin: {
     useAsTitle: "title",
-    defaultColumns: ["title", "category", "price", "status", "order"],
+    defaultColumns: ["title", "status", "order"],
     group: "Business",
     description:
-      "Services displayed on the services page and homepage preview.",
+      "Service categories and price-list items displayed on the services page.",
   },
 
   labels: {
-    singular: "Service",
-    plural: "Services",
+    singular: "Service Category",
+    plural: "Service Categories",
   },
 
   fields: [
@@ -28,6 +28,11 @@ export const Services: CollectionConfig = {
       name: "title",
       type: "text",
       required: true,
+      label: "Category Title",
+      admin: {
+        description:
+          "Example: Prace malarskie, Instalacje G-K, Hydraulika / Elektryka.",
+      },
     },
     {
       name: "slug",
@@ -37,29 +42,44 @@ export const Services: CollectionConfig = {
       label: "URL Slug",
       admin: {
         description:
-          "Use lowercase words separated by hyphens, for example: bathroom-renovation.",
+          "Use lowercase words separated by hyphens, for example: prace-malarskie.",
       },
     },
     {
-      name: "category",
-      type: "select",
+      name: "items",
+      type: "array",
       required: true,
-      options: [
-        { label: "Kitchen", value: "kitchen" },
-        { label: "Bathroom", value: "bathroom" },
-        { label: "Basement", value: "basement" },
-        { label: "Full Home", value: "fullHome" },
-        { label: "Commercial", value: "commercial" },
-        { label: "Carpentry", value: "carpentry" },
-      ],
-    },
-    {
-      name: "price",
-      type: "text",
-      label: "Price / Starting price",
-      admin: {
-        description: "Example: From 250 zł/m² or Custom quote.",
+      label: "Service Items",
+      labels: {
+        singular: "Service Item",
+        plural: "Service Items",
       },
+      fields: [
+        {
+          name: "name",
+          type: "text",
+          required: true,
+          label: "Service Name",
+          admin: {
+            description: "Example: Szlifowanie ścian.",
+          },
+        },
+        {
+          name: "price",
+          type: "text",
+          required: true,
+          label: "Price",
+          admin: {
+            description: "Example: 18 zł/m², 150 zł/szt., 20 zł/mb.",
+          },
+        },
+        {
+          name: "order",
+          type: "number",
+          defaultValue: 0,
+          label: "Item Order",
+        },
+      ],
     },
     {
       name: "featured",
@@ -68,7 +88,6 @@ export const Services: CollectionConfig = {
       label: "Show on Homepage",
       admin: {
         position: "sidebar",
-        description: "Use this for homepage service preview.",
       },
     },
     {
@@ -78,7 +97,6 @@ export const Services: CollectionConfig = {
       label: "Published Status",
       admin: {
         position: "sidebar",
-        description: "Only published services appear on the website.",
       },
       options: [
         { label: "Draft", value: "draft" },
@@ -89,7 +107,7 @@ export const Services: CollectionConfig = {
       name: "order",
       type: "number",
       defaultValue: 0,
-      label: "Display Order",
+      label: "Category Order",
       admin: {
         position: "sidebar",
         description: "Lower numbers appear first.",

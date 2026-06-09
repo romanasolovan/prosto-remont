@@ -4,6 +4,13 @@ import config from "@payload-config";
 
 export const runtime = "nodejs";
 
+type ServiceItem = {
+  id?: string | number;
+  name?: string;
+  price?: string;
+  order?: number | null;
+};
+
 export async function GET() {
   try {
     const payload = await getPayload({ config });
@@ -21,24 +28,20 @@ export async function GET() {
 
     return NextResponse.json({
       success: true,
-
       services: services.docs.map((service) => ({
         id: String(service.id),
-
         title: service.title,
         slug: service.slug,
-        category: service.category,
-
-        shortDescription: service.shortDescription,
-        fullDescription: service.fullDescription,
-
-        price: service.price,
-        abbr: service.abbr,
-
-        specs: service.specs || [],
-        steps: service.steps || [],
-
+        items: ((service.items || []) as ServiceItem[])
+          .map((item) => ({
+            id: String(item.id),
+            name: item.name || "",
+            price: item.price || "",
+            order: item.order ?? 0,
+          }))
+          .sort((a, b) => a.order - b.order),
         featured: service.featured,
+        order: service.order ?? 0,
       })),
     });
   } catch (error) {

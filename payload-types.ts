@@ -284,56 +284,34 @@ export interface Project {
   createdAt: string;
 }
 /**
- * Services displayed on the services page and homepage preview.
+ * Service categories and price-list items displayed on the services page.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "services".
  */
 export interface Service {
   id: number;
+  /**
+   * Example: Prace malarskie, Instalacje G-K, Hydraulika / Elektryka.
+   */
   title: string;
   /**
-   * Use lowercase words separated by hyphens, for example: bathroom-renovation.
+   * Use lowercase words separated by hyphens, for example: prace-malarskie.
    */
   slug: string;
-  /**
-   * Short text shown on service cards.
-   */
-  shortDescription: string;
-  /**
-   * Longer text shown after the user opens the services details.
-   */
-  fullDescription?: string | null;
-  category: 'kitchen' | 'bathroom' | 'basement' | 'fullHome' | 'commercial' | 'carpentry';
-  /**
-   * Example: From 250 zł/m² or Custom quote.
-   */
-  price?: string | null;
-  /**
-   * Short label shown in the circle, for example: K, B, FH.
-   */
-  abbr?: string | null;
-  specs?:
-    | {
-        label: string;
-        value: string;
-        id?: string | null;
-      }[]
-    | null;
-  steps?:
-    | {
-        title: string;
-        body: string;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Use this for homepage service preview.
-   */
+  items: {
+    /**
+     * Example: Szlifowanie ścian.
+     */
+    name: string;
+    /**
+     * Example: 18 zł/m², 150 zł/szt., 20 zł/mb.
+     */
+    price: string;
+    order?: number | null;
+    id?: string | null;
+  }[];
   featured?: boolean | null;
-  /**
-   * Only published services appear on the website.
-   */
   status?: ('draft' | 'published') | null;
   /**
    * Lower numbers appear first.
@@ -544,23 +522,12 @@ export interface ProjectsSelect<T extends boolean = true> {
 export interface ServicesSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
-  shortDescription?: T;
-  fullDescription?: T;
-  category?: T;
-  price?: T;
-  abbr?: T;
-  specs?:
+  items?:
     | T
     | {
-        label?: T;
-        value?: T;
-        id?: T;
-      };
-  steps?:
-    | T
-    | {
-        title?: T;
-        body?: T;
+        name?: T;
+        price?: T;
+        order?: T;
         id?: T;
       };
   featured?: T;
