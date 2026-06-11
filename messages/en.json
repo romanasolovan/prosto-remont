@@ -82,10 +82,12 @@
       "title": "More Than Renovation",
       "description": "Your apartment, house, or business space is more than walls and square meters. It is your lifestyle, your comfort, your peace, and the atmosphere you return to every day. We help transform raw interiors into spaces that reflect who you are and how you want to live."
     },
-    "services": {
-      "title": "Complete Interior Finishing, One Trusted Team",
-      "description": "From planning and cost estimation to finishing works and final details, we provide comprehensive renovation and fit-out services under one roof. Our work combines technical precision, practical coordination, and a strong focus on quality, so every stage moves forward with confidence."
-    },
+   "servicesPreview": {
+  "eyebrow": "Services",
+  "title": "Comprehensive Renovation and Finishing Services",
+  "description": "Explore the main services we provide — from surface preparation and installations to fitting, assembly, and final finishing work.",
+  "itemCount": "{count} services in this category"
+},
     "projects": {
       "title": "Spaces That Speak for Themselves",
       "description": "Every completed project tells a story of transformation. From modern apartments to commercial interiors, our portfolio reflects careful workmanship, functional thinking, and a commitment to creating spaces that look right, feel right, and work beautifully in everyday life."
@@ -224,13 +226,7 @@
     "title": "Service List",
     "description": "A clear overview of renovation and finishing services with estimated pricing."
   },
-  "empty": "Services will be available soon.",
-  "servicesPreview": {
-  "eyebrow": "Services",
-  "title": "Comprehensive Renovation and Finishing Services",
-  "description": "Explore the main services we provide — from surface preparation and installations to fitting, assembly, and final finishing work.",
-  "itemCount": "{count} services in this category"
-}
+  "empty": "Services will be available soon."
 },
   "projects": {
   "hero": {
