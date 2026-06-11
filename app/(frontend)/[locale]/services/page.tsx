@@ -35,7 +35,10 @@ export default function ServicesClient() {
     <div className={styles.servicesPage}>
       <section className={styles.servicesSection}>
         <div className="container">
-          <span className={styles.eyebrow}>{t("hero.eyebrow")}</span>
+          <div className={styles.heroTop}>
+            <span className={styles.eyebrow}>{t("hero.eyebrow")}</span>
+            <h1 className={styles.title}>{t("hero.title")}</h1>
+          </div>
 
           <div className={styles.introGrid}>
             <div className={styles.imageWrap}>
@@ -50,8 +53,6 @@ export default function ServicesClient() {
             </div>
 
             <div className={styles.introContent}>
-              <h1 className={styles.title}>{t("hero.title")}</h1>
-
               <h2 className={styles.question}>{t("hero.question")}</h2>
 
               <div className={styles.paragraphs}>
