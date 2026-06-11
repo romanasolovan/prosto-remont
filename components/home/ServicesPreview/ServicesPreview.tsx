@@ -16,11 +16,12 @@ export default function ServicesPreview() {
       try {
         const response = await fetch("/api/public/services");
 
-        // if (!response.ok) {
-        //   throw new Error("Failed to fetch services");
-        // }
+        if (!response.ok) {
+          throw new Error("Failed to fetch services");
+        }
 
         const data = await response.json();
+
         setServices((data.services || []).slice(0, 4));
       } catch (error) {
         console.error("Failed to load services preview:", error);
@@ -36,16 +37,12 @@ export default function ServicesPreview() {
       <div className="container">
         <div className={styles.inner}>
           <div className={styles.content}>
-            <span className={styles.label}>{t("labels.services")}</span>
+            <span className={styles.label}>{t("servicesPreview.eyebrow")}</span>
 
-            <h2 className={styles.title}>
-              Services shaped around clarity, design, and real project needs
-            </h2>
+            <h2 className={styles.title}>{t("servicesPreview.title")}</h2>
 
             <p className={styles.description}>
-              Every project benefits from structure as much as style. These
-              service areas are designed to support better decisions, smoother
-              execution, and a more considered final result.
+              {t("servicesPreview.description")}
             </p>
 
             <Link href="/services" className={styles.link}>
@@ -62,9 +59,13 @@ export default function ServicesPreview() {
                 <span className={styles.cardNumber}>
                   {String(index + 1).padStart(2, "0")}
                 </span>
+
                 <h3 className={styles.cardTitle}>{service.title}</h3>
+
                 <p className={styles.cardDescription}>
-                  {service.shortDescription}
+                  {t("servicesPreview.itemCount", {
+                    count: service.items.length,
+                  })}
                 </p>
               </article>
             ))}

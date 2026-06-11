@@ -82,10 +82,12 @@
       "title": "Więcej niż remont",
       "description": "Mieszkanie, dom czy przestrzeń biznesowa to coś więcej niż metry kwadratowe. To miejsce, w którym żyjesz, odpoczywasz, pracujesz i tworzysz swoją codzienność. Pomagamy przekształcać surowe wnętrza w funkcjonalne i estetyczne przestrzenie, które odzwierciedlają Twój styl życia."
     },
-    "services": {
-      "title": "Kompleksowe wykończenia wnętrz",
-      "description": "Od pierwszej konsultacji i przygotowania kosztorysu, aż po ostatnie detale wykończenia — oferujemy kompleksową realizację prac remontowych i wykończeniowych. Dbamy o dobrą organizację pracy, jakość wykonania oraz sprawny przebieg każdego etapu projektu."
-    },
+   "servicesPreview": {
+  "eyebrow": "Usługi",
+  "title": "Kompleksowe prace remontowe i wykończeniowe",
+  "description": "Zobacz główne zakresy prac, które realizujemy — od przygotowania ścian, przez instalacje, aż po montaż i prace wykończeniowe.",
+  "itemCount": "{count} usług w tej kategorii"
+},
     "projects": {
       "title": "Realizacje, które najlepiej pokazują naszą pracę",
       "description": "Każdy projekt to efekt współpracy, doświadczenia i dbałości o detale. W naszym portfolio znajdują się zarówno nowoczesne mieszkania, jak i przestrzenie komercyjne, które łączą estetykę, funkcjonalność i wysoką jakość wykonania."

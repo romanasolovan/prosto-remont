@@ -224,7 +224,13 @@
     "title": "Service List",
     "description": "A clear overview of renovation and finishing services with estimated pricing."
   },
-  "empty": "Services will be available soon."
+  "empty": "Services will be available soon.",
+  "servicesPreview": {
+  "eyebrow": "Services",
+  "title": "Comprehensive Renovation and Finishing Services",
+  "description": "Explore the main services we provide — from surface preparation and installations to fitting, assembly, and final finishing work.",
+  "itemCount": "{count} services in this category"
+}
 },
   "projects": {
   "hero": {
