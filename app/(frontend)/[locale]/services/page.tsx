@@ -39,14 +39,14 @@ export default function ServicesClient() {
 
           <div className={styles.introGrid}>
             <div className={styles.imageWrap}>
-              {/* <Image
-                src="/images/services/services-offer.jpg"
+              <Image
+                src="/services/services.jpg"
                 alt={t("hero.eyebrow")}
                 width={640}
                 height={820}
                 className={styles.image}
                 priority
-              /> */}
+              />
             </div>
 
             <div className={styles.introContent}>
