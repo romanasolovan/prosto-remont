@@ -218,13 +218,13 @@
 
 .categoryNav {
   position: sticky;
-  top: 72px;
+  top: 104px;
   z-index: 5;
   display: flex;
-  justify-content: flex-start;
+  flex-wrap: nowrap;
   gap: 10px;
   width: 100%;
-  max-width: 920px;
+  max-width: 100%;
   margin: 0 auto 38px;
   padding: 12px 0;
   overflow-x: auto;
@@ -267,15 +267,19 @@
 .categoryLink:hover,
 .categoryLink:focus-visible {
   color: #f5f4f0;
-  border-color: rgba(188, 154, 94, 0.38);
-  background: rgba(188, 154, 94, 0.1);
+  border-color: rgba(188, 154, 94, 0.4);
+  background: linear-gradient(
+    180deg,
+    rgba(188, 154, 94, 0.13),
+    rgba(255, 255, 255, 0.04)
+  );
   transform: translateY(-1px);
 }
 
 .categoryLink:active {
   color: #ffffff;
-  border-color: rgba(188, 154, 94, 0.5);
-  background: rgba(188, 154, 94, 0.16);
+  border-color: rgba(188, 154, 94, 0.58);
+  background: rgba(188, 154, 94, 0.18);
   transform: scale(0.98);
 }
 
@@ -289,6 +293,7 @@
   position: relative;
   padding: 30px 0;
   border-top: 1px solid var(--line-soft);
+  scroll-margin-top: 178px;
   transition:
     padding 320ms ease,
     border-color 320ms ease;
@@ -440,8 +445,12 @@
     margin-top: 16px;
   }
 
+  .categoryNav {
+    top: 112px;
+  }
+
   .priceGroup {
-    scroll-margin-top: 118px;
+    scroll-margin-top: 156px;
   }
 
   .priceItem {
@@ -503,15 +512,18 @@
   }
 
   .categoryNav {
-    justify-content: center;
-    overflow-x: visible;
-    flex-wrap: wrap;
+    top: 104px;
+    width: max-content;
+    max-width: 100%;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin: 0 auto 42px;
     padding: 14px 18px;
   }
 
   .priceGroup {
-    padding: 42px 0;
-    scroll-margin-top: 132px;
+    scroll-margin-top: 150px;
   }
 
   .priceList {
@@ -548,8 +560,13 @@
     margin-top: 20px;
   }
 
+  .categoryNav {
+    top: 108px;
+  }
+
   .priceGroup {
     padding: 48px 0;
+    scroll-margin-top: 154px;
   }
 }
 
