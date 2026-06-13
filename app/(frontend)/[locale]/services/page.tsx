@@ -73,25 +73,49 @@ export default function ServicesClient() {
           </div>
 
           {services.length > 0 ? (
-            <div className={styles.priceGroups}>
-              {services.map((service) => (
-                <article className={styles.priceGroup} key={service.id}>
-                  <h2 className={styles.groupTitle}>{service.title}</h2>
+            <>
+              <nav
+                className={styles.categoryNav}
+                aria-label="Service categories"
+              >
+                {services.map((service) => (
+                  <a
+                    key={service.id}
+                    href={`#service-${service.slug}`}
+                    className={styles.categoryLink}
+                  >
+                    {service.title}
+                  </a>
+                ))}
+              </nav>
 
-                  <ul className={styles.priceList}>
-                    {service.items.map((item) => (
-                      <li className={styles.priceItem} key={item.id}>
-                        <span className={styles.itemName}>{item.name}</span>
-                        <span className={styles.itemDots} aria-hidden="true" />
-                        <strong className={styles.itemPrice}>
-                          {item.price}
-                        </strong>
-                      </li>
-                    ))}
-                  </ul>
-                </article>
-              ))}
-            </div>
+              <div className={styles.priceGroups}>
+                {services.map((service) => (
+                  <article
+                    className={styles.priceGroup}
+                    key={service.id}
+                    id={`service-${service.slug}`}
+                  >
+                    <h2 className={styles.groupTitle}>{service.title}</h2>
+
+                    <ul className={styles.priceList}>
+                      {service.items.map((item) => (
+                        <li className={styles.priceItem} key={item.id}>
+                          <span className={styles.itemName}>{item.name}</span>
+                          <span
+                            className={styles.itemDots}
+                            aria-hidden="true"
+                          />
+                          <strong className={styles.itemPrice}>
+                            {item.price}
+                          </strong>
+                        </li>
+                      ))}
+                    </ul>
+                  </article>
+                ))}
+              </div>
+            </>
           ) : (
             <p className={styles.emptyState}>{t("empty")}</p>
           )}

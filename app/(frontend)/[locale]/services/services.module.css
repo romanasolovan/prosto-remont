@@ -216,6 +216,60 @@
   color: var(--ink-soft);
 }
 
+.categoryNav {
+  position: sticky;
+  top: 72px;
+  z-index: 5;
+  display: flex;
+  gap: 10px;
+  margin: 0 calc(var(--container-padding, 0px) * -1) 34px;
+  padding: 12px 0 12px 16px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  background: linear-gradient(
+    180deg,
+    rgba(17, 22, 27, 0.96),
+    rgba(17, 22, 27, 0.72)
+  );
+  backdrop-filter: blur(14px);
+  border-block: 1px solid rgba(255, 255, 255, 0.06);
+  scrollbar-width: none;
+}
+
+.categoryNav::-webkit-scrollbar {
+  display: none;
+}
+
+.categoryLink {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  padding: 10px 14px;
+  border: 1px solid rgba(245, 244, 240, 0.12);
+  border-radius: 999px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(245, 244, 240, 0.72);
+  background: rgba(255, 255, 255, 0.025);
+  transition:
+    color 240ms ease,
+    border-color 240ms ease,
+    background 240ms ease,
+    transform 240ms ease;
+}
+
+.categoryLink:hover,
+.categoryLink:focus-visible,
+.categoryLink:active {
+  color: #ffffff;
+  border-color: rgba(245, 244, 240, 0.28);
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateY(-1px);
+}
+
 .priceGroups {
   display: grid;
   gap: 34px;
@@ -292,6 +346,18 @@
   transition:
     transform 260ms ease,
     color 260ms ease;
+
+  border-radius: 10px;
+}
+
+.priceItem:active {
+  transform: translateX(4px) scale(0.995);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.priceItem:active .itemName,
+.priceItem:active .itemPrice {
+  color: #ffffff;
 }
 
 .itemName {
