@@ -11,6 +11,8 @@
   min-height: 100vh;
   overflow-x: clip;
   background: var(--bg-main);
+
+  --anchor-offset: 120px;
 }
 
 .servicesSection {
@@ -289,10 +291,10 @@
 }
 
 .priceGroup {
+  scroll-margin-top: var(--anchor-offset);
   position: relative;
   padding: 30px 0;
   border-top: 1px solid var(--line-soft);
-  scroll-margin-top: 154px;
   transition:
     padding 320ms ease,
     border-color 320ms ease;
@@ -419,6 +421,10 @@
 
 /* tablet */
 @media (min-width: 768px) {
+  .servicesPage {
+    --anchor-offset: 130px;
+  }
+
   .introGrid {
     grid-template-columns: minmax(300px, 430px) minmax(0, 520px);
     align-items: stretch;
@@ -478,10 +484,6 @@
     top: 112px;
   }
 
-  .priceGroup {
-    scroll-margin-top: 176px;
-  }
-
   .priceItem {
     grid-template-columns: auto 1fr auto;
     padding: 8px 0;
@@ -501,6 +503,10 @@
 
 /* small laptop */
 @media (min-width: 1024px) {
+  .servicesPage {
+    --anchor-offset: 140px;
+  }
+
   .servicesSection {
     padding: 96px 0 116px;
   }
@@ -557,10 +563,6 @@
     padding: 14px 18px;
   }
 
-  .priceGroup {
-    scroll-margin-top: 154px;
-  }
-
   .priceList {
     gap: 14px;
   }
@@ -601,7 +603,6 @@
 
   .priceGroup {
     padding: 48px 0;
-    scroll-margin-top: 158px;
   }
 }
 

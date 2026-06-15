@@ -42,7 +42,7 @@ export const Services: CollectionConfig = {
       label: "URL Slug",
       admin: {
         description:
-          "Use lowercase words separated by hyphens, for example: prace-malarskie.",
+          "Required for page navigation. Use lowercase letters, numbers, and hyphens only. Example: prace-glazurnicze.",
       },
     },
     {

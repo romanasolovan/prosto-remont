@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/navigation";
 import type { PublicService } from "@/types/services";
 import styles from "./ServicesPreview.module.css";
+import { getServiceAnchorHref } from "@/utils/serviceAnchors";
 
 const getServiceIcon = (title: string) => {
   const value = title.toLowerCase();
@@ -124,7 +125,8 @@ export default function ServicesPreview() {
               return (
                 <Link
                   key={service.id}
-                  href={`/services#service-${service.slug}`}
+                  href={getServiceAnchorHref(service.slug)}
+                  scroll={false}
                   className={styles.card}
                 >
                   <div className={styles.cardHeader}>
