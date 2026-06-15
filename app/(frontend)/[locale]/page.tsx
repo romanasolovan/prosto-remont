@@ -10,8 +10,8 @@ import ClientOpinionsPreview from "@/components/home/ClientOpinionsPreview/Clien
 import QuoteHighlight from "@/components/home/QuoteHighlight/QuoteHighlight";
 import ServicesPreview from "@/components/home/ServicesPreview/ServicesPreview";
 // import ProjectsPreview from "@/components/home/ProjectsPreview/ProjectsPreview";
-import ProcessPreview from "@/components/home/ProcessPreview/ProcessPreview";
 import QuoteRequestModal from "@/components/QuoteRequestModal/QuoteRequestModal";
+import ProcessSection from "@/components/home/ProcessSection/ProcessSection";
 
 import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
@@ -109,6 +109,10 @@ export default function Home() {
         <ServicesPreview />
       </section>
 
+      <section id="process" className={styles.pageSection}>
+        <ProcessSection />
+      </section>
+
       <section id="why" className={styles.pageSection}>
         <WhyChooseUs />
       </section>
@@ -124,10 +128,6 @@ export default function Home() {
       <section id="quote" className={styles.pageSection}>
         <QuoteHighlight onOpenQuoteModal={openQuoteModal} />
         {isQuoteModalOpen && <QuoteRequestModal onClose={closeQuoteModal} />}
-      </section>
-
-      <section id="process" className={styles.pageSection}>
-        <ProcessPreview />
       </section>
     </div>
   );

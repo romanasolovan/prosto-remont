@@ -91,9 +91,32 @@
       "description": "Every completed project tells a story of transformation. From modern apartments to commercial interiors, our portfolio reflects careful workmanship, functional thinking, and a commitment to creating spaces that look right, feel right, and work beautifully in everyday life."
     },
     "process": {
-      "title": "A Clear Process from First Contact to Final Result",
-      "description": "Good renovation starts with good structure. Our process is designed to make every step understandable and well organized — from consultation and on-site assessment to scheduling, coordination, material support, and execution. Clear stages mean fewer surprises and better results."
+  "eyebrow": "Proces",
+  "title": "Jak pracujemy?",
+  "description": "Prowadzimy klienta przez każdy etap realizacji — od pierwszej rozmowy, przez wycenę i planowanie, aż po wykonanie prac oraz odbiór gotowego projektu.",
+  "steps": {
+    "consultation": {
+      "title": "Konsultacja",
+      "description": "Skontaktuj się z nami telefonicznie lub mailowo. Odpowiemy na pytania, doradzimy najlepsze rozwiązania i umówimy dogodny termin spotkania."
     },
+    "estimate": {
+      "title": "Wycena i planowanie",
+      "description": "Otrzymujemy projekt lub przyjeżdżamy na miejsce, oceniamy zakres prac i przygotowujemy wycenę oraz harmonogram realizacji."
+    },
+    "start": {
+      "title": "Rozpoczęcie prac",
+      "description": "Po zaakceptowaniu oferty podpisujemy umowę, rezerwujemy termin i organizujemy dostawę niezbędnych materiałów."
+    },
+    "realization": {
+      "title": "Realizacja",
+      "description": "Wykonujemy wszystkie prace zgodnie z ustalonym planem, dbając o jakość, terminowość i porządek na każdym etapie."
+    },
+    "handover": {
+      "title": "Odbiór i gwarancja",
+      "description": "Po zakończeniu prac przekazujemy gotową realizację do odbioru i zapewniamy wsparcie po zakończeniu projektu."
+    }
+  }
+},
     "contact": {
       "title": "Let’s Talk About Your Space",
       "description": "Whether you are planning a full turnkey fit-out, a renovation, or selected finishing works, we are here to guide you. Reach out to discuss your project, ask questions, and take the first step toward a space designed around your needs."

@@ -94,10 +94,33 @@
       "title": "Realizacje, które najlepiej pokazują naszą pracę",
       "description": "Każdy projekt to efekt współpracy, doświadczenia i dbałości o detale. W naszym portfolio znajdują się zarówno nowoczesne mieszkania, jak i przestrzenie komercyjne, które łączą estetykę, funkcjonalność i wysoką jakość wykonania."
     },
-    "process": {
-      "title": "Przejrzysty proces realizacji",
-      "description": "Dobry remont wymaga dobrej organizacji. Nasz proces pracy jest uporządkowany i przejrzysty — od pierwszego kontaktu i wizyty na miejscu, przez planowanie prac i dobór materiałów, aż po realizację i finalne wykończenie wnętrza."
+   "process": {
+  "eyebrow": "Proces",
+  "title": "Jak pracujemy?",
+  "description": "Prowadzimy klienta przez każdy etap realizacji — od pierwszej rozmowy, przez wycenę i planowanie, aż po wykonanie prac oraz odbiór gotowego projektu.",
+  "steps": {
+    "consultation": {
+      "title": "Konsultacja",
+      "description": "Skontaktuj się z nami telefonicznie lub mailowo. Odpowiemy na pytania, doradzimy najlepsze rozwiązania i umówimy dogodny termin spotkania."
     },
+    "estimate": {
+      "title": "Wycena i planowanie",
+      "description": "Otrzymujemy projekt lub przyjeżdżamy na miejsce, oceniamy zakres prac i przygotowujemy wycenę oraz harmonogram realizacji."
+    },
+    "start": {
+      "title": "Rozpoczęcie prac",
+      "description": "Po zaakceptowaniu oferty podpisujemy umowę, rezerwujemy termin i organizujemy dostawę niezbędnych materiałów."
+    },
+    "realization": {
+      "title": "Realizacja",
+      "description": "Wykonujemy wszystkie prace zgodnie z ustalonym planem, dbając o jakość, terminowość i porządek na każdym etapie."
+    },
+    "handover": {
+      "title": "Odbiór i gwarancja",
+      "description": "Po zakończeniu prac przekazujemy gotową realizację do odbioru i zapewniamy wsparcie po zakończeniu projektu."
+    }
+  }
+},
     "contact": {
       "title": "Porozmawiajmy o Twoim projekcie",
       "description": "Planujesz remont lub wykończenie mieszkania? Skontaktuj się z nami, aby omówić szczegóły projektu i zrobić pierwszy krok w stronę przestrzeni, która będzie w pełni dopasowana do Twoich potrzeb."

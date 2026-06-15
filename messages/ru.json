@@ -95,9 +95,32 @@
       "description": "Каждый реализованный проект — это результат опыта, внимания к деталям и тесного сотрудничества с клиентом. В нашем портфолио — современные квартиры, жилые интерьеры и коммерческие пространства, где сочетаются эстетика, функциональность и высокое качество исполнения."
     },
     "process": {
-      "title": "Понятный процесс от идеи до результата",
-      "description": "Качественный ремонт начинается с правильной организации. Наш процесс работы построен так, чтобы каждый этап был понятен клиенту — от первой консультации и осмотра объекта до планирования работ, подбора материалов и выполнения проекта."
+  "eyebrow": "Proces",
+  "title": "Jak pracujemy?",
+  "description": "Prowadzimy klienta przez każdy etap realizacji — od pierwszej rozmowy, przez wycenę i planowanie, aż po wykonanie prac oraz odbiór gotowego projektu.",
+  "steps": {
+    "consultation": {
+      "title": "Konsultacja",
+      "description": "Skontaktuj się z nami telefonicznie lub mailowo. Odpowiemy na pytania, doradzimy najlepsze rozwiązania i umówimy dogodny termin spotkania."
     },
+    "estimate": {
+      "title": "Wycena i planowanie",
+      "description": "Otrzymujemy projekt lub przyjeżdżamy na miejsce, oceniamy zakres prac i przygotowujemy wycenę oraz harmonogram realizacji."
+    },
+    "start": {
+      "title": "Rozpoczęcie prac",
+      "description": "Po zaakceptowaniu oferty podpisujemy umowę, rezerwujemy termin i organizujemy dostawę niezbędnych materiałów."
+    },
+    "realization": {
+      "title": "Realizacja",
+      "description": "Wykonujemy wszystkie prace zgodnie z ustalonym planem, dbając o jakość, terminowość i porządek na każdym etapie."
+    },
+    "handover": {
+      "title": "Odbiór i gwarancja",
+      "description": "Po zakończeniu prac przekazujemy gotową realizację do odbioru i zapewniamy wsparcie po zakończeniu projektu."
+    }
+  }
+},
     "contact": {
       "title": "Давайте обсудим ваш проект",
       "description": "Планируете ремонт или отделку квартиры? Свяжитесь с нами, чтобы обсудить детали проекта и сделать первый шаг к пространству, которое будет полностью соответствовать вашим ожиданиям."
