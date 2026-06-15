@@ -22,7 +22,9 @@
   "exploreServices": "Услуги",
   "viewPortfolio": "Посмотреть проекты",
   "understandProcess": "Посмотреть процесс",
-  "requestQuote": "Запросить смету"
+  "requestQuote": "Запросить смету",
+  "viewMore": "View more",
+  "viewAllServices": "Zobacz wszystkie usługi"
 },
 "quoteHighlight": {
   "eyebrow": "Запросить смету",

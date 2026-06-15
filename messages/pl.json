@@ -22,7 +22,9 @@
   "exploreServices": "Usługi",
   "viewPortfolio": "Zobacz realizacje",
   "understandProcess": "Zobacz, jak pracujemy",
-  "requestQuote": "Poproś o wycenę"
+  "requestQuote": "Poproś o wycenę",
+  "viewMore": "View more",
+  "viewAllServices": "Zobacz wszystkie usługi"
 },
 "quoteHighlight": {
   "eyebrow": "Poproś o wycenę",

@@ -22,7 +22,9 @@
  "exploreServices": "Services",
   "viewPortfolio": "View portfolio",
   "understandProcess": "See the Process",
-  "requestQuote": "Request a Quote"
+  "requestQuote": "Request a Quote",
+  "viewMore": "View more",
+  "viewAllServices": "Zobacz wszystkie usługi"
 },
 "quoteHighlight": {
   "eyebrow": "Request a quote",
@@ -58,10 +60,6 @@
       "process": "Process"
     },
     "hero": {
-      "eyebrowLineOne": "Premium",
-      "eyebrowLineTwo": "Interior",
-      "eyebrowLineThree": "Renovation",
-      "eyebrow": "Premium interior renovation",
       "titleLineOne": "Your space.",
       "titleLineTwo": "Finished with precision.",
       "statsAriaLabel": "Key company achievements",
@@ -83,7 +81,7 @@
       "description": "Your apartment, house, or business space is more than walls and square meters. It is your lifestyle, your comfort, your peace, and the atmosphere you return to every day. We help transform raw interiors into spaces that reflect who you are and how you want to live."
     },
    "servicesPreview": {
-  "eyebrow": "Services",
+  "eyebrow": "Our Services",
   "title": "Comprehensive Renovation and Finishing Services",
   "description": "Explore the main services we provide — from surface preparation and installations to fitting, assembly, and final finishing work.",
   "itemCount": "{count} services in this category"

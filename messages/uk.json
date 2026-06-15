@@ -22,7 +22,9 @@
   "exploreServices": "Послуги",
   "viewPortfolio": "Переглянути проєкти",
   "understandProcess": "Переглянути процес",
-  "requestQuote": "Отримати кошторис"
+  "requestQuote": "Отримати кошторис",
+  "viewMore": "View more",
+  "viewAllServices": "Zobacz wszystkie usługi"
 },
 "quoteHighlight": {
   "eyebrow": "Отримати кошторис",
