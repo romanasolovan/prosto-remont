@@ -105,12 +105,12 @@ export default function Home() {
         <TrustedBrands />
       </section>
 
-      <section id="why" className={styles.pageSection}>
-        <WhyChooseUs />
-      </section>
-
       <section id="services" className={styles.pageSection}>
         <ServicesPreview />
+      </section>
+
+      <section id="why" className={styles.pageSection}>
+        <WhyChooseUs />
       </section>
 
       <section id="projects" className={styles.pageSection}>

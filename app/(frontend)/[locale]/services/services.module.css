@@ -1,12 +1,11 @@
 .servicesPage {
   --bg-main: #0d1115;
-  --bg-soft: #151a20;
   --ink: #f5f4f0;
   --ink-soft: rgba(245, 244, 240, 0.76);
-  --ink-muted: rgba(245, 244, 240, 0.54);
+  --ink-muted: rgba(245, 244, 240, 0.56);
   --line-soft: rgba(255, 255, 255, 0.1);
   --line-strong: rgba(255, 255, 255, 0.24);
-  --gold-soft: rgba(188, 154, 94, 0.32);
+  --gold-soft: rgba(188, 154, 94, 0.34);
 
   width: 100%;
   min-height: 100vh;
@@ -107,7 +106,7 @@
   z-index: 1;
   pointer-events: none;
   background:
-    linear-gradient(180deg, transparent 0%, rgba(13, 17, 21, 0.16) 100%),
+    linear-gradient(180deg, transparent 0%, rgba(13, 17, 21, 0.14) 100%),
     radial-gradient(
       circle at 100% 0%,
       rgba(188, 154, 94, 0.08),
@@ -116,7 +115,7 @@
 }
 
 .imageWrap:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   border-color: var(--line-strong);
   box-shadow: 0 34px 90px rgba(0, 0, 0, 0.34);
 }
@@ -132,18 +131,19 @@
 }
 
 .imageWrap:hover .image {
-  transform: scale(1.018);
-  filter: contrast(1.05);
+  transform: scale(1.012);
+  filter: contrast(1.04);
 }
 
 .introContent {
+  position: relative;
   max-width: 620px;
   animation: fadeUp 800ms ease 180ms both;
 }
 
 .question {
   max-width: 30ch;
-  margin: 0 0 20px;
+  margin: 0 0 18px;
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(24px, 6vw, 34px);
   font-style: italic;
@@ -157,12 +157,12 @@
 
 .introContent:hover .question {
   color: #ffffff;
-  transform: translateX(6px);
+  transform: translateX(5px);
 }
 
 .paragraphs {
   display: grid;
-  gap: 18px;
+  gap: 16px;
 }
 
 .paragraphs p {
@@ -170,7 +170,7 @@
   font-family: "Barlow", sans-serif;
   font-size: clamp(15px, 3.8vw, 16px);
   font-weight: 300;
-  line-height: 1.85;
+  line-height: 1.82;
   color: var(--ink-soft);
   transition: color 320ms ease;
 }
@@ -224,7 +224,6 @@
   flex-wrap: nowrap;
   gap: 10px;
   width: 100%;
-  max-width: 100%;
   margin: 0 auto 38px;
   padding: 12px 0;
   overflow-x: auto;
@@ -255,6 +254,7 @@
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+  white-space: nowrap;
   color: rgba(245, 244, 240, 0.72);
   background: rgba(255, 255, 255, 0.025);
   transition:
@@ -286,14 +286,13 @@
 .priceGroups {
   display: grid;
   gap: 34px;
-  scroll-margin-top: 118px;
 }
 
 .priceGroup {
   position: relative;
   padding: 30px 0;
   border-top: 1px solid var(--line-soft);
-  scroll-margin-top: 178px;
+  scroll-margin-top: 154px;
   transition:
     padding 320ms ease,
     border-color 320ms ease;
@@ -337,9 +336,14 @@
     color 320ms ease;
 }
 
-.priceGroup:hover .groupTitle {
+.priceGroup:hover .groupTitle,
+.priceGroup:target .groupTitle {
   letter-spacing: 0.02em;
   color: #ffffff;
+}
+
+.priceGroup:target::before {
+  width: 100%;
 }
 
 .priceList {
@@ -353,26 +357,22 @@
 
 .priceItem {
   display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 8px 10px;
+  grid-template-columns: 1fr auto;
+  gap: 8px 14px;
   align-items: baseline;
-  padding: 8px 0;
+  padding: 12px 12px;
+  border-radius: 14px;
   font-family: "Barlow", sans-serif;
+  background: rgba(255, 255, 255, 0.018);
   transition:
     transform 260ms ease,
+    background 260ms ease,
     color 260ms ease;
-
-  border-radius: 10px;
 }
 
 .priceItem:active {
   transform: translateX(4px) scale(0.995);
-  background: rgba(255, 255, 255, 0.035);
-}
-
-.priceItem:active .itemName,
-.priceItem:active .itemPrice {
-  color: #ffffff;
+  background: rgba(188, 154, 94, 0.08);
 }
 
 .itemName {
@@ -388,20 +388,23 @@
 }
 
 .itemPrice {
-  grid-column: 1 / -1;
   font-family: "Barlow Condensed", sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 1.2;
+  white-space: nowrap;
   color: var(--ink);
 }
 
 .priceItem:hover {
   transform: translateX(6px);
+  background: rgba(255, 255, 255, 0.035);
 }
 
 .priceItem:hover .itemName,
-.priceItem:hover .itemPrice {
+.priceItem:hover .itemPrice,
+.priceItem:active .itemName,
+.priceItem:active .itemPrice {
   color: #ffffff;
 }
 
@@ -417,32 +420,58 @@
 /* tablet */
 @media (min-width: 768px) {
   .introGrid {
-    grid-template-columns: minmax(280px, 46%) minmax(0, 46%);
+    grid-template-columns: minmax(300px, 430px) minmax(0, 520px);
+    align-items: stretch;
     justify-content: center;
-    gap: clamp(30px, 4vw, 54px);
+    gap: clamp(34px, 4.5vw, 58px);
+  }
+
+  .imageWrap {
+    align-self: start;
+  }
+
+  .image {
+    height: auto;
+    object-fit: contain;
+    object-position: center;
   }
 
   .introContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     max-width: 100%;
+    padding-top: 2px;
+  }
+
+  .introContent::before {
+    content: "";
+    position: absolute;
+    left: -18px;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba(245, 244, 240, 0.4),
+      rgba(245, 244, 240, 0.04)
+    );
   }
 
   .question {
     max-width: 100%;
     margin-bottom: 16px;
-    font-size: clamp(22px, 2.7vw, 28px);
+    font-size: clamp(24px, 2.7vw, 29px);
+    line-height: 1.13;
   }
 
   .paragraphs {
-    gap: 0;
+    gap: 14px;
   }
 
   .paragraphs p {
-    font-size: clamp(12px, 1.35vw, 14px);
-    line-height: 1.85;
-  }
-
-  .paragraphs p + p {
-    margin-top: 16px;
+    font-size: clamp(13px, 1.35vw, 15px);
+    line-height: 1.72;
   }
 
   .categoryNav {
@@ -450,11 +479,13 @@
   }
 
   .priceGroup {
-    scroll-margin-top: 156px;
+    scroll-margin-top: 176px;
   }
 
   .priceItem {
     grid-template-columns: auto 1fr auto;
+    padding: 8px 0;
+    background: transparent;
   }
 
   .itemDots {
@@ -465,7 +496,6 @@
 
   .itemPrice {
     grid-column: auto;
-    white-space: nowrap;
   }
 }
 
@@ -489,22 +519,27 @@
   }
 
   .introGrid {
-    grid-template-columns: minmax(340px, 500px) minmax(420px, 580px);
-    gap: clamp(48px, 5vw, 76px);
+    grid-template-columns: minmax(360px, 500px) minmax(430px, 590px);
+    gap: clamp(52px, 5vw, 78px);
+  }
+
+  .introContent::before {
+    left: -24px;
   }
 
   .question {
-    margin-bottom: 22px;
-    font-size: clamp(30px, 2.6vw, 36px);
+    margin-bottom: 18px;
+    font-size: clamp(32px, 2.7vw, 39px);
+    line-height: 1.12;
+  }
+
+  .paragraphs {
+    gap: 16px;
   }
 
   .paragraphs p {
-    font-size: clamp(15px, 1.2vw, 17px);
-    line-height: 1.88;
-  }
-
-  .paragraphs p + p {
-    margin-top: 18px;
+    font-size: clamp(15px, 1.15vw, 17px);
+    line-height: 1.76;
   }
 
   .separator {
@@ -523,7 +558,7 @@
   }
 
   .priceGroup {
-    scroll-margin-top: 150px;
+    scroll-margin-top: 154px;
   }
 
   .priceList {
@@ -547,17 +582,17 @@
   }
 
   .question {
-    margin-bottom: 28px;
+    margin-bottom: 22px;
     font-size: 42px;
+  }
+
+  .paragraphs {
+    gap: 18px;
   }
 
   .paragraphs p {
     font-size: 18px;
-    line-height: 1.92;
-  }
-
-  .paragraphs p + p {
-    margin-top: 20px;
+    line-height: 1.82;
   }
 
   .categoryNav {
@@ -566,7 +601,7 @@
 
   .priceGroup {
     padding: 48px 0;
-    scroll-margin-top: 154px;
+    scroll-margin-top: 158px;
   }
 }
 
@@ -596,14 +631,18 @@
   .paragraphs p,
   .priceGroup,
   .groupTitle,
-  .priceItem {
+  .priceItem,
+  .categoryLink {
     transition: none;
   }
 
   .imageWrap:hover,
   .imageWrap:hover .image,
   .introContent:hover .question,
-  .priceItem:hover {
+  .priceItem:hover,
+  .priceItem:active,
+  .categoryLink:hover,
+  .categoryLink:active {
     transform: none;
   }
 }
