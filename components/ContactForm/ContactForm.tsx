@@ -11,6 +11,8 @@ import FormTextarea from "./FormTextarea";
 import FormSelect, { SelectOption } from "./FormSelect";
 import FileUpload from "./FileUpload";
 import FormDatePicker from "./FormDatePicker";
+import SuccessState from "./SuccessState";
+import SubmitButton from "./SubmitButton";
 
 interface FormValues {
   fullName: string;
@@ -150,41 +152,10 @@ export default function ContactForm({ onClose }: ContactFormProps) {
   return (
     <div className={styles.formShell}>
       {submitStatus === "success" ? (
-        <div className={styles.successState} aria-live="polite">
-          <div className={styles.successMark} aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path
-                d="M20 7L9.5 17.5L4 12"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-
-          <p className={styles.successTextSimple}>{t("successMessage")}</p>
-
-          <div className={styles.successActions}>
-            <button
-              type="button"
-              onClick={() => setSubmitStatus("idle")}
-              className={styles.secondaryButton}
-            >
-              {t("actions.sendAnother")}
-            </button>
-
-            {onClose && (
-              <button
-                type="button"
-                onClick={onClose}
-                className={styles.primaryButton}
-              >
-                {t("actions.close")}
-              </button>
-            )}
-          </div>
-        </div>
+        <SuccessState
+          onSendAnother={() => setSubmitStatus("idle")}
+          onClose={onClose}
+        />
       ) : (
         <Formik
           initialValues={initialValues}
@@ -401,13 +372,7 @@ export default function ContactForm({ onClose }: ContactFormProps) {
                   </button>
                 )}
 
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className={styles.primaryButton}
-                >
-                  {isSubmitting ? t("submitting") : t("submit")}
-                </button>
+                <SubmitButton isSubmitting={isSubmitting} />
               </div>
             </Form>
           )}

@@ -844,6 +844,10 @@
   .selectOption:hover {
     transform: none;
   }
+
+  .submitSpinner {
+    animation: none;
+  }
 }
 
 /* DATE PICKER */
@@ -1238,5 +1242,29 @@
   .calendarDayButton:hover,
   .calendarNavButton:hover {
     transform: none;
+  }
+}
+
+/* SUBMIT BUTTON */
+
+.submitButtonContent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.submitSpinner {
+  width: 15px;
+  height: 15px;
+  border: 1.5px solid rgba(245, 244, 240, 0.28);
+  border-top-color: rgba(245, 244, 240, 0.92);
+  border-radius: 50%;
+  animation: submitSpin 740ms linear infinite;
+}
+
+@keyframes submitSpin {
+  to {
+    transform: rotate(360deg);
   }
 }
