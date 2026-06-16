@@ -422,6 +422,38 @@
     }
   },
   "form": {
+
+    "modal": {
+  "eyebrow": "PRO100 Your Renovation",
+  "closeAriaLabel": "Close quote request form"
+},
+"sections": {
+  "contact": {
+    "eyebrow": "01 / Contact",
+    "title": "Contact details"
+  },
+  "project": {
+    "eyebrow": "02 / Project",
+    "title": "Scope of work"
+  },
+  "details": {
+    "eyebrow": "03 / Details",
+    "title": "Files and additional information"
+  }
+},
+"actions": {
+  "close": "Close",
+  "sendAnother": "Send another"
+},
+"select": {
+  "chooseOption": "Choose an option"
+},
+"date": {
+  "helper": "You can choose a date from the calendar or type it manually."
+},
+"fieldsHint": {
+  "workDescription": "Enter an approximate area or a short scope of work."
+},
     "title": "Request a Quote",
     "subtitle": "Fill out the form below and we will get back to you to discuss the next steps.",
     "fields": {
@@ -479,6 +511,7 @@
       "dateInvalid": "Please select a valid date"
     },
     "fileUpload": {
+       "sizeUnit": "MB",
       "dragDrop": "Drag and drop files here, or click to select",
       "selectedFiles": "Selected files",
       "removeFile": "Remove",

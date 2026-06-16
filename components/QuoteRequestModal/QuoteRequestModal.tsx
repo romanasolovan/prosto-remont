@@ -17,9 +17,7 @@ export default function QuoteRequestModal({ onClose }: QuoteRequestModalProps) {
     document.body.style.overflow = "hidden";
 
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        onClose();
-      }
+      if (event.key === "Escape") onClose();
     };
 
     document.addEventListener("keydown", onKeyDown);
@@ -34,9 +32,7 @@ export default function QuoteRequestModal({ onClose }: QuoteRequestModalProps) {
     <div
       className={styles.modalOverlay}
       onMouseDown={(event) => {
-        if (event.target === event.currentTarget) {
-          onClose();
-        }
+        if (event.target === event.currentTarget) onClose();
       }}
     >
       <div
@@ -46,12 +42,16 @@ export default function QuoteRequestModal({ onClose }: QuoteRequestModalProps) {
         aria-labelledby="quote-modal-title"
         aria-describedby="quote-modal-description"
       >
+        <div className={styles.modalGlow} aria-hidden="true" />
+
         <div className={styles.modalTopBar}>
           <div className={styles.modalHeaderCopy}>
-            <p className={styles.eyebrow}>pro100remont</p>
+            <p className={styles.eyebrow}>{t("modal.eyebrow")}</p>
+
             <h2 id="quote-modal-title" className={styles.modalTitle}>
               {t("title")}
             </h2>
+
             <p id="quote-modal-description" className={styles.modalDescription}>
               {t("subtitle")}
             </p>
@@ -61,7 +61,7 @@ export default function QuoteRequestModal({ onClose }: QuoteRequestModalProps) {
             type="button"
             onClick={onClose}
             className={styles.closeButton}
-            aria-label="Close quote request form"
+            aria-label={t("modal.closeAriaLabel")}
           >
             <span className={styles.closeButtonLine} />
             <span className={styles.closeButtonLine} />

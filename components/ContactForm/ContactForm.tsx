@@ -1,10 +1,15 @@
 "use client";
 
-import { useTranslations } from "next-intl";
-import { Formik, Form, Field, FormikHelpers } from "formik";
-import * as Yup from "yup";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
+import { Formik, Form, FormikHelpers, FormikErrors } from "formik";
+import * as Yup from "yup";
 import styles from "./ContactForm.module.css";
+
+import FormInput from "./FormInput";
+import FormTextarea from "./FormTextarea";
+import FormSelect, { SelectOption } from "./FormSelect";
+import FileUpload from "./FileUpload";
 
 interface FormValues {
   fullName: string;
@@ -23,23 +28,6 @@ interface FormValues {
 interface ContactFormProps {
   onClose?: () => void;
 }
-
-const MAX_FILE_SIZE = 100 * 1024 * 1024;
-const MAX_FILES = 10;
-const ALLOWED_FILE_TYPES = [
-  "application/pdf",
-  "image/jpeg",
-  "image/png",
-  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-];
-
-const ErrorSlot = ({ error }: { error?: string }) => (
-  <div className={styles.errorSlot}>
-    <div className={`${styles.error} ${error ? styles.visible : ""}`}>
-      {error || "\u00A0"}
-    </div>
-  </div>
-);
 
 export default function ContactForm({ onClose }: ContactFormProps) {
   const t = useTranslations("form");
@@ -83,6 +71,42 @@ export default function ContactForm({ onClose }: ContactFormProps) {
     additionalComments: "",
   };
 
+  const interestedInOptions: SelectOption[] = [
+    {
+      value: "newConstruction",
+      label: t("options.interestedIn.newConstruction"),
+    },
+    {
+      value: "renovation",
+      label: t("options.interestedIn.renovation"),
+    },
+  ];
+
+  const renovationTypeOptions: SelectOption[] = [
+    {
+      value: "turnkeyNoProject",
+      label: t("options.renovationType.turnkeyNoProject"),
+    },
+    {
+      value: "turnkeyWithProject",
+      label: t("options.renovationType.turnkeyWithProject"),
+    },
+    { value: "refresh", label: t("options.renovationType.refresh") },
+    { value: "repairs", label: t("options.renovationType.repairs") },
+  ];
+
+  const renovationObjectOptions: SelectOption[] = [
+    { value: "house", label: t("options.renovationObject.house") },
+    { value: "apartment", label: t("options.renovationObject.apartment") },
+    {
+      value: "serviceSpace",
+      label: t("options.renovationObject.serviceSpace"),
+    },
+    { value: "office", label: t("options.renovationObject.office") },
+    { value: "bathroom", label: t("options.renovationObject.bathroom") },
+    { value: "room", label: t("options.renovationObject.room") },
+  ];
+
   const handleSubmit = async (
     values: FormValues,
     { setSubmitting, resetForm }: FormikHelpers<FormValues>,
@@ -110,9 +134,7 @@ export default function ContactForm({ onClose }: ContactFormProps) {
         body: formData,
       });
 
-      if (!response.ok) {
-        throw new Error("Failed to submit quote request");
-      }
+      if (!response.ok) throw new Error("Failed to submit quote request");
 
       setSubmitStatus("success");
       resetForm();
@@ -122,42 +144,6 @@ export default function ContactForm({ onClose }: ContactFormProps) {
     } finally {
       setSubmitting(false);
     }
-  };
-
-  const handleFileChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
-    setFieldValue: (field: string, value: File[]) => void,
-    currentFiles: File[],
-  ) => {
-    const files = Array.from(event.target.files || []);
-
-    if (currentFiles.length + files.length > MAX_FILES) {
-      alert(t("validation.tooManyFiles"));
-      return;
-    }
-
-    const validFiles = files.filter((file) => {
-      if (file.size > MAX_FILE_SIZE) {
-        alert(`${file.name}: ${t("validation.fileTooLarge")}`);
-        return false;
-      }
-      if (!ALLOWED_FILE_TYPES.includes(file.type)) {
-        alert(`${file.name}: ${t("validation.invalidFileType")}`);
-        return false;
-      }
-      return true;
-    });
-
-    setFieldValue("attachments", [...currentFiles, ...validFiles]);
-  };
-
-  const removeFile = (
-    index: number,
-    setFieldValue: (field: string, value: File[]) => void,
-    currentFiles: File[],
-  ) => {
-    const newFiles = currentFiles.filter((_, i) => i !== index);
-    setFieldValue("attachments", newFiles);
   };
 
   return (
@@ -176,9 +162,7 @@ export default function ContactForm({ onClose }: ContactFormProps) {
             </svg>
           </div>
 
-          <p className={styles.successTextSimple}>
-            Your request has been received.
-          </p>
+          <p className={styles.successTextSimple}>{t("successMessage")}</p>
 
           <div className={styles.successActions}>
             <button
@@ -186,7 +170,7 @@ export default function ContactForm({ onClose }: ContactFormProps) {
               onClick={() => setSubmitStatus("idle")}
               className={styles.secondaryButton}
             >
-              Send another
+              {t("actions.sendAnother")}
             </button>
 
             {onClose && (
@@ -195,7 +179,7 @@ export default function ContactForm({ onClose }: ContactFormProps) {
                 onClick={onClose}
                 className={styles.primaryButton}
               >
-                Close
+                {t("actions.close")}
               </button>
             )}
           </div>
@@ -204,347 +188,198 @@ export default function ContactForm({ onClose }: ContactFormProps) {
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
+          validateOnBlur
+          validateOnChange
           onSubmit={handleSubmit}
         >
-          {({ isSubmitting, setFieldValue, values, errors, touched }) => (
-            <Form className={styles.form}>
+          {({
+            isSubmitting,
+            setFieldValue,
+            setFieldTouched,
+            values,
+            errors,
+            touched,
+          }) => (
+            <Form className={styles.form} noValidate>
               <div className={styles.formScrollArea}>
-                <div className={styles.formGrid}>
-                  <div className={styles.formGroup}>
-                    <label htmlFor="fullName" className={styles.label}>
-                      {t("fields.fullName")}{" "}
-                      <span className={styles.required}>*</span>
-                    </label>
-                    <Field
-                      type="text"
-                      id="fullName"
-                      name="fullName"
-                      placeholder={t("placeholders.fullName")}
-                      className={styles.input}
-                    />
-                    <ErrorSlot
-                      error={
-                        touched.fullName
-                          ? (errors.fullName as string)
-                          : undefined
-                      }
-                    />
+                <div className={styles.formSection}>
+                  <div className={styles.sectionHeader}>
+                    <p className={styles.sectionEyebrow}>
+                      {t("sections.contact.eyebrow")}
+                    </p>
+                    <h3 className={styles.sectionTitle}>
+                      {t("sections.contact.title")}
+                    </h3>
                   </div>
 
-                  <div className={styles.formGroup}>
-                    <label htmlFor="phone" className={styles.label}>
-                      {t("fields.phone")}{" "}
-                      <span className={styles.required}>*</span>
-                    </label>
-                    <Field
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      placeholder={t("placeholders.phone")}
-                      className={styles.input}
-                    />
-                    <ErrorSlot
-                      error={
-                        touched.phone ? (errors.phone as string) : undefined
-                      }
-                    />
-                  </div>
-
-                  <div className={styles.formGroup}>
-                    <label htmlFor="email" className={styles.label}>
-                      {t("fields.email")}{" "}
-                      <span className={styles.required}>*</span>
-                    </label>
-                    <Field
-                      type="email"
-                      id="email"
-                      name="email"
-                      placeholder={t("placeholders.email")}
-                      className={styles.input}
-                    />
-                    <ErrorSlot
-                      error={
-                        touched.email ? (errors.email as string) : undefined
-                      }
-                    />
-                  </div>
-
-                  <div className={styles.formGroup}>
-                    <label htmlFor="interestedIn" className={styles.label}>
-                      {t("fields.interestedIn")}{" "}
-                      <span className={styles.required}>*</span>
-                    </label>
-                    <div className={styles.selectShell}>
-                      <Field
-                        as="select"
-                        id="interestedIn"
-                        name="interestedIn"
-                        className={styles.select}
-                      >
-                        <option value="">
-                          {t("placeholders.interestedIn")}
-                        </option>
-                        <option value="newConstruction">
-                          {t("options.interestedIn.newConstruction")}
-                        </option>
-                        <option value="renovation">
-                          {t("options.interestedIn.renovation")}
-                        </option>
-                      </Field>
+                  <div className={styles.formGrid}>
+                    <div className={styles.formGroup}>
+                      <FormInput
+                        id="fullName"
+                        name="fullName"
+                        label={t("fields.fullName")}
+                        placeholder={t("placeholders.fullName")}
+                        required
+                        touched={touched.fullName}
+                        error={errors.fullName as string}
+                      />
                     </div>
-                    <ErrorSlot
-                      error={
-                        touched.interestedIn
-                          ? (errors.interestedIn as string)
-                          : undefined
-                      }
-                    />
-                  </div>
 
-                  <div className={styles.formGroup}>
-                    <label htmlFor="renovationType" className={styles.label}>
-                      {t("fields.renovationType")}{" "}
-                      <span className={styles.required}>*</span>
-                    </label>
-                    <div className={styles.selectShell}>
-                      <Field
-                        as="select"
-                        id="renovationType"
-                        name="renovationType"
-                        className={styles.select}
-                      >
-                        <option value="">
-                          {t("placeholders.renovationType")}
-                        </option>
-                        <option value="turnkeyNoProject">
-                          {t("options.renovationType.turnkeyNoProject")}
-                        </option>
-                        <option value="turnkeyWithProject">
-                          {t("options.renovationType.turnkeyWithProject")}
-                        </option>
-                        <option value="refresh">
-                          {t("options.renovationType.refresh")}
-                        </option>
-                        <option value="repairs">
-                          {t("options.renovationType.repairs")}
-                        </option>
-                      </Field>
+                    <div className={styles.formGroup}>
+                      <FormInput
+                        id="phone"
+                        name="phone"
+                        label={t("fields.phone")}
+                        placeholder={t("placeholders.phone")}
+                        type="tel"
+                        required
+                        touched={touched.phone}
+                        error={errors.phone as string}
+                      />
                     </div>
-                    <ErrorSlot
-                      error={
-                        touched.renovationType
-                          ? (errors.renovationType as string)
-                          : undefined
-                      }
-                    />
-                  </div>
 
-                  <div className={styles.formGroup}>
-                    <label htmlFor="renovationObject" className={styles.label}>
-                      {t("fields.renovationObject")}{" "}
-                      <span className={styles.required}>*</span>
-                    </label>
-                    <div className={styles.selectShell}>
-                      <Field
-                        as="select"
-                        id="renovationObject"
-                        name="renovationObject"
-                        className={styles.select}
-                      >
-                        <option value="">
-                          {t("placeholders.renovationObject")}
-                        </option>
-                        <option value="house">
-                          {t("options.renovationObject.house")}
-                        </option>
-                        <option value="apartment">
-                          {t("options.renovationObject.apartment")}
-                        </option>
-                        <option value="serviceSpace">
-                          {t("options.renovationObject.serviceSpace")}
-                        </option>
-                        <option value="office">
-                          {t("options.renovationObject.office")}
-                        </option>
-                        <option value="bathroom">
-                          {t("options.renovationObject.bathroom")}
-                        </option>
-                        <option value="room">
-                          {t("options.renovationObject.room")}
-                        </option>
-                      </Field>
+                    <div className={styles.formGroup}>
+                      <FormInput
+                        id="email"
+                        name="email"
+                        label={t("fields.email")}
+                        placeholder={t("placeholders.email")}
+                        type="email"
+                        required
+                        touched={touched.email}
+                        error={errors.email as string}
+                      />
                     </div>
-                    <ErrorSlot
-                      error={
-                        touched.renovationObject
-                          ? (errors.renovationObject as string)
-                          : undefined
-                      }
-                    />
+
+                    <div className={styles.formGroup}>
+                      <FormInput
+                        id="location"
+                        name="location"
+                        label={t("fields.location")}
+                        placeholder={t("placeholders.location")}
+                        required
+                        touched={touched.location}
+                        error={errors.location as string}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className={styles.formSection}>
+                  <div className={styles.sectionHeader}>
+                    <p className={styles.sectionEyebrow}>
+                      {t("sections.project.eyebrow")}
+                    </p>
+                    <h3 className={styles.sectionTitle}>
+                      {t("sections.project.title")}
+                    </h3>
                   </div>
 
-                  <div className={styles.formGroup}>
-                    <label htmlFor="startDate" className={styles.label}>
-                      {t("fields.startDate")}{" "}
-                      <span className={styles.required}>*</span>
-                    </label>
-                    <div className={styles.dateShell}>
-                      <Field
-                        type="date"
+                  <div className={styles.formGrid}>
+                    <FormSelect
+                      id="interestedIn"
+                      name="interestedIn"
+                      label={t("fields.interestedIn")}
+                      placeholder={t("placeholders.interestedIn")}
+                      value={values.interestedIn}
+                      options={interestedInOptions}
+                      error={(errors as FormikErrors<FormValues>).interestedIn}
+                      touched={touched.interestedIn}
+                      required
+                      onChange={setFieldValue}
+                      onBlur={setFieldTouched}
+                    />
+
+                    <FormSelect
+                      id="renovationType"
+                      name="renovationType"
+                      label={t("fields.renovationType")}
+                      placeholder={t("placeholders.renovationType")}
+                      value={values.renovationType}
+                      options={renovationTypeOptions}
+                      error={
+                        (errors as FormikErrors<FormValues>).renovationType
+                      }
+                      touched={touched.renovationType}
+                      required
+                      onChange={setFieldValue}
+                      onBlur={setFieldTouched}
+                    />
+
+                    <FormSelect
+                      id="renovationObject"
+                      name="renovationObject"
+                      label={t("fields.renovationObject")}
+                      placeholder={t("placeholders.renovationObject")}
+                      value={values.renovationObject}
+                      options={renovationObjectOptions}
+                      error={
+                        (errors as FormikErrors<FormValues>).renovationObject
+                      }
+                      touched={touched.renovationObject}
+                      required
+                      onChange={setFieldValue}
+                      onBlur={setFieldTouched}
+                    />
+
+                    <div className={styles.formGroup}>
+                      <FormInput
                         id="startDate"
                         name="startDate"
-                        className={styles.input}
+                        label={t("fields.startDate")}
+                        placeholder={t("placeholders.startDate")}
+                        type="date"
+                        required
+                        touched={touched.startDate}
+                        error={errors.startDate as string}
                       />
                     </div>
-                    <ErrorSlot
-                      error={
-                        touched.startDate
-                          ? (errors.startDate as string)
-                          : undefined
-                      }
-                    />
-                  </div>
 
-                  <div className={styles.formGroup}>
-                    <label htmlFor="location" className={styles.label}>
-                      {t("fields.location")}{" "}
-                      <span className={styles.required}>*</span>
-                    </label>
-                    <Field
-                      type="text"
-                      id="location"
-                      name="location"
-                      placeholder={t("placeholders.location")}
-                      className={styles.input}
-                    />
-                    <ErrorSlot
-                      error={
-                        touched.location
-                          ? (errors.location as string)
-                          : undefined
-                      }
-                    />
-                  </div>
-
-                  <div className={`${styles.formGroup} ${styles.fullWidth}`}>
-                    <label htmlFor="workDescription" className={styles.label}>
-                      {t("fields.workDescription")}
-                    </label>
-                    <Field
-                      type="text"
-                      id="workDescription"
-                      name="workDescription"
-                      placeholder={t("placeholders.workDescription")}
-                      className={styles.input}
-                    />
-                    <ErrorSlot
-                      error={
-                        touched.workDescription
-                          ? (errors.workDescription as string)
-                          : undefined
-                      }
-                    />
-                  </div>
-
-                  <div className={`${styles.formGroup} ${styles.fullWidth}`}>
-                    <label htmlFor="attachments" className={styles.label}>
-                      {t("fields.attachments")}
-                    </label>
-
-                    <div className={styles.fileUploadArea}>
-                      <input
-                        type="file"
-                        name="attachments"
-                        id="attachments"
-                        multiple
-                        accept=".pdf,.jpg,.jpeg,.png,.docx"
-                        onChange={(e) =>
-                          handleFileChange(e, setFieldValue, values.attachments)
-                        }
-                        className={styles.fileInput}
+                    <div className={`${styles.formGroup} ${styles.fullWidth}`}>
+                      <FormTextarea
+                        id="workDescription"
+                        name="workDescription"
+                        label={t("fields.workDescription")}
+                        placeholder={t("placeholders.workDescription")}
+                        hint={t("fieldsHint.workDescription")}
+                        rows={4}
                       />
-                      <label htmlFor="attachments" className={styles.fileLabel}>
-                        <svg
-                          className={styles.uploadIcon}
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          aria-hidden="true"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={1.8}
-                            d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                          />
-                        </svg>
-                        <span>{t("fileUpload.dragDrop")}</span>
-                      </label>
                     </div>
+                  </div>
+                </div>
 
-                    <p className={styles.fileHint}>
-                      {t("fileUpload.supportedFormats")}
+                <div className={styles.formSection}>
+                  <div className={styles.sectionHeader}>
+                    <p className={styles.sectionEyebrow}>
+                      {t("sections.details.eyebrow")}
                     </p>
-
-                    {values.attachments.length > 0 && (
-                      <div className={styles.fileList}>
-                        <p className={styles.fileListTitle}>
-                          {t("fileUpload.selectedFiles")}:
-                        </p>
-
-                        {values.attachments.map((file, index) => (
-                          <div key={index} className={styles.fileItem}>
-                            <span className={styles.fileName}>{file.name}</span>
-                            <span className={styles.fileSize}>
-                              ({(file.size / 1024 / 1024).toFixed(2)} MB)
-                            </span>
-                            <button
-                              type="button"
-                              onClick={() =>
-                                removeFile(
-                                  index,
-                                  setFieldValue,
-                                  values.attachments,
-                                )
-                              }
-                              className={styles.removeFileButton}
-                            >
-                              {t("fileUpload.removeFile")}
-                            </button>
-                          </div>
-                        ))}
-                      </div>
-                    )}
+                    <h3 className={styles.sectionTitle}>
+                      {t("sections.details.title")}
+                    </h3>
                   </div>
 
-                  <div className={`${styles.formGroup} ${styles.fullWidth}`}>
-                    <label
-                      htmlFor="additionalComments"
-                      className={styles.label}
-                    >
-                      {t("fields.additionalComments")}
-                    </label>
-                    <Field
-                      as="textarea"
-                      id="additionalComments"
-                      name="additionalComments"
-                      placeholder={t("placeholders.additionalComments")}
-                      rows={5}
-                      className={styles.textarea}
+                  <div className={styles.formGrid}>
+                    <FileUpload
+                      files={values.attachments}
+                      setFieldValue={setFieldValue}
                     />
-                    <ErrorSlot
-                      error={
-                        touched.additionalComments
-                          ? (errors.additionalComments as string)
-                          : undefined
-                      }
-                    />
+
+                    <div className={`${styles.formGroup} ${styles.fullWidth}`}>
+                      <FormTextarea
+                        id="additionalComments"
+                        name="additionalComments"
+                        label={t("fields.additionalComments")}
+                        placeholder={t("placeholders.additionalComments")}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
 
               {submitStatus === "error" && (
-                <div className={styles.errorMessage}>{t("errorMessage")}</div>
+                <div className={styles.errorMessage} aria-live="polite">
+                  {t("errorMessage")}
+                </div>
               )}
 
               <div className={styles.formFooter}>
@@ -554,7 +389,7 @@ export default function ContactForm({ onClose }: ContactFormProps) {
                     onClick={onClose}
                     className={styles.secondaryButton}
                   >
-                    Close
+                    {t("actions.close")}
                   </button>
                 )}
 

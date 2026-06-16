@@ -426,6 +426,37 @@
     }
   },
   "form": {
+    "modal": {
+  "eyebrow": "PRO100 Twój Remont",
+  "closeAriaLabel": "Zamknij formularz wyceny"
+},
+"sections": {
+  "contact": {
+    "eyebrow": "01 / Kontakt",
+    "title": "Dane kontaktowe"
+  },
+  "project": {
+    "eyebrow": "02 / Projekt",
+    "title": "Zakres prac"
+  },
+  "details": {
+    "eyebrow": "03 / Szczegóły",
+    "title": "Pliki i dodatkowe informacje"
+  }
+},
+"actions": {
+  "close": "Zamknij",
+  "sendAnother": "Wyślij kolejne"
+},
+"select": {
+  "chooseOption": "Wybierz opcję"
+},
+"date": {
+  "helper": "Możesz wybrać datę z kalendarza lub wpisać ją ręcznie."
+},
+"fieldsHint": {
+  "workDescription": "Podaj orientacyjną powierzchnię lub krótki zakres prac."
+},
     "title": "Poproś o wycenę",
     "subtitle": "Wypełnij formularz poniżej, a skontaktujemy się z Tobą, aby omówić kolejne kroki.",
     "fields": {
@@ -483,6 +514,7 @@
       "dateInvalid": "Wybierz poprawną datę"
     },
     "fileUpload": {
+       "sizeUnit": "MB",
       "dragDrop": "Przeciągnij i upuść pliki tutaj lub kliknij, aby je wybrać",
       "selectedFiles": "Wybrane pliki",
       "removeFile": "Usuń",

@@ -6,6 +6,15 @@
   height: 100%;
 }
 
+.isActive {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.085),
+    rgba(255, 255, 255, 0.045)
+  );
+  color: #ffffff;
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -19,10 +28,10 @@
   min-height: 0;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 18px 18px 10px;
+  padding: 20px 18px 12px;
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.24) transparent;
+  scrollbar-color: rgba(245, 244, 240, 0.22) transparent;
 }
 
 .formScrollArea::-webkit-scrollbar {
@@ -36,17 +45,68 @@
 .formScrollArea::-webkit-scrollbar-thumb {
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.34) 0%,
-    rgba(255, 255, 255, 0.16) 100%
+    rgba(245, 244, 240, 0.28),
+    rgba(245, 244, 240, 0.12)
   );
   border-radius: 999px;
+}
+
+.formSection {
+  position: relative;
+  padding: 18px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(245, 244, 240, 0.075);
+  border-radius: 24px;
+  background:
+    radial-gradient(
+      circle at 0% 0%,
+      rgba(255, 255, 255, 0.055),
+      transparent 34%
+    ),
+    rgba(255, 255, 255, 0.018);
+  animation: sectionIn 260ms ease both;
+}
+
+.formSection:nth-child(2) {
+  animation-delay: 60ms;
+}
+
+.formSection:nth-child(3) {
+  animation-delay: 110ms;
+}
+
+.formSection:last-child {
+  margin-bottom: 0;
+}
+
+.sectionHeader {
+  margin-bottom: 16px;
+}
+
+.sectionEyebrow {
+  margin: 0 0 6px;
+  color: rgba(245, 244, 240, 0.4);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.sectionTitle {
+  margin: 0;
+  color: rgba(245, 244, 240, 0.92);
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.035em;
 }
 
 .formGrid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 14px;
-  padding-bottom: 12px;
 }
 
 .fullWidth {
@@ -58,11 +118,15 @@
   flex-direction: column;
 }
 
+.formGroup:has(.selectMenu) {
+  z-index: 80;
+}
+
 .label {
   margin-bottom: 8px;
-  color: rgba(245, 244, 240, 0.58);
+  color: rgba(245, 244, 240, 0.62);
   font-family: "Barlow Condensed", sans-serif;
-  font-size: 11px;
+  font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.18em;
   line-height: 1.4;
@@ -70,73 +134,236 @@
 }
 
 .required {
-  color: rgba(255, 255, 255, 0.82);
-  font-weight: 500;
   margin-left: 2px;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .input,
-.select,
-.textarea {
+.textarea,
+.selectButton {
   width: 100%;
-  padding: 13px 14px;
-  font-size: 15px;
-  font-family: "Barlow", sans-serif;
-  color: #f5f4f0;
-  background: rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  min-height: 52px;
+  padding: 13px 15px;
+  border: 1px solid rgba(245, 244, 240, 0.09);
   border-radius: 16px;
+  outline: none;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.045),
+      rgba(255, 255, 255, 0.022)
+    ),
+    rgba(255, 255, 255, 0.025);
+  color: #f5f4f0;
+  font-family: "Barlow", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.045),
+    0 10px 20px rgba(0, 0, 0, 0.06);
   transition:
     border-color 220ms ease,
-    box-shadow 220ms ease,
     background-color 220ms ease,
+    box-shadow 220ms ease,
     transform 180ms ease;
-  outline: none;
-  appearance: none;
-  line-height: 1.5;
-  min-height: 50px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .input::placeholder,
 .textarea::placeholder {
-  color: rgba(245, 244, 240, 0.34);
+  color: rgba(245, 244, 240, 0.32);
 }
 
 .input:hover,
-.select:hover,
-.textarea:hover {
-  border-color: rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.05);
+.textarea:hover,
+.selectButton:hover {
+  border-color: rgba(245, 244, 240, 0.16);
+  background-color: rgba(255, 255, 255, 0.04);
 }
 
 .input:focus,
-.select:focus,
-.textarea:focus {
-  border-color: rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.065);
+.textarea:focus,
+.selectButton:focus-visible {
+  border-color: rgba(245, 244, 240, 0.28);
+  background-color: rgba(255, 255, 255, 0.055);
   box-shadow:
-    0 0 0 4px rgba(255, 255, 255, 0.06),
+    0 0 0 4px rgba(245, 244, 240, 0.055),
     inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
-.selectShell,
-.dateShell {
-  position: relative;
+.input[type="date"] {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  color-scheme: dark;
 }
 
-.select {
+.input[type="date"]::-webkit-date-and-time-value {
+  text-align: left;
+}
+
+.input[type="date"]::-webkit-calendar-picker-indicator {
+  width: 18px;
+  height: 18px;
   cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Cpath fill='rgba(245,244,240,0.72)' d='M7 10L2 5h10z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 14px center;
-  padding-right: 40px;
+  opacity: 0.72;
+  filter: invert(1);
 }
 
 .textarea {
-  resize: vertical;
-  min-height: 140px;
+  resize: none;
+  min-height: 138px;
+  max-height: 138px;
   line-height: 1.75;
+}
+
+.fieldHint {
+  margin: 7px 0 0;
+  color: rgba(245, 244, 240, 0.42);
+  font-family: "Barlow", sans-serif;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.customSelect {
+  position: relative;
+  z-index: 20;
+}
+
+.selectButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  text-align: left;
+  cursor: pointer;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.028)
+    ),
+    #111314;
+}
+
+.selectButton[aria-expanded="true"] {
+  border-color: rgba(245, 244, 240, 0.26);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.075),
+      rgba(255, 255, 255, 0.036)
+    ),
+    #121415;
+  box-shadow:
+    0 0 0 4px rgba(245, 244, 240, 0.055),
+    inset 0 1px 0 rgba(255, 255, 255, 0.065);
+}
+
+.isPlaceholder {
+  color: rgba(245, 244, 240, 0.4);
+}
+
+.selectIcon {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle at 35% 28%,
+      rgba(255, 255, 255, 0.14),
+      transparent 50%
+    ),
+    rgba(245, 244, 240, 0.065);
+  transition:
+    transform 220ms ease,
+    background-color 220ms ease;
+}
+
+.selectButton[aria-expanded="true"] .selectIcon {
+  transform: rotate(180deg);
+  background-color: rgba(245, 244, 240, 0.095);
+}
+
+.selectIcon::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-right: 1.5px solid rgba(245, 244, 240, 0.78);
+  border-bottom: 1.5px solid rgba(245, 244, 240, 0.78);
+  transform: translate(-50%, -65%) rotate(45deg);
+}
+
+.selectMenu {
+  position: absolute;
+  top: calc(100% + 9px);
+  left: 0;
+  right: 0;
+  z-index: 100;
+  overflow: hidden;
+  padding: 8px;
+  border: 1px solid rgba(245, 244, 240, 0.14);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(24, 26, 27, 0.98), rgba(12, 13, 14, 0.98)),
+    #101112;
+  box-shadow:
+    0 24px 48px rgba(0, 0, 0, 0.48),
+    0 0 0 1px rgba(255, 255, 255, 0.035),
+    inset 0 1px 0 rgba(255, 255, 255, 0.065);
+  animation: selectMenuIn 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.selectOption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 12px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: rgba(245, 244, 240, 0.72);
+  font-family: "Barlow", sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.35;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.selectOption:hover,
+.selectOption:focus-visible {
+  outline: none;
+  transform: translateX(2px);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.085),
+    rgba(255, 255, 255, 0.045)
+  );
+  color: #ffffff;
+}
+
+.isSelected {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.11),
+    rgba(255, 255, 255, 0.055)
+  );
+  color: #ffffff;
+}
+
+.optionMark {
+  color: rgba(245, 244, 240, 0.9);
+  font-size: 0.85rem;
 }
 
 .errorSlot {
@@ -147,13 +374,16 @@
 }
 
 .error {
-  font-size: 13px;
-  color: #ff8a8a;
+  color: #ff9b9b;
+  font-family: "Barlow", sans-serif;
+  font-size: 0.8rem;
   font-weight: 500;
   line-height: 1.4;
   opacity: 0;
   transform: translateY(-2px);
-  transition: all 0.2s ease-out;
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
 }
 
 .error.visible {
@@ -163,7 +393,7 @@
 
 .fileUploadArea {
   position: relative;
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 .fileInput {
@@ -180,73 +410,87 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 148px;
-  padding: 24px;
-  border: 1px dashed rgba(255, 255, 255, 0.16);
-  border-radius: 20px;
+  min-height: 152px;
+  padding: 26px 22px;
+  border: 1px dashed rgba(245, 244, 240, 0.16);
+  border-radius: 22px;
   background:
-    radial-gradient(
-      circle at top,
-      rgba(255, 255, 255, 0.06) 0%,
-      transparent 55%
-    ),
-    rgba(255, 255, 255, 0.028);
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.07), transparent 55%),
+    rgba(255, 255, 255, 0.025);
+  color: rgba(245, 244, 240, 0.7);
+  font-family: "Barlow", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-align: center;
   cursor: pointer;
   transition:
     border-color 220ms ease,
     background-color 220ms ease,
     transform 220ms ease,
     box-shadow 220ms ease;
-  text-align: center;
-  color: rgba(245, 244, 240, 0.66);
+}
+
+.fileLabel small {
+  max-width: 58ch;
+  margin-top: 8px;
+  color: rgba(245, 244, 240, 0.42);
+  font-size: 0.76rem;
+  line-height: 1.55;
 }
 
 .fileLabel:hover {
   transform: translateY(-2px);
-  border-color: rgba(255, 255, 255, 0.24);
+  border-color: rgba(245, 244, 240, 0.26);
   background-color: rgba(255, 255, 255, 0.04);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.12);
+}
+
+.fileInput:focus-visible + .fileLabel {
+  outline: 2px solid rgba(245, 244, 240, 0.7);
+  outline-offset: 4px;
 }
 
 .uploadIcon {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   margin-bottom: 10px;
   color: rgba(245, 244, 240, 0.82);
 }
 
-.fileHint {
-  min-height: 16px;
-  margin-top: 8px;
-  color: rgba(245, 244, 240, 0.44);
-  font-size: 12px;
+.fileError {
+  margin: 10px 0 0;
+  color: #ff9b9b;
+  font-family: "Barlow", sans-serif;
+  font-size: 0.82rem;
   line-height: 1.5;
 }
 
 .fileList {
   margin-top: 14px;
-  padding: 14px;
-  background: rgba(255, 255, 255, 0.028);
+  padding: 12px;
+  border: 1px solid rgba(245, 244, 240, 0.08);
   border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.025);
 }
 
 .fileListTitle {
-  margin-bottom: 10px;
+  margin: 0 0 10px;
   color: rgba(245, 244, 240, 0.72);
-  font-size: 13px;
+  font-family: "Barlow", sans-serif;
+  font-size: 0.84rem;
   font-weight: 600;
 }
 
 .fileItem {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px 10px;
   align-items: center;
-  gap: 10px;
   padding: 10px 12px;
-  background: rgba(255, 255, 255, 0.04);
-  border-radius: 12px;
   margin-bottom: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(245, 244, 240, 0.08);
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .fileItem:last-child {
@@ -254,78 +498,83 @@
 }
 
 .fileName {
-  flex: 1;
   min-width: 0;
   overflow: hidden;
+  color: rgba(245, 244, 240, 0.86);
+  font-family: "Barlow", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: rgba(245, 244, 240, 0.86);
-  font-size: 14px;
-  font-weight: 500;
 }
 
 .fileSize {
-  flex-shrink: 0;
-  color: rgba(245, 244, 240, 0.42);
-  font-size: 12px;
+  color: rgba(245, 244, 240, 0.44);
+  font-family: "Barlow", sans-serif;
+  font-size: 0.76rem;
 }
 
 .removeFileButton {
-  flex-shrink: 0;
+  grid-column: 1 / -1;
+  justify-self: flex-start;
   padding: 7px 12px;
-  font-size: 12px;
-  color: rgba(245, 244, 240, 0.72);
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(245, 244, 240, 0.12);
   border-radius: 999px;
+  background: transparent;
+  color: rgba(245, 244, 240, 0.72);
+  font-family: "Barlow", sans-serif;
+  font-size: 0.76rem;
+  font-weight: 500;
   cursor: pointer;
   transition:
     transform 180ms ease,
     background-color 220ms ease,
     border-color 220ms ease,
     color 220ms ease;
-  font-weight: 500;
 }
 
 .removeFileButton:hover {
   transform: translateY(-1px);
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.18);
+  border-color: rgba(245, 244, 240, 0.2);
+  background: rgba(255, 255, 255, 0.07);
   color: #ffffff;
 }
 
 .errorMessage {
+  flex-shrink: 0;
   margin: 0 18px 12px;
   padding: 12px 14px;
+  border: 1px solid rgba(244, 67, 54, 0.22);
   border-radius: 16px;
   background-color: rgba(244, 67, 54, 0.08);
   color: #ff9d9d;
-  border: 1px solid rgba(244, 67, 54, 0.2);
   font-family: "Barlow", sans-serif;
   font-size: 0.88rem;
   line-height: 1.6;
-  flex-shrink: 0;
 }
 
 .formFooter {
+  position: sticky;
+  bottom: 0;
+  z-index: 15;
   flex-shrink: 0;
   display: flex;
   flex-direction: column-reverse;
   gap: 10px;
   padding: 14px 18px 18px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  border-top: 1px solid rgba(245, 244, 240, 0.08);
+  background: rgba(10, 11, 12, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .primaryButton,
 .secondaryButton {
-  min-height: 48px;
   width: 100%;
+  min-height: 50px;
   border-radius: 999px;
   font-family: "Barlow Condensed", sans-serif;
-  font-size: 10px;
+  font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -340,55 +589,49 @@
 
 .secondaryButton {
   padding: 0 20px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.05);
-  color: rgba(245, 244, 240, 0.72);
+  border: 1px solid rgba(245, 244, 240, 0.12);
+  background: rgba(255, 255, 255, 0.035);
+  color: rgba(245, 244, 240, 0.68);
 }
 
 .secondaryButton:hover {
   transform: translateY(-2px);
-  border-color: rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(245, 244, 240, 0.2);
+  background: rgba(255, 255, 255, 0.065);
   color: #ffffff;
 }
 
 .primaryButton {
   padding: 0 22px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background:
-    radial-gradient(
-      circle at 30% 30%,
-      rgba(255, 255, 255, 0.14),
-      rgba(255, 255, 255, 0.04) 72%
-    ),
-    rgba(255, 255, 255, 0.05);
-  color: #f5f4f0;
-  box-shadow:
-    0 10px 22px rgba(0, 0, 0, 0.14),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
-}
-
-.primaryButton:hover:not(:disabled) {
-  transform: translateY(-2px);
-  border-color: rgba(255, 255, 255, 0.24);
+  border: 1px solid rgba(245, 244, 240, 0.18);
   background:
     radial-gradient(
       circle at 30% 30%,
       rgba(255, 255, 255, 0.18),
-      rgba(255, 255, 255, 0.05) 72%
+      transparent 70%
     ),
-    rgba(255, 255, 255, 0.06);
+    rgba(245, 244, 240, 0.08);
+  color: #f5f4f0;
   box-shadow:
-    0 16px 28px rgba(0, 0, 0, 0.18),
-    0 0 0 6px rgba(255, 255, 255, 0.06);
+    0 12px 24px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.primaryButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  border-color: rgba(245, 244, 240, 0.3);
+  background-color: rgba(245, 244, 240, 0.11);
+  box-shadow:
+    0 18px 30px rgba(0, 0, 0, 0.24),
+    0 0 0 6px rgba(245, 244, 240, 0.045);
 }
 
 .primaryButton:disabled {
-  background: rgba(255, 255, 255, 0.06);
-  color: rgba(245, 244, 240, 0.4);
+  border-color: rgba(245, 244, 240, 0.08);
+  background: rgba(255, 255, 255, 0.045);
+  color: rgba(245, 244, 240, 0.36);
   cursor: not-allowed;
   box-shadow: none;
-  border-color: rgba(255, 255, 255, 0.08);
 }
 
 .successState {
@@ -397,25 +640,25 @@
   align-items: center;
   justify-content: center;
   min-height: 100%;
-  padding: 34px 20px;
+  padding: 38px 20px;
   text-align: center;
 }
 
 .successMark {
   display: grid;
   place-items: center;
-  width: 72px;
-  height: 72px;
+  width: 74px;
+  height: 74px;
   margin-bottom: 18px;
+  border: 1px solid rgba(245, 244, 240, 0.14);
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.14);
   background:
     radial-gradient(
       circle at 30% 30%,
-      rgba(255, 255, 255, 0.14),
-      rgba(255, 255, 255, 0.04) 72%
+      rgba(255, 255, 255, 0.16),
+      transparent 72%
     ),
-    rgba(255, 255, 255, 0.04);
+    rgba(255, 255, 255, 0.045);
   color: #f5f4f0;
 }
 
@@ -425,6 +668,7 @@
 }
 
 .successTextSimple {
+  max-width: 42ch;
   margin: 0 0 18px;
   color: rgba(245, 244, 240, 0.9);
   font-family: "Barlow", sans-serif;
@@ -440,9 +684,54 @@
   max-width: 320px;
 }
 
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus,
+.textarea:-webkit-autofill,
+.textarea:-webkit-autofill:hover,
+.textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: #f5f4f0;
+  caret-color: #f5f4f0;
+  box-shadow:
+    0 0 0 1000px #111314 inset,
+    inset 0 1px 0 rgba(255, 255, 255, 0.045),
+    0 10px 20px rgba(0, 0, 0, 0.06);
+  border-color: rgba(245, 244, 240, 0.18);
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+@keyframes selectMenuIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes sectionIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (min-width: 768px) {
   .formScrollArea {
-    padding: 22px 22px 12px;
+    padding: 24px 24px 14px;
+  }
+
+  .formSection {
+    padding: 20px;
+    margin-bottom: 18px;
   }
 
   .formGrid {
@@ -450,10 +739,19 @@
     gap: 16px 18px;
   }
 
+  .fileItem {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+  }
+
+  .removeFileButton {
+    grid-column: auto;
+    justify-self: auto;
+  }
+
   .formFooter {
     flex-direction: row;
     justify-content: flex-end;
-    padding: 16px 22px 22px;
+    padding: 16px 24px 22px;
   }
 
   .primaryButton,
@@ -469,10 +767,58 @@
   }
 }
 
+@media (min-width: 1024px) {
+  .formScrollArea {
+    padding: 26px 26px 16px;
+  }
+
+  .formSection {
+    padding: 22px;
+    border-radius: 26px;
+  }
+
+  .formGrid {
+    gap: 18px 20px;
+  }
+}
+
+@media (max-width: 479px) {
+  .formScrollArea {
+    padding: 16px 12px 10px;
+  }
+
+  .formSection {
+    padding: 14px;
+    border-radius: 20px;
+  }
+
+  .sectionHeader {
+    margin-bottom: 14px;
+  }
+
+  .input,
+  .textarea,
+  .selectButton {
+    min-height: 50px;
+    border-radius: 14px;
+    font-size: 0.9rem;
+  }
+
+  .fileLabel {
+    min-height: 138px;
+    padding: 22px 16px;
+  }
+
+  .formFooter {
+    padding: 12px 12px 14px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .input,
-  .select,
   .textarea,
+  .selectButton,
+  .selectOption,
   .fileLabel,
   .removeFileButton,
   .primaryButton,
@@ -481,10 +827,21 @@
     transition: none;
   }
 
+  .selectMenu {
+    animation: none;
+  }
+
+  .selectIcon,
+  .formSection {
+    transition: none;
+    animation: none;
+  }
+
   .fileLabel:hover,
   .removeFileButton:hover,
   .primaryButton:hover,
-  .secondaryButton:hover {
+  .secondaryButton:hover,
+  .selectOption:hover {
     transform: none;
   }
 }
