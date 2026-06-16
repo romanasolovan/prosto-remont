@@ -26,6 +26,9 @@ interface FormDatePickerProps {
     isTouched?: boolean,
     shouldValidate?: boolean,
   ) => void;
+  validateField: (
+    field: string,
+  ) => void | Promise<string | undefined> | Promise<void>;
 }
 
 const localeMap = {
@@ -35,6 +38,13 @@ const localeMap = {
   ru,
 };
 
+const getToday = () => {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  return today;
+};
+
 const parseDateValue = (value: string) => {
   const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
 
@@ -42,6 +52,7 @@ const parseDateValue = (value: string) => {
 
   const [, year, month, day] = match;
   const date = new Date(Number(year), Number(month) - 1, Number(day));
+  date.setHours(0, 0, 0, 0);
 
   if (Number.isNaN(date.getTime())) return undefined;
 
@@ -68,20 +79,25 @@ export default function FormDatePicker({
   placeholder = "YYYY-MM-DD",
   setFieldValue,
   setFieldTouched,
+  validateField,
 }: FormDatePickerProps) {
   const t = useTranslations("form");
   const locale = useLocale();
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const [isOpen, setIsOpen] = useState(false);
+  const today = getToday();
 
   const selectedDate = parseDateValue(value);
   const visibleError = touched ? error : undefined;
   const hintId = hint ? `${id}-hint` : undefined;
   const errorId = visibleError ? `${id}-error` : undefined;
 
+  const [isOpen, setIsOpen] = useState(false);
+  const [month, setMonth] = useState<Date>(selectedDate ?? today);
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
+        isOpen &&
         wrapperRef.current &&
         !wrapperRef.current.contains(event.target as Node)
       ) {
@@ -95,28 +111,33 @@ export default function FormDatePicker({
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [name, setFieldTouched]);
+  }, [isOpen, name, setFieldTouched]);
+
+  const openCalendar = () => {
+    setMonth(selectedDate ?? today);
+    setIsOpen(true);
+  };
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setFieldValue(name, event.target.value, true);
+    const nextValue = event.target.value.replace(/[^\d-]/g, "").slice(0, 10);
+
+    setFieldValue(name, nextValue, true);
   };
 
-  const handleSelect = (date: Date | undefined) => {
+  const handleSelect = async (date: Date | undefined) => {
     if (!date) return;
 
-    setFieldValue(name, formatDateValue(date), true);
+    const normalizedDate = new Date(date);
+    normalizedDate.setHours(0, 0, 0, 0);
 
+    if (normalizedDate < today) return;
+
+    setFieldValue(name, formatDateValue(normalizedDate), true);
     setFieldTouched(name, true, false);
-
-    setTimeout(() => {
-      setFieldTouched(name, true, true);
-    });
-
     setIsOpen(false);
-  };
 
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
+    await validateField(name);
+  };
 
   return (
     <div className={styles.formGroup} ref={wrapperRef}>
@@ -138,8 +159,8 @@ export default function FormDatePicker({
             aria-describedby={
               [hintId, errorId].filter(Boolean).join(" ") || undefined
             }
-            onFocus={() => setIsOpen(true)}
-            onClick={() => setIsOpen(true)}
+            onFocus={openCalendar}
+            onClick={openCalendar}
             onChange={handleInputChange}
             onBlur={() => setFieldTouched(name, true, true)}
           />
@@ -150,7 +171,13 @@ export default function FormDatePicker({
             aria-label={t("date.openCalendar")}
             aria-expanded={isOpen}
             aria-controls={`${id}-calendar`}
-            onClick={() => setIsOpen((current) => !current)}
+            onClick={() => {
+              if (isOpen) {
+                setIsOpen(false);
+              } else {
+                openCalendar();
+              }
+            }}
           >
             <span aria-hidden="true" />
           </button>
@@ -166,9 +193,13 @@ export default function FormDatePicker({
             <DayPicker
               mode="single"
               selected={selectedDate}
+              month={month}
+              onMonthChange={setMonth}
               onSelect={handleSelect}
+              disabled={{ before: today }}
               locale={localeMap[locale as keyof typeof localeMap] || enUS}
               weekStartsOn={1}
+              showOutsideDays
               classNames={{
                 root: styles.calendarRoot,
                 month: styles.calendarMonth,
@@ -188,7 +219,6 @@ export default function FormDatePicker({
                 outside: styles.calendarOutside,
                 disabled: styles.calendarDisabled,
               }}
-              disabled={{ before: new Date() }}
             />
           </div>
         )}

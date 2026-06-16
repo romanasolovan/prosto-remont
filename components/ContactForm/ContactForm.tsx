@@ -197,6 +197,7 @@ export default function ContactForm({ onClose }: ContactFormProps) {
             isSubmitting,
             setFieldValue,
             setFieldTouched,
+            validateField,
             values,
             errors,
             touched,
@@ -289,6 +290,7 @@ export default function ContactForm({ onClose }: ContactFormProps) {
                       required
                       onChange={setFieldValue}
                       onBlur={setFieldTouched}
+                      validateField={validateField}
                     />
 
                     <FormSelect
@@ -305,6 +307,7 @@ export default function ContactForm({ onClose }: ContactFormProps) {
                       required
                       onChange={setFieldValue}
                       onBlur={setFieldTouched}
+                      validateField={validateField}
                     />
 
                     <FormSelect
@@ -321,6 +324,7 @@ export default function ContactForm({ onClose }: ContactFormProps) {
                       required
                       onChange={setFieldValue}
                       onBlur={setFieldTouched}
+                      validateField={validateField}
                     />
 
                     <div className={styles.formGroup}>
@@ -335,6 +339,7 @@ export default function ContactForm({ onClose }: ContactFormProps) {
                         touched={touched.startDate}
                         setFieldValue={setFieldValue}
                         setFieldTouched={setFieldTouched}
+                        validateField={validateField}
                       />
                     </div>
 

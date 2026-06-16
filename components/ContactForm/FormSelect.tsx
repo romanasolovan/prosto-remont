@@ -32,6 +32,9 @@ interface FormSelectProps {
     isTouched?: boolean,
     shouldValidate?: boolean,
   ) => void;
+  validateField: (
+    field: string,
+  ) => void | Promise<string | undefined> | Promise<void>;
 }
 
 export default function FormSelect({
@@ -46,6 +49,7 @@ export default function FormSelect({
   required,
   onChange,
   onBlur,
+  validateField,
 }: FormSelectProps) {
   const t = useTranslations("form");
   const listId = useId();
@@ -76,10 +80,12 @@ export default function FormSelect({
     setIsOpen(true);
   };
 
-  const chooseOption = (option: SelectOption) => {
+  const chooseOption = async (option: SelectOption) => {
     onChange(name, option.value, true);
-    onBlur(name, true, true);
+    onBlur(name, true, false);
     setIsOpen(false);
+
+    await validateField(name);
   };
 
   useEffect(() => {
@@ -135,7 +141,7 @@ export default function FormSelect({
         return;
       }
 
-      chooseOption(options[activeIndex]);
+      void chooseOption(options[activeIndex]);
     }
 
     if (event.key === "Escape") {
@@ -166,11 +172,8 @@ export default function FormSelect({
           aria-controls={isOpen ? listId : undefined}
           aria-describedby={visibleError ? `${id}-error` : undefined}
           onClick={() => {
-            if (isOpen) {
-              closeSelect(false);
-            } else {
-              openSelect();
-            }
+            if (isOpen) closeSelect(false);
+            else openSelect();
           }}
           onKeyDown={handleKeyDown}
         >
@@ -195,9 +198,10 @@ export default function FormSelect({
                   option.value === value ? styles.isSelected : ""
                 } ${index === activeIndex ? styles.isActive : ""}`}
                 onMouseEnter={() => setActiveIndex(index)}
-                onClick={() => chooseOption(option)}
+                onClick={() => void chooseOption(option)}
               >
                 <span>{option.label}</span>
+
                 {option.value === value && (
                   <span className={styles.optionMark} aria-hidden="true">
                     ✓
