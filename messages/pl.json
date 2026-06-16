@@ -452,7 +452,9 @@
   "chooseOption": "Wybierz opcję"
 },
 "date": {
-  "helper": "Możesz wybrać datę z kalendarza lub wpisać ją ręcznie."
+  "helper": "Use the format YYYY-MM-DD.",
+  "openCalendar": "Open calendar",
+  "calendarLabel": "Choose start date"
 },
 "fieldsHint": {
   "workDescription": "Podaj orientacyjną powierzchnię lub krótki zakres prac."

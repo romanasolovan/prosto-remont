@@ -845,3 +845,250 @@
     transform: none;
   }
 }
+
+/* DATE PICKER */
+
+.datePicker {
+  position: relative;
+}
+
+.dateInputWrap {
+  position: relative;
+}
+
+.dateToggle {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(245, 244, 240, 0.1);
+  border-radius: 50%;
+  background: rgba(245, 244, 240, 0.055);
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.dateToggle:hover {
+  border-color: rgba(245, 244, 240, 0.22);
+  background: rgba(245, 244, 240, 0.09);
+  transform: translateY(-50%) scale(1.03);
+}
+
+.dateToggle:focus-visible {
+  outline: 2px solid rgba(245, 244, 240, 0.72);
+  outline-offset: 3px;
+}
+
+.dateToggle span {
+  width: 15px;
+  height: 15px;
+  border: 1.5px solid rgba(245, 244, 240, 0.76);
+  border-radius: 4px;
+  position: relative;
+}
+
+.dateToggle span::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: -1.5px;
+  right: -1.5px;
+  height: 1.5px;
+  background: rgba(245, 244, 240, 0.76);
+}
+
+.calendarPopover {
+  position: absolute;
+  top: calc(100% + 9px);
+  left: 0;
+  right: 0;
+  z-index: 120;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid rgba(245, 244, 240, 0.14);
+  border-radius: 20px;
+  background:
+    linear-gradient(180deg, rgba(24, 26, 27, 0.98), rgba(12, 13, 14, 0.98)),
+    #101112;
+  box-shadow:
+    0 24px 48px rgba(0, 0, 0, 0.48),
+    0 0 0 1px rgba(255, 255, 255, 0.035),
+    inset 0 1px 0 rgba(255, 255, 255, 0.065);
+  animation: selectMenuIn 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.calendarRoot {
+  --rdp-accent-color: #f5f4f0;
+  --rdp-day-height: 36px;
+  --rdp-day-width: 36px;
+  width: 100%;
+  margin: 0;
+  color: #f5f4f0;
+  font-family: "Barlow", sans-serif;
+}
+
+.calendarMonth {
+  width: 100%;
+}
+
+.calendarCaption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  margin-bottom: 8px;
+}
+
+.calendarCaptionLabel {
+  color: rgba(245, 244, 240, 0.92);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+}
+
+.calendarNav {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.calendarNavButton {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(245, 244, 240, 0.1);
+  border-radius: 50%;
+  background: rgba(245, 244, 240, 0.045);
+  color: rgba(245, 244, 240, 0.82);
+  pointer-events: auto;
+  cursor: pointer;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.calendarNavButton:hover {
+  transform: translateY(-1px);
+  border-color: rgba(245, 244, 240, 0.2);
+  background: rgba(245, 244, 240, 0.08);
+}
+
+.calendarGrid {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 4px;
+}
+
+.calendarWeekdays {
+  color: rgba(245, 244, 240, 0.38);
+}
+
+.calendarWeekday {
+  height: 30px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.calendarWeek {
+  margin-top: 4px;
+}
+
+.calendarDay {
+  text-align: center;
+}
+
+.calendarDayButton {
+  width: 36px;
+  height: 36px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  color: rgba(245, 244, 240, 0.76);
+  font-family: "Barlow", sans-serif;
+  font-size: 0.86rem;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.calendarDayButton:hover {
+  transform: translateY(-1px);
+  background: rgba(245, 244, 240, 0.08);
+  color: #ffffff;
+}
+
+.calendarToday .calendarDayButton {
+  border-color: rgba(245, 244, 240, 0.28);
+  color: #ffffff;
+}
+
+.calendarSelected .calendarDayButton {
+  border-color: rgba(245, 244, 240, 0.42);
+  background: rgba(245, 244, 240, 0.16);
+  color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(245, 244, 240, 0.055);
+}
+
+.calendarOutside .calendarDayButton {
+  color: rgba(245, 244, 240, 0.22);
+}
+
+.calendarDisabled .calendarDayButton {
+  color: rgba(245, 244, 240, 0.16);
+  cursor: not-allowed;
+}
+
+@media (max-width: 479px) {
+  .calendarPopover {
+    padding: 10px;
+    border-radius: 18px;
+  }
+
+  .calendarRoot {
+    --rdp-day-height: 34px;
+    --rdp-day-width: 34px;
+  }
+
+  .calendarDayButton {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dateToggle,
+  .calendarDayButton,
+  .calendarNavButton {
+    transition: none;
+  }
+
+  .calendarPopover {
+    animation: none;
+  }
+
+  .dateToggle:hover,
+  .calendarDayButton:hover,
+  .calendarNavButton:hover {
+    transform: none;
+  }
+}

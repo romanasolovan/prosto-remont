@@ -453,7 +453,9 @@
   "chooseOption": "Виберіть опцію"
 },
 "date": {
-  "helper": "Ви можете вибрати дату в календарі або ввести її вручну."
+  "helper": "Use the format YYYY-MM-DD.",
+  "openCalendar": "Open calendar",
+  "calendarLabel": "Choose start date"
 },
 "fieldsHint": {
   "workDescription": "Вкажіть приблизну площу або короткий обсяг робіт."

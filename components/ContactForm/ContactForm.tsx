@@ -10,6 +10,7 @@ import FormInput from "./FormInput";
 import FormTextarea from "./FormTextarea";
 import FormSelect, { SelectOption } from "./FormSelect";
 import FileUpload from "./FileUpload";
+import FormDatePicker from "./FormDatePicker";
 
 interface FormValues {
   fullName: string;
@@ -323,15 +324,17 @@ export default function ContactForm({ onClose }: ContactFormProps) {
                     />
 
                     <div className={styles.formGroup}>
-                      <FormInput
+                      <FormDatePicker
                         id="startDate"
                         name="startDate"
                         label={t("fields.startDate")}
-                        placeholder={t("placeholders.startDate")}
-                        type="date"
+                        value={values.startDate}
                         required
-                        touched={touched.startDate}
+                        hint={t("date.helper")}
                         error={errors.startDate as string}
+                        touched={touched.startDate}
+                        setFieldValue={setFieldValue}
+                        setFieldTouched={setFieldTouched}
                       />
                     </div>
 

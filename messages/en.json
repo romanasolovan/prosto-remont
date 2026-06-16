@@ -449,7 +449,9 @@
   "chooseOption": "Choose an option"
 },
 "date": {
-  "helper": "You can choose a date from the calendar or type it manually."
+  "helper": "Use the format YYYY-MM-DD.",
+  "openCalendar": "Open calendar",
+  "calendarLabel": "Choose start date"
 },
 "fieldsHint": {
   "workDescription": "Enter an approximate area or a short scope of work."
@@ -510,6 +512,7 @@
       "invalidFileType": "Only PDF, JPG, PNG, and DOCX files are allowed",
       "dateInvalid": "Please select a valid date"
     },
+    
     "fileUpload": {
        "sizeUnit": "MB",
       "dragDrop": "Drag and drop files here, or click to select",
