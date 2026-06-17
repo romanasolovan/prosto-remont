@@ -13,6 +13,7 @@ import FileUpload from "./FileUpload";
 import FormDatePicker from "./FormDatePicker";
 import SuccessState from "./SuccessState";
 import SubmitButton from "./SubmitButton";
+import SubmitError from "./SubmitError";
 
 interface FormValues {
   fullName: string;
@@ -355,11 +356,7 @@ export default function ContactForm({ onClose }: ContactFormProps) {
                 </div>
               </div>
 
-              {submitStatus === "error" && (
-                <div className={styles.errorMessage} aria-live="polite">
-                  {t("errorMessage")}
-                </div>
-              )}
+              {submitStatus === "error" && <SubmitError />}
 
               <div className={styles.formFooter}>
                 {onClose && (

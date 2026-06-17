@@ -44,6 +44,18 @@ export default function QuoteRequestModal({ onClose }: QuoteRequestModalProps) {
       >
         <div className={styles.modalGlow} aria-hidden="true" />
 
+        <div className={styles.mobileHandle} aria-hidden="true" />
+
+        <button
+          type="button"
+          onClick={onClose}
+          className={styles.closeButton}
+          aria-label={t("modal.closeAriaLabel")}
+        >
+          <span className={styles.closeButtonLine} />
+          <span className={styles.closeButtonLine} />
+        </button>
+
         <div className={styles.modalTopBar}>
           <div className={styles.modalHeaderCopy}>
             <p className={styles.eyebrow}>{t("modal.eyebrow")}</p>
@@ -56,16 +68,6 @@ export default function QuoteRequestModal({ onClose }: QuoteRequestModalProps) {
               {t("subtitle")}
             </p>
           </div>
-
-          <button
-            type="button"
-            onClick={onClose}
-            className={styles.closeButton}
-            aria-label={t("modal.closeAriaLabel")}
-          >
-            <span className={styles.closeButtonLine} />
-            <span className={styles.closeButtonLine} />
-          </button>
         </div>
 
         <div className={styles.modalBody}>

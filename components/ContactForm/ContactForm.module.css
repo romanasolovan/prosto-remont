@@ -28,10 +28,10 @@
   min-height: 0;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 20px 18px 12px;
+  padding: 18px 18px 12px;
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  scrollbar-color: rgba(245, 244, 240, 0.22) transparent;
+  scrollbar-color: rgba(210, 207, 198, 0.32) transparent;
 }
 
 .formScrollArea::-webkit-scrollbar {
@@ -54,16 +54,24 @@
 .formSection {
   position: relative;
   padding: 18px;
-  margin-bottom: 16px;
-  border: 1px solid rgba(245, 244, 240, 0.075);
+  margin-bottom: 14px;
+  border: 1px solid rgba(214, 211, 202, 0.1);
   border-radius: 24px;
   background:
     radial-gradient(
       circle at 0% 0%,
-      rgba(255, 255, 255, 0.055),
+      rgba(214, 211, 202, 0.075),
       transparent 34%
     ),
-    rgba(255, 255, 255, 0.018);
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.045),
+      rgba(255, 255, 255, 0.018)
+    ),
+    rgba(10, 11, 12, 0.82);
+  box-shadow:
+    0 18px 38px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.055);
   animation: sectionIn 260ms ease both;
 }
 
@@ -84,20 +92,30 @@
 }
 
 .sectionEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   margin: 0 0 6px;
-  color: rgba(245, 244, 240, 0.4);
+  color: rgba(210, 207, 198, 0.46);
   font-family: "Barlow Condensed", sans-serif;
-  font-size: 0.68rem;
-  font-weight: 500;
+  font-size: 0.64rem;
+  font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
+.sectionEyebrow::before {
+  content: "";
+  width: 26px;
+  height: 1px;
+  background: rgba(210, 207, 198, 0.26);
+}
+
 .sectionTitle {
   margin: 0;
-  color: rgba(245, 244, 240, 0.92);
+  color: rgba(245, 244, 240, 0.9);
   font-family: var(--font-display);
-  font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+  font-size: clamp(1.18rem, 2vw, 1.55rem);
   font-weight: 300;
   line-height: 1;
   letter-spacing: -0.035em;
@@ -123,11 +141,11 @@
 }
 
 .label {
-  margin-bottom: 8px;
-  color: rgba(245, 244, 240, 0.62);
+  margin-bottom: 7px;
+  color: rgba(210, 207, 198, 0.58);
   font-family: "Barlow Condensed", sans-serif;
-  font-size: 0.7rem;
-  font-weight: 500;
+  font-size: 0.66rem;
+  font-weight: 600;
   letter-spacing: 0.18em;
   line-height: 1.4;
   text-transform: uppercase;
@@ -135,32 +153,32 @@
 
 .required {
   margin-left: 2px;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(210, 207, 198, 0.9);
 }
 
 .input,
 .textarea,
 .selectButton {
   width: 100%;
-  min-height: 52px;
-  padding: 13px 15px;
-  border: 1px solid rgba(245, 244, 240, 0.09);
-  border-radius: 16px;
+  min-height: 50px;
+  padding: 12px 14px;
+  border: 1px solid rgba(210, 207, 198, 0.12);
+  border-radius: 15px;
   outline: none;
   background:
     linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.045),
+      rgba(255, 255, 255, 0.055),
       rgba(255, 255, 255, 0.022)
     ),
-    rgba(255, 255, 255, 0.025);
+    rgba(18, 19, 20, 0.92);
   color: #f5f4f0;
   font-family: "Barlow", sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   line-height: 1.5;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.045),
-    0 10px 20px rgba(0, 0, 0, 0.06);
+    inset 0 1px 0 rgba(255, 255, 255, 0.055),
+    0 10px 22px rgba(0, 0, 0, 0.08);
   transition:
     border-color 220ms ease,
     background-color 220ms ease,
@@ -170,24 +188,24 @@
 
 .input::placeholder,
 .textarea::placeholder {
-  color: rgba(245, 244, 240, 0.32);
+  color: rgba(210, 207, 198, 0.34);
 }
 
 .input:hover,
 .textarea:hover,
 .selectButton:hover {
-  border-color: rgba(245, 244, 240, 0.16);
-  background-color: rgba(255, 255, 255, 0.04);
+  border-color: rgba(210, 207, 198, 0.22);
+  background-color: rgba(255, 255, 255, 0.045);
 }
 
 .input:focus,
 .textarea:focus,
 .selectButton:focus-visible {
-  border-color: rgba(245, 244, 240, 0.28);
-  background-color: rgba(255, 255, 255, 0.055);
+  border-color: rgba(210, 207, 198, 0.36);
+  background-color: rgba(255, 255, 255, 0.06);
   box-shadow:
-    0 0 0 4px rgba(245, 244, 240, 0.055),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    0 0 0 4px rgba(210, 207, 198, 0.075),
+    inset 0 1px 0 rgba(255, 255, 255, 0.075);
 }
 
 .input[type="date"] {
@@ -211,16 +229,16 @@
 
 .textarea {
   resize: none;
-  min-height: 138px;
-  max-height: 138px;
-  line-height: 1.75;
+  min-height: 132px;
+  max-height: 132px;
+  line-height: 1.7;
 }
 
 .fieldHint {
   margin: 7px 0 0;
-  color: rgba(245, 244, 240, 0.42);
+  color: rgba(210, 207, 198, 0.42);
   font-family: "Barlow", sans-serif;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   line-height: 1.5;
 }
 
@@ -239,24 +257,24 @@
   background:
     linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.055),
-      rgba(255, 255, 255, 0.028)
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0.025)
     ),
-    #111314;
+    #141516;
 }
 
 .selectButton[aria-expanded="true"] {
-  border-color: rgba(245, 244, 240, 0.26);
+  border-color: rgba(210, 207, 198, 0.34);
   background:
     linear-gradient(
       180deg,
       rgba(255, 255, 255, 0.075),
-      rgba(255, 255, 255, 0.036)
+      rgba(255, 255, 255, 0.03)
     ),
-    #121415;
+    #171819;
   box-shadow:
-    0 0 0 4px rgba(245, 244, 240, 0.055),
-    inset 0 1px 0 rgba(255, 255, 255, 0.065);
+    0 0 0 4px rgba(210, 207, 198, 0.075),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .isPlaceholder {
@@ -265,9 +283,9 @@
 
 .selectIcon {
   position: relative;
-  width: 32px;
-  height: 32px;
-  flex: 0 0 32px;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
   border-radius: 50%;
   background:
     radial-gradient(
@@ -275,7 +293,7 @@
       rgba(255, 255, 255, 0.14),
       transparent 50%
     ),
-    rgba(245, 244, 240, 0.065);
+    rgba(210, 207, 198, 0.075);
   transition:
     transform 220ms ease,
     background-color 220ms ease;
@@ -306,15 +324,20 @@
   z-index: 100;
   overflow: hidden;
   padding: 8px;
-  border: 1px solid rgba(245, 244, 240, 0.14);
+  border: 1px solid rgba(210, 207, 198, 0.16);
   border-radius: 18px;
   background:
-    linear-gradient(180deg, rgba(24, 26, 27, 0.98), rgba(12, 13, 14, 0.98)),
+    radial-gradient(
+      circle at 20% 0%,
+      rgba(255, 255, 255, 0.1),
+      transparent 32%
+    ),
+    linear-gradient(180deg, rgba(25, 26, 27, 0.98), rgba(10, 11, 12, 0.98)),
     #101112;
   box-shadow:
-    0 24px 48px rgba(0, 0, 0, 0.48),
+    0 24px 52px rgba(0, 0, 0, 0.52),
     0 0 0 1px rgba(255, 255, 255, 0.035),
-    inset 0 1px 0 rgba(255, 255, 255, 0.065);
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
   animation: selectMenuIn 180ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -410,16 +433,16 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 152px;
-  padding: 26px 22px;
-  border: 1px dashed rgba(245, 244, 240, 0.16);
+  min-height: 148px;
+  padding: 24px 22px;
+  border: 1px dashed rgba(210, 207, 198, 0.18);
   border-radius: 22px;
   background:
-    radial-gradient(circle at top, rgba(255, 255, 255, 0.07), transparent 55%),
-    rgba(255, 255, 255, 0.025);
-  color: rgba(245, 244, 240, 0.7);
+    radial-gradient(circle at top, rgba(210, 207, 198, 0.08), transparent 55%),
+    rgba(255, 255, 255, 0.024);
+  color: rgba(210, 207, 198, 0.72);
   font-family: "Barlow", sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   line-height: 1.5;
   text-align: center;
   cursor: pointer;
@@ -433,16 +456,18 @@
 .fileLabel small {
   max-width: 58ch;
   margin-top: 8px;
-  color: rgba(245, 244, 240, 0.42);
-  font-size: 0.76rem;
+  color: rgba(210, 207, 198, 0.44);
+  font-size: 0.74rem;
   line-height: 1.55;
 }
 
 .fileLabel:hover {
   transform: translateY(-2px);
-  border-color: rgba(245, 244, 240, 0.26);
-  background-color: rgba(255, 255, 255, 0.04);
-  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.12);
+  border-color: rgba(210, 207, 198, 0.32);
+  background-color: rgba(255, 255, 255, 0.045);
+  box-shadow:
+    0 14px 28px rgba(0, 0, 0, 0.16),
+    0 0 0 5px rgba(210, 207, 198, 0.035);
 }
 
 .fileInput:focus-visible + .fileLabel {
@@ -451,18 +476,18 @@
 }
 
 .uploadIcon {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   margin-bottom: 10px;
-  color: rgba(245, 244, 240, 0.82);
+  color: rgba(210, 207, 198, 0.84);
 }
 
-.fileError {
-  margin: 10px 0 0;
-  color: #ff9b9b;
-  font-family: "Barlow", sans-serif;
-  font-size: 0.82rem;
-  line-height: 1.5;
+.fileList {
+  margin-top: 14px;
+  padding: 12px;
+  border: 1px solid rgba(210, 207, 198, 0.1);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.026);
 }
 
 .fileList {
@@ -488,9 +513,15 @@
   align-items: center;
   padding: 10px 12px;
   margin-bottom: 8px;
-  border: 1px solid rgba(245, 244, 240, 0.08);
+  border: 1px solid rgba(210, 207, 198, 0.09);
   border-radius: 13px;
-  background: rgba(255, 255, 255, 0.04);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.045),
+      rgba(255, 255, 255, 0.02)
+    ),
+    rgba(255, 255, 255, 0.026);
 }
 
 .fileItem:last-child {
@@ -561,21 +592,25 @@
   display: flex;
   flex-direction: column-reverse;
   gap: 10px;
-  padding: 14px 18px 18px;
-  border-top: 1px solid rgba(245, 244, 240, 0.08);
-  background: rgba(10, 11, 12, 0.88);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  padding: 13px 18px 16px;
+  border-top: 1px solid rgba(214, 211, 202, 0.09);
+  background: linear-gradient(
+    180deg,
+    rgba(12, 13, 14, 0.72),
+    rgba(8, 9, 10, 0.94)
+  );
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .primaryButton,
 .secondaryButton {
   width: 100%;
-  min-height: 50px;
+  min-height: 48px;
   border-radius: 999px;
   font-family: "Barlow Condensed", sans-serif;
-  font-size: 0.68rem;
-  font-weight: 600;
+  font-size: 0.66rem;
+  font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   cursor: pointer;
@@ -587,51 +622,51 @@
     box-shadow 220ms ease;
 }
 
-.secondaryButton {
-  padding: 0 20px;
-  border: 1px solid rgba(245, 244, 240, 0.12);
-  background: rgba(255, 255, 255, 0.035);
-  color: rgba(245, 244, 240, 0.68);
-}
-
-.secondaryButton:hover {
-  transform: translateY(-2px);
-  border-color: rgba(245, 244, 240, 0.2);
-  background: rgba(255, 255, 255, 0.065);
-  color: #ffffff;
-}
-
 .primaryButton {
   padding: 0 22px;
-  border: 1px solid rgba(245, 244, 240, 0.18);
+  border: 1px solid rgba(245, 244, 240, 0.16);
   background:
     radial-gradient(
-      circle at 30% 30%,
+      circle at 30% 25%,
       rgba(255, 255, 255, 0.18),
-      transparent 70%
+      transparent 68%
     ),
-    rgba(245, 244, 240, 0.08);
+    linear-gradient(180deg, #232425, #0b0c0d);
   color: #f5f4f0;
   box-shadow:
-    0 12px 24px rgba(0, 0, 0, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    0 14px 28px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 .primaryButton:hover:not(:disabled) {
   transform: translateY(-2px);
-  border-color: rgba(245, 244, 240, 0.3);
-  background-color: rgba(245, 244, 240, 0.11);
+  border-color: rgba(245, 244, 240, 0.28);
+  background-color: rgba(255, 255, 255, 0.06);
   box-shadow:
-    0 18px 30px rgba(0, 0, 0, 0.24),
-    0 0 0 6px rgba(245, 244, 240, 0.045);
+    0 20px 36px rgba(0, 0, 0, 0.34),
+    0 0 0 6px rgba(210, 207, 198, 0.055);
 }
 
 .primaryButton:disabled {
-  border-color: rgba(245, 244, 240, 0.08);
+  border-color: rgba(210, 207, 198, 0.08);
   background: rgba(255, 255, 255, 0.045);
-  color: rgba(245, 244, 240, 0.36);
+  color: rgba(210, 207, 198, 0.38);
   cursor: not-allowed;
   box-shadow: none;
+}
+
+.secondaryButton {
+  padding: 0 20px;
+  border: 1px solid rgba(210, 207, 198, 0.12);
+  background: rgba(255, 255, 255, 0.035);
+  color: rgba(210, 207, 198, 0.66);
+}
+
+.secondaryButton:hover {
+  transform: translateY(-2px);
+  border-color: rgba(210, 207, 198, 0.22);
+  background: rgba(255, 255, 255, 0.065);
+  color: #ffffff;
 }
 
 .successState {
@@ -682,6 +717,66 @@
   gap: 10px;
   width: 100%;
   max-width: 320px;
+}
+
+.submitError {
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0 18px 12px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 138, 128, 0.2);
+  border-radius: 16px;
+  background:
+    radial-gradient(
+      circle at 0% 0%,
+      rgba(255, 138, 128, 0.13),
+      transparent 38%
+    ),
+    rgba(255, 138, 128, 0.055);
+  color: #ffc2bc;
+  box-shadow:
+    0 14px 28px rgba(0, 0, 0, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.045);
+  animation: errorIn 180ms ease both;
+}
+
+.submitErrorIcon {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  border: 1px solid rgba(255, 194, 188, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 194, 188, 0.075);
+  color: #ffc2bc;
+}
+
+.submitErrorIcon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.submitErrorText {
+  margin: 0;
+  color: inherit;
+  font-family: "Barlow", sans-serif;
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+@keyframes errorIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .input:-webkit-autofill,
