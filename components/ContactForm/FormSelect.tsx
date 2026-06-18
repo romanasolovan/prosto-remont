@@ -9,7 +9,8 @@ import {
   useState,
 } from "react";
 import { useTranslations } from "next-intl";
-import styles from "./ContactForm.module.css";
+import fields from "./Fields/FormFields.module.css";
+import styles from "./Fields/FormSelect.module.css";
 
 export interface SelectOption {
   value: string;
@@ -80,7 +81,9 @@ export default function FormSelect({
     setIsOpen(true);
   };
 
-  const chooseOption = async (option: SelectOption) => {
+  const chooseOption = async (option?: SelectOption) => {
+    if (!option) return;
+
     onChange(name, option.value, true);
     onBlur(name, true, false);
     setIsOpen(false);
@@ -107,6 +110,8 @@ export default function FormSelect({
   }, [isOpen, closeSelect]);
 
   const handleKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
+    if (!options.length) return;
+
     if (event.key === "ArrowDown") {
       event.preventDefault();
 
@@ -155,17 +160,17 @@ export default function FormSelect({
   };
 
   return (
-    <div className={styles.formGroup} ref={wrapperRef}>
-      <label htmlFor={id} className={styles.label}>
-        {label} {required && <span className={styles.required}>*</span>}
+    <div className={fields.formGroup} ref={wrapperRef}>
+      <label htmlFor={id} className={fields.label}>
+        {label} {required && <span className={fields.required}>*</span>}
       </label>
 
       <div className={styles.customSelect}>
         <button
           id={id}
           type="button"
-          className={`${styles.selectButton} ${
-            !value ? styles.isPlaceholder : ""
+          className={`${styles.selectButton} ${!value ? styles.isPlaceholder : ""} ${
+            visibleError ? styles.hasError : ""
           }`}
           aria-haspopup="listbox"
           aria-expanded={isOpen}
@@ -213,9 +218,9 @@ export default function FormSelect({
         )}
       </div>
 
-      <div className={styles.errorSlot} id={`${id}-error`} aria-live="polite">
+      <div className={fields.errorSlot} id={`${id}-error`} aria-live="polite">
         <div
-          className={`${styles.error} ${visibleError ? styles.visible : ""}`}
+          className={`${fields.error} ${visibleError ? fields.visible : ""}`}
         >
           {visibleError || "\u00A0"}
         </div>

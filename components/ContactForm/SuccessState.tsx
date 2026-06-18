@@ -1,7 +1,8 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import styles from "./ContactForm.module.css";
+import buttons from "./Buttons/Buttons.module.css";
+import styles from "./States/SuccessState.module.css";
 
 interface SuccessStateProps {
   onSendAnother: () => void;
@@ -15,7 +16,7 @@ export default function SuccessState({
   const t = useTranslations("form");
 
   return (
-    <div className={styles.successState} aria-live="polite">
+    <div className={styles.successState} role="status" aria-live="polite">
       <div className={styles.successMark} aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none">
           <path
@@ -34,7 +35,7 @@ export default function SuccessState({
         <button
           type="button"
           onClick={onSendAnother}
-          className={styles.secondaryButton}
+          className={buttons.secondaryButton}
         >
           {t("actions.sendAnother")}
         </button>
@@ -43,7 +44,7 @@ export default function SuccessState({
           <button
             type="button"
             onClick={onClose}
-            className={styles.primaryButton}
+            className={buttons.primaryButton}
           >
             {t("actions.close")}
           </button>

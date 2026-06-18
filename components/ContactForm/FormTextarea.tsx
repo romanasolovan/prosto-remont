@@ -1,5 +1,6 @@
 import { Field } from "formik";
-import styles from "./ContactForm.module.css";
+import fields from "./Fields/FormFields.module.css";
+import styles from "./Fields/FormTextarea.module.css";
 
 interface FormTextareaProps {
   id: string;
@@ -29,9 +30,9 @@ export default function FormTextarea({
   const errorId = visibleError ? `${id}-error` : undefined;
 
   return (
-    <div className={`${styles.formGroup} ${styles.fullWidth}`}>
-      <label htmlFor={id} className={styles.label}>
-        {label} {required && <span className={styles.required}>*</span>}
+    <div className={`${fields.formGroup} ${fields.fullWidth}`}>
+      <label htmlFor={id} className={fields.label}>
+        {label} {required && <span className={fields.required}>*</span>}
       </label>
 
       <Field
@@ -41,6 +42,7 @@ export default function FormTextarea({
         placeholder={placeholder}
         rows={rows}
         className={styles.textarea}
+        aria-required={required}
         aria-invalid={Boolean(visibleError)}
         aria-describedby={
           [hintId, errorId].filter(Boolean).join(" ") || undefined
@@ -48,14 +50,14 @@ export default function FormTextarea({
       />
 
       {hint && (
-        <p id={hintId} className={styles.fieldHint}>
+        <p id={hintId} className={fields.fieldHint}>
           {hint}
         </p>
       )}
 
-      <div className={styles.errorSlot} id={`${id}-error`} aria-live="polite">
+      <div className={fields.errorSlot} id={`${id}-error`} aria-live="polite">
         <div
-          className={`${styles.error} ${visibleError ? styles.visible : ""}`}
+          className={`${fields.error} ${visibleError ? fields.visible : ""}`}
         >
           {visibleError || "\u00A0"}
         </div>

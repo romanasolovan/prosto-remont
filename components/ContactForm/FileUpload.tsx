@@ -2,7 +2,9 @@
 
 import { ChangeEvent, DragEvent, useState } from "react";
 import { useTranslations } from "next-intl";
-import styles from "./ContactForm.module.css";
+import buttons from "./Buttons/Buttons.module.css";
+import fields from "./Fields/FormFields.module.css";
+import styles from "./Fields/FileUpload.module.css";
 
 interface FileUploadProps {
   files: File[];
@@ -74,8 +76,8 @@ export default function FileUpload({ files, setFieldValue }: FileUploadProps) {
   };
 
   return (
-    <div className={`${styles.formGroup} ${styles.fullWidth}`}>
-      <label htmlFor="attachments" className={styles.label}>
+    <div className={`${fields.formGroup} ${fields.fullWidth}`}>
+      <label htmlFor="attachments" className={fields.label}>
         {t("fields.attachments")}
       </label>
 
@@ -158,7 +160,8 @@ export default function FileUpload({ files, setFieldValue }: FileUploadProps) {
               <button
                 type="button"
                 onClick={() => removeFile(index)}
-                className={styles.removeFileButton}
+                className={buttons.removeFileButton}
+                aria-label={`${t("fileUpload.removeFile")} ${file.name}`}
               >
                 {t("fileUpload.removeFile")}
               </button>

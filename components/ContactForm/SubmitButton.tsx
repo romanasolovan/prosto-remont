@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import styles from "./ContactForm.module.css";
+import styles from "./Buttons/Buttons.module.css";
 
 interface SubmitButtonProps {
   isSubmitting: boolean;

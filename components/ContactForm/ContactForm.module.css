@@ -15,122 +15,6 @@
   color: #ffffff;
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 auto;
-  min-height: 0;
-  height: 100%;
-}
-
-.formScrollArea {
-  flex: 1 1 auto;
-  min-height: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 18px 18px 12px;
-  scroll-behavior: smooth;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(210, 207, 198, 0.32) transparent;
-}
-
-.formScrollArea::-webkit-scrollbar {
-  width: 8px;
-}
-
-.formScrollArea::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.formScrollArea::-webkit-scrollbar-thumb {
-  background: linear-gradient(
-    180deg,
-    rgba(245, 244, 240, 0.28),
-    rgba(245, 244, 240, 0.12)
-  );
-  border-radius: 999px;
-}
-
-.formSection {
-  position: relative;
-  padding: 18px;
-  margin-bottom: 14px;
-  border: 1px solid rgba(214, 211, 202, 0.1);
-  border-radius: 24px;
-  background:
-    radial-gradient(
-      circle at 0% 0%,
-      rgba(214, 211, 202, 0.075),
-      transparent 34%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.045),
-      rgba(255, 255, 255, 0.018)
-    ),
-    rgba(10, 11, 12, 0.82);
-  box-shadow:
-    0 18px 38px rgba(0, 0, 0, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.055);
-  animation: sectionIn 260ms ease both;
-}
-
-.formSection:nth-child(2) {
-  animation-delay: 60ms;
-}
-
-.formSection:nth-child(3) {
-  animation-delay: 110ms;
-}
-
-.formSection:last-child {
-  margin-bottom: 0;
-}
-
-.sectionHeader {
-  margin-bottom: 16px;
-}
-
-.sectionEyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin: 0 0 6px;
-  color: rgba(210, 207, 198, 0.46);
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: 0.64rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-
-.sectionEyebrow::before {
-  content: "";
-  width: 26px;
-  height: 1px;
-  background: rgba(210, 207, 198, 0.26);
-}
-
-.sectionTitle {
-  margin: 0;
-  color: rgba(245, 244, 240, 0.9);
-  font-family: var(--font-display);
-  font-size: clamp(1.18rem, 2vw, 1.55rem);
-  font-weight: 300;
-  line-height: 1;
-  letter-spacing: -0.035em;
-}
-
-.formGrid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-}
-
-.fullWidth {
-  grid-column: 1 / -1;
-}
-
 .formGroup {
   display: flex;
   flex-direction: column;
@@ -168,10 +52,10 @@
   background:
     linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.055),
-      rgba(255, 255, 255, 0.022)
+      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0.035)
     ),
-    rgba(18, 19, 20, 0.92);
+    rgba(54, 52, 48, 0.96);
   color: #f5f4f0;
   font-family: "Barlow", sans-serif;
   font-size: 0.92rem;
@@ -485,14 +369,6 @@
 .fileList {
   margin-top: 14px;
   padding: 12px;
-  border: 1px solid rgba(210, 207, 198, 0.1);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.026);
-}
-
-.fileList {
-  margin-top: 14px;
-  padding: 12px;
   border: 1px solid rgba(245, 244, 240, 0.08);
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.025);
@@ -669,116 +545,6 @@
   color: #ffffff;
 }
 
-.successState {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100%;
-  padding: 38px 20px;
-  text-align: center;
-}
-
-.successMark {
-  display: grid;
-  place-items: center;
-  width: 74px;
-  height: 74px;
-  margin-bottom: 18px;
-  border: 1px solid rgba(245, 244, 240, 0.14);
-  border-radius: 50%;
-  background:
-    radial-gradient(
-      circle at 30% 30%,
-      rgba(255, 255, 255, 0.16),
-      transparent 72%
-    ),
-    rgba(255, 255, 255, 0.045);
-  color: #f5f4f0;
-}
-
-.successMark svg {
-  width: 28px;
-  height: 28px;
-}
-
-.successTextSimple {
-  max-width: 42ch;
-  margin: 0 0 18px;
-  color: rgba(245, 244, 240, 0.9);
-  font-family: "Barlow", sans-serif;
-  font-size: 1rem;
-  line-height: 1.7;
-}
-
-.successActions {
-  display: flex;
-  flex-direction: column-reverse;
-  gap: 10px;
-  width: 100%;
-  max-width: 320px;
-}
-
-.submitError {
-  flex-shrink: 0;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin: 0 18px 12px;
-  padding: 12px 14px;
-  border: 1px solid rgba(255, 138, 128, 0.2);
-  border-radius: 16px;
-  background:
-    radial-gradient(
-      circle at 0% 0%,
-      rgba(255, 138, 128, 0.13),
-      transparent 38%
-    ),
-    rgba(255, 138, 128, 0.055);
-  color: #ffc2bc;
-  box-shadow:
-    0 14px 28px rgba(0, 0, 0, 0.16),
-    inset 0 1px 0 rgba(255, 255, 255, 0.045);
-  animation: errorIn 180ms ease both;
-}
-
-.submitErrorIcon {
-  display: grid;
-  place-items: center;
-  width: 28px;
-  height: 28px;
-  flex: 0 0 28px;
-  border: 1px solid rgba(255, 194, 188, 0.18);
-  border-radius: 999px;
-  background: rgba(255, 194, 188, 0.075);
-  color: #ffc2bc;
-}
-
-.submitErrorIcon svg {
-  width: 16px;
-  height: 16px;
-}
-
-.submitErrorText {
-  margin: 0;
-  color: inherit;
-  font-family: "Barlow", sans-serif;
-  font-size: 0.84rem;
-  line-height: 1.55;
-}
-
-@keyframes errorIn {
-  from {
-    opacity: 0;
-    transform: translateY(4px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .input:-webkit-autofill,
 .input:-webkit-autofill:hover,
 .input:-webkit-autofill:focus,
@@ -834,31 +600,10 @@
     gap: 16px 18px;
   }
 
-  .fileItem {
-    grid-template-columns: minmax(0, 1fr) auto auto;
-  }
-
-  .removeFileButton {
-    grid-column: auto;
-    justify-self: auto;
-  }
-
   .formFooter {
     flex-direction: row;
     justify-content: flex-end;
     padding: 16px 24px 22px;
-  }
-
-  .primaryButton,
-  .secondaryButton {
-    width: auto;
-    min-width: 180px;
-  }
-
-  .successActions {
-    flex-direction: row;
-    justify-content: center;
-    max-width: none;
   }
 }
 
@@ -899,11 +644,6 @@
     font-size: 0.9rem;
   }
 
-  .fileLabel {
-    min-height: 138px;
-    padding: 22px 16px;
-  }
-
   .formFooter {
     padding: 12px 12px 14px;
   }
@@ -914,10 +654,6 @@
   .textarea,
   .selectButton,
   .selectOption,
-  .fileLabel,
-  .removeFileButton,
-  .primaryButton,
-  .secondaryButton,
   .error {
     transition: none;
   }
@@ -932,141 +668,34 @@
     animation: none;
   }
 
-  .fileLabel:hover,
-  .removeFileButton:hover,
-  .primaryButton:hover,
-  .secondaryButton:hover,
   .selectOption:hover {
     transform: none;
   }
-
-  .submitSpinner {
-    animation: none;
-  }
-}
-
-/* DATE PICKER */
-
-.datePicker {
-  position: relative;
-  isolation: isolate;
-}
-
-.dateInputWrap {
-  position: relative;
-}
-
-.dateInputWrap .input {
-  padding-right: 56px;
-}
-
-.dateToggle {
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  display: grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  border: 1px solid rgba(245, 244, 240, 0.12);
-  border-radius: 14px;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.08),
-      rgba(255, 255, 255, 0.025)
-    ),
-    rgba(245, 244, 240, 0.045);
-  color: rgba(245, 244, 240, 0.82);
-  transform: translateY(-50%);
-  cursor: pointer;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 8px 18px rgba(0, 0, 0, 0.16);
-  transition:
-    border-color 180ms ease,
-    background-color 180ms ease,
-    transform 180ms ease,
-    box-shadow 180ms ease;
-}
-
-.dateToggle:hover {
-  border-color: rgba(245, 244, 240, 0.24);
-  background-color: rgba(245, 244, 240, 0.075);
-  transform: translateY(-50%) translateY(-1px);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 12px 24px rgba(0, 0, 0, 0.22);
-}
-
-.dateToggle:focus-visible {
-  outline: 2px solid rgba(245, 244, 240, 0.72);
-  outline-offset: 3px;
-}
-
-.dateToggle span {
-  position: relative;
-  width: 16px;
-  height: 16px;
-  border: 1.5px solid currentColor;
-  border-radius: 5px;
-}
-
-.dateToggle span::before,
-.dateToggle span::after {
-  content: "";
-  position: absolute;
-  background: currentColor;
-}
-
-.dateToggle span::before {
-  top: 3.5px;
-  left: -1.5px;
-  right: -1.5px;
-  height: 1.5px;
-}
-
-.dateToggle span::after {
-  top: -4px;
-  left: 3px;
-  width: 8px;
-  height: 4px;
-  border-radius: 999px;
-  background: transparent;
-  border-left: 1.5px solid currentColor;
-  border-right: 1.5px solid currentColor;
 }
 
 .calendarPopover {
-  position: absolute;
-  top: calc(100% + 10px);
-  left: 0;
-  right: 0;
-  z-index: 160;
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  z-index: 20;
   width: 100%;
   min-width: 0;
+  margin-top: 10px;
   padding: 14px;
   overflow: hidden;
-  border: 1px solid rgba(245, 244, 240, 0.14);
+  border: 1px solid rgba(210, 207, 198, 0.18);
   border-radius: 24px;
   background:
     radial-gradient(
       circle at 20% 0%,
-      rgba(255, 255, 255, 0.12),
+      rgba(210, 207, 198, 0.16),
       transparent 32%
     ),
-    radial-gradient(
-      circle at 90% 10%,
-      rgba(245, 244, 240, 0.07),
-      transparent 34%
-    ),
-    linear-gradient(180deg, rgba(25, 27, 28, 0.98), rgba(9, 10, 11, 0.98));
+    linear-gradient(180deg, rgba(47, 46, 42, 0.98), rgba(24, 24, 22, 0.98));
   box-shadow:
-    0 28px 70px rgba(0, 0, 0, 0.54),
-    0 0 0 1px rgba(255, 255, 255, 0.035),
-    inset 0 1px 0 rgba(255, 255, 255, 0.075);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+    0 22px 50px rgba(0, 0, 0, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.09);
   animation: calendarIn 190ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -1092,40 +721,6 @@
   margin: 0;
   color: #f5f4f0;
   font-family: "Barlow", sans-serif;
-}
-
-.calendarMonth {
-  width: 100%;
-}
-
-.calendarCaption {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 42px;
-  margin-bottom: 12px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid rgba(245, 244, 240, 0.08);
-}
-
-.calendarCaptionLabel {
-  color: rgba(245, 244, 240, 0.94);
-  font-family: var(--font-display);
-  font-size: clamp(1.22rem, 3vw, 1.45rem);
-  font-weight: 300;
-  letter-spacing: -0.04em;
-}
-
-.calendarNav {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  right: 14px;
-  z-index: 2;
-  display: flex;
-  justify-content: space-between;
-  pointer-events: none;
 }
 
 .calendarNavButton {
@@ -1165,13 +760,6 @@
   outline-offset: 3px;
 }
 
-.calendarGrid {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0 6px;
-  table-layout: fixed;
-}
-
 .calendarWeekdays {
   color: rgba(245, 244, 240, 0.4);
 }
@@ -1183,10 +771,6 @@
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-}
-
-.calendarDay {
-  text-align: center;
 }
 
 .calendarDayButton {
@@ -1216,10 +800,6 @@
     rgba(255, 255, 255, 0.095),
     rgba(255, 255, 255, 0.035)
   );
-  color: #ffffff;
-}
-
-.calendarToday .calendarDayButton {
   color: #ffffff;
 }
 
@@ -1274,18 +854,6 @@
   background: transparent;
   color: rgba(245, 244, 240, 0.15);
   box-shadow: none;
-}
-
-@keyframes calendarIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px) scale(0.975);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
 }
 
 @media (max-width: 479px) {

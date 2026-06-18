@@ -1,5 +1,5 @@
 import { Field } from "formik";
-import styles from "./ContactForm.module.css";
+import styles from "./Fields/FormFields.module.css";
 
 interface FormInputProps {
   id: string;
@@ -11,6 +11,7 @@ interface FormInputProps {
   error?: string;
   touched?: boolean;
   hint?: string;
+  autoComplete?: string;
 }
 
 export default function FormInput({
@@ -23,6 +24,7 @@ export default function FormInput({
   error,
   touched,
   hint,
+  autoComplete,
 }: FormInputProps) {
   const visibleError = touched ? error : undefined;
   const hintId = hint ? `${id}-hint` : undefined;
@@ -40,6 +42,8 @@ export default function FormInput({
         type={type}
         placeholder={placeholder}
         className={styles.input}
+        autoComplete={autoComplete}
+        aria-required={required}
         aria-invalid={Boolean(visibleError)}
         aria-describedby={
           [hintId, errorId].filter(Boolean).join(" ") || undefined

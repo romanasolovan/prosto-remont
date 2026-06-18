@@ -1,13 +1,13 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import styles from "./ContactForm.module.css";
+import styles from "./States/SubmitError.module.css";
 
 export default function SubmitError() {
   const t = useTranslations("form");
 
   return (
-    <div className={styles.submitError} role="alert" aria-live="polite">
+    <div className={styles.submitError} role="alert">
       <div className={styles.submitErrorIcon} aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none">
           <path

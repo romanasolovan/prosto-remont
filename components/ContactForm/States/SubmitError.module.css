@@ -1,0 +1,65 @@
+.submitError {
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0 18px 12px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 138, 128, 0.2);
+  border-radius: 16px;
+  background:
+    radial-gradient(
+      circle at 0% 0%,
+      rgba(255, 138, 128, 0.13),
+      transparent 38%
+    ),
+    rgba(255, 138, 128, 0.055);
+  color: #ffc2bc;
+  box-shadow:
+    0 14px 28px rgba(0, 0, 0, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.045);
+  animation: errorIn 180ms ease both;
+}
+
+.submitErrorIcon {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  border: 1px solid rgba(255, 194, 188, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 194, 188, 0.075);
+  color: #ffc2bc;
+}
+
+.submitErrorIcon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.submitErrorText {
+  margin: 0;
+  color: inherit;
+  font-family: "Barlow", sans-serif;
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+@keyframes errorIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .submitError {
+    animation: none;
+  }
+}

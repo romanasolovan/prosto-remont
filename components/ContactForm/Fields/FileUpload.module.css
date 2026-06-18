@@ -1,0 +1,155 @@
+.fileUploadArea {
+  position: relative;
+  margin-top: 2px;
+}
+
+.fileInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.fileLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 148px;
+  padding: 24px 22px;
+  border: 1px dashed rgba(210, 207, 198, 0.18);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at top, rgba(210, 207, 198, 0.08), transparent 55%),
+    rgba(255, 255, 255, 0.024);
+  color: rgba(210, 207, 198, 0.72);
+  font-family: "Barlow", sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    border-color 220ms ease,
+    background-color 220ms ease,
+    transform 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.fileLabel small {
+  max-width: 58ch;
+  margin-top: 8px;
+  color: rgba(210, 207, 198, 0.44);
+  font-size: 0.74rem;
+  line-height: 1.55;
+}
+
+.fileLabel:hover,
+.isDraggingFiles {
+  transform: translateY(-2px);
+  border-color: rgba(210, 207, 198, 0.32);
+  background-color: rgba(255, 255, 255, 0.045);
+  box-shadow:
+    0 14px 28px rgba(0, 0, 0, 0.16),
+    0 0 0 5px rgba(210, 207, 198, 0.035);
+}
+
+.fileInput:focus-visible + .fileLabel {
+  outline: 2px solid rgba(245, 244, 240, 0.7);
+  outline-offset: 4px;
+}
+
+.uploadIcon {
+  width: 36px;
+  height: 36px;
+  margin-bottom: 10px;
+  color: rgba(210, 207, 198, 0.84);
+}
+
+.fileError {
+  margin: 8px 0 0;
+  color: #ffc2bc;
+  font-family: "Barlow", sans-serif;
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+
+.fileList {
+  margin-top: 14px;
+  padding: 12px;
+  border: 1px solid rgba(245, 244, 240, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.fileListTitle {
+  margin: 0 0 10px;
+  color: rgba(245, 244, 240, 0.72);
+  font-family: "Barlow", sans-serif;
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.fileItem {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px 10px;
+  align-items: center;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  border: 1px solid rgba(210, 207, 198, 0.09);
+  border-radius: 13px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.045),
+      rgba(255, 255, 255, 0.02)
+    ),
+    rgba(255, 255, 255, 0.026);
+}
+
+.fileItem:last-child {
+  margin-bottom: 0;
+}
+
+.fileName {
+  min-width: 0;
+  overflow: hidden;
+  color: rgba(245, 244, 240, 0.86);
+  font-family: "Barlow", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fileSize {
+  color: rgba(245, 244, 240, 0.44);
+  font-family: "Barlow", sans-serif;
+  font-size: 0.76rem;
+}
+
+@media (min-width: 479px) {
+  .fileLabel {
+    min-height: 138px;
+    padding: 22px 16px;
+  }
+}
+
+@media (min-width: 768px) {
+  .fileItem {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fileLabel {
+    transition: none;
+  }
+
+  .fileLabel:hover,
+  .isDraggingFiles {
+    transform: none;
+  }
+}
