@@ -52,7 +52,7 @@ export default function ProjectSection({
         <h3 className={sections.sectionTitle}>{t("sections.project.title")}</h3>
       </div>
 
-      <div className={layout.formGrid}>
+      <div className={layout.projectGrid}>
         <FormSelect
           id="interestedIn"
           name="interestedIn"
@@ -98,28 +98,32 @@ export default function ProjectSection({
           validateField={validateField}
         />
 
-        <FormDatePicker
-          id="startDate"
-          name="startDate"
-          label={t("fields.startDate")}
-          value={values.startDate}
-          required
-          hint={t("date.helper")}
-          error={errors.startDate as string}
-          touched={touched.startDate}
-          setFieldValue={setFieldValue}
-          setFieldTouched={setFieldTouched}
-          validateField={validateField}
-        />
+        <div className={layout.dateColumn}>
+          <FormDatePicker
+            id="startDate"
+            name="startDate"
+            label={t("fields.startDate")}
+            value={values.startDate}
+            required
+            hint={t("date.helper")}
+            error={errors.startDate as string}
+            touched={touched.startDate}
+            setFieldValue={setFieldValue}
+            setFieldTouched={setFieldTouched}
+            validateField={validateField}
+          />
+        </div>
 
-        <FormTextarea
-          id="workDescription"
-          name="workDescription"
-          label={t("fields.workDescription")}
-          placeholder={t("placeholders.workDescription")}
-          hint={t("fieldsHint.workDescription")}
-          rows={4}
-        />
+        <div className={layout.descriptionColumn}>
+          <FormTextarea
+            id="workDescription"
+            name="workDescription"
+            label={t("fields.workDescription")}
+            placeholder={t("placeholders.workDescription")}
+            hint={t("fieldsHint.workDescription")}
+            rows={4}
+          />
+        </div>
       </div>
     </div>
   );

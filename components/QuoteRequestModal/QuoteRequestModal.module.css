@@ -9,12 +9,12 @@
   background:
     radial-gradient(
       circle at 50% 0%,
-      rgba(255, 255, 255, 0.22),
+      rgba(245, 242, 236, 0.18),
       transparent 34%
     ),
-    rgba(8, 9, 10, 0.72);
-  backdrop-filter: blur(22px) saturate(0.9);
-  -webkit-backdrop-filter: blur(22px) saturate(0.9);
+    rgba(12, 12, 12, 0.68);
+  backdrop-filter: blur(22px) saturate(0.92);
+  -webkit-backdrop-filter: blur(22px) saturate(0.92);
   animation: overlayIn 220ms ease-out;
 }
 
@@ -22,33 +22,23 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  width: min(100%, 1080px);
+  width: min(100%, 1160px);
   height: min(92vh, 900px);
   min-height: 0;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.34);
+  border: 1px solid rgba(255, 255, 255, 0.58);
   border-radius: 34px;
   background:
     radial-gradient(
-      circle at 20% 0%,
-      rgba(255, 255, 255, 0.7),
+      circle at 18% 0%,
+      rgba(255, 255, 255, 0.72),
       transparent 34%
     ),
-    linear-gradient(180deg, #c9c7c1 0%, #aaa79f 48%, #86837c 100%);
+    linear-gradient(180deg, #eeeae3 0%, #e4e0d8 46%, #d4cec2 100%);
   box-shadow:
-    0 44px 120px rgba(0, 0, 0, 0.58),
-    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+    0 44px 120px rgba(0, 0, 0, 0.56),
+    inset 0 1px 0 rgba(255, 255, 255, 0.82);
   animation: dialogIn 300ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.modalDialog::before {
-  content: "";
-  position: absolute;
-  inset: 9px;
-  z-index: 0;
-  border: 1px solid rgba(12, 13, 14, 0.1);
-  border-radius: 25px;
-  pointer-events: none;
 }
 
 .modalGlow {
@@ -59,15 +49,15 @@
   background:
     radial-gradient(
       circle at 12% 8%,
-      rgba(255, 255, 255, 0.68),
-      transparent 26%
+      rgba(255, 255, 255, 0.65),
+      transparent 27%
     ),
     radial-gradient(
       circle at 88% 0%,
-      rgba(255, 255, 255, 0.32),
-      transparent 24%
+      rgba(255, 255, 255, 0.36),
+      transparent 25%
     ),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.16), transparent 42%);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.18), transparent 44%);
 }
 
 .mobileHandle {
@@ -83,34 +73,34 @@
   place-items: center;
   width: 44px;
   height: 44px;
-  border: 1px solid rgba(8, 9, 10, 0.14);
+  border: 1px solid rgba(20, 20, 18, 0.14);
   border-radius: 999px;
   background:
     linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.42),
-      rgba(255, 255, 255, 0.16)
+      rgba(255, 255, 255, 0.58),
+      rgba(255, 255, 255, 0.22)
     ),
-    rgba(10, 11, 12, 0.08);
-  color: #0b0c0d;
+    rgba(20, 20, 18, 0.06);
+  color: #11110f;
   box-shadow:
-    0 14px 28px rgba(0, 0, 0, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.62);
+    0 14px 28px rgba(0, 0, 0, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
   cursor: pointer;
   transition:
     transform 220ms ease,
-    background-color 220ms ease,
     border-color 220ms ease,
+    background-color 220ms ease,
     box-shadow 220ms ease;
 }
 
 .closeButton:hover {
   transform: translateY(-2px);
-  border-color: rgba(8, 9, 10, 0.22);
-  background-color: rgba(255, 255, 255, 0.22);
+  border-color: rgba(20, 20, 18, 0.22);
+  background-color: rgba(255, 255, 255, 0.28);
   box-shadow:
-    0 18px 34px rgba(0, 0, 0, 0.24),
-    0 0 0 6px rgba(10, 11, 12, 0.055);
+    0 18px 34px rgba(0, 0, 0, 0.22),
+    0 0 0 6px rgba(20, 20, 18, 0.045);
 }
 
 .closeButton:active {
@@ -118,7 +108,7 @@
 }
 
 .closeButton:focus-visible {
-  outline: 2px solid rgba(8, 9, 10, 0.7);
+  outline: 2px solid rgba(20, 20, 18, 0.7);
   outline-offset: 4px;
 }
 
@@ -142,11 +132,11 @@
   position: relative;
   z-index: 2;
   flex-shrink: 0;
-  padding: 26px 86px 14px 32px;
+  padding: 28px 86px 18px 34px;
 }
 
 .modalHeaderCopy {
-  max-width: 54ch;
+  max-width: 68ch;
 }
 
 .eyebrow {
@@ -154,7 +144,7 @@
   align-items: center;
   gap: 12px;
   margin: 0 0 8px;
-  color: rgba(12, 13, 14, 0.52);
+  color: rgba(22, 22, 20, 0.48);
   font-family: var(--font-ui);
   font-size: 0.62rem;
   font-weight: 700;
@@ -166,28 +156,26 @@
   content: "";
   width: 34px;
   height: 1px;
-  background: rgba(12, 13, 14, 0.32);
+  background: rgba(22, 22, 20, 0.28);
 }
 
 .modalTitle {
   margin: 0 0 7px;
-  color: #08090a;
+  color: #11110f;
   font-family: var(--font-display);
-  font-size: clamp(1.65rem, 2.45vw, 2.25rem);
+  font-size: clamp(1.7rem, 2.45vw, 2.28rem);
   font-weight: 300;
-  line-height: 1;
+  line-height: 0.98;
   letter-spacing: -0.045em;
   text-wrap: balance;
 }
 
 .modalDescription {
   margin: 0;
-  max-width: none;
-  color: rgba(12, 13, 14, 0.62);
+  color: rgba(22, 22, 20, 0.62);
   font-family: var(--font-ui);
-  font-size: 0.86rem;
+  font-size: 0.88rem;
   line-height: 1.45;
-  white-space: nowrap;
 }
 
 .modalBody {
@@ -196,27 +184,29 @@
   flex: 1 1 auto;
   min-height: 0;
   overflow: hidden;
-  padding: 0 10px 10px;
+  padding: 0 24px 18px;
+  background: transparent;
 }
 
-/* This creates the premium inner black form surface */
 .modalBody::before {
-  content: "";
-  position: absolute;
-  inset: 0 10px 10px;
+  content: none;
+  /* position: absolute;
+  inset: 0 24px 18px;
   z-index: -1;
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: 28px;
+  border: 0;
+  border-radius: 30px;
   background:
     radial-gradient(
       circle at 18% 0%,
-      rgba(255, 255, 255, 0.1),
-      transparent 28%
+      rgba(255, 255, 255, 0.5),
+      transparent 34%
     ),
-    linear-gradient(180deg, #111214 0%, #08090a 100%);
-  box-shadow:
-    0 22px 54px rgba(0, 0, 0, 0.28),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    linear-gradient(
+      180deg,
+      rgba(232, 228, 220, 0.78),
+      rgba(214, 208, 196, 0.72)
+    );
+  box-shadow: none; */
 }
 
 @keyframes overlayIn {
@@ -245,20 +235,20 @@
 
 @media (max-width: 1023px) {
   .modalDialog {
-    width: min(100%, 920px);
+    width: min(100%, 940px);
     height: min(93vh, 860px);
   }
 
   .modalTopBar {
-    padding: 28px 78px 16px 28px;
+    padding: 26px 78px 16px 28px;
   }
 
   .modalBody {
-    padding: 0 8px 8px;
+    padding: 0 18px 14px;
   }
 
   .modalBody::before {
-    inset: 0 8px 8px;
+    inset: 0 18px 14px;
   }
 }
 
@@ -280,6 +270,10 @@
     border-radius: 20px 20px 0 0;
   }
 
+  .modalTopBar {
+    padding: 22px 62px 18px 26px;
+  }
+
   .mobileHandle {
     position: relative;
     z-index: 3;
@@ -288,22 +282,23 @@
     height: 4px;
     margin: 10px auto 0;
     border-radius: 999px;
-    background: rgba(8, 9, 10, 0.28);
+    background: rgba(22, 22, 20, 0.24);
   }
 
   .modalTopBar {
-    padding: 18px 66px 14px 18px;
+    padding: 17px 66px 12px 18px;
   }
 
   .modalTitle {
-    font-size: clamp(1.65rem, 7vw, 2.2rem);
-    line-height: 1;
+    font-size: clamp(2.1rem, 9vw, 3.2rem);
+    line-height: 0.95;
+    letter-spacing: -0.055em;
   }
 
   .modalDescription {
-    font-size: 0.88rem;
-    line-height: 1.5;
-    white-space: normal;
+    max-width: 30ch;
+    font-size: 1rem;
+    line-height: 1.35;
   }
 
   .closeButton {
@@ -314,12 +309,12 @@
   }
 
   .modalBody {
-    padding: 0 6px 6px;
+    padding: 0 10px 8px;
   }
 
   .modalBody::before {
-    inset: 0 6px 6px;
-    border-radius: 24px 24px 0 0;
+    inset: 0 10px 8px;
+    border-radius: 26px 26px 0 0;
   }
 }
 
@@ -334,13 +329,21 @@
     border-radius: 24px 24px 0 0;
   }
 
+  .modalBody {
+    padding: 0 8px 8px;
+  }
+
+  .modalBody::before {
+    inset: 0 8px 8px;
+  }
+
   .modalTopBar {
-    padding: 16px 60px 12px 14px;
+    padding: 15px 58px 11px 14px;
   }
 
   .eyebrow {
     margin-bottom: 7px;
-    font-size: 0.62rem;
+    font-size: 0.6rem;
   }
 
   .modalTitle {
@@ -363,13 +366,27 @@
   }
 }
 
+@media (min-width: 768px) and (max-width: 1023px) {
+  .modalTopBar {
+    padding: 30px 82px 22px 42px;
+  }
+
+  .modalTitle {
+    font-size: clamp(2.4rem, 5vw, 3.4rem);
+  }
+
+  .modalDescription {
+    font-size: 1rem;
+  }
+}
+
 @media (min-width: 1280px) {
   .modalDialog {
-    width: min(100%, 1120px);
+    width: min(100%, 1160px);
   }
 
   .modalTopBar {
-    padding: 34px 92px 20px 36px;
+    padding: 34px 92px 22px 38px;
   }
 }
 

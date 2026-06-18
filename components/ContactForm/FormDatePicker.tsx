@@ -2,6 +2,7 @@
 
 import {
   ChangeEvent,
+  useCallback,
   useEffect,
   useLayoutEffect,
   useRef,
@@ -46,6 +47,10 @@ const localeMap = {
   ru,
 };
 
+const VIEWPORT_PADDING = 12;
+const POPOVER_GAP = 8;
+const FALLBACK_CALENDAR_HEIGHT = 390;
+
 const getToday = () => {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
@@ -89,6 +94,7 @@ export default function FormDatePicker({
   const locale = useLocale();
 
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const inputWrapRef = useRef<HTMLDivElement>(null);
   const popoverRef = useRef<HTMLDivElement>(null);
 
   const today = getToday();
@@ -98,6 +104,7 @@ export default function FormDatePicker({
   const errorId = visibleError ? `${id}-error` : undefined;
 
   const [isOpen, setIsOpen] = useState(false);
+
   const [month, setMonth] = useState<Date>(selectedDate ?? today);
   const [popoverStyle, setPopoverStyle] = useState({
     top: 0,
@@ -105,44 +112,61 @@ export default function FormDatePicker({
     width: 0,
   });
 
-  const updatePopoverPosition = () => {
-    if (!wrapperRef.current) return;
+  const updatePopoverPosition = useCallback(() => {
+    if (!inputWrapRef.current) return;
 
-    const rect = wrapperRef.current.getBoundingClientRect();
-    const viewportPadding = 12;
-    const calendarHeight = 390;
-    const spaceBelow = window.innerHeight - rect.bottom;
-    const shouldOpenAbove =
-      spaceBelow < calendarHeight && rect.top > calendarHeight;
+    const rect = inputWrapRef.current.getBoundingClientRect();
+    const popoverHeight =
+      popoverRef.current?.offsetHeight || FALLBACK_CALENDAR_HEIGHT;
 
-    const width = Math.min(rect.width, window.innerWidth - viewportPadding * 2);
+    const maxWidth = window.innerWidth - VIEWPORT_PADDING * 2;
+    const width = Math.min(rect.width, maxWidth);
+
     const left = Math.min(
-      Math.max(rect.left, viewportPadding),
-      window.innerWidth - width - viewportPadding,
+      Math.max(rect.left, VIEWPORT_PADDING),
+      window.innerWidth - width - VIEWPORT_PADDING,
+    );
+
+    const spaceBelow = window.innerHeight - rect.bottom - VIEWPORT_PADDING;
+    const spaceAbove = rect.top - VIEWPORT_PADDING;
+
+    const shouldOpenAbove =
+      spaceBelow < popoverHeight + POPOVER_GAP && spaceAbove > spaceBelow;
+
+    const preferredTop = shouldOpenAbove
+      ? rect.top - popoverHeight - POPOVER_GAP
+      : rect.bottom + POPOVER_GAP;
+
+    const top = Math.min(
+      Math.max(preferredTop, VIEWPORT_PADDING),
+      window.innerHeight - popoverHeight - VIEWPORT_PADDING,
     );
 
     setPopoverStyle({
-      top: shouldOpenAbove
-        ? Math.max(viewportPadding, rect.top - calendarHeight - 2)
-        : rect.bottom + 2,
+      top,
       left,
       width,
     });
-  };
+  }, []);
 
   useLayoutEffect(() => {
     if (!isOpen) return;
 
-    updatePopoverPosition();
+    const firstFrame = window.requestAnimationFrame(() => {
+      updatePopoverPosition();
+
+      window.requestAnimationFrame(updatePopoverPosition);
+    });
 
     window.addEventListener("resize", updatePopoverPosition);
     window.addEventListener("scroll", updatePopoverPosition, true);
 
     return () => {
+      window.cancelAnimationFrame(firstFrame);
       window.removeEventListener("resize", updatePopoverPosition);
       window.removeEventListener("scroll", updatePopoverPosition, true);
     };
-  }, [isOpen]);
+  }, [isOpen, updatePopoverPosition]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -168,6 +192,14 @@ export default function FormDatePicker({
   const openCalendar = () => {
     setMonth(selectedDate ?? today);
     setIsOpen(true);
+
+    window.requestAnimationFrame(() => {
+      inputWrapRef.current?.scrollIntoView({
+        block: "nearest",
+        inline: "nearest",
+        behavior: "smooth",
+      });
+    });
   };
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -203,6 +235,8 @@ export default function FormDatePicker({
               top: popoverStyle.top,
               left: popoverStyle.left,
               width: popoverStyle.width,
+              opacity: popoverStyle.width > 0 ? 1 : 0,
+              pointerEvents: popoverStyle.width > 0 ? "auto" : "none",
             }}
             role="dialog"
             aria-label={t("date.calendarLabel")}
@@ -243,12 +277,15 @@ export default function FormDatePicker({
       : null;
 
   return (
-    <div className={fields.formGroup} ref={wrapperRef}>
+    <div
+      className={`${fields.formGroup} ${styles.datePicker}`}
+      ref={wrapperRef}
+    >
       <label htmlFor={id} className={fields.label}>
         {label} {required && <span className={fields.required}>*</span>}
       </label>
 
-      <div className={styles.dateInputWrap}>
+      <div className={styles.dateInputWrap} ref={inputWrapRef}>
         <input
           id={id}
           name={name}

@@ -1,18 +1,12 @@
 .datePicker {
   position: relative;
   min-width: 0;
+  z-index: 20;
 }
 
-/* .datePicker {
-  position: relative;
-  isolation: isolate;
-  z-index: 130;
-} */
-
-.datePicker {
-  position: relative;
-  isolation: isolate;
-  z-index: 130;
+.datePicker:has(input:focus),
+.datePicker:has(.dateToggle[aria-expanded="true"]) {
+  z-index: 500;
 }
 
 .dateInputWrap {
@@ -32,55 +26,29 @@
   place-items: center;
   width: 36px;
   height: 36px;
-  border: 1px solid rgba(245, 244, 240, 0.14);
+  border: 1px solid rgba(70, 66, 58, 0.14);
   border-radius: 13px;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.08),
-      rgba(255, 255, 255, 0.025)
-    ),
-    rgba(245, 244, 240, 0.05);
-  color: rgba(245, 244, 240, 0.82);
+  background: rgba(70, 66, 58, 0.06);
+  color: rgba(24, 23, 19, 0.72);
   transform: translateY(-50%);
   cursor: pointer;
-}
-
-/* .dateToggle {
-  place-items: center;
-  width: 34px;
-  height: 34px;
-  border: 1px solid rgba(210, 207, 198, 0.14);
-  color: rgba(210, 207, 198, 0.82);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 8px 18px rgba(0, 0, 0, 0.16);
   transition:
     border-color 180ms ease,
     background-color 180ms ease,
     transform 180ms ease,
     box-shadow 180ms ease;
-} */
-
-/* .dateToggle:focus-visible {
-  outline: 2px solid rgba(245, 244, 240, 0.72);
-  outline-offset: 3px;
 }
 
-.dateToggle span::before,
-.dateToggle span::after {
-  content: "";
-  position: absolute;
-  background: currentColor;
-} */
-
 .dateToggle:hover {
-  border-color: rgba(245, 244, 240, 0.24);
-  background-color: rgba(245, 244, 240, 0.075);
+  border-color: rgba(70, 66, 58, 0.24);
+  background: rgba(70, 66, 58, 0.09);
   transform: translateY(-50%) translateY(-1px);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 12px 24px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 10px 20px rgba(70, 66, 58, 0.12);
+}
+
+.dateToggle:focus-visible {
+  outline: 2px solid rgba(24, 23, 19, 0.72);
+  outline-offset: 3px;
 }
 
 .dateToggle span {
@@ -101,13 +69,6 @@
   background: currentColor;
 }
 
-/* .dateToggle span::before {
-  top: 3.5px;
-  left: -1.5px;
-  right: -1.5px;
-  height: 1.5px;
-} */
-
 .dateToggle span::after {
   content: "";
   position: absolute;
@@ -119,36 +80,25 @@
   border-right: 1.6px solid currentColor;
 }
 
-/* .dateToggle span::after {
-  top: -4px;
-  left: 3px;
-  width: 8px;
-  height: 4px;
-  border-radius: 999px;
-  background: transparent;
-  border-left: 1.5px solid currentColor;
-  border-right: 1.5px solid currentColor;
-} */
-
 .calendarPopover {
   position: fixed;
   z-index: 9999;
   max-width: calc(100vw - 24px);
-  max-height: min(430px, calc(100vh - 24px));
+  max-height: calc(100vh - 24px);
   padding: 12px;
   overflow: hidden;
-  border: 1px solid rgba(214, 211, 202, 0.2);
+  border: 1px solid rgba(70, 66, 58, 0.14);
   border-radius: 22px;
   background:
     radial-gradient(
       circle at 20% 0%,
-      rgba(214, 211, 202, 0.16),
+      rgba(255, 255, 255, 0.82),
       transparent 34%
     ),
-    linear-gradient(180deg, rgba(48, 47, 44, 0.98), rgba(18, 19, 18, 0.99));
+    #fbfaf8;
   box-shadow:
-    0 30px 70px rgba(0, 0, 0, 0.52),
-    inset 0 1px 0 rgba(255, 255, 255, 0.09);
+    0 24px 52px rgba(70, 66, 58, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.88);
   animation: calendarIn 190ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -157,7 +107,7 @@
   --rdp-day-width: 34px;
   width: 100%;
   margin: 0;
-  color: #f5f4f0;
+  color: #181713;
   font-family: "Barlow", sans-serif;
 }
 
@@ -173,11 +123,11 @@
   min-height: 42px;
   margin-bottom: 10px;
   padding: 0 46px 10px;
-  border-bottom: 1px solid rgba(245, 244, 240, 0.08);
+  border-bottom: 1px solid rgba(70, 66, 58, 0.1);
 }
 
 .calendarCaptionLabel {
-  color: rgba(245, 244, 240, 0.94);
+  color: #181713;
   font-family: var(--font-display);
   font-size: clamp(1.18rem, 3vw, 1.42rem);
   font-weight: 300;
@@ -200,10 +150,10 @@
   place-items: center;
   width: 34px;
   height: 34px;
-  border: 1px solid rgba(245, 244, 240, 0.14);
+  border: 1px solid rgba(70, 66, 58, 0.14);
   border-radius: 12px;
-  background: rgba(245, 244, 240, 0.055);
-  color: rgba(245, 244, 240, 0.84);
+  background: #ffffff;
+  color: rgba(24, 23, 19, 0.78);
   pointer-events: auto;
   cursor: pointer;
 }
@@ -217,7 +167,7 @@
 
 .calendarWeekday {
   height: 28px;
-  color: rgba(245, 244, 240, 0.42);
+  color: rgba(24, 23, 19, 0.45);
   font-family: "Barlow Condensed", sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -236,20 +186,20 @@
   border: 1px solid transparent;
   border-radius: 12px;
   background: transparent;
-  color: rgba(245, 244, 240, 0.72);
+  color: rgba(24, 23, 19, 0.7);
   font-family: "Barlow", sans-serif;
   font-size: 0.82rem;
   cursor: pointer;
 }
 
 .calendarDayButton:hover {
-  border-color: rgba(245, 244, 240, 0.14);
-  background: rgba(255, 255, 255, 0.075);
-  color: #ffffff;
+  border-color: rgba(70, 66, 58, 0.12);
+  background: rgba(70, 66, 58, 0.07);
+  color: #181713;
 }
 
 .calendarToday .calendarDayButton {
-  color: #ffffff;
+  color: #181713;
 }
 
 .calendarToday .calendarDayButton::after {
@@ -260,23 +210,23 @@
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: rgba(245, 244, 240, 0.72);
+  background: rgba(24, 23, 19, 0.64);
   transform: translateX(-50%);
 }
 
 .calendarSelected .calendarDayButton {
-  border-color: rgba(245, 244, 240, 0.3);
-  background: rgba(245, 244, 240, 0.14);
+  border-color: #181713;
+  background: #181713;
   color: #ffffff;
-  box-shadow: 0 0 0 4px rgba(245, 244, 240, 0.055);
+  box-shadow: 0 0 0 4px rgba(24, 23, 19, 0.08);
 }
 
 .calendarOutside .calendarDayButton {
-  color: rgba(245, 244, 240, 0.22);
+  color: rgba(24, 23, 19, 0.24);
 }
 
 .calendarDisabled .calendarDayButton {
-  color: rgba(245, 244, 240, 0.14);
+  color: rgba(24, 23, 19, 0.16);
   cursor: not-allowed;
 }
 
@@ -288,7 +238,7 @@
 @keyframes calendarIn {
   from {
     opacity: 0;
-    transform: translateY(8px) scale(0.975);
+    transform: translateY(6px) scale(0.975);
   }
 
   to {
@@ -321,6 +271,7 @@
     animation: none;
   }
 
+  .dateToggle,
   .calendarDayButton,
   .calendarNavButton {
     transition: none;

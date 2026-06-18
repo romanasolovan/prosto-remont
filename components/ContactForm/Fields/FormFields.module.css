@@ -6,93 +6,68 @@
 
 .label {
   margin-bottom: 8px;
-  color: rgba(245, 244, 240, 0.76);
+  color: rgba(24, 23, 19, 0.58);
   font-family: "Barlow Condensed", sans-serif;
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.15em;
   line-height: 1.3;
   text-transform: uppercase;
 }
 
 .required {
-  color: rgba(245, 244, 240, 0.95);
+  margin-left: 2px;
+  color: rgba(24, 23, 19, 0.76);
 }
 
 .input {
   width: 100%;
-  min-height: 50px;
-  padding: 12px 14px;
-  border: 1px solid rgba(210, 207, 198, 0.12);
-  border-radius: 15px;
+  min-height: 52px;
+  padding: 12px 16px;
+  border: 1px solid rgba(70, 66, 58, 0.14);
+  border-radius: 16px;
   outline: none;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.08),
-      rgba(255, 255, 255, 0.035)
-    ),
-    rgba(54, 52, 48, 0.96);
-  color: #f5f4f0;
+  background: #fbfaf8;
+  color: #181713;
   font-family: "Barlow", sans-serif;
-  font-size: 0.92rem;
+  font-size: 0.94rem;
   line-height: 1.5;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.055),
-    0 10px 22px rgba(0, 0, 0, 0.08);
+    inset 0 1px 0 rgba(255, 255, 255, 0.78),
+    0 10px 22px rgba(70, 66, 58, 0.06);
   transition:
     border-color 220ms ease,
     background-color 220ms ease,
-    box-shadow 220ms ease,
-    transform 180ms ease;
+    box-shadow 220ms ease;
 }
 
 .input::placeholder {
-  color: rgba(210, 207, 198, 0.34);
+  color: rgba(24, 23, 19, 0.34);
 }
 
 .input:hover {
-  border-color: rgba(210, 207, 198, 0.22);
-  background-color: rgba(255, 255, 255, 0.045);
+  border-color: rgba(70, 66, 58, 0.22);
+  background: #ffffff;
 }
 
 .input:focus {
-  border-color: rgba(210, 207, 198, 0.36);
-  background-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(70, 66, 58, 0.34);
+  background: #ffffff;
   box-shadow:
-    0 0 0 4px rgba(210, 207, 198, 0.075),
-    inset 0 1px 0 rgba(255, 255, 255, 0.075);
+    0 0 0 4px rgba(70, 66, 58, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .input[aria-invalid="true"] {
-  border-color: rgba(255, 138, 128, 0.38);
+  border-color: rgba(143, 50, 43, 0.5);
   box-shadow:
-    0 0 0 4px rgba(255, 138, 128, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.055);
-}
-
-.input[type="date"] {
-  display: block;
-  width: 100%;
-  min-width: 0;
-  color-scheme: dark;
-}
-
-.input[type="date"]::-webkit-date-and-time-value {
-  text-align: left;
-}
-
-.input[type="date"]::-webkit-calendar-picker-indicator {
-  width: 18px;
-  height: 18px;
-  cursor: pointer;
-  opacity: 0.72;
-  filter: invert(1);
+    0 0 0 4px rgba(143, 50, 43, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.78);
 }
 
 .fieldHint {
   margin: 7px 0 0;
-  color: rgba(210, 207, 198, 0.42);
+  color: rgba(24, 23, 19, 0.46);
   font-family: "Barlow", sans-serif;
   font-size: 0.76rem;
   line-height: 1.5;
@@ -104,7 +79,7 @@
 }
 
 .error {
-  color: rgba(255, 194, 188, 0);
+  color: rgba(143, 50, 43, 0);
   font-family: "Barlow", sans-serif;
   font-size: 0.76rem;
   line-height: 1.45;
@@ -115,12 +90,46 @@
 }
 
 .error.visible {
-  color: #ffc2bc;
+  color: #8f322b;
   transform: translateY(0);
 }
 
 .fullWidth {
   grid-column: 1 / -1;
+}
+
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #181713;
+  caret-color: #181713;
+  box-shadow:
+    0 0 0 1000px #fbfaf8 inset,
+    inset 0 1px 0 rgba(255, 255, 255, 0.78),
+    0 10px 22px rgba(70, 66, 58, 0.06);
+  border-color: rgba(70, 66, 58, 0.18);
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+@media (max-width: 767px) {
+  .label {
+    margin-bottom: 10px;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+  }
+
+  .input {
+    min-height: 58px;
+    padding: 14px 18px;
+    border-radius: 18px;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .input {
+    min-height: 54px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
