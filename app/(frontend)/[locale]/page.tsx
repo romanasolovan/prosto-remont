@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./page.module.css";
-import HomeSidePagination from "@/components/home/HomeSidePagination/HomeSidePagination";
+// import HomeSidePagination from "@/components/home/HomeSidePagination/HomeSidePagination";
 
 import TrustedBrands from "@/components/home/TrustedBrands/TrustedBrands";
 import HomeHero from "@/components/home/HomeHero/HomeHero";
@@ -80,11 +80,11 @@ export default function Home() {
 
   return (
     <div className={styles.home}>
-      <HomeSidePagination
+      {/* <HomeSidePagination
         sections={sections}
         activeSection={activeSection}
         navLabel={t("pagination.navLabel")}
-      />
+      /> */}
 
       <HomeMobileSectionNavigator
         sections={sections}

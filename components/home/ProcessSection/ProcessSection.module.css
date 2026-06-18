@@ -4,7 +4,7 @@
   --bg-deep: #181c21;
   --ink: #f5f4f0;
   --ink-soft: rgba(245, 244, 240, 0.76);
-  --ink-muted: rgba(245, 244, 240, 0.46);
+  --ink-muted: rgba(245, 244, 240, 0.58);
   --line: rgba(255, 255, 255, 0.08);
   --line-strong: rgba(255, 255, 255, 0.2);
   --panel: rgba(255, 255, 255, 0.032);
@@ -12,7 +12,7 @@
 
   position: relative;
   overflow: hidden;
-  padding: clamp(74px, 8vw, 108px) 0;
+  padding: clamp(72px, 8vw, 108px) 0;
   color: var(--ink);
   background:
     radial-gradient(
@@ -45,9 +45,8 @@
   mask-image: linear-gradient(
     to bottom,
     transparent,
-    rgba(0, 0, 0, 0.55) 20%,
-    rgba(0, 0, 0, 0.3) 72%,
-    transparent
+    rgba(0, 0, 0, 0.5) 20%,
+    transparent 92%
   );
 }
 
@@ -112,7 +111,7 @@
   position: relative;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
+  gap: 18px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -122,11 +121,10 @@
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 154px;
-  padding: 20px;
+  display: grid;
+  grid-template-rows: 118px auto 1fr;
+  min-height: 292px;
+  padding: 24px;
   border: 1px solid var(--line);
   border-radius: 24px;
   background:
@@ -144,47 +142,33 @@
 .step::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 22px;
-  right: 22px;
+  top: 52%;
+  left: 24px;
+  right: 24px;
   height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(245, 244, 240, 0.4),
-    transparent
-  );
+  background: linear-gradient(90deg, rgba(245, 244, 240, 0.34), transparent);
   opacity: 0.42;
 }
 
 .step::after {
   content: var(--ghost-number);
   position: absolute;
-  right: -0.15em;
-  bottom: -0.22em;
+  top: 10px;
+  right: 18px;
   z-index: -1;
   font-family: "Barlow Condensed", sans-serif;
-  font-size: 8.5rem;
+  font-size: clamp(6.8rem, 22vw, 9rem);
   font-weight: 500;
-  line-height: 1;
+  line-height: 0.82;
   letter-spacing: -0.08em;
-  color: rgba(255, 255, 255, 0.035);
+  color: rgba(255, 255, 255, 0.04);
   pointer-events: none;
 }
 
 .stepTop {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
-}
-
-.number {
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: clamp(28px, 6vw, 42px);
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: -0.03em;
-  color: rgba(245, 244, 240, 0.92);
 }
 
 .icon {
@@ -192,22 +176,26 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: clamp(62px, 8vw, 76px);
-  height: clamp(62px, 8vw, 76px);
+  width: clamp(72px, 18vw, 86px);
+  height: clamp(72px, 18vw, 86px);
   flex: 0 0 auto;
   border: 1px solid rgba(245, 244, 240, 0.18);
   border-radius: 50%;
   background:
     radial-gradient(
       circle at 30% 24%,
-      rgba(255, 255, 255, 0.12),
-      rgba(255, 255, 255, 0.025) 58%
+      rgba(255, 255, 255, 0.14),
+      rgba(255, 255, 255, 0.026) 58%
     ),
     #050506;
-  color: rgba(245, 244, 240, 0.88);
+  color: rgba(245, 244, 240, 0.9);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.1),
     0 18px 34px rgba(0, 0, 0, 0.28);
+  transition:
+    transform 260ms ease,
+    border-color 260ms ease,
+    color 260ms ease;
 }
 
 .icon::after {
@@ -216,12 +204,11 @@
   inset: -7px;
   border: 1px solid rgba(245, 244, 240, 0.08);
   border-radius: 50%;
-  opacity: 0.72;
 }
 
 .icon svg {
-  width: clamp(34px, 4vw, 42px);
-  height: clamp(34px, 4vw, 42px);
+  width: clamp(40px, 9vw, 48px);
+  height: clamp(40px, 9vw, 48px);
   fill: none;
   stroke: currentColor;
   stroke-width: 1.35;
@@ -229,17 +216,36 @@
   stroke-linejoin: round;
 }
 
+.stepBody {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 18px;
+  padding-top: 0;
+}
+
 .stepTitle {
-  max-width: 14rem;
-  min-height: 2.15em;
-  margin: 34px 0 0;
+  max-width: 100%;
+  margin: 0;
+  overflow: hidden;
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(28px, 6vw, 36px);
+  font-size: clamp(28px, 6.5vw, 38px);
   font-weight: 600;
-  line-height: 0.96;
-  letter-spacing: -0.03em;
+  line-height: 1;
+  letter-spacing: -0.04em;
   color: var(--ink);
-  text-wrap: balance;
+  white-space: nowrap;
+  text-overflow: clip;
+  text-wrap: nowrap;
+}
+
+.stepDescription {
+  max-width: 30rem;
+  margin: 0;
+  font-family: "Barlow", sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.62;
+  color: var(--ink-muted);
 }
 
 .step:hover {
@@ -249,6 +255,12 @@
   background:
     linear-gradient(180deg, var(--panel-active), rgba(255, 255, 255, 0.024)),
     rgba(255, 255, 255, 0.024);
+}
+
+.step:hover .icon {
+  border-color: rgba(245, 244, 240, 0.3);
+  color: #ffffff;
+  transform: translateY(-2px);
 }
 
 @keyframes stepFocus {
@@ -273,33 +285,78 @@
   }
 }
 
-@media (min-width: 640px) {
-  .steps {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 14px;
-  }
-
+@media (min-width: 390px) {
   .step {
-    grid-column: span 3;
-    min-height: 210px;
-    padding: 22px;
+    min-height: 278px;
   }
 
-  .step:nth-child(5) {
-    grid-column: 2 / span 4;
-    min-height: 190px;
-  }
-
-  .step:nth-child(5) .stepTitle {
-    max-width: 18rem;
+  .stepDescription {
+    font-size: 13.5px;
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .processSection {
-    padding: clamp(82px, 7vw, 112px) 0;
+    padding: clamp(78px, 8vw, 112px) 0;
   }
 
+  .steps {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .step {
+    min-height: 250px;
+    padding: 28px;
+    grid-template-rows: 112px auto 1fr;
+  }
+
+  .step::before {
+    top: 48%;
+    left: 28px;
+    right: 28px;
+    display: block;
+  }
+
+  .step::after {
+    top: 8px;
+    right: 24px;
+    font-size: 9.5rem;
+  }
+
+  .stepBody {
+    display: grid;
+    gap: 14px;
+    max-width: 82%;
+    padding-top: 0;
+  }
+
+  .stepTitle {
+    max-width: 100%;
+    font-size: clamp(34px, 5vw, 44px);
+    line-height: 1;
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: clip;
+  }
+
+  .stepDescription {
+    max-width: 36rem;
+    font-size: 14px;
+    line-height: 1.68;
+  }
+
+  .icon {
+    width: 86px;
+    height: 86px;
+  }
+
+  .icon svg {
+    width: 48px;
+    height: 48px;
+  }
+}
+@media (min-width: 1024px) {
   .steps {
     grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 14px;
@@ -308,7 +365,7 @@
   .steps::before {
     content: "";
     position: absolute;
-    top: 50%;
+    top: 184px;
     left: 3%;
     right: 3%;
     height: 1px;
@@ -318,74 +375,123 @@
       rgba(245, 244, 240, 0.16),
       transparent
     );
-    transform: translateY(-50%);
     pointer-events: none;
   }
 
-  .step:nth-child(5) {
-    grid-column: auto;
-    min-height: 246px;
-  }
-
   .step {
-    grid-column: auto;
-    min-height: 246px;
-    padding: 24px 22px;
+    min-height: 392px;
+    padding: 24px 20px;
+    grid-template-rows: 136px 32px 1fr;
   }
 
-  .stepTitle {
-    max-width: 100%;
-    min-height: 2.35em;
-    margin-top: 38px;
-    font-size: clamp(27px, 2.15vw, 33px);
+  .step::before {
+    display: none;
   }
 
   .step::after {
-    font-size: 10rem;
-    right: -0.18em;
-    bottom: -0.24em;
+    top: 14px;
+    right: 12px;
+    font-size: 8.2rem;
+  }
+
+  /* .stepBody {
+    max-width: 100%;
+    padding-top: 36px;
+  } */
+
+  .stepBody {
+    display: contents;
+  }
+
+  .stepTitle {
+    align-self: center;
+    max-width: 100%;
+    min-height: 0;
+    margin: 0;
+    font-size: clamp(20px, 1.45vw, 25px);
+    line-height: 1;
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: clip;
+  }
+
+  .stepDescription {
+    align-self: start;
+    max-width: 100%;
+    padding-top: 28px;
+    font-size: 12.5px;
+    line-height: 1.58;
   }
 
   .icon {
-    width: 68px;
-    height: 68px;
+    width: 70px;
+    height: 70px;
   }
 
   .icon svg {
-    width: 37px;
-    height: 37px;
+    width: 39px;
+    height: 39px;
   }
 }
 
 @media (min-width: 1280px) {
   .step {
-    min-height: 250px;
-    padding: 24px;
+    min-height: 372px;
+    padding: 26px 24px;
+    grid-template-rows: 136px 34px 1fr;
+  }
+
+  .step::after {
+    font-size: 9rem;
+    right: 16px;
+  }
+
+  .steps::before {
+    top: 187px;
+  }
+
+  .stepTitle {
+    font-size: clamp(23px, 1.45vw, 28px);
+  }
+
+  .stepDescription {
+    font-size: 13px;
+    line-height: 1.62;
   }
 
   .icon {
-    width: 56px;
-    height: 56px;
+    width: 76px;
+    height: 76px;
   }
 
   .icon svg {
-    width: 30px;
-    height: 30px;
+    width: 42px;
+    height: 42px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .step {
+    min-height: 352px;
+  }
+
+  .stepTitle {
+    font-size: clamp(25px, 1.35vw, 30px);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .step:hover .icon {
-    border-color: rgba(245, 244, 240, 0.3);
-    color: #ffffff;
-    transform: translateY(-2px);
+  .step {
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
 
-  .icon {
-    transition:
-      transform 260ms ease,
-      border-color 260ms ease,
-      color 260ms ease,
-      box-shadow 260ms ease;
+  .step:hover {
+    transform: none;
+  }
+
+  .step:hover .icon {
+    transform: none;
   }
 }

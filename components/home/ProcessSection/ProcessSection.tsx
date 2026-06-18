@@ -103,9 +103,15 @@ export default function ProcessSection() {
                   </span>
                 </div>
 
-                <h3 className={styles.stepTitle}>
-                  {t(`steps.${step.key}.title`)}
-                </h3>
+                <div className={styles.stepBody}>
+                  <h3 className={styles.stepTitle}>
+                    {t(`steps.${step.key}.title`)}
+                  </h3>
+
+                  <p className={styles.stepDescription}>
+                    {t(`steps.${step.key}.description`)}
+                  </p>
+                </div>
               </li>
             ))}
           </ol>
