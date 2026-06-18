@@ -5,7 +5,7 @@ import styles from "./page.module.css";
 
 import TrustedBrands from "@/components/home/TrustedBrands/TrustedBrands";
 import HomeHero from "@/components/home/HomeHero/HomeHero";
-import WhyChooseUs from "@/components/home/WhyChooseUs/WhyChooseUs";
+// import WhyChooseUs from "@/components/home/WhyChooseUs/WhyChooseUs";
 import ClientOpinionsPreview from "@/components/home/ClientOpinionsPreview/ClientOpinionsPreview";
 import QuoteHighlight from "@/components/home/QuoteHighlight/QuoteHighlight";
 import ServicesPreview from "@/components/home/ServicesPreview/ServicesPreview";
@@ -15,7 +15,7 @@ import ProcessSection from "@/components/home/ProcessSection/ProcessSection";
 
 import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
-import HomeMobileSectionNavigator from "@/components/home/HomeMobileSectionNavigator/HomeMobileSectionNavigator";
+// import HomeMobileSectionNavigator from "@/components/home/HomeMobileSectionNavigator/HomeMobileSectionNavigator";
 
 type SectionItem = {
   id: string;
@@ -86,13 +86,13 @@ export default function Home() {
         navLabel={t("pagination.navLabel")}
       /> */}
 
-      <HomeMobileSectionNavigator
+      {/* <HomeMobileSectionNavigator
         sections={sections}
         activeSection={activeSection}
         triggerLabel={t("pagination.mobileTrigger")}
         title={t("pagination.mobileTitle")}
         closeLabel={t("pagination.mobileClose")}
-      />
+      /> */}
 
       <section
         id="hero"
@@ -113,9 +113,9 @@ export default function Home() {
         <ProcessSection />
       </section>
 
-      <section id="why" className={styles.pageSection}>
+      {/* <section id="why" className={styles.pageSection}>
         <WhyChooseUs />
-      </section>
+      </section> */}
 
       <section id="projects" className={styles.pageSection}>
         {/* <ProjectsPreview /> */}
