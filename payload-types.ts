@@ -73,6 +73,7 @@ export interface Config {
     reviews: Review;
     projects: Project;
     services: Service;
+    'trusted-brands': TrustedBrand;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -86,6 +87,7 @@ export interface Config {
     reviews: ReviewsSelect<false> | ReviewsSelect<true>;
     projects: ProjectsSelect<false> | ProjectsSelect<true>;
     services: ServicesSelect<false> | ServicesSelect<true>;
+    'trusted-brands': TrustedBrandsSelect<false> | TrustedBrandsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -321,6 +323,38 @@ export interface Service {
   createdAt: string;
 }
 /**
+ * Brands and clients displayed in the trusted brands carousel.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "trusted-brands".
+ */
+export interface TrustedBrand {
+  id: number;
+  name: string;
+  /**
+   * Used if no logo is uploaded, for example: DS, GHG, MH.
+   */
+  mark?: string | null;
+  /**
+   * Upload a logo image for the carousel.
+   */
+  logo?: (number | null) | Media;
+  /**
+   * Optional. Example: /projects#dar-sport-space
+   */
+  href?: string | null;
+  /**
+   * Only published brands appear on the website.
+   */
+  status?: ('draft' | 'published') | null;
+  /**
+   * Lower numbers appear first.
+   */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
@@ -367,6 +401,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'services';
         value: number | Service;
+      } | null)
+    | ({
+        relationTo: 'trusted-brands';
+        value: number | TrustedBrand;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -531,6 +569,20 @@ export interface ServicesSelect<T extends boolean = true> {
         id?: T;
       };
   featured?: T;
+  status?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "trusted-brands_select".
+ */
+export interface TrustedBrandsSelect<T extends boolean = true> {
+  name?: T;
+  mark?: T;
+  logo?: T;
+  href?: T;
   status?: T;
   order?: T;
   updatedAt?: T;

@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import styles from "./TrustedBrands.module.css";
 import Image from "next/image";
@@ -10,72 +13,6 @@ type Brand = {
   logoAlt?: string;
   href?: string;
 };
-
-const trustedBrands: Brand[] = [
-  {
-    name: "Dar Sport Space",
-    mark: "DS",
-    logoSrc: "/trusted/DarSportSpace.webp",
-    logoAlt: "Dar Sport Space Logo",
-    href: "/projects#dar-sport-space",
-  },
-  {
-    name: "Element",
-    mark: "EL",
-    logoSrc: "/trusted/Element.webp",
-    logoAlt: "Element Logo",
-    href: "/projects#element",
-  },
-  {
-    name: "GrindHouse Gym",
-    mark: "GHG",
-    logoSrc: "/trusted/GrindHouseGym.webp",
-    logoAlt: "Grind House Gym Logo",
-    href: "/projects#grind-house-gym",
-  },
-  {
-    name: "Manaland",
-    mark: "M",
-    logoSrc: "/trusted/Manaland.webp",
-    logoAlt: "Manaland Logo",
-    href: "/projects#manaland",
-  },
-  {
-    name: "Marinero Hair",
-    mark: "MH",
-    logoSrc: "/trusted/MarineroHair.webp",
-    logoAlt: "Marinero Hair Logo",
-    href: "/projects#marinero-hair",
-  },
-  {
-    name: "Peachy Reformer Wellness",
-    mark: "PRW",
-    logoSrc: "/trusted/PeachyReformerWellness.webp",
-    logoAlt: "Peachy Reformer Wellness Logo",
-    href: "/projects#peachy-reformer-wellness",
-  },
-  {
-    name: "Premium Ikra",
-    mark: "PI",
-    logoSrc: "/trusted/PremiumIkra.webp",
-    logoAlt: "Premium Ikra Logo",
-    href: "/projects#premium-ikra",
-  },
-  {
-    name: "SKILL | Shaurma, Kebab, Grill",
-    mark: "SSKG",
-    logoSrc: "/trusted/SkillShaurmaKebabGrill.webp",
-    logoAlt: "SKILL | Shaurma, Kebab, Grill Logo",
-    href: "/projects#slill-shaurma-kebab-grill",
-  },
-  {
-    name: "The Sadovsky Barbershop",
-    mark: "TSB",
-    logoSrc: "/trusted/TheSadovskyBarbershop.webp",
-    logoAlt: "The Sadovsky Barbershop Logo",
-    href: "/projects#the-sadovsky-barbershop",
-  },
-];
 
 function BrandItem({ brand }: { brand: Brand }) {
   const content = (
@@ -115,6 +52,29 @@ function BrandItem({ brand }: { brand: Brand }) {
 
 export default function TrustedBrands() {
   const t = useTranslations("about.trustedBrands");
+
+  const [trustedBrands, setTrustedBrands] = useState<Brand[]>([]);
+
+  useEffect(() => {
+    const fetchTrustedBrands = async () => {
+      try {
+        const response = await fetch("/api/public/trusted-brands");
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch trusted brands");
+        }
+
+        const data = await response.json();
+
+        setTrustedBrands(data.brands || []);
+      } catch (error) {
+        console.error("Failed to load trusted brands:", error);
+        setTrustedBrands([]);
+      }
+    };
+
+    fetchTrustedBrands();
+  }, []);
 
   return (
     <section
