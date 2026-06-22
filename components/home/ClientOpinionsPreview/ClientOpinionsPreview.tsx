@@ -1,9 +1,9 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/navigation";
 import styles from "./ClientOpinionsPreview.module.css";
-import { useEffect, useState } from "react";
 
 interface Comment {
   id: string;
@@ -17,6 +17,47 @@ interface Comment {
     ru?: string;
   };
   date: string;
+}
+
+const videoReviews = [
+  {
+    id: "video-1",
+    name: "Sarah",
+    label: "Apartment renovation",
+  },
+  {
+    id: "video-2",
+    name: "Michael",
+    label: "Bathroom renovation",
+  },
+  {
+    id: "video-3",
+    name: "Anna",
+    label: "Interior finishing",
+  },
+  {
+    id: "video-4",
+    name: "David",
+    label: "Home renovation",
+  },
+];
+
+function Stars({ rating, ariaLabel }: { rating: number; ariaLabel: string }) {
+  return (
+    <div className={styles.stars} aria-label={ariaLabel}>
+      {[...Array(5)].map((_, index) => (
+        <svg
+          key={index}
+          className={index < rating ? styles.starFilled : styles.starEmpty}
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          aria-hidden="true"
+        >
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+        </svg>
+      ))}
+    </div>
+  );
 }
 
 export default function ClientOpinionsPreview() {
@@ -35,7 +76,6 @@ export default function ClientOpinionsPreview() {
         }
 
         const data = await response.json();
-
         setComments(data.reviews || []);
       } catch (error) {
         console.error("Failed to load preview reviews:", error);
@@ -46,7 +86,9 @@ export default function ClientOpinionsPreview() {
     fetchApprovedReviews();
   }, []);
 
-  const featuredComments = comments.slice(0, 2);
+  const writtenReviews = comments.slice(0, 6);
+  const duplicatedWrittenReviews = [...writtenReviews, ...writtenReviews];
+  const duplicatedVideoReviews = [...videoReviews, ...videoReviews];
 
   const getLocalizedComment = (comment: Comment) => {
     const translatedText =
@@ -65,151 +107,119 @@ export default function ClientOpinionsPreview() {
 
   const reviewLabel = t("reviewCount", { count: comments.length });
 
-  const formatDate = (isoDate: string) => {
-    const date = new Date(isoDate);
-
-    return new Intl.DateTimeFormat(locale, {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    }).format(date);
-  };
-
   return (
     <section
-      className={styles.clientOpinionsPreviewSection}
+      className={styles.section}
       aria-labelledby="client-opinions-preview-title"
     >
       <div className="container">
-        <div className={styles.clientOpinionsPreviewIntro}>
-          <span className={styles.sectionLabel}>Client opinions</span>
+        <div className={styles.inner}>
+          <header className={styles.header}>
+            <div className={styles.heading}>
+              <span className={styles.label}>{t("eyebrow")}</span>
 
-          <h2
-            className={styles.clientOpinionsPreviewTitle}
-            id="client-opinions-preview-title"
-          >
-            Confidence is built through the experience clients carry away
-          </h2>
-
-          <p className={styles.clientOpinionsPreviewDescription}>
-            Good projects leave an impression long after completion. These
-            selected reviews reflect the clarity, care, and trust that shape the
-            process as much as the final result.
-          </p>
-        </div>
-
-        <div className={styles.clientOpinionsPreviewTop}>
-          <div className={styles.clientOpinionsPreviewStats}>
-            <span className={styles.clientOpinionsPreviewRating}>
-              {averageRating}
-            </span>
-
-            <div
-              className={styles.clientOpinionsPreviewStars}
-              aria-label={t("aria.stars")}
-            >
-              {[...Array(5)].map((_, index) => (
-                <svg
-                  key={index}
-                  className={
-                    index < Math.round(Number(averageRating))
-                      ? styles.clientOpinionsPreviewStarFilled
-                      : styles.clientOpinionsPreviewStarEmpty
-                  }
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  aria-hidden="true"
-                >
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-              ))}
+              {/* <h2 className={styles.title} id="client-opinions-preview-title">
+                {t("title")}
+              </h2> */}
             </div>
 
-            <span className={styles.clientOpinionsPreviewCount}>
-              {reviewLabel}
-            </span>
-          </div>
+            <div className={styles.meta}>
+              <div className={styles.ratingBox}>
+                <span className={styles.rating}>{averageRating}</span>
 
-          <div className={styles.clientOpinionsPreviewActions}>
-            <Link href="/about" className={styles.sectionLink}>
-              Read client opinions
-              <span className={styles.linkArrow} aria-hidden="true">
-                →
-              </span>
-            </Link>
+                <div className={styles.ratingDetails}>
+                  <Stars
+                    rating={Math.round(Number(averageRating))}
+                    ariaLabel={t("aria.stars")}
+                  />
 
-            <Link
-              href="/about"
-              className={styles.clientOpinionsPreviewSecondaryLink}
-            >
-              Leave a review
-              <span className={styles.linkArrow} aria-hidden="true">
-                →
-              </span>
-            </Link>
-          </div>
-        </div>
-
-        <div className={styles.clientOpinionsPreviewGrid}>
-          {featuredComments.map((comment) => (
-            <article
-              key={comment.id}
-              className={styles.clientOpinionsPreviewCard}
-            >
-              <div
-                className={styles.clientOpinionsPreviewQuoteMark}
-                aria-hidden="true"
-              >
-                “
+                  <span className={styles.count}>{reviewLabel}</span>
+                </div>
               </div>
 
-              <div className={styles.clientOpinionsPreviewCardHeader}>
-                <div className={styles.clientOpinionsPreviewAuthor}>
-                  <div
-                    className={styles.clientOpinionsPreviewAvatar}
-                    aria-hidden="true"
+              <div className={styles.actions}>
+                <Link href="/about" className={styles.link}>
+                  {t("readMore")}
+                  <span aria-hidden="true">→</span>
+                </Link>
+
+                <Link href="/about" className={styles.secondaryLink}>
+                  {t("cta.leaveReview")}
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+            </div>
+          </header>
+
+          <div className={styles.videoBlock}>
+            {/* <div className={styles.rowLabel}>{t("videoReviews")}</div> */}
+
+            <div
+              className={styles.videoCarousel}
+              aria-label={t("aria.videoReviews")}
+            >
+              <div className={styles.videoTrack}>
+                {duplicatedVideoReviews.map((video, index) => (
+                  <button
+                    key={`${video.id}-${index}`}
+                    className={styles.videoCard}
+                    type="button"
+                    aria-label={t("aria.playVideo")}
                   >
-                    {comment.name.charAt(0).toUpperCase()}
-                  </div>
+                    <span className={styles.playIcon} aria-hidden="true">
+                      ▶
+                    </span>
 
-                  <div>
-                    <div className={styles.clientOpinionsPreviewAuthorName}>
-                      {comment.name}
-                    </div>
-
-                    <div className={styles.clientOpinionsPreviewDate}>
-                      {formatDate(comment.date)}
-                    </div>
-                  </div>
-                </div>
-
-                <div
-                  className={styles.clientOpinionsPreviewCardRating}
-                  aria-label={t("aria.rating", { rating: comment.rating })}
-                >
-                  {[...Array(5)].map((_, index) => (
-                    <svg
-                      key={index}
-                      className={
-                        index < comment.rating
-                          ? styles.clientOpinionsPreviewStarFilled
-                          : styles.clientOpinionsPreviewStarEmpty
-                      }
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      aria-hidden="true"
-                    >
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.570-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
+                    <span className={styles.videoName}>{video.name}</span>
+                    <span className={styles.videoLabel}>{video.label}</span>
+                  </button>
+                ))}
               </div>
+            </div>
+          </div>
 
-              <p className={styles.clientOpinionsPreviewText}>
-                {getLocalizedComment(comment)}
-              </p>
-            </article>
-          ))}
+          <div className={styles.writtenBlock}>
+            {/* <div className={styles.rowLabel}>{t("writtenReviews")}</div> */}
+
+            <div
+              className={styles.writtenCarousel}
+              aria-label={t("aria.writtenReviews")}
+            >
+              <div className={styles.writtenTrack}>
+                {duplicatedWrittenReviews.map((comment, index) => (
+                  <article
+                    key={`${comment.id}-${index}`}
+                    className={styles.reviewCard}
+                  >
+                    <div className={styles.reviewTop}>
+                      <div className={styles.avatar} aria-hidden="true">
+                        {comment.name.charAt(0).toUpperCase()}
+                      </div>
+
+                      <div>
+                        <h3 className={styles.author}>{comment.name}</h3>
+
+                        <Stars
+                          rating={comment.rating}
+                          ariaLabel={t("aria.rating", {
+                            rating: comment.rating,
+                          })}
+                        />
+                      </div>
+                    </div>
+
+                    <p className={styles.reviewText}>
+                      {getLocalizedComment(comment)}
+                    </p>
+
+                    <span className={styles.quoteMark} aria-hidden="true">
+                      “
+                    </span>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

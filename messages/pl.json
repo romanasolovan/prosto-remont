@@ -562,19 +562,27 @@
     }
   },
   "clientOpinions": {
-    "title": "Opinie klientów",
-    "cta": {
-      "leaveReview": "Dodaj opinię"
-    },
-    "reviewCount": "{count, plural, =0 {Brak opinii} one {# opinia} few {# opinie} many {# opinii} other {# opinii}}",
-    "aria": {
-      "stars": "Średnia ocena",
-      "rating": "Ocena: {rating} z 5"
-    },
-    "success": {
-      "reviewSubmitted": "Dziękujemy. Twoja opinia została przesłana i zostanie opublikowana po krótkiej weryfikacji."
-    }
+  "eyebrow": "Client opinions",
+  "title": "Real experiences. Real trust.",
+  "description": "Short stories from clients who trusted us with their spaces.",
+  "videoReviews": "Video reviews",
+  "writtenReviews": "Written reviews",
+  "readMore": "Read client opinions",
+  "reviewCount": "{count, plural, =0 {No reviews} one {# review} other {# reviews}}",
+  "cta": {
+    "leaveReview": "Leave a review"
   },
+  "aria": {
+    "stars": "Average rating",
+    "rating": "Rating: {rating} out of 5",
+    "videoReviews": "Client video reviews",
+    "writtenReviews": "Client written reviews",
+    "playVideo": "Play video review"
+  },
+  "success": {
+    "reviewSubmitted": "Thank you. Your review has been submitted and will be published after a quick review."
+  }
+},
   "leaveComment": {
     "title": "Podziel się swoją opinią",
     "description": "Opowiedz nam o swoich doświadczeniach ze współpracy z naszą ekipą.",

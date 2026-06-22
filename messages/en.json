@@ -560,19 +560,27 @@
   }
 },
   "clientOpinions": {
-    "title": "Client Opinions",
-    "cta": {
-      "leaveReview": "Leave a Review"
-    },
-    "reviewCount": "{count, plural, =0 {No reviews} one {# review} other {# reviews}}",
-    "aria": {
-      "stars": "Average rating",
-      "rating": "Rating: {rating} out of 5"
-    },
-    "success": {
-      "reviewSubmitted": "Thank you. Your review has been submitted and will be published after a quick review."
-    }
+  "eyebrow": "Client opinions",
+  "title": "Real experiences. Real trust.",
+  "description": "Short stories from clients who trusted us with their spaces.",
+  "videoReviews": "Video reviews",
+  "writtenReviews": "Written reviews",
+  "readMore": "Read client opinions",
+  "reviewCount": "{count, plural, =0 {No reviews} one {# review} other {# reviews}}",
+  "cta": {
+    "leaveReview": "Leave a review"
   },
+  "aria": {
+    "stars": "Average rating",
+    "rating": "Rating: {rating} out of 5",
+    "videoReviews": "Client video reviews",
+    "writtenReviews": "Client written reviews",
+    "playVideo": "Play video review"
+  },
+  "success": {
+    "reviewSubmitted": "Thank you. Your review has been submitted and will be published after a quick review."
+  }
+},
   "leaveComment": {
     "title": "Share Your Experience",
     "description": "Tell us about your renovation experience with our team.",

@@ -563,19 +563,27 @@
   }
 },
   "clientOpinions": {
-    "title": "Відгуки клієнтів",
-    "cta": {
-      "leaveReview": "Залишити відгук"
-    },
-    "reviewCount": "{count, plural, =0 {Немає відгуків} one {# відгук} few {# відгуки} many {# відгуків} other {# відгуку}}",
-    "aria": {
-      "stars": "Середня оцінка",
-      "rating": "Оцінка: {rating} з 5"
-    },
-    "success": {
-      "reviewSubmitted": "Дякуємо. Ваш відгук надіслано і буде опубліковано після короткої перевірки."
-    }
+  "eyebrow": "Client opinions",
+  "title": "Real experiences. Real trust.",
+  "description": "Short stories from clients who trusted us with their spaces.",
+  "videoReviews": "Video reviews",
+  "writtenReviews": "Written reviews",
+  "readMore": "Read client opinions",
+  "reviewCount": "{count, plural, =0 {No reviews} one {# review} other {# reviews}}",
+  "cta": {
+    "leaveReview": "Leave a review"
   },
+  "aria": {
+    "stars": "Average rating",
+    "rating": "Rating: {rating} out of 5",
+    "videoReviews": "Client video reviews",
+    "writtenReviews": "Client written reviews",
+    "playVideo": "Play video review"
+  },
+  "success": {
+    "reviewSubmitted": "Thank you. Your review has been submitted and will be published after a quick review."
+  }
+},
   "leaveComment": {
     "title": "Поділіться своїм досвідом",
     "description": "Розкажіть нам про свій досвід співпраці з нашою командою.",
