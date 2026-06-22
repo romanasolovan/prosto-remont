@@ -394,11 +394,34 @@
   "description": "Zacznij od jasnej rozmowy, poznaj proces i wykonaj kolejny krok z pewnością."
 },
   "footer": {
-    "description": "Kompleksowe remonty i wykończenia wnętrz mieszkań, domów oraz przestrzeni komercyjnych.",
-    "quickLinks": "Szybkie linki",
-    "contactInfo": "Kontakt",
-    "copyright": "© {year} PRO100 Twój Remont. Wszelkie prawa zastrzeżone."
+  "description": "Kompleksowe remonty i wykończenia wnętrz mieszkań, domów oraz przestrzeni komercyjnych.",
+  "quickLinks": "Szybkie linki",
+  "contactInfo": "Kontakt",
+  "partners": {
+    "title": "Partnerzy",
+    "ariaLabel": "Nasi zaufani partnerzy"
   },
+  "social": {
+    "title": "Media społecznościowe",
+    "instagram": "Instagram",
+    "facebook": "Facebook",
+    "linkedin": "LinkedIn",
+    "googleMaps": "Google Maps",
+    "email": "Email",
+    "tiktok": "TikTok"
+  },
+  "forms": {
+    "title": "Działania",
+    "requestQuote": "Poproś o wycenę",
+    "leaveComment": "Zostaw komentarz"
+  },
+  "aria": {
+    "openQuote": "Otwórz formularz wyceny",
+    "openComment": "Otwórz formularz komentarza",
+    "socialLinks": "Linki do mediów społecznościowych"
+  },
+  "copyright": "© {year} PRO100 Twój Remont. Wszelkie prawa zastrzeżone."
+},
   "metadata": {
     "home": {
       "title": "PRO100 Twój Remont | Remonty i wykończenia wnętrz pod klucz",

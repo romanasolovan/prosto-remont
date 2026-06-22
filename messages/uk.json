@@ -393,12 +393,35 @@
   "title": "Готові надати форму вашому наступному ремонту?",
   "description": "Почніть із чіткої розмови, ознайомтеся з процесом і зробіть наступний крок упевнено."
 },
-  "footer": {
-    "description": "Комплексні ремонти та оздоблення інтер’єрів квартир, будинків і комерційних приміщень.",
-    "quickLinks": "Швидкі посилання",
-    "contactInfo": "Контакти",
-    "copyright": "© {year} PRO100 Twój Remont. Усі права захищені."
+ "footer": {
+  "description": "Комплексний ремонт і оздоблення інтер’єрів квартир, будинків та комерційних приміщень.",
+  "quickLinks": "Швидкі посилання",
+  "contactInfo": "Контакти",
+  "partners": {
+    "title": "Партнери",
+    "ariaLabel": "Наші надійні партнери"
   },
+  "social": {
+    "title": "Соціальні мережі",
+    "instagram": "Instagram",
+    "facebook": "Facebook",
+    "linkedin": "LinkedIn",
+    "googleMaps": "Google Maps",
+    "email": "Email",
+    "tiktok": "TikTok"
+  },
+  "forms": {
+    "title": "Дії",
+    "requestQuote": "Запросити розрахунок",
+    "leaveComment": "Залишити коментар"
+  },
+  "aria": {
+    "openQuote": "Відкрити форму запиту на розрахунок",
+    "openComment": "Відкрити форму для коментаря",
+    "socialLinks": "Посилання на соціальні мережі"
+  },
+  "copyright": "© {year} PRO100 Twój Remont. Усі права захищено."
+},
   "metadata": {
     "home": {
       "title": "PRO100 Twój Remont | Ремонт і оздоблення інтер’єрів під ключ",

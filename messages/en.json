@@ -390,11 +390,34 @@
   "description": "Start with a clear conversation, explore the process, and take the next step with confidence."
 },
   "footer": {
-    "description": "Comprehensive renovation and interior finishing for apartments, homes, and commercial spaces.",
-    "quickLinks": "Quick Links",
-    "contactInfo": "Contact",
-    "copyright": "© {year} PRO100 Twój Remont. All rights reserved."
+  "description": "Comprehensive renovation and interior finishing for apartments, homes, and commercial spaces.",
+  "quickLinks": "Quick Links",
+  "contactInfo": "Contact",
+  "partners": {
+    "title": "Partners",
+    "ariaLabel": "Our trusted partners"
   },
+  "social": {
+    "title": "Social Media",
+    "instagram": "Instagram",
+    "facebook": "Facebook",
+    "linkedin": "LinkedIn",
+    "googleMaps": "Google Maps",
+    "email": "Email",
+    "tiktok": "TikTok"
+  },
+  "forms": {
+    "title": "Actions",
+    "requestQuote": "Request a Quote",
+    "leaveComment": "Leave a Comment"
+  },
+  "aria": {
+    "openQuote": "Open quote request form",
+    "openComment": "Open comment form",
+    "socialLinks": "Social media links"
+  },
+  "copyright": "© {year} PRO100 Twój Remont. All rights reserved."
+},
   "metadata": {
     "home": {
       "title": "PRO100 Twój Remont | Turnkey Renovation and Interior Finishing",

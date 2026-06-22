@@ -1,0 +1,130 @@
+.socialBlock {
+  width: 100%;
+  max-width: 230px;
+  margin-top: 6px;
+}
+
+.socialTitle {
+  margin: 0 0 12px;
+  color: #262626;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.socialLinksList {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 52px);
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+}
+
+.socialLinksList li {
+  display: flex;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  border: 1px solid rgba(30, 30, 30, 0.08);
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    rgba(253, 253, 252, 0.98) 0%,
+    rgba(239, 239, 237, 0.96) 100%
+  );
+  color: #4f4a43;
+  text-decoration: none;
+  box-shadow:
+    0 8px 18px rgba(10, 12, 16, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+  transition:
+    transform 240ms ease,
+    border-color 240ms ease,
+    background-color 240ms ease,
+    color 240ms ease,
+    box-shadow 240ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.socialLink svg {
+  width: 21px;
+  height: 21px;
+}
+
+.socialLink:hover {
+  transform: translateY(-2px);
+  border-color: rgba(30, 30, 30, 0.12);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.99) 0%,
+    rgba(245, 245, 243, 0.97) 100%
+  );
+  color: #171717;
+  box-shadow:
+    0 12px 22px rgba(10, 12, 16, 0.12),
+    0 0 0 4px rgba(255, 255, 255, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.94);
+}
+
+.socialLink:active {
+  transform: scale(0.96);
+}
+
+.socialLink:focus-visible {
+  outline: 2px solid rgba(80, 80, 80, 0.55);
+  outline-offset: 4px;
+}
+
+@media (max-width: 359px) {
+  .socialLinksList {
+    grid-template-columns: repeat(3, 46px);
+    gap: 8px;
+  }
+
+  .socialLink {
+    width: 46px;
+    height: 46px;
+  }
+
+  .socialLink svg {
+    width: 19px;
+    height: 19px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .socialLinksList {
+    grid-template-columns: repeat(3, 48px);
+    gap: 8px;
+  }
+
+  .socialLink {
+    width: 48px;
+    height: 48px;
+  }
+
+  .socialLink svg {
+    width: 19px;
+    height: 19px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .socialLink {
+    transition: none;
+  }
+
+  .socialLink:hover {
+    transform: none;
+  }
+}

@@ -394,11 +394,34 @@
   "description": "Начните с понятного разговора, ознакомьтесь с процессом и сделайте следующий шаг уверенно."
 },
   "footer": {
-    "description": "Комплексные ремонты и отделка интерьеров квартир, домов и коммерческих помещений.",
-    "quickLinks": "Быстрые ссылки",
-    "contactInfo": "Контакты",
-    "copyright": "© {year} PRO100 Twój Remont. Все права защищены."
+  "description": "Комплексный ремонт и отделка интерьеров квартир, домов и коммерческих помещений.",
+  "quickLinks": "Быстрые ссылки",
+  "contactInfo": "Контакты",
+  "partners": {
+    "title": "Партнёры",
+    "ariaLabel": "Наши надёжные партнёры"
   },
+  "social": {
+    "title": "Социальные сети",
+    "instagram": "Instagram",
+    "facebook": "Facebook",
+    "linkedin": "LinkedIn",
+    "googleMaps": "Google Maps",
+    "email": "Email",
+    "tiktok": "TikTok"
+  },
+  "forms": {
+    "title": "Действия",
+    "requestQuote": "Запросить расчёт",
+    "leaveComment": "Оставить комментарий"
+  },
+  "aria": {
+    "openQuote": "Открыть форму запроса расчёта",
+    "openComment": "Открыть форму комментария",
+    "socialLinks": "Ссылки на социальные сети"
+  },
+  "copyright": "© {year} PRO100 Twój Remont. Все права защищены."
+},
   "metadata": {
     "home": {
       "title": "PRO100 Twój Remont | Ремонт и отделка интерьеров под ключ",
