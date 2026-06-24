@@ -38,6 +38,8 @@ export default function Partners({
                   <Image
                     src={partner.logoUrl}
                     alt=""
+                    width={32}
+                    height={32}
                     className={styles.partnerLogo}
                     loading="lazy"
                   />
