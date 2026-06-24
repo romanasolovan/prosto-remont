@@ -9,7 +9,7 @@ import HomeHero from "@/components/home/HomeHero/HomeHero";
 import ClientOpinionsPreview from "@/components/home/ClientOpinionsPreview/ClientOpinionsPreview";
 import QuoteHighlight from "@/components/home/QuoteHighlight/QuoteHighlight";
 import ServicesPreview from "@/components/home/ServicesPreview/ServicesPreview";
-// import ProjectsPreview from "@/components/home/ProjectsPreview/ProjectsPreview";
+import ProjectsPreview from "@/components/home/ProjectsPreview/ProjectsPreview";
 import QuoteRequestModal from "@/components/QuoteRequestModal/QuoteRequestModal";
 import ProcessSection from "@/components/home/ProcessSection/ProcessSection";
 
@@ -118,7 +118,7 @@ export default function Home() {
       </section> */}
 
       <section id="projects" className={styles.pageSection}>
-        {/* <ProjectsPreview /> */}
+        <ProjectsPreview />
       </section>
 
       <section id="reviews" className={styles.pageSection}>

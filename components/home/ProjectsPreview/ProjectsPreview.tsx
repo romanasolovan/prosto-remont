@@ -1,149 +1,203 @@
-// "use client";
+"use client";
 
-// import { useState } from "react";
-// import { useTranslations } from "next-intl";
-// import { Link } from "@/navigation";
-// import { projects } from "@/data/projects";
-// import ProjectCardCarousel from "@/components/Projects/ProjectCardCarousel/ProjectCardCarousel";
-// import styles from "./ProjectsPreview.module.css";
+import { useState } from "react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/navigation";
+import { projects } from "@/data/projects";
+import ProjectCardCarousel from "@/components/Projects/ProjectCardCarousel/ProjectCardCarousel";
+import styles from "./ProjectsPreview.module.css";
 
-// export default function ProjectsPreview() {
-//   const t = useTranslations("home");
-//   const tCommon = useTranslations("common");
+const projectVideos = [
+  {
+    id: "video-01",
+    title: "Kitchen renovation",
+    label: "Project video",
+  },
+  {
+    id: "video-02",
+    title: "Bathroom finishing",
+    label: "Project video",
+  },
+  {
+    id: "video-03",
+    title: "Apartment details",
+    label: "Project video",
+  },
+];
 
-//   const previewProjects = projects.filter(
-//     (project) => project.coverImages.length > 0,
-//   );
+export default function ProjectsPreview() {
+  const t = useTranslations("home");
+  const tCommon = useTranslations("common");
 
-//   const [activeProjectSlug, setActiveProjectSlug] = useState(
-//     previewProjects[0]?.slug,
-//   );
+  const previewProjects = projects
+    .filter((project) => project.coverImages.length > 0)
+    .slice(0, 6);
 
-//   const activeIndex = previewProjects.findIndex(
-//     (p) => p.slug === activeProjectSlug,
-//   );
+  const [activeVideoIndex, setActiveVideoIndex] = useState(0);
 
-//   const activeProject = previewProjects[activeIndex];
+  const pad = (n: number) => String(n).padStart(2, "0");
+  const activeVideo = projectVideos[activeVideoIndex];
 
-//   if (!activeProject) return null;
+  return (
+    <section className={styles.projectsPreview} id="projects">
+      <div className="container">
+        <div className={styles.inner}>
+          <header className={styles.hero}>
+            <div>
+              <span className={styles.sectionEyebrow}>
+                {t("labels.projects")}
+              </span>
 
-//   const pad = (n: number) => String(n).padStart(2, "0");
+              {/* <h2 className={styles.title}>See our work in action.</h2> */}
+            </div>
 
-//   return (
-//     <section className={styles.projectsPreview} id="projects">
-//       <div className="container">
-//         <div className={styles.inner}>
+            {/* <p className={styles.description}>
+              Explore a selection of projects through short videos and see more
+              details on our portfolio page.
+            </p> */}
 
-//           <div className={styles.headerRow}>
-//             <div className={styles.headerLeft}>
-//               <span className={styles.sectionEyebrow}>
-//                 {t("labels.projects")}
-//               </span>
-//               <Link href="/projects" className={styles.allProjectsLink}>
-//                 {tCommon("viewPortfolio")}
-//                 <span aria-hidden="true">→</span>
-//               </Link>
-//             </div>
+            <Link href="/projects" className={styles.portfolioLink}>
+              {tCommon("viewPortfolio")}
+              <span aria-hidden="true">→</span>
+            </Link>
+          </header>
 
-//             <span className={styles.projectCount} aria-hidden="true">
-//               {pad(previewProjects.length)}&nbsp;Projects
-//             </span>
-//           </div>
+          <div className={styles.showcase}>
+            <section
+              className={styles.videoPanel}
+              aria-labelledby="videos-title"
+            >
+              <div className={styles.panelHeader}>
+                <span className={styles.panelNumber}>01</span>
 
-//           <div
-//             className={styles.projectTabs}
-//             role="tablist"
-//             aria-label="Select project"
-//           >
-//             {previewProjects.map((project, i) => (
-//               <button
-//                 key={project.slug}
-//                 type="button"
-//                 role="tab"
-//                 aria-selected={project.slug === activeProjectSlug}
-//                 className={`${styles.projectTab} ${
-//                   project.slug === activeProjectSlug ? styles.activeTab : ""
-//                 }`}
-//                 onClick={() => setActiveProjectSlug(project.slug)}
-//               >
-//                 <span className={styles.tabIndex} aria-hidden="true">
-//                   {pad(i + 1)}
-//                 </span>
-//                 <span className={styles.tabName}>{project.title}</span>
-//               </button>
-//             ))}
-//           </div>
+                <div>
+                  <h3 className={styles.panelTitle} id="videos-title">
+                    Projects in motion
+                  </h3>
+                  <p className={styles.panelText}>
+                    Short videos from completed projects showing quality in
+                    every detail.
+                  </p>
+                </div>
 
-//           <div className={styles.showcase}>
-//             {/* Photo-mount frame */}
-//             <div className={styles.frameWrap}>
-//               <div className={styles.imageFrame}>
-//                 <div className={styles.carouselShell}>
-//                   <ProjectCardCarousel
-//                     images={activeProject.coverImages}
-//                     alt={activeProject.title}
-//                     mobileImagesPerPage={1}
-//                     desktopImagesPerPage={1}
-//                     sizes="(max-width: 767px) 100vw, (max-width: 1199px) 90vw, 1120px"
-//                   />
-//                 </div>
+                <div className={styles.videoControls} aria-hidden="true">
+                  <button
+                    type="button"
+                    className={styles.controlButton}
+                    onClick={() =>
+                      setActiveVideoIndex((current) =>
+                        current === 0 ? projectVideos.length - 1 : current - 1,
+                      )
+                    }
+                  >
+                    ←
+                  </button>
 
-//                 <span className={styles.slideCounter} aria-hidden="true">
-//                   {pad(activeIndex + 1)}&nbsp;/&nbsp;
-//                   {pad(previewProjects.length)}
-//                 </span>
-//               </div>
-//             </div>
+                  <button
+                    type="button"
+                    className={styles.controlButton}
+                    onClick={() =>
+                      setActiveVideoIndex((current) =>
+                        current === projectVideos.length - 1 ? 0 : current + 1,
+                      )
+                    }
+                  >
+                    →
+                  </button>
+                </div>
+              </div>
 
-//             <div className={styles.metaColumn} aria-hidden="true">
-//               <div className={styles.metaRule} />
-//               <div className={styles.metaContent}>
-//                 <div className={styles.metaTop}>
-//                   <span className={styles.metaEyebrow}>
-//                     {t("labels.projects")}
-//                   </span>
-//                   <p className={styles.metaProjectTitle}>
-//                     {activeProject.title}
-//                   </p>
+              <div className={styles.videoStage}>
+                <div className={styles.videoGhostLeft} />
+                <button type="button" className={styles.videoCard}>
+                  <span className={styles.playButton} aria-hidden="true">
+                    ▶
+                  </span>
 
-//                   <p className={styles.metaTagline}>
-//                     {(activeProject as { tagline?: string }).tagline ??
-//                       "Premium renovation, refined to the last detail."}
-//                   </p>
-//                 </div>
+                  <span className={styles.videoTitle}>{activeVideo.title}</span>
+                  <span className={styles.videoLabel}>{activeVideo.label}</span>
+                </button>
+                <div className={styles.videoGhostRight} />
+              </div>
 
-//                 <div className={styles.metaBottom}>
-//                   <div className={styles.metaDivider} />
+              <div className={styles.videoDots} aria-hidden="true">
+                {projectVideos.map((video, index) => (
+                  <button
+                    key={video.id}
+                    type="button"
+                    className={`${styles.videoDot} ${
+                      index === activeVideoIndex ? styles.videoDotActive : ""
+                    }`}
+                    onClick={() => setActiveVideoIndex(index)}
+                  />
+                ))}
+              </div>
 
-//                   <span className={styles.metaIndex}>
-//                     {pad(activeIndex + 1)}
-//                   </span>
-//                 </div>
-//               </div>
-//             </div>
+              <div className={styles.videoBenefits}>
+                <span>Real projects</span>
+                <span>HD quality</span>
+                <span>Real results</span>
+              </div>
+            </section>
 
-//             <div className={styles.captionBar}>
+            <section
+              className={styles.projectsPanel}
+              aria-labelledby="projects-on-site-title"
+            >
+              <div className={styles.panelHeader}>
+                <span className={styles.panelNumber}>02</span>
 
-//               <div className={styles.captionLeft}>
-//                 <span className={styles.projectLabel} aria-hidden="true">
-//                   {t("labels.projects")}
-//                 </span>
-//                 <span className={styles.captionTitle}>
-//                   {activeProject.title}
-//                 </span>
-//               </div>
+                <div>
+                  <h3 className={styles.panelTitle} id="projects-on-site-title">
+                    Projects on the site
+                  </h3>
+                  <p className={styles.panelText}>
+                    Browse all projects on our portfolio page with full
+                    information and photos.
+                  </p>
+                </div>
 
-//               <Link
-//                 href={`/projects/${activeProject.slug}`}
-//                 className={styles.projectLink}
-//               >
-//                 View project
-//                 <span aria-hidden="true">→</span>
-//               </Link>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
+                <Link href="/projects" className={styles.allProjectsButton}>
+                  View all projects
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+
+              <div className={styles.projectsGrid}>
+                {previewProjects.map((project, index) => (
+                  <Link
+                    href={`/projects/${project.slug}`}
+                    key={project.slug}
+                    className={styles.projectCard}
+                  >
+                    <div className={styles.projectImage}>
+                      <ProjectCardCarousel
+                        images={project.coverImages}
+                        alt={project.title}
+                        mobileImagesPerPage={1}
+                        desktopImagesPerPage={1}
+                        sizes="(max-width: 767px) 78vw, (max-width: 1199px) 30vw, 260px"
+                      />
+
+                      <span className={styles.projectIndex}>
+                        {pad(index + 1)}
+                      </span>
+                    </div>
+
+                    <div className={styles.projectInfo}>
+                      <h4 className={styles.projectTitle}>{project.title}</h4>
+                      <span className={styles.projectType}>
+                        {(project as { category?: string }).category ??
+                          "Apartment renovation"}
+                      </span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
