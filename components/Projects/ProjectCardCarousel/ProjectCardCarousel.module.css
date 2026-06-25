@@ -1,23 +1,22 @@
 .carousel {
   position: relative;
   width: 100%;
+  height: 100%;
 }
 
 .viewport {
   width: 100%;
-  height: clamp(220px, 52vw, 560px);
+  height: 100%;
   overflow: hidden;
-  border-radius: clamp(12px, 2vw, 22px);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 14px 26px rgba(0, 0, 0, 0.14);
+  border-radius: inherit;
+  background: rgba(255, 255, 255, 0.035);
 }
 
 .track {
   display: flex;
   width: 100%;
   height: 100%;
-  transition: transform 400ms ease;
+  transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .slide {
@@ -29,7 +28,7 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(var(--images-per-page), minmax(0, 1fr));
-  gap: 10px;
+  gap: 0;
   width: 100%;
   height: 100%;
 }
@@ -39,48 +38,64 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .image {
   object-fit: cover;
+  transition:
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 300ms ease;
+}
+
+.carousel:hover .image {
+  transform: scale(1.035);
 }
 
 .dots {
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  z-index: 5;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin-top: clamp(12px, 2vw, 18px);
-  position: relative;
-  z-index: 5;
+  gap: 7px;
+  transform: translateX(-50%);
 }
 
 .dot {
-  width: 7px;
-  height: 7px;
+  width: 18px;
+  height: 2px;
+  padding: 0;
   border: 0;
   border-radius: 999px;
-  background: rgba(245, 244, 240, 0.28);
+  background: rgba(245, 244, 240, 0.26);
   cursor: pointer;
   transition:
-    transform 200ms ease,
-    background-color 200ms ease;
+    width 220ms ease,
+    background 220ms ease,
+    transform 220ms ease;
 }
 
 .dot:hover {
-  transform: scale(1.1);
+  background: rgba(245, 244, 240, 0.62);
+  transform: scaleX(1.15);
 }
 
 .active {
-  background: rgba(245, 244, 240, 0.88);
-  transform: scale(1.15);
+  width: 30px;
+  background: rgba(245, 244, 240, 0.9);
 }
 
 @media (prefers-reduced-motion: reduce) {
   .track,
+  .image,
   .dot {
     transition: none;
+  }
+
+  .carousel:hover .image {
+    transform: none;
   }
 }

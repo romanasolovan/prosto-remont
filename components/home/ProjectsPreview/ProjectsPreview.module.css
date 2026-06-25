@@ -7,7 +7,7 @@
   --ink-muted: rgba(245, 244, 240, 0.56);
   --ink-faint: rgba(245, 244, 240, 0.36);
   --line: rgba(255, 255, 255, 0.08);
-  --line-strong: rgba(255, 255, 255, 0.18);
+  --line-strong: rgba(255, 255, 255, 0.2);
   --panel: rgba(255, 255, 255, 0.032);
   --panel-active: rgba(255, 255, 255, 0.06);
 
@@ -49,6 +49,18 @@
     rgba(0, 0, 0, 0.5) 18%,
     transparent 94%
   );
+}
+
+.projectsPreview::after {
+  content: "";
+  position: absolute;
+  width: 34rem;
+  height: 34rem;
+  right: -18rem;
+  top: -10rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  pointer-events: none;
 }
 
 .inner {
@@ -116,6 +128,7 @@
   justify-content: center;
   gap: 12px;
   width: fit-content;
+  min-height: 46px;
   padding: 14px 20px;
   border: 1px solid var(--line-strong);
   border-radius: 999px;
@@ -137,10 +150,11 @@
 .showcase {
   display: grid;
   gap: 0;
+  overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 30px;
-  overflow: hidden;
   background: rgba(255, 255, 255, 0.012);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
 }
 
 .videoPanel,
@@ -202,14 +216,14 @@
   position: relative;
   display: grid;
   place-items: center;
-  min-height: 260px;
+  min-height: 280px;
+  touch-action: pan-y;
 }
 
 .videoCard,
-.videoGhostLeft,
-.videoGhostRight {
+.videoGhost {
   border: 1px solid var(--line);
-  border-radius: 24px;
+  border-radius: 26px;
   background:
     radial-gradient(
       circle at 50% 20%,
@@ -234,17 +248,35 @@
   width: min(100%, 560px);
   aspect-ratio: 16 / 9;
   padding: 24px;
+  border: 0;
   color: var(--ink);
   cursor: pointer;
+  animation: videoEnter 560ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition:
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 260ms ease;
 }
 
-.videoGhostLeft,
-.videoGhostRight {
+.videoCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--line);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.videoGhost {
   position: absolute;
   width: 42%;
   aspect-ratio: 16 / 9;
-  opacity: 0.28;
+  opacity: 0.25;
   filter: grayscale(1);
+  border: 0;
+  cursor: pointer;
+  transition:
+    opacity 260ms ease,
+    transform 260ms ease;
 }
 
 .videoGhostLeft {
@@ -265,6 +297,9 @@
   background: #050506;
   font-size: 17px;
   box-shadow: 0 18px 38px rgba(0, 0, 0, 0.32);
+  transition:
+    transform 260ms ease,
+    background 260ms ease;
 }
 
 .videoTitle {
@@ -276,14 +311,24 @@
   letter-spacing: -0.035em;
 }
 
-.videoLabel {
-  margin-top: 10px;
+.videoLabel,
+.videoCounter {
   font-family: "Barlow Condensed", sans-serif;
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--ink-faint);
+}
+
+.videoLabel {
+  margin-top: 10px;
+}
+
+.videoCounter {
+  position: absolute;
+  left: 22px;
+  bottom: 20px;
 }
 
 .videoDots {
@@ -293,14 +338,19 @@
 }
 
 .videoDot {
-  width: 24px;
-  height: 1px;
+  width: 28px;
+  height: 2px;
   border: 0;
+  border-radius: 999px;
   background: rgba(245, 244, 240, 0.22);
   cursor: pointer;
+  transition:
+    width 220ms ease,
+    background 220ms ease;
 }
 
 .videoDotActive {
+  width: 42px;
   background: rgba(245, 244, 240, 0.82);
 }
 
@@ -323,14 +373,55 @@
 .projectsGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 22px;
+  gap: 16px;
+  max-height: 620px;
+  overflow-y: auto;
+  padding: 2px 12px 2px 2px;
+  scroll-snap-type: y proximity;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(245, 244, 240, 0.32) transparent;
+}
+
+.projectsGrid::-webkit-scrollbar {
+  width: 4px;
+}
+
+.projectsGrid::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.projectsGrid::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(245, 244, 240, 0.32);
 }
 
 .projectCard {
   display: grid;
   gap: 14px;
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
+  scroll-snap-align: start;
+  animation: cardRise 620ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.projectCard:nth-child(2) {
+  animation-delay: 70ms;
+}
+
+.projectCard:nth-child(3) {
+  animation-delay: 140ms;
+}
+
+.projectCard:nth-child(4) {
+  animation-delay: 210ms;
+}
+
+.projectCard:nth-child(5) {
+  animation-delay: 280ms;
+}
+
+.projectCard:nth-child(6) {
+  animation-delay: 350ms;
 }
 
 .projectImage {
@@ -338,13 +429,28 @@
   overflow: hidden;
   aspect-ratio: 4 / 3;
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: 20px;
   background: rgba(255, 255, 255, 0.018);
   filter: grayscale(1);
   transition:
-    filter 260ms ease,
-    transform 260ms ease,
-    border-color 260ms ease;
+    filter 320ms ease,
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 260ms ease,
+    box-shadow 260ms ease;
+}
+
+.projectImage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(8, 9, 11, 0.42), transparent 46%),
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(255, 255, 255, 0.08),
+      transparent 36%
+    );
+  pointer-events: none;
 }
 
 .projectIndex {
@@ -360,6 +466,26 @@
   font-size: 11px;
   letter-spacing: 0.12em;
   color: var(--ink);
+}
+
+.projectArrow {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: rgba(8, 9, 11, 0.62);
+  color: var(--ink);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease;
 }
 
 .projectInfo {
@@ -384,13 +510,51 @@
   color: var(--ink-faint);
 }
 
-@media (min-width: 640px) {
-  .projectsGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+.touchHint {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  margin: 2px auto 0;
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-family: "Barlow", sans-serif;
+  font-size: 12px;
+  color: var(--ink-muted);
+}
+
+@keyframes videoEnter {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(10px);
   }
 
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes cardRise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 640px) {
   .videoBenefits {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .projectsGrid {
+    grid-auto-columns: minmax(260px, 42%);
   }
 }
 
@@ -406,6 +570,10 @@
 
   .videoStage {
     min-height: 340px;
+  }
+
+  .projectsGrid {
+    grid-auto-columns: minmax(270px, 34%);
   }
 }
 
@@ -448,19 +616,41 @@
     background: transparent;
     color: var(--ink);
     cursor: pointer;
+    transition:
+      border-color 220ms ease,
+      background 220ms ease,
+      transform 220ms ease;
+  }
+
+  .controlButtonPrimary {
+    background: var(--ink);
+    color: #08090b;
   }
 
   .videoStage {
-    min-height: 420px;
+    min-height: 430px;
   }
 
   .projectsGrid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 24px 18px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-height: 590px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    gap: 18px;
+    padding: 2px 12px 2px 2px;
+    scroll-snap-type: y proximity;
+  }
+
+  .projectImage {
+    aspect-ratio: 4 / 3;
   }
 
   .allProjectsButton {
     justify-self: end;
+  }
+
+  .touchHint {
+    display: none;
   }
 }
 
@@ -469,12 +659,13 @@
     padding: 132px 0;
   }
 
-  .videoStage {
-    min-height: 470px;
+  .projectsGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-height: 620px;
   }
 
-  .projectImage {
-    border-radius: 20px;
+  .videoStage {
+    min-height: 470px;
   }
 }
 
@@ -487,14 +678,36 @@
     transform: translateY(-1px);
   }
 
+  .controlButton:hover {
+    border-color: rgba(245, 244, 240, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .videoCard:hover {
+    transform: scale(1.018);
+  }
+
+  .videoCard:hover .playButton {
+    transform: scale(1.08);
+    background: rgba(245, 244, 240, 0.95);
+    color: #08090b;
+  }
+
+  .videoGhost:hover {
+    opacity: 0.42;
+    transform: scale(1.02);
+  }
+
   .projectCard:hover .projectImage {
     filter: grayscale(0);
     border-color: var(--line-strong);
-    transform: translateY(-3px);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 54px rgba(0, 0, 0, 0.25);
   }
 
-  .controlButton:hover {
-    border-color: rgba(245, 244, 240, 0.3);
+  .projectCard:hover .projectArrow {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
@@ -502,13 +715,394 @@
   .portfolioLink,
   .allProjectsButton,
   .projectImage,
-  .controlButton {
+  .projectArrow,
+  .videoCard,
+  .videoGhost,
+  .playButton,
+  .controlButton,
+  .videoDot,
+  .projectCard {
+    animation: none;
     transition: none;
   }
 
   .portfolioLink:hover,
   .allProjectsButton:hover,
-  .projectCard:hover .projectImage {
+  .projectCard:hover .projectImage,
+  .videoCard:hover,
+  .controlButton:hover,
+  .videoGhost:hover {
     transform: none;
+  }
+}
+
+/* ─── Premium interaction layer ───────────────────────────── */
+
+.projectsPreview {
+  isolation: isolate;
+}
+
+.hero,
+.showcase {
+  animation: sectionReveal 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.showcase {
+  animation-delay: 120ms;
+}
+
+.videoPanel::before,
+.projectsPanel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--glow-x, 50%) var(--glow-y, 50%),
+    rgba(255, 255, 255, 0.08),
+    transparent 34%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 360ms ease;
+}
+
+.videoPanel:hover::before,
+.projectsPanel:hover::before {
+  opacity: 1;
+}
+
+.portfolioLink,
+.allProjectsButton {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transform-origin: center;
+}
+
+.portfolioLink::before,
+.allProjectsButton::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(245, 244, 240, 0.14),
+    rgba(245, 244, 240, 0.035)
+  );
+  opacity: 0;
+  transform: scale(0.94);
+  transition:
+    opacity 260ms ease,
+    transform 260ms ease;
+}
+
+.portfolioLink::after,
+.allProjectsButton::after {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  z-index: -1;
+  background: linear-gradient(
+    110deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.2) 48%,
+    transparent 62%
+  );
+  opacity: 0;
+  transform: translateX(-35%) rotate(8deg);
+  transition:
+    opacity 260ms ease,
+    transform 620ms ease;
+}
+
+.portfolioLink:hover,
+.allProjectsButton:hover,
+.portfolioLink:focus-visible,
+.allProjectsButton:focus-visible {
+  gap: 18px;
+  color: #08090b;
+  border-color: rgba(245, 244, 240, 0.9);
+  background: rgba(245, 244, 240, 0.92);
+  transform: translateY(-2px) scale(1.045);
+  box-shadow:
+    0 18px 44px rgba(0, 0, 0, 0.28),
+    0 0 0 6px rgba(245, 244, 240, 0.035);
+}
+
+.portfolioLink:hover::before,
+.allProjectsButton:hover::before,
+.portfolioLink:focus-visible::before,
+.allProjectsButton:focus-visible::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.portfolioLink:hover::after,
+.allProjectsButton:hover::after,
+.portfolioLink:focus-visible::after,
+.allProjectsButton:focus-visible::after {
+  opacity: 1;
+  transform: translateX(34%) rotate(8deg);
+}
+
+.portfolioLink:active,
+.allProjectsButton:active,
+.controlButton:active,
+.videoCard:active,
+.projectCard:active {
+  transform: scale(0.975);
+}
+
+.controlButton {
+  position: relative;
+  overflow: hidden;
+  transform-origin: center;
+}
+
+.controlButton::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: rgba(245, 244, 240, 0.9);
+  opacity: 0;
+  transform: scale(0.82);
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease;
+}
+
+.controlButton:hover,
+.controlButton:focus-visible {
+  color: #08090b;
+  border-color: rgba(245, 244, 240, 0.9);
+  transform: translateY(-2px) scale(1.08);
+}
+
+.controlButton:hover::before,
+.controlButton:focus-visible::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.controlButton > * {
+  position: relative;
+  z-index: 1;
+}
+
+.videoCard {
+  overflow: hidden;
+}
+
+.videoCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.11) 48%,
+    transparent 72%
+  );
+  opacity: 0;
+  transform: translateX(-55%);
+  transition:
+    opacity 260ms ease,
+    transform 760ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.videoCard:hover::after,
+.videoCard:focus-visible::after {
+  opacity: 1;
+  transform: translateX(55%);
+}
+
+.videoCard:hover,
+.videoCard:focus-visible {
+  transform: scale(1.025) translateY(-3px);
+  filter: contrast(1.05) brightness(1.05);
+}
+
+.videoCard:hover .playButton,
+.videoCard:focus-visible .playButton {
+  transform: scale(1.1);
+  background: rgba(245, 244, 240, 0.95);
+  color: #08090b;
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.35),
+    0 0 0 10px rgba(245, 244, 240, 0.045);
+}
+
+.playButton {
+  animation: softPulse 3.8s ease-in-out infinite;
+}
+
+.videoGhost:hover,
+.videoGhost:focus-visible {
+  opacity: 0.48;
+  transform: scale(1.035);
+}
+
+.projectCard {
+  transform-origin: center;
+}
+
+.projectCard:hover,
+.projectCard:focus-visible {
+  transform: translateY(-3px);
+}
+
+.projectCard:hover .projectImage,
+.projectCard:focus-visible .projectImage {
+  filter: grayscale(0) brightness(1.05) contrast(1.04);
+  border-color: var(--line-strong);
+  transform: translateY(-5px) scale(1.018);
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.34),
+    0 0 0 1px rgba(245, 244, 240, 0.04);
+}
+
+.projectCard:hover .projectTitle,
+.projectCard:focus-visible .projectTitle {
+  color: #ffffff;
+}
+
+.projectCard:hover .projectArrow,
+.projectCard:focus-visible .projectArrow {
+  opacity: 1;
+  transform: translateX(0) scale(1.04);
+  border-color: rgba(245, 244, 240, 0.22);
+}
+
+.projectImage img {
+  transition:
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 320ms ease;
+}
+
+.projectCard:hover .projectImage img,
+.projectCard:focus-visible .projectImage img {
+  transform: scale(1.045);
+}
+
+.videoDots {
+  min-height: 24px;
+}
+
+.videoDot {
+  transform-origin: center;
+}
+
+.videoDot:hover,
+.videoDot:focus-visible {
+  width: 46px;
+  background: rgba(245, 244, 240, 0.72);
+}
+
+.videoDotActive {
+  box-shadow: 0 0 18px rgba(245, 244, 240, 0.16);
+}
+
+.touchHint {
+  animation: hintFloat 3.4s ease-in-out infinite;
+}
+
+@keyframes sectionReveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes softPulse {
+  0%,
+  100% {
+    box-shadow:
+      0 18px 38px rgba(0, 0, 0, 0.32),
+      0 0 0 0 rgba(245, 244, 240, 0);
+  }
+
+  50% {
+    box-shadow:
+      0 18px 38px rgba(0, 0, 0, 0.32),
+      0 0 0 12px rgba(245, 244, 240, 0.045);
+  }
+}
+
+@keyframes hintFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.74;
+  }
+
+  50% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+
+@media (hover: none) {
+  .portfolioLink,
+  .allProjectsButton,
+  .controlButton,
+  .videoCard,
+  .projectCard,
+  .projectImage {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .portfolioLink:active,
+  .allProjectsButton:active {
+    color: #08090b;
+    border-color: rgba(245, 244, 240, 0.9);
+    background: rgba(245, 244, 240, 0.92);
+    transform: scale(0.97);
+  }
+
+  .videoCard:active {
+    transform: scale(0.985);
+  }
+
+  .projectCard:active .projectImage {
+    filter: grayscale(0) brightness(1.04);
+    transform: scale(0.985);
+  }
+
+  .projectArrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero,
+  .showcase,
+  .playButton,
+  .touchHint,
+  .projectCard {
+    animation: none;
+  }
+
+  .portfolioLink,
+  .allProjectsButton,
+  .controlButton,
+  .videoCard,
+  .videoGhost,
+  .playButton,
+  .projectCard,
+  .projectImage,
+  .projectImage img,
+  .projectArrow,
+  .videoDot {
+    transition: none;
   }
 }
