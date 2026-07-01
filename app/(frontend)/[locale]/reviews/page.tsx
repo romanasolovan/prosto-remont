@@ -23,7 +23,7 @@ export default function ReviewsPage() {
 
   return (
     <main className={styles.reviewsPage}>
-      <section className={styles.hero}>
+      {/* <section className={styles.hero}>
         <div className={styles.heroGrid} aria-hidden="true" />
         <div className={styles.heroBackground} aria-hidden="true">
           <span className={styles.bgWord}>Reviews</span>
@@ -38,7 +38,7 @@ export default function ReviewsPage() {
             </p>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className={styles.reviewsSection}>
         <div className="container">
