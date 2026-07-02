@@ -6,6 +6,7 @@ import { Link } from "@/navigation";
 import type { PublicProject } from "@/types/projects";
 import ProjectCardCarousel from "@/components/Projects/ProjectCardCarousel/ProjectCardCarousel";
 import styles from "./ProjectsPreview.module.css";
+import { clientFetchJson } from "@/lib/clientFetchJson";
 
 const projectVideos = [
   { id: "video-01", title: "Modern Kitchen", label: "Project video" },
@@ -23,13 +24,11 @@ export default function ProjectsPreview() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch("/api/public/projects");
+        const data = await clientFetchJson<{ projects: PublicProject[] }>(
+          "/api/public/projects",
+          { projects: [] },
+        );
 
-        if (!response.ok) {
-          throw new Error("Failed to fetch projects");
-        }
-
-        const data = await response.json();
         setProjects(data.projects || []);
       } catch (error) {
         console.error("Failed to load preview projects:", error);

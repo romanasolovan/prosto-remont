@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import styles from "./TrustedBrands.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import { clientFetchJson } from "@/lib/clientFetchJson";
 
 type Brand = {
   name: string;
@@ -57,20 +58,12 @@ export default function TrustedBrands() {
 
   useEffect(() => {
     const fetchTrustedBrands = async () => {
-      try {
-        const response = await fetch("/api/public/trusted-brands");
+      const data = await clientFetchJson<{ brands: Brand[] }>(
+        "/api/public/trusted-brands",
+        { brands: [] },
+      );
 
-        if (!response.ok) {
-          throw new Error("Failed to fetch trusted brands");
-        }
-
-        const data = await response.json();
-
-        setTrustedBrands(data.brands || []);
-      } catch (error) {
-        console.error("Failed to load trusted brands:", error);
-        setTrustedBrands([]);
-      }
+      setTrustedBrands(data.brands || []);
     };
 
     fetchTrustedBrands();

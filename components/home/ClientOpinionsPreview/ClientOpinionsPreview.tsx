@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/navigation";
 import styles from "./ClientOpinionsPreview.module.css";
+import { clientFetchJson } from "@/lib/clientFetchJson";
 
 interface Comment {
   id: string;
@@ -69,13 +70,11 @@ export default function ClientOpinionsPreview() {
   useEffect(() => {
     const fetchApprovedReviews = async () => {
       try {
-        const response = await fetch("/api/public/reviews");
+        const data = await clientFetchJson<{ reviews: Comment[] }>(
+          "/api/public/reviews",
+          { reviews: [] },
+        );
 
-        if (!response.ok) {
-          throw new Error("Failed to fetch reviews");
-        }
-
-        const data = await response.json();
         setComments(data.reviews || []);
       } catch (error) {
         console.error("Failed to load preview reviews:", error);
