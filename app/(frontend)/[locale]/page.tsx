@@ -5,12 +5,12 @@ import styles from "./page.module.css";
 
 import TrustedBrands from "@/components/home/TrustedBrands/TrustedBrands";
 import HomeHero from "@/components/home/HomeHero/HomeHero";
-// import WhyChooseUs from "@/components/home/WhyChooseUs/WhyChooseUs";
+
 import ClientOpinionsPreview from "@/components/home/ClientOpinionsPreview/ClientOpinionsPreview";
-import QuoteHighlight from "@/components/home/QuoteHighlight/QuoteHighlight";
+
 import ServicesPreview from "@/components/home/ServicesPreview/ServicesPreview";
 import ProjectsPreview from "@/components/home/ProjectsPreview/ProjectsPreview";
-import QuoteRequestModal from "@/components/QuoteRequestModal/QuoteRequestModal";
+// import QuoteRequestModal from "@/components/QuoteRequestModal/QuoteRequestModal";
 import ProcessSection from "@/components/home/ProcessSection/ProcessSection";
 
 import { useTranslations } from "next-intl";
@@ -113,10 +113,6 @@ export default function Home() {
         <ProcessSection />
       </section>
 
-      {/* <section id="why" className={styles.pageSection}>
-        <WhyChooseUs />
-      </section> */}
-
       <section id="projects" className={styles.pageSection}>
         <ProjectsPreview />
       </section>
@@ -125,10 +121,10 @@ export default function Home() {
         <ClientOpinionsPreview />
       </section>
 
-      <section id="quote" className={styles.pageSection}>
+      {/* <section id="quote" className={styles.pageSection}>
         <QuoteHighlight onOpenQuoteModal={openQuoteModal} />
         {isQuoteModalOpen && <QuoteRequestModal onClose={closeQuoteModal} />}
-      </section>
+      </section> */}
     </div>
   );
 }
