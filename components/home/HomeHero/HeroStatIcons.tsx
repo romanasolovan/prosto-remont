@@ -1,8 +1,9 @@
+import type { ReactNode } from "react";
 import styles from "./HeroStatIcons.module.css";
 
 type HeroStatItem = {
   key: string;
-  icon: React.ReactNode;
+  icon: ReactNode;
   label: string;
 };
 

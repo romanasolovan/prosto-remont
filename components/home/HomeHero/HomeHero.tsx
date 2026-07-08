@@ -1,14 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import HeroStatIcons from "./HeroStatIcons";
 import QuoteRequestModal from "@/components/QuoteRequestModal/QuoteRequestModal";
 import styles from "./HomeHero.module.css";
 
-type StatIconKey = "projects" | "clients" | "area" | "years";
+type StatIconKey = "projects" | "clients" | "area" | "years" | "warranty";
 
-const StatIcons: Record<StatIconKey, React.ReactNode> = {
+const StatIcons: Record<StatIconKey, ReactNode> = {
   projects: (
     <svg
       viewBox="0 0 48 48"
@@ -70,6 +70,23 @@ const StatIcons: Record<StatIconKey, React.ReactNode> = {
       <path d="M20 24l3 3 5-6" />
     </svg>
   ),
+  warranty: (
+    <svg
+      viewBox="0 0 48 48"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <rect x="13" y="10" width="22" height="28" rx="2.5" />
+      <path d="M18 17h12" />
+      <path d="M18 22h12" />
+      <path d="M18 27h7" />
+      <path d="M29 32l2.5 2.5L36 29" />
+    </svg>
+  ),
 };
 
 export default function HomeHero() {
@@ -82,6 +99,7 @@ export default function HomeHero() {
     { key: "clients", icon: StatIcons.clients, label: t("stats.clients") },
     { key: "area", icon: StatIcons.area, label: t("stats.area") },
     { key: "years", icon: StatIcons.years, label: t("stats.years") },
+    { key: "warranty", icon: StatIcons.warranty, label: t("stats.warranty") },
   ] as const;
 
   return (
@@ -107,7 +125,7 @@ export default function HomeHero() {
             <button
               type="button"
               onClick={() => setIsQuoteModalOpen(true)}
-              className={`btn-round btn-round--lg btn-round--pulse ${styles.buttonDesktop}`}
+              className={`btn-round btn-round--lg  ${styles.buttonDesktop}`}
             >
               <span className="btn-round__inner">
                 <span className="btn-round__text btn-round__text--md">
@@ -120,7 +138,7 @@ export default function HomeHero() {
               <button
                 type="button"
                 onClick={() => setIsQuoteModalOpen(true)}
-                className={`btn-round btn-round--sm btn-round--pulse ${styles.buttonMobile}`}
+                className={`btn-round btn-round--sm  ${styles.buttonMobile}`}
               >
                 <span className="btn-round__inner">
                   <span className="btn-round__text btn-round__text--sm">

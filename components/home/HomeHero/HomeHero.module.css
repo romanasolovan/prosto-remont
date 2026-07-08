@@ -3,28 +3,23 @@
   --bg-soft: #12161a;
   --bg-deep: #181c21;
   --ink: #f5f4f0;
-  --ink-soft: rgba(245, 244, 240, 0.76);
-  --ink-muted: rgba(245, 244, 240, 0.48);
-  --line: rgba(255, 255, 255, 0.08);
-  --line-strong: rgba(255, 255, 255, 0.16);
-  --button-bg: rgba(255, 255, 255, 0.045);
-  --button-bg-hover: rgba(255, 255, 255, 0.08);
-  --button-border: rgba(255, 255, 255, 0.14);
-  --button-border-hover: rgba(255, 255, 255, 0.26);
 
   position: relative;
   min-height: 100svh;
+  margin-top: calc(var(--header-height, 0px) * -1);
+  padding-top: var(--header-height, 0px);
   overflow: clip;
+  isolation: isolate;
   background:
     radial-gradient(
-      circle at top left,
-      rgba(255, 255, 255, 0.05),
-      transparent 28%
+      circle at 12% 14%,
+      rgba(255, 255, 255, 0.06),
+      transparent 30%
     ),
     radial-gradient(
-      circle at bottom right,
-      rgba(130, 136, 145, 0.12),
-      transparent 32%
+      circle at 82% 72%,
+      rgba(197, 168, 130, 0.12),
+      transparent 34%
     ),
     linear-gradient(
       135deg,
@@ -34,6 +29,15 @@
       var(--bg-deep) 100%
     );
   color: var(--ink);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 1px;
+  background: rgba(245, 244, 240, 0.12);
 }
 
 .gridGlow,
@@ -49,7 +53,7 @@
     linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
   background-size: 72px 72px;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.84), transparent 95%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.82), transparent 94%);
 }
 
 .orbitLeft,
@@ -61,7 +65,7 @@
 .orbitLeft {
   width: 22rem;
   height: 22rem;
-  top: 0;
+  top: 4%;
   left: -14rem;
 }
 
@@ -69,7 +73,7 @@
   width: 16rem;
   height: 16rem;
   right: -8rem;
-  bottom: 4rem;
+  bottom: 8%;
 }
 
 .heroInner {
@@ -78,8 +82,8 @@
   min-height: 100svh;
   display: grid;
   align-content: center;
-  gap: 1.55rem;
-  padding: 4.75rem 0 3rem;
+  gap: clamp(1.7rem, 3.5vw, 3.2rem);
+  padding: clamp(7rem, 13vh, 9rem) 0 clamp(2.8rem, 7vh, 4.5rem);
 }
 
 .topRow {
@@ -89,14 +93,6 @@
   opacity: 0;
   transform: translateY(22px);
   animation: rise 900ms cubic-bezier(0.22, 1, 0.36, 1) 80ms forwards;
-}
-
-.mobileCtaRow {
-  display: flex;
-  justify-content: flex-start;
-  opacity: 0;
-  transform: translateY(18px);
-  animation: rise 900ms cubic-bezier(0.22, 1, 0.36, 1) 160ms forwards;
 }
 
 .title {
@@ -124,6 +120,14 @@
 .titleLineTwo {
   font-size: clamp(1.95rem, 8vw, 3rem);
   color: rgba(245, 244, 240, 0.84);
+}
+
+.mobileCtaRow {
+  display: flex;
+  justify-content: flex-start;
+  opacity: 0;
+  transform: translateY(18px);
+  animation: rise 900ms cubic-bezier(0.22, 1, 0.36, 1) 160ms forwards;
 }
 
 .buttonDesktop,
@@ -168,31 +172,14 @@
   flex-shrink: 0;
 }
 
-.eyebrow {
-  display: grid;
-  gap: 0.16rem;
-  margin: 0;
-  color: var(--ink-soft);
-  font-family: "Barlow", sans-serif;
-  font-size: 0.72rem;
-  font-weight: 400;
-  line-height: 1.12;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.eyebrow span {
-  display: block;
-}
-
 @media (min-width: 768px) {
   .heroInner {
-    padding: 0 0 3rem;
-    gap: 2.6rem;
+    padding-top: clamp(7.5rem, 12vh, 9rem);
+    padding-bottom: clamp(3rem, 6vh, 4.5rem);
   }
 
   .topRow {
-    max-width: min(62vw, 50rem);
+    max-width: min(58vw, 48rem);
   }
 
   .title {
@@ -210,19 +197,15 @@
   .buttonDesktop {
     display: inline-grid;
     position: absolute;
-    top: 15%;
-    right: clamp(4.25rem, 7vw, 6rem);
-    width: 12.25rem;
-    height: 12.25rem;
+    top: 25%;
+    right: clamp(2rem, 5vw, 4.5rem);
+    width: clamp(10rem, 15vw, 12.5rem);
+    height: clamp(10rem, 15vw, 12.5rem);
     z-index: 4;
   }
 
   .mobileCtaRow,
   .buttonMobile {
-    display: none;
-  }
-
-  .bottomRow {
     display: none;
   }
 
@@ -242,12 +225,8 @@
 }
 
 @media (min-width: 1200px) {
-  .heroInner {
-    padding-bottom: 4rem;
-  }
-
   .topRow {
-    max-width: min(64vw, 66rem);
+    max-width: min(60vw, 66rem);
   }
 
   .titleLineOne {
@@ -259,14 +238,10 @@
   }
 
   .buttonDesktop {
-    top: 19%;
-    right: clamp(7.5rem, 10vw, 11rem);
+    top: 27%;
+    right: clamp(7rem, 10vw, 12rem);
     width: 13.75rem;
     height: 13.75rem;
-  }
-
-  .eyebrow {
-    font-size: 0.96rem;
   }
 
   .orbitLeft {
@@ -282,7 +257,11 @@
 
 @media (prefers-reduced-motion: reduce) {
   .topRow,
-  .bottomRow {
+  .mobileCtaRow,
+  .buttonDesktop::before,
+  .buttonDesktop::after,
+  .buttonMobile::before,
+  .buttonMobile::after {
     opacity: 1;
     transform: none;
     animation: none;
@@ -296,21 +275,6 @@
   }
 }
 
-@keyframes pulseRing {
-  0%,
-  100% {
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.08),
-      0 14px 28px rgba(0, 0, 0, 0.22);
-  }
-  50% {
-    transform: scale(1.03);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.08),
-      0 20px 40px rgba(0, 0, 0, 0.28);
-  }
-}
-
 @keyframes quoteRipple {
   0% {
     opacity: 0;
@@ -321,29 +285,9 @@
     opacity: 0.38;
   }
 
-  72% {
-    opacity: 0;
-    transform: scale(1.38);
-  }
-
+  72%,
   100% {
     opacity: 0;
     transform: scale(1.38);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .topRow,
-  .bottomRow {
-    opacity: 1;
-    transform: none;
-    animation: none;
-  }
-
-  .buttonDesktop::before,
-  .buttonDesktop::after,
-  .buttonMobile::before,
-  .buttonMobile::after {
-    animation: none;
   }
 }
