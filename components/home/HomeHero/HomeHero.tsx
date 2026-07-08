@@ -80,11 +80,11 @@ const StatIcons: Record<StatIconKey, ReactNode> = {
       strokeLinejoin="round"
       aria-hidden="true"
     >
-      <rect x="13" y="10" width="22" height="28" rx="2.5" />
-      <path d="M18 17h12" />
-      <path d="M18 22h12" />
-      <path d="M18 27h7" />
-      <path d="M29 32l2.5 2.5L36 29" />
+      <rect x="10" y="8" width="20" height="26" rx="1.5" />
+      <path d="M14 15h12M14 20h12M14 25h7" />
+      <circle cx="32" cy="30" r="7" />
+      <path d="M29.3 30.7l1.8 1.8 4-4" />
+      <path d="M28.5 36.5 27 43l5-3 5 3-1.5-6.5" />
     </svg>
   ),
 };

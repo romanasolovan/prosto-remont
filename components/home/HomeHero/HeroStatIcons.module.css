@@ -4,9 +4,9 @@
   grid-template-columns: 1fr;
   align-items: stretch;
   width: 100%;
-  gap: clamp(1rem, 4vw, 1.35rem);
-  margin: clamp(2.3rem, 5vw, 4.5rem) 0 0;
-  padding: clamp(1.55rem, 3vw, 2.1rem) 0 0;
+  gap: clamp(0.75rem, 3vw, 1rem);
+  margin: clamp(2rem, 5vw, 3.5rem) 0 0;
+  padding: clamp(1.4rem, 3vw, 1.9rem) 0 0;
   list-style: none;
   opacity: 0;
   transform: translateY(22px);
@@ -36,12 +36,17 @@
   animation: revealIcon 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
+/* Mobile only: bordered card. Icon and label sit in a row; label may wrap to 2 lines. */
 .statCard {
   width: 100%;
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
-  gap: clamp(1rem, 4vw, 1.3rem);
+  gap: clamp(0.85rem, 3.5vw, 1.1rem);
+  padding: clamp(0.85rem, 3vw, 1.1rem) clamp(0.95rem, 3.5vw, 1.2rem);
+  border-radius: 0.85rem;
+  border: 1px solid rgba(245, 244, 240, 0.09);
+  background: rgba(255, 255, 255, 0.02);
   color: rgba(248, 248, 245, 0.96);
 }
 
@@ -49,8 +54,8 @@
   position: relative;
   display: grid;
   place-items: center;
-  width: clamp(3.6rem, 15vw, 4.45rem);
-  height: clamp(3.6rem, 15vw, 4.45rem);
+  width: clamp(3.35rem, 12vw, 3.95rem);
+  height: clamp(3.35rem, 12vw, 3.95rem);
   flex-shrink: 0;
   border-radius: 50%;
   color: rgba(248, 248, 245, 0.95);
@@ -64,65 +69,99 @@
 .iconCircle::before {
   content: "";
   position: absolute;
-  inset: -0.42rem;
+  inset: -0.4rem;
   border-radius: 50%;
   border: 1px solid rgba(245, 244, 240, 0.055);
 }
 
 .iconCircle svg {
-  width: clamp(1.45rem, 5vw, 1.75rem);
-  height: clamp(1.45rem, 5vw, 1.75rem);
+  width: clamp(1.35rem, 4.4vw, 1.6rem);
+  height: clamp(1.35rem, 4.4vw, 1.6rem);
 }
 
 .label {
-  max-width: 15ch;
+  max-width: 20ch;
   font-family: "Cormorant Garamond", "Times New Roman", serif;
-  font-size: clamp(1.25rem, 6vw, 1.85rem);
+  font-size: clamp(1.05rem, 4.2vw, 1.3rem);
   font-style: italic;
   font-weight: 500;
-  line-height: 1.08;
+  line-height: 1.2;
   color: rgba(245, 244, 240, 0.9);
+  overflow-wrap: break-word;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1023.98px) {
   .iconRow {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: clamp(1rem, 2vw, 2rem);
-    margin-top: clamp(3.4rem, 5vw, 4.8rem);
+    grid-area: stats;
+    grid-template-columns: repeat(6, 1fr);
+    gap: clamp(1rem, 2.4vw, 1.6rem) clamp(0.75rem, 2vw, 1.4rem);
+  }
+
+  .iconItem:nth-child(1) {
+    grid-column: 1 / 3;
+  }
+  .iconItem:nth-child(2) {
+    grid-column: 3 / 5;
+  }
+  .iconItem:nth-child(3) {
+    grid-column: 5 / 7;
+  }
+  .iconItem:nth-child(4) {
+    grid-column: 2 / 4;
+  }
+  .iconItem:nth-child(5) {
+    grid-column: 4 / 6;
+  }
+
+  /* Tablet+: strip the card outline/fill, keep icon+label in a row */
+  .statCard {
+    padding: 0;
+    border: none;
+    background: none;
+    border-radius: 0;
+  }
+
+  .iconCircle {
+    width: clamp(3.5rem, 4.6vw, 4rem);
+    height: clamp(3.5rem, 4.6vw, 4rem);
+  }
+
+  .label {
+    max-width: 16ch;
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .iconRow {
+    grid-area: stats;
+    grid-template-columns: repeat(5, 1fr);
+    gap: clamp(1.2rem, 2vw, 2.2rem);
+    margin-top: clamp(3.2rem, 5vw, 4.6rem);
     padding-top: clamp(1.6rem, 2.4vw, 2.2rem);
   }
 
   .statCard {
-    grid-template-columns: 1fr;
-    justify-items: start;
-    align-content: start;
-    gap: 1rem;
+    padding: 0;
+    border: none;
+    background: none;
+    border-radius: 0;
   }
 
   .iconCircle {
-    width: clamp(3.65rem, 5.4vw, 4.4rem);
-    height: clamp(3.65rem, 5.4vw, 4.4rem);
+    width: clamp(3.65rem, 4.2vw, 4.25rem);
+    height: clamp(3.65rem, 4.2vw, 4.25rem);
   }
 
   .label {
-    max-width: 12ch;
-    font-size: clamp(1.08rem, 1.65vw, 1.35rem);
+    max-width: 15ch;
+    font-size: clamp(1rem, 1.05vw, 1.15rem);
   }
 }
 
 @media (min-width: 1200px) {
   .iconRow {
-    max-width: calc(100% - 10rem);
-    gap: clamp(1.6rem, 2.5vw, 3.4rem);
-  }
-
-  .iconCircle {
-    width: 4.65rem;
-    height: 4.65rem;
-  }
-
-  .label {
-    font-size: 1.35rem;
+    gap: clamp(1.6rem, 2.2vw, 3rem);
   }
 }
 

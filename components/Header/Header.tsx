@@ -55,13 +55,18 @@ export default function Header() {
     };
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!headerRef.current) return;
 
     const node = headerRef.current;
 
     const updateHeaderHeight = () => {
-      setHeaderHeight(node.offsetHeight);
+      const height = node.offsetHeight;
+      setHeaderHeight(height);
+      document.documentElement.style.setProperty(
+        "--header-height",
+        `${height}px`,
+      );
     };
 
     updateHeaderHeight();
