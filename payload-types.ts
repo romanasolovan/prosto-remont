@@ -74,6 +74,7 @@ export interface Config {
     projects: Project;
     services: Service;
     'trusted-brands': TrustedBrand;
+    partners: Partner;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -88,6 +89,7 @@ export interface Config {
     projects: ProjectsSelect<false> | ProjectsSelect<true>;
     services: ServicesSelect<false> | ServicesSelect<true>;
     'trusted-brands': TrustedBrandsSelect<false> | TrustedBrandsSelect<true>;
+    partners: PartnersSelect<false> | PartnersSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -356,6 +358,29 @@ export interface TrustedBrand {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partners".
+ */
+export interface Partner {
+  id: number;
+  name: string;
+  /**
+   * Upload or select the partner logo shown in the carousel.
+   */
+  logo?: (number | null) | Media;
+  /**
+   * Optional external website URL. Example: https://example.com
+   */
+  website?: string | null;
+  status: 'active' | 'hidden';
+  /**
+   * Lower numbers appear first. Example: 1, 2, 3.
+   */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -405,6 +430,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'trusted-brands';
         value: number | TrustedBrand;
+      } | null)
+    | ({
+        relationTo: 'partners';
+        value: number | Partner;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -583,6 +612,19 @@ export interface TrustedBrandsSelect<T extends boolean = true> {
   mark?: T;
   logo?: T;
   href?: T;
+  status?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partners_select".
+ */
+export interface PartnersSelect<T extends boolean = true> {
+  name?: T;
+  logo?: T;
+  website?: T;
   status?: T;
   order?: T;
   updatedAt?: T;

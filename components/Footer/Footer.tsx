@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/navigation";
 import LeaveCommentForm from "@/components/ClientOpinions/LeaveCommentForm";
@@ -15,14 +15,6 @@ type CommentFormData = {
   comment: string;
 };
 
-const partners: Partner[] = [
-  { id: "partner-1", name: "Partner Name" },
-  { id: "partner-2", name: "Partner Name" },
-  { id: "partner-3", name: "Partner Name" },
-  { id: "partner-4", name: "Partner Name" },
-  { id: "partner-5", name: "Partner Name" },
-];
-
 export default function Footer() {
   const t = useTranslations("footer");
   const tNav = useTranslations("navigation");
@@ -30,6 +22,7 @@ export default function Footer() {
 
   const [isCommentModalOpen, setIsCommentModalOpen] = useState(false);
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
+  const [partners, setPartners] = useState<Partner[]>([]);
 
   const openCommentModal = () => {
     setIsCommentModalOpen(true);
@@ -50,6 +43,27 @@ export default function Footer() {
   const handleCommentSubmit = async (data: CommentFormData) => {
     console.log("Comment submitted:", data);
   };
+
+  useEffect(() => {
+    const fetchPartners = async () => {
+      try {
+        const response = await fetch("/api/public/partners");
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch partners");
+        }
+
+        const data = await response.json();
+
+        setPartners(data.partners || []);
+      } catch (error) {
+        console.error("Failed to load partners:", error);
+        setPartners([]);
+      }
+    };
+
+    fetchPartners();
+  }, []);
 
   return (
     <>
