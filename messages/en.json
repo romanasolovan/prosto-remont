@@ -528,7 +528,7 @@
   "hero": {
     "eyebrow": "Get in touch",
     "title": "Contact Us",
-    "subtitle": "Let’s talk about your renovation, finishing work, or interior transformation.",
+    "subtitle": "Let's talk about your renovation, finishing work, or interior transformation.",
     "bgWord": "Contact"
   },
   "title": "Contact Us",
@@ -556,6 +556,13 @@
     "title": "Client Opinions",
     "description": "See what our clients say about working with us and the spaces we helped bring to life.",
     "cta": "Read Reviews"
+  },
+  "instagram": {
+    "eyebrow": "Follow along",
+    "title": "Recent on Instagram",
+    "viewProfile": "View profile",
+    "scrollPrev": "Show previous post",
+    "scrollNext": "Show next post"
   }
 },
   "clientOpinions": {

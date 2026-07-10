@@ -13,7 +13,7 @@ export default function SocialLinks() {
       <ul className={styles.socialLinksList} aria-label={t("aria.socialLinks")}>
         <li>
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/pro100_twoj_remont/"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.socialLink}

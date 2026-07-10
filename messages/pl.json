@@ -536,39 +536,46 @@
     "errorMessage": "Coś poszło nie tak. Spróbuj ponownie."
   },
   "getContact": {
-    "hero": {
+  "hero": {
     "eyebrow": "Skontaktuj się z nami",
     "title": "Kontakt",
-    "subtitle": "Porozmawiajmy o Twoim remoncie, pracach wykończeniowych lub metamorfozie wnętrza.",
+    "subtitle": "Porozmawiajmy o Twoim remoncie, wykończeniu wnętrz lub metamorfozie przestrzeni.",
     "bgWord": "Kontakt"
+  },
+  "title": "Kontakt",
+  "description": "Jeśli planujesz remont, wykończenie pod klucz lub metamorfozę wnętrza, jesteśmy gotowi do rozmowy. Skontaktuj się z nami, aby omówić swój projekt, zadać pytania lub umówić pierwszą konsultację.",
+  "getInTouch": {
+    "title": "Skontaktuj się",
+    "description": "Napisz do nas, aby omówić swój projekt, zadać pytania i zrobić pierwszy krok w kierunku przestrzeni dopasowanej do Twoich potrzeb."
+  },
+  "details": {
+    "email": "E-mail",
+    "phone": "Telefon",
+    "hours": "Godziny pracy",
+    "hoursValue": "Poniedziałek – piątek: 8:00 – 18:00\nSobota: 9:00 – 16:00"
+  },
+  "social": {
+    "title": "Obserwuj nas"
   },
   "map": {
     "title": "Nasza lokalizacja",
-    "description": "Pracujemy w Warszawie i realizujemy projekty remontowe oraz wykończeniowe w całym regionie.",
+    "description": "Pracujemy z Warszawy i wspieramy projekty remontowe oraz wykończeniowe w całym regionie.",
     "ariaLabel": "Mapa lokalizacji biura",
     "iframeTitle": "Lokalizacja biura"
   },
-    "title": "Kontakt",
-    "description": "Jeśli planujesz remont, wykończenie „pod klucz” lub metamorfozę wnętrza, jesteśmy gotowi do rozmowy. Skontaktuj się z nami, aby omówić swój projekt, zadać pytania lub umówić pierwszą konsultację.",
-    "getInTouch": {
-      "title": "Informacje kontaktowe",
-      "description": "Skontaktuj się z nami, aby porozmawiać o swoim projekcie i otrzymać indywidualną konsultację."
-    },
-    "details": {
-      "email": "E-mail",
-      "phone": "Telefon",
-      "hours": "Godziny pracy",
-      "hoursValue": "Poniedziałek – Piątek: 8:00 – 18:00\nSobota: 9:00 – 16:00"
-    },
-    "social": {
-      "title": "Obserwuj nas"
-    },
-    "opinions": {
-      "title": "Opinie klientów",
-      "description": "Zobacz, co nasi klienci mówią o współpracy z nami i o przestrzeniach, które wspólnie udało się stworzyć.",
-      "cta": "Przeczytaj opinie"
-    }
+  "opinions": {
+    "title": "Opinie klientów",
+    "description": "Zobacz, co nasi klienci mówią o współpracy z nami i przestrzeniach, które pomogliśmy stworzyć.",
+    "cta": "Zobacz opinie"
   },
+  "instagram": {
+    "eyebrow": "Bądź na bieżąco",
+    "title": "Ostatnio na Instagramie",
+    "viewProfile": "Zobacz profil",
+    "scrollPrev": "Pokaż poprzedni post",
+    "scrollNext": "Pokaż następny post"
+  }
+},
   "clientOpinions": {
   "eyebrow": "Client opinions",
   "title": "Real experiences. Real trust.",
