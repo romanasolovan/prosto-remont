@@ -18,6 +18,8 @@
 .servicesSection {
   position: relative;
   padding: 72px 0 88px;
+  margin-top: calc(var(--header-height, 0px) * -1);
+  padding: calc(var(--header-height, 0px) + 72px) 0 88px;
   overflow: hidden;
   background:
     radial-gradient(
@@ -45,7 +47,7 @@
   content: "";
   position: absolute;
   top: 8px;
-  right: calc(50% + 96px);
+  right: calc(50% + 102px);
   width: 50vw;
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(245, 244, 240, 0.54));
@@ -203,19 +205,21 @@
 
 .pricingNote,
 .pricingDescription {
+  color: white;
   margin: 0;
   font-family: "Barlow", sans-serif;
-  font-size: 14px;
-  font-weight: 300;
+  font-size: 16px;
   line-height: 1.75;
 }
 
 .pricingNote {
-  color: var(--ink);
+  color: #ffffff;
+  font-weight: 600;
 }
 
 .pricingDescription {
   color: var(--ink-soft);
+  font-weight: 300;
 }
 
 .categoryNav {
@@ -249,7 +253,7 @@
   flex: 0 0 auto;
   scroll-snap-align: start;
   padding: 10px 14px;
-  border: 1px solid rgba(245, 244, 240, 0.12);
+  border: 1px solid rgba(245, 244, 240, 0.16);
   border-radius: 999px;
   font-family: "Barlow Condensed", sans-serif;
   font-size: 10px;
@@ -257,32 +261,53 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
   white-space: nowrap;
-  color: rgba(245, 244, 240, 0.72);
-  background: rgba(255, 255, 255, 0.025);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.02);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.025);
   transition:
     color 240ms ease,
     border-color 240ms ease,
     background 240ms ease,
+    box-shadow 240ms ease,
     transform 240ms ease;
 }
 
 .categoryLink:hover,
 .categoryLink:focus-visible {
-  color: #f5f4f0;
-  border-color: rgba(188, 154, 94, 0.4);
-  background: linear-gradient(
-    180deg,
-    rgba(188, 154, 94, 0.13),
-    rgba(255, 255, 255, 0.04)
-  );
+  color: #ffffff;
+  border-color: rgba(235, 238, 241, 0.58);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.16),
+      rgba(189, 196, 202, 0.08)
+    ),
+    rgba(255, 255, 255, 0.035);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 8px 24px rgba(0, 0, 0, 0.16);
   transform: translateY(-1px);
 }
 
-.categoryLink:active {
+.categoryLink:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.72);
+  outline-offset: 3px;
+}
+
+.categoryLinkActive {
   color: #ffffff;
-  border-color: rgba(188, 154, 94, 0.58);
-  background: rgba(188, 154, 94, 0.18);
-  transform: scale(0.98);
+  border-color: rgba(245, 247, 249, 0.68);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(184, 191, 198, 0.1)),
+    rgba(255, 255, 255, 0.045);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.26),
+    inset 0 -1px 0 rgba(172, 180, 188, 0.18),
+    0 10px 28px rgba(0, 0, 0, 0.18);
+}
+
+.categoryLink:active {
+  transform: translateY(0) scale(0.98);
 }
 
 .priceGroups {
@@ -508,7 +533,7 @@
   }
 
   .servicesSection {
-    padding: 96px 0 116px;
+    padding: calc(var(--header-height, 0px) + 96px) 0 116px;
   }
 
   .heroTop {

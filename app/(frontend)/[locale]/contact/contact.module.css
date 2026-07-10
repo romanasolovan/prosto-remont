@@ -20,7 +20,8 @@
 
 .heroSection {
   position: relative;
-  padding: clamp(88px, 11vw, 132px) 0 clamp(96px, 12vw, 148px);
+  margin-top: calc(var(--header-height, 0px) * -1);
+  padding: calc(var(--header-height, 0px) + 72px) 0 88px;
   overflow: hidden;
   background:
     radial-gradient(
@@ -469,6 +470,10 @@ a.contactValue:hover {
 /* DESKTOP */
 
 @media (min-width: 1024px) {
+  .heroSection {
+    padding: calc(var(--header-height, 0px) + 96px) 0 116px;
+  }
+
   .contactRow {
     grid-template-columns: minmax(320px, 0.86fr) minmax(0, 1.14fr);
     gap: 30px;
