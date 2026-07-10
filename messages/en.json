@@ -26,23 +26,12 @@
   "viewMore": "View more",
   "viewAllServices": "Zobacz wszystkie usługi"
 },
-"quoteHighlight": {
-  "eyebrow": "Request a quote",
-  "title": "Start your renovation project with clarity",
-  "description": "Share a few details about your project and timeline. Our team will review your request and provide a clear next step so your renovation can move forward with confidence.",
-  "steps": {
-    "first": "Tell us about your project",
-    "second": "Receive a tailored response",
-    "third": "Move forward with a clear plan"
-  },
-  "viewProcess": "View full process"
-},
   "home": {
-     "pagination": {
-      "navLabel": "Homepage sections",
-      "mobileTrigger": "Explore page",
-"mobileTitle": "Page sections",
-"mobileClose": "Close section navigator",
+    "pagination": {
+    "navLabel": "Homepage sections",
+    "mobileTrigger": "Explore page",
+    "mobileTitle": "Page sections",
+    "mobileClose": "Close section navigator",
     "hero": "Welcome",
     "trusted": "Trust",
     "why": "Why Us",
@@ -123,111 +112,72 @@
       "description": "Whether you are planning a full turnkey fit-out, a renovation, or selected finishing works, we are here to guide you. Reach out to discuss your project, ask questions, and take the first step toward a space designed around your needs."
     }
   },
-  "about": {
-  "hero": {
-    "title": "About PRO100 Twój Remont",
-    "subtitle": "Reliable renovation and interior finishing built on trust, quality, and organized execution."
-  },
+ "about": {
+"hero": {
+"eyebrow": "Pro100 Twój Remont — professional renovations and interior finishing in Warsaw"
+},
 
-  "stats": {
-    "eyebrow": "About us",
-    "title": "Built on experience. Proven by results.",
-    "description": "We shape renovation and interior projects through a process that feels structured, elegant, and easy to follow from first conversation to final outcome.",
-    "projects": "50+ turnkey projects completed",
-    "clients": "100+ satisfied clients",
-    "area": "20,000+ m² of finishing work delivered",
-    "years": "5+ years on the Polish market"
-  },
-
-  "story": {
-    "eyebrow": "Our story",
-    "title": "Who We Are",
-    "content": "We are a renovation and interior finishing company focused on delivering complete, high-quality spaces for people who want more than construction work — they want clarity, trust, and a result they can truly enjoy. We work on apartments, homes, and commercial interiors, helping clients turn empty or unfinished spaces into places with character, comfort, and purpose.",
+"story": {
+  "eyebrow": "Our story",
+  "title": "Who We Are",
+  "content": "Pro100 Twój Remont is a team of experienced professionals who create exceptional spaces for living and working with passion, dedication, and attention to every detail. We specialise in comprehensive renovations and interior finishing, providing our clients with complete support at every stage of the project — from the initial consultation to the handover of the finished interior.",
   "button": "View projects"
-  },
+},
 
-  "values": {
-    "eyebrow": "Our values",
-    "title": "Our Values",
-    "content": "We believe in reliability, clear communication, respect for the client’s space, accountable workmanship, and organized execution.",
+"values": {
+  "eyebrow": "Our values",
 
-    "items": {
-      "first": {
-        "title": "Reliability",
-        "text": "We deliver what we promise, maintaining consistency and accountability at every stage of the project."
-      },
-      "second": {
-        "title": "Precision",
-        "text": "Every detail is approached with care, ensuring the final result feels refined, balanced, and complete."
-      },
-      "third": {
-        "title": "Partnership",
-        "text": "We work closely with our clients, creating a process that feels clear, collaborative, and supportive."
-      }, 
-      "fourth": {
-  "title": "Professional Structure",
-  "text": "We operate with clear systems and organized workflows to ensure every project runs smoothly and efficiently."
-}
-    }
-  },
-
- "cta": {
-  "eyebrow": "Let’s talk",
-  "title": "Choose the next step",
-  "description": "Whether you want to read client feedback, request a quote, or get in touch directly, here is the best place to continue.",
   "items": {
     "first": {
-      "title": "Client opinions",
-      "text": "See how clients describe the process, communication, and final result after working with us.",
-      "button": "Read reviews"
+      "title": "Reliability",
+      "text": "We honour our commitments and approach every stage of the project with consistency, responsibility, and care."
     },
     "second": {
-      "title": "Request a quote",
-      "text": "Tell us about your space and project needs, and we will help you take the next step with clarity.",
-      "button": "Request a quote"
+      "title": "Precision",
+      "text": "We pay close attention to every detail to ensure a refined, functional, and carefully finished result."
     },
     "third": {
-      "title": "Contact us",
-      "text": "Have questions or want to discuss your renovation directly? Reach out and let’s start the conversation.",
-      "button": "Contact us"
+      "title": "Partnership",
+      "text": "We build relationships based on trust, open communication, and close cooperation throughout every stage of the project."
+    },
+    "fourth": {
+      "title": "Organised Execution",
+      "text": "Clear processes, structured workflows, and effective coordination allow every project to progress smoothly."
+    },
+    "fifth": {
+      "title": "Individual Approach",
+      "text": "Every project is tailored to the client's needs, expectations, lifestyle, and vision for the space."
+    },
+    "sixth": {
+      "title": "Workmanship Guarantee",
+      "text": "We take responsibility for the quality of our work and stand behind the high standard of every completed project."
+    },
+    "seventh": {
+      "title": "Insurance Protection",
+      "text": "Our insured operations provide additional security and peace of mind throughout every stage of the renovation process."
     }
   }
 },
 
-  "trustedBrands": {
-    "eyebrow": "Trusted by clients",
-    "title": "Our projects combine quality, functionality, and refined design.",
-    "description": "Experience, precision, and a responsible approach to every project are why clients who expect the highest standard choose us.",
-    "regionLabel": "Brands and partners"
+"details": {
+  "paragraphs": {
+    "first": "Since 2020, we have successfully operated in the renovation and construction industry, completing projects throughout Warsaw and the surrounding areas. We work with individual clients, businesses, and public institutions. Our experience, professional technical resources, and qualified team enable us to undertake even the most demanding projects.",
+    "second": "We believe that every renovation is more than just construction work — it is the process of creating a space that will serve people for years. That is why we approach every project individually, with complete commitment and responsibility. We combine knowledge, experience, and modern solutions to provide our clients with the highest quality of workmanship, timely completion, and a comfortable working relationship.",
+    "third": "Every member of our team brings unique skills and experience, allowing us to continuously improve our processes and maintain the highest standards of service. We value transparent communication, precise workmanship, and attention to the appearance of every detail because we know that the smallest elements shape the final result.",
+    "fourth": "Our mission is to create interiors that not only meet our clients' expectations but often exceed them. We carry out renovations and interior finishing for apartments, houses, commercial premises, and turnkey projects with the highest level of care, earning the trust of even the most demanding clients."
   },
-
-  "whyChooseUs": {
-    "eyebrow": "Why choose us",
-    "title": "Design-led thinking, structured guidance, and a more considered way to renovate",
-    "button": "About us",
-    "description": "The strongest projects rely on more than taste alone. They need clarity, trust, and a process that feels as thoughtful as the final result.",
-    "pillars": {
-      "first": {
-        "title": "Tailored Approach",
-        "description": "Every project begins with context, constraints, and goals, so each solution feels intentional, relevant, and carefully shaped."
-      },
-      "second": {
-        "title": "Clear Communication",
-        "description": "From first contact to final delivery, the process is structured to feel transparent, calm, and easy to navigate."
-      },
-      "third": {
-        "title": "Architectural Precision",
-        "description": "Careful detailing, visual discipline, and a considered process create outcomes that feel refined, balanced, and enduring."
-      }
-    }
-  },
-
-  "why": {
-    "eyebrow": "Why people choose us",
-    "title": "Why People Choose Us",
-    "content": "Clients choose us because they want a team that combines craftsmanship with trust. We help make the renovation process easier to understand, stay in contact throughout the work, support material decisions, and deliver spaces that feel complete — not just finished."
-  }
+  "closing": "Pro100 Twój Remont is a guarantee of professionalism, quality, and partnership — from the first meeting to the handover of the completed space."
 },
+
+"trustedBrands": {
+  "eyebrow": "Trusted by clients",
+  "title": "Our projects combine quality, functionality, and refined design.",
+  "description": "Experience, precision, and a responsible approach to every project are why clients who expect the highest standards choose us.",
+  "regionLabel": "Brands and partners"
+}
+
+},
+
 "services": {
   "hero": {
     "eyebrow": "PRO100 Your Renovation",

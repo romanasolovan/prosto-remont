@@ -128,110 +128,71 @@
     }
   },
   "about": {
-    "hero": {
-      "title": "O PRO100 Twój Remont",
-      "subtitle": "Rzetelne remonty i wykończenia wnętrz oparte na zaufaniu, jakości i dobrze zorganizowanej realizacji."
-    },
+"hero": {
+"eyebrow": "Pro100 Twój Remont — profesjonalne remonty i wykończenia wnętrz w Warszawie"
+},
 
-    "stats": {
-      "eyebrow": "O nas",
-      "title": "Zbudowane na doświadczeniu. Potwierdzone efektami.",
-      "description": "Realizujemy projekty remontowe i wykończeniowe w sposób uporządkowany, elegancki i przejrzysty — od pierwszej rozmowy aż po finalny efekt.",
-      "projects": "Ponad 50 kompleksowych realizacji",
-      "clients": "Ponad 100 zadowolonych klientów",
-      "area": "Ponad 20 000 m² wykonanych prac wykończeniowych",
-      "years": "Ponad 5 lat na rynku polskim"
-    },
+"story": {
+  "eyebrow": "Nasza historia",
+  "title": "Kim jesteśmy",
+  "content": "Pro100 Twój Remont to zespół doświadczonych specjalistów, którzy z pasją, zaangażowaniem i dbałością o każdy detal realizują wyjątkowe przestrzenie do życia i pracy. Specjalizujemy się w kompleksowych remontach oraz wykończeniach wnętrz, oferując naszym Klientom pełne wsparcie na każdym etapie realizacji inwestycji — od pierwszej konsultacji aż po przekazanie gotowego wnętrza.",
+  "button": "Zobacz realizacje"
+},
 
-    "story": {
-      "eyebrow": "Nasza historia",
-      "title": "Kim jesteśmy",
-      "content": "Jesteśmy firmą zajmującą się remontami i wykończeniem wnętrz, która tworzy kompleksowe, wysokiej jakości przestrzenie dla osób oczekujących czegoś więcej niż samej realizacji — oczekujących przejrzystości, zaufania i efektu, który naprawdę daje satysfakcję. Pracujemy przy mieszkaniach, domach oraz wnętrzach komercyjnych, pomagając przekształcać puste lub niewykończone przestrzenie w miejsca z charakterem, komfortem i funkcją.", 
-      "button": "Zoback projekty"
-    },
+"values": {
+  "eyebrow": "Nasze wartości",
 
-    "values": {
-      "eyebrow": "Nasze wartości",
-      "title": "Nasze wartości",
-      "content": "Wierzymy w rzetelność, jasną komunikację, szacunek do przestrzeni klienta, odpowiedzialne wykonanie oraz dobrze zorganizowany proces realizacji.",
-
-      "items": {
-        "first": {
-          "title": "Rzetelność",
-          "text": "Realizujemy to, co obiecujemy, dbając o spójność i odpowiedzialność na każdym etapie projektu."
-        },
-        "second": {
-          "title": "Precyzja",
-          "text": "Każdy detal opracowujemy z dbałością, aby końcowy efekt był dopracowany, harmonijny i kompletny."
-        },
-        "third": {
-          "title": "Partnerstwo",
-          "text": "Współpracujemy z klientami na każdym etapie, tworząc proces przejrzysty, wspierający i oparty na współdziałaniu."
-        },
-        "fourth": {
-  "title": "Profesjonalna struktura",
-  "text": "Działamy w oparciu o jasne procesy i uporządkowaną organizację pracy, aby każdy projekt przebiegał sprawnie i efektywnie."
-}
-      }
-    },
-
-   "cta": {
-  "eyebrow": "Porozmawiajmy",
-  "title": "Wybierz kolejny krok",
-  "description": "Niezależnie od tego, czy chcesz przeczytać opinie klientów, poprosić o wycenę, czy skontaktować się z nami bezpośrednio — tutaj zrobisz kolejny krok.",
   "items": {
     "first": {
-      "title": "Opinie klientów",
-      "text": "Zobacz, jak klienci opisują współpracę z nami, komunikację oraz efekt końcowy realizacji.",
-      "button": "Czytaj opinie"
+      "title": "Rzetelność",
+      "text": "Dotrzymujemy zobowiązań i do każdego etapu realizacji podchodzimy z konsekwencją, odpowiedzialnością i należytą starannością."
     },
     "second": {
-      "title": "Poproś o wycenę",
-      "text": "Opowiedz nam o swojej przestrzeni i potrzebach projektu, a pomożemy Ci przejść do kolejnego etapu.",
-      "button": "Poproś o wycenę"
+      "title": "Precyzja",
+      "text": "Dbamy o każdy detal, aby zapewnić estetyczny, funkcjonalny i starannie wykończony efekt."
     },
     "third": {
-      "title": "Skontaktuj się z nami",
-      "text": "Masz pytania lub chcesz omówić swój remont bezpośrednio? Napisz do nas i zacznijmy rozmowę.",
-      "button": "Kontakt"
+      "title": "Partnerstwo",
+      "text": "Budujemy relacje oparte na zaufaniu, otwartej komunikacji i ścisłej współpracy na każdym etapie realizacji."
+    },
+    "fourth": {
+      "title": "Sprawna organizacja",
+      "text": "Jasne zasady, uporządkowane procesy i skuteczna koordynacja pozwalają nam sprawnie prowadzić każdą realizację."
+    },
+    "fifth": {
+      "title": "Indywidualne podejście",
+      "text": "Każdą realizację dopasowujemy do potrzeb, oczekiwań, stylu życia i wizji Klienta."
+    },
+    "sixth": {
+      "title": "Gwarancja wykonania",
+      "text": "Bierzemy odpowiedzialność za jakość naszej pracy i gwarantujemy wysoki standard każdej ukończonej realizacji."
+    },
+    "seventh": {
+      "title": "Ochrona ubezpieczeniowa",
+      "text": "Nasza działalność jest ubezpieczona, co zapewnia dodatkowe bezpieczeństwo i spokój na każdym etapie remontu."
     }
   }
 },
 
-    "trustedBrands": {
-      "eyebrow": "Zaufanie klientów",
-      "title": "Nasze projekty łączą jakość, funkcjonalność i dopracowany design.",
-      "description": "Doświadczenie, precyzja i odpowiedzialne podejście do każdego projektu sprawiają, że wybierają nas klienci oczekujący najwyższego standardu.",
-      "regionLabel": "Marki i partnerzy"
-    },
-
-    "whyChooseUs": {
-      "eyebrow": "Dlaczego my",
-      "title": "Projektowe podejście, uporządkowany proces i bardziej świadomy sposób realizacji remontów",
-      "button": "O nas",
-      "description": "Najlepsze realizacje wymagają czegoś więcej niż dobrego gustu — potrzebują jasności, zaufania i procesu, który jest równie dopracowany jak efekt końcowy.",
-      "pillars": {
-        "first": {
-          "title": "Indywidualne podejście",
-          "description": "Każdy projekt zaczynamy od analizy kontekstu, ograniczeń i celów, dzięki czemu rozwiązania są przemyślane i dopasowane."
-        },
-        "second": {
-          "title": "Jasna komunikacja",
-          "description": "Od pierwszego kontaktu po realizację dbamy o przejrzysty, spokojny i łatwy do zrozumienia proces."
-        },
-        "third": {
-          "title": "Precyzja wykonania",
-          "description": "Dbałość o detale, spójność wizualna i przemyślany proces tworzą efekty trwałe i dopracowane."
-        }
-      }
-    },
-
-    "why": {
-      "eyebrow": "Dlaczego nas wybierają",
-      "title": "Dlaczego klienci nas wybierają",
-      "content": "Klienci wybierają nas, ponieważ łączymy rzemiosło z zaufaniem. Upraszczamy proces remontu, pozostajemy w stałym kontakcie, pomagamy w wyborze materiałów i tworzymy przestrzenie, które są nie tylko wykończone, ale w pełni dopracowane."
-    }
+"details": {
+  "paragraphs": {
+    "first": "Od 2020 roku z powodzeniem działamy na rynku remontowo-budowlanym, realizując projekty na terenie Warszawy i okolic. Naszą ofertę kierujemy zarówno do klientów indywidualnych, jak i firm oraz instytucji publicznych. Dzięki doświadczeniu, profesjonalnemu zapleczu technicznemu oraz wykwalifikowanej kadrze jesteśmy w stanie realizować nawet najbardziej wymagające przedsięwzięcia.",
+    "second": "Wierzymy, że każdy remont to coś więcej niż tylko prace budowlane — to proces tworzenia przestrzeni, która ma służyć ludziom przez lata. Dlatego do każdej realizacji podchodzimy indywidualnie, z pełnym zaangażowaniem i odpowiedzialnością. Łączymy wiedzę, doświadczenie oraz nowoczesne rozwiązania, aby zapewnić naszym Klientom najwyższą jakość wykonania, terminowość i pełen komfort współpracy.",
+    "third": "Każdy członek naszego zespołu wnosi unikalne umiejętności i doświadczenie, co pozwala nam nieustannie doskonalić proces realizacji oraz utrzymywać najwyższe standardy usług. Dbamy o transparentną komunikację, precyzję wykonania oraz estetykę każdego detalu, ponieważ wiemy, że to właśnie szczegóły decydują o końcowym efekcie.",
+    "fourth": "Naszą misją jest tworzenie wnętrz, które nie tylko spełniają oczekiwania Klientów, ale często je przewyższają. Realizowane przez nas remonty i wykończenia mieszkań, domów, lokali użytkowych oraz inwestycji „pod klucz” wykonujemy z najwyższą starannością, dzięki czemu zaufali nam również najbardziej wymagający Klienci."
   },
+  "closing": "Pro100 Twój Remont to gwarancja profesjonalizmu, jakości i partnerstwa — od pierwszego spotkania aż po oddanie gotowej przestrzeni."
+},
+
+"trustedBrands": {
+  "eyebrow": "Zaufanie Klientów",
+  "title": "Nasze realizacje łączą jakość, funkcjonalność i dopracowaną estetykę.",
+  "description": "Doświadczenie, precyzja i odpowiedzialne podejście do każdej realizacji sprawiają, że wybierają nas Klienci oczekujący najwyższego standardu.",
+  "regionLabel": "Marki i partnerzy"
+}
+
+},
+
   "services": {
   "hero": {
     "eyebrow": "PRO100 Twój Remont",

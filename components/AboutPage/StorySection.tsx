@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Link } from "@/navigation";
-// import styles from "@/app/[locale]/about/about.module.css";
+
 import styles from "./StorySection.module.css";
 
 export default function StorySection() {
@@ -16,6 +16,15 @@ export default function StorySection() {
       aria-labelledby="about-story-title"
     >
       <div className="container">
+        <motion.header
+          className={styles.heroTop}
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+        >
+          <span className={styles.pageEyebrow}>{t("hero.eyebrow")}</span>
+        </motion.header>
+
         <div className={styles.storyInner}>
           <motion.div
             className={styles.storyMedia}
@@ -34,6 +43,7 @@ export default function StorySection() {
                   sizes="(max-width: 767px) 100vw, 50vw"
                   priority={false}
                 />
+
                 <div className={styles.storyImageOverlay} aria-hidden="true" />
               </div>
 
@@ -43,9 +53,9 @@ export default function StorySection() {
                     {t("story.eyebrow")}
                   </span>
 
-                  <h2 id="about-story-title" className={styles.storyBadgeTitle}>
+                  <h1 id="about-story-title" className={styles.storyBadgeTitle}>
                     {t("story.title")}
-                  </h2>
+                  </h1>
                 </div>
               </div>
             </div>

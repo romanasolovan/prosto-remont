@@ -2,34 +2,51 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import { ShieldCheck, Sparkles, Handshake, Building2 } from "lucide-react";
+import {
+  BadgeCheck,
+  Focus,
+  Handshake,
+  HeartHandshake,
+  ShieldCheck,
+  Sparkles,
+  Workflow,
+} from "lucide-react";
+
 import styles from "./ValuesSection.module.css";
+
+const valueItems = [
+  {
+    key: "first",
+    icon: ShieldCheck,
+  },
+  {
+    key: "second",
+    icon: Focus,
+  },
+  {
+    key: "third",
+    icon: Handshake,
+  },
+  {
+    key: "fourth",
+    icon: Workflow,
+  },
+  {
+    key: "fifth",
+    icon: HeartHandshake,
+  },
+  {
+    key: "sixth",
+    icon: BadgeCheck,
+  },
+  {
+    key: "seventh",
+    icon: Sparkles,
+  },
+] as const;
 
 export default function ValuesSection() {
   const t = useTranslations("about");
-
-  const values = [
-    {
-      icon: ShieldCheck,
-      title: t("values.items.first.title"),
-      text: t("values.items.first.text"),
-    },
-    {
-      icon: Sparkles,
-      title: t("values.items.second.title"),
-      text: t("values.items.second.text"),
-    },
-    {
-      icon: Handshake,
-      title: t("values.items.third.title"),
-      text: t("values.items.third.text"),
-    },
-    {
-      icon: Building2,
-      title: t("values.items.fourth.title"),
-      text: t("values.items.fourth.text"),
-    },
-  ];
 
   return (
     <section
@@ -38,40 +55,52 @@ export default function ValuesSection() {
     >
       <div className="container">
         <div className={styles.valuesInner}>
-          <motion.div
-            className={styles.valuesIntro}
-            initial={{ opacity: 0, y: 28 }}
+          <motion.header
+            className={styles.valuesHeader}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.7 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.65 }}
           >
-            <span className={styles.valuesEyebrow}>{t("values.eyebrow")}</span>
-          </motion.div>
+            <h2 id="about-values-title" className={styles.valuesEyebrow}>
+              {t("values.eyebrow")}
+            </h2>
+          </motion.header>
 
           <div className={styles.valuesGrid}>
-            {values.map((value, index) => {
-              const Icon = value.icon;
+            {valueItems.map(({ key, icon: Icon }, index) => (
+              <motion.article
+                key={key}
+                className={styles.valueItem}
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{
+                  duration: 0.55,
+                  delay: index * 0.07,
+                }}
+              >
+                <div className={styles.valueItemInner}>
+                  <span className={styles.valueNumber} aria-hidden="true">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
 
-              return (
-                <motion.article
-                  key={index}
-                  className={styles.valueItem}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.55, delay: index * 0.12 }}
-                >
-                  <div className={styles.valueItemInner}>
-                    <div className={styles.valueIconWrap} aria-hidden="true">
-                      <Icon className={styles.valueIcon} />
-                    </div>
-
-                    <h3 className={styles.valueTitle}>{value.title}</h3>
-                    <p className={styles.valueText}>{value.text}</p>
+                  <div className={styles.valueIconWrap} aria-hidden="true">
+                    <Icon className={styles.valueIcon} />
                   </div>
-                </motion.article>
-              );
-            })}
+
+                  <div className={styles.valueContent}>
+                    <h3 className={styles.valueTitle}>
+                      {t(`values.items.${key}.title`)}
+                    </h3>
+
+                    <p className={styles.valueText}>
+                      {t(`values.items.${key}.text`)}
+                    </p>
+                  </div>
+                </div>
+              </motion.article>
+            ))}
           </div>
         </div>
       </div>
