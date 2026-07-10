@@ -3,6 +3,7 @@ import { useTranslations } from "next-intl";
 // import type { Metadata } from "next";
 import styles from "./reviews.module.css";
 import ClientOpinions from "@/components/ClientOpinions/ClientOpinions";
+// import VideoReviews from "@/components/VideoReviews/VideoReviews";
 
 // export async function generateMetadata({
 //   params,
@@ -23,27 +24,20 @@ export default function ReviewsPage() {
 
   return (
     <main className={styles.reviewsPage}>
-      {/* <section className={styles.hero}>
-        <div className={styles.heroGrid} aria-hidden="true" />
-        <div className={styles.heroBackground} aria-hidden="true">
-          <span className={styles.bgWord}>Reviews</span>
-        </div>
-
-        <div className="container">
-          <div className={styles.heroInner}>
-            <span className={styles.heroEyebrow}>Client opinions</span>
-            <h1 className={styles.heroTitle}>{t("title")}</h1>
-            <p className={styles.heroLead}>
-              Confidence is built through the experience clients carry away.
-            </p>
-          </div>
-        </div>
-      </section> */}
-
       <section className={styles.reviewsSection}>
+        <div className={styles.reviewsGrid} aria-hidden="true" />
+
+        <div className={styles.watermark} aria-hidden="true">
+          <span className={styles.watermarkText}>{t("watermark")}</span>
+        </div>
+
         <div className="container">
-          <div className={styles.reviewsShell}>
-            <ClientOpinions />
+          <div className={styles.videoSection}>{/* <VideoReviews /> */}</div>
+
+          <div className={styles.opinionsSection}>
+            <div className={styles.reviewsShell}>
+              <ClientOpinions />
+            </div>
           </div>
         </div>
       </section>

@@ -17,6 +17,8 @@ interface Comment {
     ru?: string;
   };
   date: string;
+  photoUrl?: string;
+  videoUrl?: string;
 }
 
 export default function ClientOpinions() {

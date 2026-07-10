@@ -21,7 +21,8 @@ export default function Partners({
 }: PartnersProps) {
   if (!partners.length) return null;
 
-  const carouselPartners = [...partners, ...partners];
+  const carouselPartners =
+    partners.length >= 5 ? [...partners, ...partners] : partners;
 
   return (
     <section className={styles.partners} aria-label={ariaLabel}>
@@ -30,16 +31,20 @@ export default function Partners({
       </div>
 
       <div className={styles.carousel} aria-hidden="true">
-        <div className={styles.carouselTrack}>
+        <div
+          className={`${styles.carouselTrack} ${
+            partners.length >= 5 ? styles.isAnimated : styles.isStatic
+          }`}
+        >
           {carouselPartners.map((partner, index) => {
             const content = (
               <>
                 {partner.logoUrl ? (
                   <Image
                     src={partner.logoUrl}
-                    alt=""
-                    width={32}
-                    height={32}
+                    alt={`${partner.name} logo`}
+                    width={36}
+                    height={36}
                     className={styles.partnerLogo}
                     loading="lazy"
                   />

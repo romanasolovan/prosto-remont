@@ -189,6 +189,29 @@
   "title": "Nasze realizacje łączą jakość, funkcjonalność i dopracowaną estetykę.",
   "description": "Doświadczenie, precyzja i odpowiedzialne podejście do każdej realizacji sprawiają, że wybierają nas Klienci oczekujący najwyższego standardu.",
   "regionLabel": "Marki i partnerzy"
+}, 
+
+"cta": {
+"eyebrow": "Porozmawiajmy",
+"title": "Wybierz kolejny krok",
+"description": "Niezależnie od tego, czy chcesz poznać opinie naszych Klientów, poprosić o wycenę czy skontaktować się z nami bezpośrednio — tutaj możesz wybrać najlepszy sposób, aby przejść dalej.",
+"items": {
+"first": {
+"title": "Opinie Klientów",
+"text": "Zobacz, jak nasi Klienci oceniają współpracę, komunikację, przebieg realizacji oraz końcowy efekt.",
+"button": "Zobacz opinie"
+},
+"second": {
+"title": "Poproś o wycenę",
+"text": "Opowiedz nam o swojej przestrzeni i potrzebach związanych z remontem, a pomożemy Ci zaplanować kolejne kroki.",
+"button": "Poproś o wycenę"
+},
+"third": {
+"title": "Skontaktuj się z nami",
+"text": "Masz pytania lub chcesz bezpośrednio omówić swój remont? Skontaktuj się z nami i porozmawiajmy o Twoim projekcie.",
+"button": "Skontaktuj się"
+}
+}
 }
 
 },

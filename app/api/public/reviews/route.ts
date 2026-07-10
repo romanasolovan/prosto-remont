@@ -1,8 +1,17 @@
 import { NextResponse } from "next/server";
 import { getPayload } from "payload";
 import config from "@payload-config";
+import type { Media } from "@/payload-types";
 
 export const runtime = "nodejs";
+
+const getMediaUrl = (media?: number | Media | null) => {
+  if (!media || typeof media !== "object") {
+    return undefined;
+  }
+
+  return media.url || undefined;
+};
 
 export async function GET() {
   try {
@@ -16,6 +25,7 @@ export async function GET() {
         },
       },
       sort: "-createdAt",
+      depth: 1,
       limit: 12,
     });
 
@@ -29,6 +39,8 @@ export async function GET() {
         translations: review.translations,
         location: review.location,
         date: review.createdAt,
+        photoUrl: getMediaUrl(review.photo),
+        videoUrl: getMediaUrl(review.video),
       })),
     });
   } catch (error) {

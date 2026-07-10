@@ -101,6 +101,21 @@ export const Reviews: CollectionConfig = {
       label: "Optional Photo",
     },
     {
+      name: "video",
+      type: "upload",
+      relationTo: "media",
+      label: "Optional Review Video",
+      filterOptions: {
+        mimeType: {
+          in: ["video/mp4", "video/webm"],
+        },
+      },
+      admin: {
+        description:
+          "Optional video added by the website owner. Only MP4 and WebM videos can be selected. Maximum file size: 50 MB.",
+      },
+    },
+    {
       name: "status",
       type: "select",
       required: true,

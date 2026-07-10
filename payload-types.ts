@@ -155,11 +155,16 @@ export interface User {
   collection: 'users';
 }
 /**
+ * Images and videos used across projects, reviews, trusted brands, partners, and other website content.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media".
  */
 export interface Media {
   id: number;
+  /**
+   * Describe the image or video for accessibility and administration.
+   */
   alt: string;
   updatedAt: string;
   createdAt: string;
@@ -234,6 +239,10 @@ export interface Review {
   };
   originalLanguage: 'en' | 'pl' | 'uk' | 'ru';
   photo?: (number | null) | Media;
+  /**
+   * Optional video added by the website owner. Only MP4 and WebM videos can be selected. Maximum file size: 50 MB.
+   */
+  video?: (number | null) | Media;
   /**
    * Set to 'Approved' to show the review on the website. Keep as 'Pending' to hide it until you review the content.
    */
@@ -559,6 +568,7 @@ export interface ReviewsSelect<T extends boolean = true> {
       };
   originalLanguage?: T;
   photo?: T;
+  video?: T;
   status?: T;
   featured?: T;
   internalNotes?: T;

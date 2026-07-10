@@ -174,8 +174,29 @@
   "title": "Our projects combine quality, functionality, and refined design.",
   "description": "Experience, precision, and a responsible approach to every project are why clients who expect the highest standards choose us.",
   "regionLabel": "Brands and partners"
+},
+"cta": {
+  "eyebrow": "Let’s talk",
+  "title": "Choose the next step",
+  "description": "Whether you want to read client feedback, request a quote, or get in touch directly, here is the best place to continue.",
+  "items": {
+    "first": {
+      "title": "Client opinions",
+      "text": "See how clients describe the process, communication, and final result after working with us.",
+      "button": "Read reviews"
+    },
+    "second": {
+      "title": "Request a quote",
+      "text": "Tell us about your space and project needs, and we will help you take the next step with clarity.",
+      "button": "Request a quote"
+    },
+    "third": {
+      "title": "Contact us",
+      "text": "Have questions or want to discuss your renovation directly? Reach out and let’s start the conversation.",
+      "button": "Contact us"
+    }
+  }
 }
-
 },
 
 "services": {
@@ -318,6 +339,7 @@
       "description": "Tell us about your property, your goals, and the type of work you need. We will review your request, discuss the next steps, and help you move toward a well-planned renovation with clarity from the very beginning."
     }
   },
+
   "contact": {
     "hero": {
       "title": "Contact Us",
@@ -335,11 +357,13 @@
     },
     "formNote": "The contact form is available below."
   },
+
   "contactCta": {
   "eyebrow": "Next step",
   "title": "Ready to shape your next renovation?",
   "description": "Start with a clear conversation, explore the process, and take the next step with confidence."
 },
+
   "footer": {
   "description": "Comprehensive renovation and interior finishing for apartments, homes, and commercial spaces.",
   "quickLinks": "Quick Links",
@@ -369,6 +393,7 @@
   },
   "copyright": "© {year} PRO100 Twój Remont. All rights reserved."
 },
+
   "metadata": {
     "home": {
       "title": "PRO100 Twój Remont | Turnkey Renovation and Interior Finishing",
@@ -555,6 +580,7 @@
     "reviewSubmitted": "Thank you. Your review has been submitted and will be published after a quick review."
   }
 },
+
   "leaveComment": {
     "title": "Share Your Experience",
     "description": "Tell us about your renovation experience with our team.",

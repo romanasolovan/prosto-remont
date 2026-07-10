@@ -46,12 +46,20 @@ export default buildConfig({
     },
   }),
   sharp,
+  upload: {
+    limits: {
+      fileSize: 50 * 1024 * 1024,
+    },
+    abortOnLimit: true,
+    responseOnLimit: "The maximum allowed upload size is 50 MB.",
+  },
   plugins: [
     vercelBlobStorage({
       enabled: true,
       collections: {
         media: true,
       },
+      clientUploads: true,
       token: process.env.BLOB_READ_WRITE_TOKEN || "",
     }),
   ],

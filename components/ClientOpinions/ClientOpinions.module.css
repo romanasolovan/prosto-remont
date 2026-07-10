@@ -91,10 +91,10 @@
   background:
     radial-gradient(
       circle at 30% 30%,
-      rgba(255, 255, 255, 0.14),
-      rgba(255, 255, 255, 0.04) 72%
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.03) 72%
     ),
-    rgba(255, 255, 255, 0.04);
+    rgba(255, 255, 255, 0.03);
   color: #f5f4f0;
   border-radius: 999px;
   font-family: "Barlow Condensed", sans-serif;
@@ -116,12 +116,12 @@
   background:
     radial-gradient(
       circle at 30% 30%,
-      rgba(255, 255, 255, 0.18),
-      rgba(255, 255, 255, 0.05) 72%
+      rgba(255, 255, 255, 0.15),
+      rgba(255, 255, 255, 0.04) 72%
     ),
-    rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.22);
-  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.16);
+    rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.24);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.18);
 }
 
 .leaveReviewButton:focus-visible {
@@ -167,6 +167,10 @@
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.05),
     0 18px 36px rgba(0, 0, 0, 0.12);
+  transition:
+    transform 320ms ease,
+    border-color 320ms ease,
+    box-shadow 320ms ease;
 }
 
 .commentCard::before {
@@ -176,6 +180,30 @@
   border: 1px solid rgba(255, 255, 255, 0.04);
   border-radius: 14px;
   pointer-events: none;
+}
+
+.commentCard::after {
+  content: "\201C";
+  position: absolute;
+  top: 2px;
+  right: 22px;
+  z-index: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 64px;
+  font-style: italic;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.06);
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .commentCard:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.16);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      0 24px 48px rgba(0, 0, 0, 0.18);
+  }
 }
 
 .commentHeader {
@@ -195,22 +223,32 @@
 }
 
 .authorAvatar {
+  position: relative;
   width: 42px;
   height: 42px;
   display: grid;
   place-items: center;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   background:
     radial-gradient(
       circle at 30% 30%,
-      rgba(255, 255, 255, 0.12),
-      rgba(255, 255, 255, 0.03) 72%
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.025) 72%
     ),
-    rgba(255, 255, 255, 0.025);
+    rgba(255, 255, 255, 0.02);
   font-family: "Barlow Condensed", sans-serif;
   font-size: 16px;
   color: #f5f4f0;
+}
+
+.authorAvatar::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid rgba(245, 244, 240, 0.06);
+  pointer-events: none;
 }
 
 .authorName {
@@ -246,11 +284,12 @@
   z-index: 1;
   max-width: 40ch;
   margin: 0;
-  color: rgba(245, 244, 240, 0.74);
-  font-family: "Barlow", sans-serif;
-  font-size: 14px;
-  line-height: 1.82;
-  font-weight: 300;
+  color: rgba(245, 244, 240, 0.84);
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 1.6;
 }
 
 @media (min-width: 900px) {
@@ -260,5 +299,15 @@
 
   .commentCard:nth-child(2n) {
     margin-top: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .commentCard {
+    transition: none;
+  }
+
+  .commentCard:hover {
+    transform: none;
   }
 }

@@ -15,6 +15,7 @@ import ProcessSection from "@/components/home/ProcessSection/ProcessSection";
 
 import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
+import ClientOpinionsCTA from "@/components/AboutPage/ClientOpinionsCTA";
 // import HomeMobileSectionNavigator from "@/components/home/HomeMobileSectionNavigator/HomeMobileSectionNavigator";
 
 type SectionItem = {
@@ -119,6 +120,10 @@ export default function Home() {
 
       <section id="reviews" className={styles.pageSection}>
         <ClientOpinionsPreview />
+      </section>
+
+      <section id="contact" className={styles.pageSection}>
+        <ClientOpinionsCTA />
       </section>
 
       {/* <section id="quote" className={styles.pageSection}>
