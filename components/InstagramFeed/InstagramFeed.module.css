@@ -80,6 +80,14 @@
   aspect-ratio: 1;
 }
 
+.skeleton {
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
 .tileLink {
   position: relative;
   display: block;
@@ -89,11 +97,12 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.tileImage {
+.tileMedia {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  background: #000;
   transition: transform 500ms ease;
 }
 
@@ -126,7 +135,7 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .tileLink:hover .tileImage {
+  .tileLink:hover .tileMedia {
     transform: scale(1.05);
   }
 
@@ -159,15 +168,33 @@
   }
 }
 
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .tileImage,
+  .tileMedia,
   .tileScrim,
   .tileIcon {
     transition: none;
   }
 
-  .tileLink:hover .tileImage,
+  .tileLink:hover .tileMedia,
   .tileLink:hover .tileIcon {
     transform: translate(-50%, -50%);
+  }
+
+  .skeleton {
+    animation: none;
+  }
+
+  .tileMedia[autoplay] {
+    animation-play-state: paused;
   }
 }

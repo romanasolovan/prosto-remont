@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import styles from "./contact.module.css";
-// import InstagramFeed from "@/components/InstagramFeed/InstagramFeed";
+import InstagramFeed from "@/components/InstagramFeed/InstagramFeed";
 
 export async function generateMetadata({
   params,
@@ -215,7 +215,7 @@ export default function Contact() {
             </div>
           </section>
 
-          {/* <InstagramFeed /> */}
+          <InstagramFeed />
         </div>
       </section>
     </main>

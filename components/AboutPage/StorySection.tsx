@@ -36,7 +36,7 @@ export default function StorySection() {
             <div className={styles.storyImageFrame}>
               <div className={styles.storyImageWrap}>
                 <Image
-                  src="/about/aboutBg.jpg"
+                  src="/about/aboutUs.jpg"
                   alt={t("story.title")}
                   fill
                   className={styles.storyImage}

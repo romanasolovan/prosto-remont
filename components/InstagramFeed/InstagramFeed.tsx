@@ -1,40 +1,38 @@
-import styles from "./InstagramFeed.module.css";
+"use client";
 
-const INSTAGRAM_POSTS = [
-  {
-    id: "1",
-    image: "/instagram/post-1.jpg",
-    permalink: "https://www.instagram.com/pro100_twoj_remont/",
-  },
-  {
-    id: "2",
-    image: "/instagram/post-2.jpg",
-    permalink: "https://www.instagram.com/pro100_twoj_remont/",
-  },
-  {
-    id: "3",
-    image: "/instagram/post-3.jpg",
-    permalink: "https://www.instagram.com/pro100_twoj_remont/",
-  },
-  {
-    id: "4",
-    image: "/instagram/post-4.jpg",
-    permalink: "https://www.instagram.com/pro100_twoj_remont/",
-  },
-  {
-    id: "5",
-    image: "/instagram/post-5.jpg",
-    permalink: "https://www.instagram.com/pro100_twoj_remont/",
-  },
-  {
-    id: "6",
-    image: "/instagram/post-6.jpg",
-    permalink: "https://www.instagram.com/pro100_twoj_remont/",
-  },
-];
+import { useEffect, useState } from "react";
+import styles from "./InstagramFeed.module.css";
+import type { PublicInstagramPost } from "@/types/instagram";
+import Image from "next/image";
 
 export default function InstagramFeed() {
-  if (INSTAGRAM_POSTS.length === 0) {
+  const [posts, setPosts] = useState<PublicInstagramPost[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await fetch("/api/public/instagram-feed");
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch Instagram feed");
+        }
+
+        const data = await response.json();
+
+        setPosts(data.posts || []);
+      } catch (error) {
+        console.error("Failed to load Instagram feed:", error);
+        setPosts([]);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchPosts();
+  }, []);
+
+  if (!isLoading && posts.length === 0) {
     return null;
   }
 
@@ -59,43 +57,80 @@ export default function InstagramFeed() {
       </div>
 
       <ul className={styles.grid}>
-        {INSTAGRAM_POSTS.map((post) => (
-          <li key={post.id} className={styles.tile}>
-            <a
-              href={post.permalink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.tileLink}
-              aria-label="View post on Instagram"
-            >
-              <img
-                className={styles.tileImage}
-                src={post.image}
-                alt=""
-                loading="lazy"
-              />
-              <span className={styles.tileScrim} aria-hidden="true" />
-              <span className={styles.tileIcon} aria-hidden="true">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.4"
+        {isLoading
+          ? Array.from({ length: 6 }).map((_, index) => (
+              <li key={index} className={styles.tile}>
+                <div className={styles.skeleton} aria-hidden="true" />
+              </li>
+            ))
+          : posts.map((post) => (
+              <li key={post.id} className={styles.tile}>
+                <a
+                  href={post.permalink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.tileLink}
+                  aria-label="View post on Instagram"
                 >
-                  <rect x="3.5" y="3.5" width="17" height="17" rx="4.5" />
-                  <circle cx="12" cy="12" r="4" />
-                  <circle
-                    cx="17"
-                    cy="7"
-                    r="0.6"
-                    fill="currentColor"
-                    stroke="none"
-                  />
-                </svg>
-              </span>
-            </a>
-          </li>
-        ))}
+                  {post.mediaType === "VIDEO" ? (
+                    <video
+                      className={styles.tileMedia}
+                      src={post.mediaUrl}
+                      poster={post.thumbnailUrl}
+                      muted
+                      loop
+                      autoPlay
+                      playsInline
+                      preload="metadata"
+                    />
+                  ) : (
+                    <Image
+                      className={styles.tileMedia}
+                      src={post.thumbnailUrl}
+                      alt=""
+                      loading="lazy"
+                    />
+                  )}
+
+                  <span className={styles.tileScrim} aria-hidden="true" />
+
+                  <span className={styles.tileIcon} aria-hidden="true">
+                    {post.mediaType === "VIDEO" ? (
+                      <svg
+                        viewBox="0 0 48 48"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.4"
+                      >
+                        <circle cx="24" cy="24" r="17" />
+                        <path
+                          d="M20 17l11 7-11 7V17z"
+                          fill="currentColor"
+                          stroke="none"
+                        />
+                      </svg>
+                    ) : (
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.4"
+                      >
+                        <rect x="3.5" y="3.5" width="17" height="17" rx="4.5" />
+                        <circle cx="12" cy="12" r="4" />
+                        <circle
+                          cx="17"
+                          cy="7"
+                          r="0.6"
+                          fill="currentColor"
+                          stroke="none"
+                        />
+                      </svg>
+                    )}
+                  </span>
+                </a>
+              </li>
+            ))}
       </ul>
     </section>
   );

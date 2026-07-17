@@ -175,6 +175,7 @@
 },
 
 "details": {
+  "imageAlt": "The Pro100 Twój Remont team",
   "paragraphs": {
     "first": "Od 2020 roku z powodzeniem działamy na rynku remontowo-budowlanym, realizując projekty na terenie Warszawy i okolic. Naszą ofertę kierujemy zarówno do klientów indywidualnych, jak i firm oraz instytucji publicznych. Dzięki doświadczeniu, profesjonalnemu zapleczu technicznemu oraz wykwalifikowanej kadrze jesteśmy w stanie realizować nawet najbardziej wymagające przedsięwzięcia.",
     "second": "Wierzymy, że każdy remont to coś więcej niż tylko prace budowlane — to proces tworzenia przestrzeni, która ma służyć ludziom przez lata. Dlatego do każdej realizacji podchodzimy indywidualnie, z pełnym zaangażowaniem i odpowiedzialnością. Łączymy wiedzę, doświadczenie oraz nowoczesne rozwiązania, aby zapewnić naszym Klientom najwyższą jakość wykonania, terminowość i pełen komfort współpracy.",
@@ -577,6 +578,7 @@
   }
 },
   "clientOpinions": {
+    "watermark": "Client Opinions",
   "eyebrow": "Client opinions",
   "title": "Real experiences. Real trust.",
   "description": "Short stories from clients who trusted us with their spaces.",

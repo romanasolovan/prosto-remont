@@ -160,6 +160,7 @@
 },
 
 "details": {
+  "imageAlt": "The Pro100 Twój Remont team",
   "paragraphs": {
     "first": "Since 2020, we have successfully operated in the renovation and construction industry, completing projects throughout Warsaw and the surrounding areas. We work with individual clients, businesses, and public institutions. Our experience, professional technical resources, and qualified team enable us to undertake even the most demanding projects.",
     "second": "We believe that every renovation is more than just construction work — it is the process of creating a space that will serve people for years. That is why we approach every project individually, with complete commitment and responsibility. We combine knowledge, experience, and modern solutions to provide our clients with the highest quality of workmanship, timely completion, and a comfortable working relationship.",
@@ -566,6 +567,7 @@
   }
 },
   "clientOpinions": {
+    "watermark": "Client Opinions",
   "eyebrow": "Client opinions",
   "title": "Real experiences. Real trust.",
   "description": "Short stories from clients who trusted us with their spaces.",
