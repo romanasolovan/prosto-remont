@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import WrittenReviewCard from "./WrittenReviewCard";
 import WrittenReviewModal from "./WrittenReviewModal";
 import { useReviewModal } from "../shared/useReviewModal";
+import { useDragScroll } from "../shared/useDragScroll";
 import type { PublicReview } from "../shared/types";
 import styles from "./WrittenReviews.module.css";
 
@@ -18,6 +19,7 @@ export default function WrittenReviewsCarousel({
   const t = useTranslations("clientOpinions");
   const trackRef = useRef<HTMLDivElement | null>(null);
   const modal = useReviewModal({ itemCount: reviews.length });
+  const { trackProps, wasDragged } = useDragScroll();
 
   const scrollByCard = (direction: 1 | -1) => {
     const track = trackRef.current;
@@ -46,13 +48,7 @@ export default function WrittenReviewsCarousel({
             aria-label={t("aria.scrollPrevious")}
           >
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path
-                d="M15 6l-6 6 6 6"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
+              <path d="M15 6l-6 6 6 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
 
@@ -63,13 +59,7 @@ export default function WrittenReviewsCarousel({
             aria-label={t("aria.scrollNext")}
           >
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path
-                d="M9 6l6 6-6 6"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
+              <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
         </div>
@@ -79,13 +69,17 @@ export default function WrittenReviewsCarousel({
         ref={trackRef}
         className={styles.track}
         aria-label={t("aria.writtenReviews")}
+        {...trackProps}
       >
         {reviews.map((review, index) => (
           <WrittenReviewCard
             key={review.id}
             review={review}
             variant="carousel"
-            onOpen={(event) => modal.open(index, event.currentTarget)}
+            onOpen={(event) => {
+              if (wasDragged()) return;
+              modal.open(index, event.currentTarget);
+            }}
           />
         ))}
       </div>

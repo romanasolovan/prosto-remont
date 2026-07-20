@@ -577,43 +577,87 @@
     "scrollNext": "Pokaż następny post"
   }
 },
-  "clientOpinions": { "watermark": "Opinie Klientów", "eyebrow": "Opinie Klientów", "title": "Prawdziwe doświadczenia. Prawdziwe zaufanie.", "description": "Krótkie historie Klientów, którzy powierzyli nam swoje wnętrza.", "videoReviews": "Opinie wideo", "writtenReviews": "Opinie tekstowe", "readMore": "Przeczytaj opinie Klientów", "reviewCount": "{count, plural, =0 {Brak opinii} one {# opinia} few {# opinie} many {# opinii} other {# opinii}}", "cta": { "leaveReview": "Dodaj opinię" }, "readFullReview": "Przeczytaj całą opinię", "viewOnGoogle": "Zobacz w Google", "noVideoReviews": "Brak opinii wideo", "noWrittenReviews": "Brak opinii tekstowych", "aria": { "stars": "Średnia ocena", "rating": "Ocena: {rating} z 5", "videoReviews": "Opinie wideo Klientów", "writtenReviews": "Opinie tekstowe Klientów", "playVideo": "Odtwórz opinię wideo", "previousVideo": "Poprzednie wideo", "nextVideo": "Następne wideo", "closeVideo": "Zamknij wideo", "previousReview": "Poprzednia opinia", "nextReview": "Następna opinia", "closeReview": "Zamknij opinię", "scrollPrevious": "Przewiń do poprzedniej", "scrollNext": "Przewiń do następnej" }, "success": { "reviewSubmitted": "Dziękujemy. Twoja opinia została przesłana i zostanie opublikowana po krótkiej weryfikacji." } },
 
-  "leaveComment": {
-    "title": "Podziel się swoją opinią",
-    "description": "Opowiedz nam o swoich doświadczeniach ze współpracy z naszą ekipą.",
-    "fields": {
-      "name": "Twoje imię",
-      "rating": "Twoja ocena",
-      "comment": "Twoja opinia"
-    },
-    "placeholders": {
-      "name": "Wpisz swoje imię",
-      "comment": "Opisz swoje doświadczenia związane z naszymi usługami..."
-    },
-    "buttons": {
-      "cancel": "Anuluj",
-      "submit": "Wyślij opinię",
-      "submitting": "Wysyłanie..."
-    },
-    "validation": {
-      "requiredName": "Imię jest wymagane",
-      "nameMin": "Imię musi mieć co najmniej {count} znaki",
-      "nameMax": "Imię może mieć maksymalnie {count} znaków",
-      "requiredRating": "Wybierz ocenę",
-      "requiredComment": "Opinia jest wymagana",
-      "commentMin": "Opinia musi mieć co najmniej {count} znaków",
-      "commentMax": "Opinia może mieć maksymalnie {count} znaków"
-    },
-    "aria": {
-      "selectRating": "Wybierz ocenę {rating} gwiazdek",
-      "closeModal": "Zamknij formularz opinii"
-    },
-    "success": {
-      "title": "Dziękujemy!",
-      "reviewSubmitted": "Twoja opinia została przesłana i zostanie opublikowana po krótkiej weryfikacji."
-    }
+  "clientOpinions": { 
+    "watermark": "Opinie Klientów", 
+    "eyebrow": "Opinie Klientów", 
+    "title": "Prawdziwe doświadczenia. Prawdziwe zaufanie.", 
+    "description": "Krótkie historie Klientów, którzy powierzyli nam swoje wnętrza.", 
+    "videoReviews": "Opinie wideo", 
+    "writtenReviews": "Opinie tekstowe", 
+    "readMore": "Przeczytaj opinie Klientów", 
+    "reviewCount": "{count, plural, =0 {Brak opinii} one {# opinia} few {# opinie} many {# opinii} other {# opinii}}", 
+    "cta": { "leaveReview": "Dodaj opinię" }, 
+    "readFullReview": "Przeczytaj całą opinię", 
+    "viewOnGoogle": "Zobacz w Google", 
+    "noVideoReviews": "Brak opinii wideo", 
+    "noWrittenReviews": "Brak opinii tekstowych", 
+    "aria": { 
+      "stars": "Średnia ocena", 
+      "rating": "Ocena: {rating} z 5", 
+      "videoReviews": "Opinie wideo Klientów", 
+      "writtenReviews": "Opinie tekstowe Klientów", 
+      "playVideo": "Odtwórz opinię wideo", 
+      "previousVideo": "Poprzednie wideo", 
+      "nextVideo": "Następne wideo", 
+      "closeVideo": "Zamknij wideo", 
+      "previousReview": "Poprzednia opinia", 
+      "nextReview": "Następna opinia", 
+      "closeReview": "Zamknij opinię", 
+      "scrollPrevious": "Przewiń do poprzedniej", 
+      "scrollNext": "Przewiń do następnej" },
+   "success": { 
+    "reviewSubmitted": "Dziękujemy. Twoja opinia została przesłana i zostanie opublikowana po krótkiej weryfikacji."
+     }
   },
+
+  "leaveComment": { 
+    "title": "Podziel się swoją opinią", 
+    "description": "Opowiedz nam o swoich doświadczeniach ze współpracy z naszym zespołem.", 
+    "fields": { 
+      "name": "Imię", 
+      "location": "Lokalizacja", 
+      "rating": "Twoja ocena", 
+      "comment": "Twoja opinia", 
+      "photo": "Zdjęcie", 
+      "optional": "Opcjonalnie" 
+      }, 
+      "placeholders": { 
+        "name": "Wpisz swoje imię", 
+        "location": "Miasto lub lokalizacja projektu", 
+        "comment": "Podziel się swoją opinią o naszych usługach remontowych...", 
+        "addPhoto": "Dodaj zdjęcie", 
+        "photoHint": "JPG, PNG lub WEBP. Maksymalnie {size}."
+        }, 
+      "buttons": { 
+        "cancel": "Anuluj", 
+        "submit": "Dodaj opinię", 
+        "submitting": "Wysyłanie...", 
+        "remove": "Usuń", 
+        "close": "Zamknij" 
+        }, 
+      "validation": { 
+        "requiredName": "Imię jest wymagane", 
+        "nameMin": "Imię musi zawierać co najmniej {count} znaki", 
+        "nameMax": "Imię może zawierać maksymalnie {count} znaków", 
+        "requiredLocation": "Lokalizacja jest wymagana", 
+        "requiredRating": "Wybierz ocenę", 
+        "requiredComment": "Opinia jest wymagana", 
+        "commentMin": "Opinia musi zawierać co najmniej {count} znaków", 
+        "commentMax": "Opinia może zawierać maksymalnie {count} znaków", 
+        "photoInvalidType": "Prześlij zdjęcie w formacie JPG, PNG lub WEBP.", 
+        "photoTooLarge": "Zdjęcie musi być mniejsze niż {size}." 
+        }, 
+      "aria": { 
+        "selectRating": "Wybierz ocenę {rating} gwiazdek", 
+        "closeModal": "Zamknij formularz opinii", 
+        "removePhoto": "Usuń wybrane zdjęcie" 
+        }, 
+      "success": {
+        "title": "Dziękujemy!", 
+        "reviewSubmitted": "Twoja opinia została przesłana i zostanie opublikowana po krótkiej weryfikacji." 
+        }
+     },
 
   "callWidget": {
     "title": "Zadzwoń do nas",

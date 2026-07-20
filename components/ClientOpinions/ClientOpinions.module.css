@@ -21,7 +21,7 @@
 
 .title {
   margin: 0;
-  max-width: 12ch;
+  /* max-width: 12ch; */
   font-family: "Barlow Condensed", sans-serif;
   font-size: clamp(2rem, 4vw, 3.2rem);
   font-weight: 300;
@@ -310,4 +310,14 @@
   .commentCard:hover {
     transform: none;
   }
+}
+
+.sectionsStack {
+  display: grid;
+  gap: clamp(64px, 9vw, 120px);
+}
+
+.sectionsStack > *:not(:first-child) {
+  padding-top: clamp(48px, 7vw, 80px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }

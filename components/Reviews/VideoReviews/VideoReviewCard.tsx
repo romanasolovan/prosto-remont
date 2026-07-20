@@ -27,7 +27,17 @@ const VideoReviewCard = forwardRef<HTMLButtonElement, VideoReviewCardProps>(
         }`}
         aria-label={t("aria.playVideo")}
       >
-        <span className={styles.cardGlow} aria-hidden="true" />
+        <video
+          className={styles.cardPreview}
+          src={review.video.url}
+          preload="metadata"
+          muted
+          playsInline
+          tabIndex={-1}
+          aria-hidden="true"
+        />
+
+        <span className={styles.cardScrim} aria-hidden="true" />
 
         <span className={styles.playButton} aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none">
@@ -35,9 +45,11 @@ const VideoReviewCard = forwardRef<HTMLButtonElement, VideoReviewCardProps>(
           </svg>
         </span>
 
-        <span className={styles.cardMonogram} aria-hidden="true">
-          {review.name.charAt(0).toUpperCase()}
-        </span>
+        {variant === "grid" && (
+          <span className={styles.cardMonogram} aria-hidden="true">
+            {review.name.charAt(0).toUpperCase()}
+          </span>
+        )}
 
         <span className={styles.cardFooter}>
           <span className={styles.cardName}>{review.name}</span>

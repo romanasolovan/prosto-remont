@@ -81,6 +81,13 @@
   scroll-padding-left: 4px;
   padding: 4px 4px 12px;
   -webkit-overflow-scrolling: touch;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.track:active {
+  cursor: grabbing;
 }
 
 .track::-webkit-scrollbar {
