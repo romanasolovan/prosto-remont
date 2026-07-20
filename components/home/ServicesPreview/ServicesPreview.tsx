@@ -3,21 +3,28 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/navigation";
+
+import DataLoader from "@/components/ui/DataLoader/DataLoader";
+
 import type { PublicService } from "@/types/services";
-import styles from "./ServicesPreview.module.css";
 import { getServiceAnchorHref } from "@/utils/serviceAnchors";
+
+import styles from "./ServicesPreview.module.css";
 
 const getServiceIcon = (title: string) => {
   const value = title.toLowerCase();
 
   if (value.includes("elek") || value.includes("electric")) return "electric";
   if (value.includes("hyd") || value.includes("sanit")) return "water";
+
   if (
     value.includes("g-k") ||
     value.includes("gk") ||
     value.includes("drywall")
-  )
+  ) {
     return "drywall";
+  }
+
   if (value.includes("glaz") || value.includes("tile")) return "tile";
   if (value.includes("mal") || value.includes("paint")) return "paint";
   if (value.includes("mont")) return "assembly";
@@ -84,28 +91,59 @@ const icons = {
 export default function ServicesPreview() {
   const t = useTranslations("home");
   const tCommon = useTranslations("common");
+
   const [services, setServices] = useState<PublicService[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
+    const controller = new AbortController();
+
     const fetchServices = async () => {
+      setIsLoading(true);
+      setHasError(false);
+
       try {
-        const response = await fetch("/api/public/services");
+        const response = await fetch("/api/public/services", {
+          cache: "no-store",
+          signal: controller.signal,
+        });
 
         if (!response.ok) {
-          throw new Error("Failed to fetch services");
+          throw new Error(
+            `Failed to fetch services: ${response.status}`,
+          );
         }
 
         const data = await response.json();
+        const receivedServices = Array.isArray(data.services)
+          ? data.services
+          : [];
 
-        setServices((data.services || []).slice(0, 4));
+        setServices(receivedServices.slice(0, 4));
       } catch (error) {
+        if (error instanceof Error && error.name === "AbortError") {
+          return;
+        }
+
         console.error("Failed to load services preview:", error);
         setServices([]);
+        setHasError(true);
+      } finally {
+        if (!controller.signal.aborted) {
+          setIsLoading(false);
+        }
       }
     };
 
     fetchServices();
+
+    return () => {
+      controller.abort();
+    };
   }, []);
+
+  const hasServices = services.length > 0;
 
   return (
     <section className={styles.servicesPreview} id="services">
@@ -114,57 +152,74 @@ export default function ServicesPreview() {
       <div className="container">
         <div className={styles.inner}>
           <div className={styles.sectionTop}>
-            <span className={styles.label}>{t("servicesPreview.eyebrow")}</span>
-          </div>
-
-          <div className={styles.cards}>
-            {services.map((service) => {
-              const iconKey = getServiceIcon(service.title);
-              const visibleItems = service.items.slice(0, 4);
-
-              return (
-                <Link
-                  key={service.id}
-                  href={getServiceAnchorHref(service.slug)}
-                  scroll={false}
-                  className={styles.card}
-                >
-                  <div className={styles.cardHeader}>
-                    <span className={styles.icon}>{icons[iconKey]}</span>
-                    <h3 className={styles.cardTitle}>{service.title}</h3>
-                  </div>
-
-                  <ul className={styles.itemList}>
-                    {visibleItems.map((item) => (
-                      <li className={styles.item} key={item.id}>
-                        {item.name}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className={styles.cardFooter}>
-                    <span className={styles.cardMeta}>
-                      {t("servicesPreview.itemCount", {
-                        count: service.items.length,
-                      })}
-                    </span>
-
-                    <span className={styles.cardLink}>
-                      <span>{tCommon("viewMore")}</span>
-                      <span aria-hidden="true">→</span>
-                    </span>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-
-          <Link href="/services" className={styles.mainLink}>
-            <span>{tCommon("viewAllServices")}</span>
-            <span className={styles.mainLinkIcon} aria-hidden="true">
-              →
+            <span className={styles.label}>
+              {t("servicesPreview.eyebrow")}
             </span>
-          </Link>
+          </div>
+
+          {isLoading ? (
+            <DataLoader label={tCommon("loading.services")} />
+          ) : !hasError && hasServices ? (
+            <>
+              <div className={styles.cards}>
+                {services.map((service) => {
+                  const iconKey = getServiceIcon(service.title);
+                  const visibleItems = service.items.slice(0, 4);
+
+                  return (
+                    <Link
+                      key={service.id}
+                      href={getServiceAnchorHref(service.slug)}
+                      scroll={false}
+                      className={styles.card}
+                    >
+                      <div className={styles.cardHeader}>
+                        <span className={styles.icon}>
+                          {icons[iconKey]}
+                        </span>
+
+                        <h3 className={styles.cardTitle}>
+                          {service.title}
+                        </h3>
+                      </div>
+
+                      <ul className={styles.itemList}>
+                        {visibleItems.map((item) => (
+                          <li className={styles.item} key={item.id}>
+                            {item.name}
+                          </li>
+                        ))}
+                      </ul>
+
+                      <div className={styles.cardFooter}>
+                        <span className={styles.cardMeta}>
+                          {t("servicesPreview.itemCount", {
+                            count: service.items.length,
+                          })}
+                        </span>
+
+                        <span className={styles.cardLink}>
+                          <span>{tCommon("viewMore")}</span>
+                          <span aria-hidden="true">→</span>
+                        </span>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+
+              <Link href="/services" className={styles.mainLink}>
+                <span>{tCommon("viewAllServices")}</span>
+
+                <span
+                  className={styles.mainLinkIcon}
+                  aria-hidden="true"
+                >
+                  →
+                </span>
+              </Link>
+            </>
+          ) : null}
         </div>
       </div>
     </section>

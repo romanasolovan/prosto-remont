@@ -34,6 +34,7 @@ export async function GET() {
       partners: partners.docs.map((partner) => ({
         id: String(partner.id),
         name: partner.name,
+        description: partner.description || undefined,
         logoUrl: getMediaUrl(partner.logo),
         href: partner.website || undefined,
       })),

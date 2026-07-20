@@ -381,7 +381,11 @@ export interface Partner {
    */
   logo?: (number | null) | Media;
   /**
-   * Optional external website URL. Example: https://example.com
+   * A short description shown when a visitor opens the partner details.
+   */
+  description?: string | null;
+  /**
+   * Optional external website URL, including https://.
    */
   website?: string | null;
   status: 'active' | 'hidden';
@@ -639,6 +643,7 @@ export interface TrustedBrandsSelect<T extends boolean = true> {
 export interface PartnersSelect<T extends boolean = true> {
   name?: T;
   logo?: T;
+  description?: T;
   website?: T;
   status?: T;
   order?: T;

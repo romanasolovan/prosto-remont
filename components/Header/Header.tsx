@@ -37,9 +37,9 @@ export default function Header() {
     { href: "/about", label: t("about") },
     { href: "/services", label: t("services") },
     { href: "/projects", label: t("projects") },
-    { href: "/contact", label: t("contact") },
     { href: "/reviews", label: t("reviews") },
     { href: "/blog", label: t("blog") },
+    { href: "/contact", label: t("contact") },
   ];
 
   useEffect(() => {

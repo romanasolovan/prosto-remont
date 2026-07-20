@@ -24,7 +24,14 @@
     "understandProcess": "Посмотреть процесс",
     "requestQuote": "Запросить смету",
     "viewMore": "View more",
-    "viewAllServices": "Zobacz wszystkie usługi"
+    "viewAllServices": "Zobacz wszystkie usługi",
+    "loading": {
+      "partners": "Загрузка партнёров...",
+      "services": "Загрузка услуг...",
+      "projects": "Загрузка проектов...",
+      "reviews": "Загрузка отзывов...",
+      "trustedBrands": "Загрузка проверенных брендов..."
+    }
   },
   "quoteHighlight": {
     "eyebrow": "Запросить смету",
@@ -376,8 +383,12 @@
     "quickLinks": "Быстрые ссылки",
     "contactInfo": "Контакты",
     "partners": {
-      "title": "Партнёры",
-      "ariaLabel": "Наши надёжные партнёры"
+      "title": "Partners",
+      "ariaLabel": "Our trusted partners",
+      "openDetails": "View details about {name}",
+      "closeDetails": "Close partner details",
+      "visitWebsite": "Visit partner website",
+      "websiteUnavailable": "Website unavailable"
     },
     "social": {
       "title": "Социальные сети",

@@ -6,6 +6,7 @@ import { Link } from "@/navigation";
 import LeaveCommentForm from "@/components/Reviews/LeaveCommentForm/LeaveCommentForm";
 import QuoteRequestModal from "@/components/QuoteRequestModal/QuoteRequestModal";
 import Partners, { type Partner } from "@/components/Partners/Partners";
+import DataLoader from "@/components/ui/DataLoader/DataLoader";
 import SocialLinks from "./SocialLinks";
 import styles from "./Footer.module.css";
 
@@ -18,11 +19,14 @@ type CommentFormData = {
 export default function Footer() {
   const t = useTranslations("footer");
   const tNav = useTranslations("navigation");
+  const tCommon = useTranslations("common");
   const currentYear = new Date().getFullYear();
 
   const [isCommentModalOpen, setIsCommentModalOpen] = useState(false);
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
   const [partners, setPartners] = useState<Partner[]>([]);
+  const [isPartnersLoading, setIsPartnersLoading] = useState(true);
+const [hasPartnersError, setHasPartnersError] = useState(false);
 
   const openCommentModal = () => {
     setIsCommentModalOpen(true);
@@ -45,25 +49,46 @@ export default function Footer() {
   };
 
   useEffect(() => {
-    const fetchPartners = async () => {
-      try {
-        const response = await fetch("/api/public/partners");
+  const controller = new AbortController();
 
-        if (!response.ok) {
-          throw new Error("Failed to fetch partners");
-        }
+  const fetchPartners = async () => {
+    setIsPartnersLoading(true);
+    setHasPartnersError(false);
 
-        const data = await response.json();
+    try {
+      const response = await fetch("/api/public/partners", {
+        cache: "no-store",
+        signal: controller.signal,
+      });
 
-        setPartners(data.partners || []);
-      } catch (error) {
-        console.error("Failed to load partners:", error);
-        setPartners([]);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch partners: ${response.status}`);
       }
-    };
 
-    fetchPartners();
-  }, []);
+      const data = await response.json();
+
+      setPartners(Array.isArray(data.partners) ? data.partners : []);
+    } catch (error) {
+      if (error instanceof Error && error.name === "AbortError") {
+        return;
+      }
+
+      console.error("Failed to load partners:", error);
+      setPartners([]);
+      setHasPartnersError(true);
+    } finally {
+      if (!controller.signal.aborted) {
+        setIsPartnersLoading(false);
+      }
+    }
+  };
+
+  fetchPartners();
+
+  return () => {
+    controller.abort();
+  };
+}, []);
 
   return (
     <>
@@ -192,11 +217,22 @@ export default function Footer() {
 
             <div className={styles.footerDivider} />
 
-            <Partners
-              partners={partners}
-              title={t("partners.title")}
-              ariaLabel={t("partners.ariaLabel")}
-            />
+            {isPartnersLoading ? (
+  <DataLoader label={tCommon("loading.partners")} compact />
+) : !hasPartnersError && partners.length > 0 ? (
+  <Partners
+    partners={partners}
+    title={t("partners.title")}
+    ariaLabel={t("partners.ariaLabel")}
+    getOpenDetailsLabel={(name) =>
+      t("partners.openDetails", {
+        name,
+      })
+    }
+    closeDetailsLabel={t("partners.closeDetails")}
+    visitWebsiteLabel={t("partners.visitWebsite")}
+  />
+) : null}
 
             <div className={styles.footerBottom}>
               <p>{t("copyright", { year: currentYear })}</p>

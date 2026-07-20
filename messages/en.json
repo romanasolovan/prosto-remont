@@ -15,33 +15,40 @@
     "footerNote": "Thoughtful renovation, beautifully made.",
     "close": "Close menu"
   },
- "common": {
-  "learnMore": "Learn More",
-  "startProject": "Start project",
-  "contactUs": "Contact Us",
- "exploreServices": "Services",
-  "viewPortfolio": "View portfolio",
-  "understandProcess": "See the Process",
-  "requestQuote": "Request a Quote",
-  "viewMore": "View more",
-  "viewAllServices": "Zobacz wszystkie usługi"
-},
+  "common": {
+    "learnMore": "Learn More",
+    "startProject": "Start project",
+    "contactUs": "Contact Us",
+    "exploreServices": "Services",
+    "viewPortfolio": "View portfolio",
+    "understandProcess": "See the Process",
+    "requestQuote": "Request a Quote",
+    "viewMore": "View more",
+    "viewAllServices": "Zobacz wszystkie usługi",
+    "loading": {
+      "partners": "Loading partners...",
+      "services": "Loading services...",
+      "projects": "Loading projects...",
+      "reviews": "Loading reviews...",
+      "trustedBrands": "Loading trusted brands..."
+    }
+  },
   "home": {
     "pagination": {
-    "navLabel": "Homepage sections",
-    "mobileTrigger": "Explore page",
-    "mobileTitle": "Page sections",
-    "mobileClose": "Close section navigator",
-    "hero": "Welcome",
-    "trusted": "Trust",
-    "why": "Why Us",
-    "services": "Services",
-    "projects": "Projects",
-    "reviews": "Reviews",
-    "quote": "Quote",
-    "process": "Process",
-    "contact": "Contact"
-  },
+      "navLabel": "Homepage sections",
+      "mobileTrigger": "Explore page",
+      "mobileTitle": "Page sections",
+      "mobileClose": "Close section navigator",
+      "hero": "Welcome",
+      "trusted": "Trust",
+      "why": "Why Us",
+      "services": "Services",
+      "projects": "Projects",
+      "reviews": "Reviews",
+      "quote": "Quote",
+      "process": "Process",
+      "contact": "Contact"
+    },
     "labels": {
       "about": "About",
       "services": "Services",
@@ -59,7 +66,7 @@
         "finish": "A finish you can trust"
       }
     },
-   "stats": {
+    "stats": {
       "projects": "50+ completed projects",
       "clients": "100+ satisfied clients",
       "area": "50,000+ m² delivered",
@@ -70,244 +77,238 @@
       "title": "More Than Renovation",
       "description": "Your apartment, house, or business space is more than walls and square meters. It is your lifestyle, your comfort, your peace, and the atmosphere you return to every day. We help transform raw interiors into spaces that reflect who you are and how you want to live."
     },
-   "servicesPreview": {
-  "eyebrow": "Our Services",
-  "title": "Comprehensive Renovation and Finishing Services",
-  "description": "Explore the main services we provide — from surface preparation and installations to fitting, assembly, and final finishing work.",
-  "itemCount": "{count} services in this category"
-},
+    "servicesPreview": {
+      "eyebrow": "Our Services",
+      "title": "Comprehensive Renovation and Finishing Services",
+      "description": "Explore the main services we provide — from surface preparation and installations to fitting, assembly, and final finishing work.",
+      "itemCount": "{count} services in this category"
+    },
     "projects": {
       "title": "Spaces That Speak for Themselves",
       "description": "Every completed project tells a story of transformation. From modern apartments to commercial interiors, our portfolio reflects careful workmanship, functional thinking, and a commitment to creating spaces that look right, feel right, and work beautifully in everyday life."
     },
     "process": {
-  "eyebrow": "Proces",
-  "title": "Jak pracujemy?",
-  "description": "Prowadzimy klienta przez każdy etap realizacji — od pierwszej rozmowy, przez wycenę i planowanie, aż po wykonanie prac oraz odbiór gotowego projektu.",
-  "steps": {
-    "consultation": {
-      "title": "Konsultacja",
-      "description": "Skontaktuj się z nami telefonicznie lub mailowo. Odpowiemy na pytania, doradzimy najlepsze rozwiązania i umówimy dogodny termin spotkania."
+      "eyebrow": "Proces",
+      "title": "Jak pracujemy?",
+      "description": "Prowadzimy klienta przez każdy etap realizacji — od pierwszej rozmowy, przez wycenę i planowanie, aż po wykonanie prac oraz odbiór gotowego projektu.",
+      "steps": {
+        "consultation": {
+          "title": "Konsultacja",
+          "description": "Skontaktuj się z nami telefonicznie lub mailowo. Odpowiemy na pytania, doradzimy najlepsze rozwiązania i umówimy dogodny termin spotkania."
+        },
+        "estimate": {
+          "title": "Wycena i planowanie",
+          "description": "Otrzymujemy projekt lub przyjeżdżamy na miejsce, oceniamy zakres prac i przygotowujemy wycenę oraz harmonogram realizacji."
+        },
+        "start": {
+          "title": "Rozpoczęcie prac",
+          "description": "Po zaakceptowaniu oferty podpisujemy umowę, rezerwujemy termin i organizujemy dostawę niezbędnych materiałów."
+        },
+        "realization": {
+          "title": "Realizacja",
+          "description": "Wykonujemy wszystkie prace zgodnie z ustalonym planem, dbając o jakość, terminowość i porządek na każdym etapie."
+        },
+        "handover": {
+          "title": "Odbiór i gwarancja",
+          "description": "Po zakończeniu prac przekazujemy gotową realizację do odbioru i zapewniamy wsparcie po zakończeniu projektu."
+        }
+      }
     },
-    "estimate": {
-      "title": "Wycena i planowanie",
-      "description": "Otrzymujemy projekt lub przyjeżdżamy na miejsce, oceniamy zakres prac i przygotowujemy wycenę oraz harmonogram realizacji."
-    },
-    "start": {
-      "title": "Rozpoczęcie prac",
-      "description": "Po zaakceptowaniu oferty podpisujemy umowę, rezerwujemy termin i organizujemy dostawę niezbędnych materiałów."
-    },
-    "realization": {
-      "title": "Realizacja",
-      "description": "Wykonujemy wszystkie prace zgodnie z ustalonym planem, dbając o jakość, terminowość i porządek na każdym etapie."
-    },
-    "handover": {
-      "title": "Odbiór i gwarancja",
-      "description": "Po zakończeniu prac przekazujemy gotową realizację do odbioru i zapewniamy wsparcie po zakończeniu projektu."
-    }
-  }
-},
     "contact": {
       "title": "Let’s Talk About Your Space",
       "description": "Whether you are planning a full turnkey fit-out, a renovation, or selected finishing works, we are here to guide you. Reach out to discuss your project, ask questions, and take the first step toward a space designed around your needs."
     }
   },
- "about": {
-"hero": {
-"eyebrow": "Pro100 Twój Remont — professional renovations and interior finishing in Warsaw"
-},
-
-"story": {
-  "eyebrow": "Our story",
-  "title": "Who We Are",
-  "content": "Pro100 Twój Remont is a team of experienced professionals who create exceptional spaces for living and working with passion, dedication, and attention to every detail. We specialise in comprehensive renovations and interior finishing, providing our clients with complete support at every stage of the project — from the initial consultation to the handover of the finished interior.",
-  "button": "View projects"
-},
-
-"values": {
-  "eyebrow": "Our values",
-
-  "items": {
-    "first": {
-      "title": "Reliability",
-      "text": "We honour our commitments and approach every stage of the project with consistency, responsibility, and care."
+  "about": {
+    "hero": {
+      "eyebrow": "Pro100 Twój Remont — professional renovations and interior finishing in Warsaw"
     },
-    "second": {
-      "title": "Precision",
-      "text": "We pay close attention to every detail to ensure a refined, functional, and carefully finished result."
+    "story": {
+      "eyebrow": "Our story",
+      "title": "Who We Are",
+      "content": "Pro100 Twój Remont is a team of experienced professionals who create exceptional spaces for living and working with passion, dedication, and attention to every detail. We specialise in comprehensive renovations and interior finishing, providing our clients with complete support at every stage of the project — from the initial consultation to the handover of the finished interior.",
+      "button": "View projects"
     },
-    "third": {
-      "title": "Partnership",
-      "text": "We build relationships based on trust, open communication, and close cooperation throughout every stage of the project."
+    "values": {
+      "eyebrow": "Our values",
+      "items": {
+        "first": {
+          "title": "Reliability",
+          "text": "We honour our commitments and approach every stage of the project with consistency, responsibility, and care."
+        },
+        "second": {
+          "title": "Precision",
+          "text": "We pay close attention to every detail to ensure a refined, functional, and carefully finished result."
+        },
+        "third": {
+          "title": "Partnership",
+          "text": "We build relationships based on trust, open communication, and close cooperation throughout every stage of the project."
+        },
+        "fourth": {
+          "title": "Organised Execution",
+          "text": "Clear processes, structured workflows, and effective coordination allow every project to progress smoothly."
+        },
+        "fifth": {
+          "title": "Individual Approach",
+          "text": "Every project is tailored to the client's needs, expectations, lifestyle, and vision for the space."
+        },
+        "sixth": {
+          "title": "Workmanship Guarantee",
+          "text": "We take responsibility for the quality of our work and stand behind the high standard of every completed project."
+        },
+        "seventh": {
+          "title": "Insurance Protection",
+          "text": "Our insured operations provide additional security and peace of mind throughout every stage of the renovation process."
+        }
+      }
     },
-    "fourth": {
-      "title": "Organised Execution",
-      "text": "Clear processes, structured workflows, and effective coordination allow every project to progress smoothly."
+    "details": {
+      "imageAlt": "The Pro100 Twój Remont team",
+      "paragraphs": {
+        "first": "Since 2020, we have successfully operated in the renovation and construction industry, completing projects throughout Warsaw and the surrounding areas. We work with individual clients, businesses, and public institutions. Our experience, professional technical resources, and qualified team enable us to undertake even the most demanding projects.",
+        "second": "We believe that every renovation is more than just construction work — it is the process of creating a space that will serve people for years. That is why we approach every project individually, with complete commitment and responsibility. We combine knowledge, experience, and modern solutions to provide our clients with the highest quality of workmanship, timely completion, and a comfortable working relationship.",
+        "third": "Every member of our team brings unique skills and experience, allowing us to continuously improve our processes and maintain the highest standards of service. We value transparent communication, precise workmanship, and attention to the appearance of every detail because we know that the smallest elements shape the final result.",
+        "fourth": "Our mission is to create interiors that not only meet our clients' expectations but often exceed them. We carry out renovations and interior finishing for apartments, houses, commercial premises, and turnkey projects with the highest level of care, earning the trust of even the most demanding clients."
+      },
+      "closing": "Pro100 Twój Remont is a guarantee of professionalism, quality, and partnership — from the first meeting to the handover of the completed space."
     },
-    "fifth": {
-      "title": "Individual Approach",
-      "text": "Every project is tailored to the client's needs, expectations, lifestyle, and vision for the space."
+    "trustedBrands": {
+      "eyebrow": "Trusted by clients",
+      "title": "Our projects combine quality, functionality, and refined design.",
+      "description": "Experience, precision, and a responsible approach to every project are why clients who expect the highest standards choose us.",
+      "regionLabel": "Brands and partners"
     },
-    "sixth": {
-      "title": "Workmanship Guarantee",
-      "text": "We take responsibility for the quality of our work and stand behind the high standard of every completed project."
-    },
-    "seventh": {
-      "title": "Insurance Protection",
-      "text": "Our insured operations provide additional security and peace of mind throughout every stage of the renovation process."
-    }
-  }
-},
-
-"details": {
-  "imageAlt": "The Pro100 Twój Remont team",
-  "paragraphs": {
-    "first": "Since 2020, we have successfully operated in the renovation and construction industry, completing projects throughout Warsaw and the surrounding areas. We work with individual clients, businesses, and public institutions. Our experience, professional technical resources, and qualified team enable us to undertake even the most demanding projects.",
-    "second": "We believe that every renovation is more than just construction work — it is the process of creating a space that will serve people for years. That is why we approach every project individually, with complete commitment and responsibility. We combine knowledge, experience, and modern solutions to provide our clients with the highest quality of workmanship, timely completion, and a comfortable working relationship.",
-    "third": "Every member of our team brings unique skills and experience, allowing us to continuously improve our processes and maintain the highest standards of service. We value transparent communication, precise workmanship, and attention to the appearance of every detail because we know that the smallest elements shape the final result.",
-    "fourth": "Our mission is to create interiors that not only meet our clients' expectations but often exceed them. We carry out renovations and interior finishing for apartments, houses, commercial premises, and turnkey projects with the highest level of care, earning the trust of even the most demanding clients."
-  },
-  "closing": "Pro100 Twój Remont is a guarantee of professionalism, quality, and partnership — from the first meeting to the handover of the completed space."
-},
-
-"trustedBrands": {
-  "eyebrow": "Trusted by clients",
-  "title": "Our projects combine quality, functionality, and refined design.",
-  "description": "Experience, precision, and a responsible approach to every project are why clients who expect the highest standards choose us.",
-  "regionLabel": "Brands and partners"
-},
-"cta": {
-  "eyebrow": "Let’s talk",
-  "title": "Choose the next step",
-  "description": "Whether you want to read client feedback, request a quote, or get in touch directly, here is the best place to continue.",
-  "items": {
-    "first": {
-      "title": "Client opinions",
-      "text": "See how clients describe the process, communication, and final result after working with us.",
-      "button": "Read reviews"
-    },
-    "second": {
-      "title": "Request a quote",
-      "text": "Tell us about your space and project needs, and we will help you take the next step with clarity.",
-      "button": "Request a quote"
-    },
-    "third": {
-      "title": "Contact us",
-      "text": "Have questions or want to discuss your renovation directly? Reach out and let’s start the conversation.",
-      "button": "Contact us"
-    }
-  }
-}
-},
-
-"services": {
-  "hero": {
-    "eyebrow": "PRO100 Your Renovation",
-    "title": "Comprehensive renovation and interior finishing services for apartments, houses, and commercial spaces.",
-    "question": "Why choose our renovation and finishing company?",
-    "paragraphs": {
-      "first": "Reliability and clear communication with our clients are at the core of every renovation project we undertake.",
-      "second": "That is why we stay in constant contact throughout every stage of the process — from discussing project details and preparing estimates to carrying out the actual work — ensuring we fully understand your needs and preferences.",
-      "third": "This approach allows us to deliver high-quality turnkey renovations while maintaining our reputation as a trustworthy and client-focused company. Our team takes pride in keeping the workspace clean, behaving professionally, and respecting the rules of residential and commercial properties."
+    "cta": {
+      "eyebrow": "Let’s talk",
+      "title": "Choose the next step",
+      "description": "Whether you want to read client feedback, request a quote, or get in touch directly, here is the best place to continue.",
+      "items": {
+        "first": {
+          "title": "Client opinions",
+          "text": "See how clients describe the process, communication, and final result after working with us.",
+          "button": "Read reviews"
+        },
+        "second": {
+          "title": "Request a quote",
+          "text": "Tell us about your space and project needs, and we will help you take the next step with clarity.",
+          "button": "Request a quote"
+        },
+        "third": {
+          "title": "Contact us",
+          "text": "Have questions or want to discuss your renovation directly? Reach out and let’s start the conversation.",
+          "button": "Contact us"
+        }
+      }
     }
   },
-  "pricing": {
-    "note": "Please note that all listed prices are approximate and do not include the cost of materials.",
-    "description": "To receive an accurate project estimate, submit an inquiry and we will contact you as soon as possible."
+  "services": {
+    "hero": {
+      "eyebrow": "PRO100 Your Renovation",
+      "title": "Comprehensive renovation and interior finishing services for apartments, houses, and commercial spaces.",
+      "question": "Why choose our renovation and finishing company?",
+      "paragraphs": {
+        "first": "Reliability and clear communication with our clients are at the core of every renovation project we undertake.",
+        "second": "That is why we stay in constant contact throughout every stage of the process — from discussing project details and preparing estimates to carrying out the actual work — ensuring we fully understand your needs and preferences.",
+        "third": "This approach allows us to deliver high-quality turnkey renovations while maintaining our reputation as a trustworthy and client-focused company. Our team takes pride in keeping the workspace clean, behaving professionally, and respecting the rules of residential and commercial properties."
+      }
+    },
+    "pricing": {
+      "note": "Please note that all listed prices are approximate and do not include the cost of materials.",
+      "description": "To receive an accurate project estimate, submit an inquiry and we will contact you as soon as possible."
+    },
+    "section": {
+      "eyebrow": "Our Services",
+      "title": "Service List",
+      "description": "A clear overview of renovation and finishing services with estimated pricing."
+    },
+    "empty": "Services will be available soon."
   },
-  "section": {
-    "eyebrow": "Our Services",
-    "title": "Service List",
-    "description": "A clear overview of renovation and finishing services with estimated pricing."
-  },
-  "empty": "Services will be available soon."
-},
   "projects": {
-  "hero": {
-    "eyebrow": "Selected work",
-    "title": "Our Projects",
-    "subtitle": "A collection of completed spaces shaped by craftsmanship, structure, and care.",
-    "bgWord": "Projects"
-  },
-  "intro": {
-    "title": "Spaces That Reflect Our Standard",
-    "description": "Our projects reflect the range of spaces we help transform — from private apartments and homes to client-facing commercial interiors. Each one is a practical collaboration between vision, workmanship, and execution."
-  },
-  "section": {
-    "eyebrow": "Portfolio archive",
-    "title": "Selected projects that reflect our standard",
-    "description": "A curated overview of spaces shaped through careful execution, functional thinking, and a clear visual direction."
-  },
-  "categories": {
-    "residential": "Residential Projects",
-    "commercial": "Commercial Projects"
-  },
-  "list": {
-    "modernKitchen": "Modern Apartment Finishing",
-    "downtownOffice": "Commercial Interior Fit-Out",
-    "masterBathroom": "Bathroom Finishing Project",
-    "historicHome": "Home Renovation and Modernization",
-    "retailStore": "Service Space Transformation",
-    "basementConversion": "Custom Interior Transformation"
-  },
-  "details": {
-    "modernKitchen": {
-      "description": "A contemporary residential project focused on balance, material clarity, and a calm everyday atmosphere."
+    "hero": {
+      "eyebrow": "Selected work",
+      "title": "Our Projects",
+      "subtitle": "A collection of completed spaces shaped by craftsmanship, structure, and care.",
+      "bgWord": "Projects"
     },
-    "downtownOffice": {
-      "description": "A commercial interior shaped around visual identity, practical planning, and a more confident client-facing experience."
+    "intro": {
+      "title": "Spaces That Reflect Our Standard",
+      "description": "Our projects reflect the range of spaces we help transform — from private apartments and homes to client-facing commercial interiors. Each one is a practical collaboration between vision, workmanship, and execution."
     },
-    "masterBathroom": {
-      "description": "A bathroom transformation built around detail, proportion, and a cleaner, more refined finish language."
+    "section": {
+      "eyebrow": "Portfolio archive",
+      "title": "Selected projects that reflect our standard",
+      "description": "A curated overview of spaces shaped through careful execution, functional thinking, and a clear visual direction."
     },
-    "historicHome": {
-      "description": "A full-home renovation that brought structure, warmth, and modern comfort into an existing residential setting."
-    },
-    "retailStore": {
-      "description": "A service-oriented commercial space designed to support both experience, clarity, and operational flow."
-    },
-    "basementConversion": {
-      "description": "A custom interior transformation that turned underused square footage into a more valuable and coherent living zone."
-    }
-  },
-  "preview": {
-    "title": "Selected work that reflects clarity, atmosphere, and careful execution",
-    "description": "Projects should show more than surface appeal. They should reflect proportion, intention, and the quality of decisions behind the finished result.",
     "categories": {
+      "residential": "Residential Projects",
+      "commercial": "Commercial Projects"
+    },
+    "list": {
+      "modernKitchen": "Modern Apartment Finishing",
+      "downtownOffice": "Commercial Interior Fit-Out",
+      "masterBathroom": "Bathroom Finishing Project",
+      "historicHome": "Home Renovation and Modernization",
+      "retailStore": "Service Space Transformation",
+      "basementConversion": "Custom Interior Transformation"
+    },
+    "details": {
+      "modernKitchen": {
+        "description": "A contemporary residential project focused on balance, material clarity, and a calm everyday atmosphere."
+      },
+      "downtownOffice": {
+        "description": "A commercial interior shaped around visual identity, practical planning, and a more confident client-facing experience."
+      },
+      "masterBathroom": {
+        "description": "A bathroom transformation built around detail, proportion, and a cleaner, more refined finish language."
+      },
+      "historicHome": {
+        "description": "A full-home renovation that brought structure, warmth, and modern comfort into an existing residential setting."
+      },
+      "retailStore": {
+        "description": "A service-oriented commercial space designed to support both experience, clarity, and operational flow."
+      },
+      "basementConversion": {
+        "description": "A custom interior transformation that turned underused square footage into a more valuable and coherent living zone."
+      }
+    },
+    "preview": {
+      "title": "Selected work that reflects clarity, atmosphere, and careful execution",
+      "description": "Projects should show more than surface appeal. They should reflect proportion, intention, and the quality of decisions behind the finished result.",
+      "categories": {
         "apartment": "Apartment renovation",
         "house": "House renovation",
         "bathroom": "Bathroom renovation",
         "kitchen": "Kitchen renovation",
         "commercial": "Commercial renovation",
-        "interior": "Interior finishing", 
+        "interior": "Interior finishing",
         "residential": "Residential"
       },
-    "featured": {
-      "label": "Private Apartment"
-    },
-    "secondary": {
-      "first": {
-        "title": "Family House",
-        "description": "A renovation approach centered on warmth, function, and long-term comfort for everyday living."
+      "featured": {
+        "label": "Private Apartment"
       },
-      "second": {
-        "title": "Commercial Space",
-        "description": "A clearer visual identity supported by practical planning, atmosphere, and spatial balance."
+      "secondary": {
+        "first": {
+          "title": "Family House",
+          "description": "A renovation approach centered on warmth, function, and long-term comfort for everyday living."
+        },
+        "second": {
+          "title": "Commercial Space",
+          "description": "A clearer visual identity supported by practical planning, atmosphere, and spatial balance."
+        }
       }
+    },
+    "navigation": {
+      "backToProjects": "Back to all projects"
+    },
+    "projectDetails": {
+      "eyebrow": "Project structure",
+      "subprojectsTitle": "Spaces, zones, and project sections",
+      "subprojectsDescription": "Each project can include multiple interior areas, functional zones, or finishing stages. This structure makes the gallery easier to explore and prepares the content for future expansion."
+    },
+    "gallery": {
+      "empty": "Project gallery will be added soon."
     }
   },
-  "navigation": {
-    "backToProjects": "Back to all projects"
-  },
-  "projectDetails": {
-    "eyebrow": "Project structure",
-    "subprojectsTitle": "Spaces, zones, and project sections",
-    "subprojectsDescription": "Each project can include multiple interior areas, functional zones, or finishing stages. This structure makes the gallery easier to explore and prepares the content for future expansion."
-  },
-  "gallery": {
-    "empty": "Project gallery will be added soon."
-  }
-},
   "process": {
     "hero": {
       "title": "Our Process",
@@ -340,7 +341,6 @@
       "description": "Tell us about your property, your goals, and the type of work you need. We will review your request, discuss the next steps, and help you move toward a well-planned renovation with clarity from the very beginning."
     }
   },
-
   "contact": {
     "hero": {
       "title": "Contact Us",
@@ -358,43 +358,44 @@
     },
     "formNote": "The contact form is available below."
   },
-
   "contactCta": {
-  "eyebrow": "Next step",
-  "title": "Ready to shape your next renovation?",
-  "description": "Start with a clear conversation, explore the process, and take the next step with confidence."
-},
-
+    "eyebrow": "Next step",
+    "title": "Ready to shape your next renovation?",
+    "description": "Start with a clear conversation, explore the process, and take the next step with confidence."
+  },
   "footer": {
-  "description": "Comprehensive renovation and interior finishing for apartments, homes, and commercial spaces.",
-  "quickLinks": "Quick Links",
-  "contactInfo": "Contact",
-  "partners": {
-    "title": "Partners",
-    "ariaLabel": "Our trusted partners"
+    "description": "Comprehensive renovation and interior finishing for apartments, homes, and commercial spaces.",
+    "quickLinks": "Quick Links",
+    "contactInfo": "Contact",
+    "partners": {
+      "title": "Partners",
+      "ariaLabel": "Our trusted partners",
+      "openDetails": "View details about {name}",
+      "closeDetails": "Close partner details",
+      "visitWebsite": "Visit partner website",
+      "websiteUnavailable": "Website unavailable"
+    },
+    "social": {
+      "title": "Social Media",
+      "instagram": "Instagram",
+      "facebook": "Facebook",
+      "linkedin": "LinkedIn",
+      "googleMaps": "Google Maps",
+      "email": "Email",
+      "tiktok": "TikTok"
+    },
+    "forms": {
+      "title": "Actions",
+      "requestQuote": "Request a Quote",
+      "leaveComment": "Leave a Comment"
+    },
+    "aria": {
+      "openQuote": "Open quote request form",
+      "openComment": "Open comment form",
+      "socialLinks": "Social media links"
+    },
+    "copyright": "© {year} PRO100 Twój Remont. All rights reserved."
   },
-  "social": {
-    "title": "Social Media",
-    "instagram": "Instagram",
-    "facebook": "Facebook",
-    "linkedin": "LinkedIn",
-    "googleMaps": "Google Maps",
-    "email": "Email",
-    "tiktok": "TikTok"
-  },
-  "forms": {
-    "title": "Actions",
-    "requestQuote": "Request a Quote",
-    "leaveComment": "Leave a Comment"
-  },
-  "aria": {
-    "openQuote": "Open quote request form",
-    "openComment": "Open comment form",
-    "socialLinks": "Social media links"
-  },
-  "copyright": "© {year} PRO100 Twój Remont. All rights reserved."
-},
-
   "metadata": {
     "home": {
       "title": "PRO100 Twój Remont | Turnkey Renovation and Interior Finishing",
@@ -422,40 +423,39 @@
     }
   },
   "form": {
-
     "modal": {
-  "eyebrow": "PRO100 Your Renovation",
-  "closeAriaLabel": "Close quote request form"
-},
-"sections": {
-  "contact": {
-    "eyebrow": "01 / Contact",
-    "title": "Contact details"
-  },
-  "project": {
-    "eyebrow": "02 / Project",
-    "title": "Scope of work"
-  },
-  "details": {
-    "eyebrow": "03 / Details",
-    "title": "Files and additional information"
-  }
-},
-"actions": {
-  "close": "Close",
-  "sendAnother": "Send another"
-},
-"select": {
-  "chooseOption": "Choose an option"
-},
-"date": {
-  "helper": "Use the format YYYY-MM-DD.",
-  "openCalendar": "Open calendar",
-  "calendarLabel": "Choose start date"
-},
-"fieldsHint": {
-  "workDescription": "Enter an approximate area or a short scope of work."
-},
+      "eyebrow": "PRO100 Your Renovation",
+      "closeAriaLabel": "Close quote request form"
+    },
+    "sections": {
+      "contact": {
+        "eyebrow": "01 / Contact",
+        "title": "Contact details"
+      },
+      "project": {
+        "eyebrow": "02 / Project",
+        "title": "Scope of work"
+      },
+      "details": {
+        "eyebrow": "03 / Details",
+        "title": "Files and additional information"
+      }
+    },
+    "actions": {
+      "close": "Close",
+      "sendAnother": "Send another"
+    },
+    "select": {
+      "chooseOption": "Choose an option"
+    },
+    "date": {
+      "helper": "Use the format YYYY-MM-DD.",
+      "openCalendar": "Open calendar",
+      "calendarLabel": "Choose start date"
+    },
+    "fieldsHint": {
+      "workDescription": "Enter an approximate area or a short scope of work."
+    },
     "title": "Request a Quote",
     "subtitle": "Fill out the form below and we will get back to you to discuss the next steps.",
     "fields": {
@@ -512,9 +512,8 @@
       "invalidFileType": "Only PDF, JPG, PNG, and DOCX files are allowed",
       "dateInvalid": "Please select a valid date"
     },
-    
     "fileUpload": {
-       "sizeUnit": "MB",
+      "sizeUnit": "MB",
       "dragDrop": "Drag and drop files here, or click to select",
       "selectedFiles": "Selected files",
       "removeFile": "Remove",
@@ -525,132 +524,129 @@
     "successMessage": "Thank you. Your request has been submitted successfully.",
     "errorMessage": "Something went wrong. Please try again."
   },
- "getContact": {
-  "hero": {
-    "eyebrow": "Get in touch",
+  "getContact": {
+    "hero": {
+      "eyebrow": "Get in touch",
+      "title": "Contact Us",
+      "subtitle": "Let's talk about your renovation, finishing work, or interior transformation.",
+      "bgWord": "Contact"
+    },
     "title": "Contact Us",
-    "subtitle": "Let's talk about your renovation, finishing work, or interior transformation.",
-    "bgWord": "Contact"
+    "description": "If you are planning a renovation, turnkey finishing, or interior transformation, we are ready to talk. Reach out to discuss your project, ask questions, or arrange the first consultation.",
+    "getInTouch": {
+      "title": "Get in Touch",
+      "description": "Reach out to discuss your project, ask questions, and take the first step toward a space shaped around your needs."
+    },
+    "details": {
+      "email": "Email",
+      "phone": "Phone",
+      "hours": "Working Hours",
+      "hoursValue": "Monday – Friday: 8:00 AM – 6:00 PM\nSaturday: 9:00 AM – 4:00 PM"
+    },
+    "social": {
+      "title": "Follow Us"
+    },
+    "map": {
+      "title": "Our Location",
+      "description": "We work from Warsaw and support renovation and finishing projects across the region.",
+      "ariaLabel": "Office location map",
+      "iframeTitle": "Office Location"
+    },
+    "opinions": {
+      "title": "Client Opinions",
+      "description": "See what our clients say about working with us and the spaces we helped bring to life.",
+      "cta": "Read Reviews"
+    },
+    "instagram": {
+      "eyebrow": "Follow along",
+      "title": "Recent on Instagram",
+      "viewProfile": "View profile",
+      "scrollPrev": "Show previous post",
+      "scrollNext": "Show next post"
+    }
   },
-  "title": "Contact Us",
-  "description": "If you are planning a renovation, turnkey finishing, or interior transformation, we are ready to talk. Reach out to discuss your project, ask questions, or arrange the first consultation.",
-  "getInTouch": {
-    "title": "Get in Touch",
-    "description": "Reach out to discuss your project, ask questions, and take the first step toward a space shaped around your needs."
-  },
-  "details": {
-    "email": "Email",
-    "phone": "Phone",
-    "hours": "Working Hours",
-    "hoursValue": "Monday – Friday: 8:00 AM – 6:00 PM\nSaturday: 9:00 AM – 4:00 PM"
-  },
-  "social": {
-    "title": "Follow Us"
-  },
-  "map": {
-    "title": "Our Location",
-    "description": "We work from Warsaw and support renovation and finishing projects across the region.",
-    "ariaLabel": "Office location map",
-    "iframeTitle": "Office Location"
-  },
-  "opinions": {
-    "title": "Client Opinions",
-    "description": "See what our clients say about working with us and the spaces we helped bring to life.",
-    "cta": "Read Reviews"
-  },
-  "instagram": {
-    "eyebrow": "Follow along",
-    "title": "Recent on Instagram",
-    "viewProfile": "View profile",
-    "scrollPrev": "Show previous post",
-    "scrollNext": "Show next post"
-  }
-},
-
   "clientOpinions": {
-  "watermark": "Client Opinions",
-  "eyebrow": "Client opinions",
-  "title": "Real experiences. Real trust.",
-  "description": "Short stories from clients who trusted us with their spaces.",
-  "videoReviews": "Video reviews",
-  "writtenReviews": "Written reviews",
-  "readMore": "Read client opinions",
-  "reviewCount": "{count, plural, =0 {No reviews} one {# review} other {# reviews}}",
-  "cta": {
-    "leaveReview": "Leave a review"
+    "watermark": "Client Opinions",
+    "eyebrow": "Client opinions",
+    "title": "Real experiences. Real trust.",
+    "description": "Short stories from clients who trusted us with their spaces.",
+    "videoReviews": "Video reviews",
+    "writtenReviews": "Written reviews",
+    "readMore": "Read client opinions",
+    "reviewCount": "{count, plural, =0 {No reviews} one {# review} other {# reviews}}",
+    "cta": {
+      "leaveReview": "Leave a review"
+    },
+    "readFullReview": "Read full review",
+    "viewOnGoogle": "View on Google",
+    "noVideoReviews": "No video reviews yet",
+    "noWrittenReviews": "No written reviews yet",
+    "aria": {
+      "stars": "Average rating",
+      "rating": "Rating: {rating} out of 5",
+      "videoReviews": "Client video reviews",
+      "writtenReviews": "Client written reviews",
+      "playVideo": "Play video review",
+      "previousVideo": "Previous video",
+      "nextVideo": "Next video",
+      "closeVideo": "Close video",
+      "previousReview": "Previous review",
+      "nextReview": "Next review",
+      "closeReview": "Close review",
+      "scrollPrevious": "Scroll to previous",
+      "scrollNext": "Scroll to next"
+    },
+    "success": {
+      "reviewSubmitted": "Thank you. Your review has been submitted and will be published after a quick review."
+    }
   },
-  "readFullReview": "Read full review",
-"viewOnGoogle": "View on Google",
-"noVideoReviews": "No video reviews yet",
-"noWrittenReviews": "No written reviews yet",
-  "aria": {
-    "stars": "Average rating",
-    "rating": "Rating: {rating} out of 5",
-    "videoReviews": "Client video reviews",
-    "writtenReviews": "Client written reviews",
-    "playVideo": "Play video review",
-    "previousVideo": "Previous video",
-  "nextVideo": "Next video",
-  "closeVideo": "Close video",
-  "previousReview": "Previous review",
-  "nextReview": "Next review",
-  "closeReview": "Close review",
-  "scrollPrevious": "Scroll to previous",
-  "scrollNext": "Scroll to next"
-  },
-  "success": {
-    "reviewSubmitted": "Thank you. Your review has been submitted and will be published after a quick review."
-  }
-},
-
   "leaveComment": {
-  "title": "Share Your Experience",
-  "description": "Tell us about your renovation experience with our team.",
-  "fields": {
-    "name": "Your Name",
-    "location": "Location",
-    "rating": "Your Rating",
-    "comment": "Your Review",
-    "photo": "Photo",
-    "optional": "Optional"
+    "title": "Share Your Experience",
+    "description": "Tell us about your renovation experience with our team.",
+    "fields": {
+      "name": "Your Name",
+      "location": "Location",
+      "rating": "Your Rating",
+      "comment": "Your Review",
+      "photo": "Photo",
+      "optional": "Optional"
+    },
+    "placeholders": {
+      "name": "Enter your name",
+      "location": "City or project location",
+      "comment": "Share your experience with our renovation services...",
+      "addPhoto": "Add a photo",
+      "photoHint": "JPG, PNG or WEBP. Max {size}."
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "submit": "Submit Review",
+      "submitting": "Submitting...",
+      "remove": "Remove",
+      "close": "Close"
+    },
+    "validation": {
+      "requiredName": "Name is required",
+      "nameMin": "Name must be at least {count} characters",
+      "nameMax": "Name must be at most {count} characters",
+      "requiredLocation": "Location is required",
+      "requiredRating": "Please select a rating",
+      "requiredComment": "Review is required",
+      "commentMin": "Review must be at least {count} characters",
+      "commentMax": "Review must be at most {count} characters",
+      "photoInvalidType": "Please upload a JPG, PNG, or WEBP image.",
+      "photoTooLarge": "Photo must be smaller than {size}."
+    },
+    "aria": {
+      "selectRating": "Select {rating} star rating",
+      "closeModal": "Close review form",
+      "removePhoto": "Remove selected photo"
+    },
+    "success": {
+      "title": "Thank You!",
+      "reviewSubmitted": "Your review has been submitted and will be published after a quick review."
+    }
   },
-  "placeholders": {
-    "name": "Enter your name",
-    "location": "City or project location",
-    "comment": "Share your experience with our renovation services...",
-    "addPhoto": "Add a photo",
-    "photoHint": "JPG, PNG or WEBP. Max {size}."
-  },
-  "buttons": {
-    "cancel": "Cancel",
-    "submit": "Submit Review",
-    "submitting": "Submitting...",
-    "remove": "Remove",
-    "close": "Close"
-  },
-  "validation": {
-    "requiredName": "Name is required",
-    "nameMin": "Name must be at least {count} characters",
-    "nameMax": "Name must be at most {count} characters",
-    "requiredLocation": "Location is required",
-    "requiredRating": "Please select a rating",
-    "requiredComment": "Review is required",
-    "commentMin": "Review must be at least {count} characters",
-    "commentMax": "Review must be at most {count} characters",
-    "photoInvalidType": "Please upload a JPG, PNG, or WEBP image.",
-    "photoTooLarge": "Photo must be smaller than {size}."
-  },
-  "aria": {
-    "selectRating": "Select {rating} star rating",
-    "closeModal": "Close review form",
-    "removePhoto": "Remove selected photo"
-  },
-  "success": {
-    "title": "Thank You!",
-    "reviewSubmitted": "Your review has been submitted and will be published after a quick review."
-  }
-},
-
   "callWidget": {
     "title": "Call Us",
     "cta": "Call {phone}",

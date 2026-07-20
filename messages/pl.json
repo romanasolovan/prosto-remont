@@ -15,44 +15,51 @@
     "footerNote": "Thoughtful renovation, beautifully made.",
     "close": "Close menu"
   },
- "common": {
-  "learnMore": "Dowiedz się więcej",
-  "startProject": "Rozpocznij swój projekt",
-  "contactUs": "Skontaktuj się z nami",
-  "exploreServices": "Usługi",
-  "viewPortfolio": "Zobacz realizacje",
-  "understandProcess": "Zobacz, jak pracujemy",
-  "requestQuote": "Poproś o wycenę",
-  "viewMore": "View more",
-  "viewAllServices": "Zobacz wszystkie usługi"
-},
-"quoteHighlight": {
-  "eyebrow": "Poproś o wycenę",
-  "title": "Rozpocznij swój projekt remontowy z większą klarownością",
-  "description": "Przekaż kilka informacji o swoim projekcie i planowanym terminie. Nasz zespół przeanalizuje zgłoszenie i wskaże jasny kolejny krok, aby remont mógł ruszyć z pewnością.",
-  "steps": {
-    "first": "Opowiedz nam o swoim projekcie",
-    "second": "Otrzymaj dopasowaną odpowiedź",
-    "third": "Przejdź dalej z jasnym planem"
+  "common": {
+    "learnMore": "Dowiedz się więcej",
+    "startProject": "Rozpocznij swój projekt",
+    "contactUs": "Skontaktuj się z nami",
+    "exploreServices": "Usługi",
+    "viewPortfolio": "Zobacz realizacje",
+    "understandProcess": "Zobacz, jak pracujemy",
+    "requestQuote": "Poproś o wycenę",
+    "viewMore": "View more",
+    "viewAllServices": "Zobacz wszystkie usługi",
+    "loading": {
+      "partners": "Ładowanie partnerów...",
+      "services": "Ładowanie usług...",
+      "projects": "Ładowanie realizacji...",
+      "reviews": "Ładowanie opinii...",
+      "trustedBrands": "Ładowanie zaufanych marek..."
+    }
   },
-  "viewProcess": "Zobacz cały proces"
-},
+  "quoteHighlight": {
+    "eyebrow": "Poproś o wycenę",
+    "title": "Rozpocznij swój projekt remontowy z większą klarownością",
+    "description": "Przekaż kilka informacji o swoim projekcie i planowanym terminie. Nasz zespół przeanalizuje zgłoszenie i wskaże jasny kolejny krok, aby remont mógł ruszyć z pewnością.",
+    "steps": {
+      "first": "Opowiedz nam o swoim projekcie",
+      "second": "Otrzymaj dopasowaną odpowiedź",
+      "third": "Przejdź dalej z jasnym planem"
+    },
+    "viewProcess": "Zobacz cały proces"
+  },
   "home": {
-     "pagination": {
+    "pagination": {
       "navLabel": "Homepage sections",
       "mobileTrigger": "Browse sections",
-"mobileTitle": "Browse sections",
-"mobileClose": "Close section navigator",
-    "hero": "Welcome",
-    "trusted": "Trust",
-    "why": "Why Us",
-    "services": "Services",
-    "projects": "Projects",
-    "reviews": "Reviews",
-    "quote": "Quote",
-    "process": "Process",
-    "contact": "Contact"
-  },
+      "mobileTitle": "Browse sections",
+      "mobileClose": "Close section navigator",
+      "hero": "Welcome",
+      "trusted": "Trust",
+      "why": "Why Us",
+      "services": "Services",
+      "projects": "Projects",
+      "reviews": "Reviews",
+      "quote": "Quote",
+      "process": "Process",
+      "contact": "Contact"
+    },
     "labels": {
       "about": "O nas",
       "services": "Usługi",
@@ -85,160 +92,152 @@
       "title": "Więcej niż remont",
       "description": "Mieszkanie, dom czy przestrzeń biznesowa to coś więcej niż metry kwadratowe. To miejsce, w którym żyjesz, odpoczywasz, pracujesz i tworzysz swoją codzienność. Pomagamy przekształcać surowe wnętrza w funkcjonalne i estetyczne przestrzenie, które odzwierciedlają Twój styl życia."
     },
-   "servicesPreview": {
-  "eyebrow": "Usługi",
-  "title": "Kompleksowe prace remontowe i wykończeniowe",
-  "description": "Zobacz główne zakresy prac, które realizujemy — od przygotowania ścian, przez instalacje, aż po montaż i prace wykończeniowe.",
-  "itemCount": "{count} usług w tej kategorii"
-},
+    "servicesPreview": {
+      "eyebrow": "Usługi",
+      "title": "Kompleksowe prace remontowe i wykończeniowe",
+      "description": "Zobacz główne zakresy prac, które realizujemy — od przygotowania ścian, przez instalacje, aż po montaż i prace wykończeniowe.",
+      "itemCount": "{count} usług w tej kategorii"
+    },
     "projects": {
       "title": "Realizacje, które najlepiej pokazują naszą pracę",
       "description": "Każdy projekt to efekt współpracy, doświadczenia i dbałości o detale. W naszym portfolio znajdują się zarówno nowoczesne mieszkania, jak i przestrzenie komercyjne, które łączą estetykę, funkcjonalność i wysoką jakość wykonania."
     },
-   "process": {
-  "eyebrow": "Proces",
-  "title": "Jak pracujemy?",
-  "description": "Prowadzimy klienta przez każdy etap realizacji — od pierwszej rozmowy, przez wycenę i planowanie, aż po wykonanie prac oraz odbiór gotowego projektu.",
-  "steps": {
-    "consultation": {
-      "title": "Konsultacja",
-      "description": "Skontaktuj się z nami telefonicznie lub mailowo. Odpowiemy na pytania, doradzimy najlepsze rozwiązania i umówimy dogodny termin spotkania."
+    "process": {
+      "eyebrow": "Proces",
+      "title": "Jak pracujemy?",
+      "description": "Prowadzimy klienta przez każdy etap realizacji — od pierwszej rozmowy, przez wycenę i planowanie, aż po wykonanie prac oraz odbiór gotowego projektu.",
+      "steps": {
+        "consultation": {
+          "title": "Konsultacja",
+          "description": "Skontaktuj się z nami telefonicznie lub mailowo. Odpowiemy na pytania, doradzimy najlepsze rozwiązania i umówimy dogodny termin spotkania."
+        },
+        "estimate": {
+          "title": "Wycena i planowanie",
+          "description": "Otrzymujemy projekt lub przyjeżdżamy na miejsce, oceniamy zakres prac i przygotowujemy wycenę oraz harmonogram realizacji."
+        },
+        "start": {
+          "title": "Rozpoczęcie prac",
+          "description": "Po zaakceptowaniu oferty podpisujemy umowę, rezerwujemy termin i organizujemy dostawę niezbędnych materiałów."
+        },
+        "realization": {
+          "title": "Realizacja",
+          "description": "Wykonujemy wszystkie prace zgodnie z ustalonym planem, dbając o jakość, terminowość i porządek na każdym etapie."
+        },
+        "handover": {
+          "title": "Odbiór i gwarancja",
+          "description": "Po zakończeniu prac przekazujemy gotową realizację do odbioru i zapewniamy wsparcie po zakończeniu projektu."
+        }
+      }
     },
-    "estimate": {
-      "title": "Wycena i planowanie",
-      "description": "Otrzymujemy projekt lub przyjeżdżamy na miejsce, oceniamy zakres prac i przygotowujemy wycenę oraz harmonogram realizacji."
-    },
-    "start": {
-      "title": "Rozpoczęcie prac",
-      "description": "Po zaakceptowaniu oferty podpisujemy umowę, rezerwujemy termin i organizujemy dostawę niezbędnych materiałów."
-    },
-    "realization": {
-      "title": "Realizacja",
-      "description": "Wykonujemy wszystkie prace zgodnie z ustalonym planem, dbając o jakość, terminowość i porządek na każdym etapie."
-    },
-    "handover": {
-      "title": "Odbiór i gwarancja",
-      "description": "Po zakończeniu prac przekazujemy gotową realizację do odbioru i zapewniamy wsparcie po zakończeniu projektu."
-    }
-  }
-},
     "contact": {
       "title": "Porozmawiajmy o Twoim projekcie",
       "description": "Planujesz remont lub wykończenie mieszkania? Skontaktuj się z nami, aby omówić szczegóły projektu i zrobić pierwszy krok w stronę przestrzeni, która będzie w pełni dopasowana do Twoich potrzeb."
     }
   },
   "about": {
-"hero": {
-"eyebrow": "Pro100 Twój Remont — profesjonalne remonty i wykończenia wnętrz w Warszawie"
-},
-
-"story": {
-  "eyebrow": "Nasza historia",
-  "title": "Kim jesteśmy",
-  "content": "Pro100 Twój Remont to zespół doświadczonych specjalistów, którzy z pasją, zaangażowaniem i dbałością o każdy detal realizują wyjątkowe przestrzenie do życia i pracy. Specjalizujemy się w kompleksowych remontach oraz wykończeniach wnętrz, oferując naszym Klientom pełne wsparcie na każdym etapie realizacji inwestycji — od pierwszej konsultacji aż po przekazanie gotowego wnętrza.",
-  "button": "Zobacz realizacje"
-},
-
-"values": {
-  "eyebrow": "Nasze wartości",
-
-  "items": {
-    "first": {
-      "title": "Rzetelność",
-      "text": "Dotrzymujemy zobowiązań i do każdego etapu realizacji podchodzimy z konsekwencją, odpowiedzialnością i należytą starannością."
+    "hero": {
+      "eyebrow": "Pro100 Twój Remont — profesjonalne remonty i wykończenia wnętrz w Warszawie"
     },
-    "second": {
-      "title": "Precyzja",
-      "text": "Dbamy o każdy detal, aby zapewnić estetyczny, funkcjonalny i starannie wykończony efekt."
+    "story": {
+      "eyebrow": "Nasza historia",
+      "title": "Kim jesteśmy",
+      "content": "Pro100 Twój Remont to zespół doświadczonych specjalistów, którzy z pasją, zaangażowaniem i dbałością o każdy detal realizują wyjątkowe przestrzenie do życia i pracy. Specjalizujemy się w kompleksowych remontach oraz wykończeniach wnętrz, oferując naszym Klientom pełne wsparcie na każdym etapie realizacji inwestycji — od pierwszej konsultacji aż po przekazanie gotowego wnętrza.",
+      "button": "Zobacz realizacje"
     },
-    "third": {
-      "title": "Partnerstwo",
-      "text": "Budujemy relacje oparte na zaufaniu, otwartej komunikacji i ścisłej współpracy na każdym etapie realizacji."
+    "values": {
+      "eyebrow": "Nasze wartości",
+      "items": {
+        "first": {
+          "title": "Rzetelność",
+          "text": "Dotrzymujemy zobowiązań i do każdego etapu realizacji podchodzimy z konsekwencją, odpowiedzialnością i należytą starannością."
+        },
+        "second": {
+          "title": "Precyzja",
+          "text": "Dbamy o każdy detal, aby zapewnić estetyczny, funkcjonalny i starannie wykończony efekt."
+        },
+        "third": {
+          "title": "Partnerstwo",
+          "text": "Budujemy relacje oparte na zaufaniu, otwartej komunikacji i ścisłej współpracy na każdym etapie realizacji."
+        },
+        "fourth": {
+          "title": "Sprawna organizacja",
+          "text": "Jasne zasady, uporządkowane procesy i skuteczna koordynacja pozwalają nam sprawnie prowadzić każdą realizację."
+        },
+        "fifth": {
+          "title": "Indywidualne podejście",
+          "text": "Każdą realizację dopasowujemy do potrzeb, oczekiwań, stylu życia i wizji Klienta."
+        },
+        "sixth": {
+          "title": "Gwarancja wykonania",
+          "text": "Bierzemy odpowiedzialność za jakość naszej pracy i gwarantujemy wysoki standard każdej ukończonej realizacji."
+        },
+        "seventh": {
+          "title": "Ochrona ubezpieczeniowa",
+          "text": "Nasza działalność jest ubezpieczona, co zapewnia dodatkowe bezpieczeństwo i spokój na każdym etapie remontu."
+        }
+      }
     },
-    "fourth": {
-      "title": "Sprawna organizacja",
-      "text": "Jasne zasady, uporządkowane procesy i skuteczna koordynacja pozwalają nam sprawnie prowadzić każdą realizację."
+    "details": {
+      "imageAlt": "The Pro100 Twój Remont team",
+      "paragraphs": {
+        "first": "Od 2020 roku z powodzeniem działamy na rynku remontowo-budowlanym, realizując projekty na terenie Warszawy i okolic. Naszą ofertę kierujemy zarówno do klientów indywidualnych, jak i firm oraz instytucji publicznych. Dzięki doświadczeniu, profesjonalnemu zapleczu technicznemu oraz wykwalifikowanej kadrze jesteśmy w stanie realizować nawet najbardziej wymagające przedsięwzięcia.",
+        "second": "Wierzymy, że każdy remont to coś więcej niż tylko prace budowlane — to proces tworzenia przestrzeni, która ma służyć ludziom przez lata. Dlatego do każdej realizacji podchodzimy indywidualnie, z pełnym zaangażowaniem i odpowiedzialnością. Łączymy wiedzę, doświadczenie oraz nowoczesne rozwiązania, aby zapewnić naszym Klientom najwyższą jakość wykonania, terminowość i pełen komfort współpracy.",
+        "third": "Każdy członek naszego zespołu wnosi unikalne umiejętności i doświadczenie, co pozwala nam nieustannie doskonalić proces realizacji oraz utrzymywać najwyższe standardy usług. Dbamy o transparentną komunikację, precyzję wykonania oraz estetykę każdego detalu, ponieważ wiemy, że to właśnie szczegóły decydują o końcowym efekcie.",
+        "fourth": "Naszą misją jest tworzenie wnętrz, które nie tylko spełniają oczekiwania Klientów, ale często je przewyższają. Realizowane przez nas remonty i wykończenia mieszkań, domów, lokali użytkowych oraz inwestycji „pod klucz” wykonujemy z najwyższą starannością, dzięki czemu zaufali nam również najbardziej wymagający Klienci."
+      },
+      "closing": "Pro100 Twój Remont to gwarancja profesjonalizmu, jakości i partnerstwa — od pierwszego spotkania aż po oddanie gotowej przestrzeni."
     },
-    "fifth": {
-      "title": "Indywidualne podejście",
-      "text": "Każdą realizację dopasowujemy do potrzeb, oczekiwań, stylu życia i wizji Klienta."
+    "trustedBrands": {
+      "eyebrow": "Zaufanie Klientów",
+      "title": "Nasze realizacje łączą jakość, funkcjonalność i dopracowaną estetykę.",
+      "description": "Doświadczenie, precyzja i odpowiedzialne podejście do każdej realizacji sprawiają, że wybierają nas Klienci oczekujący najwyższego standardu.",
+      "regionLabel": "Marki i partnerzy"
     },
-    "sixth": {
-      "title": "Gwarancja wykonania",
-      "text": "Bierzemy odpowiedzialność za jakość naszej pracy i gwarantujemy wysoki standard każdej ukończonej realizacji."
-    },
-    "seventh": {
-      "title": "Ochrona ubezpieczeniowa",
-      "text": "Nasza działalność jest ubezpieczona, co zapewnia dodatkowe bezpieczeństwo i spokój na każdym etapie remontu."
+    "cta": {
+      "eyebrow": "Porozmawiajmy",
+      "title": "Wybierz kolejny krok",
+      "description": "Niezależnie od tego, czy chcesz poznać opinie naszych Klientów, poprosić o wycenę czy skontaktować się z nami bezpośrednio — tutaj możesz wybrać najlepszy sposób, aby przejść dalej.",
+      "items": {
+        "first": {
+          "title": "Opinie Klientów",
+          "text": "Zobacz, jak nasi Klienci oceniają współpracę, komunikację, przebieg realizacji oraz końcowy efekt.",
+          "button": "Zobacz opinie"
+        },
+        "second": {
+          "title": "Poproś o wycenę",
+          "text": "Opowiedz nam o swojej przestrzeni i potrzebach związanych z remontem, a pomożemy Ci zaplanować kolejne kroki.",
+          "button": "Poproś o wycenę"
+        },
+        "third": {
+          "title": "Skontaktuj się z nami",
+          "text": "Masz pytania lub chcesz bezpośrednio omówić swój remont? Skontaktuj się z nami i porozmawiajmy o Twoim projekcie.",
+          "button": "Skontaktuj się"
+        }
+      }
     }
-  }
-},
-
-"details": {
-  "imageAlt": "The Pro100 Twój Remont team",
-  "paragraphs": {
-    "first": "Od 2020 roku z powodzeniem działamy na rynku remontowo-budowlanym, realizując projekty na terenie Warszawy i okolic. Naszą ofertę kierujemy zarówno do klientów indywidualnych, jak i firm oraz instytucji publicznych. Dzięki doświadczeniu, profesjonalnemu zapleczu technicznemu oraz wykwalifikowanej kadrze jesteśmy w stanie realizować nawet najbardziej wymagające przedsięwzięcia.",
-    "second": "Wierzymy, że każdy remont to coś więcej niż tylko prace budowlane — to proces tworzenia przestrzeni, która ma służyć ludziom przez lata. Dlatego do każdej realizacji podchodzimy indywidualnie, z pełnym zaangażowaniem i odpowiedzialnością. Łączymy wiedzę, doświadczenie oraz nowoczesne rozwiązania, aby zapewnić naszym Klientom najwyższą jakość wykonania, terminowość i pełen komfort współpracy.",
-    "third": "Każdy członek naszego zespołu wnosi unikalne umiejętności i doświadczenie, co pozwala nam nieustannie doskonalić proces realizacji oraz utrzymywać najwyższe standardy usług. Dbamy o transparentną komunikację, precyzję wykonania oraz estetykę każdego detalu, ponieważ wiemy, że to właśnie szczegóły decydują o końcowym efekcie.",
-    "fourth": "Naszą misją jest tworzenie wnętrz, które nie tylko spełniają oczekiwania Klientów, ale często je przewyższają. Realizowane przez nas remonty i wykończenia mieszkań, domów, lokali użytkowych oraz inwestycji „pod klucz” wykonujemy z najwyższą starannością, dzięki czemu zaufali nam również najbardziej wymagający Klienci."
   },
-  "closing": "Pro100 Twój Remont to gwarancja profesjonalizmu, jakości i partnerstwa — od pierwszego spotkania aż po oddanie gotowej przestrzeni."
-},
-
-"trustedBrands": {
-  "eyebrow": "Zaufanie Klientów",
-  "title": "Nasze realizacje łączą jakość, funkcjonalność i dopracowaną estetykę.",
-  "description": "Doświadczenie, precyzja i odpowiedzialne podejście do każdej realizacji sprawiają, że wybierają nas Klienci oczekujący najwyższego standardu.",
-  "regionLabel": "Marki i partnerzy"
-}, 
-
-"cta": {
-"eyebrow": "Porozmawiajmy",
-"title": "Wybierz kolejny krok",
-"description": "Niezależnie od tego, czy chcesz poznać opinie naszych Klientów, poprosić o wycenę czy skontaktować się z nami bezpośrednio — tutaj możesz wybrać najlepszy sposób, aby przejść dalej.",
-"items": {
-"first": {
-"title": "Opinie Klientów",
-"text": "Zobacz, jak nasi Klienci oceniają współpracę, komunikację, przebieg realizacji oraz końcowy efekt.",
-"button": "Zobacz opinie"
-},
-"second": {
-"title": "Poproś o wycenę",
-"text": "Opowiedz nam o swojej przestrzeni i potrzebach związanych z remontem, a pomożemy Ci zaplanować kolejne kroki.",
-"button": "Poproś o wycenę"
-},
-"third": {
-"title": "Skontaktuj się z nami",
-"text": "Masz pytania lub chcesz bezpośrednio omówić swój remont? Skontaktuj się z nami i porozmawiajmy o Twoim projekcie.",
-"button": "Skontaktuj się"
-}
-}
-}
-
-},
-
   "services": {
-  "hero": {
-    "eyebrow": "PRO100 Twój Remont",
-    "title": "Kompleksowe remonty i wykończenia wnętrz mieszkań, domów oraz przestrzeni komercyjnych.",
-    "question": "Dlaczego warto skorzystać z usług naszej firmy wykończeniowej?",
-    "paragraphs": {
-      "first": "Wśród naszych zasad ważne miejsce zajmuje rzetelność i dobra komunikacja z klientem podczas wykańczania.",
-      "second": "To dlatego na każdym etapie współpracy — przy ustalaniu szczegółów zlecenia, przygotowywaniu kosztorysu oraz podczas właściwych prac — jesteśmy z Państwem w stałym kontakcie i dokładamy wszelkich starań, aby jak najlepiej zrozumieć Państwa potrzeby i preferencje.",
-      "third": "Pozwala nam to sumiennie wykonywać kompleksowe wykończenie mieszkań pod klucz oraz cieszyć się opinią rzetelnej i przyjaznej dla klienta firmy. Nasi pracownicy dbają o porządek, dobre maniery i przestrzeganie zasad obowiązujących w budynkach mieszkalnych."
-    }
+    "hero": {
+      "eyebrow": "PRO100 Twój Remont",
+      "title": "Kompleksowe remonty i wykończenia wnętrz mieszkań, domów oraz przestrzeni komercyjnych.",
+      "question": "Dlaczego warto skorzystać z usług naszej firmy wykończeniowej?",
+      "paragraphs": {
+        "first": "Wśród naszych zasad ważne miejsce zajmuje rzetelność i dobra komunikacja z klientem podczas wykańczania.",
+        "second": "To dlatego na każdym etapie współpracy — przy ustalaniu szczegółów zlecenia, przygotowywaniu kosztorysu oraz podczas właściwych prac — jesteśmy z Państwem w stałym kontakcie i dokładamy wszelkich starań, aby jak najlepiej zrozumieć Państwa potrzeby i preferencje.",
+        "third": "Pozwala nam to sumiennie wykonywać kompleksowe wykończenie mieszkań pod klucz oraz cieszyć się opinią rzetelnej i przyjaznej dla klienta firmy. Nasi pracownicy dbają o porządek, dobre maniery i przestrzeganie zasad obowiązujących w budynkach mieszkalnych."
+      }
+    },
+    "pricing": {
+      "note": "Informujemy, że podane ceny są orientacyjne i nie uwzględniają kosztu materiałów.",
+      "description": "Aby otrzymać dokładną wycenę projektu, zostaw zgłoszenie, a my skontaktujemy się z Tobą w najbliższym czasie."
+    },
+    "section": {
+      "eyebrow": "Zakres usług",
+      "title": "Lista usług",
+      "description": "Przejrzysty wykaz prac remontowych i wykończeniowych wraz z orientacyjnymi cenami."
+    },
+    "empty": "Usługi zostaną dodane wkrótce."
   },
-  "pricing": {
-    "note": "Informujemy, że podane ceny są orientacyjne i nie uwzględniają kosztu materiałów.",
-    "description": "Aby otrzymać dokładną wycenę projektu, zostaw zgłoszenie, a my skontaktujemy się z Tobą w najbliższym czasie."
-  },
-  "section": {
-    "eyebrow": "Zakres usług",
-    "title": "Lista usług",
-    "description": "Przejrzysty wykaz prac remontowych i wykończeniowych wraz z orientacyjnymi cenami."
-  },
-  "empty": "Usługi zostaną dodane wkrótce."
-},
   "projects": {
     "hero": {
       "eyebrow": "Wybrane realizacje",
@@ -296,7 +295,7 @@
         "bathroom": "Bathroom renovation",
         "kitchen": "Kitchen renovation",
         "commercial": "Commercial renovation",
-        "interior": "Interior finishing", 
+        "interior": "Interior finishing",
         "residential": "Residential"
       },
       "featured": {
@@ -375,39 +374,43 @@
     "formNote": "Formularz kontaktowy znajduje się poniżej."
   },
   "contactCta": {
-  "eyebrow": "Kolejny krok",
-  "title": "Gotowy, aby nadać kształt swojemu kolejnemu remontowi?",
-  "description": "Zacznij od jasnej rozmowy, poznaj proces i wykonaj kolejny krok z pewnością."
-},
+    "eyebrow": "Kolejny krok",
+    "title": "Gotowy, aby nadać kształt swojemu kolejnemu remontowi?",
+    "description": "Zacznij od jasnej rozmowy, poznaj proces i wykonaj kolejny krok z pewnością."
+  },
   "footer": {
-  "description": "Kompleksowe remonty i wykończenia wnętrz mieszkań, domów oraz przestrzeni komercyjnych.",
-  "quickLinks": "Szybkie linki",
-  "contactInfo": "Kontakt",
-  "partners": {
-    "title": "Partnerzy",
-    "ariaLabel": "Nasi zaufani partnerzy"
+    "description": "Kompleksowe remonty i wykończenia wnętrz mieszkań, domów oraz przestrzeni komercyjnych.",
+    "quickLinks": "Szybkie linki",
+    "contactInfo": "Kontakt",
+    "partners": {
+      "title": "Partners",
+      "ariaLabel": "Our trusted partners",
+      "openDetails": "View details about {name}",
+      "closeDetails": "Close partner details",
+      "visitWebsite": "Visit partner website",
+      "websiteUnavailable": "Website unavailable"
+    },
+    "social": {
+      "title": "Media społecznościowe",
+      "instagram": "Instagram",
+      "facebook": "Facebook",
+      "linkedin": "LinkedIn",
+      "googleMaps": "Google Maps",
+      "email": "Email",
+      "tiktok": "TikTok"
+    },
+    "forms": {
+      "title": "Działania",
+      "requestQuote": "Poproś o wycenę",
+      "leaveComment": "Zostaw komentarz"
+    },
+    "aria": {
+      "openQuote": "Otwórz formularz wyceny",
+      "openComment": "Otwórz formularz komentarza",
+      "socialLinks": "Linki do mediów społecznościowych"
+    },
+    "copyright": "© {year} PRO100 Twój Remont. Wszelkie prawa zastrzeżone."
   },
-  "social": {
-    "title": "Media społecznościowe",
-    "instagram": "Instagram",
-    "facebook": "Facebook",
-    "linkedin": "LinkedIn",
-    "googleMaps": "Google Maps",
-    "email": "Email",
-    "tiktok": "TikTok"
-  },
-  "forms": {
-    "title": "Działania",
-    "requestQuote": "Poproś o wycenę",
-    "leaveComment": "Zostaw komentarz"
-  },
-  "aria": {
-    "openQuote": "Otwórz formularz wyceny",
-    "openComment": "Otwórz formularz komentarza",
-    "socialLinks": "Linki do mediów społecznościowych"
-  },
-  "copyright": "© {year} PRO100 Twój Remont. Wszelkie prawa zastrzeżone."
-},
   "metadata": {
     "home": {
       "title": "PRO100 Twój Remont | Remonty i wykończenia wnętrz pod klucz",
@@ -436,38 +439,38 @@
   },
   "form": {
     "modal": {
-  "eyebrow": "PRO100 Twój Remont",
-  "closeAriaLabel": "Zamknij formularz wyceny"
-},
-"sections": {
-  "contact": {
-    "eyebrow": "01 / Kontakt",
-    "title": "Dane kontaktowe"
-  },
-  "project": {
-    "eyebrow": "02 / Projekt",
-    "title": "Zakres prac"
-  },
-  "details": {
-    "eyebrow": "03 / Szczegóły",
-    "title": "Pliki i dodatkowe informacje"
-  }
-},
-"actions": {
-  "close": "Zamknij",
-  "sendAnother": "Wyślij kolejne"
-},
-"select": {
-  "chooseOption": "Wybierz opcję"
-},
-"date": {
-  "helper": "Use the format YYYY-MM-DD.",
-  "openCalendar": "Open calendar",
-  "calendarLabel": "Choose start date"
-},
-"fieldsHint": {
-  "workDescription": "Podaj orientacyjną powierzchnię lub krótki zakres prac."
-},
+      "eyebrow": "PRO100 Twój Remont",
+      "closeAriaLabel": "Zamknij formularz wyceny"
+    },
+    "sections": {
+      "contact": {
+        "eyebrow": "01 / Kontakt",
+        "title": "Dane kontaktowe"
+      },
+      "project": {
+        "eyebrow": "02 / Projekt",
+        "title": "Zakres prac"
+      },
+      "details": {
+        "eyebrow": "03 / Szczegóły",
+        "title": "Pliki i dodatkowe informacje"
+      }
+    },
+    "actions": {
+      "close": "Zamknij",
+      "sendAnother": "Wyślij kolejne"
+    },
+    "select": {
+      "chooseOption": "Wybierz opcję"
+    },
+    "date": {
+      "helper": "Use the format YYYY-MM-DD.",
+      "openCalendar": "Open calendar",
+      "calendarLabel": "Choose start date"
+    },
+    "fieldsHint": {
+      "workDescription": "Podaj orientacyjną powierzchnię lub krótki zakres prac."
+    },
     "title": "Poproś o wycenę",
     "subtitle": "Wypełnij formularz poniżej, a skontaktujemy się z Tobą, aby omówić kolejne kroki.",
     "fields": {
@@ -525,7 +528,7 @@
       "dateInvalid": "Wybierz poprawną datę"
     },
     "fileUpload": {
-       "sizeUnit": "MB",
+      "sizeUnit": "MB",
       "dragDrop": "Przeciągnij i upuść pliki tutaj lub kliknij, aby je wybrać",
       "selectedFiles": "Wybrane pliki",
       "removeFile": "Usuń",
@@ -537,128 +540,128 @@
     "errorMessage": "Coś poszło nie tak. Spróbuj ponownie."
   },
   "getContact": {
-  "hero": {
-    "eyebrow": "Skontaktuj się z nami",
+    "hero": {
+      "eyebrow": "Skontaktuj się z nami",
+      "title": "Kontakt",
+      "subtitle": "Porozmawiajmy o Twoim remoncie, wykończeniu wnętrz lub metamorfozie przestrzeni.",
+      "bgWord": "Kontakt"
+    },
     "title": "Kontakt",
-    "subtitle": "Porozmawiajmy o Twoim remoncie, wykończeniu wnętrz lub metamorfozie przestrzeni.",
-    "bgWord": "Kontakt"
+    "description": "Jeśli planujesz remont, wykończenie pod klucz lub metamorfozę wnętrza, jesteśmy gotowi do rozmowy. Skontaktuj się z nami, aby omówić swój projekt, zadać pytania lub umówić pierwszą konsultację.",
+    "getInTouch": {
+      "title": "Skontaktuj się",
+      "description": "Napisz do nas, aby omówić swój projekt, zadać pytania i zrobić pierwszy krok w kierunku przestrzeni dopasowanej do Twoich potrzeb."
+    },
+    "details": {
+      "email": "E-mail",
+      "phone": "Telefon",
+      "hours": "Godziny pracy",
+      "hoursValue": "Poniedziałek – piątek: 8:00 – 18:00\nSobota: 9:00 – 16:00"
+    },
+    "social": {
+      "title": "Obserwuj nas"
+    },
+    "map": {
+      "title": "Nasza lokalizacja",
+      "description": "Pracujemy z Warszawy i wspieramy projekty remontowe oraz wykończeniowe w całym regionie.",
+      "ariaLabel": "Mapa lokalizacji biura",
+      "iframeTitle": "Lokalizacja biura"
+    },
+    "opinions": {
+      "title": "Opinie klientów",
+      "description": "Zobacz, co nasi klienci mówią o współpracy z nami i przestrzeniach, które pomogliśmy stworzyć.",
+      "cta": "Zobacz opinie"
+    },
+    "instagram": {
+      "eyebrow": "Bądź na bieżąco",
+      "title": "Ostatnio na Instagramie",
+      "viewProfile": "Zobacz profil",
+      "scrollPrev": "Pokaż poprzedni post",
+      "scrollNext": "Pokaż następny post"
+    }
   },
-  "title": "Kontakt",
-  "description": "Jeśli planujesz remont, wykończenie pod klucz lub metamorfozę wnętrza, jesteśmy gotowi do rozmowy. Skontaktuj się z nami, aby omówić swój projekt, zadać pytania lub umówić pierwszą konsultację.",
-  "getInTouch": {
-    "title": "Skontaktuj się",
-    "description": "Napisz do nas, aby omówić swój projekt, zadać pytania i zrobić pierwszy krok w kierunku przestrzeni dopasowanej do Twoich potrzeb."
+  "clientOpinions": {
+    "watermark": "Opinie Klientów",
+    "eyebrow": "Opinie Klientów",
+    "title": "Prawdziwe doświadczenia. Prawdziwe zaufanie.",
+    "description": "Krótkie historie Klientów, którzy powierzyli nam swoje wnętrza.",
+    "videoReviews": "Opinie wideo",
+    "writtenReviews": "Opinie tekstowe",
+    "readMore": "Przeczytaj opinie Klientów",
+    "reviewCount": "{count, plural, =0 {Brak opinii} one {# opinia} few {# opinie} many {# opinii} other {# opinii}}",
+    "cta": {
+      "leaveReview": "Dodaj opinię"
+    },
+    "readFullReview": "Przeczytaj całą opinię",
+    "viewOnGoogle": "Zobacz w Google",
+    "noVideoReviews": "Brak opinii wideo",
+    "noWrittenReviews": "Brak opinii tekstowych",
+    "aria": {
+      "stars": "Średnia ocena",
+      "rating": "Ocena: {rating} z 5",
+      "videoReviews": "Opinie wideo Klientów",
+      "writtenReviews": "Opinie tekstowe Klientów",
+      "playVideo": "Odtwórz opinię wideo",
+      "previousVideo": "Poprzednie wideo",
+      "nextVideo": "Następne wideo",
+      "closeVideo": "Zamknij wideo",
+      "previousReview": "Poprzednia opinia",
+      "nextReview": "Następna opinia",
+      "closeReview": "Zamknij opinię",
+      "scrollPrevious": "Przewiń do poprzedniej",
+      "scrollNext": "Przewiń do następnej"
+    },
+    "success": {
+      "reviewSubmitted": "Dziękujemy. Twoja opinia została przesłana i zostanie opublikowana po krótkiej weryfikacji."
+    }
   },
-  "details": {
-    "email": "E-mail",
-    "phone": "Telefon",
-    "hours": "Godziny pracy",
-    "hoursValue": "Poniedziałek – piątek: 8:00 – 18:00\nSobota: 9:00 – 16:00"
+  "leaveComment": {
+    "title": "Podziel się swoją opinią",
+    "description": "Opowiedz nam o swoich doświadczeniach ze współpracy z naszym zespołem.",
+    "fields": {
+      "name": "Imię",
+      "location": "Lokalizacja",
+      "rating": "Twoja ocena",
+      "comment": "Twoja opinia",
+      "photo": "Zdjęcie",
+      "optional": "Opcjonalnie"
+    },
+    "placeholders": {
+      "name": "Wpisz swoje imię",
+      "location": "Miasto lub lokalizacja projektu",
+      "comment": "Podziel się swoją opinią o naszych usługach remontowych...",
+      "addPhoto": "Dodaj zdjęcie",
+      "photoHint": "JPG, PNG lub WEBP. Maksymalnie {size}."
+    },
+    "buttons": {
+      "cancel": "Anuluj",
+      "submit": "Dodaj opinię",
+      "submitting": "Wysyłanie...",
+      "remove": "Usuń",
+      "close": "Zamknij"
+    },
+    "validation": {
+      "requiredName": "Imię jest wymagane",
+      "nameMin": "Imię musi zawierać co najmniej {count} znaki",
+      "nameMax": "Imię może zawierać maksymalnie {count} znaków",
+      "requiredLocation": "Lokalizacja jest wymagana",
+      "requiredRating": "Wybierz ocenę",
+      "requiredComment": "Opinia jest wymagana",
+      "commentMin": "Opinia musi zawierać co najmniej {count} znaków",
+      "commentMax": "Opinia może zawierać maksymalnie {count} znaków",
+      "photoInvalidType": "Prześlij zdjęcie w formacie JPG, PNG lub WEBP.",
+      "photoTooLarge": "Zdjęcie musi być mniejsze niż {size}."
+    },
+    "aria": {
+      "selectRating": "Wybierz ocenę {rating} gwiazdek",
+      "closeModal": "Zamknij formularz opinii",
+      "removePhoto": "Usuń wybrane zdjęcie"
+    },
+    "success": {
+      "title": "Dziękujemy!",
+      "reviewSubmitted": "Twoja opinia została przesłana i zostanie opublikowana po krótkiej weryfikacji."
+    }
   },
-  "social": {
-    "title": "Obserwuj nas"
-  },
-  "map": {
-    "title": "Nasza lokalizacja",
-    "description": "Pracujemy z Warszawy i wspieramy projekty remontowe oraz wykończeniowe w całym regionie.",
-    "ariaLabel": "Mapa lokalizacji biura",
-    "iframeTitle": "Lokalizacja biura"
-  },
-  "opinions": {
-    "title": "Opinie klientów",
-    "description": "Zobacz, co nasi klienci mówią o współpracy z nami i przestrzeniach, które pomogliśmy stworzyć.",
-    "cta": "Zobacz opinie"
-  },
-  "instagram": {
-    "eyebrow": "Bądź na bieżąco",
-    "title": "Ostatnio na Instagramie",
-    "viewProfile": "Zobacz profil",
-    "scrollPrev": "Pokaż poprzedni post",
-    "scrollNext": "Pokaż następny post"
-  }
-},
-
-  "clientOpinions": { 
-    "watermark": "Opinie Klientów", 
-    "eyebrow": "Opinie Klientów", 
-    "title": "Prawdziwe doświadczenia. Prawdziwe zaufanie.", 
-    "description": "Krótkie historie Klientów, którzy powierzyli nam swoje wnętrza.", 
-    "videoReviews": "Opinie wideo", 
-    "writtenReviews": "Opinie tekstowe", 
-    "readMore": "Przeczytaj opinie Klientów", 
-    "reviewCount": "{count, plural, =0 {Brak opinii} one {# opinia} few {# opinie} many {# opinii} other {# opinii}}", 
-    "cta": { "leaveReview": "Dodaj opinię" }, 
-    "readFullReview": "Przeczytaj całą opinię", 
-    "viewOnGoogle": "Zobacz w Google", 
-    "noVideoReviews": "Brak opinii wideo", 
-    "noWrittenReviews": "Brak opinii tekstowych", 
-    "aria": { 
-      "stars": "Średnia ocena", 
-      "rating": "Ocena: {rating} z 5", 
-      "videoReviews": "Opinie wideo Klientów", 
-      "writtenReviews": "Opinie tekstowe Klientów", 
-      "playVideo": "Odtwórz opinię wideo", 
-      "previousVideo": "Poprzednie wideo", 
-      "nextVideo": "Następne wideo", 
-      "closeVideo": "Zamknij wideo", 
-      "previousReview": "Poprzednia opinia", 
-      "nextReview": "Następna opinia", 
-      "closeReview": "Zamknij opinię", 
-      "scrollPrevious": "Przewiń do poprzedniej", 
-      "scrollNext": "Przewiń do następnej" },
-   "success": { 
-    "reviewSubmitted": "Dziękujemy. Twoja opinia została przesłana i zostanie opublikowana po krótkiej weryfikacji."
-     }
-  },
-
-  "leaveComment": { 
-    "title": "Podziel się swoją opinią", 
-    "description": "Opowiedz nam o swoich doświadczeniach ze współpracy z naszym zespołem.", 
-    "fields": { 
-      "name": "Imię", 
-      "location": "Lokalizacja", 
-      "rating": "Twoja ocena", 
-      "comment": "Twoja opinia", 
-      "photo": "Zdjęcie", 
-      "optional": "Opcjonalnie" 
-      }, 
-      "placeholders": { 
-        "name": "Wpisz swoje imię", 
-        "location": "Miasto lub lokalizacja projektu", 
-        "comment": "Podziel się swoją opinią o naszych usługach remontowych...", 
-        "addPhoto": "Dodaj zdjęcie", 
-        "photoHint": "JPG, PNG lub WEBP. Maksymalnie {size}."
-        }, 
-      "buttons": { 
-        "cancel": "Anuluj", 
-        "submit": "Dodaj opinię", 
-        "submitting": "Wysyłanie...", 
-        "remove": "Usuń", 
-        "close": "Zamknij" 
-        }, 
-      "validation": { 
-        "requiredName": "Imię jest wymagane", 
-        "nameMin": "Imię musi zawierać co najmniej {count} znaki", 
-        "nameMax": "Imię może zawierać maksymalnie {count} znaków", 
-        "requiredLocation": "Lokalizacja jest wymagana", 
-        "requiredRating": "Wybierz ocenę", 
-        "requiredComment": "Opinia jest wymagana", 
-        "commentMin": "Opinia musi zawierać co najmniej {count} znaków", 
-        "commentMax": "Opinia może zawierać maksymalnie {count} znaków", 
-        "photoInvalidType": "Prześlij zdjęcie w formacie JPG, PNG lub WEBP.", 
-        "photoTooLarge": "Zdjęcie musi być mniejsze niż {size}." 
-        }, 
-      "aria": { 
-        "selectRating": "Wybierz ocenę {rating} gwiazdek", 
-        "closeModal": "Zamknij formularz opinii", 
-        "removePhoto": "Usuń wybrane zdjęcie" 
-        }, 
-      "success": {
-        "title": "Dziękujemy!", 
-        "reviewSubmitted": "Twoja opinia została przesłana i zostanie opublikowana po krótkiej weryfikacji." 
-        }
-     },
-
   "callWidget": {
     "title": "Zadzwoń do nas",
     "cta": "Zadzwoń {phone}",

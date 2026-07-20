@@ -24,7 +24,14 @@
     "understandProcess": "Переглянути процес",
     "requestQuote": "Отримати кошторис",
     "viewMore": "View more",
-    "viewAllServices": "Zobacz wszystkie usługi"
+    "viewAllServices": "Zobacz wszystkie usługi",
+    "loading": {
+      "partners": "Завантаження партнерів...",
+      "services": "Завантаження послуг...",
+      "projects": "Завантаження проєктів...",
+      "reviews": "Завантаження відгуків...",
+      "trustedBrands": "Завантаження надійних брендів..."
+    }
   },
   "quoteHighlight": {
     "eyebrow": "Отримати кошторис",
@@ -376,8 +383,12 @@
     "quickLinks": "Швидкі посилання",
     "contactInfo": "Контакти",
     "partners": {
-      "title": "Партнери",
-      "ariaLabel": "Наші надійні партнери"
+      "title": "Partners",
+      "ariaLabel": "Our trusted partners",
+      "openDetails": "View details about {name}",
+      "closeDetails": "Close partner details",
+      "visitWebsite": "Visit partner website",
+      "websiteUnavailable": "Website unavailable"
     },
     "social": {
       "title": "Соціальні мережі",

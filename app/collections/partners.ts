@@ -33,14 +33,42 @@ export const Partners: CollectionConfig = {
       },
     },
     {
-      name: "website",
-      type: "text",
-      label: "Website",
-      admin: {
-        description:
-          "Optional external website URL. Example: https://example.com",
-      },
-    },
+  name: "description",
+  type: "textarea",
+  required: false,
+  label: "Short Description",
+  maxLength: 220,
+  admin: {
+    description:
+      "A short description shown when a visitor opens the partner details.",
+  },
+},
+    {
+  name: "website",
+  type: "text",
+  label: "Website",
+  validate: (value: string | null | undefined) => {
+    if (!value) return true;
+
+    try {
+      const url = new URL(value);
+
+      if (!["http:", "https:"].includes(url.protocol)) {
+        return "Use a valid http or https website URL.";
+      }
+
+      return true;
+    } catch {
+      return "Enter a complete website URL, for example https://example.com.";
+    }
+  },
+  admin: {
+    description:
+      "Optional external website URL, including https://.",
+  },
+},
+
+    
     {
       name: "status",
       type: "select",
