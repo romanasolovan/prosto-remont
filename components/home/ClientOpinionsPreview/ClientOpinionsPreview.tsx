@@ -1,47 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useLocale, useTranslations } from "next-intl";
+import { useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import { Link } from "@/navigation";
 import styles from "./ClientOpinionsPreview.module.css";
 import { clientFetchJson } from "@/lib/clientFetchJson";
-
-interface Comment {
-  id: string;
-  name: string;
-  rating: number;
-  comment: string;
-  translations?: {
-    en?: string;
-    pl?: string;
-    uk?: string;
-    ru?: string;
-  };
-  date: string;
-}
-
-const videoReviews = [
-  {
-    id: "video-1",
-    name: "Sarah",
-    label: "Apartment renovation",
-  },
-  {
-    id: "video-2",
-    name: "Michael",
-    label: "Bathroom renovation",
-  },
-  {
-    id: "video-3",
-    name: "Anna",
-    label: "Interior finishing",
-  },
-  {
-    id: "video-4",
-    name: "David",
-    label: "Home renovation",
-  },
-];
+import LeaveCommentForm from "../../Reviews/LeaveCommentForm/LeaveCommentForm";
+import VideoReviewsCarousel from "../../Reviews/VideoReviews/VideoReviewsCarousel";
+import WrittenReviewsCarousel from "../../Reviews/WrittenReviews/WrittenReviewsCarousel";
+import type { PublicReview } from "../../Reviews/shared/types";
 
 function Stars({ rating, ariaLabel }: { rating: number; ariaLabel: string }) {
   return (
@@ -63,48 +30,71 @@ function Stars({ rating, ariaLabel }: { rating: number; ariaLabel: string }) {
 
 export default function ClientOpinionsPreview() {
   const t = useTranslations("clientOpinions");
-  const locale = useLocale();
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
+  const successTimerRef = useRef<number | null>(null);
 
-  const [comments, setComments] = useState<Comment[]>([]);
+  const [reviews, setReviews] = useState<PublicReview[]>([]);
+  const [isLoadingReviews, setIsLoadingReviews] = useState(true);
+  const [showForm, setShowForm] = useState(false);
+  const [showSuccessNotice, setShowSuccessNotice] = useState(false);
 
   useEffect(() => {
     const fetchApprovedReviews = async () => {
       try {
-        const data = await clientFetchJson<{ reviews: Comment[] }>(
+        const data = await clientFetchJson<{ reviews: PublicReview[] }>(
           "/api/public/reviews",
           { reviews: [] },
         );
 
-        setComments(data.reviews || []);
+        setReviews(data.reviews || []);
       } catch (error) {
         console.error("Failed to load preview reviews:", error);
-        setComments([]);
+        setReviews([]);
+      } finally {
+        setIsLoadingReviews(false);
       }
     };
 
     fetchApprovedReviews();
   }, []);
 
-  const writtenReviews = comments.slice(0, 6);
-  const duplicatedWrittenReviews = [...writtenReviews, ...writtenReviews];
-  const duplicatedVideoReviews = [...videoReviews, ...videoReviews];
+  const handleOpenForm = () => {
+    setShowForm(true);
+  };
 
-  const getLocalizedComment = (comment: Comment) => {
-    const translatedText =
-      comment.translations?.[locale as "en" | "pl" | "uk" | "ru"];
+  const handleCloseForm = () => {
+    setShowForm(false);
+    requestAnimationFrame(() => {
+      triggerRef.current?.focus();
+    });
+  };
 
-    return translatedText || comment.comment;
+  const handleNewComment = () => {
+    setShowForm(false);
+    setShowSuccessNotice(true);
+
+    if (successTimerRef.current) {
+      window.clearTimeout(successTimerRef.current);
+    }
+
+    successTimerRef.current = window.setTimeout(() => {
+      setShowSuccessNotice(false);
+    }, 5000);
+
+    requestAnimationFrame(() => {
+      triggerRef.current?.focus();
+    });
   };
 
   const averageRating =
-    comments.length > 0
+    reviews.length > 0
       ? (
-          comments.reduce((sum, comment) => sum + comment.rating, 0) /
-          comments.length
+          reviews.reduce((sum, review) => sum + review.rating, 0) /
+          reviews.length
         ).toFixed(1)
       : "0.0";
 
-  const reviewLabel = t("reviewCount", { count: comments.length });
+  const reviewLabel = t("reviewCount", { count: reviews.length });
 
   return (
     <section
@@ -116,10 +106,6 @@ export default function ClientOpinionsPreview() {
           <header className={styles.header}>
             <div className={styles.heading}>
               <span className={styles.label}>{t("eyebrow")}</span>
-
-              {/* <h2 className={styles.title} id="client-opinions-preview-title">
-                {t("title")}
-              </h2> */}
             </div>
 
             <div className={styles.meta}>
@@ -137,90 +123,71 @@ export default function ClientOpinionsPreview() {
               </div>
 
               <div className={styles.actions}>
-                <Link href="/about" className={styles.link}>
+                <Link href="/reviews" className={styles.link}>
                   {t("readMore")}
                   <span aria-hidden="true">→</span>
                 </Link>
 
-                <Link href="/about" className={styles.secondaryLink}>
+                <button
+                  ref={triggerRef}
+                  type="button"
+                  onClick={handleOpenForm}
+                  className={styles.secondaryLink}
+                >
                   {t("cta.leaveReview")}
                   <span aria-hidden="true">→</span>
-                </Link>
+                </button>
               </div>
             </div>
           </header>
 
-          <div className={styles.videoBlock}>
-            {/* <div className={styles.rowLabel}>{t("videoReviews")}</div> */}
-
+          {showSuccessNotice && (
             <div
-              className={styles.videoCarousel}
-              aria-label={t("aria.videoReviews")}
+              className={styles.successNotice}
+              role="status"
+              aria-live="polite"
             >
-              <div className={styles.videoTrack}>
-                {duplicatedVideoReviews.map((video, index) => (
-                  <button
-                    key={`${video.id}-${index}`}
-                    className={styles.videoCard}
-                    type="button"
-                    aria-label={t("aria.playVideo")}
-                  >
-                    <span className={styles.playIcon} aria-hidden="true">
-                      ▶
-                    </span>
-
-                    <span className={styles.videoName}>{video.name}</span>
-                    <span className={styles.videoLabel}>{video.label}</span>
-                  </button>
-                ))}
-              </div>
+              {t("success.reviewSubmitted")}
             </div>
-          </div>
+          )}
 
-          <div className={styles.writtenBlock}>
-            {/* <div className={styles.rowLabel}>{t("writtenReviews")}</div> */}
-
-            <div
-              className={styles.writtenCarousel}
-              aria-label={t("aria.writtenReviews")}
-            >
-              <div className={styles.writtenTrack}>
-                {duplicatedWrittenReviews.map((comment, index) => (
-                  <article
-                    key={`${comment.id}-${index}`}
-                    className={styles.reviewCard}
-                  >
-                    <div className={styles.reviewTop}>
-                      <div className={styles.avatar} aria-hidden="true">
-                        {comment.name.charAt(0).toUpperCase()}
-                      </div>
-
-                      <div>
-                        <h3 className={styles.author}>{comment.name}</h3>
-
-                        <Stars
-                          rating={comment.rating}
-                          ariaLabel={t("aria.rating", {
-                            rating: comment.rating,
-                          })}
-                        />
-                      </div>
-                    </div>
-
-                    <p className={styles.reviewText}>
-                      {getLocalizedComment(comment)}
-                    </p>
-
-                    <span className={styles.quoteMark} aria-hidden="true">
-                      “
-                    </span>
-                  </article>
-                ))}
-              </div>
-            </div>
-          </div>
+          {!isLoadingReviews && (
+            <>
+              <VideoReviewsCarousel reviews={reviews} />
+              <WrittenReviewsCarousel reviews={reviews} />
+            </>
+          )}
         </div>
       </div>
+
+      {showForm && (
+        <LeaveCommentForm
+          onSubmit={async (data) => {
+            const formData = new FormData();
+
+            formData.append("name", data.name);
+            formData.append("rating", String(data.rating));
+            formData.append("comment", data.comment);
+            formData.append("location", data.location);
+
+            if (data.photo) {
+              formData.append("photo", data.photo);
+            }
+
+            const response = await fetch("/api/submit-review", {
+              method: "POST",
+              body: formData,
+            });
+
+            if (!response.ok) {
+              throw new Error("Failed to submit review");
+            }
+
+            handleNewComment();
+          }}
+          onCancel={handleCloseForm}
+        />
+      )}
     </section>
   );
 }

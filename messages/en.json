@@ -566,8 +566,9 @@
     "scrollNext": "Show next post"
   }
 },
+
   "clientOpinions": {
-    "watermark": "Client Opinions",
+  "watermark": "Client Opinions",
   "eyebrow": "Client opinions",
   "title": "Real experiences. Real trust.",
   "description": "Short stories from clients who trusted us with their spaces.",
@@ -578,12 +579,24 @@
   "cta": {
     "leaveReview": "Leave a review"
   },
+  "readFullReview": "Read full review",
+"viewOnGoogle": "View on Google",
+"noVideoReviews": "No video reviews yet",
+"noWrittenReviews": "No written reviews yet",
   "aria": {
     "stars": "Average rating",
     "rating": "Rating: {rating} out of 5",
     "videoReviews": "Client video reviews",
     "writtenReviews": "Client written reviews",
-    "playVideo": "Play video review"
+    "playVideo": "Play video review",
+    "previousVideo": "Previous video",
+  "nextVideo": "Next video",
+  "closeVideo": "Close video",
+  "previousReview": "Previous review",
+  "nextReview": "Next review",
+  "closeReview": "Close review",
+  "scrollPrevious": "Scroll to previous",
+  "scrollNext": "Scroll to next"
   },
   "success": {
     "reviewSubmitted": "Thank you. Your review has been submitted and will be published after a quick review."
@@ -591,40 +604,53 @@
 },
 
   "leaveComment": {
-    "title": "Share Your Experience",
-    "description": "Tell us about your renovation experience with our team.",
-    "fields": {
-      "name": "Your Name",
-      "rating": "Your Rating",
-      "comment": "Your Review"
-    },
-    "placeholders": {
-      "name": "Enter your name",
-      "comment": "Share your experience with our renovation services..."
-    },
-    "buttons": {
-      "cancel": "Cancel",
-      "submit": "Submit Review",
-      "submitting": "Submitting..."
-    },
-    "validation": {
-      "requiredName": "Name is required",
-      "nameMin": "Name must be at least {count} characters",
-      "nameMax": "Name must be at most {count} characters",
-      "requiredRating": "Please select a rating",
-      "requiredComment": "Review is required",
-      "commentMin": "Review must be at least {count} characters",
-      "commentMax": "Review must be at most {count} characters"
-    },
-    "aria": {
-      "selectRating": "Select {rating} star rating",
-      "closeModal": "Close review form"
-    },
-    "success": {
-      "title": "Thank You!",
-      "reviewSubmitted": "Your review has been submitted and will be published after a quick review."
-    }
+  "title": "Share Your Experience",
+  "description": "Tell us about your renovation experience with our team.",
+  "fields": {
+    "name": "Your Name",
+    "location": "Location",
+    "rating": "Your Rating",
+    "comment": "Your Review",
+    "photo": "Photo",
+    "optional": "Optional"
   },
+  "placeholders": {
+    "name": "Enter your name",
+    "location": "City or project location",
+    "comment": "Share your experience with our renovation services...",
+    "addPhoto": "Add a photo",
+    "photoHint": "JPG, PNG or WEBP. Max {size}."
+  },
+  "buttons": {
+    "cancel": "Cancel",
+    "submit": "Submit Review",
+    "submitting": "Submitting...",
+    "remove": "Remove",
+    "close": "Close"
+  },
+  "validation": {
+    "requiredName": "Name is required",
+    "nameMin": "Name must be at least {count} characters",
+    "nameMax": "Name must be at most {count} characters",
+    "requiredLocation": "Location is required",
+    "requiredRating": "Please select a rating",
+    "requiredComment": "Review is required",
+    "commentMin": "Review must be at least {count} characters",
+    "commentMax": "Review must be at most {count} characters",
+    "photoInvalidType": "Please upload a JPG, PNG, or WEBP image.",
+    "photoTooLarge": "Photo must be smaller than {size}."
+  },
+  "aria": {
+    "selectRating": "Select {rating} star rating",
+    "closeModal": "Close review form",
+    "removePhoto": "Remove selected photo"
+  },
+  "success": {
+    "title": "Thank You!",
+    "reviewSubmitted": "Your review has been submitted and will be published after a quick review."
+  }
+},
+
   "callWidget": {
     "title": "Call Us",
     "cta": "Call {phone}",

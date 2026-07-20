@@ -244,6 +244,10 @@ export interface Review {
    */
   video?: (number | null) | Media;
   /**
+   * Optional direct link to the matching review on Google. Leave empty if this review was not published on Google.
+   */
+  googleReviewUrl?: string | null;
+  /**
    * Set to 'Approved' to show the review on the website. Keep as 'Pending' to hide it until you review the content.
    */
   status: 'pending' | 'approved' | 'rejected';
@@ -569,6 +573,7 @@ export interface ReviewsSelect<T extends boolean = true> {
   originalLanguage?: T;
   photo?: T;
   video?: T;
+  googleReviewUrl?: T;
   status?: T;
   featured?: T;
   internalNotes?: T;

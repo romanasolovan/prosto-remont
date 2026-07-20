@@ -116,6 +116,43 @@ export const Reviews: CollectionConfig = {
       },
     },
     {
+      name: "googleReviewUrl",
+      type: "text",
+      label: "Google Review Link",
+      admin: {
+        description:
+          "Optional direct link to the matching review on Google. Leave empty if this review was not published on Google.",
+      },
+      validate: (value: string | null | undefined) => {
+        if (!value) {
+          return true;
+        }
+
+        try {
+          const url = new URL(value);
+
+          const allowedHosts = [
+            "google.com",
+            "www.google.com",
+            "maps.google.com",
+            "goo.gl",
+            "g.page",
+          ];
+
+          const isAllowedHost = allowedHosts.some(
+            (host) =>
+              url.hostname === host || url.hostname.endsWith(`.${host}`),
+          );
+
+          return isAllowedHost
+            ? true
+            : "Enter a valid Google or Google Maps review URL.";
+        } catch {
+          return "Enter a valid URL.";
+        }
+      },
+    },
+    {
       name: "status",
       type: "select",
       required: true,

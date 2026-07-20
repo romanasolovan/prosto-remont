@@ -30,6 +30,9 @@ const NAME_MAX = 50;
 const COMMENT_MIN = 10;
 const COMMENT_MAX = 500;
 
+const ACCEPTED_PHOTO_TYPES = ["image/jpeg", "image/png", "image/webp"];
+const MAX_PHOTO_SIZE_BYTES = 5 * 1024 * 1024; // 5MB
+
 const ErrorSlot = ({ id, error }: { id: string; error?: string }) => (
   <div className={styles.errorSlot} aria-live="polite">
     <div id={id} className={`${styles.error} ${error ? styles.visible : ""}`}>
@@ -47,6 +50,10 @@ export default function LeaveCommentForm({
   const [attemptedSubmit, setAttemptedSubmit] = useState(false);
   const [shake, setShake] = useState(false);
   const [isSuccessVisible, setIsSuccessVisible] = useState(false);
+
+  const [photoError, setPhotoError] = useState<string | null>(null);
+  const [photoPreviewUrl, setPhotoPreviewUrl] = useState<string | null>(null);
+  const [isDraggingPhoto, setIsDraggingPhoto] = useState(false);
 
   const firstInputRef = useRef<HTMLInputElement | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -98,6 +105,14 @@ export default function LeaveCommentForm({
     };
   }, [onCancel]);
 
+  useEffect(() => {
+    return () => {
+      if (photoPreviewUrl) {
+        URL.revokeObjectURL(photoPreviewUrl);
+      }
+    };
+  }, [photoPreviewUrl]);
+
   const validationSchema = useMemo(
     () =>
       Yup.object({
@@ -123,10 +138,45 @@ export default function LeaveCommentForm({
           .transform((value) =>
             typeof value === "string" ? value.trim() : value,
           )
-          .required("Location is required."),
+          .required(t("validation.requiredLocation")),
       }),
     [t],
   );
+
+  const formatMaxSize = () =>
+    `${Math.round(MAX_PHOTO_SIZE_BYTES / (1024 * 1024))}MB`;
+
+  const applyPhotoFile = (
+    file: File | null,
+    setFieldValue: (field: string, value: unknown) => void,
+  ) => {
+    if (!file) {
+      setFieldValue("photo", null);
+      setPhotoPreviewUrl((prev) => {
+        if (prev) URL.revokeObjectURL(prev);
+        return null;
+      });
+      setPhotoError(null);
+      return;
+    }
+
+    if (!ACCEPTED_PHOTO_TYPES.includes(file.type)) {
+      setPhotoError(t("validation.photoInvalidType"));
+      return;
+    }
+
+    if (file.size > MAX_PHOTO_SIZE_BYTES) {
+      setPhotoError(t("validation.photoTooLarge", { size: formatMaxSize() }));
+      return;
+    }
+
+    setPhotoError(null);
+    setFieldValue("photo", file);
+    setPhotoPreviewUrl((prev) => {
+      if (prev) URL.revokeObjectURL(prev);
+      return URL.createObjectURL(file);
+    });
+  };
 
   return (
     <div
@@ -148,11 +198,11 @@ export default function LeaveCommentForm({
           <div>
             <p className={styles.eyebrow}>PRO100REMONT</p>
             <h3 id="leave-review-title" className={styles.formTitle}>
-              {isSuccessVisible ? "Thank you for your words" : t("title")}
+              {isSuccessVisible ? t("success.title") : t("title")}
             </h3>
             <p id="leave-review-description" className={styles.formDescription}>
               {isSuccessVisible
-                ? "Your message has been received and is now waiting for review."
+                ? t("success.reviewSubmitted")
                 : t("description")}
             </p>
           </div>
@@ -169,10 +219,6 @@ export default function LeaveCommentForm({
 
         {isSuccessVisible ? (
           <div className={styles.successExperience} aria-live="polite">
-            <div className={styles.successHalo} aria-hidden="true" />
-            <div className={styles.successOrbitalLine} aria-hidden="true" />
-            <div className={styles.successBadge}>With gratitude</div>
-
             <div className={styles.successIconWrap} aria-hidden="true">
               <svg
                 viewBox="0 0 24 24"
@@ -189,27 +235,16 @@ export default function LeaveCommentForm({
               </svg>
             </div>
 
-            <h4 className={styles.successTitle}>
-              Thank you for sharing your experience.
-            </h4>
+            <h4 className={styles.successTitle}>{t("success.title")}</h4>
 
-            <p className={styles.successText}>
-              We appreciate the time you took to leave a thoughtful message.
-              Every comment is reviewed with care before it appears, so it may
-              take a little time.
-            </p>
-
-            <div className={styles.successDetailRow}>
-              <span className={styles.successPill}>Reviewed with care</span>
-              <span className={styles.successPill}>Added thoughtfully</span>
-            </div>
+            <p className={styles.successText}>{t("success.reviewSubmitted")}</p>
 
             <button
               type="button"
               onClick={onCancel}
               className={styles.successCloseButton}
             >
-              Close
+              {t("buttons.close")}
             </button>
           </div>
         ) : (
@@ -231,6 +266,11 @@ export default function LeaveCommentForm({
               helpers.setSubmitting(false);
               setAttemptedSubmit(false);
               setHoveredRating(0);
+              setPhotoError(null);
+              setPhotoPreviewUrl((prev) => {
+                if (prev) URL.revokeObjectURL(prev);
+                return null;
+              });
               setIsSuccessVisible(true);
             }}
           >
@@ -303,7 +343,8 @@ export default function LeaveCommentForm({
 
                   <div className={styles.formGroup}>
                     <label htmlFor="location" className={styles.label}>
-                      Location <span className={styles.required}>*</span>
+                      {t("fields.location")}{" "}
+                      <span className={styles.required}>*</span>
                     </label>
 
                     <input
@@ -313,7 +354,7 @@ export default function LeaveCommentForm({
                       value={values.location}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      placeholder="City or project location"
+                      placeholder={t("placeholders.location")}
                       className={styles.input}
                       autoComplete="address-level2"
                       aria-invalid={Boolean(
@@ -361,7 +402,9 @@ export default function LeaveCommentForm({
                               setFieldValue("rating", star);
                               setFieldTouched("rating", true, false);
                             }}
-                            aria-label={`${star} / 5`}
+                            aria-label={t("aria.selectRating", {
+                              rating: star,
+                            })}
                             aria-checked={values.rating === star}
                             role="radio"
                           >
@@ -426,40 +469,71 @@ export default function LeaveCommentForm({
                   </div>
 
                   <div className={styles.formGroup}>
-                    <span className={styles.label}>Photo</span>
+                    <span className={styles.label}>
+                      {t("fields.photo")}{" "}
+                      <span className={styles.optional}>
+                        {t("fields.optional")}
+                      </span>
+                    </span>
 
                     <div className={styles.fileUploadShell}>
                       <input
                         ref={fileInputRef}
                         type="file"
-                        accept="image/*"
+                        accept={ACCEPTED_PHOTO_TYPES.join(",")}
                         className={styles.fileInput}
                         onChange={(event) => {
                           const file = event.currentTarget.files?.[0] ?? null;
-                          setFieldValue("photo", file);
+                          applyPhotoFile(file, setFieldValue);
+                          event.currentTarget.value = "";
                         }}
+                        aria-describedby="photo-hint photo-error"
                       />
 
-                      <button
-                        type="button"
-                        className={styles.fileUploadLabel}
-                        onClick={() => fileInputRef.current?.click()}
-                      >
-                        <span className={styles.uploadIcon} aria-hidden="true">
-                          +
-                        </span>
-                        <span>
-                          {values.photo ? values.photo.name : "Add a photo"}
-                        </span>
-                      </button>
+                      {!values.photo && (
+                        <button
+                          type="button"
+                          className={`${styles.fileUploadLabel} ${
+                            isDraggingPhoto ? styles.fileUploadLabelActive : ""
+                          }`}
+                          onClick={() => fileInputRef.current?.click()}
+                          onDragOver={(event) => {
+                            event.preventDefault();
+                            setIsDraggingPhoto(true);
+                          }}
+                          onDragLeave={() => setIsDraggingPhoto(false)}
+                          onDrop={(event) => {
+                            event.preventDefault();
+                            setIsDraggingPhoto(false);
+                            const file = event.dataTransfer.files?.[0] ?? null;
+                            applyPhotoFile(file, setFieldValue);
+                          }}
+                        >
+                          <span
+                            className={styles.uploadIcon}
+                            aria-hidden="true"
+                          >
+                            +
+                          </span>
+                          <span>{t("placeholders.addPhoto")}</span>
+                        </button>
+                      )}
 
-                      <span className={styles.uploadHint}>
-                        Optional. This is only a visual frontend foundation for
-                        now.
+                      <span id="photo-hint" className={styles.uploadHint}>
+                        {t("placeholders.photoHint", {
+                          size: formatMaxSize(),
+                        })}
                       </span>
 
-                      {values.photo && (
+                      {values.photo && photoPreviewUrl && (
                         <div className={styles.selectedFile}>
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={photoPreviewUrl}
+                            alt=""
+                            className={styles.photoThumb}
+                          />
+
                           <span className={styles.selectedFileName}>
                             {values.photo.name}
                           </span>
@@ -467,12 +541,21 @@ export default function LeaveCommentForm({
                           <button
                             type="button"
                             className={styles.removeFileButton}
-                            onClick={() => setFieldValue("photo", null)}
+                            onClick={() => applyPhotoFile(null, setFieldValue)}
+                            aria-label={t("aria.removePhoto")}
                           >
-                            Remove
+                            {t("buttons.remove")}
                           </button>
                         </div>
                       )}
+
+                      <div id="photo-error" aria-live="polite">
+                        {photoError && (
+                          <p className={`${styles.error} ${styles.visible}`}>
+                            {photoError}
+                          </p>
+                        )}
+                      </div>
                     </div>
                   </div>
 
@@ -482,7 +565,7 @@ export default function LeaveCommentForm({
                       onClick={onCancel}
                       className={styles.cancelButton}
                     >
-                      Cancel
+                      {t("buttons.cancel")}
                     </button>
 
                     <button
@@ -490,7 +573,9 @@ export default function LeaveCommentForm({
                       className={styles.submitButton}
                       disabled={isSubmitting}
                     >
-                      {isSubmitting ? "Sending..." : "Submit review"}
+                      {isSubmitting
+                        ? t("buttons.submitting")
+                        : t("buttons.submit")}
                     </button>
                   </div>
                 </form>

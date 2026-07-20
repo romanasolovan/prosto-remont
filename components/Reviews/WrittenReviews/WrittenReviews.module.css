@@ -1,0 +1,388 @@
+.rowLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(245, 244, 240, 0.6);
+}
+
+.rowLabel::before {
+  content: "";
+  width: 20px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+.carouselSection,
+.gridSection {
+  display: grid;
+  gap: 18px;
+}
+
+.carouselHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.carouselControls {
+  display: flex;
+  gap: 8px;
+}
+
+.carouselArrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(245, 244, 240, 0.8);
+  cursor: pointer;
+  transition:
+    border-color 200ms ease,
+    background-color 200ms ease,
+    transform 200ms ease;
+}
+
+.carouselArrow svg {
+  width: 16px;
+  height: 16px;
+}
+
+.carouselArrow:hover {
+  border-color: rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateY(-1px);
+}
+
+.carouselArrow:focus-visible,
+.card:focus-visible,
+.modalCloseButton:focus-visible,
+.modalNavButton:focus-visible,
+.googleLink:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.24);
+  outline-offset: 3px;
+}
+
+.track {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 4px;
+  padding: 4px 4px 12px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.track::-webkit-scrollbar {
+  height: 4px;
+}
+
+.track::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.emptyState {
+  padding: 32px 0;
+  color: rgba(245, 244, 240, 0.4);
+  font-family: "Barlow", sans-serif;
+  font-size: 13px;
+  text-align: center;
+}
+
+.card {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.04),
+    rgba(255, 255, 255, 0.016)
+  );
+  color: #f5f4f0;
+  text-align: left;
+  cursor: pointer;
+  scroll-snap-align: start;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 16px 36px rgba(0, 0, 0, 0.12);
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease;
+}
+
+.cardCompact {
+  width: 280px;
+}
+
+.cardGrid {
+  width: 100%;
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 15px;
+}
+
+.cardTopMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.cardName {
+  font-family: "Barlow", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.cardLocation {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245, 244, 240, 0.46);
+}
+
+.cardRating {
+  display: flex;
+  gap: 3px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.cardRating svg {
+  width: 12px;
+  height: 12px;
+}
+
+.starFilled {
+  color: rgba(245, 244, 240, 0.85);
+}
+
+.starEmpty {
+  color: rgba(255, 255, 255, 0.14);
+}
+
+.cardText {
+  flex: 1;
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(245, 244, 240, 0.84);
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.cardDate {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245, 244, 240, 0.4);
+}
+
+.readMore {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245, 244, 240, 0.75);
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  background: rgba(6, 7, 9, 0.86);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.modalDialog {
+  position: relative;
+  width: min(100%, 560px);
+  max-height: 88vh;
+  overflow: auto;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 26px;
+  padding: 26px 20px 20px;
+  background: linear-gradient(180deg, #171c22 0%, #0e1216 100%);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.36);
+}
+
+.modalCloseButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  color: #f5f4f0;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding-right: 40px;
+  margin-bottom: 20px;
+}
+
+.modalName {
+  margin: 0 0 4px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: #f5f4f0;
+}
+
+.modalLocationDate {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245, 244, 240, 0.5);
+}
+
+.modalText {
+  margin: 0 0 20px;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.7;
+  color: rgba(245, 244, 240, 0.88);
+}
+
+.googleLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 20px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(245, 244, 240, 0.85);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.24);
+  width: fit-content;
+}
+
+.modalNavRow {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.modalNavButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  color: #f5f4f0;
+  cursor: pointer;
+}
+
+.modalNavButton svg {
+  width: 16px;
+  height: 16px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.16);
+  }
+}
+
+@media (min-width: 375px) {
+  .cardCompact {
+    width: 300px;
+  }
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cardCompact {
+    width: 340px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .carouselArrow {
+    transition: none;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+}

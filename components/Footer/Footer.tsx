@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/navigation";
-import LeaveCommentForm from "@/components/ClientOpinions/LeaveCommentForm";
+import LeaveCommentForm from "@/components/Reviews/LeaveCommentForm/LeaveCommentForm";
 import QuoteRequestModal from "@/components/QuoteRequestModal/QuoteRequestModal";
 import Partners, { type Partner } from "@/components/Partners/Partners";
 import SocialLinks from "./SocialLinks";

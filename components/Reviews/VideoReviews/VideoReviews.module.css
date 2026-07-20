@@ -1,0 +1,397 @@
+.rowLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(245, 244, 240, 0.6);
+}
+
+.rowLabel::before {
+  content: "";
+  width: 20px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+.carouselSection,
+.gridSection {
+  display: grid;
+  gap: 18px;
+}
+
+.carouselHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.carouselControls {
+  display: flex;
+  gap: 8px;
+}
+
+.carouselArrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(245, 244, 240, 0.8);
+  cursor: pointer;
+  transition:
+    border-color 200ms ease,
+    background-color 200ms ease,
+    transform 200ms ease;
+}
+
+.carouselArrow svg {
+  width: 16px;
+  height: 16px;
+}
+
+.carouselArrow:hover {
+  border-color: rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateY(-1px);
+}
+
+.carouselArrow:focus-visible,
+.card:focus-visible,
+.modalCloseButton:focus-visible,
+.modalNavButton:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.24);
+  outline-offset: 3px;
+}
+
+.track {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 4px;
+  padding: 4px 4px 12px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.track::-webkit-scrollbar {
+  height: 4px;
+}
+
+.track::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.emptyState {
+  padding: 32px 0;
+  color: rgba(245, 244, 240, 0.4);
+  font-family: "Barlow", sans-serif;
+  font-size: 13px;
+  text-align: center;
+}
+
+.card {
+  position: relative;
+  flex: 0 0 auto;
+  overflow: hidden;
+  display: grid;
+  align-content: end;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  background:
+    radial-gradient(
+      circle at 50% 18%,
+      rgba(255, 255, 255, 0.08),
+      transparent 30%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.04),
+      rgba(255, 255, 255, 0.012)
+    );
+  color: #f5f4f0;
+  text-align: left;
+  cursor: pointer;
+  scroll-snap-align: start;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 16px 36px rgba(0, 0, 0, 0.16);
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease;
+}
+
+.cardCompact {
+  width: 150px;
+  height: 230px;
+}
+
+.cardGrid {
+  width: 100%;
+  height: 320px;
+}
+
+.cardGlow {
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.045);
+  border-radius: 18px;
+  pointer-events: none;
+}
+
+.playButton {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(245, 244, 240, 0.18);
+  border-radius: 50%;
+  background: #050506;
+  color: #f5f4f0;
+}
+
+.playButton svg {
+  width: 15px;
+  height: 15px;
+}
+
+.cardMonogram {
+  position: relative;
+  z-index: 1;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(30px, 8vw, 40px);
+  font-weight: 600;
+  line-height: 1;
+  color: rgba(245, 244, 240, 0.5);
+}
+
+.cardFooter {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.cardName {
+  font-family: "Barlow", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.cardLocation {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245, 244, 240, 0.46);
+}
+
+.cardRating {
+  display: flex;
+  gap: 3px;
+}
+
+.cardRating svg {
+  width: 12px;
+  height: 12px;
+}
+
+.starFilled {
+  color: rgba(245, 244, 240, 0.85);
+}
+
+.starEmpty {
+  color: rgba(255, 255, 255, 0.14);
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  background: rgba(6, 7, 9, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.videoModalDialog {
+  position: relative;
+  width: min(100%, 720px);
+  max-height: 92vh;
+  overflow: auto;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 18px;
+  background: linear-gradient(180deg, #171c22 0%, #0e1216 100%);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+}
+
+.modalCloseButton {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 3;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 50%;
+  background: rgba(10, 12, 15, 0.7);
+  color: #f5f4f0;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.modalNavButton {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  transform: translateY(-50%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 50%;
+  background: rgba(10, 12, 15, 0.7);
+  color: #f5f4f0;
+  cursor: pointer;
+}
+
+.modalNavButton svg {
+  width: 18px;
+  height: 18px;
+}
+
+.modalNavPrev {
+  left: 12px;
+}
+
+.modalNavNext {
+  right: 12px;
+}
+
+.videoStage {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  max-height: 70vh;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #000;
+}
+
+.videoElement {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.videoModalMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 14px;
+}
+
+.videoModalName {
+  font-family: "Barlow", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #f5f4f0;
+}
+
+.videoModalLocation {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(245, 244, 240, 0.5);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.18);
+  }
+}
+
+@media (min-width: 375px) {
+  .cardCompact {
+    width: 170px;
+    height: 250px;
+  }
+}
+
+@media (min-width: 425px) {
+  .cardCompact {
+    width: 190px;
+    height: 270px;
+  }
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cardCompact {
+    width: 210px;
+    height: 300px;
+  }
+
+  .videoStage {
+    aspect-ratio: 16 / 9;
+    max-height: 60vh;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cardCompact {
+    width: 230px;
+    height: 330px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    scroll-behavior: auto;
+  }
+
+  .card,
+  .carouselArrow {
+    transition: none;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+}
