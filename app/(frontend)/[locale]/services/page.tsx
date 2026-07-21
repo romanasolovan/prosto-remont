@@ -3,37 +3,69 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
+import DataLoader from "@/components/ui/DataLoader/DataLoader";
 import type { PublicService } from "@/types/services";
 import styles from "./services.module.css";
 import { getServiceAnchorId } from "@/utils/serviceAnchors";
 
+
+
 export default function ServicesClient() {
   const t = useTranslations("services");
+  const tCommon = useTranslations("common");
   const [services, setServices] = useState<PublicService[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+const [hasError, setHasError] = useState(false);
 
   const hasHandledInitialHash = useRef(false);
   const isAutoScrolling = useRef(false);
 
   useEffect(() => {
-    const fetchServices = async () => {
-      try {
-        const response = await fetch("/api/public/services");
+  const controller = new AbortController();
 
-        if (!response.ok) {
-          throw new Error("Failed to fetch services");
-        }
+  const fetchServices = async () => {
+    setIsLoading(true);
+    setHasError(false);
 
-        const data = await response.json();
+    try {
+      const response = await fetch("/api/public/services", {
+        cache: "no-store",
+        signal: controller.signal,
+      });
 
-        setServices(data.services || []);
-      } catch (error) {
-        console.error("Failed to load services:", error);
-        setServices([]);
+      if (!response.ok) {
+        throw new Error(
+          `Failed to fetch services: ${response.status}`,
+        );
       }
-    };
 
-    fetchServices();
-  }, []);
+      const data = await response.json();
+
+      setServices(
+        Array.isArray(data.services) ? data.services : [],
+      );
+    } catch (error) {
+      if (error instanceof Error && error.name === "AbortError") {
+        return;
+      }
+
+      console.error("Failed to load services:", error);
+
+      setServices([]);
+      setHasError(true);
+    } finally {
+      if (!controller.signal.aborted) {
+        setIsLoading(false);
+      }
+    }
+  };
+
+  fetchServices();
+
+  return () => {
+    controller.abort();
+  };
+}, []);
 
   useEffect(() => {
     if (!services.length) return;
@@ -150,53 +182,64 @@ export default function ServicesClient() {
             </p>
           </div>
 
-          {services.length > 0 ? (
-            <>
-              <nav
-                className={styles.categoryNav}
-                aria-label="Service categories"
+          {isLoading ? (
+  <DataLoader label={tCommon("loading.services")} />
+) : !hasError && services.length > 0 ? (
+  <>
+    <nav
+      className={styles.categoryNav}
+      aria-label="Service categories"
+    >
+      {services.map((service) => (
+        <a
+          key={service.id}
+          href={`#${getServiceAnchorId(service.slug)}`}
+          className={styles.categoryLink}
+        >
+          {service.title}
+        </a>
+      ))}
+    </nav>
+
+    <div className={styles.priceGroups}>
+      {services.map((service) => (
+        <article
+          className={styles.priceGroup}
+          key={service.id}
+          id={getServiceAnchorId(service.slug)}
+        >
+          <h2 className={styles.groupTitle}>
+            {service.title}
+          </h2>
+
+          <ul className={styles.priceList}>
+            {service.items.map((item) => (
+              <li
+                className={styles.priceItem}
+                key={item.id}
               >
-                {services.map((service) => (
-                  <a
-                    key={service.id}
-                    href={`#${getServiceAnchorId(service.slug)}`}
-                    className={styles.categoryLink}
-                  >
-                    {service.title}
-                  </a>
-                ))}
-              </nav>
+                <span className={styles.itemName}>
+                  {item.name}
+                </span>
 
-              <div className={styles.priceGroups}>
-                {services.map((service) => (
-                  <article
-                    className={styles.priceGroup}
-                    key={service.id}
-                    id={getServiceAnchorId(service.slug)}
-                  >
-                    <h2 className={styles.groupTitle}>{service.title}</h2>
+                <span
+                  className={styles.itemDots}
+                  aria-hidden="true"
+                />
 
-                    <ul className={styles.priceList}>
-                      {service.items.map((item) => (
-                        <li className={styles.priceItem} key={item.id}>
-                          <span className={styles.itemName}>{item.name}</span>
-                          <span
-                            className={styles.itemDots}
-                            aria-hidden="true"
-                          />
-                          <strong className={styles.itemPrice}>
-                            {item.price}
-                          </strong>
-                        </li>
-                      ))}
-                    </ul>
-                  </article>
-                ))}
-              </div>
-            </>
-          ) : (
-            <p className={styles.emptyState}>{t("empty")}</p>
-          )}
+                <strong className={styles.itemPrice}>
+                  {item.price}
+                </strong>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </>
+) : (
+  <p className={styles.emptyState}>{t("empty")}</p>
+)}
         </div>
       </section>
     </div>
