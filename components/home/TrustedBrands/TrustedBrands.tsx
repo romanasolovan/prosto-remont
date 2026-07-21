@@ -5,6 +5,8 @@ import { useTranslations } from "next-intl";
 import styles from "./TrustedBrands.module.css";
 import Image from "next/image";
 import Link from "next/link";
+
+import DataLoader from "@/components/ui/DataLoader/DataLoader";
 import { clientFetchJson } from "@/lib/clientFetchJson";
 
 type Brand = {
@@ -53,21 +55,41 @@ function BrandItem({ brand }: { brand: Brand }) {
 
 export default function TrustedBrands() {
   const t = useTranslations("about.trustedBrands");
+  const tCommon = useTranslations("common");
 
   const [trustedBrands, setTrustedBrands] = useState<Brand[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchTrustedBrands = async () => {
+  let isMounted = true;
+
+  const fetchTrustedBrands = async () => {
+    setIsLoading(true);
+
+    try {
       const data = await clientFetchJson<{ brands: Brand[] }>(
         "/api/public/trusted-brands",
         { brands: [] },
       );
 
-      setTrustedBrands(data.brands || []);
-    };
+      if (!isMounted) return;
 
-    fetchTrustedBrands();
-  }, []);
+      setTrustedBrands(
+        Array.isArray(data.brands) ? data.brands : [],
+      );
+    } finally {
+      if (isMounted) {
+        setIsLoading(false);
+      }
+    }
+  };
+
+  fetchTrustedBrands();
+
+  return () => {
+    isMounted = false;
+  };
+}, []);
 
   return (
     <section
@@ -86,25 +108,32 @@ export default function TrustedBrands() {
             <p className={styles.trustedDescription}>{t("description")}</p>
           </div>
 
-          <div
-            className={styles.trustedCarousel}
-            role="region"
-            aria-label={t("regionLabel")}
-          >
-            <div className={styles.trustedTrack}>
-              <ul className={styles.trustedList}>
-                {trustedBrands.map((brand) => (
-                  <BrandItem key={brand.name} brand={brand} />
-                ))}
-              </ul>
+          {isLoading ? (
+  <DataLoader label={tCommon("loading.trustedBrands")} />
+) : trustedBrands.length > 0 ? (
+  <div
+    className={styles.trustedCarousel}
+    role="region"
+    aria-label={t("regionLabel")}
+  >
+    <div className={styles.trustedTrack}>
+      <ul className={styles.trustedList}>
+        {trustedBrands.map((brand) => (
+          <BrandItem key={brand.name} brand={brand} />
+        ))}
+      </ul>
 
-              <ul className={styles.trustedList} aria-hidden="true">
-                {trustedBrands.map((brand) => (
-                  <BrandItem key={`${brand.name}-duplicate`} brand={brand} />
-                ))}
-              </ul>
-            </div>
-          </div>
+      <ul className={styles.trustedList} aria-hidden="true">
+        {trustedBrands.map((brand) => (
+          <BrandItem
+            key={`${brand.name}-duplicate`}
+            brand={brand}
+          />
+        ))}
+      </ul>
+    </div>
+  </div>
+) : null}
         </div>
       </div>
     </section>
