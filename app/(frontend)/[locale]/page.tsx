@@ -15,7 +15,7 @@ import ProcessSection from "@/components/home/ProcessSection/ProcessSection";
 
 import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
-import ClientOpinionsCTA from "@/components/AboutPage/ClientOpinionsCTA";
+import ClientOpinionsCTA from "@/components/home/ClientOpinionsPreview/ClientOpinionsCTA";
 // import HomeMobileSectionNavigator from "@/components/home/HomeMobileSectionNavigator/HomeMobileSectionNavigator";
 
 type SectionItem = {

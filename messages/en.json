@@ -581,6 +581,9 @@
     "viewOnGoogle": "View on Google",
     "noVideoReviews": "No video reviews yet",
     "noWrittenReviews": "No written reviews yet",
+    "loadingVideo": "Loading video...",
+    "viewOnInstagram": "View on Instagram",
+    "instagramUnavailable": "This Instagram video could not be loaded.",
     "aria": {
       "stars": "Average rating",
       "rating": "Rating: {rating} out of 5",
@@ -594,7 +597,8 @@
       "nextReview": "Next review",
       "closeReview": "Close review",
       "scrollPrevious": "Scroll to previous",
-      "scrollNext": "Scroll to next"
+      "scrollNext": "Scroll to next",
+      "instagramVideo": "{name}'s Instagram video review"
     },
     "success": {
       "reviewSubmitted": "Thank you. Your review has been submitted and will be published after a quick review."

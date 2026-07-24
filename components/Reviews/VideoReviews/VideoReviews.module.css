@@ -270,13 +270,28 @@
 .videoModalDialog {
   position: relative;
   width: min(100%, 720px);
-  max-height: 92vh;
+  max-height: 94vh;
   overflow: auto;
+  padding: 18px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 24px;
-  padding: 18px;
   background: linear-gradient(180deg, #171c22 0%, #0e1216 100%);
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+}
+
+.uploadModalDialog {
+  width: min(100%, 720px);
+}
+
+.instagramModalDialog {
+  width: min(100%, 540px);
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(255, 255, 255, 0.045),
+      transparent 30%
+    ),
+    linear-gradient(180deg, #151a20 0%, #0c1014 100%);
 }
 
 .modalCloseButton {
@@ -325,12 +340,23 @@
 }
 
 .videoStage {
+  position: relative;
   width: 100%;
-  aspect-ratio: 9 / 16;
-  max-height: 70vh;
-  border-radius: 16px;
   overflow: hidden;
+  border-radius: 16px;
   background: #000;
+}
+
+.uploadStage {
+  aspect-ratio: 9 / 16;
+  max-height: 72vh;
+}
+
+.instagramStage {
+  height: min(72vh, 760px);
+  min-height: 560px;
+  overflow: hidden;
+  background: #fff;
 }
 
 .videoElement {
@@ -422,4 +448,246 @@
   .card:hover {
     transform: none;
   }
+}
+
+
+.instagramPreview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  background:
+    radial-gradient(
+      circle at 30% 20%,
+      rgba(255, 255, 255, 0.12),
+      transparent 38%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(24, 24, 24, 0.98),
+      rgba(7, 7, 7, 1)
+    );
+}
+
+.instagramIcon {
+  display: flex;
+  width: 44px;
+  height: 44px;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.instagramIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.instagramLabel {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.instagramEmbed {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #fff;
+  transition: opacity 180ms ease;
+}
+
+.instagramEmbedError {
+  display: flex;
+  min-height: 420px;
+  padding: 32px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+  color: rgba(255, 255, 255, 0.82);
+  text-align: center;
+}
+
+.instagramEmbedError p {
+  margin: 0;
+}
+
+.instagramExternalLink {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 767px) {
+  .instagramEmbed {
+    min-height: 620px;
+  }
+}
+
+.mediaPending {
+  opacity: 0;
+}
+
+.cardPreview {
+  transition: opacity 180ms ease;
+}
+
+.cardLoader {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      circle at 50% 25%,
+      rgba(255, 255, 255, 0.08),
+      transparent 35%
+    ),
+    #090b0e;
+}
+
+.instagramCardBadge {
+  position: absolute;
+  top: 18px;
+  right: 14px;
+  z-index: 2;
+  padding: 5px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: rgba(5, 5, 6, 0.66);
+  color: rgba(245, 244, 240, 0.82);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+.mediaPending {
+  opacity: 0;
+}
+
+.cardPreview {
+  transition: opacity 180ms ease;
+}
+
+.cardLoader {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      circle at 50% 25%,
+      rgba(255, 255, 255, 0.08),
+      transparent 35%
+    ),
+    #090b0e;
+}
+
+.instagramCardBadge {
+  position: absolute;
+  top: 18px;
+  right: 14px;
+  z-index: 2;
+  padding: 5px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: rgba(5, 5, 6, 0.66);
+  color: rgba(245, 244, 240, 0.82);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+
+.modalLoader {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(
+      circle at 50% 30%,
+      rgba(255, 255, 255, 0.06),
+      transparent 38%
+    ),
+    #090b0e;
+}
+
+.videoModalMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.videoModalIdentity {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.instagramModalMeta {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.instagramSourceLink {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  color: rgba(245, 244, 240, 0.86);
+  background: rgba(255, 255, 255, 0.04);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    transform 180ms ease;
+}
+
+.instagramSourceLink span,
+.instagramSourceLink svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+.instagramSourceLink:hover {
+  border-color: rgba(255, 255, 255, 0.26);
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-1px);
+}
+
+.instagramSourceLink:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.28);
+  outline-offset: 3px;
 }

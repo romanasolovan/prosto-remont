@@ -240,9 +240,21 @@ export interface Review {
   originalLanguage: 'en' | 'pl' | 'uk' | 'ru';
   photo?: (number | null) | Media;
   /**
-   * Optional video added by the website owner. Only MP4 and WebM videos can be selected. Maximum file size: 50 MB.
+   * Choose one optional video source. Changing the source clears the previously selected video source.
+   */
+  videoSource: 'none' | 'upload' | 'instagram';
+  /**
+   * Select or upload one MP4 or WebM video. Maximum file size: 50 MB.
    */
   video?: (number | null) | Media;
+  /**
+   * Paste the original public Instagram Post or Reel URL. Do not paste embed code, iframe HTML, or a temporary media URL.
+   */
+  instagramUrl?: string | null;
+  /**
+   * Upload or select a screenshot from the Instagram video. This image is shown on the review card; the original Instagram post opens in the video modal.
+   */
+  instagramPoster?: (number | null) | Media;
   /**
    * Optional direct link to the matching review on Google. Leave empty if this review was not published on Google.
    */
@@ -576,7 +588,10 @@ export interface ReviewsSelect<T extends boolean = true> {
       };
   originalLanguage?: T;
   photo?: T;
+  videoSource?: T;
   video?: T;
+  instagramUrl?: T;
+  instagramPoster?: T;
   googleReviewUrl?: T;
   status?: T;
   featured?: T;

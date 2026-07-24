@@ -1,18 +1,15 @@
 import { NextResponse } from "next/server";
 import { getPayload } from "payload";
 import config from "@payload-config";
-import type { Media } from "@/payload-types";
+
+import type { Media, Review } from "@/payload-types";
+import type { PublicReviewVideo } from "@/components/Reviews/shared/types";
 
 export const runtime = "nodejs";
 
-type PublicVideo = {
-  url: string;
-  mimeType: "video/mp4" | "video/webm";
-  filesize: number | null;
-  filename: string | null;
-};
-
-const getMediaUrl = (media?: number | Media | null) => {
+const getMediaUrl = (
+  media?: number | Media | null,
+): string | undefined => {
   if (!media || typeof media !== "object" || !media.url) {
     return undefined;
   }
@@ -20,9 +17,9 @@ const getMediaUrl = (media?: number | Media | null) => {
   return media.url;
 };
 
-const getPublicVideo = (
+const getUploadedReviewVideo = (
   media?: number | Media | null,
-): PublicVideo | undefined => {
+): PublicReviewVideo | undefined => {
   if (!media || typeof media !== "object" || !media.url) {
     return undefined;
   }
@@ -32,11 +29,55 @@ const getPublicVideo = (
   }
 
   return {
+    source: "upload",
     url: media.url,
     mimeType: media.mimeType,
     filesize: media.filesize ?? null,
     filename: media.filename ?? null,
   };
+};
+
+const getInstagramReviewVideo = ({
+  instagramUrl,
+  instagramPoster,
+}: {
+  instagramUrl?: string | null;
+  instagramPoster?: number | Media | null;
+}): PublicReviewVideo | undefined => {
+  const trimmedUrl = instagramUrl?.trim();
+  const posterUrl = getMediaUrl(instagramPoster);
+
+  if (!trimmedUrl || !posterUrl) {
+    return undefined;
+  }
+
+  return {
+    source: "instagram",
+    url: trimmedUrl,
+    posterUrl,
+  };
+};
+
+const getPublicReviewVideo = (
+  review: Review,
+): PublicReviewVideo | undefined => {
+  if (review.videoSource === "instagram") {
+  return getInstagramReviewVideo({
+    instagramUrl: review.instagramUrl,
+    instagramPoster: review.instagramPoster,
+  });
+}
+
+  if (review.videoSource === "upload") {
+    return getUploadedReviewVideo(review.video);
+  }
+
+  /*
+   * Legacy fallback:
+   * Older reviews may contain an uploaded video but may not yet have been
+   * saved after videoSource was introduced.
+   */
+  return getUploadedReviewVideo(review.video);
 };
 
 export async function GET() {
@@ -66,13 +107,21 @@ export async function GET() {
         location: review.location,
         date: review.createdAt,
         photoUrl: getMediaUrl(review.photo),
-        video: getPublicVideo(review.video),
-        googleReviewUrl: review.googleReviewUrl ?? undefined,
+        video: getPublicReviewVideo(review),
+        googleReviewUrl: review.googleReviewUrl?.trim() || undefined,
       })),
     });
   } catch (error) {
     console.error("Failed to fetch public reviews:", error);
 
-    return NextResponse.json({ success: false, reviews: [] }, { status: 500 });
+    return NextResponse.json(
+      {
+        success: false,
+        reviews: [],
+      },
+      {
+        status: 500,
+      },
+    );
   }
 }

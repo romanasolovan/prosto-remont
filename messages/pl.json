@@ -596,6 +596,9 @@
     "viewOnGoogle": "Zobacz w Google",
     "noVideoReviews": "Brak opinii wideo",
     "noWrittenReviews": "Brak opinii tekstowych",
+    "loadingVideo": "Ładowanie filmu...",
+    "viewOnInstagram": "Zobacz na Instagramie",
+    "instagramUnavailable": "Nie udało się załadować tego filmu z Instagrama.",
     "aria": {
       "stars": "Średnia ocena",
       "rating": "Ocena: {rating} z 5",
@@ -609,7 +612,8 @@
       "nextReview": "Następna opinia",
       "closeReview": "Zamknij opinię",
       "scrollPrevious": "Przewiń do poprzedniej",
-      "scrollNext": "Przewiń do następnej"
+      "scrollNext": "Przewiń do następnej",
+      "instagramVideo": "Recenzja wideo użytkownika {name} na Instagramie"
     },
     "success": {
       "reviewSubmitted": "Dziękujemy. Twoja opinia została przesłana i zostanie opublikowana po krótkiej weryfikacji."

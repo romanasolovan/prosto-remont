@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import styles from "./ClientOpinions.module.css";
+import DataLoader from "@/components/ui/DataLoader/DataLoader";
 import LeaveCommentForm from "../Reviews/LeaveCommentForm/LeaveCommentForm";
 import VideoReviewsGrid from "../Reviews/VideoReviews/VideoReviewsGrid";
 import WrittenReviewsGrid from "../Reviews/WrittenReviews/WrittenReviewsGrid";
@@ -10,6 +11,8 @@ import type { PublicReview } from "../Reviews/shared/types";
 
 export default function ClientOpinions() {
   const t = useTranslations("clientOpinions");
+  const tCommon = useTranslations("common");
+
   const triggerRef = useRef<HTMLButtonElement | null>(null);
   const successTimerRef = useRef<number | null>(null);
   const [reviews, setReviews] = useState<PublicReview[]>([]);
@@ -132,7 +135,9 @@ export default function ClientOpinions() {
         </div>
       )}
 
-      {!isLoadingReviews && (
+      {isLoadingReviews ? (
+        <DataLoader label={tCommon("loading.reviews")} />
+      ) : (
         <div className={styles.sectionsStack}>
           <VideoReviewsGrid reviews={reviews} />
           <WrittenReviewsGrid reviews={reviews} />

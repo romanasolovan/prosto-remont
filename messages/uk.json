@@ -596,6 +596,9 @@
     "viewOnGoogle": "Переглянути в Google",
     "noVideoReviews": "Відеовідгуків поки немає",
     "noWrittenReviews": "Текстових відгуків поки немає",
+    "loadingVideo": "Завантаження відео...",
+    "viewOnInstagram": "Переглянути в Instagram",
+    "instagramUnavailable": "Не вдалося завантажити це відео з Instagram.",
     "aria": {
       "stars": "Середній рейтинг",
       "rating": "Оцінка: {rating} із 5",
@@ -609,7 +612,8 @@
       "nextReview": "Наступний відгук",
       "closeReview": "Закрити відгук",
       "scrollPrevious": "Прокрутити назад",
-      "scrollNext": "Прокрутити вперед"
+      "scrollNext": "Прокрутити вперед",
+      "instagramVideo": "Відеовідгук користувача {name} в Instagram"
     },
     "success": {
       "reviewSubmitted": "Дякуємо! Ваш відгук надіслано та буде опублікований після короткої перевірки."
