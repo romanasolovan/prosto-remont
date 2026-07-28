@@ -178,7 +178,7 @@ export default function Contact() {
                   </a>
 
                   <a
-                    href="https://linkedin.com"
+                    href="https://www.linkedin.com/in/prosto-twoj-remont-7b57b2421/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.socialLink}

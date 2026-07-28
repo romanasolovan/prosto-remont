@@ -1,101 +1,89 @@
+import Image from "next/image";
+import { getTranslations } from "next-intl/server";
+
+import { Link } from "@/navigation";
+import { temporaryBlogPosts } from "@/data/temporaryBlogPosts";
+
 import styles from "./blog.module.css";
 
-const featuredPost = {
-  category: "Poradnik remontowy",
-  title: "Jak przygotować mieszkanie do remontu bez stresu?",
-  excerpt:
-    "Praktyczne wskazówki, które pomogą zaplanować remont, uniknąć chaosu i przejść przez cały proces z większym spokojem.",
-  date: "12 czerwca 2026",
-  readTime: "5 min czytania",
-};
+export default async function BlogPage() {
+  const t = await getTranslations("blog");
 
-const posts = [
-  {
-    category: "Planowanie",
-    title: "Od czego zacząć remont mieszkania?",
-    excerpt:
-      "Krótki przewodnik po pierwszych decyzjach, które warto podjąć przed rozpoczęciem prac.",
-    date: "08 czerwca 2026",
-  },
-  {
-    category: "Materiały",
-    title: "Jak wybrać materiały wykończeniowe?",
-    excerpt:
-      "Na co zwrócić uwagę, aby wnętrze było trwałe, estetyczne i dopasowane do budżetu.",
-    date: "02 czerwca 2026",
-  },
-  {
-    category: "Realizacja",
-    title: "Jak wygląda profesjonalny harmonogram prac?",
-    excerpt:
-      "Dlaczego dobry plan remontu wpływa na terminowość, koszty i komfort klienta.",
-    date: "28 maja 2026",
-  },
-];
-
-export default function BlogPage() {
   return (
     <main className={styles.blogPage}>
-      <section className={styles.hero} aria-labelledby="blog-title">
+      <section
+        className={styles.blogSection}
+        aria-labelledby="blog-page-title"
+      >
         <div className="container">
-          <div className={styles.inner}>
-            <div className={styles.heroTop}>
-              <span className={styles.label}>Blog</span>
-            </div>
+          <header className={styles.header}>
+            <span className={styles.eyebrow}>
+              {t("eyebrow")}
+            </span>
 
-            <div className={styles.heroGrid}>
-              <div className={styles.heroContent}>
-                <h1 className={styles.title} id="blog-title">
-                  Wiedza, która pomaga remontować spokojniej.
-                </h1>
+            <h1
+              className={styles.title}
+              id="blog-page-title"
+            >
+              {t("title")}
+            </h1>
 
-                <p className={styles.description}>
-                  Porady, inspiracje i praktyczne wskazówki dotyczące remontów,
-                  wykończeń oraz planowania prac krok po kroku.
-                </p>
-              </div>
+            <p className={styles.description}>
+              {t("description")}
+            </p>
+          </header>
 
-              <article className={styles.featuredCard}>
-                <span className={styles.featuredNumber}>01</span>
+          <div
+            className={styles.postsGrid}
+            aria-label={t("aria.posts")}
+          >
+            {temporaryBlogPosts.map((post) => (
+              <article
+                className={styles.postCard}
+                key={post.id}
+              >
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className={styles.postLink}
+                  aria-label={t("aria.openPost", {
+                    title: post.title,
+                  })}
+                >
+                  <Image
+                    src={post.imageSrc}
+                    alt={post.imageAlt}
+                    fill
+                    sizes="
+                      (max-width: 559px) 100vw,
+                      (max-width: 1023px) 50vw,
+                      (max-width: 1439px) 33vw,
+                      25vw
+                    "
+                    className={styles.postImage}
+                  />
 
-                <div className={styles.featuredMeta}>
-                  <span>{featuredPost.category}</span>
-                  <span>{featuredPost.readTime}</span>
-                </div>
+                  <span
+                    className={styles.postOverlay}
+                    aria-hidden="true"
+                  />
 
-                <h2 className={styles.featuredTitle}>{featuredPost.title}</h2>
-
-                <p className={styles.featuredExcerpt}>{featuredPost.excerpt}</p>
-
-                <div className={styles.featuredFooter}>
-                  <time>{featuredPost.date}</time>
-                  <span aria-hidden="true">→</span>
-                </div>
-              </article>
-            </div>
-
-            <div className={styles.postsGrid} aria-label="Najnowsze wpisy">
-              {posts.map((post, index) => (
-                <article className={styles.postCard} key={post.title}>
-                  <span className={styles.postNumber}>
-                    {String(index + 2).padStart(2, "0")}
+                  <span
+                    className={styles.postArrow}
+                    aria-hidden="true"
+                  >
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M7 17L17 7M9 7h8v8"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
                   </span>
-
-                  <div className={styles.postLine} />
-
-                  <span className={styles.postCategory}>{post.category}</span>
-
-                  <h2 className={styles.postTitle}>{post.title}</h2>
-
-                  <p className={styles.postExcerpt}>{post.excerpt}</p>
-
-                  <footer className={styles.postFooter}>
-                    <time>{post.date}</time>
-                    <span aria-hidden="true">Czytaj więcej</span>
-                  </footer>
-                </article>
-              ))}
-            </div>
+                </Link>
+              </article>
+            ))}
           </div>
         </div>
       </section>

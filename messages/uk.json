@@ -666,6 +666,25 @@
       "reviewSubmitted": "Ваш відгук надіслано та буде опублікований після короткої перевірки."
     }
   },
+  "blog": {
+    "eyebrow": "Blog",
+    "title": "Ideas, guidance and renovation knowledge.",
+    "description": "Explore practical advice, thoughtful inspiration and useful information for planning and completing a renovation.",
+    "aria": {
+      "posts": "Blog posts",
+      "openPost": "Open blog post: {title}"
+    },
+    "post": {
+      "eyebrow": "Renovation guide",
+      "author": "By",
+      "published": "Published",
+      "backToBlog": "Back to blog",
+      "backToAllPosts": "Return to all posts",
+      "externalMedia": "Related external media",
+      "viewOnInstagram": "View on Instagram",
+      "viewOnYouTube": "View on YouTube"
+    }
+  },
   "callWidget": {
     "title": "Зателефонуйте нам",
     "cta": "Зателефонувати {phone}",

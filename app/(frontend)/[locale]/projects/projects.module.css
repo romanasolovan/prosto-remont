@@ -20,7 +20,8 @@
 .projectsSection {
   position: relative;
   overflow: hidden;
-  padding: clamp(92px, 12vw, 156px) 0;
+  margin-top: calc(var(--header-height, 0px) * -1);
+  padding: calc(var(--header-height, 0px) + 72px) 0 88px;
   background:
     linear-gradient(
       90deg,
