@@ -51,23 +51,23 @@ export async function POST(request: Request) {
     //   console.error("Review translation failed:", error);
     // }
 
-    
-
     // const translations = await translateReview(originalComment);
 
     const review = await payload.create({
-      collection: "reviews",
-      data: {
-        name: String(formData.get("name") || ""),
-        location: String(formData.get("location") || ""),
-        rating: Number(formData.get("rating") || 0),
-        comment: originalComment,
-        originalLanguage: "en",
-        photo: photoId,
-        status: "pending",
-        featured: false,
-      },
-    });
+  collection: "reviews",
+  draft: false,
+  data: {
+    name: String(formData.get("name") || ""),
+    location: String(formData.get("location") || ""),
+    rating: Number(formData.get("rating") || 0),
+    comment: originalComment,
+    originalLanguage: "en",
+    videoSource: "none",
+    status: "pending",
+    featured: false,
+    ...(photoId !== undefined ? { photo: photoId } : {}),
+  },
+});
 
     return NextResponse.json(
       {
