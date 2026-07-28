@@ -520,3 +520,16 @@
     transform: none;
   }
 }
+
+.reviewsLoader {
+  display: grid;
+  width: 100%;
+  min-height: 320px;
+  place-items: center;
+}
+
+@media (max-width: 767px) {
+  .reviewsLoader {
+    min-height: 240px;
+  }
+}

@@ -2,21 +2,41 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
+
 import { Link } from "@/navigation";
-import styles from "./ClientOpinionsPreview.module.css";
 import { clientFetchJson } from "@/lib/clientFetchJson";
+
+import DataLoader from "@/components/ui/DataLoader/DataLoader";
 import LeaveCommentForm from "../../Reviews/LeaveCommentForm/LeaveCommentForm";
 import VideoReviewsCarousel from "../../Reviews/VideoReviews/VideoReviewsCarousel";
 import WrittenReviewsCarousel from "../../Reviews/WrittenReviews/WrittenReviewsCarousel";
+
 import type { PublicReview } from "../../Reviews/shared/types";
 
-function Stars({ rating, ariaLabel }: { rating: number; ariaLabel: string }) {
+import styles from "./ClientOpinionsPreview.module.css";
+
+interface StarsProps {
+  rating: number;
+  ariaLabel: string;
+}
+
+function Stars({
+  rating,
+  ariaLabel,
+}: StarsProps) {
   return (
-    <div className={styles.stars} aria-label={ariaLabel}>
-      {[...Array(5)].map((_, index) => (
+    <div
+      className={styles.stars}
+      aria-label={ariaLabel}
+    >
+      {Array.from({ length: 5 }).map((_, index) => (
         <svg
           key={index}
-          className={index < rating ? styles.starFilled : styles.starEmpty}
+          className={
+            index < rating
+              ? styles.starFilled
+              : styles.starEmpty
+          }
           fill="currentColor"
           viewBox="0 0 20 20"
           aria-hidden="true"
@@ -30,32 +50,58 @@ function Stars({ rating, ariaLabel }: { rating: number; ariaLabel: string }) {
 
 export default function ClientOpinionsPreview() {
   const t = useTranslations("clientOpinions");
-  const triggerRef = useRef<HTMLButtonElement | null>(null);
-  const successTimerRef = useRef<number | null>(null);
+  const tCommon = useTranslations("common");
 
-  const [reviews, setReviews] = useState<PublicReview[]>([]);
-  const [isLoadingReviews, setIsLoadingReviews] = useState(true);
-  const [showForm, setShowForm] = useState(false);
-  const [showSuccessNotice, setShowSuccessNotice] = useState(false);
+  const triggerRef =
+    useRef<HTMLButtonElement | null>(null);
+
+  const successTimerRef =
+    useRef<number | null>(null);
+
+  const [reviews, setReviews] =
+    useState<PublicReview[]>([]);
+
+  const [isLoadingReviews, setIsLoadingReviews] =
+    useState(true);
+
+  const [showForm, setShowForm] =
+    useState(false);
+
+  const [showSuccessNotice, setShowSuccessNotice] =
+    useState(false);
 
   useEffect(() => {
     const fetchApprovedReviews = async () => {
       try {
-        const data = await clientFetchJson<{ reviews: PublicReview[] }>(
+        const data = await clientFetchJson<{
+          reviews: PublicReview[];
+        }>(
           "/api/public/reviews",
           { reviews: [] },
         );
 
-        setReviews(data.reviews || []);
+        setReviews(data.reviews ?? []);
       } catch (error) {
-        console.error("Failed to load preview reviews:", error);
+        console.error(
+          "Failed to load preview reviews:",
+          error,
+        );
+
         setReviews([]);
       } finally {
         setIsLoadingReviews(false);
       }
     };
 
-    fetchApprovedReviews();
+    void fetchApprovedReviews();
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (successTimerRef.current !== null) {
+        window.clearTimeout(successTimerRef.current);
+      }
+    };
   }, []);
 
   const handleOpenForm = () => {
@@ -64,6 +110,7 @@ export default function ClientOpinionsPreview() {
 
   const handleCloseForm = () => {
     setShowForm(false);
+
     requestAnimationFrame(() => {
       triggerRef.current?.focus();
     });
@@ -73,13 +120,16 @@ export default function ClientOpinionsPreview() {
     setShowForm(false);
     setShowSuccessNotice(true);
 
-    if (successTimerRef.current) {
-      window.clearTimeout(successTimerRef.current);
+    if (successTimerRef.current !== null) {
+      window.clearTimeout(
+        successTimerRef.current,
+      );
     }
 
-    successTimerRef.current = window.setTimeout(() => {
-      setShowSuccessNotice(false);
-    }, 5000);
+    successTimerRef.current =
+      window.setTimeout(() => {
+        setShowSuccessNotice(false);
+      }, 5000);
 
     requestAnimationFrame(() => {
       triggerRef.current?.focus();
@@ -89,12 +139,17 @@ export default function ClientOpinionsPreview() {
   const averageRating =
     reviews.length > 0
       ? (
-          reviews.reduce((sum, review) => sum + review.rating, 0) /
-          reviews.length
+          reviews.reduce(
+            (sum, review) =>
+              sum + review.rating,
+            0,
+          ) / reviews.length
         ).toFixed(1)
       : "0.0";
 
-  const reviewLabel = t("reviewCount", { count: reviews.length });
+  const reviewLabel = t("reviewCount", {
+    count: reviews.length,
+  });
 
   return (
     <section
@@ -105,27 +160,40 @@ export default function ClientOpinionsPreview() {
         <div className={styles.inner}>
           <header className={styles.header}>
             <div className={styles.heading}>
-              <span className={styles.label}>{t("eyebrow")}</span>
+              <span className={styles.label}>
+                {t("eyebrow")}
+              </span>
             </div>
 
             <div className={styles.meta}>
               <div className={styles.ratingBox}>
-                <span className={styles.rating}>{averageRating}</span>
+                <span className={styles.rating}>
+                  {averageRating}
+                </span>
 
                 <div className={styles.ratingDetails}>
                   <Stars
-                    rating={Math.round(Number(averageRating))}
+                    rating={Math.round(
+                      Number(averageRating),
+                    )}
                     ariaLabel={t("aria.stars")}
                   />
 
-                  <span className={styles.count}>{reviewLabel}</span>
+                  <span className={styles.count}>
+                    {reviewLabel}
+                  </span>
                 </div>
               </div>
 
               <div className={styles.actions}>
-                <Link href="/reviews" className={styles.link}>
+                <Link
+                  href="/reviews"
+                  className={styles.link}
+                >
                   {t("readMore")}
-                  <span aria-hidden="true">→</span>
+                  <span aria-hidden="true">
+                    →
+                  </span>
                 </Link>
 
                 <button
@@ -135,7 +203,9 @@ export default function ClientOpinionsPreview() {
                   className={styles.secondaryLink}
                 >
                   {t("cta.leaveReview")}
-                  <span aria-hidden="true">→</span>
+                  <span aria-hidden="true">
+                    →
+                  </span>
                 </button>
               </div>
             </div>
@@ -151,10 +221,19 @@ export default function ClientOpinionsPreview() {
             </div>
           )}
 
-          {!isLoadingReviews && (
+          {isLoadingReviews ? (
+            <div className={styles.reviewsLoader}>
+              <DataLoader label={tCommon("loading.reviews")} />
+            </div>
+          ) : (
             <>
-              <VideoReviewsCarousel reviews={reviews} />
-              <WrittenReviewsCarousel reviews={reviews} />
+              <VideoReviewsCarousel
+                reviews={reviews}
+              />
+
+              <WrittenReviewsCarousel
+                reviews={reviews}
+              />
             </>
           )}
         </div>
@@ -165,22 +244,45 @@ export default function ClientOpinionsPreview() {
           onSubmit={async (data) => {
             const formData = new FormData();
 
-            formData.append("name", data.name);
-            formData.append("rating", String(data.rating));
-            formData.append("comment", data.comment);
-            formData.append("location", data.location);
+            formData.append(
+              "name",
+              data.name,
+            );
+
+            formData.append(
+              "rating",
+              String(data.rating),
+            );
+
+            formData.append(
+              "comment",
+              data.comment,
+            );
+
+            formData.append(
+              "location",
+              data.location,
+            );
 
             if (data.photo) {
-              formData.append("photo", data.photo);
+              formData.append(
+                "photo",
+                data.photo,
+              );
             }
 
-            const response = await fetch("/api/submit-review", {
-              method: "POST",
-              body: formData,
-            });
+            const response = await fetch(
+              "/api/submit-review",
+              {
+                method: "POST",
+                body: formData,
+              },
+            );
 
             if (!response.ok) {
-              throw new Error("Failed to submit review");
+              throw new Error(
+                "Failed to submit review",
+              );
             }
 
             handleNewComment();

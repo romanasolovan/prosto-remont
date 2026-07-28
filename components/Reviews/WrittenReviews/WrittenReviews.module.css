@@ -393,3 +393,10 @@
     transform: none;
   }
 }
+
+.gridLoader {
+  display: grid;
+  min-height: 280px;
+  place-items: center;
+  width: 100%;
+}

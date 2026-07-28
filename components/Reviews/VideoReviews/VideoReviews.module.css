@@ -1,3 +1,11 @@
+/* =========================================================
+   VideoReviews.module.css
+   Shared by: VideoReviewCard, VideoReviewModal,
+              VideoReviewsCarousel, VideoReviewsGrid
+   ========================================================= */
+
+/* ---------- Section / row labels ---------- */
+
 .rowLabel {
   display: inline-flex;
   align-items: center;
@@ -30,6 +38,16 @@
   justify-content: space-between;
   gap: 12px;
 }
+
+.emptyState {
+  padding: 32px 0;
+  color: rgba(245, 244, 240, 0.4);
+  font-family: "Barlow", sans-serif;
+  font-size: 13px;
+  text-align: center;
+}
+
+/* ---------- Carousel controls ---------- */
 
 .carouselControls {
   display: flex;
@@ -72,6 +90,8 @@
   outline-offset: 3px;
 }
 
+/* ---------- Track (carousel) / Grid (reviews page) ---------- */
+
 .track {
   display: flex;
   gap: 14px;
@@ -104,13 +124,7 @@
   gap: 16px;
 }
 
-.emptyState {
-  padding: 32px 0;
-  color: rgba(245, 244, 240, 0.4);
-  font-family: "Barlow", sans-serif;
-  font-size: 13px;
-  text-align: center;
-}
+/* ---------- Card ---------- */
 
 .card {
   position: relative;
@@ -144,6 +158,19 @@
     border-color 220ms ease;
 }
 
+.cardCompact {
+  width: 150px;
+  height: 230px;
+}
+
+/* Reviews-page grid card: same portrait proportions as the
+   homepage carousel card, never square regardless of column width. */
+.cardGrid {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 7 / 10;
+}
+
 .cardPreview {
   position: absolute;
   inset: 0;
@@ -151,6 +178,7 @@
   height: 100%;
   object-fit: cover;
   pointer-events: none;
+  transition: opacity 180ms ease;
 }
 
 .cardScrim {
@@ -164,24 +192,6 @@
   );
   pointer-events: none;
 }
-
-.cardCompact {
-  width: 150px;
-  height: 230px;
-}
-
-.cardGrid {
-  width: 100%;
-  height: 320px;
-}
-
-/* .cardGlow {
-  position: absolute;
-  inset: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.045);
-  border-radius: 18px;
-  pointer-events: none;
-} */
 
 .playButton {
   position: absolute;
@@ -254,6 +264,51 @@
   color: rgba(255, 255, 255, 0.14);
 }
 
+/* ---------- Card media loading state ---------- */
+
+.mediaPending {
+  opacity: 0;
+}
+
+.cardLoader {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      circle at 50% 25%,
+      rgba(255, 255, 255, 0.08),
+      transparent 35%
+    ),
+    #090b0e;
+}
+
+.instagramCardBadge {
+  position: absolute;
+  top: 18px;
+  right: 14px;
+  z-index: 2;
+  padding: 5px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: rgba(5, 5, 6, 0.66);
+  color: rgba(245, 244, 240, 0.82);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
 .modalOverlay {
   position: fixed;
   inset: 0;
@@ -267,11 +322,13 @@
   -webkit-backdrop-filter: blur(10px);
 }
 
-.videoModalDialog {
+.videoModalDialog, .uploadModalDialog {
   position: relative;
-  width: min(100%, 720px);
-  max-height: 94vh;
-  overflow: auto;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  width: min(100%, 540px);
+  max-height: calc(100dvh - 24px);
+  overflow: hidden;
   padding: 18px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 24px;
@@ -280,11 +337,15 @@
 }
 
 .uploadModalDialog {
-  width: min(100%, 720px);
+  /* Uses .videoModalDialog defaults as-is. */
 }
 
 .instagramModalDialog {
   width: min(100%, 540px);
+  max-height: calc(100dvh - 24px);
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
   background:
     radial-gradient(
       circle at 50% 0%,
@@ -339,165 +400,90 @@
   right: 12px;
 }
 
-.videoStage {
+/* ---------- Media stage ----------
+   Both sources render in an identical portrait 9:16 box, so the
+   Instagram embed reads as the same "shape" as the uploaded video. */
+
+.videoStage, .uploadStage {
   position: relative;
-  width: 100%;
+  justify-self: center;
+  width: min(100%, calc((100dvh - 142px) * 9 / 16));
+  aspect-ratio: 9 / 16;
   overflow: hidden;
   border-radius: 16px;
   background: #000;
 }
 
 .uploadStage {
-  aspect-ratio: 9 / 16;
-  max-height: 72vh;
+  /* Uses .videoStage sizing as-is. */
 }
 
 .instagramStage {
-  height: min(72vh, 760px);
-  min-height: 560px;
-  overflow: hidden;
-  background: #fff;
+  /* Uses .videoStage sizing as-is; iframe crop handled below. */
+  isolation: isolate;
+  background: #000;
+  
 }
 
 .videoElement {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.videoModalMeta {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-top: 14px;
-}
-
-.videoModalName {
-  font-family: "Barlow", sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  color: #f5f4f0;
-}
-
-.videoModalLocation {
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: rgba(245, 244, 240, 0.5);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .card:hover {
-    transform: translateY(-3px);
-    border-color: rgba(255, 255, 255, 0.18);
-  }
-}
-
-@media (min-width: 375px) {
-  .cardCompact {
-    width: 170px;
-    height: 250px;
-  }
-}
-
-@media (min-width: 425px) {
-  .cardCompact {
-    width: 190px;
-    height: 270px;
-  }
-}
-
-@media (min-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .cardCompact {
-    width: 210px;
-    height: 300px;
-  }
-
-  .videoStage {
-    aspect-ratio: 16 / 9;
-    max-height: 60vh;
-  }
-}
-
-@media (min-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .cardCompact {
-    width: 230px;
-    height: 330px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .track {
-    scroll-behavior: auto;
-  }
-
-  .card,
-  .carouselArrow {
-    transition: none;
-  }
-
-  .card:hover {
-    transform: none;
-  }
-}
-
-
-.instagramPreview {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 10px;
-  background:
-    radial-gradient(
-      circle at 30% 20%,
-      rgba(255, 255, 255, 0.12),
-      transparent 38%
-    ),
-    linear-gradient(
-      145deg,
-      rgba(24, 24, 24, 0.98),
-      rgba(7, 7, 7, 1)
-    );
-}
-
-.instagramIcon {
-  display: flex;
-  width: 44px;
-  height: 44px;
-  color: rgba(255, 255, 255, 0.92);
-}
-
-.instagramIcon svg {
-  width: 100%;
-  height: 100%;
-}
-
-.instagramLabel {
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 0.76rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.instagramEmbed {
   display: block;
   width: 100%;
   height: 100%;
+  object-fit: contain;
+  background: #000;
+}
+
+.instagramEmbed {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+
+  /*
+   * Enlarging the iframe also enlarges Instagram's media area.
+   * This prevents the footer from entering the visible 9:16 stage.
+   */
+  width: 116%;
+  height: calc(116% + 190px);
+
   border: 0;
-  background: #fff;
+  background: #000;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+
+  /*
+   * Horizontal centering plus an upward correction for Instagram's
+   * internal profile/header area.
+   */
+  transform: translate(-50%, calc(-50% - 48px));
+  transform-origin: center;
   transition: opacity 180ms ease;
 }
+
+/* .instagramEmbed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: calc(100% + 100px); 
+  border: 0;
+  background: #000;
+  transform: translateY(-69px); 
+  transition: opacity 180ms ease;
+}
+
+.instagramStage::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  height: 200px; 
+  background: #000;
+  pointer-events: none;
+} */
 
 .instagramEmbedError {
   display: flex;
@@ -522,98 +508,7 @@
   text-underline-offset: 4px;
 }
 
-@media (max-width: 767px) {
-  .instagramEmbed {
-    min-height: 620px;
-  }
-}
-
-.mediaPending {
-  opacity: 0;
-}
-
-.cardPreview {
-  transition: opacity 180ms ease;
-}
-
-.cardLoader {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  display: grid;
-  place-items: center;
-  pointer-events: none;
-  background:
-    radial-gradient(
-      circle at 50% 25%,
-      rgba(255, 255, 255, 0.08),
-      transparent 35%
-    ),
-    #090b0e;
-}
-
-.instagramCardBadge {
-  position: absolute;
-  top: 18px;
-  right: 14px;
-  z-index: 2;
-  padding: 5px 8px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 999px;
-  background: rgba(5, 5, 6, 0.66);
-  color: rgba(245, 244, 240, 0.82);
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  line-height: 1;
-  text-transform: uppercase;
-  backdrop-filter: blur(8px);
-}
-
-.mediaPending {
-  opacity: 0;
-}
-
-.cardPreview {
-  transition: opacity 180ms ease;
-}
-
-.cardLoader {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  display: grid;
-  place-items: center;
-  pointer-events: none;
-  background:
-    radial-gradient(
-      circle at 50% 25%,
-      rgba(255, 255, 255, 0.08),
-      transparent 35%
-    ),
-    #090b0e;
-}
-
-.instagramCardBadge {
-  position: absolute;
-  top: 18px;
-  right: 14px;
-  z-index: 2;
-  padding: 5px 8px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 999px;
-  background: rgba(5, 5, 6, 0.66);
-  color: rgba(245, 244, 240, 0.82);
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  line-height: 1;
-  text-transform: uppercase;
-  backdrop-filter: blur(8px);
-}
-
+/* ---------- Modal media loader ---------- */
 
 .modalLoader {
   position: absolute;
@@ -630,6 +525,8 @@
     #090b0e;
 }
 
+/* ---------- Modal meta / footer ---------- */
+
 .videoModalMeta {
   display: flex;
   flex-direction: column;
@@ -642,6 +539,21 @@
   min-width: 0;
   flex-direction: column;
   gap: 4px;
+}
+
+.videoModalName {
+  font-family: "Barlow", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #f5f4f0;
+}
+
+.videoModalLocation {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(245, 244, 240, 0.5);
 }
 
 .instagramModalMeta {
@@ -690,4 +602,117 @@
 .instagramSourceLink:focus-visible {
   outline: 2px solid rgba(255, 255, 255, 0.28);
   outline-offset: 3px;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.18);
+  }
+}
+
+@media (min-width: 375px) {
+  .cardCompact {
+    width: 170px;
+    height: 250px;
+  }
+}
+
+@media (min-width: 425px) {
+  .cardCompact {
+    width: 190px;
+    height: 270px;
+  }
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cardCompact {
+    width: 210px;
+    height: 300px;
+  }
+
+  .videoStage {
+    width: min(100%, calc((100dvh - 150px) * 9 / 16));
+  }
+  .instagramEmbed {
+    width: 116%;
+    height: calc(116% + 185px);
+    transform: translate(-50%, calc(-50% - 46px));
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cardCompact {
+    width: 230px;
+    height: 330px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .instagramEmbed {
+    width: 114%;
+    height: calc(114% + 190px);
+    transform: translate(-50%, calc(-50% - 48px));
+  }
+}
+
+@media (max-width: 767px) {
+  .modalOverlay {
+    padding: 10px;
+  }
+
+  .videoModalDialog {
+    max-height: calc(100dvh - 20px);
+    padding: 14px;
+    border-radius: 20px;
+  }
+
+  .videoStage {
+    width: min(100%, calc((100dvh - 128px) * 9 / 16));
+  }
+
+  .instagramEmbed {
+    width: 118%;
+    height: calc(118% + 170px);
+    transform: translate(-50%, calc(-50% - 42px));
+  }
+
+  .videoModalMeta {
+    min-height: 58px;
+    margin-top: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    scroll-behavior: auto;
+  }
+
+  .card,
+  .carouselArrow {
+    transition: none;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+}
+
+.gridLoader {
+  display: grid;
+  min-height: 280px;
+  place-items: center;
+  width: 100%;
 }

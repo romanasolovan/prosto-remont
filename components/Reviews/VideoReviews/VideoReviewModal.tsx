@@ -37,16 +37,19 @@ const getInstagramEmbedUrl = (
     }
 
     const match = url.pathname.match(
-      /^\/(p|reel)\/([A-Za-z0-9_-]+)\/?$/,
+      /^\/(p|reel|reels)\/([A-Za-z0-9_-]+)\/?$/,
     );
 
     if (!match) {
       return undefined;
     }
 
-    const [, contentType, shortcode] = match;
+    const [, rawContentType, shortcode] = match;
 
-    return `https://www.instagram.com/${contentType}/${shortcode}/embed/captioned/`;
+    const contentType =
+      rawContentType === "reels" ? "reel" : rawContentType;
+
+    return `https://www.instagram.com/${contentType}/${shortcode}/embed/`;
   } catch {
     return undefined;
   }
@@ -102,16 +105,19 @@ function ActiveReviewMedia({ review }: ActiveReviewMediaProps) {
 
       {instagramVideo && instagramEmbedUrl && (
         <iframe
-          className={`${styles.instagramEmbed} ${
-            isMediaLoading ? styles.mediaPending : ""
-          }`}
-          src={instagramEmbedUrl}
-          title={t("aria.instagramVideo", { name: review.name })}
-          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-          allowFullScreen
-          loading="eager"
-          onLoad={() => setIsMediaLoading(false)}
-        />
+  className={`${styles.instagramEmbed} ${
+    isMediaLoading ? styles.mediaPending : ""
+  }`}
+  src={instagramEmbedUrl}
+  title={t("aria.instagramVideo", {
+    name: review.name,
+  })}
+  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+  allowFullScreen
+  loading="eager"
+  scrolling="no"
+  onLoad={() => setIsMediaLoading(false)}
+/>
       )}
 
       {instagramVideo && !instagramEmbedUrl && (

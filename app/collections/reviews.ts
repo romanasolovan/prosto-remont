@@ -130,7 +130,9 @@ const validateInstagramUrl = (
     }
 
     const isPostOrReelPath =
-      /^\/(?:p|reel)\/[A-Za-z0-9_-]+\/?$/.test(url.pathname);
+  /^\/(?:p|reel|reels)\/[A-Za-z0-9_-]+\/?$/.test(
+    url.pathname,
+  );
 
     if (!isPostOrReelPath) {
       return "Enter a public Instagram Post or Reel URL.";

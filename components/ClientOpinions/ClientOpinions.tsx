@@ -139,8 +139,8 @@ export default function ClientOpinions() {
         <DataLoader label={tCommon("loading.reviews")} />
       ) : (
         <div className={styles.sectionsStack}>
-          <VideoReviewsGrid reviews={reviews} />
-          <WrittenReviewsGrid reviews={reviews} />
+          <VideoReviewsGrid reviews={reviews} isLoading={isLoadingReviews} />
+          <WrittenReviewsGrid reviews={reviews} isLoading={isLoadingReviews} />
         </div>
       )}
 
