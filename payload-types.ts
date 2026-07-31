@@ -75,6 +75,7 @@ export interface Config {
     services: Service;
     'trusted-brands': TrustedBrand;
     partners: Partner;
+    'blog-posts': BlogPost;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -90,6 +91,7 @@ export interface Config {
     services: ServicesSelect<false> | ServicesSelect<true>;
     'trusted-brands': TrustedBrandsSelect<false> | TrustedBrandsSelect<true>;
     partners: PartnersSelect<false> | PartnersSelect<true>;
+    'blog-posts': BlogPostsSelect<false> | BlogPostsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -409,6 +411,76 @@ export interface Partner {
   createdAt: string;
 }
 /**
+ * Blog posts displayed on the website. Only published posts appear publicly.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blog-posts".
+ */
+export interface BlogPost {
+  id: number;
+  title: string;
+  /**
+   * Use lowercase words separated by hyphens. Example: how-to-plan-a-renovation.
+   */
+  slug: string;
+  /**
+   * Required square image used on the blog listing and as the main article image.
+   */
+  coverImage: number | Media;
+  /**
+   * The date displayed on the individual blog post page.
+   */
+  publishedAt: string;
+  /**
+   * The name displayed after the article author label.
+   */
+  author: string;
+  /**
+   * Write the complete blog post here. This content appears only on the individual article page.
+   */
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  /**
+   * Choose whether this article includes an optional Instagram or YouTube link.
+   */
+  mediaType: 'none' | 'instagram' | 'youtube';
+  /**
+   * Paste the original public Instagram Post or Reel URL.
+   */
+  instagramUrl?: string | null;
+  /**
+   * Paste a public YouTube video or Shorts URL.
+   */
+  youtubeUrl?: string | null;
+  /**
+   * Only published posts appear on the website.
+   */
+  status: 'draft' | 'published';
+  /**
+   * Reserved for highlighting selected posts later.
+   */
+  featured?: boolean | null;
+  /**
+   * Lower numbers appear first. Posts with the same number can later be sorted by publication date.
+   */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
@@ -463,6 +535,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'partners';
         value: number | Partner;
+      } | null)
+    | ({
+        relationTo: 'blog-posts';
+        value: number | BlogPost;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -661,6 +737,26 @@ export interface PartnersSelect<T extends boolean = true> {
   description?: T;
   website?: T;
   status?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blog-posts_select".
+ */
+export interface BlogPostsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  coverImage?: T;
+  publishedAt?: T;
+  author?: T;
+  content?: T;
+  mediaType?: T;
+  instagramUrl?: T;
+  youtubeUrl?: T;
+  status?: T;
+  featured?: T;
   order?: T;
   updatedAt?: T;
   createdAt?: T;

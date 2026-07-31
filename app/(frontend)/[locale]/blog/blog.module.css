@@ -114,6 +114,22 @@
   margin-top: clamp(42px, 7vw, 72px);
 }
 
+.emptyState {
+  position: relative;
+  z-index: 1;
+  max-width: 560px;
+  margin: clamp(48px, 8vw, 80px) auto 0;
+  padding: 34px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.025);
+  color: rgba(245, 244, 240, 0.5);
+  font-family: "Barlow", sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+  text-align: center;
+}
+
 .postCard {
   min-width: 0;
 }
@@ -268,4 +284,12 @@
   .postLink:hover .postArrow {
     transform: none;
   }
+}
+
+.routeLoader {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  min-height: calc(100svh - 180px);
+  place-items: center;
 }

@@ -2,12 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
+import { RichText } from "@payloadcms/richtext-lexical/react";
+import type { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 
 import { Link } from "@/navigation";
-import {
-  getTemporaryBlogPost,
-  temporaryBlogPosts,
-} from "@/data/temporaryBlogPosts";
+import { getBlogPostBySlug } from "@/lib/getBlogPostBySlug";
 
 import styles from "./blogPost.module.css";
 
@@ -18,17 +17,11 @@ type BlogPostPageProps = {
   }>;
 };
 
-export function generateStaticParams() {
-  return temporaryBlogPosts.map((post) => ({
-    slug: post.slug,
-  }));
-}
-
 export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = getTemporaryBlogPost(slug);
+  const post = await getBlogPostBySlug(slug);
 
   if (!post) {
     return {
@@ -38,7 +31,23 @@ export async function generateMetadata({
 
   return {
     title: post.title,
-    description: post.paragraphs[0],
+    openGraph: {
+      title: post.title,
+      type: "article",
+      publishedTime: post.publishedAt,
+      images: [
+        {
+          url: post.coverImage.url,
+          alt: post.coverImage.alt,
+          width:
+            post.coverImage.width ??
+            undefined,
+          height:
+            post.coverImage.height ??
+            undefined,
+        },
+      ],
+    },
   };
 }
 
@@ -52,17 +61,18 @@ export default async function BlogPostPage({
     namespace: "blog.post",
   });
 
-  const post = getTemporaryBlogPost(slug);
+  const post = await getBlogPostBySlug(slug);
 
   if (!post) {
     notFound();
   }
 
-  const formattedDate = new Intl.DateTimeFormat(locale, {
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
-  }).format(new Date(`${post.publishedAt}T12:00:00`));
+  const formattedDate =
+    new Intl.DateTimeFormat(locale, {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    }).format(new Date(post.publishedAt));
 
   return (
     <main className={styles.blogPostPage}>
@@ -92,8 +102,8 @@ export default async function BlogPostPage({
 
             <div className={styles.cover}>
               <Image
-                src={post.imageSrc}
-                alt={post.imageAlt}
+                src={post.coverImage.url}
+                alt={post.coverImage.alt}
                 fill
                 priority
                 sizes="
@@ -179,11 +189,11 @@ export default async function BlogPostPage({
             </header>
 
             <div className={styles.content}>
-              {post.paragraphs.map((paragraph, index) => (
-                <p key={`${post.id}-paragraph-${index}`}>
-                  {paragraph}
-                </p>
-              ))}
+              <RichText
+                data={
+                  post.content as SerializedEditorState
+                }
+              />
             </div>
 
             {post.media && (
@@ -198,7 +208,8 @@ export default async function BlogPostPage({
                   className={styles.externalMediaLink}
                 >
                   <span>
-                    {post.media.type === "instagram"
+                    {post.media.type ===
+                    "instagram"
                       ? t("viewOnInstagram")
                       : t("viewOnYouTube")}
                   </span>

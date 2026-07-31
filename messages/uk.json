@@ -670,6 +670,7 @@
     "eyebrow": "Blog",
     "title": "Ideas, guidance and renovation knowledge.",
     "description": "Explore practical advice, thoughtful inspiration and useful information for planning and completing a renovation.",
+    "empty": "No blog posts are available yet.",
     "aria": {
       "posts": "Blog posts",
       "openPost": "Open blog post: {title}"
