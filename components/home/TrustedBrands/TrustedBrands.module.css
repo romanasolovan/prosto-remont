@@ -5,7 +5,6 @@
   --line-soft: rgba(255, 255, 255, 0.08);
   --line-strong: rgba(255, 255, 255, 0.14);
   --sand: rgba(245, 244, 240, 0.72);
-  --grid: rgba(255, 255, 255, 0.022);
 
   position: relative;
   overflow: hidden;
@@ -18,8 +17,15 @@
       rgba(255, 255, 255, 0.045),
       transparent 30%
     ),
-    linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+    linear-gradient(
+      rgba(255, 255, 255, 0.022) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.022) 1px,
+      transparent 1px
+    ),
     linear-gradient(180deg, #2b2f34 0%, #23272c 100%);
   background-size:
     auto,
@@ -40,12 +46,12 @@
   width: 24rem;
   height: 24rem;
   border: 1px solid rgba(255, 255, 255, 0.035);
+  border-radius: 50%;
   background: radial-gradient(
     circle,
     rgba(255, 255, 255, 0.035) 0%,
-    rgba(255, 255, 255, 0) 70%
+    transparent 70%
   );
-  border-radius: 50%;
   pointer-events: none;
 }
 
@@ -56,17 +62,22 @@
   gap: clamp(24px, 4vw, 34px);
 }
 
+.trustedHeader {
+  position: relative;
+  z-index: 1;
+}
+
 .sectionLabel {
   display: inline-flex;
   align-items: center;
   gap: 9px;
   margin-bottom: 12px;
+  color: var(--sand);
   font-family: "Barlow Condensed", sans-serif;
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--sand);
 }
 
 .sectionLabel::before {
@@ -81,23 +92,29 @@
 
 .trustedTitle {
   margin: 0 0 12px;
+  color: var(--ink);
   font-family: "Barlow Condensed", sans-serif;
   font-size: clamp(28px, 4.8vw, 54px);
   font-weight: 300;
   line-height: 0.94;
   letter-spacing: -0.03em;
   text-wrap: balance;
-  color: var(--ink);
 }
 
 .trustedDescription {
-  padding-top: 14px;
+  max-width: 66ch;
   margin: 0;
+  padding-top: 14px;
+  color: var(--ink-72);
   font-family: "Barlow", sans-serif;
   font-size: clamp(14px, 1vw, 15px);
   font-weight: 300;
   line-height: 1.8;
-  color: var(--ink-72);
+}
+
+.trustedContent {
+  position: relative;
+  min-width: 0;
 }
 
 .trustedCarousel {
@@ -109,21 +126,25 @@
 .trustedTrack {
   display: inline-flex;
   width: max-content;
-  will-change: transform;
   transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  perspective: 1000px;
-  -webkit-perspective: 1000px;
   animation: trustedMarquee 42s linear infinite;
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000px;
+}
+
+.trustedTrack.isPaused {
+  animation-play-state: paused;
 }
 
 .trustedList {
   display: inline-flex;
   align-items: center;
-  gap: 0;
-  flex-shrink: 0;
   min-width: max-content;
+  flex-shrink: 0;
+  gap: 0;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -132,11 +153,33 @@
 .trustedItem {
   display: flex;
   align-items: center;
-  gap: 12px;
-  flex: 0 0 auto;
   min-height: 74px;
+  flex: 0 0 auto;
   padding: 0 clamp(16px, 2.2vw, 28px);
   border-right: 1px solid var(--line-soft);
+}
+
+.brandButton,
+.brandStatic {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+.brandButton {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.brandButton:focus-visible {
+  border-radius: 999px;
+  outline: 2px solid rgba(255, 255, 255, 0.72);
+  outline-offset: 6px;
 }
 
 .brandBadge {
@@ -171,13 +214,16 @@
   content: "";
   position: absolute;
   inset: 0.3rem;
-  border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  pointer-events: none;
 }
 
-.trustedItem:hover .brandBadge {
+.brandButton:hover .brandBadge,
+.brandButton:focus-visible .brandBadge,
+.brandButton.isSelected .brandBadge {
   transform: translateY(-2px);
-  border-color: rgba(255, 255, 255, 0.24);
+  border-color: rgba(255, 255, 255, 0.28);
   background:
     radial-gradient(
       circle at 30% 30%,
@@ -194,46 +240,308 @@
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
   padding: 4px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .brandMark {
+  color: var(--ink-72);
   font-family: "Barlow Condensed", sans-serif;
   font-size: clamp(12px, 1.4vw, 14px);
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--ink-72);
 }
 
 .brandName {
-  white-space: nowrap;
+  color: var(--ink-56);
   font-family: "Barlow Condensed", sans-serif;
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--ink-56);
+  white-space: nowrap;
 }
 
-.brandLink {
+/* Anchored details popup */
+
+.brandDetails {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: var(--details-left, 12px);
+  z-index: 30;
+  width: min(420px, calc(100% - 24px));
+  visibility: hidden;
+  overflow: visible;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  opacity: 0;
+  background:
+    radial-gradient(
+      circle at 88% 4%,
+      rgba(255, 255, 255, 0.09),
+      transparent 38%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(47, 52, 58, 0.99),
+      rgba(31, 35, 40, 0.99)
+    );
+  box-shadow:
+    0 22px 52px rgba(0, 0, 0, 0.36),
+    0 8px 20px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.09);
+  transform: translateY(7px) scale(0.985);
+  transition:
+    opacity 220ms ease,
+    transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 260ms;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.brandDetails.isPositioned {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: 0s;
+}
+
+.brandDetails::after {
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  left: var(--details-arrow-left, 50%);
+  width: 14px;
+  height: 14px;
+  border-right: 1px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(31, 35, 40, 0.99);
+  transform: translateX(-50%) rotate(45deg);
+  pointer-events: none;
+}
+
+.detailsHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.detailsIdentity {
   display: flex;
   align-items: center;
-  gap: 12px;
+  min-width: 0;
+  gap: 11px;
+}
+
+.detailsLogo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+.detailsLogoImage {
+  padding: 4px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.detailsMark {
+  color: var(--ink);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.detailsTitleGroup {
+  min-width: 0;
+}
+
+.detailsEyebrow,
+.projectLabel {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--ink-56);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.detailsName {
+  max-width: 24ch;
+  overflow: hidden;
+  margin: 0;
+  color: var(--ink);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  font-weight: 400;
+  line-height: 1.1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detailsClose {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--ink-72);
+  cursor: pointer;
+  transition:
+    transform 220ms ease,
+    color 220ms ease,
+    background-color 220ms ease;
+}
+
+.detailsClose svg {
+  width: 16px;
+  height: 16px;
+}
+
+.detailsClose:hover {
+  transform: rotate(7deg);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--ink);
+}
+
+.detailsClose:focus-visible,
+.websiteLink:focus-visible,
+.projectButton:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.7);
+  outline-offset: 3px;
+}
+
+.detailsBody {
+  display: grid;
+  gap: 13px;
+  margin-top: 14px;
+}
+
+.detailsInformation {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 11px;
+}
+
+.detailsDescription {
+  display: -webkit-box;
+  overflow: hidden;
+  margin: 0;
+  color: var(--ink-72);
+  font-family: "Barlow", sans-serif;
+  font-size: 0.84rem;
+  font-weight: 300;
+  line-height: 1.56;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+
+.websiteLink,
+.projectButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.055);
+  color: var(--ink);
+  font-family: "Barlow", sans-serif;
+  font-size: 0.76rem;
+  font-weight: 400;
   text-decoration: none;
-  color: inherit;
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    background-color 220ms ease;
 }
 
-.brandLink:hover .brandBadge,
-.brandLink:focus-visible .brandBadge {
-  transform: translateY(-2px);
+.websiteLink:hover,
+.projectButton:hover {
+  transform: translateY(-1px);
   border-color: rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.1);
 }
 
-.brandLink:focus-visible {
-  outline: none;
+.websiteLink svg,
+.projectButton svg {
+  width: 14px;
+  height: 14px;
+}
+
+.projectPreview {
+  display: grid;
+  grid-template-columns: 82px minmax(0, 1fr);
+  gap: 12px;
+  padding-top: 13px;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.projectMedia {
+  position: relative;
+  width: 82px;
+  height: 82px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.projectImage {
+  object-fit: cover;
+  transition: transform 320ms ease;
+}
+
+.projectPreview:hover .projectImage {
+  transform: scale(1.04);
+}
+
+.projectContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.projectTitle {
+  display: -webkit-box;
+  overflow: hidden;
+  color: var(--ink);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.03rem;
+  font-weight: 400;
+  line-height: 1.2;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.projectButton {
+  margin-top: auto;
 }
 
 @keyframes trustedMarquee {
@@ -264,16 +572,48 @@
   .trustedItem {
     min-height: 68px;
     padding: 0 12px;
+  }
+
+  .brandButton {
     gap: 10px;
   }
 
   .brandName {
+    max-width: 18ch;
+    overflow: hidden;
     font-size: 9px;
     letter-spacing: 0.12em;
+    text-overflow: ellipsis;
   }
 
   .trustedTrack {
     animation-duration: 36s;
+  }
+
+  .brandDetails {
+    bottom: calc(100% + 10px);
+    width: calc(100% - 16px);
+    padding: 14px;
+  }
+
+  .detailsLogo {
+    width: 42px;
+    height: 42px;
+  }
+
+  .detailsName {
+    max-width: 16ch;
+    font-size: 1.08rem;
+  }
+
+  .projectPreview {
+    grid-template-columns: 70px minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .projectMedia {
+    width: 70px;
+    height: 70px;
   }
 }
 
@@ -294,6 +634,10 @@
   .trustedTrack {
     animation-duration: 38s;
   }
+
+  .brandDetails {
+    width: calc(100% - 20px);
+  }
 }
 
 @media (min-width: 425px) and (max-width: 767px) {
@@ -308,6 +652,10 @@
 
   .trustedTrack {
     animation-duration: 40s;
+  }
+
+  .brandDetails {
+    width: min(370px, calc(100% - 24px));
   }
 }
 
@@ -328,6 +676,10 @@
   .trustedTrack {
     animation-duration: 44s;
   }
+
+  .brandDetails {
+    width: min(400px, calc(100% - 24px));
+  }
 }
 
 @media (hover: hover) {
@@ -335,10 +687,27 @@
     animation-play-state: paused;
   }
 }
-/* 
+
 @media (prefers-reduced-motion: reduce) {
   .trustedTrack {
     animation: none;
     transform: translate3d(0, 0, 0);
   }
-} */
+
+  .brandBadge,
+  .brandDetails,
+  .detailsClose,
+  .websiteLink,
+  .projectButton,
+  .projectImage {
+    transition: none;
+  }
+
+  .brandDetails {
+    transform: none;
+  }
+
+  .brandDetails.isPositioned {
+    transform: none;
+  }
+}

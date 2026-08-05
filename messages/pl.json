@@ -191,7 +191,17 @@
       "eyebrow": "Zaufanie Klientów",
       "title": "Nasze realizacje łączą jakość, funkcjonalność i dopracowaną estetykę.",
       "description": "Doświadczenie, precyzja i odpowiedzialne podejście do każdej realizacji sprawiają, że wybierają nas Klienci oczekujący najwyższego standardu.",
-      "regionLabel": "Marki i partnerzy"
+      "regionLabel": "Marki i partnerzy",
+      "details": {
+        "brandLabel": "Zaufana marka",
+        "open": "Otwórz informacje o marce {name}",
+        "close": "Zamknij informacje o marce",
+        "noDescription": "Więcej informacji o tej marce pojawi się wkrótce.",
+        "visitWebsite": "Odwiedź stronę",
+        "relatedProject": "Powiązany projekt",
+        "viewProject": "Zobacz projekt",
+        "openProject": "Otwórz projekt: {title}"
+      }
     },
     "cta": {
       "eyebrow": "Porozmawiajmy",

@@ -176,7 +176,17 @@
       "eyebrow": "Trusted by clients",
       "title": "Our projects combine quality, functionality, and refined design.",
       "description": "Experience, precision, and a responsible approach to every project are why clients who expect the highest standards choose us.",
-      "regionLabel": "Brands and partners"
+      "regionLabel": "Brands and partners",
+      "details": {
+        "brandLabel": "Trusted brand",
+        "open": "Open information about {name}",
+        "close": "Close brand information",
+        "noDescription": "More information about this brand will be available soon.",
+        "visitWebsite": "Visit website",
+        "relatedProject": "Related project",
+        "viewProject": "View project",
+        "openProject": "Open project: {title}"
+      }
     },
     "cta": {
       "eyebrow": "Let’s talk",

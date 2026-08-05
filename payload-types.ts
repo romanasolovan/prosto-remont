@@ -365,11 +365,44 @@ export interface TrustedBrand {
    */
   mark?: string | null;
   /**
-   * Upload a logo image for the carousel.
+   * Upload or select the logo displayed in the trusted brands carousel.
    */
   logo?: (number | null) | Media;
   /**
-   * Optional. Example: /projects#dar-sport-space
+   * Add a short brand description for every supported website language.
+   */
+  description?: {
+    /**
+     * Short Polish description displayed inside the brand popup.
+     */
+    pl?: string | null;
+    /**
+     * Short English description displayed inside the brand popup.
+     */
+    en?: string | null;
+    /**
+     * Short Ukrainian description displayed inside the brand popup.
+     */
+    uk?: string | null;
+    /**
+     * Short Russian description displayed inside the brand popup.
+     */
+    ru?: string | null;
+  };
+  /**
+   * Optional external brand website. Include the complete URL, for example: https://example.com.
+   */
+  website?: string | null;
+  /**
+   * Select the project that should open when a visitor clicks the work preview.
+   */
+  featuredProject?: (number | null) | Project;
+  /**
+   * Optional custom image shown in the popup. If empty, the first related project cover image can be used.
+   */
+  projectPreviewImage?: (number | null) | Media;
+  /**
+   * Existing optional internal link. Preserved for compatibility with the current frontend.
    */
   href?: string | null;
   /**
@@ -721,6 +754,17 @@ export interface TrustedBrandsSelect<T extends boolean = true> {
   name?: T;
   mark?: T;
   logo?: T;
+  description?:
+    | T
+    | {
+        pl?: T;
+        en?: T;
+        uk?: T;
+        ru?: T;
+      };
+  website?: T;
+  featuredProject?: T;
+  projectPreviewImage?: T;
   href?: T;
   status?: T;
   order?: T;
