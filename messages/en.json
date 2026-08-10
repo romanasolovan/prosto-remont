@@ -383,7 +383,9 @@
       "openDetails": "View details about {name}",
       "closeDetails": "Close partner details",
       "visitWebsite": "Visit partner website",
-      "websiteUnavailable": "Website unavailable"
+      "websiteUnavailable": "Website unavailable",
+      "readMore": "Read more",
+      "showLess": "Show less"
     },
     "social": {
       "title": "Social Media",

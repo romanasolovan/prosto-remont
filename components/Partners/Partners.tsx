@@ -1,25 +1,28 @@
 "use client";
 
-import Image from "next/image";
+
 import {
   useCallback,
   useEffect,
   useLayoutEffect,
   useRef,
   useState,
-  type CSSProperties,
   type FocusEvent,
 } from "react";
+import { useLocale } from "next-intl";
+
+import PartnerCard from "./PartnerCard";
+import PartnerDetails from "./PartnerDetails";
+
+import type {
+  Partner,
+  PopupPosition,
+  SupportedLocale,
+} from "./types";
+export type { Partner } from "./types";
 
 import styles from "./Partners.module.css";
 
-export type Partner = {
-  id: string;
-  name: string;
-  description?: string;
-  logoUrl?: string;
-  href?: string;
-};
 
 type PartnersProps = {
   partners: Partner[];
@@ -28,131 +31,14 @@ type PartnersProps = {
   getOpenDetailsLabel: (name: string) => string;
   closeDetailsLabel: string;
   visitWebsiteLabel: string;
+  readMoreLabel: string;
+  showLessLabel: string;
 };
 
-type PopupPosition = {
-  left: number;
-  arrowLeft: number;
-};
-
-type PartnerDetailsStyle = CSSProperties & {
-  "--partner-details-left": string;
-  "--partner-details-arrow-left": string;
-};
-
-type PartnerItemProps = {
-  partner: Partner;
-  isSelected: boolean;
-  isDuplicate?: boolean;
-  getOpenDetailsLabel: (name: string) => string;
-  onSelect: (
-    partner: Partner,
-    trigger: HTMLButtonElement,
-  ) => void;
-  setTriggerRef: (
-    partnerId: string,
-    element: HTMLButtonElement | null,
-  ) => void;
-};
 
 const POPUP_SIDE_GAP = 10;
 const POPUP_ARROW_EDGE_GAP = 24;
 
-function PartnerVisual({ partner }: { partner: Partner }) {
-  return (
-    <>
-      <span className={styles.partnerIdentity}>
-        <span className={styles.logoFrame}>
-          {partner.logoUrl ? (
-            <Image
-              src={partner.logoUrl}
-              alt={`${partner.name} logo`}
-              width={44}
-              height={44}
-              className={styles.partnerLogo}
-              loading="lazy"
-            />
-          ) : (
-            <span
-              className={styles.partnerMark}
-              aria-hidden="true"
-            >
-              {partner.name.charAt(0)}
-            </span>
-          )}
-        </span>
-
-        <span className={styles.partnerName}>
-          {partner.name}
-        </span>
-      </span>
-
-      <span
-        className={styles.detailsIndicator}
-        aria-hidden="true"
-      >
-        <svg viewBox="0 0 24 24" fill="none">
-          <path
-            d="M9 6L15 12L9 18"
-            stroke="currentColor"
-            strokeWidth="1.7"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </span>
-    </>
-  );
-}
-
-function PartnerItem({
-  partner,
-  isSelected,
-  isDuplicate = false,
-  getOpenDetailsLabel,
-  onSelect,
-  setTriggerRef,
-}: PartnerItemProps) {
-  if (isDuplicate) {
-    return (
-      <li className={styles.partnerItem}>
-        <button
-          type="button"
-          className={styles.partnerCard}
-          onClick={(event) => {
-            onSelect(partner, event.currentTarget);
-          }}
-          tabIndex={-1}
-          aria-hidden="true"
-        >
-          <PartnerVisual partner={partner} />
-        </button>
-      </li>
-    );
-  }
-
-  return (
-    <li className={styles.partnerItem}>
-      <button
-        ref={(element) => {
-          setTriggerRef(partner.id, element);
-        }}
-        type="button"
-        className={`${styles.partnerCard} ${
-          isSelected ? styles.isSelected : ""
-        }`}
-        onClick={(event) => {
-          onSelect(partner, event.currentTarget);
-        }}
-        aria-expanded={isSelected}
-        aria-controls={`partner-details-${partner.id}`}
-        aria-label={getOpenDetailsLabel(partner.name)}
-      >
-        <PartnerVisual partner={partner} />
-      </button>
-    </li>
-  );
-}
 
 export default function Partners({
   partners,
@@ -161,7 +47,30 @@ export default function Partners({
   getOpenDetailsLabel,
   closeDetailsLabel,
   visitWebsiteLabel,
+  readMoreLabel,
+  showLessLabel,
 }: PartnersProps) {
+
+//   const isSupportedLocale = (
+//   locale: string,
+// ): locale is SupportedLocale => {
+//   return ["pl", "en", "uk", "ru"].includes(locale);
+//   };
+  
+  const currentLocale = useLocale();
+
+const locale: SupportedLocale = [
+  "pl",
+  "en",
+  "uk",
+  "ru",
+].includes(currentLocale)
+  ? (currentLocale as SupportedLocale)
+  : "pl";
+
+  const [isDetailsExpanded, setIsDetailsExpanded] =
+  useState(false);
+
   const [selectedPartner, setSelectedPartner] =
     useState<Partner | null>(null);
 
@@ -273,6 +182,7 @@ export default function Partners({
 
       activeTriggerRef.current = null;
       setPopupPosition(null);
+      setIsDetailsExpanded(false);
     },
     [],
   );
@@ -289,6 +199,7 @@ export default function Partners({
 
       activeTriggerRef.current = trigger;
       setPopupPosition(null);
+      setIsDetailsExpanded(false);
       setSelectedPartner(partner);
     },
     [closeDetails, selectedPartner],
@@ -445,13 +356,19 @@ export default function Partners({
   const isPaused =
     Boolean(selectedPartner) || isFocusPaused;
 
-  const detailsStyle: PartnerDetailsStyle | undefined =
-    popupPosition
-      ? {
-          "--partner-details-left": `${popupPosition.left}px`,
-          "--partner-details-arrow-left": `${popupPosition.arrowLeft}px`,
-        }
-      : undefined;
+  
+  const getPartnerDescription = (
+  partner: Partner,
+): string => {
+  return (
+    partner.description[locale] ||
+    partner.description.pl ||
+    partner.description.en ||
+    partner.description.uk ||
+    partner.description.ru ||
+    ""
+  );
+};
 
   return (
     <section
@@ -479,109 +396,24 @@ export default function Partners({
         onBlurCapture={handleBlur}
       >
         {selectedPartner ? (
-          <div
-            ref={detailsRef}
-            id={`partner-details-${selectedPartner.id}`}
-            className={`${styles.partnerDetails} ${
-              popupPosition ? styles.isPositioned : ""
-            }`}
-            style={detailsStyle}
-            role="region"
-            aria-label={selectedPartner.name}
-            aria-live="polite"
-          >
-            <div
-              className={styles.detailsHighlight}
-              aria-hidden="true"
-            />
-
-            <div className={styles.detailsContent}>
-              <div className={styles.detailsIdentity}>
-                <span className={styles.detailsLogoFrame}>
-                  {selectedPartner.logoUrl ? (
-                    <Image
-                      src={selectedPartner.logoUrl}
-                      alt={`${selectedPartner.name} logo`}
-                      width={52}
-                      height={52}
-                      className={styles.detailsLogo}
-                    />
-                  ) : (
-                    <span
-                      className={styles.detailsMark}
-                      aria-hidden="true"
-                    >
-                      {selectedPartner.name.charAt(0)}
-                    </span>
-                  )}
-                </span>
-
-                <div className={styles.detailsText}>
-                  <h3 className={styles.detailsName}>
-                    {selectedPartner.name}
-                  </h3>
-
-                  {selectedPartner.description ? (
-                    <p
-                      className={
-                        styles.detailsDescription
-                      }
-                    >
-                      {selectedPartner.description}
-                    </p>
-                  ) : null}
-                </div>
-              </div>
-
-              <div className={styles.detailsActions}>
-                {selectedPartner.href ? (
-                  <a
-                    href={selectedPartner.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.websiteLink}
-                  >
-                    <span>{visitWebsiteLabel}</span>
-
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M8 16L16 8M10 8H16V14"
-                        stroke="currentColor"
-                        strokeWidth="1.7"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </a>
-                ) : null}
-
-                <button
-                  type="button"
-                  className={styles.closeButton}
-                  onClick={() => closeDetails()}
-                  aria-label={closeDetailsLabel}
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M7 7L17 17M17 7L7 17"
-                      stroke="currentColor"
-                      strokeWidth="1.7"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        ) : null}
+  <PartnerDetails
+  partner={selectedPartner}
+  description={getPartnerDescription(
+    selectedPartner,
+  )}
+  popupPosition={popupPosition}
+  detailsRef={detailsRef}
+  closeDetailsLabel={closeDetailsLabel}
+  visitWebsiteLabel={visitWebsiteLabel}
+  readMoreLabel={readMoreLabel}
+showLessLabel={showLessLabel}
+  isExpanded={isDetailsExpanded}
+  onToggleExpanded={() => {
+    setIsDetailsExpanded((current) => !current);
+  }}
+  onClose={() => closeDetails()}
+/>
+) : null}
 
         <div
           ref={carouselViewportRef}
@@ -599,7 +431,7 @@ export default function Partners({
               className={styles.partnerList}
             >
               {partners.map((partner) => (
-                <PartnerItem
+                <PartnerCard
                   key={partner.id}
                   partner={partner}
                   isSelected={
@@ -620,7 +452,7 @@ export default function Partners({
                 aria-hidden="true"
               >
                 {partners.map((partner) => (
-                  <PartnerItem
+                  <PartnerCard
                     key={`${partner.id}-duplicate`}
                     partner={partner}
                     isSelected={false}

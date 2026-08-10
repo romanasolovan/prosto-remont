@@ -428,9 +428,14 @@ export interface Partner {
    */
   logo?: (number | null) | Media;
   /**
-   * A short description shown when a visitor opens the partner details.
+   * Add the partner description in all supported website languages. Maximum 1000 characters per language.
    */
-  description?: string | null;
+  description?: {
+    pl?: string | null;
+    en?: string | null;
+    uk?: string | null;
+    ru?: string | null;
+  };
   /**
    * Optional external website URL, including https://.
    */
@@ -778,7 +783,14 @@ export interface TrustedBrandsSelect<T extends boolean = true> {
 export interface PartnersSelect<T extends boolean = true> {
   name?: T;
   logo?: T;
-  description?: T;
+  description?:
+    | T
+    | {
+        pl?: T;
+        en?: T;
+        uk?: T;
+        ru?: T;
+      };
   website?: T;
   status?: T;
   order?: T;

@@ -230,7 +230,9 @@ const [hasPartnersError, setHasPartnersError] = useState(false);
       })
     }
     closeDetailsLabel={t("partners.closeDetails")}
-    visitWebsiteLabel={t("partners.visitWebsite")}
+                  visitWebsiteLabel={t("partners.visitWebsite")}
+                  readMoreLabel={t("partners.readMore")}
+  showLessLabel={t("partners.showLess")}
   />
 ) : null}
 

@@ -393,12 +393,14 @@
     "quickLinks": "Швидкі посилання",
     "contactInfo": "Контакти",
     "partners": {
-      "title": "Partners",
-      "ariaLabel": "Our trusted partners",
-      "openDetails": "View details about {name}",
-      "closeDetails": "Close partner details",
-      "visitWebsite": "Visit partner website",
-      "websiteUnavailable": "Website unavailable"
+      "title": "Партнери",
+      "ariaLabel": "Наші надійні партнери",
+      "openDetails": "Переглянути інформацію про партнера {name}",
+      "closeDetails": "Закрити інформацію про партнера",
+      "visitWebsite": "Відвідати сайт партнера",
+      "websiteUnavailable": "Сайт недоступний",
+      "readMore": "Читати далі",
+      "showLess": "Показати менше"
     },
     "social": {
       "title": "Соціальні мережі",

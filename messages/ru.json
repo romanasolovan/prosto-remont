@@ -393,12 +393,14 @@
     "quickLinks": "Быстрые ссылки",
     "contactInfo": "Контакты",
     "partners": {
-      "title": "Partners",
-      "ariaLabel": "Our trusted partners",
-      "openDetails": "View details about {name}",
-      "closeDetails": "Close partner details",
-      "visitWebsite": "Visit partner website",
-      "websiteUnavailable": "Website unavailable"
+      "title": "Партнёры",
+      "ariaLabel": "Наши надёжные партнёры",
+      "openDetails": "Посмотреть информацию о партнёре {name}",
+      "closeDetails": "Закрыть информацию о партнёре",
+      "visitWebsite": "Посетить сайт партнёра",
+      "websiteUnavailable": "Сайт недоступен",
+      "readMore": "Читать далее",
+      "showLess": "Показать меньше"
     },
     "social": {
       "title": "Социальные сети",

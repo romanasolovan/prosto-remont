@@ -1,11 +1,15 @@
 import { NextResponse } from "next/server";
 import { getPayload } from "payload";
+
 import config from "@payload-config";
+
 import type { Media } from "@/payload-types";
 
 export const runtime = "nodejs";
 
-const getMediaUrl = (media?: number | Media | null) => {
+const getMediaUrl = (
+  media?: number | Media | null,
+): string | undefined => {
   if (!media || typeof media !== "object") {
     return undefined;
   }
@@ -31,12 +35,20 @@ export async function GET() {
 
     return NextResponse.json({
       success: true,
+
       partners: partners.docs.map((partner) => ({
         id: String(partner.id),
         name: partner.name,
-        description: partner.description || undefined,
+
+        description: {
+          pl: partner.description?.pl?.trim() || "",
+          en: partner.description?.en?.trim() || "",
+          uk: partner.description?.uk?.trim() || "",
+          ru: partner.description?.ru?.trim() || "",
+        },
+
         logoUrl: getMediaUrl(partner.logo),
-        href: partner.website || undefined,
+        href: partner.website?.trim() || "",
       })),
     });
   } catch (error) {
@@ -47,7 +59,9 @@ export async function GET() {
         success: false,
         partners: [],
       },
-      { status: 500 },
+      {
+        status: 500,
+      },
     );
   }
 }
