@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import type { CSSProperties, RefObject } from "react";
 
@@ -21,9 +23,7 @@ type PartnerDetailsProps = {
   closeDetailsLabel: string;
   visitWebsiteLabel: string;
   readMoreLabel: string;
-  showLessLabel: string;
-  isExpanded: boolean;
-  onToggleExpanded: () => void;
+  onReadMore: () => void;
   onClose: () => void;
 };
 
@@ -37,11 +37,12 @@ export default function PartnerDetails({
   closeDetailsLabel,
   visitWebsiteLabel,
   readMoreLabel,
-  showLessLabel,
-  isExpanded,
-  onToggleExpanded,
+  onReadMore,
   onClose,
 }: PartnerDetailsProps) {
+  const shouldShowToggle =
+    description.length > COMPACT_DESCRIPTION_LENGTH;
+
   const detailsStyle: PartnerDetailsStyle | undefined =
     popupPosition
       ? {
@@ -50,16 +51,13 @@ export default function PartnerDetails({
         }
       : undefined;
 
-  const shouldShowToggle =
-    description.length > COMPACT_DESCRIPTION_LENGTH;
-
   return (
     <div
       ref={detailsRef}
       id={`partner-details-${partner.id}`}
       className={`${styles.partnerDetails} ${
         popupPosition ? styles.isPositioned : ""
-      } ${isExpanded ? styles.isExpanded : ""}`}
+      }`}
       style={detailsStyle}
       role="region"
       aria-label={partner.name}
@@ -98,13 +96,7 @@ export default function PartnerDetails({
 
             {description ? (
               <>
-                <p
-                  className={`${styles.detailsDescription} ${
-                    isExpanded
-                      ? styles.isDescriptionExpanded
-                      : ""
-                  }`}
-                >
+                <p className={styles.detailsDescription}>
                   {description}
                 </p>
 
@@ -112,12 +104,11 @@ export default function PartnerDetails({
                   <button
                     type="button"
                     className={styles.readMoreButton}
-                    onClick={onToggleExpanded}
-                    aria-expanded={isExpanded}
+                    onClick={onReadMore}
+                    aria-haspopup="dialog"
+                    aria-controls={`partner-dialog-${partner.id}`}
                   >
-                    {isExpanded
-                      ? showLessLabel
-                      : readMoreLabel}
+                    {readMoreLabel}
                   </button>
                 ) : null}
               </>

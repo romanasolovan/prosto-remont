@@ -13,6 +13,7 @@ import { useLocale } from "next-intl";
 
 import PartnerCard from "./PartnerCard";
 import PartnerDetails from "./PartnerDetails";
+import PartnerDialog from "./PartnerDialog";
 
 import type {
   Partner,
@@ -51,13 +52,8 @@ export default function Partners({
   showLessLabel,
 }: PartnersProps) {
 
-//   const isSupportedLocale = (
-//   locale: string,
-// ): locale is SupportedLocale => {
-//   return ["pl", "en", "uk", "ru"].includes(locale);
-//   };
-  
-  const currentLocale = useLocale();
+
+const currentLocale = useLocale();
 
 const locale: SupportedLocale = [
   "pl",
@@ -228,24 +224,28 @@ const locale: SupportedLocale = [
   }, [partners, updateAnimationState]);
 
   useLayoutEffect(() => {
-    if (!selectedPartner) {
-      return;
-    }
+  if (!selectedPartner || isDetailsExpanded) {
+    return;
+  }
 
-    const animationFrameId =
-      window.requestAnimationFrame(() => {
-        updatePopupPosition();
-      });
+  const animationFrameId =
+    window.requestAnimationFrame(() => {
+      updatePopupPosition();
+    });
 
-    return () => {
-      window.cancelAnimationFrame(animationFrameId);
-    };
-  }, [selectedPartner, updatePopupPosition]);
+  return () => {
+    window.cancelAnimationFrame(animationFrameId);
+  };
+}, [
+  selectedPartner,
+  isDetailsExpanded,
+  updatePopupPosition,
+]);
 
   useEffect(() => {
-    if (!selectedPartner) {
-      return;
-    }
+  if (!selectedPartner || isDetailsExpanded) {
+    return;
+  }
 
     const handleResize = () => {
       updatePopupPosition();
@@ -273,12 +273,12 @@ const locale: SupportedLocale = [
       window.removeEventListener("resize", handleResize);
       resizeObserver.disconnect();
     };
-  }, [selectedPartner, updatePopupPosition]);
+  }, [selectedPartner, isDetailsExpanded, updatePopupPosition]);
 
   useEffect(() => {
-    if (!selectedPartner) {
-      return;
-    }
+  if (!selectedPartner || isDetailsExpanded) {
+    return;
+  }
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -330,7 +330,9 @@ const locale: SupportedLocale = [
         handlePointerDown,
       );
     };
-  }, [closeDetails, selectedPartner]);
+  }, [closeDetails,
+  selectedPartner,
+  isDetailsExpanded,]);
 
   const handleFocus = () => {
     setIsFocusPaused(true);
@@ -395,24 +397,38 @@ const locale: SupportedLocale = [
         onFocusCapture={handleFocus}
         onBlurCapture={handleBlur}
       >
-        {selectedPartner ? (
-  <PartnerDetails
-  partner={selectedPartner}
-  description={getPartnerDescription(
-    selectedPartner,
-  )}
-  popupPosition={popupPosition}
-  detailsRef={detailsRef}
-  closeDetailsLabel={closeDetailsLabel}
-  visitWebsiteLabel={visitWebsiteLabel}
-  readMoreLabel={readMoreLabel}
-showLessLabel={showLessLabel}
-  isExpanded={isDetailsExpanded}
-  onToggleExpanded={() => {
-    setIsDetailsExpanded((current) => !current);
-  }}
-  onClose={() => closeDetails()}
-/>
+       {selectedPartner ? (
+  isDetailsExpanded ? (
+    <PartnerDialog
+      partner={selectedPartner}
+      description={getPartnerDescription(
+        selectedPartner,
+      )}
+      closeDetailsLabel={closeDetailsLabel}
+      visitWebsiteLabel={visitWebsiteLabel}
+      showLessLabel={showLessLabel}
+      onShowLess={() => {
+        setIsDetailsExpanded(false);
+      }}
+      onClose={() => closeDetails()}
+    />
+  ) : (
+    <PartnerDetails
+      partner={selectedPartner}
+      description={getPartnerDescription(
+        selectedPartner,
+      )}
+      popupPosition={popupPosition}
+      detailsRef={detailsRef}
+      closeDetailsLabel={closeDetailsLabel}
+      visitWebsiteLabel={visitWebsiteLabel}
+      readMoreLabel={readMoreLabel}
+      onReadMore={() => {
+        setIsDetailsExpanded(true);
+      }}
+      onClose={() => closeDetails()}
+    />
+  )
 ) : null}
 
         <div
