@@ -1,10 +1,7 @@
 "use client";
-
 import Image from "next/image";
 import { useEffect, useRef } from "react";
-
 import type { Partner } from "./types";
-
 import styles from "./PartnerDetails.module.css";
 
 type PartnerDialogProps = {

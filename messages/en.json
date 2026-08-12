@@ -385,7 +385,9 @@
       "visitWebsite": "Visit partner website",
       "websiteUnavailable": "Website unavailable",
       "readMore": "Read more",
-      "showLess": "Show less"
+      "showLess": "Show less",
+      "previous": "Previous partner",
+      "next": "Next partner"
     },
     "social": {
       "title": "Social Media",

@@ -1,29 +1,22 @@
 "use client";
-
-
 import {
   useCallback,
   useEffect,
   useLayoutEffect,
   useRef,
   useState,
-  type FocusEvent,
 } from "react";
 import { useLocale } from "next-intl";
-
 import PartnerCard from "./PartnerCard";
 import PartnerDetails from "./PartnerDetails";
 import PartnerDialog from "./PartnerDialog";
-
 import type {
   Partner,
   PopupPosition,
   SupportedLocale,
 } from "./types";
 export type { Partner } from "./types";
-
 import styles from "./Partners.module.css";
-
 
 type PartnersProps = {
   partners: Partner[];
@@ -34,12 +27,12 @@ type PartnersProps = {
   visitWebsiteLabel: string;
   readMoreLabel: string;
   showLessLabel: string;
+  previousLabel: string;
+  nextLabel: string;
 };
-
 
 const POPUP_SIDE_GAP = 10;
 const POPUP_ARROW_EDGE_GAP = 24;
-
 
 export default function Partners({
   partners,
@@ -50,8 +43,9 @@ export default function Partners({
   visitWebsiteLabel,
   readMoreLabel,
   showLessLabel,
+  previousLabel,
+  nextLabel,
 }: PartnersProps) {
-
 
 const currentLocale = useLocale();
 
@@ -72,16 +66,21 @@ const locale: SupportedLocale = [
 
   const [popupPosition, setPopupPosition] =
     useState<PopupPosition | null>(null);
+  
+  const [canScrollPrevious, setCanScrollPrevious] =
+  useState(false);
 
-  const [isFocusPaused, setIsFocusPaused] = useState(false);
-  const [shouldAnimate, setShouldAnimate] = useState(false);
+const [canScrollNext, setCanScrollNext] =
+  useState(false);
+
+const [hasCarouselOverflow, setHasCarouselOverflow] =
+  useState(false);
 
   const carouselShellRef = useRef<HTMLDivElement>(null);
-  const carouselViewportRef = useRef<HTMLDivElement>(null);
-  const primaryListRef = useRef<HTMLUListElement>(null);
-  const detailsRef = useRef<HTMLDivElement>(null);
-  const activeTriggerRef =
-    useRef<HTMLButtonElement | null>(null);
+const carouselViewportRef = useRef<HTMLDivElement>(null);
+const detailsRef = useRef<HTMLDivElement>(null);
+const activeTriggerRef =
+  useRef<HTMLButtonElement | null>(null);
 
   const triggerRefs = useRef<
     Map<string, HTMLButtonElement>
@@ -102,18 +101,131 @@ const locale: SupportedLocale = [
     [],
   );
 
-  const updateAnimationState = useCallback(() => {
-    const viewport = carouselViewportRef.current;
-    const primaryList = primaryListRef.current;
+  const updateCarouselState = useCallback(() => {
+  const viewport = carouselViewportRef.current;
 
-    if (!viewport || !primaryList) {
+  if (!viewport) {
+    return;
+  }
+
+  const maximumScrollLeft =
+    viewport.scrollWidth - viewport.clientWidth;
+
+  const hasOverflow = maximumScrollLeft > 1;
+
+  setHasCarouselOverflow(hasOverflow);
+  setCanScrollPrevious(
+    hasOverflow && viewport.scrollLeft > 1,
+  );
+  setCanScrollNext(
+    hasOverflow &&
+      viewport.scrollLeft < maximumScrollLeft - 1,
+  );
+  }, []);
+
+  const scrollToPartner = useCallback(
+  (direction: "previous" | "next") => {
+    const viewport = carouselViewportRef.current;
+
+    if (!viewport) {
       return;
     }
 
-    setShouldAnimate(
-      primaryList.scrollWidth > viewport.clientWidth + 1,
+    const items = Array.from(
+      viewport.querySelectorAll<HTMLElement>(
+        `.${styles.partnerItem}`,
+      ),
     );
-  }, []);
+
+    if (!items.length) {
+      return;
+    }
+
+    const firstItem = items[0];
+
+    if (!firstItem) {
+      return;
+    }
+
+    const currentScrollLeft = viewport.scrollLeft;
+
+    const targets = items.map(
+      (item) => item.offsetLeft - firstItem.offsetLeft,
+    );
+
+    let nearestIndex = 0;
+    let nearestDistance = Number.POSITIVE_INFINITY;
+
+    targets.forEach((target, index) => {
+      const distance = Math.abs(
+        target - currentScrollLeft,
+      );
+
+      if (distance < nearestDistance) {
+        nearestDistance = distance;
+        nearestIndex = index;
+      }
+    });
+
+    const targetIndex =
+      direction === "next"
+        ? Math.min(nearestIndex + 1, items.length - 1)
+        : Math.max(nearestIndex - 1, 0);
+
+    const targetLeft = targets[targetIndex];
+
+    if (targetLeft === undefined) {
+      return;
+    }
+
+    viewport.scrollTo({
+      left: targetLeft,
+      behavior: "smooth",
+    });
+  },
+  [],
+  );
+  
+  useEffect(() => {
+  const viewport = carouselViewportRef.current;
+
+  if (!viewport) {
+    return;
+  }
+
+  const handleScroll = () => {
+    updateCarouselState();
+  };
+
+  updateCarouselState();
+
+  viewport.addEventListener("scroll", handleScroll, {
+    passive: true,
+  });
+
+  const resizeObserver = new ResizeObserver(() => {
+    updateCarouselState();
+  });
+
+  resizeObserver.observe(viewport);
+
+  const list = viewport.querySelector(
+    `.${styles.partnerList}`,
+  );
+
+  if (list) {
+    resizeObserver.observe(list);
+  }
+
+  return () => {
+    viewport.removeEventListener(
+      "scroll",
+      handleScroll,
+    );
+
+    resizeObserver.disconnect();
+  };
+}, [partners, updateCarouselState]);
 
   const updatePopupPosition = useCallback(() => {
     const shell = carouselShellRef.current;
@@ -200,28 +312,6 @@ const locale: SupportedLocale = [
     },
     [closeDetails, selectedPartner],
   );
-
-  useEffect(() => {
-    updateAnimationState();
-
-    const viewport = carouselViewportRef.current;
-    const primaryList = primaryListRef.current;
-
-    if (!viewport || !primaryList) {
-      return;
-    }
-
-    const resizeObserver = new ResizeObserver(() => {
-      updateAnimationState();
-    });
-
-    resizeObserver.observe(viewport);
-    resizeObserver.observe(primaryList);
-
-    return () => {
-      resizeObserver.disconnect();
-    };
-  }, [partners, updateAnimationState]);
 
   useLayoutEffect(() => {
   if (!selectedPartner || isDetailsExpanded) {
@@ -334,30 +424,9 @@ const locale: SupportedLocale = [
   selectedPartner,
   isDetailsExpanded,]);
 
-  const handleFocus = () => {
-    setIsFocusPaused(true);
-  };
-
-  const handleBlur = (
-    event: FocusEvent<HTMLDivElement>,
-  ) => {
-    const nextFocusedElement = event.relatedTarget;
-
-    if (
-      !(nextFocusedElement instanceof Node) ||
-      !event.currentTarget.contains(nextFocusedElement)
-    ) {
-      setIsFocusPaused(false);
-    }
-  };
-
   if (!partners.length) {
     return null;
   }
-
-  const isPaused =
-    Boolean(selectedPartner) || isFocusPaused;
-
   
   const getPartnerDescription = (
   partner: Partner,
@@ -394,8 +463,6 @@ const locale: SupportedLocale = [
       <div
         ref={carouselShellRef}
         className={styles.carouselShell}
-        onFocusCapture={handleFocus}
-        onBlurCapture={handleBlur}
       >
        {selectedPartner ? (
   isDetailsExpanded ? (
@@ -429,61 +496,83 @@ const locale: SupportedLocale = [
       onClose={() => closeDetails()}
     />
   )
+        ) : null}
+        
+        {hasCarouselOverflow ? (
+  <>
+    <button
+      type="button"
+      className={`${styles.carouselControl} ${styles.carouselControlPrevious}`}
+      onClick={() => {
+        scrollToPartner("previous");
+      }}
+      disabled={!canScrollPrevious}
+      aria-label={previousLabel}
+    >
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M15 6L9 12L15 18"
+          stroke="currentColor"
+          strokeWidth="1.7"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </button>
+
+    <button
+      type="button"
+      className={`${styles.carouselControl} ${styles.carouselControlNext}`}
+      onClick={() => {
+        scrollToPartner("next");
+      }}
+      disabled={!canScrollNext}
+      aria-label={nextLabel}
+    >
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M9 6L15 12L9 18"
+          stroke="currentColor"
+          strokeWidth="1.7"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </button>
+  </>
 ) : null}
 
         <div
-          ref={carouselViewportRef}
-          className={styles.carousel}
-        >
-          <div
-            className={`${styles.carouselTrack} ${
-              shouldAnimate
-                ? styles.isAnimated
-                : styles.isCentered
-            } ${isPaused ? styles.isPaused : ""}`}
-          >
-            <ul
-              ref={primaryListRef}
-              className={styles.partnerList}
-            >
-              {partners.map((partner) => (
-                <PartnerCard
-                  key={partner.id}
-                  partner={partner}
-                  isSelected={
-                    selectedPartner?.id === partner.id
-                  }
-                  getOpenDetailsLabel={
-                    getOpenDetailsLabel
-                  }
-                  onSelect={handlePartnerSelect}
-                  setTriggerRef={setTriggerRef}
-                />
-              ))}
-            </ul>
-
-            {shouldAnimate ? (
-              <ul
-                className={styles.partnerList}
-                aria-hidden="true"
-              >
-                {partners.map((partner) => (
-                  <PartnerCard
-                    key={`${partner.id}-duplicate`}
-                    partner={partner}
-                    isSelected={false}
-                    isDuplicate
-                    getOpenDetailsLabel={
-                      getOpenDetailsLabel
-                    }
-                    onSelect={handlePartnerSelect}
-                    setTriggerRef={setTriggerRef}
-                  />
-                ))}
-              </ul>
-            ) : null}
-          </div>
-        </div>
+  ref={carouselViewportRef}
+  className={styles.carousel}
+  role="region"
+  aria-label={ariaLabel}
+>
+  <ul className={styles.partnerList}>
+    {partners.map((partner) => (
+      <PartnerCard
+        key={partner.id}
+        partner={partner}
+        isSelected={
+          selectedPartner?.id === partner.id
+        }
+        getOpenDetailsLabel={
+          getOpenDetailsLabel
+        }
+        onSelect={handlePartnerSelect}
+        setTriggerRef={setTriggerRef}
+      />
+    ))}
+  </ul>
+</div>
       </div>
     </section>
   );

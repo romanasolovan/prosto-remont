@@ -1,13 +1,10 @@
 import Image from "next/image";
-
 import type { Partner } from "./types";
-
 import styles from "./Partners.module.css";
 
 type PartnerCardProps = {
   partner: Partner;
   isSelected: boolean;
-  isDuplicate?: boolean;
   getOpenDetailsLabel: (name: string) => string;
   onSelect: (
     partner: Partner,
@@ -73,29 +70,10 @@ function PartnerVisual({
 export default function PartnerCard({
   partner,
   isSelected,
-  isDuplicate = false,
   getOpenDetailsLabel,
   onSelect,
   setTriggerRef,
 }: PartnerCardProps) {
-  if (isDuplicate) {
-    return (
-      <li className={styles.partnerItem}>
-        <button
-          type="button"
-          className={styles.partnerCard}
-          onClick={(event) => {
-            onSelect(partner, event.currentTarget);
-          }}
-          tabIndex={-1}
-          aria-hidden="true"
-        >
-          <PartnerVisual partner={partner} />
-        </button>
-      </li>
-    );
-  }
-
   return (
     <li className={styles.partnerItem}>
       <button

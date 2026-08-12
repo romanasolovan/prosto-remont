@@ -3,7 +3,7 @@ import { getTranslations } from "next-intl/server";
 import StorySection from "@/components/AboutPage/StorySection";
 import ValuesSection from "@/components/AboutPage/ValuesSection";
 import AboutDetailsSection from "@/components/AboutPage/AboutDetailsSection";
-import TrustedBrands from "@/components/home/TrustedBrands/TrustedBrands";
+import TrustedBrands from "@/components/TrustedBrands/TrustedBrands";
 
 import styles from "./about.module.css";
 

@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
@@ -12,28 +11,22 @@ import {
   type CSSProperties,
   type FocusEvent,
 } from "react";
-
 import DataLoader from "@/components/ui/DataLoader/DataLoader";
 import { clientFetchJson } from "@/lib/clientFetchJson";
-
 import styles from "./TrustedBrands.module.css";
 
 type SupportedLocale = "pl" | "en" | "uk" | "ru";
-
 type BrandDescriptions = Record<SupportedLocale, string>;
-
 type BrandProjectPreview = {
   src: string;
   alt: string;
 };
-
 type BrandFeaturedProject = {
   id: string;
   title: string;
   slug: string;
   previewImage: BrandProjectPreview | null;
 };
-
 type Brand = {
   id: string;
   name: string;
@@ -45,17 +38,14 @@ type Brand = {
   website?: string;
   featuredProject: BrandFeaturedProject | null;
 };
-
 type TrustedBrandsResponse = {
   success: boolean;
   brands: Brand[];
 };
-
 type PopupPosition = {
   left: number;
   arrowLeft: number;
 };
-
 type BrandDetailsStyle = CSSProperties & {
   "--details-left": string;
   "--details-arrow-left": string;

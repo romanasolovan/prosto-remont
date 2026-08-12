@@ -3,7 +3,7 @@
 import styles from "./page.module.css";
 // import HomeSidePagination from "@/components/home/HomeSidePagination/HomeSidePagination";
 
-import TrustedBrands from "@/components/home/TrustedBrands/TrustedBrands";
+import TrustedBrands from "@/components/TrustedBrands/TrustedBrands";
 import HomeHero from "@/components/home/HomeHero/HomeHero";
 
 import ClientOpinionsPreview from "@/components/home/ClientOpinionsPreview/ClientOpinionsPreview";

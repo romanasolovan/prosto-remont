@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/navigation";
@@ -221,19 +220,21 @@ const [hasPartnersError, setHasPartnersError] = useState(false);
   <DataLoader label={tCommon("loading.partners")} compact />
 ) : !hasPartnersError && partners.length > 0 ? (
   <Partners
-    partners={partners}
-    title={t("partners.title")}
-    ariaLabel={t("partners.ariaLabel")}
-    getOpenDetailsLabel={(name) =>
-      t("partners.openDetails", {
-        name,
-      })
-    }
-    closeDetailsLabel={t("partners.closeDetails")}
-                  visitWebsiteLabel={t("partners.visitWebsite")}
-                  readMoreLabel={t("partners.readMore")}
+  partners={partners}
+  title={t("partners.title")}
+  ariaLabel={t("partners.ariaLabel")}
+  getOpenDetailsLabel={(name) =>
+    t("partners.openDetails", {
+      name,
+    })
+  }
+  closeDetailsLabel={t("partners.closeDetails")}
+  visitWebsiteLabel={t("partners.visitWebsite")}
+  readMoreLabel={t("partners.readMore")}
   showLessLabel={t("partners.showLess")}
-  />
+  previousLabel={t("partners.previous")}
+  nextLabel={t("partners.next")}
+/>
 ) : null}
 
             <div className={styles.footerBottom}>

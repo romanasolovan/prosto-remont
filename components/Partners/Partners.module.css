@@ -93,45 +93,119 @@
   );
 }
 
+.carouselControl {
+  position: absolute;
+  top: 50%;
+  z-index: 6;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  padding: 0;
+
+  border: 1px solid rgba(55, 58, 60, 0.14);
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(244, 245, 245, 0.98),
+      rgba(210, 213, 213, 0.96)
+    );
+
+  color: rgba(35, 37, 38, 0.82);
+
+  box-shadow:
+    0 8px 20px rgba(25, 28, 30, 0.13),
+    inset 0 1px 0 rgba(255, 255, 255, 0.86);
+
+  cursor: pointer;
+
+  transform: translateY(-50%);
+
+  transition:
+    opacity 180ms ease,
+    transform 220ms ease,
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 220ms ease;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+.carouselControlPrevious {
+  left: 10px;
+}
+
+.carouselControlNext {
+  right: 10px;
+}
+
+.carouselControl svg {
+  width: 18px;
+  height: 18px;
+}
+
+.carouselControl:hover:not(:disabled) {
+  transform: translateY(-50%) scale(1.06);
+
+  border-color: rgba(55, 58, 60, 0.24);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(252, 252, 252, 1),
+      rgba(219, 221, 221, 0.98)
+    );
+
+  box-shadow:
+    0 12px 24px rgba(25, 28, 30, 0.17),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.carouselControl:focus-visible {
+  outline: 2px solid rgba(61, 61, 58, 0.52);
+  outline-offset: 3px;
+}
+
+.carouselControl:disabled {
+  opacity: 0.3;
+  cursor: default;
+  box-shadow:
+    0 4px 10px rgba(25, 28, 30, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
 .carousel {
   width: 100%;
   min-width: 0;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: visible;
   padding: 8px 0 21px;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: clamp(58px, 6vw, 76px);
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
 
-.carouselTrack {
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.partnerList {
   display: flex;
   align-items: center;
   width: max-content;
   min-width: 100%;
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  will-change: transform;
-  -webkit-backface-visibility: hidden;
-}
-
-.carouselTrack.isAnimated {
-  animation: partnersMarquee 38s linear infinite;
-}
-
-.carouselTrack.isPaused {
-  animation-play-state: paused;
-}
-
-.carouselTrack.isCentered {
-  justify-content: center;
-  width: 100%;
-}
-
-.partnerList {
-  display: inline-flex;
-  align-items: center;
-  min-width: max-content;
-  flex-shrink: 0;
   gap: 14px;
   margin: 0;
-  padding: 0 clamp(18px, 4vw, 56px);
+  padding: 0 clamp(58px, 6vw, 76px);
   list-style: none;
 }
 
@@ -139,6 +213,8 @@
   display: flex;
   flex: 0 0 auto;
   padding: 7px 0 13px;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 /* Partner card */
@@ -348,15 +424,6 @@
   transform: rotate(-90deg);
 }
 
-@keyframes partnersMarquee {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
 
 @media (max-width: 479px) {
   .partnersHeader {
@@ -373,9 +440,31 @@
     width: 22px;
   }
 
+  .carousel {
+  scroll-padding-inline: 54px;
+}
+
+.carouselControl {
+  width: 40px;
+  height: 40px;
+}
+
+.carouselControlPrevious {
+  left: 7px;
+}
+
+.carouselControlNext {
+  right: 7px;
+}
+
+.carouselControl svg {
+  width: 17px;
+  height: 17px;
+}
+
   .partnerList {
     gap: 10px;
-    padding-inline: 14px;
+    padding-inline: 54px;
   }
 
   .partnerCard {
@@ -406,12 +495,16 @@
 
 @media (min-width: 480px) and (max-width: 767px) {
   .partnerList {
-    padding-inline: 20px;
+    padding-inline: 58px;
   }
 
   .carouselTrack.isAnimated {
     animation-duration: 35s;
   }
+
+  .carousel {
+  scroll-padding-inline: 58px;
+}
 }
 
 @media (min-width: 768px) {
@@ -454,11 +547,6 @@
   }
 }
 
-@media (hover: hover) {
-  .carouselShell:hover .carouselTrack.isAnimated {
-    animation-play-state: paused;
-  }
-}
 
 @media (hover: none) {
   .partnerCard:hover {
@@ -471,10 +559,17 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .carouselTrack.isAnimated {
-    animation: none;
-    transform: translate3d(0, 0, 0);
-  }
+  .carousel {
+  scroll-behavior: auto;
+}
+
+.carouselControl {
+  transition: none;
+}
+
+.carouselControl:hover:not(:disabled) {
+  transform: translateY(-50%);
+}
 
   .partnerCard,
 .partnerCard::after,
