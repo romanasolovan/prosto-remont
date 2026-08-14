@@ -7,6 +7,7 @@ import {
   useState,
 } from "react";
 import { useLocale } from "next-intl";
+import Carousel from "@/components/Carousel/Carousel";
 import PartnerCard from "./PartnerCard";
 import PartnerDetails from "./PartnerDetails";
 import PartnerDialog from "./PartnerDialog";
@@ -58,35 +59,18 @@ const locale: SupportedLocale = [
   ? (currentLocale as SupportedLocale)
   : "pl";
 
-  const [isDetailsExpanded, setIsDetailsExpanded] =
-  useState(false);
-
-  const [selectedPartner, setSelectedPartner] =
-    useState<Partner | null>(null);
-
-  const [popupPosition, setPopupPosition] =
-    useState<PopupPosition | null>(null);
-  
-  const [canScrollPrevious, setCanScrollPrevious] =
-  useState(false);
-
-const [canScrollNext, setCanScrollNext] =
-  useState(false);
-
-const [hasCarouselOverflow, setHasCarouselOverflow] =
-  useState(false);
-
-  const carouselShellRef = useRef<HTMLDivElement>(null);
-const carouselViewportRef = useRef<HTMLDivElement>(null);
+const [isDetailsExpanded, setIsDetailsExpanded] =
+useState(false);
+const [selectedPartner, setSelectedPartner] =
+useState<Partner | null>(null);
+const [popupPosition, setPopupPosition] =
+useState<PopupPosition | null>(null);
+const carouselShellRef = useRef<HTMLDivElement>(null);
 const detailsRef = useRef<HTMLDivElement>(null);
 const activeTriggerRef =
-  useRef<HTMLButtonElement | null>(null);
-
-  const triggerRefs = useRef<
-    Map<string, HTMLButtonElement>
-  >(new Map());
-
-  const setTriggerRef = useCallback(
+useRef<HTMLButtonElement | null>(null);
+const triggerRefs = useRef<Map<string, HTMLButtonElement>>(new Map());
+const setTriggerRef = useCallback(
     (
       partnerId: string,
       element: HTMLButtonElement | null,
@@ -101,166 +85,40 @@ const activeTriggerRef =
     [],
   );
 
-  const updateCarouselState = useCallback(() => {
-  const viewport = carouselViewportRef.current;
-
-  if (!viewport) {
-    return;
-  }
-
-  const maximumScrollLeft =
-    viewport.scrollWidth - viewport.clientWidth;
-
-  const hasOverflow = maximumScrollLeft > 1;
-
-  setHasCarouselOverflow(hasOverflow);
-  setCanScrollPrevious(
-    hasOverflow && viewport.scrollLeft > 1,
-  );
-  setCanScrollNext(
-    hasOverflow &&
-      viewport.scrollLeft < maximumScrollLeft - 1,
-  );
-  }, []);
-
-  const scrollToPartner = useCallback(
-  (direction: "previous" | "next") => {
-    const viewport = carouselViewportRef.current;
-
-    if (!viewport) {
-      return;
-    }
-
-    const items = Array.from(
-      viewport.querySelectorAll<HTMLElement>(
-        `.${styles.partnerItem}`,
-      ),
-    );
-
-    if (!items.length) {
-      return;
-    }
-
-    const firstItem = items[0];
-
-    if (!firstItem) {
-      return;
-    }
-
-    const currentScrollLeft = viewport.scrollLeft;
-
-    const targets = items.map(
-      (item) => item.offsetLeft - firstItem.offsetLeft,
-    );
-
-    let nearestIndex = 0;
-    let nearestDistance = Number.POSITIVE_INFINITY;
-
-    targets.forEach((target, index) => {
-      const distance = Math.abs(
-        target - currentScrollLeft,
-      );
-
-      if (distance < nearestDistance) {
-        nearestDistance = distance;
-        nearestIndex = index;
-      }
-    });
-
-    const targetIndex =
-      direction === "next"
-        ? Math.min(nearestIndex + 1, items.length - 1)
-        : Math.max(nearestIndex - 1, 0);
-
-    const targetLeft = targets[targetIndex];
-
-    if (targetLeft === undefined) {
-      return;
-    }
-
-    viewport.scrollTo({
-      left: targetLeft,
-      behavior: "smooth",
-    });
-  },
-  [],
-  );
-  
-  useEffect(() => {
-  const viewport = carouselViewportRef.current;
-
-  if (!viewport) {
-    return;
-  }
-
-  const handleScroll = () => {
-    updateCarouselState();
-  };
-
-  updateCarouselState();
-
-  viewport.addEventListener("scroll", handleScroll, {
-    passive: true,
-  });
-
-  const resizeObserver = new ResizeObserver(() => {
-    updateCarouselState();
-  });
-
-  resizeObserver.observe(viewport);
-
-  const list = viewport.querySelector(
-    `.${styles.partnerList}`,
-  );
-
-  if (list) {
-    resizeObserver.observe(list);
-  }
-
-  return () => {
-    viewport.removeEventListener(
-      "scroll",
-      handleScroll,
-    );
-
-    resizeObserver.disconnect();
-  };
-}, [partners, updateCarouselState]);
-
   const updatePopupPosition = useCallback(() => {
-    const shell = carouselShellRef.current;
-    const details = detailsRef.current;
-    const trigger = activeTriggerRef.current;
+  const shell = carouselShellRef.current;
+  const details = detailsRef.current;
+  const trigger = activeTriggerRef.current;
 
     if (!shell || !details || !trigger) {
       return;
     }
 
-    const shellRect = shell.getBoundingClientRect();
-    const detailsRect = details.getBoundingClientRect();
-    const triggerRect = trigger.getBoundingClientRect();
+  const shellRect = shell.getBoundingClientRect();
+  const detailsRect = details.getBoundingClientRect();
+  const triggerRect = trigger.getBoundingClientRect();
 
-    const triggerCenter =
+  const triggerCenter =
       triggerRect.left +
       triggerRect.width / 2 -
       shellRect.left;
 
-    const maximumLeft = Math.max(
+  const maximumLeft = Math.max(
       POPUP_SIDE_GAP,
       shellRect.width -
         detailsRect.width -
         POPUP_SIDE_GAP,
     );
 
-    const preferredLeft =
+  const preferredLeft =
       triggerCenter - detailsRect.width / 2;
 
-    const left = Math.min(
+  const left = Math.min(
       Math.max(preferredLeft, POPUP_SIDE_GAP),
       maximumLeft,
     );
 
-    const arrowLeft = Math.min(
+  const arrowLeft = Math.min(
       Math.max(
         triggerCenter - left,
         POPUP_ARROW_EDGE_GAP,
@@ -497,82 +355,28 @@ const activeTriggerRef =
     />
   )
         ) : null}
-        
-        {hasCarouselOverflow ? (
-  <>
-    <button
-      type="button"
-      className={`${styles.carouselControl} ${styles.carouselControlPrevious}`}
-      onClick={() => {
-        scrollToPartner("previous");
-      }}
-      disabled={!canScrollPrevious}
-      aria-label={previousLabel}
-    >
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        aria-hidden="true"
-      >
-        <path
-          d="M15 6L9 12L15 18"
-          stroke="currentColor"
-          strokeWidth="1.7"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    </button>
-
-    <button
-      type="button"
-      className={`${styles.carouselControl} ${styles.carouselControlNext}`}
-      onClick={() => {
-        scrollToPartner("next");
-      }}
-      disabled={!canScrollNext}
-      aria-label={nextLabel}
-    >
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        aria-hidden="true"
-      >
-        <path
-          d="M9 6L15 12L9 18"
-          stroke="currentColor"
-          strokeWidth="1.7"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    </button>
-  </>
-) : null}
-
-        <div
-  ref={carouselViewportRef}
-  className={styles.carousel}
-  role="region"
-  aria-label={ariaLabel}
+        <Carousel
+  ariaLabel={ariaLabel}
+  previousLabel={previousLabel}
+  nextLabel={nextLabel}
+  viewportClassName={styles.carousel}
+  trackClassName={styles.partnerList}
 >
-  <ul className={styles.partnerList}>
-    {partners.map((partner) => (
-      <PartnerCard
-        key={partner.id}
-        partner={partner}
-        isSelected={
-          selectedPartner?.id === partner.id
-        }
-        getOpenDetailsLabel={
-          getOpenDetailsLabel
-        }
-        onSelect={handlePartnerSelect}
-        setTriggerRef={setTriggerRef}
-      />
-    ))}
-  </ul>
-</div>
+  {partners.map((partner) => (
+    <PartnerCard
+      key={partner.id}
+      partner={partner}
+      isSelected={
+        selectedPartner?.id === partner.id
+      }
+      getOpenDetailsLabel={
+        getOpenDetailsLabel
+      }
+      onSelect={handlePartnerSelect}
+      setTriggerRef={setTriggerRef}
+    />
+  ))}
+</Carousel>
       </div>
     </section>
   );

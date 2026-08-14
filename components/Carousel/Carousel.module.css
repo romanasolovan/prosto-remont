@@ -1,0 +1,177 @@
+.carousel {
+  position: relative;
+
+  width: 100%;
+  min-width: 0;
+}
+
+.viewport {
+  width: 100%;
+  min-width: 0;
+
+  overflow-x: auto;
+  overflow-y: visible;
+
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+
+  overscroll-behavior-x: contain;
+
+  scrollbar-width: none;
+
+  -webkit-overflow-scrolling: touch;
+}
+
+.viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.track {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  width: max-content;
+  min-width: 100%;
+
+  margin: 0;
+
+  list-style: none;
+}
+
+.track > * {
+  flex: 0 0 auto;
+
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Controls */
+
+.control {
+  position: absolute;
+  top: 50%;
+  z-index: 6;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: var(--carousel-control-size, 42px);
+  height: var(--carousel-control-size, 42px);
+
+  padding: 0;
+
+  border:
+    1px solid
+    var(
+      --carousel-control-border,
+      currentColor
+    );
+  border-radius: 50%;
+
+  background:
+    var(
+      --carousel-control-background,
+      transparent
+    );
+
+  color:
+    var(
+      --carousel-control-color,
+      currentColor
+    );
+
+  box-shadow:
+    var(
+      --carousel-control-shadow,
+      none
+    );
+
+  cursor: pointer;
+
+  transform: translateY(-50%);
+
+  transition:
+    opacity 180ms ease,
+    transform 220ms ease,
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 220ms ease;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+.previousControl {
+  left: var(--carousel-control-offset, 10px);
+}
+
+.nextControl {
+  right: var(--carousel-control-offset, 10px);
+}
+
+.control svg {
+  width: var(--carousel-control-icon-size, 18px);
+  height: var(--carousel-control-icon-size, 18px);
+}
+
+.control:hover:not(:disabled) {
+  transform:
+    translateY(-50%)
+    scale(1.06);
+
+  border-color:
+    var(
+      --carousel-control-hover-border,
+      var(--carousel-control-border, currentColor)
+    );
+
+  background:
+    var(
+      --carousel-control-hover-background,
+      var(--carousel-control-background, transparent)
+    );
+
+  box-shadow:
+    var(
+      --carousel-control-hover-shadow,
+      var(--carousel-control-shadow, none)
+    );
+}
+
+.control:focus-visible {
+  outline:
+    2px solid
+    var(
+      --carousel-control-focus,
+      currentColor
+    );
+  outline-offset: 3px;
+}
+
+.control:disabled {
+  opacity: 0.3;
+
+  cursor: default;
+
+  box-shadow:
+    var(
+      --carousel-control-disabled-shadow,
+      none
+    );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .viewport {
+    scroll-behavior: auto;
+  }
+
+  .control {
+    transition: none;
+  }
+
+  .control:hover:not(:disabled) {
+    transform: translateY(-50%);
+  }
+}
