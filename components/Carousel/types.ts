@@ -10,4 +10,8 @@ export type CarouselProps = {
   className?: string;
   viewportClassName?: string;
   trackClassName?: string;
+
+  autoplay?: boolean;
+  autoplayDelay?: number;
+  isPaused?: boolean;
 };

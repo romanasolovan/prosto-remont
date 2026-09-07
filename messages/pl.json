@@ -200,7 +200,13 @@
         "visitWebsite": "Odwiedź stronę",
         "relatedProject": "Powiązany projekt",
         "viewProject": "Zobacz projekt",
-        "openProject": "Otwórz projekt: {title}"
+        "openProject": "Otwórz projekt: {title}",
+        "readMore": "Czytaj więcej",
+        "showLess": "Pokaż mniej"
+      },
+      "carousel": {
+        "previous": "Poprzednia zaufana marka",
+        "next": "Następna zaufana marka"
       }
     },
     "cta": {

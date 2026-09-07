@@ -25,20 +25,34 @@ export default function Carousel({
   className,
   viewportClassName,
   trackClassName,
+  autoplay = false,
+  autoplayDelay = 5000,
+  isPaused = false,
 }: CarouselProps) {
   const itemCount = Children.count(children);
 
   const {
-    viewportRef,
-    trackRef,
-    hasOverflow,
-    canScrollPrevious,
-    canScrollNext,
-    scrollPrevious,
-    scrollNext,
-  } = useCarousel({
-    itemCount,
-  });
+  viewportRef,
+  trackRef,
+  hasOverflow,
+  canScrollPrevious,
+  canScrollNext,
+  scrollPrevious,
+  scrollNext,
+  handlePointerEnter,
+  handlePointerLeave,
+  handlePointerDown,
+  handlePointerUp,
+  handlePointerCancel,
+  handleFocusCapture,
+  handleBlurCapture,
+  handleWheel,
+} = useCarousel({
+  itemCount,
+  autoplay,
+  autoplayDelay,
+  isExternallyPaused: isPaused,
+});
 
   return (
     <div
@@ -46,6 +60,10 @@ export default function Carousel({
         styles.carousel,
         className,
       )}
+      onPointerEnter={handlePointerEnter}
+  onPointerLeave={handlePointerLeave}
+  onFocusCapture={handleFocusCapture}
+  onBlurCapture={handleBlurCapture}
     >
       {hasOverflow ? (
         <>
@@ -103,6 +121,11 @@ export default function Carousel({
         )}
         role="region"
         aria-label={ariaLabel}
+        onPointerDown={handlePointerDown}
+  onPointerUp={handlePointerUp}
+  onPointerCancel={handlePointerCancel}
+  onWheel={handleWheel}
+
       >
         <ul
           ref={trackRef}

@@ -185,7 +185,13 @@
         "visitWebsite": "Visit website",
         "relatedProject": "Related project",
         "viewProject": "View project",
-        "openProject": "Open project: {title}"
+        "openProject": "Open project: {title}",
+        "readMore": "Read more",
+        "showLess": "Show less"
+      },
+      "carousel": {
+        "previous": "Previous trusted brand",
+        "next": "Next trusted brand"
       }
     },
     "cta": {

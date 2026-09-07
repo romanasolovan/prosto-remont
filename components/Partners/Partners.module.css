@@ -46,49 +46,38 @@
   --carousel-control-size: 42px;
   --carousel-control-icon-size: 18px;
   --carousel-control-offset: 10px;
-
-  --carousel-control-border:
-    rgba(55, 58, 60, 0.14);
-
+  --carousel-control-border: rgba(55, 58, 60, 0.14);
   --carousel-control-background:
     linear-gradient(
       145deg,
       rgba(244, 245, 245, 0.98),
       rgba(210, 213, 213, 0.96)
     );
-
-  --carousel-control-color:
-    rgba(35, 37, 38, 0.82);
-
+  --carousel-control-color: rgba(35, 37, 38, 0.82);
   --carousel-control-shadow:
     0 8px 20px rgba(25, 28, 30, 0.13),
     inset 0 1px 0 rgba(255, 255, 255, 0.86);
-
   --carousel-control-hover-border:
     rgba(55, 58, 60, 0.24);
-
   --carousel-control-hover-background:
     linear-gradient(
       145deg,
       rgba(252, 252, 252, 1),
       rgba(219, 221, 221, 0.98)
     );
-
   --carousel-control-hover-shadow:
     0 12px 24px rgba(25, 28, 30, 0.17),
     inset 0 1px 0 rgba(255, 255, 255, 0.95);
-
   --carousel-control-focus:
     rgba(61, 61, 58, 0.52);
-
   --carousel-control-disabled-shadow:
     0 4px 10px rgba(25, 28, 30, 0.06),
     inset 0 1px 0 rgba(255, 255, 255, 0.65);
-
   position: relative;
   z-index: 10;
-  width: 100%;
+  width: min(100%, 960px);
   min-width: 0;
+  margin-inline: auto;
   overflow: visible;
   padding: 4px 0;
   border: 1px solid rgba(70, 73, 75, 0.07);
@@ -111,7 +100,7 @@
   top: 0;
   bottom: 0;
   z-index: 4;
-  width: clamp(24px, 5vw, 72px);
+  width: clamp(22px, 4vw, 52px);
   pointer-events: none;
 }
 
@@ -160,6 +149,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 18px;
+  width: clamp(200px, 22vw, 238px);
   min-width: 200px;
   min-height: 64px;
   padding: 8px 12px 8px 9px;
@@ -384,33 +374,16 @@
   scroll-padding-inline: 54px;
 }
 
-.carouselControl {
-  width: 40px;
-  height: 40px;
-}
-
-.carouselControlPrevious {
-  left: 7px;
-}
-
-.carouselControlNext {
-  right: 7px;
-}
-
-.carouselControl svg {
-  width: 17px;
-  height: 17px;
-}
-
 .partnerList {
   gap: 10px;
   padding-inline: 54px;
 }
 
 .partnerCard {
-    min-width: 186px;
-    min-height: 60px;
-    gap: 12px;
+  width: 186px;
+  min-width: 186px;
+  min-height: 60px;
+  gap: 12px;
   }
 
 .logoFrame {
@@ -427,23 +400,18 @@
     max-width: 13ch;
     font-size: 0.9rem;
   }
-
-  .carouselTrack.isAnimated {
-    animation-duration: 32s;
-  }
 }
 
 @media (min-width: 480px) and (max-width: 767px) {
   .partnerList {
     padding-inline: 58px;
   }
-
-  .carouselTrack.isAnimated {
-    animation-duration: 35s;
-  }
-
   .carousel {
   scroll-padding-inline: 58px;
+}
+.partnerCard {
+  width: 204px;
+  min-width: 204px;
 }
 }
 
@@ -453,8 +421,10 @@
   }
 
   .partnerCard {
+    width: 222px;
     min-width: 222px;
     min-height: 68px;
+
     padding: 9px 14px 9px 10px;
   }
 
@@ -474,16 +444,17 @@
 }
 
 @media (min-width: 1200px) {
+  .carouselShell {
+    width: min(100%, 980px);
+  }
+
   .partnerList {
     gap: 20px;
   }
 
   .partnerCard {
+    width: 238px;
     min-width: 238px;
-  }
-
-  .carouselTrack.isAnimated {
-    animation-duration: 42s;
   }
 }
 
@@ -499,25 +470,13 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .carousel {
-  scroll-behavior: auto;
-}
-
-.carouselControl {
-  transition: none;
-}
-
-.carouselControl:hover:not(:disabled) {
-  transform: translateY(-50%);
-}
-
   .partnerCard,
-.partnerCard::after,
-.logoFrame,
-.partnerName,
-.detailsIndicator {
-  transition: none;
-}
+  .partnerCard::after,
+  .logoFrame,
+  .partnerName,
+  .detailsIndicator {
+    transition: none;
+  }
 
   .partnerCard:hover,
   .partnerCard:focus-visible,

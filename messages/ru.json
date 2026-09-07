@@ -200,7 +200,13 @@
         "visitWebsite": "Посетить сайт",
         "relatedProject": "Связанный проект",
         "viewProject": "Посмотреть проект",
-        "openProject": "Открыть проект: {title}"
+        "openProject": "Открыть проект: {title}",
+        "readMore": "Читать далее",
+        "showLess": "Показать меньше"
+      },
+      "carousel": {
+        "previous": "Предыдущий проверенный бренд",
+        "next": "Следующий проверенный бренд"
       }
     },
     "cta": {

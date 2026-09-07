@@ -118,43 +118,54 @@
 }
 
 .trustedCarousel {
+  --carousel-control-size: 42px;
+  --carousel-control-icon-size: 18px;
+  --carousel-control-offset: 8px;
+  --carousel-control-border:
+    rgba(255, 255, 255, 0.14);
+  --carousel-control-background:
+    linear-gradient(
+      145deg,
+      rgba(64, 69, 75, 0.98),
+      rgba(38, 42, 47, 0.98)
+    );
+  --carousel-control-color:
+    rgba(245, 244, 240, 0.82);
+  --carousel-control-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --carousel-control-hover-border:
+    rgba(255, 255, 255, 0.24);
+  --carousel-control-hover-background:
+    linear-gradient(
+      145deg,
+      rgba(75, 81, 88, 0.98),
+      rgba(45, 49, 55, 0.98)
+    );
+  --carousel-control-hover-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.11);
+  --carousel-control-focus:
+    rgba(255, 255, 255, 0.72);
   position: relative;
-  overflow: hidden;
+  width: 100%;
+  min-width: 0;
   padding: 10px 0 6px;
 }
 
-.trustedTrack {
-  display: inline-flex;
-  width: max-content;
-  transform: translate3d(0, 0, 0);
-  animation: trustedMarquee 42s linear infinite;
-  backface-visibility: hidden;
-  perspective: 1000px;
-  will-change: transform;
-  -webkit-backface-visibility: hidden;
-  -webkit-perspective: 1000px;
-}
-
-.trustedTrack.isPaused {
-  animation-play-state: paused;
+.trustedViewport {
+  scroll-padding-inline: 56px;
 }
 
 .trustedList {
-  display: inline-flex;
-  align-items: center;
-  min-width: max-content;
-  flex-shrink: 0;
   gap: 0;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  padding-inline: 56px;
 }
 
 .trustedItem {
   display: flex;
   align-items: center;
   min-height: 74px;
-  flex: 0 0 auto;
   padding: 0 clamp(16px, 2.2vw, 28px);
   border-right: 1px solid var(--line-soft);
 }
@@ -544,17 +555,193 @@
   margin-top: auto;
 }
 
-@keyframes trustedMarquee {
+/* Read more */
+
+.detailsReadMore {
+  padding: 0;
+  border: 0;
+
+  background: transparent;
+
+  color: rgba(245, 244, 240, 0.82);
+
+  font-family: "Barlow", sans-serif;
+  font-size: 0.76rem;
+  font-weight: 500;
+
+  text-decoration: underline;
+  text-decoration-color: rgba(245, 244, 240, 0.26);
+  text-underline-offset: 4px;
+
+  cursor: pointer;
+
+  transition:
+    color 180ms ease,
+    text-decoration-color 180ms ease;
+}
+
+.detailsReadMore:hover {
+  color: var(--ink);
+  text-decoration-color: rgba(245, 244, 240, 0.65);
+}
+
+.detailsReadMore:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.7);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+
+/* Expanded native dialog */
+
+.brandDialog {
+  position: fixed;
+  inset: 50% auto auto 50%;
+
+  width: min(760px, calc(100vw - 32px));
+  max-width: none;
+  max-height: calc(100dvh - 32px);
+
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+
+  overflow: visible;
+
+  background: transparent;
+
+  transform: translate(-50%, -50%);
+}
+
+.brandDialog::backdrop {
+  background: rgba(10, 12, 14, 0.54);
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.brandDialogInner {
+  position: relative;
+
+  width: 100%;
+  max-height: calc(100dvh - 32px);
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  padding: clamp(20px, 4vw, 30px);
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+
+  background:
+    radial-gradient(
+      circle at 88% 4%,
+      rgba(255, 255, 255, 0.1),
+      transparent 38%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(47, 52, 58, 0.995),
+      rgba(27, 31, 36, 0.995)
+    );
+
+  box-shadow:
+    0 40px 100px rgba(0, 0, 0, 0.52),
+    0 16px 36px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.09);
+
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+
+  animation:
+    brandDialogReveal
+    300ms cubic-bezier(0.22, 1, 0.36, 1)
+    both;
+}
+
+.brandDialog .detailsHeader {
+  align-items: center;
+}
+
+.brandDialog .detailsLogo {
+  width: 56px;
+  height: 56px;
+}
+
+.brandDialog .detailsName {
+  max-width: none;
+
+  font-size: clamp(1.35rem, 3vw, 1.7rem);
+
+  white-space: normal;
+}
+
+.brandDialogBody {
+  display: grid;
+  gap: 22px;
+
+  margin-top: 22px;
+}
+
+.brandDialog .detailsInformation {
+  gap: 14px;
+}
+
+.dialogDescription {
+  display: block;
+
+  max-width: 72ch;
+
+  overflow: visible;
+
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  line-height: 1.7;
+
+  -webkit-line-clamp: unset;
+}
+
+.brandDialog .projectPreview {
+  grid-template-columns: 96px minmax(0, 1fr);
+
+  gap: 16px;
+
+  padding-top: 18px;
+}
+
+.brandDialog .projectMedia {
+  width: 96px;
+  height: 96px;
+}
+
+@keyframes brandDialogReveal {
   from {
-    transform: translate3d(0, 0, 0);
+    opacity: 0;
+    transform: translateY(12px) scale(0.985);
   }
 
   to {
-    transform: translate3d(-50%, 0, 0);
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
 @media (max-width: 374px) {
+.trustedCarousel {
+  --carousel-control-size: 40px;
+  --carousel-control-icon-size: 17px;
+  --carousel-control-offset: 6px;
+}
+
+.trustedViewport {
+  scroll-padding-inline: 50px;
+}
+
+.trustedList {
+  padding-inline: 50px;
+}
+
   .trustedInner {
     gap: 22px;
   }
@@ -586,10 +773,6 @@
     text-overflow: ellipsis;
   }
 
-  .trustedTrack {
-    animation-duration: 36s;
-  }
-
   .brandDetails {
     bottom: calc(100% + 10px);
     width: calc(100% - 16px);
@@ -615,6 +798,40 @@
     width: 70px;
     height: 70px;
   }
+  .brandDialog {
+  width: calc(100vw - 20px);
+  max-height: calc(100dvh - 20px);
+}
+
+.brandDialogInner {
+  max-height: calc(100dvh - 20px);
+
+  padding: 18px 15px;
+
+  border-radius: 20px;
+}
+
+.brandDialog .detailsLogo {
+  width: 48px;
+  height: 48px;
+}
+
+.brandDialogBody {
+  gap: 18px;
+
+  margin-top: 18px;
+}
+
+.brandDialog .projectPreview {
+  grid-template-columns: 72px minmax(0, 1fr);
+
+  gap: 11px;
+}
+
+.brandDialog .projectMedia {
+  width: 72px;
+  height: 72px;
+}
 }
 
 @media (min-width: 375px) and (max-width: 424px) {
@@ -631,16 +848,28 @@
     letter-spacing: 0.13em;
   }
 
-  .trustedTrack {
-    animation-duration: 38s;
-  }
-
   .brandDetails {
     width: calc(100% - 20px);
   }
+  .brandDialog {
+  width: calc(100vw - 24px);
+  max-height: calc(100dvh - 24px);
+}
+
+.brandDialogInner {
+  max-height: calc(100dvh - 24px);
+}
 }
 
 @media (min-width: 425px) and (max-width: 767px) {
+  .trustedViewport {
+  scroll-padding-inline: 54px;
+}
+
+.trustedList {
+  padding-inline: 54px;
+}
+
   .trustedDescription {
     padding-top: 14px;
   }
@@ -650,16 +879,28 @@
     padding: 0 14px;
   }
 
-  .trustedTrack {
-    animation-duration: 40s;
-  }
-
   .brandDetails {
     width: min(370px, calc(100% - 24px));
   }
+  .brandDialog {
+  width: min(680px, calc(100vw - 28px));
+  max-height: calc(100dvh - 28px);
+}
+
+.brandDialogInner {
+  max-height: calc(100dvh - 28px);
+}
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
+  .trustedViewport {
+  scroll-padding-inline: 58px;
+}
+
+.trustedList {
+  padding-inline: 58px;
+}
+
   .trustedInner {
     gap: 28px;
   }
@@ -673,40 +914,35 @@
     padding: 0 18px;
   }
 
-  .trustedTrack {
-    animation-duration: 44s;
-  }
-
   .brandDetails {
     width: min(400px, calc(100% - 24px));
   }
+  .brandDialog {
+  width: min(740px, calc(100vw - 40px));
+  max-height: calc(100dvh - 40px);
 }
 
-@media (hover: hover) {
-  .trustedCarousel:hover .trustedTrack {
-    animation-play-state: paused;
-  }
+.brandDialogInner {
+  max-height: calc(100dvh - 40px);
+}
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .trustedTrack {
-    animation: none;
-    transform: translate3d(0, 0, 0);
-  }
-
   .brandBadge,
   .brandDetails,
   .detailsClose,
+  .detailsReadMore,
   .websiteLink,
   .projectButton,
   .projectImage {
     transition: none;
   }
 
-  .brandDetails {
-    transform: none;
+  .brandDialogInner {
+    animation: none;
   }
 
+  .brandDetails,
   .brandDetails.isPositioned {
     transform: none;
   }

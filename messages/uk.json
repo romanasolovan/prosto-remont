@@ -200,7 +200,13 @@
         "visitWebsite": "Відвідати сайт",
         "relatedProject": "Пов’язаний проєкт",
         "viewProject": "Переглянути проєкт",
-        "openProject": "Відкрити проєкт: {title}"
+        "openProject": "Відкрити проєкт: {title}",
+        "readMore": "Читати більше",
+        "showLess": "Показати менше"
+      },
+      "carousel": {
+        "previous": "Попередній перевірений бренд",
+        "next": "Наступний перевірений бренд"
       }
     },
     "cta": {
