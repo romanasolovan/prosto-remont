@@ -141,9 +141,11 @@ const locale: SupportedLocale = [
   previousLabel={previousLabel}
   nextLabel={nextLabel}
   viewportClassName={styles.carousel}
-          trackClassName={styles.partnerList}
-          autoplay
-  autoplayDelay={5000}
+  trackClassName={styles.partnerList}
+  autoplay
+  motionMode="continuous"
+  continuousSpeed={13}
+  resumeDelay={2400}
   isPaused={Boolean(selectedPartner)}
 >
   {partners.map((partner) => (

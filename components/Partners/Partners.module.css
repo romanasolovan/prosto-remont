@@ -126,13 +126,12 @@
 
 .carousel {
   padding: 8px 0 21px;
-  scroll-padding-inline:
-    clamp(58px, 6vw, 76px);
+  scroll-padding-inline: 12px;
 }
 
 .partnerList {
   gap: 14px;
-  padding: 0 clamp(58px, 6vw, 76px);
+  padding-inline: 12px;
 }
 
 .partnerItem {
@@ -371,12 +370,12 @@
   }
 
 .carousel {
-  scroll-padding-inline: 54px;
+  scroll-padding-inline: 8px;
 }
 
 .partnerList {
   gap: 10px;
-  padding-inline: 54px;
+  padding-inline: 8px;
 }
 
 .partnerCard {
@@ -404,10 +403,10 @@
 
 @media (min-width: 480px) and (max-width: 767px) {
   .partnerList {
-    padding-inline: 58px;
+    padding-inline: 10px;
   }
   .carousel {
-  scroll-padding-inline: 58px;
+  scroll-padding-inline: 10px;
 }
 .partnerCard {
   width: 204px;

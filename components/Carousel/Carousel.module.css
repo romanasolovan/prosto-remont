@@ -1,25 +1,35 @@
 .carousel {
   position: relative;
-
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
   width: 100%;
   min-width: 0;
 }
 
+.carousel.hasControls {
+  grid-template-columns:
+    auto
+    minmax(0, 1fr)
+    auto;
+  gap: var(--carousel-control-gap, 12px);
+}
+
 .viewport {
+  grid-column: 1;
   width: 100%;
   min-width: 0;
-
   overflow-x: auto;
   overflow-y: visible;
-
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
-
   overscroll-behavior-x: contain;
-
   scrollbar-width: none;
-
   -webkit-overflow-scrolling: touch;
+}
+
+.hasControls .viewport {
+  grid-column: 2;
 }
 
 .viewport::-webkit-scrollbar {
@@ -28,21 +38,16 @@
 
 .track {
   position: relative;
-
   display: flex;
   align-items: center;
-
   width: max-content;
   min-width: 100%;
-
   margin: 0;
-
   list-style: none;
 }
 
 .track > * {
   flex: 0 0 auto;
-
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
@@ -50,19 +55,15 @@
 /* Controls */
 
 .control {
-  position: absolute;
-  top: 50%;
-  z-index: 6;
-
+  position: relative;
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   width: var(--carousel-control-size, 42px);
   height: var(--carousel-control-size, 42px);
-
+  flex-shrink: 0;
   padding: 0;
-
   border:
     1px solid
     var(
@@ -70,73 +71,77 @@
       currentColor
     );
   border-radius: 50%;
-
   background:
     var(
       --carousel-control-background,
       transparent
     );
-
   color:
     var(
       --carousel-control-color,
       currentColor
     );
-
   box-shadow:
     var(
       --carousel-control-shadow,
       none
     );
-
   cursor: pointer;
-
-  transform: translateY(-50%);
-
   transition:
     opacity 180ms ease,
     transform 220ms ease,
     border-color 180ms ease,
     background 180ms ease,
     box-shadow 220ms ease;
-
   -webkit-tap-highlight-color: transparent;
 }
 
 .previousControl {
-  left: var(--carousel-control-offset, 10px);
+  grid-column: 1;
 }
 
 .nextControl {
-  right: var(--carousel-control-offset, 10px);
+  grid-column: 3;
 }
 
 .control svg {
-  width: var(--carousel-control-icon-size, 18px);
-  height: var(--carousel-control-icon-size, 18px);
+  width:
+    var(
+      --carousel-control-icon-size,
+      18px
+    );
+  height:
+    var(
+      --carousel-control-icon-size,
+      18px
+    );
 }
 
 .control:hover:not(:disabled) {
-  transform:
-    translateY(-50%)
-    scale(1.06);
-
+  transform: scale(1.06);
   border-color:
     var(
       --carousel-control-hover-border,
-      var(--carousel-control-border, currentColor)
+      var(
+        --carousel-control-border,
+        currentColor
+      )
     );
-
   background:
     var(
       --carousel-control-hover-background,
-      var(--carousel-control-background, transparent)
+      var(
+        --carousel-control-background,
+        transparent
+      )
     );
-
   box-shadow:
     var(
       --carousel-control-hover-shadow,
-      var(--carousel-control-shadow, none)
+      var(
+        --carousel-control-shadow,
+        none
+      )
     );
 }
 
@@ -152,9 +157,7 @@
 
 .control:disabled {
   opacity: 0.3;
-
   cursor: default;
-
   box-shadow:
     var(
       --carousel-control-disabled-shadow,
@@ -172,6 +175,6 @@
   }
 
   .control:hover:not(:disabled) {
-    transform: translateY(-50%);
+    transform: none;
   }
 }

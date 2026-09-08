@@ -213,7 +213,7 @@
 
 .textarea {
   min-height: 144px;
-  resize: vertical;
+  resize: none;
 }
 
 .ratingRow {

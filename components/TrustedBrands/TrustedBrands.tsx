@@ -224,7 +224,9 @@ export default function TrustedBrands() {
   viewportClassName={styles.trustedViewport}
   trackClassName={styles.trustedList}
   autoplay
-  autoplayDelay={5000}
+  motionMode="continuous"
+  continuousSpeed={11}
+  resumeDelay={2400}
   isPaused={Boolean(selectedBrand)}
 >
   {trustedBrands.map((brand) => (

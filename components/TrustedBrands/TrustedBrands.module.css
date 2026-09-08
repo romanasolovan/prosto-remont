@@ -154,12 +154,12 @@
 }
 
 .trustedViewport {
-  scroll-padding-inline: 56px;
+  scroll-padding-inline: 8px;
 }
 
 .trustedList {
   gap: 0;
-  padding-inline: 56px;
+  padding-inline: 8px;
 }
 
 .trustedItem {
@@ -735,11 +735,11 @@
 }
 
 .trustedViewport {
-  scroll-padding-inline: 50px;
+  scroll-padding-inline: 6px;
 }
 
 .trustedList {
-  padding-inline: 50px;
+  padding-inline: 6px;
 }
 
   .trustedInner {
@@ -863,11 +863,11 @@
 
 @media (min-width: 425px) and (max-width: 767px) {
   .trustedViewport {
-  scroll-padding-inline: 54px;
+  scroll-padding-inline: 6px;
 }
 
 .trustedList {
-  padding-inline: 54px;
+  padding-inline: 6px;
 }
 
   .trustedDescription {
@@ -894,11 +894,11 @@
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .trustedViewport {
-  scroll-padding-inline: 58px;
+  scroll-padding-inline: 10px;
 }
 
 .trustedList {
-  padding-inline: 58px;
+  padding-inline: 10px;
 }
 
   .trustedInner {
