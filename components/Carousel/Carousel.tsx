@@ -50,6 +50,7 @@ export default function Carousel({
     hasOverflow,
     canScrollPrevious,
     canScrollNext,
+    isAutoMoving,
 
     scrollPrevious,
     scrollNext,
@@ -78,10 +79,10 @@ export default function Carousel({
   return (
     <div
       className={combineClassNames(
-        styles.carousel,
-        hasOverflow && styles.hasControls,
-        className,
-      )}
+  styles.viewport,
+  isAutoMoving && styles.isAutoMoving,
+  viewportClassName,
+)}
       onPointerEnter={handlePointerEnter}
       onPointerLeave={handlePointerLeave}
       onFocusCapture={handleFocusCapture}

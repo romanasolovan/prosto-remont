@@ -44,6 +44,13 @@ export function useCarouselMotion({
   loop,
   scrollNext,
 }: UseCarouselMotionOptions) {
+  const isAutoMoving =
+    enabled &&
+    hasOverflow &&
+    itemCount > 1 &&
+    mode === "continuous" &&
+    !isPaused;
+
   useEffect(() => {
     const viewport = viewportRef.current;
 
@@ -81,12 +88,15 @@ export function useCarouselMotion({
       };
     }
 
-    let animationFrameId = 0;
+    let animationFrameId: number | null = null;
     let previousTimestamp: number | null = null;
+
+    let currentPosition = viewport.scrollLeft;
 
     const move = (timestamp: number) => {
       if (previousTimestamp === null) {
         previousTimestamp = timestamp;
+
         animationFrameId =
           window.requestAnimationFrame(move);
 
@@ -98,29 +108,30 @@ export function useCarouselMotion({
 
       previousTimestamp = timestamp;
 
-      const maximumScrollLeft =
-        Math.max(
-          viewport.scrollWidth -
-            viewport.clientWidth,
-          0,
-        );
+      const maximumScrollLeft = Math.max(
+        viewport.scrollWidth -
+          viewport.clientWidth,
+        0,
+      );
 
       if (maximumScrollLeft <= 0) {
         return;
       }
 
-      const nextScrollLeft =
-        viewport.scrollLeft +
+      currentPosition +=
         continuousSpeed * elapsedSeconds;
 
       if (
-        nextScrollLeft >=
+        currentPosition >=
         maximumScrollLeft
       ) {
         if (loop) {
+          currentPosition = 0;
           viewport.scrollLeft = 0;
-          previousTimestamp = timestamp;
         } else {
+          currentPosition =
+            maximumScrollLeft;
+
           viewport.scrollLeft =
             maximumScrollLeft;
 
@@ -128,7 +139,7 @@ export function useCarouselMotion({
         }
       } else {
         viewport.scrollLeft =
-          nextScrollLeft;
+          currentPosition;
       }
 
       animationFrameId =
@@ -137,15 +148,23 @@ export function useCarouselMotion({
 
     const resumeTimeoutId =
       window.setTimeout(() => {
+        currentPosition =
+          viewport.scrollLeft;
+
+        previousTimestamp = null;
+
         animationFrameId =
           window.requestAnimationFrame(move);
       }, resumeDelay);
 
     return () => {
       window.clearTimeout(resumeTimeoutId);
-      window.cancelAnimationFrame(
-        animationFrameId,
-      );
+
+      if (animationFrameId !== null) {
+        window.cancelAnimationFrame(
+          animationFrameId,
+        );
+      }
     };
   }, [
     autoplayDelay,
@@ -161,4 +180,8 @@ export function useCarouselMotion({
     scrollNext,
     viewportRef,
   ]);
+
+  return {
+    isAutoMoving,
+  };
 }

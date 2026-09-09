@@ -15,17 +15,47 @@
   gap: var(--carousel-control-gap, 12px);
 }
 
+/* .viewport {
+  grid-column: 1;
+  width: 100%;
+  min-width: 0;
+
+  overflow-x: auto;
+  overflow-y: visible;
+
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+
+  -webkit-overflow-scrolling: touch;
+} */
+
 .viewport {
   grid-column: 1;
   width: 100%;
   min-width: 0;
+
   overflow-x: auto;
   overflow-y: visible;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
+
+  scroll-behavior: auto;
+  scroll-snap-type: none;
+
   overscroll-behavior-x: contain;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
+}
+
+.viewport.isAutoMoving {
+  scroll-behavior: auto;
+  scroll-snap-type: none;
+}
+
+.carousel .viewport.isAutoMoving {
+  scroll-behavior: auto;
+  scroll-snap-type: none;
 }
 
 .hasControls .viewport {
@@ -46,10 +76,14 @@
   list-style: none;
 }
 
-.track > * {
+/* .track > * {
   flex: 0 0 auto;
   scroll-snap-align: start;
   scroll-snap-stop: always;
+} */
+
+.track > * {
+  flex: 0 0 auto;
 }
 
 /* Controls */

@@ -144,7 +144,7 @@ const locale: SupportedLocale = [
   trackClassName={styles.partnerList}
   autoplay
   motionMode="continuous"
-  continuousSpeed={13}
+  continuousSpeed={40}
   resumeDelay={2400}
   isPaused={Boolean(selectedPartner)}
 >

@@ -76,26 +76,20 @@ export function useCarousel({
     scroll("next");
   }, [markInteraction, scroll]);
 
-  useCarouselMotion({
-    viewportRef,
-
-    enabled: autoplay,
-    hasOverflow,
-    itemCount,
-
-    mode: motionMode,
-
-    autoplayDelay,
-    continuousSpeed,
-    resumeDelay,
-
-    isPaused: isInteractionPaused,
-    interactionVersion,
-
-    loop,
-
-    scrollNext,
-  });
+  const { isAutoMoving } = useCarouselMotion({
+  viewportRef,
+  enabled: autoplay,
+  hasOverflow,
+  itemCount,
+  mode: motionMode,
+  autoplayDelay,
+  continuousSpeed,
+  resumeDelay,
+  isPaused: isInteractionPaused,
+  interactionVersion,
+  loop,
+  scrollNext,
+});
 
   return {
     viewportRef,
@@ -104,6 +98,7 @@ export function useCarousel({
     hasOverflow,
     canScrollPrevious,
     canScrollNext,
+    isAutoMoving,
 
     scrollPrevious,
     scrollNext,

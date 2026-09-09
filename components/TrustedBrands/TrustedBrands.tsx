@@ -225,7 +225,7 @@ export default function TrustedBrands() {
   trackClassName={styles.trustedList}
   autoplay
   motionMode="continuous"
-  continuousSpeed={11}
+  continuousSpeed={40}
   resumeDelay={2400}
   isPaused={Boolean(selectedBrand)}
 >
