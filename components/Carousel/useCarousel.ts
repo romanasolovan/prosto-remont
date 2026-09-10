@@ -14,6 +14,7 @@ type UseCarouselOptions = {
   autoplayDelay: number;
   motionMode: CarouselMotionMode;
   continuousSpeed: number;
+  startDelay: number;
   resumeDelay: number;
   isExternallyPaused: boolean;
   step: number;
@@ -27,6 +28,7 @@ export function useCarousel({
   autoplayDelay,
   motionMode,
   continuousSpeed,
+  startDelay,
   resumeDelay,
   isExternallyPaused,
   step,
@@ -35,6 +37,7 @@ export function useCarousel({
 }: UseCarouselOptions) {
   const {
     viewportRef,
+    railRef,
     trackRef,
 
     hasOverflow,
@@ -78,12 +81,14 @@ export function useCarousel({
 
   const { isAutoMoving } = useCarouselMotion({
   viewportRef,
+  trackRef,
   enabled: autoplay,
   hasOverflow,
   itemCount,
   mode: motionMode,
   autoplayDelay,
-  continuousSpeed,
+    continuousSpeed,
+  startDelay,
   resumeDelay,
   isPaused: isInteractionPaused,
   interactionVersion,
@@ -93,6 +98,7 @@ export function useCarousel({
 
   return {
     viewportRef,
+    railRef,
     trackRef,
 
     hasOverflow,

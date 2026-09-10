@@ -1,8 +1,10 @@
 .carousel {
   position: relative;
+
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   align-items: center;
+
   width: 100%;
   min-width: 0;
 }
@@ -12,28 +14,13 @@
     auto
     minmax(0, 1fr)
     auto;
+
   gap: var(--carousel-control-gap, 12px);
 }
 
-/* .viewport {
-  grid-column: 1;
-  width: 100%;
-  min-width: 0;
-
-  overflow-x: auto;
-  overflow-y: visible;
-
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-
-  overscroll-behavior-x: contain;
-  scrollbar-width: none;
-
-  -webkit-overflow-scrolling: touch;
-} */
-
 .viewport {
   grid-column: 1;
+
   width: 100%;
   min-width: 0;
 
@@ -44,18 +31,10 @@
   scroll-snap-type: none;
 
   overscroll-behavior-x: contain;
+
   scrollbar-width: none;
+
   -webkit-overflow-scrolling: touch;
-}
-
-.viewport.isAutoMoving {
-  scroll-behavior: auto;
-  scroll-snap-type: none;
-}
-
-.carousel .viewport.isAutoMoving {
-  scroll-behavior: auto;
-  scroll-snap-type: none;
 }
 
 .hasControls .viewport {
@@ -66,21 +45,35 @@
   display: none;
 }
 
-.track {
-  position: relative;
+.rail {
   display: flex;
   align-items: center;
+
   width: max-content;
   min-width: 100%;
+}
+
+.track {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  flex: 0 0 auto;
+
+  width: max-content;
+  min-width: 0;
+
   margin: 0;
+  padding: 0;
+
   list-style: none;
 }
 
-/* .track > * {
-  flex: 0 0 auto;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-} */
+.rail > [data-carousel-clone="true"] {
+  pointer-events: none;
+  user-select: none;
+}
 
 .track > * {
   flex: 0 0 auto;

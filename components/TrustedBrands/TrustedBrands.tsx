@@ -226,7 +226,8 @@ export default function TrustedBrands() {
   autoplay
   motionMode="continuous"
   continuousSpeed={40}
-  resumeDelay={2400}
+  startDelay={300}
+resumeDelay={800}
   isPaused={Boolean(selectedBrand)}
 >
   {trustedBrands.map((brand) => (

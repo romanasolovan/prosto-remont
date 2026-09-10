@@ -25,7 +25,7 @@ type BrandDetailsProps = {
   relatedProjectLabel: string;
   viewProjectLabel: string;
   getOpenProjectLabel: (title: string) => string;
-  onClose: () => void;
+  onClose: (restoreFocus?: boolean) => void;
   readMoreLabel: string;
 onReadMore: () => void;
 };
@@ -104,7 +104,12 @@ export default function BrandDetails({
         <button
           type="button"
           className={styles.detailsClose}
-          onClick={onClose}
+          onClick={(event) => {
+    const wasKeyboardActivated =
+      event.detail === 0;
+
+    onClose(wasKeyboardActivated);
+  }}
           aria-label={closeLabel}
         >
           <svg

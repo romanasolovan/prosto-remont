@@ -11,7 +11,7 @@ type PartnerDialogProps = {
   visitWebsiteLabel: string;
   showLessLabel: string;
   onShowLess: () => void;
-  onClose: () => void;
+  onClose: (restoreFocus?: boolean) => void;
 };
 
 export default function PartnerDialog({
@@ -43,15 +43,17 @@ export default function PartnerDialog({
     };
   }, []);
 
-  const closeDialog = () => {
-    const dialog = dialogRef.current;
+  const closeDialog = (
+  restoreFocus: boolean,
+) => {
+  const dialog = dialogRef.current;
 
-    if (dialog?.open) {
-      dialog.close();
-    }
+  if (dialog?.open) {
+    dialog.close();
+  }
 
-    onClose();
-  };
+  onClose(restoreFocus);
+};
 
   const collapseDialog = () => {
     const dialog = dialogRef.current;
@@ -70,14 +72,14 @@ export default function PartnerDialog({
       className={styles.partnerDialog}
       aria-label={partner.name}
       onCancel={(event) => {
-        event.preventDefault();
-        closeDialog();
-      }}
+  event.preventDefault();
+  closeDialog(true);
+}}
       onClick={(event) => {
-        if (event.target === event.currentTarget) {
-          closeDialog();
-        }
-      }}
+  if (event.target === event.currentTarget) {
+    closeDialog(false);
+  }
+}}
     >
       <div
         className={styles.dialogInner}
@@ -165,7 +167,11 @@ export default function PartnerDialog({
             <button
               type="button"
               className={styles.closeButton}
-              onClick={closeDialog}
+              onClick={(event) => {
+  const wasKeyboardActivated =
+    event.detail === 0;
+  closeDialog(wasKeyboardActivated);
+}}
               aria-label={closeDetailsLabel}
               autoFocus
             >

@@ -21,6 +21,7 @@ export type CarouselProps = {
 
   motionMode?: CarouselMotionMode;
   continuousSpeed?: number;
+  startDelay?: number;
   resumeDelay?: number;
 
   isPaused?: boolean;

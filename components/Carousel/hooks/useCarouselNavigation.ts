@@ -23,7 +23,8 @@ export function useCarouselNavigation({
   mobileStep,
   loop,
 }: UseCarouselNavigationOptions) {
-  const viewportRef = useRef<HTMLDivElement>(null);
+    const viewportRef = useRef<HTMLDivElement>(null);
+    const railRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLUListElement>(null);
 
   const [hasOverflow, setHasOverflow] =
@@ -310,11 +311,12 @@ export function useCarouselNavigation({
 
   useEffect(() => {
     const viewport = viewportRef.current;
-    const track = trackRef.current;
+const rail = railRef.current;
+const track = trackRef.current;
 
-    if (!viewport || !track) {
-      return;
-    }
+if (!viewport || !rail || !track) {
+  return;
+}
 
     const handleScroll = () => {
       updateCarouselState();
@@ -336,7 +338,8 @@ export function useCarouselNavigation({
       });
 
     resizeObserver.observe(viewport);
-    resizeObserver.observe(track);
+resizeObserver.observe(rail);
+resizeObserver.observe(track);
 
     return () => {
       viewport.removeEventListener(
@@ -352,7 +355,8 @@ export function useCarouselNavigation({
   ]);
 
   return {
-    viewportRef,
+      viewportRef,
+      railRef,
     trackRef,
 
     hasOverflow,

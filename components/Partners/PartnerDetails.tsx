@@ -21,7 +21,7 @@ type PartnerDetailsProps = {
   visitWebsiteLabel: string;
   readMoreLabel: string;
   onReadMore: () => void;
-  onClose: () => void;
+  onClose: (restoreFocus?: boolean) => void;
 };
 
 const COMPACT_DESCRIPTION_LENGTH = 280;
@@ -142,7 +142,12 @@ export default function PartnerDetails({
           <button
             type="button"
             className={styles.closeButton}
-            onClick={onClose}
+            onClick={(event) => {
+    const wasKeyboardActivated =
+      event.detail === 0;
+
+    onClose(wasKeyboardActivated);
+  }}
             aria-label={closeDetailsLabel}
           >
             <svg

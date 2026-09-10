@@ -145,7 +145,8 @@ const locale: SupportedLocale = [
   autoplay
   motionMode="continuous"
   continuousSpeed={40}
-  resumeDelay={2400}
+  startDelay={300}
+resumeDelay={800}
   isPaused={Boolean(selectedPartner)}
 >
   {partners.map((partner) => (

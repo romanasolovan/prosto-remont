@@ -2,6 +2,7 @@
 
 import {
   useEffect,
+  useRef,
   type RefObject,
 } from "react";
 
@@ -11,6 +12,7 @@ export type CarouselMotionMode =
 
 type UseCarouselMotionOptions = {
   viewportRef: RefObject<HTMLDivElement | null>;
+  trackRef: RefObject<HTMLUListElement | null>;
 
   enabled: boolean;
   hasOverflow: boolean;
@@ -20,6 +22,7 @@ type UseCarouselMotionOptions = {
 
   autoplayDelay: number;
   continuousSpeed: number;
+  startDelay: number;
   resumeDelay: number;
 
   isPaused: boolean;
@@ -32,18 +35,28 @@ type UseCarouselMotionOptions = {
 
 export function useCarouselMotion({
   viewportRef,
+  trackRef,
+
   enabled,
   hasOverflow,
   itemCount,
+
   mode,
+
   autoplayDelay,
   continuousSpeed,
+  startDelay,
   resumeDelay,
+
   isPaused,
   interactionVersion,
+
   loop,
+
   scrollNext,
 }: UseCarouselMotionOptions) {
+  const hasStartedRef = useRef(false);
+
   const isAutoMoving =
     enabled &&
     hasOverflow &&
@@ -53,6 +66,7 @@ export function useCarouselMotion({
 
   useEffect(() => {
     const viewport = viewportRef.current;
+    const track = trackRef.current;
 
     const canMove =
       enabled &&
@@ -60,9 +74,13 @@ export function useCarouselMotion({
       itemCount > 1 &&
       !isPaused;
 
-    if (!viewport || !canMove) {
+    if (!viewport || !track || !canMove) {
       return;
     }
+
+    const delay = hasStartedRef.current
+      ? resumeDelay
+      : startDelay;
 
     if (mode === "step") {
       let timeoutId: number | null = null;
@@ -74,13 +92,14 @@ export function useCarouselMotion({
         }, autoplayDelay);
       };
 
-      const resumeTimeoutId =
+      const startTimeoutId =
         window.setTimeout(() => {
+          hasStartedRef.current = true;
           scheduleNext();
-        }, resumeDelay);
+        }, delay);
 
       return () => {
-        window.clearTimeout(resumeTimeoutId);
+        window.clearTimeout(startTimeoutId);
 
         if (timeoutId !== null) {
           window.clearTimeout(timeoutId);
@@ -91,7 +110,19 @@ export function useCarouselMotion({
     let animationFrameId: number | null = null;
     let previousTimestamp: number | null = null;
 
-    let currentPosition = viewport.scrollLeft;
+    const getCycleWidth = () =>
+      track.getBoundingClientRect().width;
+
+    const initialCycleWidth = getCycleWidth();
+
+    if (initialCycleWidth <= 0) {
+      return;
+    }
+
+    let currentPosition =
+      viewport.scrollLeft % initialCycleWidth;
+
+    viewport.scrollLeft = currentPosition;
 
     const move = (timestamp: number) => {
       if (previousTimestamp === null) {
@@ -108,57 +139,66 @@ export function useCarouselMotion({
 
       previousTimestamp = timestamp;
 
-      const maximumScrollLeft = Math.max(
-        viewport.scrollWidth -
-          viewport.clientWidth,
-        0,
-      );
+      const cycleWidth = getCycleWidth();
 
-      if (maximumScrollLeft <= 0) {
+      if (cycleWidth <= 0) {
         return;
       }
 
       currentPosition +=
         continuousSpeed * elapsedSeconds;
 
-      if (
-        currentPosition >=
-        maximumScrollLeft
-      ) {
-        if (loop) {
-          currentPosition = 0;
-          viewport.scrollLeft = 0;
-        } else {
-          currentPosition =
-            maximumScrollLeft;
+      if (loop) {
+        if (currentPosition >= cycleWidth) {
+          currentPosition %= cycleWidth;
+        }
+      } else {
+        const maximumScrollLeft = Math.max(
+          viewport.scrollWidth -
+            viewport.clientWidth,
+          0,
+        );
 
+        if (
+          currentPosition >= maximumScrollLeft
+        ) {
           viewport.scrollLeft =
             maximumScrollLeft;
 
           return;
         }
-      } else {
-        viewport.scrollLeft =
-          currentPosition;
       }
+
+      viewport.scrollLeft = currentPosition;
 
       animationFrameId =
         window.requestAnimationFrame(move);
     };
 
-    const resumeTimeoutId =
+    const startTimeoutId =
       window.setTimeout(() => {
+        const cycleWidth = getCycleWidth();
+
+        if (cycleWidth <= 0) {
+          return;
+        }
+
         currentPosition =
-          viewport.scrollLeft;
+          viewport.scrollLeft % cycleWidth;
+
+        viewport.scrollLeft =
+          currentPosition;
 
         previousTimestamp = null;
 
+        hasStartedRef.current = true;
+
         animationFrameId =
           window.requestAnimationFrame(move);
-      }, resumeDelay);
+      }, delay);
 
     return () => {
-      window.clearTimeout(resumeTimeoutId);
+      window.clearTimeout(startTimeoutId);
 
       if (animationFrameId !== null) {
         window.cancelAnimationFrame(
@@ -178,6 +218,8 @@ export function useCarouselMotion({
     mode,
     resumeDelay,
     scrollNext,
+    startDelay,
+    trackRef,
     viewportRef,
   ]);
 

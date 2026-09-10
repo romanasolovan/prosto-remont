@@ -2,6 +2,7 @@
 
 import {
   Children,
+  useEffect,
   type ReactNode,
 } from "react";
 
@@ -24,6 +25,7 @@ export default function Carousel({
   ariaLabel,
   previousLabel,
   nextLabel,
+
   className,
   viewportClassName,
   trackClassName,
@@ -33,18 +35,20 @@ export default function Carousel({
 
   motionMode = "step",
   continuousSpeed = 14,
-  resumeDelay = 2400,
+  startDelay = 300,
+resumeDelay = 800,
 
   isPaused = false,
 
   step = 2,
   mobileStep = 1,
   loop = true,
-}: CarouselProps)  {
+}: CarouselProps) {
   const itemCount = Children.count(children);
 
   const {
     viewportRef,
+    railRef,
     trackRef,
 
     hasOverflow,
@@ -64,25 +68,79 @@ export default function Carousel({
     handleBlurCapture,
     handleWheel,
   } = useCarousel({
-  itemCount,
-  autoplay,
-  autoplayDelay,
-  motionMode,
-  continuousSpeed,
-  resumeDelay,
-  isExternallyPaused: isPaused,
-  step,
-  mobileStep,
-  loop,
-});
+    itemCount,
+
+    autoplay,
+    autoplayDelay,
+
+    motionMode,
+    continuousSpeed,
+    startDelay,
+    resumeDelay,
+
+    isExternallyPaused: isPaused,
+
+    step,
+    mobileStep,
+    loop,
+  });
+
+  useEffect(() => {
+    const rail = railRef.current;
+    const track = trackRef.current;
+
+    if (!rail || !track || itemCount <= 1) {
+      return;
+    }
+
+    const existingClone = rail.querySelector(
+      '[data-carousel-clone="true"]',
+    );
+
+    existingClone?.remove();
+
+    const clone = track.cloneNode(true);
+
+    if (!(clone instanceof HTMLUListElement)) {
+      return;
+    }
+
+    clone.removeAttribute("id");
+    clone.removeAttribute("aria-label");
+
+    clone.setAttribute(
+      "data-carousel-clone",
+      "true",
+    );
+
+    clone.setAttribute(
+      "aria-hidden",
+      "true",
+    );
+
+    clone.setAttribute(
+      "inert",
+      "",
+    );
+
+    rail.appendChild(clone);
+
+    return () => {
+      clone.remove();
+    };
+  }, [
+    itemCount,
+    railRef,
+    trackRef,
+  ]);
 
   return (
     <div
       className={combineClassNames(
-  styles.viewport,
-  isAutoMoving && styles.isAutoMoving,
-  viewportClassName,
-)}
+        styles.carousel,
+        hasOverflow && styles.hasControls,
+        className,
+      )}
       onPointerEnter={handlePointerEnter}
       onPointerLeave={handlePointerLeave}
       onFocusCapture={handleFocusCapture}
@@ -91,7 +149,10 @@ export default function Carousel({
       {hasOverflow ? (
         <button
           type="button"
-          className={`${styles.control} ${styles.previousControl}`}
+          className={combineClassNames(
+            styles.control,
+            styles.previousControl,
+          )}
           onClick={scrollPrevious}
           disabled={!canScrollPrevious}
           aria-label={previousLabel}
@@ -116,6 +177,7 @@ export default function Carousel({
         ref={viewportRef}
         className={combineClassNames(
           styles.viewport,
+          isAutoMoving && styles.isAutoMoving,
           viewportClassName,
         )}
         role="region"
@@ -125,21 +187,29 @@ export default function Carousel({
         onPointerCancel={handlePointerCancel}
         onWheel={handleWheel}
       >
-        <ul
-          ref={trackRef}
-          className={combineClassNames(
-            styles.track,
-            trackClassName,
-          )}
+        <div
+          ref={railRef}
+          className={styles.rail}
         >
-          {children as ReactNode}
-        </ul>
+          <ul
+            ref={trackRef}
+            className={combineClassNames(
+              styles.track,
+              trackClassName,
+            )}
+          >
+            {children as ReactNode}
+          </ul>
+        </div>
       </div>
 
       {hasOverflow ? (
         <button
           type="button"
-          className={`${styles.control} ${styles.nextControl}`}
+          className={combineClassNames(
+            styles.control,
+            styles.nextControl,
+          )}
           onClick={scrollNext}
           disabled={!canScrollNext}
           aria-label={nextLabel}
