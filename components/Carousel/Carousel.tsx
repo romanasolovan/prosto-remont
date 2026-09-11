@@ -2,14 +2,13 @@
 
 import {
   Children,
-  useEffect,
   type ReactNode,
 } from "react";
-
 import { useCarousel } from "./useCarousel";
-
+import {
+  CarouselItemProvider,
+} from "./CarouselItemContext";
 import type { CarouselProps } from "./types";
-
 import styles from "./Carousel.module.css";
 
 function combineClassNames(
@@ -36,7 +35,7 @@ export default function Carousel({
   motionMode = "step",
   continuousSpeed = 14,
   startDelay = 300,
-resumeDelay = 800,
+  resumeDelay = 800,
 
   isPaused = false,
 
@@ -45,6 +44,12 @@ resumeDelay = 800,
   loop = true,
 }: CarouselProps) {
   const itemCount = Children.count(children);
+
+  const shouldRenderContinuation =
+    autoplay &&
+    motionMode === "continuous" &&
+    loop &&
+    itemCount > 1;
 
   const {
     viewportRef,
@@ -84,55 +89,6 @@ resumeDelay = 800,
     mobileStep,
     loop,
   });
-
-  useEffect(() => {
-    const rail = railRef.current;
-    const track = trackRef.current;
-
-    if (!rail || !track || itemCount <= 1) {
-      return;
-    }
-
-    const existingClone = rail.querySelector(
-      '[data-carousel-clone="true"]',
-    );
-
-    existingClone?.remove();
-
-    const clone = track.cloneNode(true);
-
-    if (!(clone instanceof HTMLUListElement)) {
-      return;
-    }
-
-    clone.removeAttribute("id");
-    clone.removeAttribute("aria-label");
-
-    clone.setAttribute(
-      "data-carousel-clone",
-      "true",
-    );
-
-    clone.setAttribute(
-      "aria-hidden",
-      "true",
-    );
-
-    clone.setAttribute(
-      "inert",
-      "",
-    );
-
-    rail.appendChild(clone);
-
-    return () => {
-      clone.remove();
-    };
-  }, [
-    itemCount,
-    railRef,
-    trackRef,
-  ]);
 
   return (
     <div
@@ -200,6 +156,23 @@ resumeDelay = 800,
           >
             {children as ReactNode}
           </ul>
+
+          {shouldRenderContinuation ? (
+            <CarouselItemProvider
+              isContinuation
+            >
+              <ul
+                className={combineClassNames(
+                  styles.track,
+                  trackClassName,
+                )}
+                data-carousel-continuation="true"
+                aria-hidden="true"
+              >
+                {children as ReactNode}
+              </ul>
+            </CarouselItemProvider>
+          ) : null}
         </div>
       </div>
 

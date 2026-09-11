@@ -1,14 +1,21 @@
 "use client";
+
 import {
   useCallback,
   useEffect,
+  useRef,
   useState,
   type FocusEvent,
   type PointerEvent,
 } from "react";
+
 type UseCarouselInteractionOptions = {
   isExternallyPaused: boolean;
 };
+
+type InteractionModality =
+  | "pointer"
+  | "keyboard";
 
 export function useCarouselInteraction({
   isExternallyPaused,
@@ -33,6 +40,9 @@ export function useCarouselInteraction({
   const [interactionVersion, setInteractionVersion] =
     useState(0);
 
+  const interactionModalityRef =
+    useRef<InteractionModality>("pointer");
+
   const markInteraction = useCallback(() => {
     setInteractionVersion(
       (currentVersion) => currentVersion + 1,
@@ -46,6 +56,19 @@ export function useCarouselInteraction({
   const handlePointerLeave = useCallback(() => {
     setIsPointerInside(false);
     setIsTouching(false);
+
+    /*
+     * Pointer users should not keep the carousel
+     * paused merely because a button still has
+     * browser focus after being clicked.
+     */
+    if (
+      interactionModalityRef.current ===
+      "pointer"
+    ) {
+      setIsFocusInside(false);
+    }
+
     markInteraction();
   }, [markInteraction]);
 
@@ -53,6 +76,11 @@ export function useCarouselInteraction({
     (
       event: PointerEvent<HTMLDivElement>,
     ) => {
+      interactionModalityRef.current =
+        "pointer";
+
+      setIsFocusInside(false);
+
       if (event.pointerType === "touch") {
         setIsTouching(true);
       }
@@ -73,7 +101,19 @@ export function useCarouselInteraction({
   }, [markInteraction]);
 
   const handleFocusCapture = useCallback(() => {
-    setIsFocusInside(true);
+    /*
+     * Focus caused by keyboard navigation should
+     * pause motion.
+     *
+     * Focus caused by clicking an item should not
+     * become a permanent pause condition.
+     */
+    if (
+      interactionModalityRef.current ===
+      "keyboard"
+    ) {
+      setIsFocusInside(true);
+    }
   }, []);
 
   const handleBlurCapture = useCallback(
@@ -95,8 +135,57 @@ export function useCarouselInteraction({
   );
 
   const handleWheel = useCallback(() => {
+    interactionModalityRef.current =
+      "pointer";
+
+    setIsFocusInside(false);
     markInteraction();
   }, [markInteraction]);
+
+  useEffect(() => {
+    const handleDocumentPointerDown = () => {
+      interactionModalityRef.current =
+        "pointer";
+
+      /*
+       * This is particularly important when the
+       * pointer is interacting with a popup that
+       * lives outside the carousel element.
+       */
+      setIsFocusInside(false);
+    };
+
+    const handleDocumentKeyDown = () => {
+      interactionModalityRef.current =
+        "keyboard";
+    };
+
+    document.addEventListener(
+      "pointerdown",
+      handleDocumentPointerDown,
+      true,
+    );
+
+    document.addEventListener(
+      "keydown",
+      handleDocumentKeyDown,
+      true,
+    );
+
+    return () => {
+      document.removeEventListener(
+        "pointerdown",
+        handleDocumentPointerDown,
+        true,
+      );
+
+      document.removeEventListener(
+        "keydown",
+        handleDocumentKeyDown,
+        true,
+      );
+    };
+  }, []);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia(
@@ -161,6 +250,7 @@ export function useCarouselInteraction({
     isTouching,
     isDocumentHidden,
     prefersReducedMotion,
+
     isInteractionPaused,
 
     handlePointerEnter,

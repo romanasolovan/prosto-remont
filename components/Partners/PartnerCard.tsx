@@ -1,4 +1,7 @@
 import Image from "next/image";
+import {
+  useCarouselItemContext,
+} from "../Carousel/CarouselItemContext"
 import type { Partner } from "./types";
 import styles from "./Partners.module.css";
 
@@ -53,7 +56,10 @@ function PartnerVisual({
         className={styles.detailsIndicator}
         aria-hidden="true"
       >
-        <svg viewBox="0 0 24 24" fill="none">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+        >
           <path
             d="M9 6L15 12L9 18"
             stroke="currentColor"
@@ -74,22 +80,55 @@ export default function PartnerCard({
   onSelect,
   setTriggerRef,
 }: PartnerCardProps) {
+  const { isContinuation } =
+    useCarouselItemContext();
+
   return (
     <li className={styles.partnerItem}>
       <button
         ref={(element) => {
-          setTriggerRef(partner.id, element);
+          if (!isContinuation) {
+            setTriggerRef(
+              partner.id,
+              element,
+            );
+          }
         }}
         type="button"
         className={`${styles.partnerCard} ${
           isSelected ? styles.isSelected : ""
         }`}
-        onClick={(event) => {
-          onSelect(partner, event.currentTarget);
+        tabIndex={
+          isContinuation ? -1 : undefined
+        }
+        onPointerDown={(event) => {
+          if (isContinuation) {
+            event.preventDefault();
+          }
         }}
-        aria-expanded={isSelected}
-        aria-controls={`partner-details-${partner.id}`}
-        aria-label={getOpenDetailsLabel(partner.name)}
+        onClick={(event) => {
+          onSelect(
+            partner,
+            event.currentTarget,
+          );
+        }}
+        aria-expanded={
+          isContinuation
+            ? undefined
+            : isSelected
+        }
+        aria-controls={
+          isContinuation
+            ? undefined
+            : `partner-details-${partner.id}`
+        }
+        aria-label={
+          isContinuation
+            ? undefined
+            : getOpenDetailsLabel(
+                partner.name,
+              )
+        }
       >
         <PartnerVisual partner={partner} />
       </button>

@@ -1,7 +1,8 @@
 import Image from "next/image";
-
+import {
+  useCarouselItemContext,
+} from "../Carousel/CarouselItemContext";
 import type { BrandItemProps } from "./types";
-
 import styles from "./TrustedBrands.module.css";
 
 function BrandVisual({
@@ -47,27 +48,60 @@ export default function BrandItem({
   onSelect,
   setTriggerRef,
 }: BrandItemProps) {
+  const { isContinuation } =
+    useCarouselItemContext();
+
   return (
     <li className={styles.trustedItem}>
       <button
         ref={(element) => {
-          setTriggerRef(brand.id, element);
+          if (!isContinuation) {
+            setTriggerRef(
+              brand.id,
+              element,
+            );
+          }
         }}
         type="button"
         className={`${styles.brandButton} ${
           isSelected ? styles.isSelected : ""
         }`}
+        tabIndex={
+          isContinuation ? -1 : undefined
+        }
+        onPointerDown={(event) => {
+          if (isContinuation) {
+            /*
+             * Keep pointer-clicking the visual
+             * continuation from moving browser
+             * focus into an aria-hidden track.
+             */
+            event.preventDefault();
+          }
+        }}
         onClick={(event) => {
           onSelect(
             brand,
             event.currentTarget,
           );
         }}
-        aria-expanded={isSelected}
-        aria-controls={`trusted-brand-details-${brand.id}`}
-        aria-label={getOpenDetailsLabel(
-          brand.name,
-        )}
+        aria-expanded={
+          isContinuation
+            ? undefined
+            : isSelected
+        }
+        aria-controls={
+          isContinuation
+            ? undefined
+            : `trusted-brand-details-${brand.id}`
+        }
+        aria-label={
+          isContinuation
+            ? undefined
+            : getOpenDetailsLabel(
+                brand.name,
+              )
+        }
       >
         <BrandVisual brand={brand} />
       </button>

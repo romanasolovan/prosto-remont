@@ -70,11 +70,6 @@
   list-style: none;
 }
 
-.rail > [data-carousel-clone="true"] {
-  pointer-events: none;
-  user-select: none;
-}
-
 .track > * {
   flex: 0 0 auto;
 }
