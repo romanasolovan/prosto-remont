@@ -32,13 +32,6 @@
   gap: 18px;
 }
 
-.carouselHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-
 .emptyState {
   padding: 32px 0;
   color: rgba(245, 244, 240, 0.4);
@@ -47,75 +40,51 @@
   text-align: center;
 }
 
-/* ---------- Carousel controls ---------- */
+.carouselShell {
+  --carousel-control-size: 42px;
+  --carousel-control-icon-size: 18px;
 
-.carouselControls {
-  display: flex;
-  gap: 8px;
+  --carousel-control-gap: 14px;
+  --carousel-control-gap-mobile: 7px;
+
+  --carousel-control-border:
+    rgba(255, 255, 255, 0.14);
+
+  --carousel-control-background:
+    rgba(10, 12, 15, 0.82);
+
+  --carousel-control-color:
+    rgba(245, 244, 240, 0.88);
+
+  --carousel-control-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+  --carousel-control-hover-border:
+    rgba(255, 255, 255, 0.26);
+
+  --carousel-control-hover-background:
+    rgba(20, 23, 28, 0.96);
+
+  --carousel-control-hover-shadow:
+    0 14px 32px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.09);
+
+  --carousel-control-focus:
+    rgba(245, 244, 240, 0.5);
+
+  position: relative;
+  min-width: 0;
 }
 
-.carouselArrow {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.04);
-  color: rgba(245, 244, 240, 0.8);
-  cursor: pointer;
-  transition:
-    border-color 200ms ease,
-    background-color 200ms ease,
-    transform 200ms ease;
+.carouselViewport {
+  padding-block: 6px 14px;
+  scroll-padding-inline: 4px;
 }
 
-.carouselArrow svg {
-  width: 16px;
-  height: 16px;
-}
-
-.carouselArrow:hover {
-  border-color: rgba(255, 255, 255, 0.24);
-  background: rgba(255, 255, 255, 0.07);
-  transform: translateY(-1px);
-}
-
-.carouselArrow:focus-visible,
-.card:focus-visible,
-.modalCloseButton:focus-visible,
-.modalNavButton:focus-visible {
-  outline: 2px solid rgba(255, 255, 255, 0.24);
-  outline-offset: 3px;
-}
-
-/* ---------- Track (carousel) / Grid (reviews page) ---------- */
-
-.track {
-  display: flex;
+.carouselTrack {
   gap: 14px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-padding-left: 4px;
-  padding: 4px 4px 12px;
-  -webkit-overflow-scrolling: touch;
-  cursor: grab;
-  touch-action: pan-y;
-  user-select: none;
-}
-
-.track:active {
-  cursor: grabbing;
-}
-
-.track::-webkit-scrollbar {
-  height: 4px;
-}
-
-.track::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.14);
-  border-radius: 999px;
+  padding-inline: 4px;
 }
 
 .grid {
@@ -638,10 +607,18 @@
     width: 210px;
     height: 300px;
   }
+  .carouselShell {
+    --carousel-control-gap: 16px;
+  }
+
+  .carouselTrack {
+    gap: 16px;
+  }
 
   .videoStage {
     width: min(100%, calc((100dvh - 150px) * 9 / 16));
   }
+
   .instagramEmbed {
     width: 116%;
     height: calc(116% + 185px);
@@ -657,6 +634,10 @@
   .cardCompact {
     width: 230px;
     height: 330px;
+  }
+
+   .carouselTrack {
+    gap: 18px;
   }
 }
 
@@ -700,8 +681,7 @@
     scroll-behavior: auto;
   }
 
-  .card,
-  .carouselArrow {
+  .card {
     transition: none;
   }
 

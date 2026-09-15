@@ -15,6 +15,10 @@ import type {
 } from "../shared/types";
 import styles from "./VideoReviews.module.css";
 
+import {
+  useCarouselItemContext,
+} from "@/components/Carousel/CarouselItemContext";
+
 export type VideoReview = PublicReview & {
   video: PublicReviewVideo;
 };
@@ -37,6 +41,8 @@ const VideoReviewCard = forwardRef<
   ref,
 ) {
   const t = useTranslations("clientOpinions");
+  const { isContinuation } =
+  useCarouselItemContext();
   const [isMediaLoading, setIsMediaLoading] = useState(true);
 
   const uploadedVideo =
@@ -51,9 +57,15 @@ const VideoReviewCard = forwardRef<
 
   return (
     <button
-      ref={ref}
-      type="button"
-      onClick={onOpen}
+  ref={isContinuation ? undefined : ref}
+  type="button"
+  tabIndex={isContinuation ? -1 : undefined}
+  onPointerDown={(event) => {
+    if (isContinuation) {
+      event.preventDefault();
+    }
+  }}
+  onClick={onOpen}
       className={`${styles.card} ${
         variant === "grid"
           ? styles.cardGrid

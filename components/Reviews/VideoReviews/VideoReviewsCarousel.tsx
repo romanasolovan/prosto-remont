@@ -1,12 +1,16 @@
 "use client";
 
-import { useRef } from "react";
 import { useTranslations } from "next-intl";
-import VideoReviewCard, { type VideoReview } from "./VideoReviewCard";
-import VideoReviewModal from "./VideoReviewModal";
-import { useReviewModal } from "../shared/useReviewModal";
-import { useDragScroll } from "../shared/useDragScroll";
+
+import Carousel from "@/components/Carousel/Carousel";
+
 import type { PublicReview } from "../shared/types";
+import { useReviewModal } from "../shared/useReviewModal";
+import VideoReviewCard, {
+  type VideoReview,
+} from "./VideoReviewCard";
+import VideoReviewModal from "./VideoReviewModal";
+
 import styles from "./VideoReviews.module.css";
 
 interface VideoReviewsCarouselProps {
@@ -17,24 +21,15 @@ export default function VideoReviewsCarousel({
   reviews,
 }: VideoReviewsCarouselProps) {
   const t = useTranslations("clientOpinions");
-  const trackRef = useRef<HTMLDivElement | null>(null);
 
   const videoReviews = reviews.filter(
-    (review): review is VideoReview => Boolean(review.video),
+    (review): review is VideoReview =>
+      Boolean(review.video),
   );
 
-  const modal = useReviewModal({ itemCount: videoReviews.length });
-  const { trackProps, wasDragged } = useDragScroll();
-
-  const scrollByCard = (direction: 1 | -1) => {
-    const track = trackRef.current;
-    if (!track) return;
-
-    const card = track.querySelector(`.${styles.cardCompact}`);
-    const cardWidth = card instanceof HTMLElement ? card.offsetWidth : 220;
-
-    track.scrollBy({ left: direction * (cardWidth + 14), behavior: "smooth" });
-  };
+  const modal = useReviewModal({
+    itemCount: videoReviews.length,
+  });
 
   if (videoReviews.length === 0) {
     return null;
@@ -42,51 +37,39 @@ export default function VideoReviewsCarousel({
 
   return (
     <div className={styles.carouselSection}>
-      <div className={styles.carouselHeader}>
-        <span className={styles.rowLabel}>{t("videoReviews")}</span>
+      <span className={styles.rowLabel}>
+        {t("videoReviews")}
+      </span>
 
-        <div className={styles.carouselControls}>
-          <button
-            type="button"
-            className={styles.carouselArrow}
-            onClick={() => scrollByCard(-1)}
-            aria-label={t("aria.scrollPrevious")}
-          >
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M15 6l-6 6 6 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
-
-          <button
-            type="button"
-            className={styles.carouselArrow}
-            onClick={() => scrollByCard(1)}
-            aria-label={t("aria.scrollNext")}
-          >
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <div
-        ref={trackRef}
-        className={styles.track}
-        aria-label={t("aria.videoReviews")}
-        {...trackProps}
-      >
-        {videoReviews.map((review, index) => (
-          <VideoReviewCard
-            key={review.id}
-            review={review}
-            variant="carousel"
-            onOpen={(event) => {
-              if (wasDragged()) return;
-              modal.open(index, event.currentTarget);
-            }}
-          />
-        ))}
+      <div className={styles.carouselShell}>
+        <Carousel
+          ariaLabel={t("aria.videoReviews")}
+          previousLabel={t("aria.scrollPrevious")}
+          nextLabel={t("aria.scrollNext")}
+          viewportClassName={styles.carouselViewport}
+          trackClassName={styles.carouselTrack}
+          autoplay
+          motionMode="continuous"
+          continuousSpeed={40}
+          startDelay={300}
+          resumeDelay={800}
+          loop
+          isPaused={modal.isOpen}
+        >
+          {videoReviews.map((review, index) => (
+            <VideoReviewCard
+              key={review.id}
+              review={review}
+              variant="carousel"
+              onOpen={(event) => {
+                modal.open(
+                  index,
+                  event.currentTarget,
+                );
+              }}
+            />
+          ))}
+        </Carousel>
       </div>
 
       {modal.isOpen && (

@@ -2,17 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-
 import { Link } from "@/navigation";
 import { clientFetchJson } from "@/lib/clientFetchJson";
-
 import DataLoader from "@/components/ui/DataLoader/DataLoader";
 import LeaveCommentForm from "../../Reviews/LeaveCommentForm/LeaveCommentForm";
 import VideoReviewsCarousel from "../../Reviews/VideoReviews/VideoReviewsCarousel";
 import WrittenReviewsCarousel from "../../Reviews/WrittenReviews/WrittenReviewsCarousel";
-
 import type { PublicReview } from "../../Reviews/shared/types";
-
 import styles from "./ClientOpinionsPreview.module.css";
 
 interface StarsProps {

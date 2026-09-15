@@ -1,16 +1,13 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-
 import DataLoader from "@/components/ui/DataLoader/DataLoader";
-
 import VideoReviewCard, {
   type VideoReview,
 } from "./VideoReviewCard";
 import VideoReviewModal from "./VideoReviewModal";
 import { useReviewModal } from "../shared/useReviewModal";
 import type { PublicReview } from "../shared/types";
-
 import styles from "./VideoReviews.module.css";
 
 interface VideoReviewsGridProps {

@@ -6,6 +6,8 @@
   isolation: isolate;
 }
 
+/* Header */
+
 .partnersHeader {
   display: flex;
   align-items: center;
@@ -17,12 +19,12 @@
 .partnersTitle {
   flex-shrink: 0;
   margin: 0;
-  color: #262626;
+  color: #252728;
   font-family: "Barlow Condensed", sans-serif;
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.22em;
   line-height: 1.3;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
 }
 
@@ -32,7 +34,7 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(60, 60, 60, 0.18)
+    rgba(54, 57, 59, 0.2)
   );
 }
 
@@ -47,109 +49,70 @@
   --carousel-control-icon-size: 18px;
   --carousel-control-gap: 10px;
   --carousel-control-gap-mobile: 6px;
-
-  --carousel-control-border: rgba(55, 58, 60, 0.14);
-
+  --carousel-control-border: rgba(50, 53, 55, 0.17);
   --carousel-control-background:
     linear-gradient(
       145deg,
-      rgba(244, 245, 245, 0.98),
-      rgba(210, 213, 213, 0.96)
+      rgba(248, 249, 249, 0.98),
+      rgba(218, 220, 220, 0.96)
     );
-
-  --carousel-control-color: rgba(35, 37, 38, 0.82);
-
+  --carousel-control-color: rgba(30, 32, 33, 0.84);
   --carousel-control-shadow:
-    0 8px 20px rgba(25, 28, 30, 0.13),
-    inset 0 1px 0 rgba(255, 255, 255, 0.86);
-
+    0 7px 18px rgba(25, 28, 30, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
   --carousel-control-hover-border:
-    rgba(55, 58, 60, 0.24);
-
+    rgba(48, 51, 53, 0.28);
   --carousel-control-hover-background:
     linear-gradient(
       145deg,
-      rgba(252, 252, 252, 1),
-      rgba(219, 221, 221, 0.98)
+      rgba(255, 255, 255, 1),
+      rgba(225, 227, 227, 0.98)
     );
-
   --carousel-control-hover-shadow:
-    0 12px 24px rgba(25, 28, 30, 0.17),
-    inset 0 1px 0 rgba(255, 255, 255, 0.95);
-
+    0 11px 22px rgba(25, 28, 30, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
   --carousel-control-focus:
-    rgba(61, 61, 58, 0.52);
-
+    rgba(54, 57, 59, 0.55);
   --carousel-control-disabled-shadow:
     0 4px 10px rgba(25, 28, 30, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.65);
+    inset 0 1px 0 rgba(255, 255, 255, 0.68);
 
   position: relative;
   z-index: 10;
-  width: min(100%, 960px);
+  width: min(100%, 1040px);
   min-width: 0;
   margin-inline: auto;
   overflow: visible;
-  padding: 4px 0;
-  border: 1px solid rgba(70, 73, 75, 0.07);
-  border-radius: 24px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(218, 220, 220, 0.4),
-      rgba(235, 235, 232, 0.22)
-    );
-
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.48),
-    inset 0 -14px 24px rgba(70, 73, 75, 0.025);
-}
-
-.carouselShell::before,
-.carouselShell::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  z-index: 4;
-  width: clamp(22px, 4vw, 52px);
-  pointer-events: none;
-}
-
-.carouselShell::before {
-  left: 0;
-  border-radius: 24px 0 0 24px;
-  background: linear-gradient(
-    90deg,
-    rgba(214, 216, 216, 0.96),
-    rgba(214, 216, 216, 0)
-  );
-}
-
-.carouselShell::after {
-  right: 0;
-  border-radius: 0 24px 24px 0;
-  background: linear-gradient(
-    270deg,
-    rgba(214, 216, 216, 0.96),
-    rgba(214, 216, 216, 0)
-  );
 }
 
 .carousel {
-  padding: 8px 0 21px;
-  scroll-padding-inline: 12px;
+  padding: 12px 0 18px;
+  scroll-padding-inline: 8px;
 }
 
 .partnerList {
-  gap: 14px;
-  padding-inline: 12px;
+  gap: 0;
+  padding-inline: 8px;
 }
 
+/* Partner item */
+
 .partnerItem {
+  position: relative;
   display: flex;
-  padding: 7px 0 13px;
+  align-items: stretch;
+  padding: 6px clamp(11px, 1.5vw, 18px);
+}
+
+.partnerItem::after {
+  content: "";
+  position: absolute;
+  top: 18%;
+  right: 0;
+  bottom: 18%;
+  width: 1px;
+  background: rgba(54, 57, 59, 0.13);
+  pointer-events: none;
 }
 
 /* Partner card */
@@ -160,72 +123,71 @@
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
-  gap: 18px;
-  width: clamp(200px, 22vw, 238px);
-  min-width: 200px;
-  min-height: 64px;
-  padding: 8px 12px 8px 9px;
-  border: 1px solid rgba(62, 65, 67, 0.11);
-  border-radius: 999px;
+  gap: 15px;
+  width: max-content;
+  min-width: 205px;
+  max-width: 290px;
+  min-height: 66px;
+  padding: 9px 12px 9px 9px;
+  border: 1px solid rgba(55, 58, 60, 0.14);
+  border-radius: 20px;
   outline: none;
   background:
     linear-gradient(
       145deg,
-      rgba(226, 228, 228, 0.96),
-      rgba(207, 210, 210, 0.88)
+      rgba(231, 233, 233, 0.96),
+      rgba(207, 210, 210, 0.9)
     );
-  color: rgba(43, 46, 47, 0.78);
+  color: rgba(37, 40, 41, 0.82);
   font: inherit;
   text-align: left;
   box-shadow:
-    0 8px 18px rgba(28, 31, 33, 0.065),
-    inset 0 1px 0 rgba(255, 255, 255, 0.68),
-    inset 0 -12px 20px rgba(50, 53, 55, 0.025);
+    0 6px 15px rgba(28, 31, 33, 0.075),
+    inset 0 1px 0 rgba(255, 255, 255, 0.78);
   cursor: pointer;
   transform: translateY(0);
   transition:
-    transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
-    color 220ms ease,
-    border-color 220ms ease,
-    background 220ms ease,
-    box-shadow 260ms ease;
+    transform 240ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 200ms ease,
+    border-color 200ms ease,
+    background 200ms ease,
+    box-shadow 240ms ease;
   -webkit-tap-highlight-color: transparent;
 }
 
 .partnerCard::after {
   content: "";
   position: absolute;
-  right: 17%;
-  bottom: -11px;
-  left: 17%;
+  right: 16%;
+  bottom: -8px;
+  left: 16%;
   z-index: -1;
-  height: 13px;
+  height: 9px;
   border-radius: 999px;
   opacity: 0;
-  background: rgba(24, 24, 22, 0.17);
-  filter: blur(11px);
-  transform: scaleX(0.7);
+  background: rgba(24, 26, 27, 0.13);
+  filter: blur(9px);
+  transform: scaleX(0.78);
   transition:
-    opacity 260ms ease,
-    transform 260ms ease;
+    opacity 240ms ease,
+    transform 240ms ease;
 }
 
 .partnerCard:hover,
 .partnerCard:focus-visible,
 .partnerCard.isSelected {
-  transform: translateY(-4px);
-  border-color: rgba(55, 58, 60, 0.2);
+  transform: translateY(-3px);
+  border-color: rgba(48, 51, 53, 0.24);
   background:
     linear-gradient(
       145deg,
-      rgba(240, 241, 241, 0.98),
-      rgba(216, 218, 218, 0.96)
+      rgba(243, 244, 244, 0.98),
+      rgba(216, 219, 219, 0.96)
     );
-  color: #181a1b;
+  color: #17191a;
   box-shadow:
-    0 17px 30px rgba(27, 30, 32, 0.14),
-    0 0 0 4px rgba(255, 255, 255, 0.14),
-    inset 0 1px 0 rgba(255, 255, 255, 0.84);
+    0 12px 23px rgba(27, 30, 32, 0.13),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
 }
 
 .partnerCard:hover::after,
@@ -236,13 +198,14 @@
 }
 
 .partnerCard:focus-visible {
-  outline: 2px solid rgba(61, 61, 58, 0.48);
+  outline: 2px solid rgba(54, 57, 59, 0.5);
   outline-offset: 4px;
 }
 
 .partnerCard:active {
-  transform: translateY(-1px) scale(0.985);
+  transform: translateY(-1px) scale(0.99);
 }
+
 
 .partnerIdentity {
   display: flex;
@@ -259,27 +222,25 @@
   height: 48px;
   flex-shrink: 0;
   overflow: hidden;
-  border: 1px solid rgba(54, 57, 59, 0.12);
-  border-radius: 999px;
-  background:
-    linear-gradient(
-      145deg,
-      rgba(244, 245, 245, 0.98),
-      rgba(210, 213, 213, 0.92)
-    );
+  border: 1px solid rgba(49, 52, 54, 0.13);
+  border-radius: 50%;
+  background: rgba(248, 248, 247, 0.98);
   box-shadow:
-    0 6px 14px rgba(25, 28, 30, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.82);
+    0 4px 11px rgba(25, 28, 30, 0.075),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
   transition:
-    transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 260ms ease;
+    transform 240ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 200ms ease,
+    box-shadow 240ms ease;
 }
 
 .partnerLogo {
-  width: 38px;
-  height: 38px;
-  border-radius: 999px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
   object-fit: contain;
+  object-position: center;
 }
 
 .partnerMark {
@@ -288,7 +249,7 @@
   justify-content: center;
   width: 100%;
   height: 100%;
-  color: rgba(35, 35, 35, 0.84);
+  color: rgba(31, 33, 34, 0.86);
   font-family: "Barlow Condensed", sans-serif;
   font-size: 1rem;
   font-weight: 600;
@@ -297,62 +258,64 @@
 }
 
 .partnerName {
-  max-width: 16ch;
-  overflow: hidden;
+  min-width: 0;
+  max-width: 18ch;
+  overflow: visible;
   color: inherit;
   font-family: "Barlow", sans-serif;
-  font-size: 0.96rem;
-  font-weight: 400;
+  font-size: 0.94rem;
+  font-weight: 500;
   line-height: 1.25;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  transform-origin: left center;
+  white-space: normal;
+  overflow-wrap: break-word;
   transition:
-    transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
-    letter-spacing 220ms ease;
+    color 200ms ease,
+    transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
 }
+
+/* Details indicator */
 
 .detailsIndicator {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 27px;
-  height: 27px;
+  width: 25px;
+  height: 25px;
   flex-shrink: 0;
-  border-radius: 999px;
-  color: rgba(56, 53, 48, 0.5);
+  border-radius: 50%;
+  color: rgba(48, 50, 51, 0.5);
   transition:
-    transform 240ms ease,
-    color 220ms ease,
-    background-color 220ms ease;
+    transform 220ms ease,
+    color 200ms ease,
+    background-color 200ms ease;
 }
 
 .detailsIndicator svg {
-  width: 15px;
-  height: 15px;
+  width: 14px;
+  height: 14px;
 }
 
 .partnerCard:hover .logoFrame,
 .partnerCard:focus-visible .logoFrame,
 .partnerCard.isSelected .logoFrame {
-  transform: scale(1.08);
+  transform: translateY(-1px) scale(1.045);
+  border-color: rgba(49, 52, 54, 0.2);
   box-shadow:
-    0 8px 16px rgba(12, 13, 16, 0.09),
+    0 7px 15px rgba(12, 13, 16, 0.09),
     inset 0 1px 0 rgba(255, 255, 255, 1);
 }
 
 .partnerCard:hover .partnerName,
 .partnerCard:focus-visible .partnerName,
 .partnerCard.isSelected .partnerName {
-  transform: scale(1.025);
-  letter-spacing: 0.01em;
+  transform: translateX(1px);
 }
 
 .partnerCard:hover .detailsIndicator,
 .partnerCard:focus-visible .detailsIndicator,
 .partnerCard.isSelected .detailsIndicator {
   color: #171717;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.66);
   transform: translateX(2px);
 }
 
@@ -360,6 +323,7 @@
   transform: rotate(-90deg);
 }
 
+/* Small phones */
 
 @media (max-width: 479px) {
   .partnersHeader {
@@ -377,25 +341,26 @@
     --carousel-control-gap-mobile: 6px;
   }
 
-  .carouselShell::before,
-  .carouselShell::after {
-    width: 22px;
-  }
-
   .carousel {
-    scroll-padding-inline: 8px;
+    padding: 9px 0 15px;
+    scroll-padding-inline: 6px;
   }
 
   .partnerList {
-    gap: 10px;
+    padding-inline: 6px;
+  }
+
+  .partnerItem {
     padding-inline: 8px;
   }
 
   .partnerCard {
-    width: 186px;
-    min-width: 186px;
-    min-height: 60px;
-    gap: 12px;
+    min-width: 190px;
+    max-width: 250px;
+    min-height: 62px;
+    gap: 11px;
+    padding: 8px 10px 8px 8px;
+    border-radius: 18px;
   }
 
   .logoFrame {
@@ -403,41 +368,59 @@
     height: 44px;
   }
 
-  .partnerLogo {
-    width: 34px;
-    height: 34px;
+  .partnerName {
+    max-width: 15ch;
+    font-size: 0.88rem;
+    line-height: 1.2;
   }
 
-  .partnerName {
-    max-width: 13ch;
-    font-size: 0.9rem;
+  .detailsIndicator {
+    width: 24px;
+    height: 24px;
   }
 }
+
+/* Large phones */
 
 @media (min-width: 480px) and (max-width: 767px) {
-  .partnerList {
-    padding-inline: 10px;
-  }
   .carousel {
-  scroll-padding-inline: 10px;
-}
-.partnerCard {
-  width: 204px;
-  min-width: 204px;
-}
-}
+    scroll-padding-inline: 8px;
+  }
 
-@media (min-width: 768px) {
   .partnerList {
-    gap: 18px;
+    padding-inline: 8px;
+  }
+
+  .partnerItem {
+    padding-inline: 10px;
   }
 
   .partnerCard {
-    width: 222px;
-    min-width: 222px;
-    min-height: 68px;
+    min-width: 205px;
+    max-width: 270px;
+  }
 
-    padding: 9px 14px 9px 10px;
+  .partnerName {
+    max-width: 17ch;
+  }
+}
+
+/* Tablet */
+
+@media (min-width: 768px) {
+  .carousel {
+    padding-top: 14px;
+  }
+
+  .partnerItem {
+    padding-inline: 14px;
+  }
+
+  .partnerCard {
+    min-width: 220px;
+    max-width: 290px;
+    min-height: 68px;
+    padding: 9px 12px 9px 9px;
   }
 
   .logoFrame {
@@ -445,41 +428,68 @@
     height: 50px;
   }
 
-  .partnerLogo {
-    width: 40px;
-    height: 40px;
-  }
-
   .partnerName {
-    font-size: 0.99rem;
+    max-width: 18ch;
+    font-size: 0.96rem;
   }
 }
+
+/* Desktop */
 
 @media (min-width: 1200px) {
   .carouselShell {
-    width: min(100%, 980px);
+    width: min(100%, 1060px);
   }
 
-  .partnerList {
-    gap: 20px;
+  .partnerItem {
+    padding-inline: 16px;
   }
 
   .partnerCard {
-    width: 238px;
-    min-width: 238px;
+    min-width: 225px;
+    max-width: 300px;
+  }
+
+  .partnerName {
+    max-width: 19ch;
   }
 }
 
+/* Touch devices */
 
 @media (hover: none) {
   .partnerCard:hover {
     transform: none;
   }
 
+  .partnerCard:hover::after {
+    opacity: 0;
+  }
+
+  .partnerCard:hover .logoFrame,
+  .partnerCard:hover .partnerName,
+  .partnerCard:hover .detailsIndicator {
+    transform: none;
+  }
+
   .partnerCard.isSelected {
-    transform: translateY(-3px);
+    transform: translateY(-2px);
+  }
+
+  .partnerCard.isSelected::after {
+    opacity: 1;
+  }
+
+  .partnerCard.isSelected .logoFrame {
+    transform: scale(1.04);
+  }
+
+  .partnerCard.isSelected .detailsIndicator {
+    transform: rotate(-90deg);
   }
 }
+
+/* Reduced motion */
 
 @media (prefers-reduced-motion: reduce) {
   .partnerCard,
