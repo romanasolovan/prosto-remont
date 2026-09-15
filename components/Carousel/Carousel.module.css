@@ -1,39 +1,30 @@
 .carousel {
   position: relative;
-
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   align-items: center;
-
   width: 100%;
   min-width: 0;
 }
 
 .carousel.hasControls {
   grid-template-columns:
-    auto
+    var(--carousel-control-size, 42px)
     minmax(0, 1fr)
-    auto;
-
-  gap: var(--carousel-control-gap, 12px);
+    var(--carousel-control-size, 42px);
+  column-gap: var(--carousel-control-gap, 12px);
 }
 
 .viewport {
   grid-column: 1;
-
   width: 100%;
   min-width: 0;
-
   overflow-x: auto;
   overflow-y: visible;
-
   scroll-behavior: auto;
   scroll-snap-type: none;
-
   overscroll-behavior-x: contain;
-
   scrollbar-width: none;
-
   -webkit-overflow-scrolling: touch;
 }
 
@@ -48,25 +39,19 @@
 .rail {
   display: flex;
   align-items: center;
-
   width: max-content;
   min-width: 100%;
 }
 
 .track {
   position: relative;
-
   display: flex;
   align-items: center;
-
   flex: 0 0 auto;
-
   width: max-content;
   min-width: 0;
-
   margin: 0;
   padding: 0;
-
   list-style: none;
 }
 
@@ -84,6 +69,8 @@
   justify-content: center;
   width: var(--carousel-control-size, 42px);
   height: var(--carousel-control-size, 42px);
+  min-width: var(--carousel-control-size, 42px);
+  min-height: var(--carousel-control-size, 42px);
   flex-shrink: 0;
   padding: 0;
   border:
@@ -109,24 +96,28 @@
       none
     );
   cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
   transition:
     opacity 180ms ease,
     transform 220ms ease,
     border-color 180ms ease,
     background 180ms ease,
     box-shadow 220ms ease;
-  -webkit-tap-highlight-color: transparent;
 }
 
 .previousControl {
   grid-column: 1;
+  justify-self: center;
 }
 
 .nextControl {
   grid-column: 3;
+  justify-self: center;
 }
 
 .control svg {
+  display: block;
   width:
     var(
       --carousel-control-icon-size,
@@ -137,6 +128,7 @@
       --carousel-control-icon-size,
       18px
     );
+  pointer-events: none;
 }
 
 .control:hover:not(:disabled) {
@@ -185,6 +177,16 @@
       --carousel-control-disabled-shadow,
       none
     );
+}
+
+@media (max-width: 479px) {
+  .carousel.hasControls {
+    column-gap:
+      var(
+        --carousel-control-gap-mobile,
+        6px
+      );
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

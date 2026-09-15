@@ -5,7 +5,6 @@
   --line-soft: rgba(255, 255, 255, 0.08);
   --line-strong: rgba(255, 255, 255, 0.14);
   --sand: rgba(245, 244, 240, 0.72);
-
   position: relative;
   overflow: hidden;
   padding: clamp(56px, 7vw, 88px) 0;
@@ -120,7 +119,8 @@
 .trustedCarousel {
   --carousel-control-size: 42px;
   --carousel-control-icon-size: 18px;
-  --carousel-control-offset: 8px;
+ --carousel-control-gap: 10px;
+--carousel-control-gap-mobile: 6px;
   --carousel-control-border:
     rgba(255, 255, 255, 0.14);
   --carousel-control-background:
@@ -560,21 +560,15 @@
 .detailsReadMore {
   padding: 0;
   border: 0;
-
   background: transparent;
-
   color: rgba(245, 244, 240, 0.82);
-
   font-family: "Barlow", sans-serif;
   font-size: 0.76rem;
   font-weight: 500;
-
   text-decoration: underline;
   text-decoration-color: rgba(245, 244, 240, 0.26);
   text-underline-offset: 4px;
-
   cursor: pointer;
-
   transition:
     color 180ms ease,
     text-decoration-color 180ms ease;
@@ -597,20 +591,14 @@
 .brandDialog {
   position: fixed;
   inset: 50% auto auto 50%;
-
   width: min(760px, calc(100vw - 32px));
   max-width: none;
   max-height: calc(100dvh - 32px);
-
   margin: 0;
   padding: 0;
-
   border: 0;
-
   overflow: visible;
-
   background: transparent;
-
   transform: translate(-50%, -50%);
 }
 
@@ -623,18 +611,13 @@
 
 .brandDialogInner {
   position: relative;
-
   width: 100%;
   max-height: calc(100dvh - 32px);
-
   overflow-x: hidden;
   overflow-y: auto;
-
   padding: clamp(20px, 4vw, 30px);
-
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 24px;
-
   background:
     radial-gradient(
       circle at 88% 4%,
@@ -646,15 +629,12 @@
       rgba(47, 52, 58, 0.995),
       rgba(27, 31, 36, 0.995)
     );
-
   box-shadow:
     0 40px 100px rgba(0, 0, 0, 0.52),
     0 16px 36px rgba(0, 0, 0, 0.28),
     inset 0 1px 0 rgba(255, 255, 255, 0.09);
-
   overscroll-behavior: contain;
   scrollbar-gutter: stable;
-
   animation:
     brandDialogReveal
     300ms cubic-bezier(0.22, 1, 0.36, 1)
@@ -672,16 +652,13 @@
 
 .brandDialog .detailsName {
   max-width: none;
-
   font-size: clamp(1.35rem, 3vw, 1.7rem);
-
   white-space: normal;
 }
 
 .brandDialogBody {
   display: grid;
   gap: 22px;
-
   margin-top: 22px;
 }
 
@@ -691,22 +668,16 @@
 
 .dialogDescription {
   display: block;
-
   max-width: 72ch;
-
   overflow: visible;
-
   font-size: clamp(0.9rem, 1.5vw, 1rem);
   line-height: 1.7;
-
   -webkit-line-clamp: unset;
 }
 
 .brandDialog .projectPreview {
   grid-template-columns: 96px minmax(0, 1fr);
-
   gap: 16px;
-
   padding-top: 18px;
 }
 
@@ -731,7 +702,7 @@
 .trustedCarousel {
   --carousel-control-size: 40px;
   --carousel-control-icon-size: 17px;
-  --carousel-control-offset: 6px;
+  --carousel-control-gap-mobile: 6px;
 }
 
 .trustedViewport {
@@ -805,9 +776,7 @@
 
 .brandDialogInner {
   max-height: calc(100dvh - 20px);
-
   padding: 18px 15px;
-
   border-radius: 20px;
 }
 
@@ -818,13 +787,11 @@
 
 .brandDialogBody {
   gap: 18px;
-
   margin-top: 18px;
 }
 
 .brandDialog .projectPreview {
   grid-template-columns: 72px minmax(0, 1fr);
-
   gap: 11px;
 }
 
