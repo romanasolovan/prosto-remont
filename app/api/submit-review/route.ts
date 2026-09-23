@@ -53,16 +53,16 @@ export async function POST(request: Request) {
 
     // const translations = await translateReview(originalComment);
 
-    const review = await payload.create({
+const review = await payload.create({
   collection: "reviews",
   draft: false,
   data: {
+    reviewType: "written",
     name: String(formData.get("name") || ""),
     location: String(formData.get("location") || ""),
     rating: Number(formData.get("rating") || 0),
     comment: originalComment,
     originalLanguage: "en",
-    videoSource: "none",
     status: "pending",
     featured: false,
     ...(photoId !== undefined ? { photo: photoId } : {}),

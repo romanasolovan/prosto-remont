@@ -23,9 +23,10 @@ export default function VideoReviewsCarousel({
   const t = useTranslations("clientOpinions");
 
   const videoReviews = reviews.filter(
-    (review): review is VideoReview =>
-      Boolean(review.video),
-  );
+  (review): review is VideoReview =>
+    review.reviewType === "video" &&
+    review.video !== undefined,
+);
 
   const modal = useReviewModal({
     itemCount: videoReviews.length,

@@ -617,8 +617,7 @@
     "noVideoReviews": "Видеоотзывов пока нет",
     "noWrittenReviews": "Текстовых отзывов пока нет",
     "loadingVideo": "Загрузка видео...",
-    "viewOnInstagram": "Посмотреть в Instagram",
-    "instagramUnavailable": "Не удалось загрузить это видео из Instagram.",
+    "viewVideoSource": "Посмотреть оригинальный источник",
     "aria": {
       "stars": "Средний рейтинг",
       "rating": "Оценка: {rating} из 5",
@@ -632,8 +631,7 @@
       "nextReview": "Следующий отзыв",
       "closeReview": "Закрыть отзыв",
       "scrollPrevious": "Прокрутить назад",
-      "scrollNext": "Прокрутить вперёд",
-      "instagramVideo": "Видеоотзыв пользователя {name} в Instagram"
+      "scrollNext": "Прокрутить вперёд"
     },
     "success": {
       "reviewSubmitted": "Спасибо! Ваш отзыв отправлен и будет опубликован после небольшой проверки."

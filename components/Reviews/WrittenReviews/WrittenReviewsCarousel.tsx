@@ -2,7 +2,9 @@
 
 import { useRef } from "react";
 import { useTranslations } from "next-intl";
-import WrittenReviewCard from "./WrittenReviewCard";
+import WrittenReviewCard, {
+  type WrittenReview,
+} from "./WrittenReviewCard";
 import WrittenReviewModal from "./WrittenReviewModal";
 import { useReviewModal } from "../shared/useReviewModal";
 import { useDragScroll } from "../shared/useDragScroll";
@@ -13,13 +15,22 @@ interface WrittenReviewsCarouselProps {
   reviews: PublicReview[];
 }
 
+
 export default function WrittenReviewsCarousel({
   reviews,
 }: WrittenReviewsCarouselProps) {
   const t = useTranslations("clientOpinions");
   const trackRef = useRef<HTMLDivElement | null>(null);
-  const modal = useReviewModal({ itemCount: reviews.length });
   const { trackProps, wasDragged } = useDragScroll();
+
+  const writtenReviews = reviews.filter(
+    (review): review is WrittenReview =>
+      review.reviewType === "written" &&
+      typeof review.comment === "string" &&
+      review.comment.trim().length > 0,
+  );
+
+  const modal = useReviewModal({ itemCount: writtenReviews.length });
 
   const scrollByCard = (direction: 1 | -1) => {
     const track = trackRef.current;
@@ -28,10 +39,13 @@ export default function WrittenReviewsCarousel({
     const card = track.querySelector(`.${styles.cardCompact}`);
     const cardWidth = card instanceof HTMLElement ? card.offsetWidth : 320;
 
-    track.scrollBy({ left: direction * (cardWidth + 14), behavior: "smooth" });
+    track.scrollBy({
+      left: direction * (cardWidth + 14),
+      behavior: "smooth",
+    });
   };
 
-  if (reviews.length === 0) {
+  if (writtenReviews.length === 0) {
     return null;
   }
 
@@ -71,10 +85,10 @@ export default function WrittenReviewsCarousel({
         aria-label={t("aria.writtenReviews")}
         {...trackProps}
       >
-        {reviews.map((review, index) => (
+        {writtenReviews.map((review, index) => (
           <WrittenReviewCard
             key={review.id}
-            review={review}
+           review={review}
             variant="carousel"
             onOpen={(event) => {
               if (wasDragged()) return;
@@ -86,7 +100,7 @@ export default function WrittenReviewsCarousel({
 
       {modal.isOpen && (
         <WrittenReviewModal
-          reviews={reviews}
+           reviews={writtenReviews}
           activeIndex={modal.activeIndex}
           onClose={modal.close}
           onNext={modal.next}

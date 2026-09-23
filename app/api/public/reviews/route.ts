@@ -2,15 +2,22 @@ import { NextResponse } from "next/server";
 import { getPayload } from "payload";
 import config from "@payload-config";
 
-import type { Media, Review } from "@/payload-types";
-import type { PublicReviewVideo } from "@/components/Reviews/shared/types";
+import type { Media } from "@/payload-types";
+import type {
+  PublicReview,
+  PublicUploadedReviewVideo,
+} from "@/components/Reviews/shared/types";
 
 export const runtime = "nodejs";
 
 const getMediaUrl = (
   media?: number | Media | null,
 ): string | undefined => {
-  if (!media || typeof media !== "object" || !media.url) {
+  if (
+    !media ||
+    typeof media !== "object" ||
+    !media.url
+  ) {
     return undefined;
   }
 
@@ -19,17 +26,23 @@ const getMediaUrl = (
 
 const getUploadedReviewVideo = (
   media?: number | Media | null,
-): PublicReviewVideo | undefined => {
-  if (!media || typeof media !== "object" || !media.url) {
+): PublicUploadedReviewVideo | undefined => {
+  if (
+    !media ||
+    typeof media !== "object" ||
+    !media.url
+  ) {
     return undefined;
   }
 
-  if (media.mimeType !== "video/mp4" && media.mimeType !== "video/webm") {
+  if (
+    media.mimeType !== "video/mp4" &&
+    media.mimeType !== "video/webm"
+  ) {
     return undefined;
   }
 
   return {
-    source: "upload",
     url: media.url,
     mimeType: media.mimeType,
     filesize: media.filesize ?? null,
@@ -37,47 +50,12 @@ const getUploadedReviewVideo = (
   };
 };
 
-const getInstagramReviewVideo = ({
-  instagramUrl,
-  instagramPoster,
-}: {
-  instagramUrl?: string | null;
-  instagramPoster?: number | Media | null;
-}): PublicReviewVideo | undefined => {
-  const trimmedUrl = instagramUrl?.trim();
-  const posterUrl = getMediaUrl(instagramPoster);
+const getOptionalText = (
+  value?: string | null,
+): string | undefined => {
+  const trimmedValue = value?.trim();
 
-  if (!trimmedUrl || !posterUrl) {
-    return undefined;
-  }
-
-  return {
-    source: "instagram",
-    url: trimmedUrl,
-    posterUrl,
-  };
-};
-
-const getPublicReviewVideo = (
-  review: Review,
-): PublicReviewVideo | undefined => {
-  if (review.videoSource === "instagram") {
-  return getInstagramReviewVideo({
-    instagramUrl: review.instagramUrl,
-    instagramPoster: review.instagramPoster,
-  });
-}
-
-  if (review.videoSource === "upload") {
-    return getUploadedReviewVideo(review.video);
-  }
-
-  /*
-   * Legacy fallback:
-   * Older reviews may contain an uploaded video but may not yet have been
-   * saved after videoSource was introduced.
-   */
-  return getUploadedReviewVideo(review.video);
+  return trimmedValue || undefined;
 };
 
 export async function GET() {
@@ -96,23 +74,41 @@ export async function GET() {
       limit: 12,
     });
 
-    return NextResponse.json({
-      success: true,
-      reviews: reviews.docs.map((review) => ({
+    const publicReviews: PublicReview[] =
+      reviews.docs.map((review) => ({
         id: String(review.id),
+        reviewType: review.reviewType,
         name: review.name,
         rating: review.rating,
-        comment: review.comment,
+        comment: getOptionalText(review.comment),
         translations: review.translations,
         location: review.location,
         date: review.createdAt,
         photoUrl: getMediaUrl(review.photo),
-        video: getPublicReviewVideo(review),
-        googleReviewUrl: review.googleReviewUrl?.trim() || undefined,
-      })),
+        googleReviewUrl: getOptionalText(
+          review.googleReviewUrl,
+        ),
+        video: getUploadedReviewVideo(review.video),
+        videoCardImageUrl: getMediaUrl(
+          review.videoCardImage,
+        ),
+        videoSourceUrl: getOptionalText(
+          review.videoSourceUrl,
+        ),
+        videoNote: getOptionalText(
+          review.videoNote,
+        ),
+      }));
+
+    return NextResponse.json({
+      success: true,
+      reviews: publicReviews,
     });
   } catch (error) {
-    console.error("Failed to fetch public reviews:", error);
+    console.error(
+      "Failed to fetch public reviews:",
+      error,
+    );
 
     return NextResponse.json(
       {

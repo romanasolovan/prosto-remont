@@ -6,10 +6,15 @@ import type { PublicReview } from "../shared/types";
 import styles from "./WrittenReviews.module.css";
 
 interface WrittenReviewCardProps {
-  review: PublicReview;
+  review: WrittenReview;
   onOpen: (event: React.MouseEvent<HTMLButtonElement>) => void;
   variant?: "carousel" | "grid";
 }
+
+export type WrittenReview = PublicReview & {
+  reviewType: "written";
+  comment: string;
+};
 
 const EXCERPT_LENGTH = 160;
 

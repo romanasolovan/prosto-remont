@@ -219,17 +219,24 @@ export interface QuoteRequest {
   createdAt: string;
 }
 /**
- * Client reviews submitted from the website form. Only approved reviews appear publicly.
+ * Manage written and video client reviews. Only approved reviews appear publicly.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "reviews".
  */
 export interface Review {
   id: number;
+  /**
+   * Choose whether this is a written client review or a video testimonial.
+   */
+  reviewType: 'written' | 'video';
   name: string;
   location: string;
   rating: number;
-  comment: string;
+  /**
+   * Enter the client's written review.
+   */
+  comment?: string | null;
   /**
    * Optional translated versions. If empty, the website will show the original review comment.
    */
@@ -239,34 +246,37 @@ export interface Review {
     uk?: string | null;
     ru?: string | null;
   };
-  originalLanguage: 'en' | 'pl' | 'uk' | 'ru';
+  originalLanguage?: ('en' | 'pl' | 'uk' | 'ru') | null;
+  /**
+   * Optional image displayed with the written review.
+   */
   photo?: (number | null) | Media;
   /**
-   * Choose one optional video source. Changing the source clears the previously selected video source.
-   */
-  videoSource: 'none' | 'upload' | 'instagram';
-  /**
-   * Select or upload one MP4 or WebM video. Maximum file size: 50 MB.
-   */
-  video?: (number | null) | Media;
-  /**
-   * Paste the original public Instagram Post or Reel URL. Do not paste embed code, iframe HTML, or a temporary media URL.
-   */
-  instagramUrl?: string | null;
-  /**
-   * Upload or select a screenshot from the Instagram video. This image is shown on the review card; the original Instagram post opens in the video modal.
-   */
-  instagramPoster?: (number | null) | Media;
-  /**
-   * Optional direct link to the matching review on Google. Leave empty if this review was not published on Google.
+   * Optional direct link to the matching review on Google.
    */
   googleReviewUrl?: string | null;
   /**
-   * Set to 'Approved' to show the review on the website. Keep as 'Pending' to hide it until you review the content.
+   * Upload or select one MP4 or WebM video. Maximum file size: 50 MB.
+   */
+  video?: (number | null) | Media;
+  /**
+   * Optional preview image displayed on the video review card.
+   */
+  videoCardImage?: (number | null) | Media;
+  /**
+   * Optional link to the original source, such as the matching Instagram post.
+   */
+  videoSourceUrl?: string | null;
+  /**
+   * Optional short note displayed with the opened video review.
+   */
+  videoNote?: string | null;
+  /**
+   * Set to Approved to show the review on the website.
    */
   status: 'pending' | 'approved' | 'rejected';
   /**
-   * Use this later to highlight selected reviews.
+   * Use this to highlight selected reviews.
    */
   featured?: boolean | null;
   /**
@@ -688,6 +698,7 @@ export interface QuoteRequestsSelect<T extends boolean = true> {
  * via the `definition` "reviews_select".
  */
 export interface ReviewsSelect<T extends boolean = true> {
+  reviewType?: T;
   name?: T;
   location?: T;
   rating?: T;
@@ -702,11 +713,11 @@ export interface ReviewsSelect<T extends boolean = true> {
       };
   originalLanguage?: T;
   photo?: T;
-  videoSource?: T;
-  video?: T;
-  instagramUrl?: T;
-  instagramPoster?: T;
   googleReviewUrl?: T;
+  video?: T;
+  videoCardImage?: T;
+  videoSourceUrl?: T;
+  videoNote?: T;
   status?: T;
   featured?: T;
   internalNotes?: T;

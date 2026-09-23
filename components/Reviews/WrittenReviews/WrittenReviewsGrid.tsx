@@ -4,7 +4,9 @@ import { useTranslations } from "next-intl";
 
 import DataLoader from "@/components/ui/DataLoader/DataLoader";
 
-import WrittenReviewCard from "./WrittenReviewCard";
+import WrittenReviewCard, {
+  type WrittenReview,
+} from "./WrittenReviewCard";
 import WrittenReviewModal from "./WrittenReviewModal";
 import { useReviewModal } from "../shared/useReviewModal";
 import type { PublicReview } from "../shared/types";
@@ -23,8 +25,15 @@ export default function WrittenReviewsGrid({
   const t = useTranslations("clientOpinions");
   const loadingT = useTranslations("loading");
 
+  const writtenReviews = reviews.filter(
+    (review): review is WrittenReview =>
+      review.reviewType === "written" &&
+      typeof review.comment === "string" &&
+      review.comment.trim().length > 0,
+  );
+
   const modal = useReviewModal({
-    itemCount: reviews.length,
+    itemCount: writtenReviews.length,
   });
 
   if (isLoading) {
@@ -35,7 +44,7 @@ export default function WrittenReviewsGrid({
     );
   }
 
-  if (reviews.length === 0) {
+  if (writtenReviews.length === 0) {
     return (
       <div className={styles.emptyState}>
         {t("noWrittenReviews")}
@@ -53,7 +62,7 @@ export default function WrittenReviewsGrid({
         className={styles.grid}
         aria-label={t("aria.writtenReviews")}
       >
-        {reviews.map((review, index) => (
+        {writtenReviews.map((review, index) => (
           <WrittenReviewCard
             key={review.id}
             review={review}
@@ -67,7 +76,7 @@ export default function WrittenReviewsGrid({
 
       {modal.isOpen && (
         <WrittenReviewModal
-          reviews={reviews}
+          reviews={writtenReviews}
           activeIndex={modal.activeIndex}
           onClose={modal.close}
           onNext={modal.next}

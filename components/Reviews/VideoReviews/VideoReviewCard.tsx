@@ -5,22 +5,24 @@ import {
   useState,
   type MouseEvent,
 } from "react";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
-
-import DataLoader from "@/components/ui/DataLoader/DataLoader";
-
-import type {
-  PublicReview,
-  PublicReviewVideo,
-} from "../shared/types";
-import styles from "./VideoReviews.module.css";
 
 import {
   useCarouselItemContext,
 } from "@/components/Carousel/CarouselItemContext";
+import DataLoader from "@/components/ui/DataLoader/DataLoader";
+
+import type {
+  PublicReview,
+  PublicUploadedReviewVideo,
+} from "../shared/types";
+
+import styles from "./VideoReviews.module.css";
 
 export type VideoReview = PublicReview & {
-  video: PublicReviewVideo;
+  reviewType: "video";
+  video: PublicUploadedReviewVideo;
 };
 
 interface VideoReviewCardProps {
@@ -41,31 +43,22 @@ const VideoReviewCard = forwardRef<
   ref,
 ) {
   const t = useTranslations("clientOpinions");
-  const { isContinuation } =
-  useCarouselItemContext();
+  const { isContinuation } = useCarouselItemContext();
   const [isMediaLoading, setIsMediaLoading] = useState(true);
 
-  const uploadedVideo =
-    review.video.source === "upload"
-      ? review.video
-      : undefined;
-
-  const instagramVideo =
-    review.video.source === "instagram"
-      ? review.video
-      : undefined;
+  const cardImageUrl = review.videoCardImageUrl;
 
   return (
     <button
-  ref={isContinuation ? undefined : ref}
-  type="button"
-  tabIndex={isContinuation ? -1 : undefined}
-  onPointerDown={(event) => {
-    if (isContinuation) {
-      event.preventDefault();
-    }
-  }}
-  onClick={onOpen}
+      ref={isContinuation ? undefined : ref}
+      type="button"
+      tabIndex={isContinuation ? -1 : undefined}
+      onPointerDown={(event) => {
+        if (isContinuation) {
+          event.preventDefault();
+        }
+      }}
+      onClick={onOpen}
       className={`${styles.card} ${
         variant === "grid"
           ? styles.cardGrid
@@ -82,12 +75,30 @@ const VideoReviewCard = forwardRef<
         </span>
       )}
 
-      {uploadedVideo && (
+      {cardImageUrl ? (
+        <Image
+          className={`${styles.cardPreview} ${
+            isMediaLoading ? styles.mediaPending : ""
+          }`}
+          src={review.videoCardImageUrl!}
+          alt=""
+          fill
+          sizes={
+            variant === "grid"
+              ? "(max-width: 767px) 100vw, 50vw"
+              : "(max-width: 767px) 78vw, 320px"
+          }
+          draggable={false}
+          aria-hidden="true"
+          onLoad={() => setIsMediaLoading(false)}
+          onError={() => setIsMediaLoading(false)}
+        />
+      ) : (
         <video
           className={`${styles.cardPreview} ${
             isMediaLoading ? styles.mediaPending : ""
           }`}
-          src={uploadedVideo.url}
+          src={review.video.url}
           preload="metadata"
           autoPlay
           muted
@@ -102,21 +113,6 @@ const VideoReviewCard = forwardRef<
         />
       )}
 
-      {instagramVideo && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          className={`${styles.cardPreview} ${
-            isMediaLoading ? styles.mediaPending : ""
-          }`}
-          src={instagramVideo.posterUrl}
-          alt=""
-          draggable={false}
-          aria-hidden="true"
-          onLoad={() => setIsMediaLoading(false)}
-          onError={() => setIsMediaLoading(false)}
-        />
-      )}
-
       <span className={styles.cardScrim} aria-hidden="true" />
 
       <span className={styles.playButton} aria-hidden="true">
@@ -127,15 +123,6 @@ const VideoReviewCard = forwardRef<
           />
         </svg>
       </span>
-
-      {instagramVideo && (
-        <span
-          className={styles.instagramCardBadge}
-          aria-hidden="true"
-        >
-          Instagram
-        </span>
-      )}
 
       {variant === "grid" && (
         <span className={styles.cardMonogram} aria-hidden="true">
