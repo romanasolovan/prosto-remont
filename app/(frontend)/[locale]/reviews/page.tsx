@@ -1,7 +1,7 @@
 
 import { useTranslations } from "next-intl";
 import styles from "./reviews.module.css";
-import ClientOpinions from "@/components/ClientOpinions/ClientOpinions";
+// import ClientOpinions from "@/components/ClientOpinions/ClientOpinions";
 
 
 
@@ -22,7 +22,7 @@ export default function ReviewsPage() {
 
           <div className={styles.opinionsSection}>
             <div className={styles.reviewsShell}>
-              <ClientOpinions />
+              {/* <ClientOpinions /> */}
             </div>
           </div>
         </div>
