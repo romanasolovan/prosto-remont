@@ -4,11 +4,13 @@ import {
   Children,
   type ReactNode,
 } from "react";
+
 import { useCarousel } from "./useCarousel";
 import {
   CarouselItemProvider,
 } from "./CarouselItemContext";
 import type { CarouselProps } from "./types";
+
 import styles from "./Carousel.module.css";
 
 function combineClassNames(
@@ -51,6 +53,13 @@ export default function Carousel({
     loop &&
     itemCount > 1;
 
+  const continuationCount =
+    shouldRenderContinuation && itemCount <= 3
+      ? 2
+      : shouldRenderContinuation
+        ? 1
+        : 0;
+
   const {
     viewportRef,
     railRef,
@@ -59,6 +68,7 @@ export default function Carousel({
     hasOverflow,
     canScrollPrevious,
     canScrollNext,
+
     isAutoMoving,
 
     scrollPrevious,
@@ -74,17 +84,13 @@ export default function Carousel({
     handleWheel,
   } = useCarousel({
     itemCount,
-
     autoplay,
     autoplayDelay,
-
     motionMode,
     continuousSpeed,
     startDelay,
     resumeDelay,
-
     isExternallyPaused: isPaused,
-
     step,
     mobileStep,
     loop,
@@ -95,6 +101,7 @@ export default function Carousel({
       className={combineClassNames(
         styles.carousel,
         hasOverflow && styles.hasControls,
+        isAutoMoving && styles.isAutoMoving,
         className,
       )}
       onPointerEnter={handlePointerEnter}
@@ -107,25 +114,18 @@ export default function Carousel({
           type="button"
           className={combineClassNames(
             styles.control,
-            styles.previousControl,
+            styles.controlPrevious,
           )}
           onClick={scrollPrevious}
           disabled={!canScrollPrevious}
           aria-label={previousLabel}
         >
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
+          <span
+            className={styles.controlIcon}
             aria-hidden="true"
           >
-            <path
-              d="M15 6L9 12L15 18"
-              stroke="currentColor"
-              strokeWidth="1.7"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+            ‹
+          </span>
         </button>
       ) : null}
 
@@ -133,11 +133,8 @@ export default function Carousel({
         ref={viewportRef}
         className={combineClassNames(
           styles.viewport,
-          isAutoMoving && styles.isAutoMoving,
           viewportClassName,
         )}
-        role="region"
-        aria-label={ariaLabel}
         onPointerDown={handlePointerDown}
         onPointerUp={handlePointerUp}
         onPointerCancel={handlePointerCancel}
@@ -157,20 +154,23 @@ export default function Carousel({
             {children as ReactNode}
           </ul>
 
-          {shouldRenderContinuation ? (
-            <CarouselItemProvider
-              isContinuation
-            >
-              <ul
-                className={combineClassNames(
-                  styles.track,
-                  trackClassName,
-                )}
-                data-carousel-continuation="true"
-                aria-hidden="true"
-              >
-                {children as ReactNode}
-              </ul>
+          {continuationCount > 0 ? (
+            <CarouselItemProvider isContinuation>
+              {Array.from({
+                length: continuationCount,
+              }).map((_, index) => (
+                <ul
+                  key={`carousel-continuation-${index}`}
+                  className={combineClassNames(
+                    styles.track,
+                    trackClassName,
+                  )}
+                  data-carousel-continuation="true"
+                  aria-hidden="true"
+                >
+                  {children as ReactNode}
+                </ul>
+              ))}
             </CarouselItemProvider>
           ) : null}
         </div>
@@ -181,25 +181,18 @@ export default function Carousel({
           type="button"
           className={combineClassNames(
             styles.control,
-            styles.nextControl,
+            styles.controlNext,
           )}
           onClick={scrollNext}
           disabled={!canScrollNext}
           aria-label={nextLabel}
         >
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
+          <span
+            className={styles.controlIcon}
             aria-hidden="true"
           >
-            <path
-              d="M9 6L15 12L9 18"
-              stroke="currentColor"
-              strokeWidth="1.7"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+            ›
+          </span>
         </button>
       ) : null}
     </div>

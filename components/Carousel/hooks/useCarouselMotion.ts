@@ -63,6 +63,26 @@ export function useCarouselMotion({
     itemCount > 1 &&
     mode === "continuous" &&
     !isPaused;
+  
+  useEffect(() => {
+  console.log("[Carousel motion]", {
+    enabled,
+    hasOverflow,
+    itemCount,
+    mode,
+    isPaused,
+    interactionVersion,
+    isAutoMoving,
+  });
+}, [
+  enabled,
+  hasOverflow,
+  itemCount,
+  mode,
+  isPaused,
+  interactionVersion,
+  isAutoMoving,
+]);
 
   useEffect(() => {
     const viewport = viewportRef.current;
@@ -110,8 +130,23 @@ export function useCarouselMotion({
     let animationFrameId: number | null = null;
     let previousTimestamp: number | null = null;
 
-    const getCycleWidth = () =>
-      track.getBoundingClientRect().width;
+    const getCycleWidth = () => {
+      const continuation =
+        track.nextElementSibling;
+
+      if (
+        continuation instanceof HTMLElement &&
+        continuation.dataset.carouselContinuation ===
+          "true"
+      ) {
+        return (
+          continuation.offsetLeft -
+          track.offsetLeft
+        );
+      }
+
+      return track.getBoundingClientRect().width;
+    };
 
     const initialCycleWidth = getCycleWidth();
 
@@ -142,6 +177,9 @@ export function useCarouselMotion({
       const cycleWidth = getCycleWidth();
 
       if (cycleWidth <= 0) {
+        animationFrameId =
+          window.requestAnimationFrame(move);
+
         return;
       }
 

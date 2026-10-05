@@ -57,6 +57,20 @@ export function useCarouselLoopNavigation({
       return 0;
     }
 
+    const continuation =
+      track.nextElementSibling;
+
+    if (
+      continuation instanceof HTMLElement &&
+      continuation.dataset.carouselContinuation ===
+        "true"
+    ) {
+      return (
+        continuation.offsetLeft -
+        track.offsetLeft
+      );
+    }
+
     return track.getBoundingClientRect().width;
   }, [trackRef]);
 
@@ -108,14 +122,6 @@ export function useCarouselLoopNavigation({
         return;
       }
 
-      /*
-       * If autonomous motion currently has the
-       * viewport inside the continuation copy,
-       * first normalise to the equivalent position
-       * in the primary cycle.
-       *
-       * The two positions look identical.
-       */
       if (
         Math.abs(
           currentPosition -
@@ -178,17 +184,6 @@ export function useCarouselLoopNavigation({
       const crossedBoundary =
         rawTargetIndex < 0;
 
-      /*
-       * Moving backwards across the beginning:
-       *
-       *   primary A ← primary E
-       *
-       * first place the viewport at the visually
-       * equivalent continuation position.
-       *
-       * Then smooth-scroll backwards into the end
-       * of the primary track.
-       */
       if (crossedBoundary) {
         viewport.scrollLeft =
           normalizedPosition + cycleWidth;
