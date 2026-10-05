@@ -24,80 +24,32 @@
   gap: 18px;
 }
 
-.carouselHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+.carouselShell {
+  --carousel-control-size: 42px;
+  --carousel-control-icon-size: 18px;
+  --carousel-control-gap: 14px;
+  --carousel-control-gap-mobile: 7px;
+  --carousel-rail-gap: 14px;
+  width: 100%;
+  min-width: 0;
 }
 
-.carouselControls {
-  display: flex;
-  gap: 8px;
+.carouselViewport {
+  padding-block: 4px 12px;
 }
 
-.carouselArrow {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.04);
-  color: rgba(245, 244, 240, 0.8);
-  cursor: pointer;
-  transition:
-    border-color 200ms ease,
-    background-color 200ms ease,
-    transform 200ms ease;
+.carouselTrack {
+  gap: 14px;
 }
 
-.carouselArrow svg {
-  width: 16px;
-  height: 16px;
-}
-
-.carouselArrow:hover {
-  border-color: rgba(255, 255, 255, 0.24);
-  background: rgba(255, 255, 255, 0.07);
-  transform: translateY(-1px);
-}
-
-.carouselArrow:focus-visible,
 .card:focus-visible,
 .modalCloseButton:focus-visible,
 .modalNavButton:focus-visible,
-.googleLink:focus-visible {
+.googleLink:focus-visible{
   outline: 2px solid rgba(255, 255, 255, 0.24);
   outline-offset: 3px;
 }
 
-.track {
-  display: flex;
-  gap: 14px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-padding-left: 4px;
-  padding: 4px 4px 12px;
-  -webkit-overflow-scrolling: touch;
-  cursor: grab;
-  touch-action: pan-y;
-  user-select: none;
-}
-
-.track:active {
-  cursor: grabbing;
-}
-
-.track::-webkit-scrollbar {
-  height: 4px;
-}
-
-.track::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.14);
-  border-radius: 999px;
-}
 
 .grid {
   display: grid;
@@ -384,8 +336,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .card,
-  .carouselArrow {
+  .card {
     transition: none;
   }
 
