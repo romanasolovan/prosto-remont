@@ -3,8 +3,6 @@ import { useTranslations } from "next-intl";
 import styles from "./reviews.module.css";
 import ClientOpinions from "@/components/ClientOpinions/ClientOpinions";
 
-
-
 export default function ReviewsPage() {
   const t = useTranslations("clientOpinions");
 

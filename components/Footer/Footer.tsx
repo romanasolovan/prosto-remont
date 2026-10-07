@@ -8,12 +8,11 @@ import Partners, { type Partner } from "@/components/Partners/Partners";
 import DataLoader from "@/components/ui/DataLoader/DataLoader";
 import SocialLinks from "./SocialLinks";
 import styles from "./Footer.module.css";
+import {
+  submitReview,
+  type ReviewSubmission,
+} from "@/lib/submitReview";
 
-type CommentFormData = {
-  name: string;
-  rating: number;
-  comment: string;
-};
 
 export default function Footer() {
   const t = useTranslations("footer");
@@ -43,8 +42,8 @@ const [hasPartnersError, setHasPartnersError] = useState(false);
     setIsQuoteModalOpen(false);
   };
 
-  const handleCommentSubmit = async (data: CommentFormData) => {
-    console.log("Comment submitted:", data);
+  const handleCommentSubmit = async (data: ReviewSubmission) => {
+    await submitReview(data);
   };
 
   useEffect(() => {

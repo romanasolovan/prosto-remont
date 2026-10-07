@@ -8,6 +8,7 @@ import LeaveCommentForm from "../Reviews/LeaveCommentForm/LeaveCommentForm";
 import VideoReviewsGrid from "../Reviews/VideoReviews/VideoReviewsGrid";
 import WrittenReviewsGrid from "../Reviews/WrittenReviews/WrittenReviewsGrid";
 import type { PublicReview } from "../Reviews/shared/types";
+import { submitReview } from "@/lib/submitReview";
 
 export default function ClientOpinions() {
   const t = useTranslations("clientOpinions");
@@ -147,26 +148,7 @@ export default function ClientOpinions() {
       {showForm && (
         <LeaveCommentForm
           onSubmit={async (data) => {
-            const formData = new FormData();
-
-            formData.append("name", data.name);
-            formData.append("rating", String(data.rating));
-            formData.append("comment", data.comment);
-            formData.append("location", data.location);
-
-            if (data.photo) {
-              formData.append("photo", data.photo);
-            }
-
-            const response = await fetch("/api/submit-review", {
-              method: "POST",
-              body: formData,
-            });
-
-            if (!response.ok) {
-              throw new Error("Failed to submit review");
-            }
-
+            await submitReview(data);
             handleNewComment();
           }}
           onCancel={handleCloseForm}
