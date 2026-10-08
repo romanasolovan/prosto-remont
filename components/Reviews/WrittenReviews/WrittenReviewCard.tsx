@@ -2,6 +2,9 @@
 
 import {
   forwardRef,
+  useEffect,
+  useRef,
+  useState,
   type MouseEvent,
 } from "react";
 import {
@@ -32,6 +35,22 @@ export type WrittenReview = PublicReview & {
 
 const EXCERPT_LENGTH = 160;
 
+function getExcerpt(text: string) {
+  if (text.length <= EXCERPT_LENGTH) {
+    return text;
+  }
+
+  const candidate = text.slice(0, EXCERPT_LENGTH);
+  const lastSpace = candidate.lastIndexOf(" ");
+
+  const excerpt =
+    lastSpace > 0
+      ? candidate.slice(0, lastSpace)
+      : candidate;
+
+  return `${excerpt.trimEnd()}…`;
+}
+
 const WrittenReviewCard = forwardRef<
   HTMLButtonElement,
   WrittenReviewCardProps
@@ -54,14 +73,35 @@ const WrittenReviewCard = forwardRef<
       locale as "en" | "pl" | "uk" | "ru"
     ] || review.comment;
 
-  const isTruncated =
-    text.length > EXCERPT_LENGTH;
+  const textRef = useRef<HTMLParagraphElement | null>(null);
+const [isVisuallyTruncated, setIsVisuallyTruncated] =
+  useState(false);
 
-  const excerpt = isTruncated
-    ? `${text
-        .slice(0, EXCERPT_LENGTH)
-        .trim()}…`
-    : text;
+const excerpt = getExcerpt(text);
+
+useEffect(() => {
+  const element = textRef.current;
+
+  if (!element) {
+    return;
+  }
+
+  const updateTruncation = () => {
+    setIsVisuallyTruncated(
+      text.length > EXCERPT_LENGTH ||
+        element.scrollHeight > element.clientHeight + 1,
+    );
+  };
+
+  updateTruncation();
+
+  const observer = new ResizeObserver(updateTruncation);
+  observer.observe(element);
+
+  return () => {
+    observer.disconnect();
+  };
+}, [text, excerpt]);
 
   const formatDate = (isoDate: string) =>
     new Intl.DateTimeFormat(locale, {
@@ -78,27 +118,16 @@ const WrittenReviewCard = forwardRef<
 
   return (
     <button
-      ref={isContinuation ? undefined : ref}
-      type="button"
-      tabIndex={isContinuation ? -1 : undefined}
-      onPointerDown={(event) => {
-        if (isContinuation) {
-          event.preventDefault();
-        }
-      }}
-      onClick={(event) => {
-        if (isContinuation) {
-          return;
-        }
-
-        onOpen(event);
-      }}
-      className={`${styles.card} ${
-        variant === "grid"
-          ? styles.cardGrid
-          : styles.cardCompact
-      }`}
-    >
+  ref={isContinuation ? undefined : ref}
+  type="button"
+  tabIndex={isContinuation ? -1 : undefined}
+  onClick={onOpen}
+  className={`${styles.card} ${
+    variant === "grid"
+      ? styles.cardGrid
+      : styles.cardCompact
+  }`}
+>
       <span className={styles.cardTop}>
         <span
           className={styles.avatar}
@@ -143,21 +172,49 @@ const WrittenReviewCard = forwardRef<
         </span>
       </span>
 
-      <p className={styles.cardText}>
+      <p ref={textRef} className={styles.cardText}>
         {excerpt}
       </p>
 
       <span className={styles.cardFooter}>
-        <span className={styles.cardDate}>
-          {formatDate(review.date)}
-        </span>
+  <span className={styles.cardFooterMeta}>
+    <span className={styles.cardDate}>
+      {formatDate(review.date)}
+    </span>
 
-        {isTruncated && (
-          <span className={styles.readMore}>
-            {t("readFullReview")}
-          </span>
-        )}
+    {review.photoUrl && (
+      <span className={styles.photoIndicator}>
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <rect
+            x="3"
+            y="3"
+            width="18"
+            height="18"
+            rx="3"
+          />
+          <circle cx="8.5" cy="8.5" r="1.5" />
+          <path d="m21 15-5-5L5 21" />
+        </svg>
+
+        <span>{t("photoAttached")}</span>
       </span>
+    )}
+  </span>
+
+  {isVisuallyTruncated && (
+    <span className={styles.readMore}>
+      {t("readFullReview")}
+    </span>
+  )}
+</span>
     </button>
   );
 });
