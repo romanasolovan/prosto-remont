@@ -20,6 +20,8 @@ export interface PublicReview {
   location: string;
   date: string;
   photoUrl?: string;
+  photoWidth?: number;
+  photoHeight?: number;
   googleReviewUrl?: string;
   video?: PublicUploadedReviewVideo;
   videoCardImageUrl?: string;

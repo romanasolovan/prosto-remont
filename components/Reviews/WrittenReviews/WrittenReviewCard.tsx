@@ -1,10 +1,8 @@
+
 "use client";
 
 import {
   forwardRef,
-  useEffect,
-  useRef,
-  useState,
   type MouseEvent,
 } from "react";
 import {
@@ -73,35 +71,7 @@ const WrittenReviewCard = forwardRef<
       locale as "en" | "pl" | "uk" | "ru"
     ] || review.comment;
 
-  const textRef = useRef<HTMLParagraphElement | null>(null);
-const [isVisuallyTruncated, setIsVisuallyTruncated] =
-  useState(false);
-
-const excerpt = getExcerpt(text);
-
-useEffect(() => {
-  const element = textRef.current;
-
-  if (!element) {
-    return;
-  }
-
-  const updateTruncation = () => {
-    setIsVisuallyTruncated(
-      text.length > EXCERPT_LENGTH ||
-        element.scrollHeight > element.clientHeight + 1,
-    );
-  };
-
-  updateTruncation();
-
-  const observer = new ResizeObserver(updateTruncation);
-  observer.observe(element);
-
-  return () => {
-    observer.disconnect();
-  };
-}, [text, excerpt]);
+  const excerpt = getExcerpt(text);
 
   const formatDate = (isoDate: string) =>
     new Intl.DateTimeFormat(locale, {
@@ -118,16 +88,16 @@ useEffect(() => {
 
   return (
     <button
-  ref={isContinuation ? undefined : ref}
-  type="button"
-  tabIndex={isContinuation ? -1 : undefined}
-  onClick={onOpen}
-  className={`${styles.card} ${
-    variant === "grid"
-      ? styles.cardGrid
-      : styles.cardCompact
-  }`}
->
+      ref={isContinuation ? undefined : ref}
+      type="button"
+      tabIndex={isContinuation ? -1 : undefined}
+      onClick={onOpen}
+      className={`${styles.card} ${
+        variant === "grid"
+          ? styles.cardGrid
+          : styles.cardCompact
+      }`}
+    >
       <span className={styles.cardTop}>
         <span
           className={styles.avatar}
@@ -144,44 +114,46 @@ useEffect(() => {
           <span className={styles.cardLocation}>
             {review.location}
           </span>
-        </span>
 
-        <span
-          className={styles.cardRating}
-          aria-label={t("aria.rating", {
-            rating: review.rating,
-          })}
-        >
-          {Array.from({ length: 5 }).map(
-            (_, index) => (
-              <svg
-                key={index}
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                aria-hidden="true"
-                className={
-                  index < review.rating
-                    ? styles.starFilled
-                    : styles.starEmpty
-                }
-              >
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-            ),
-          )}
+          <span
+            className={styles.cardRating}
+            aria-label={t("aria.rating", {
+              rating: review.rating,
+            })}
+          >
+            {Array.from({ length: 5 }).map(
+              (_, index) => (
+                <svg
+                  key={index}
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                  className={
+                    index < review.rating
+                      ? styles.starFilled
+                      : styles.starEmpty
+                  }
+                >
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              ),
+            )}
+          </span>
         </span>
       </span>
 
-      <p ref={textRef} className={styles.cardText}>
+      <p className={styles.cardText}>
         {excerpt}
       </p>
 
-      <span className={styles.cardFooter}>
-  <span className={styles.cardFooterMeta}>
-    <span className={styles.cardDate}>
-      {formatDate(review.date)}
-    </span>
+      
 
+<span className={styles.cardFooter}>
+  <span className={styles.cardDate}>
+    {formatDate(review.date)}
+  </span>
+
+  <span className={styles.cardFooterActions}>
     {review.photoUrl && (
       <span className={styles.photoIndicator}>
         <svg
@@ -207,14 +179,26 @@ useEffect(() => {
         <span>{t("photoAttached")}</span>
       </span>
     )}
-  </span>
 
-  {isVisuallyTruncated && (
-    <span className={styles.readMore}>
-      {t("readFullReview")}
+    <span
+      className={styles.cardArrow}
+      aria-hidden="true"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M7 17 17 7M7 7h10v10" />
+      </svg>
     </span>
-  )}
+  </span>
 </span>
+
+
     </button>
   );
 });

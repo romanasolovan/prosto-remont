@@ -24,6 +24,26 @@ const getMediaUrl = (
   return media.url;
 };
 
+const getPhotoDimensions = (
+  media?: number | Media | null,
+): { width: number; height: number } | undefined => {
+  if (
+    !media ||
+    typeof media !== "object" ||
+    typeof media.width !== "number" ||
+    typeof media.height !== "number" ||
+    media.width <= 0 ||
+    media.height <= 0
+  ) {
+    return undefined;
+  }
+
+  return {
+    width: media.width,
+    height: media.height,
+  };
+};
+
 const getUploadedReviewVideo = (
   media?: number | Media | null,
 ): PublicUploadedReviewVideo | undefined => {
@@ -85,6 +105,8 @@ export async function GET() {
         location: review.location,
         date: review.createdAt,
         photoUrl: getMediaUrl(review.photo),
+        photoWidth: getPhotoDimensions(review.photo)?.width,
+        photoHeight: getPhotoDimensions(review.photo)?.height,
         googleReviewUrl: getOptionalText(
           review.googleReviewUrl,
         ),

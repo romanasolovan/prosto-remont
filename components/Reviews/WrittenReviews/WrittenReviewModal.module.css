@@ -1,0 +1,336 @@
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(6, 7, 9, 0.86);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.modalDialog {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 740px;
+  height: min(570px, calc(100dvh - 40px));
+  min-height: 0;
+  overflow: hidden;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 22px;
+  background: linear-gradient(
+    180deg,
+    #171c22 0%,
+    #0e1216 100%
+  );
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.36);
+  color: #f5f4f0;
+}
+
+.modalTopBar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  min-height: 36px;
+  margin-bottom: 12px;
+}
+
+.modalContent {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  flex: 1;
+  min-height: 0;
+  gap: 14px;
+}
+
+.modalWithPhoto {
+  grid-template-rows: minmax(0, 1fr);
+}
+
+.modalReviewColumn {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+  margin-bottom: 12px;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 15px;
+}
+
+.modalHeaderMeta {
+  min-width: 0;
+}
+
+.modalName {
+  margin: 0 0 4px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: #f5f4f0;
+  overflow-wrap: anywhere;
+}
+
+.modalLocationDate {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245, 244, 240, 0.5);
+}
+
+.modalRating {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  margin-bottom: 12px;
+}
+
+.modalRating svg {
+  width: 16px;
+  height: 16px;
+}
+
+.starFilled {
+  color: rgba(245, 244, 240, 0.85);
+}
+
+.starEmpty {
+  color: rgba(255, 255, 255, 0.14);
+}
+
+.modalTextScroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color:
+    rgba(255, 255, 255, 0.22)
+    transparent;
+}
+
+.modalTextScroll:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.24);
+  outline-offset: -2px;
+  border-radius: 4px;
+}
+
+.modalText {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(245, 244, 240, 0.88);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.googleLink {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  flex-shrink: 0;
+  gap: 6px;
+  width: fit-content;
+  margin-top: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.24);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(245, 244, 240, 0.85);
+}
+
+.modalPhotoColumn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  background: transparent;
+}
+
+.modalPhoto {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.modalMobilePhoto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 24px;
+}
+
+.modalMobilePhoto .modalPhoto {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.modalNavRow {
+  display: flex;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.modalCloseButton,
+.modalNavButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  color: #f5f4f0;
+  cursor: pointer;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease;
+}
+
+.modalCloseButton svg,
+.modalNavButton svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.modalCloseButton:focus-visible,
+.modalNavButton:focus-visible,
+.googleLink:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.65);
+  outline-offset: 3px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .modalCloseButton:hover,
+  .modalNavButton:hover {
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+}
+
+@media (max-width: 767px) {
+  .modalTextScroll {
+    padding-right: 4px;
+  }
+
+  .modalMobilePhoto {
+    margin-bottom: 4px;
+  }
+}
+
+@media (min-width: 768px) {
+  .modalOverlay {
+    padding: 40px;
+  }
+
+  .modalDialog {
+    width: min(84vw, 740px);
+    height: min(570px, calc(100dvh - 80px));
+    padding: 22px 26px;
+    border-radius: 26px;
+  }
+
+  .modalTopBar {
+    min-height: 42px;
+    margin-bottom: 14px;
+  }
+
+  .modalContent {
+    gap: 18px;
+  }
+
+  .modalWithPhoto {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 0.9fr);
+    grid-template-rows: minmax(0, 1fr);
+  }
+
+  .modalMobilePhoto {
+  display: none;
+}
+
+.modalPhotoColumn {
+  display: flex;
+}
+
+  .modalHeader {
+    margin-bottom: 20px;
+  }
+
+  .modalRating {
+    margin-bottom: 18px;
+  }
+
+  .modalText {
+    font-size: 19px;
+    line-height: 1.7;
+  }
+
+  .modalNavRow {
+    margin-top: 20px;
+  }
+
+  .modalCloseButton,
+  .modalNavButton {
+    width: 42px;
+    height: 42px;
+    flex-basis: 42px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modalCloseButton,
+  .modalNavButton {
+    transition: none;
+  }
+}
