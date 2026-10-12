@@ -1,5 +1,7 @@
+
 "use client";
 
+import { useState } from "react";
 import { useTranslations } from "next-intl";
 
 import DataLoader from "@/components/ui/DataLoader/DataLoader";
@@ -18,12 +20,18 @@ interface WrittenReviewsGridProps {
   isLoading: boolean;
 }
 
+const REVIEWS_PER_PAGE = 6;
+
 export default function WrittenReviewsGrid({
   reviews,
   isLoading,
 }: WrittenReviewsGridProps) {
   const t = useTranslations("clientOpinions");
   const loadingT = useTranslations("loading");
+
+  const [visibleCount, setVisibleCount] = useState(
+    REVIEWS_PER_PAGE,
+  );
 
   const writtenReviews = reviews.filter(
     (review): review is WrittenReview =>
@@ -35,6 +43,23 @@ export default function WrittenReviewsGrid({
   const modal = useReviewModal({
     itemCount: writtenReviews.length,
   });
+
+  const visibleReviews = writtenReviews.slice(
+    0,
+    visibleCount,
+  );
+
+  const hasMoreReviews =
+    visibleCount < writtenReviews.length;
+
+  const handleLoadMore = () => {
+    setVisibleCount((current) =>
+      Math.min(
+        current + REVIEWS_PER_PAGE,
+        writtenReviews.length,
+      ),
+    );
+  };
 
   if (isLoading) {
     return (
@@ -62,7 +87,7 @@ export default function WrittenReviewsGrid({
         className={styles.grid}
         aria-label={t("aria.writtenReviews")}
       >
-        {writtenReviews.map((review, index) => (
+        {visibleReviews.map((review, index) => (
           <WrittenReviewCard
             key={review.id}
             review={review}
@@ -73,6 +98,32 @@ export default function WrittenReviewsGrid({
           />
         ))}
       </div>
+
+      {hasMoreReviews && (
+        <div className={styles.loadMoreWrapper}>
+          <button
+            type="button"
+            className={styles.loadMoreButton}
+            onClick={handleLoadMore}
+          >
+            <span>{t("loadMoreReviews")}</span>
+
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M12 5v14m-6-6 6 6 6-6"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+      )}
 
       {modal.isOpen && (
         <WrittenReviewModal

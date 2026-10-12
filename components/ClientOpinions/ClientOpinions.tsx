@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import styles from "./ClientOpinions.module.css";
 import DataLoader from "@/components/ui/DataLoader/DataLoader";
 import LeaveCommentForm from "../Reviews/LeaveCommentForm/LeaveCommentForm";
-import VideoReviewsGrid from "../Reviews/VideoReviews/VideoReviewsGrid";
+import VideoReviewsCarousel from "../Reviews/VideoReviews/VideoReviewsCarousel";
 import WrittenReviewsGrid from "../Reviews/WrittenReviews/WrittenReviewsGrid";
 import type { PublicReview } from "../Reviews/shared/types";
 import { submitReview } from "@/lib/submitReview";
@@ -13,8 +13,7 @@ import { submitReview } from "@/lib/submitReview";
 export default function ClientOpinions() {
   const t = useTranslations("clientOpinions");
   const tCommon = useTranslations("common");
-
-  const triggerRef = useRef<HTMLButtonElement | null>(null);
+  const activeTriggerRef = useRef<HTMLButtonElement | null>(null);
   const successTimerRef = useRef<number | null>(null);
   const [reviews, setReviews] = useState<PublicReview[]>([]);
   const [isLoadingReviews, setIsLoadingReviews] = useState(true);
@@ -44,33 +43,39 @@ export default function ClientOpinions() {
     fetchApprovedReviews();
   }, []);
 
-  const handleOpenForm = () => {
-    setShowForm(true);
+  const handleOpenForm = (
+  trigger: HTMLButtonElement,
+) => {
+  activeTriggerRef.current = trigger;
+  setShowForm(true);
   };
+  
+  const restoreTriggerFocus = () => {
+  requestAnimationFrame(() => {
+    activeTriggerRef.current?.focus();
+  });
+};
 
   const handleCloseForm = () => {
-    setShowForm(false);
-    requestAnimationFrame(() => {
-      triggerRef.current?.focus();
-    });
-  };
+  setShowForm(false);
+  restoreTriggerFocus();
+};
 
   const handleNewComment = () => {
-    setShowForm(false);
-    setShowSuccessNotice(true);
+  setShowForm(false);
+  setShowSuccessNotice(true);
 
-    if (successTimerRef.current) {
-      window.clearTimeout(successTimerRef.current);
-    }
+  if (successTimerRef.current !== null) {
+    window.clearTimeout(successTimerRef.current);
+  }
 
-    successTimerRef.current = window.setTimeout(() => {
-      setShowSuccessNotice(false);
-    }, 5000);
+  successTimerRef.current = window.setTimeout(() => {
+    setShowSuccessNotice(false);
+    successTimerRef.current = null;
+  }, 5000);
 
-    requestAnimationFrame(() => {
-      triggerRef.current?.focus();
-    });
-  };
+  restoreTriggerFocus();
+};
 
   const averageRating =
     reviews.length > 0
@@ -87,48 +92,82 @@ export default function ClientOpinions() {
       className={styles.opinionsContainer}
       aria-labelledby="reviews-title"
     >
-      <div className={styles.header}>
-        <div className={styles.headerContent}>
-          <h2 id="reviews-title" className={styles.title}>
-            {t("title")}
-          </h2>
+      
+<div className={styles.header}>
+  <div className={styles.headerContent}>
+    <span className={styles.pageEyebrow}>
+      {t("pageEyebrow")}
+    </span>
 
-          <div className={styles.stats}>
-            <div className={styles.rating}>
-              <span className={styles.ratingNumber}>{averageRating}</span>
+    <h1 id="reviews-title" className={styles.title}>
+      {t("title")}
+    </h1>
 
-              <div className={styles.stars} aria-label={t("aria.stars")}>
-                {[...Array(5)].map((_, index) => (
-                  <svg
-                    key={index}
-                    className={
-                      index < Math.round(Number(averageRating))
-                        ? styles.starFilled
-                        : styles.starEmpty
-                    }
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    aria-hidden="true"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-            </div>
+    <p className={styles.pageIntroduction}>
+      {t("pageIntroduction")}
+    </p>
 
-            <span className={styles.reviewCount}>{reviewLabel}</span>
-          </div>
-        </div>
+    <div className={styles.stats}>
+      <div className={styles.rating}>
+        <span className={styles.ratingNumber}>
+          {averageRating}
+        </span>
 
-        <button
-          ref={triggerRef}
-          onClick={handleOpenForm}
-          className={styles.leaveReviewButton}
-          type="button"
+        <div
+          className={styles.stars}
+          aria-label={t("aria.stars")}
         >
-          {t("cta.leaveReview")}
-        </button>
+          {Array.from({ length: 5 }).map(
+            (_, index) => (
+              <svg
+                key={index}
+                className={
+                  index <
+                  Math.round(Number(averageRating))
+                    ? styles.starFilled
+                    : styles.starEmpty
+                }
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                aria-hidden="true"
+              >
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292z" />
+              </svg>
+            ),
+          )}
+        </div>
       </div>
+
+      <span className={styles.reviewCount}>
+        {reviewLabel}
+      </span>
+    </div>
+  </div>
+
+  <button
+    onClick={(event) =>
+  handleOpenForm(event.currentTarget)
+}
+    className={styles.leaveReviewButton}
+    type="button"
+  >
+    <span>{t("shareExperience")}</span>
+
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M7 17 17 7M7 7h10v10"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  </button>
+</div>
 
       {showSuccessNotice && (
         <div className={styles.successNotice} role="status" aria-live="polite">
@@ -140,10 +179,50 @@ export default function ClientOpinions() {
         <DataLoader label={tCommon("loading.reviews")} />
       ) : (
         <div className={styles.sectionsStack}>
-          <VideoReviewsGrid reviews={reviews} isLoading={isLoadingReviews} />
+           <VideoReviewsCarousel reviews={reviews} />
           <WrittenReviewsGrid reviews={reviews} isLoading={isLoadingReviews} />
         </div>
       )}
+
+            <section
+        className={styles.storySection}
+        aria-labelledby="reviews-story-title"
+      >
+        <h2
+          id="reviews-story-title"
+          className={styles.storyTitle}
+        >
+          {t("storyTitle")}
+        </h2>
+
+        <p className={styles.storyDescription}>
+          {t("storyDescription")}
+        </p>
+
+        <button
+          type="button"
+          className={styles.storyButton}
+          onClick={(event) =>
+            handleOpenForm(event.currentTarget)
+          }
+        >
+          <span>{t("cta.leaveReview")}</span>
+
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M7 17 17 7M7 7h10v10"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+      </section>
 
       {showForm && (
         <LeaveCommentForm

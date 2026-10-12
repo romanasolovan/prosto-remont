@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { useTranslations } from "next-intl";
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -179,7 +180,7 @@ export default function LeaveCommentForm({
     });
   };
 
-  return (
+  return createPortal(
     <div
       className={styles.modalOverlay}
       onMouseDown={(event) => {
@@ -585,6 +586,7 @@ export default function LeaveCommentForm({
           </Formik>
         )}
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
