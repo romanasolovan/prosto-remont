@@ -613,6 +613,7 @@
     "readMore": "Przeczytaj opinie Klientów",
     "loadMoreReviews": "Pokaż więcej",
     "reviewCount": "{count, plural, =0 {Brak opinii} one {# opinia} few {# opinie} many {# opinii} other {# opinii}}",
+    "homeInvitation": "Korzystałeś z naszych usług? Podziel się swoją opinią.",
     "cta": {
       "leaveReview": "Dodaj opinię"
     },

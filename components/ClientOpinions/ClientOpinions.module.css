@@ -3,14 +3,15 @@
   color: #f5f4f0;
 }
 
+/* Page introduction */
 .header {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 24px;
-  margin-bottom: clamp(40px, 5vw, 64px);
   min-width: 0;
+  margin-bottom: clamp(40px, 5vw, 64px);
 }
 
 .headerContent {
@@ -67,6 +68,7 @@
   overflow-wrap: break-word;
 }
 
+/* Review statistics */
 .stats {
   display: flex;
   align-items: center;
@@ -117,15 +119,16 @@
   color: rgba(245, 244, 240, 0.46);
 }
 
+/* Primary review button */
 .leaveReviewButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 14px;
-  min-height: 50px;
-  max-width: 100%;
-  padding: 0 24px;
   flex-shrink: 0;
+  max-width: 100%;
+  min-height: 50px;
+  padding: 0 24px;
   border: 1px solid rgba(215, 197, 173, 0.9);
   border-radius: 999px;
   background: #d7c5ad;
@@ -148,265 +151,12 @@
   flex-shrink: 0;
 }
 
-.leaveReviewButton:hover {
-  background: #e5d6c3;
-  border-color: #e5d6c3;
-  transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-}
-
 .leaveReviewButton:focus-visible {
   outline: 2px solid #f5f4f0;
   outline-offset: 4px;
 }
 
-.successNotice {
-  margin-bottom: 24px;
-  padding: 14px 18px;
-  border-left: 2px solid rgba(255, 255, 255, 0.82);
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.06) 0%,
-    rgba(255, 255, 255, 0.03) 100%
-  );
-  border-radius: 18px;
-  box-shadow:
-    0 10px 24px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  font-family: "Barlow", sans-serif;
-  font-size: 12px;
-  letter-spacing: 0.04em;
-  color: rgba(245, 244, 240, 0.74);
-}
-
-.commentsGrid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-}
-
-.commentCard {
-  position: relative;
-  padding: clamp(20px, 3vw, 30px);
-  border-radius: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.04) 0%,
-    rgba(255, 255, 255, 0.018) 100%
-  );
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    0 18px 36px rgba(0, 0, 0, 0.12);
-  transition:
-    transform 320ms ease,
-    border-color 320ms ease,
-    box-shadow 320ms ease;
-}
-
-.commentCard::before {
-  content: "";
-  position: absolute;
-  inset: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  border-radius: 14px;
-  pointer-events: none;
-}
-
-.commentCard::after {
-  content: "\201C";
-  position: absolute;
-  top: 2px;
-  right: 22px;
-  z-index: 0;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 64px;
-  font-style: italic;
-  line-height: 1;
-  color: rgba(255, 255, 255, 0.06);
-  pointer-events: none;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .commentCard:hover {
-    transform: translateY(-4px);
-    border-color: rgba(255, 255, 255, 0.16);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.06),
-      0 24px 48px rgba(0, 0, 0, 0.18);
-  }
-}
-
-.commentHeader {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  justify-content: space-between;
-  gap: 14px;
-  align-items: flex-start;
-  margin-bottom: 16px;
-}
-
-.commentAuthor {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-
-.authorAvatar {
-  position: relative;
-  width: 42px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background:
-    radial-gradient(
-      circle at 30% 30%,
-      rgba(255, 255, 255, 0.1),
-      rgba(255, 255, 255, 0.025) 72%
-    ),
-    rgba(255, 255, 255, 0.02);
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: 16px;
-  color: #f5f4f0;
-}
-
-.authorAvatar::before {
-  content: "";
-  position: absolute;
-  inset: -4px;
-  border-radius: 50%;
-  border: 1px solid rgba(245, 244, 240, 0.06);
-  pointer-events: none;
-}
-
-.authorName {
-  color: #f5f4f0;
-  font-family: "Barlow", sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.commentDate {
-  margin-top: 3px;
-  color: rgba(245, 244, 240, 0.46);
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-
-.commentRating {
-  display: flex;
-  gap: 2px;
-  flex-shrink: 0;
-}
-
-.commentRating svg {
-  width: 13px;
-  height: 13px;
-}
-
-.commentText {
-  position: relative;
-  z-index: 1;
-  max-width: 40ch;
-  margin: 0;
-  color: rgba(245, 244, 240, 0.84);
-  font-family: "Cormorant Garamond", "Times New Roman", serif;
-  font-style: italic;
-  font-weight: 500;
-  font-size: 17px;
-  line-height: 1.6;
-}
-
-@media (min-width: 900px) {
-  .commentsGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .commentCard:nth-child(2n) {
-    margin-top: 28px;
-  }
-}
-
-/* Tablet and desktop */
-@media (min-width: 768px) {
-  .header {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 28px;
-  }
-
-  .headerContent {
-    flex: 1 1 auto;
-    width: auto;
-    min-width: 0;
-  }
-
-  .leaveReviewButton {
-    flex: 0 0 auto;
-  }
-}
-
-/* Small mobile screens */
-@media (max-width: 374px) {
-  .header {
-    gap: 22px;
-  }
-
-  .title {
-    font-size: 32px;
-  }
-
-  .pageIntroduction {
-    font-size: 15px;
-  }
-
-  .leaveReviewButton {
-    padding-inline: 20px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .header {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 48px;
-  }
-
-  .headerContent {
-    flex: 1;
-  }
-
-  .leaveReviewButton {
-    flex-shrink: 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .commentCard {
-    transition: none;
-  }
-
-  .commentCard:hover {
-    transform: none;
-  }
-
-  .leaveReviewButton {
-    transition: none;
-  }
-
-  .leaveReviewButton:hover {
-    transform: none;
-  }
-}
-
+/* Review sections */
 .sectionsStack {
   display: grid;
   gap: clamp(64px, 9vw, 120px);
@@ -417,25 +167,20 @@
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Reviews page — Your story matters */
-
+/* Bottom review invitation */
 .storySection {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 12px;
-
   width: 100%;
   margin-top: clamp(56px, 7vw, 88px);
-  padding: clamp(28px, 5vw, 48px) 16px
-    clamp(40px, 6vw, 64px);
-
-  background: transparent;
+  padding: clamp(28px, 5vw, 48px) 16px clamp(40px, 6vw, 64px);
   border: none;
   border-radius: 0;
+  background: transparent;
   box-shadow: none;
-
   text-align: center;
 }
 
@@ -464,20 +209,16 @@
   align-items: center;
   justify-content: center;
   gap: 9px;
-
   min-height: 44px;
   margin-top: 8px;
   padding: 8px 4px;
-
   border: 0;
   background: transparent;
   color: #e1d7ca;
-
   font-family: "Barlow Condensed", sans-serif;
   font-size: 15px;
   font-weight: 500;
   letter-spacing: 0.025em;
-
   cursor: pointer;
   transition: color 200ms ease;
 }
@@ -495,7 +236,15 @@
   border-radius: 4px;
 }
 
+/* Hover effects for pointer devices */
 @media (hover: hover) and (pointer: fine) {
+  .leaveReviewButton:hover {
+    background: #e5d6c3;
+    border-color: #e5d6c3;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  }
+
   .storyButton:hover {
     color: #f5f4f0;
   }
@@ -505,9 +254,50 @@
   }
 }
 
+/* Small mobile screens, including 320px */
+@media (max-width: 374px) {
+  .header {
+    gap: 22px;
+  }
+
+  .leaveReviewButton {
+    padding-inline: 20px;
+  }
+}
+
+/* Medium and large mobile screens (375px and 425px) use the base layout. */
+
+/* Tablet */
+@media (min-width: 768px) {
+  .header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+  }
+
+  .headerContent {
+    flex: 1 1 auto;
+    width: auto;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .header {
+    gap: 48px;
+  }
+}
+
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
+  .leaveReviewButton,
   .storyButton,
   .storyButton svg {
     transition: none;
+  }
+
+  .leaveReviewButton:hover {
+    transform: none;
   }
 }

@@ -598,6 +598,7 @@
     "readMore": "Read client opinions",
     "loadMoreReviews": "Load more",
     "reviewCount": "{count, plural, =0 {No reviews} one {# review} other {# reviews}}",
+    "homeInvitation": "Worked with us? Share your experience.",
     "cta": {
       "leaveReview": "Leave a review"
     },
