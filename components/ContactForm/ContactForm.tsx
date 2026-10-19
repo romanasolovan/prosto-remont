@@ -1,12 +1,12 @@
+
 "use client";
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Formik, Form, FormikHelpers } from "formik";
+import { Formik, Form, type FormikHelpers } from "formik";
 
 import styles from "./ContactForm.module.css";
 import layout from "./ContactFormLayout.module.css";
-
 import buttons from "./Buttons/Buttons.module.css";
 
 import type { FormValues } from "./types";
@@ -26,7 +26,7 @@ import SubmitError from "./SubmitError";
 import ContactSection from "./Sections/ContactSection";
 import ProjectsSection from "./Sections/ProjectsSection";
 import DetailsSection from "./Sections/DetailsSection";
-import { SelectOption } from "./FormSelect";
+import type { SelectOption } from "./FormSelect";
 
 interface ContactFormProps {
   onClose?: () => void;
@@ -121,22 +121,22 @@ export default function ContactForm({ onClose }: ContactFormProps) {
                   files={values.attachments}
                   setFieldValue={setFieldValue}
                 />
-              </div>
 
-              {submitStatus === "error" && <SubmitError />}
+                {submitStatus === "error" && <SubmitError />}
 
-              <div className={styles.formFooter}>
-                {onClose && (
-                  <button
-                    type="button"
-                    onClick={onClose}
-                    className={buttons.secondaryButton}
-                  >
-                    {t("actions.close")}
-                  </button>
-                )}
+                <div className={styles.formFooter}>
+                  {onClose && (
+                    <button
+                      type="button"
+                      onClick={onClose}
+                      className={buttons.secondaryButton}
+                    >
+                      {t("actions.close")}
+                    </button>
+                  )}
 
-                <SubmitButton isSubmitting={isSubmitting} />
+                  <SubmitButton isSubmitting={isSubmitting} />
+                </div>
               </div>
             </Form>
           )}

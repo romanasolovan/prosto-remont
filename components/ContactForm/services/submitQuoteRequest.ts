@@ -3,13 +3,23 @@ import type { FormValues } from "../types";
 export async function submitQuoteRequest(values: FormValues) {
   const formData = new FormData();
 
+  const area = values.area.trim();
+  const description = values.workDescription.trim();
+
+  const workDescription = [
+    area ? `Area: ${area} m²` : "",
+    description ? `Scope of work: ${description}` : "",
+  ]
+    .filter(Boolean)
+    .join("\n");
+
   formData.append("fullName", values.fullName);
   formData.append("phone", values.phone);
   formData.append("email", values.email);
   formData.append("interestedIn", values.interestedIn);
   formData.append("renovationType", values.renovationType);
   formData.append("renovationObject", values.renovationObject);
-  formData.append("workDescription", values.workDescription);
+  formData.append("workDescription", workDescription);
   formData.append("startDate", values.startDate);
   formData.append("location", values.location);
   formData.append("additionalComments", values.additionalComments);

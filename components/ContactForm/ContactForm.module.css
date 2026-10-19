@@ -7,40 +7,11 @@
 }
 
 .formFooter {
-  position: sticky;
-  bottom: 0;
-  z-index: 60;
-  flex-shrink: 0;
   display: flex;
   flex-direction: column-reverse;
-  gap: 10px;
-  padding: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.46);
-  border-radius: 24px;
-  background:
-    radial-gradient(
-      circle at 50% 0%,
-      rgba(255, 255, 255, 0.46),
-      transparent 46%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(238, 234, 226, 0.82),
-      rgba(221, 215, 203, 0.86)
-    );
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  box-shadow:
-    0 -10px 26px rgba(70, 66, 58, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.58);
-}
-
-@media (max-width: 767px) {
-  .formFooter {
-    padding: 28px 22px 24px;
-    gap: 16px;
-    border-radius: 28px 28px 22px 22px;
-  }
+  gap: 12px;
+  margin-top: 22px;
+  padding: 16px 4px 4px;
 }
 
 @media (min-width: 768px) {
@@ -48,7 +19,7 @@
     flex-direction: row;
     justify-content: flex-end;
     gap: 14px;
-    padding: 18px 24px 20px;
-    border-radius: 26px;
+    margin-top: 24px;
+    padding: 18px 8px 6px;
   }
 }

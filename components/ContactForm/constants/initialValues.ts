@@ -7,6 +7,7 @@ export const initialContactFormValues: FormValues = {
   interestedIn: "",
   renovationType: "",
   renovationObject: "",
+  area: "",
   workDescription: "",
   attachments: [],
   startDate: "",

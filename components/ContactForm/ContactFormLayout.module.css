@@ -1,3 +1,4 @@
+
 .form {
   display: flex;
   flex-direction: column;
@@ -12,11 +13,9 @@
   min-height: 0;
   overflow-y: auto;
   overflow-x: clip;
-  padding: 16px 8px 18px;
+  overscroll-behavior: contain;
+  padding: 14px 8px 24px;
   background: transparent;
-  border: 0;
-  box-shadow: none;
-  scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: rgba(70, 66, 58, 0.16) transparent;
 }
@@ -38,9 +37,10 @@
   background: rgba(70, 66, 58, 0.22);
 }
 
-.formGrid {
+.formGrid,
+.projectGrid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 18px;
 }
 
@@ -48,54 +48,27 @@
   grid-column: 1 / -1;
 }
 
-.projectGrid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 18px;
-}
-
 .dateColumn,
+.areaColumn,
 .descriptionColumn {
   min-width: 0;
 }
 
-@media (max-width: 767px) {
-  .formScrollArea {
-    padding: 22px 18px 140px;
-  }
-
-  .formGrid,
-  .projectGrid {
-    gap: 24px;
-  }
-}
-
 @media (min-width: 768px) {
   .formScrollArea {
-    padding: 18px 10px 20px;
-  }
-
-  .formGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .projectGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 16px 10px 26px;
   }
 
   .formGrid,
   .projectGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 28px 30px;
-  }
-
-  .descriptionColumn {
-    grid-column: 1 / -1;
   }
 }
 
 @media (min-width: 1024px) {
   .formScrollArea {
-    padding: 18px 12px 22px;
+    padding: 18px 12px 28px;
   }
 
   .formGrid {
@@ -106,18 +79,10 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 22px;
   }
-
-  .dateColumn {
-    grid-column: 1;
-  }
-
-  .descriptionColumn {
-    grid-column: 2 / 4;
-  }
 }
 
 @media (min-width: 1440px) {
   .formScrollArea {
-    padding: 20px 14px 24px;
+    padding: 20px 14px 30px;
   }
 }

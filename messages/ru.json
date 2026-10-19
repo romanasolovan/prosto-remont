@@ -500,7 +500,8 @@
       "interestedIn": "Меня интересует",
       "renovationType": "Тип работ",
       "renovationObject": "Тип недвижимости",
-      "workDescription": "Площадь / объём работ (м²)",
+      "area": "Площадь (м²)",
+      "workDescription": "Объём работ",
       "attachments": "Вложения",
       "startDate": "Желаемая дата начала",
       "location": "Локация проекта",
@@ -513,7 +514,8 @@
       "interestedIn": "Выберите вариант",
       "renovationType": "Выберите тип работ",
       "renovationObject": "Выберите тип недвижимости",
-      "workDescription": "например, 75 м²",
+      "area": "напр. 75",
+      "workDescription": "Кратко опишите работы",
       "startDate": "Выберите дату",
       "location": "Город, улица, дом",
       "additionalComments": "Кратко опишите ваш проект..."
@@ -545,7 +547,8 @@
       "fileTooLarge": "Размер файла не должен превышать 100 МБ",
       "tooManyFiles": "Можно загрузить не более 10 файлов",
       "invalidFileType": "Разрешены только файлы PDF, JPG, PNG и DOCX",
-      "dateInvalid": "Выберите корректную дату"
+      "dateInvalid": "Выберите корректную дату",
+      "areaInvalid": "Введите корректную площадь в м²"
     },
     "fileUpload": {
       "sizeUnit": "MB",

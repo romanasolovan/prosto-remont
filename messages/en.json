@@ -485,7 +485,8 @@
       "interestedIn": "I am interested in",
       "renovationType": "Type of Work",
       "renovationObject": "Property Type",
-      "workDescription": "Area / Scope of Work (m²)",
+      "area": "Area (m²)",
+      "workDescription": "Scope of Work",
       "attachments": "Attachments",
       "startDate": "Preferred Start Date",
       "location": "Project Location",
@@ -498,7 +499,8 @@
       "interestedIn": "Select an option",
       "renovationType": "Select type of work",
       "renovationObject": "Select property type",
-      "workDescription": "e.g. 75 m²",
+      "area": "e.g. 75",
+      "workDescription": "Briefly describe the work",
       "startDate": "Select a date",
       "location": "City, street, building",
       "additionalComments": "Tell us more about your project..."
@@ -530,7 +532,8 @@
       "fileTooLarge": "File size must not exceed 100 MB",
       "tooManyFiles": "You can upload a maximum of 10 files",
       "invalidFileType": "Only PDF, JPG, PNG, and DOCX files are allowed",
-      "dateInvalid": "Please select a valid date"
+      "dateInvalid": "Please select a valid date",
+      "areaInvalid": "Enter a valid area in m²"
     },
     "fileUpload": {
       "sizeUnit": "MB",

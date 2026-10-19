@@ -5,6 +5,7 @@ export interface FormValues {
   interestedIn: string;
   renovationType: string;
   renovationObject: string;
+  area: string;
   workDescription: string;
   attachments: File[];
   startDate: string;

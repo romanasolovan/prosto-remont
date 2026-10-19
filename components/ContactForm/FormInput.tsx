@@ -1,4 +1,5 @@
-import { Field } from "formik";
+
+import { Field, useField, useFormikContext } from "formik";
 import styles from "./Fields/FormFields.module.css";
 
 interface FormInputProps {
@@ -26,14 +27,27 @@ export default function FormInput({
   hint,
   autoComplete,
 }: FormInputProps) {
-  const visibleError = touched ? error : undefined;
+  const [field] = useField<string>(name);
+  const { submitCount } = useFormikContext();
+
+  const hasValue = field.value.trim().length > 0;
+  const showError = Boolean(
+    error && (submitCount > 0 || (touched && hasValue)),
+  );
+
+  const visibleError = showError ? error : undefined;
   const hintId = hint ? `${id}-hint` : undefined;
   const errorId = visibleError ? `${id}-error` : undefined;
 
   return (
     <div className={styles.formGroup}>
       <label htmlFor={id} className={styles.label}>
-        {label} {required && <span className={styles.required}>*</span>}
+        {label}
+        {required && (
+          <span className={styles.required} aria-hidden="true">
+            *
+          </span>
+        )}
       </label>
 
       <Field
@@ -43,8 +57,8 @@ export default function FormInput({
         placeholder={placeholder}
         className={styles.input}
         autoComplete={autoComplete}
-        aria-required={required}
-        aria-invalid={Boolean(visibleError)}
+        aria-required={required || undefined}
+        aria-invalid={showError}
         aria-describedby={
           [hintId, errorId].filter(Boolean).join(" ") || undefined
         }
@@ -56,12 +70,15 @@ export default function FormInput({
         </p>
       )}
 
-      <div className={styles.errorSlot} id={`${id}-error`} aria-live="polite">
-        <div
-          className={`${styles.error} ${visibleError ? styles.visible : ""}`}
+      <div className={styles.errorSlot} aria-live="polite">
+        <p
+          id={`${id}-error`}
+          className={`${styles.error} ${
+            showError ? styles.visible : ""
+          }`}
         >
           {visibleError || "\u00A0"}
-        </div>
+        </p>
       </div>
     </div>
   );

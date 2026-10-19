@@ -500,7 +500,8 @@
       "interestedIn": "Interesuje mnie",
       "renovationType": "Rodzaj prac",
       "renovationObject": "Typ nieruchomości",
-      "workDescription": "Powierzchnia / zakres prac (m²)",
+      "area": "Powierzchnia (m²)",
+      "workDescription": "Zakres prac",
       "attachments": "Załączniki",
       "startDate": "Preferowany termin rozpoczęcia",
       "location": "Lokalizacja projektu",
@@ -513,7 +514,8 @@
       "interestedIn": "Wybierz opcję",
       "renovationType": "Wybierz rodzaj prac",
       "renovationObject": "Wybierz typ nieruchomości",
-      "workDescription": "np. 75 m²",
+      "area": "np. 75",
+      "workDescription": "Krótko opisz zakres prac",
       "startDate": "Wybierz datę",
       "location": "Miasto, ulica, budynek",
       "additionalComments": "Opisz krótko swój projekt..."
@@ -545,7 +547,8 @@
       "fileTooLarge": "Rozmiar pliku nie może przekraczać 100 MB",
       "tooManyFiles": "Możesz przesłać maksymalnie 10 plików",
       "invalidFileType": "Dozwolone są wyłącznie pliki PDF, JPG, PNG i DOCX",
-      "dateInvalid": "Wybierz poprawną datę"
+      "dateInvalid": "Wybierz poprawną datę",
+      "areaInvalid": "Wprowadź poprawną powierzchnię w m²"
     },
     "fileUpload": {
       "sizeUnit": "MB",

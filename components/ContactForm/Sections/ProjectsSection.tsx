@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useTranslations } from "next-intl";
@@ -11,6 +12,7 @@ import type {
 import type { FormValues } from "../types";
 import type { SelectOption } from "../FormSelect";
 
+import FormInput from "../FormInput";
 import FormSelect from "../FormSelect";
 import FormDatePicker from "../FormDatePicker";
 import FormTextarea from "../FormTextarea";
@@ -27,7 +29,9 @@ interface ProjectSectionProps {
   renovationObjectOptions: SelectOption[];
   setFieldValue: FormikHelpers<FormikValues>["setFieldValue"];
   setFieldTouched: FormikHelpers<FormikValues>["setFieldTouched"];
-  validateField: (field: string) => Promise<void> | Promise<string | undefined>;
+  validateField: (
+    field: string,
+  ) => Promise<void> | Promise<string | undefined>;
 }
 
 export default function ProjectSection({
@@ -49,7 +53,10 @@ export default function ProjectSection({
         <p className={sections.sectionEyebrow}>
           {t("sections.project.eyebrow")}
         </p>
-        <h3 className={sections.sectionTitle}>{t("sections.project.title")}</h3>
+
+        <h3 className={sections.sectionTitle}>
+          {t("sections.project.title")}
+        </h3>
       </div>
 
       <div className={layout.projectGrid}>
@@ -114,14 +121,25 @@ export default function ProjectSection({
           />
         </div>
 
+        <div className={layout.areaColumn}>
+          <FormInput
+            id="area"
+            name="area"
+            label={t("fields.area")}
+            placeholder={t("placeholders.area")}
+            error={errors.area}
+            touched={touched.area}
+            autoComplete="off"
+          />
+        </div>
+
         <div className={layout.descriptionColumn}>
           <FormTextarea
             id="workDescription"
             name="workDescription"
             label={t("fields.workDescription")}
             placeholder={t("placeholders.workDescription")}
-            hint={t("fieldsHint.workDescription")}
-            rows={4}
+            rows={2}
           />
         </div>
       </div>
