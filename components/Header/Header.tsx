@@ -38,8 +38,8 @@ export default function Header() {
     { href: "/services", label: t("services") },
     { href: "/projects", label: t("projects") },
     { href: "/reviews", label: t("reviews") },
-    { href: "/blog", label: t("blog") },
     { href: "/contact", label: t("contact") },
+    { href: "/blog", label: t("blog") },
   ];
 
   useEffect(() => {
