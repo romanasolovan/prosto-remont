@@ -1,4 +1,3 @@
-
 .form {
   display: flex;
   flex-direction: column;
@@ -84,5 +83,33 @@
 @media (min-width: 1440px) {
   .formScrollArea {
     padding: 20px 14px 30px;
+  }
+}
+
+/* Details section */
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.detailsGrid textarea {
+  min-height: 150px;
+  height: 150px;
+  resize: none;
+  border-radius: 20px;
+}
+
+.detailsGrid > * {
+  min-width: 0;
+  grid-column: auto;
+}
+
+@media (min-width: 768px) {
+  .detailsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
   }
 }

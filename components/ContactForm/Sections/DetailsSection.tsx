@@ -1,20 +1,14 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import type { FormikHelpers, FormikValues } from "formik";
-
-import type { FormValues } from "../types";
+import type { DetailsSectionProps } from "../types";
 
 import FileUpload from "../FileUpload";
 import FormTextarea from "../FormTextarea";
+import FormCheckbox from "../FormCheckbox";
 
 import layout from "../ContactFormLayout.module.css";
 import sections from "./FormSection.module.css";
-
-interface DetailsSectionProps {
-  files: File[];
-  setFieldValue: FormikHelpers<FormikValues>["setFieldValue"];
-}
 
 export default function DetailsSection({
   files,
@@ -31,7 +25,7 @@ export default function DetailsSection({
         <h3 className={sections.sectionTitle}>{t("sections.details.title")}</h3>
       </div>
 
-      <div className={layout.formGrid}>
+      <div className={layout.detailsGrid}>
         <FileUpload files={files} setFieldValue={setFieldValue} />
 
         <FormTextarea
@@ -41,6 +35,8 @@ export default function DetailsSection({
           placeholder={t("placeholders.additionalComments")}
         />
       </div>
+      
+      <FormCheckbox />
     </div>
   );
 }

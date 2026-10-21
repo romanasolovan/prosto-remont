@@ -17,8 +17,9 @@ export default function QuoteRequestModal({ onClose }: QuoteRequestModalProps) {
     document.body.style.overflow = "hidden";
 
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onClose();
-    };
+  if (event.key !== "Escape" || event.defaultPrevented) return;
+  onClose();
+};
 
     document.addEventListener("keydown", onKeyDown);
 

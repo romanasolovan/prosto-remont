@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -26,11 +25,7 @@ import SubmitError from "./SubmitError";
 import ContactSection from "./Sections/ContactSection";
 import ProjectsSection from "./Sections/ProjectsSection";
 import DetailsSection from "./Sections/DetailsSection";
-import type { SelectOption } from "./FormSelect";
-
-interface ContactFormProps {
-  onClose?: () => void;
-}
+import type { SelectOption, ContactFormProps } from "./types";
 
 export default function ContactForm({ onClose }: ContactFormProps) {
   const t = useTranslations("form");

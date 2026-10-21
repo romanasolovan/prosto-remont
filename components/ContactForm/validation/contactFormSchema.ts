@@ -1,4 +1,3 @@
-
 import * as Yup from "yup";
 
 type TranslationFunction = (key: string) => string;
@@ -13,6 +12,34 @@ const isValidPhoneNumber = (value: string | undefined): boolean => {
   const hasValidLength = digits.length >= 7 && digits.length <= 15;
 
   return hasValidCharacters && hasValidLength;
+};  
+
+const isValidFutureDate = (value: string | undefined): boolean => {
+  if (!value) return true;
+
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
+
+  if (!match) return false;
+
+  const year = Number(match[1]);
+  const month = Number(match[2]);
+  const day = Number(match[3]);
+
+  const date = new Date(0);
+  date.setFullYear(year, month - 1, day);
+  date.setHours(0, 0, 0, 0);
+
+  const isValidDate =
+    date.getFullYear() === year &&
+    date.getMonth() === month - 1 &&
+    date.getDate() === day;
+
+  if (!isValidDate) return false;
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  return date >= today;
 };
 
 export const createContactFormSchema = (t: TranslationFunction) =>
@@ -56,13 +83,21 @@ export const createContactFormSchema = (t: TranslationFunction) =>
 
     workDescription: Yup.string(),
 
-    startDate: Yup.date()
-      .required(t("validation.required"))
-      .typeError(t("validation.dateInvalid")),
+    startDate: Yup.string()
+  .required(t("validation.required"))
+  .test(
+    "valid-date",
+    t("validation.dateInvalid"),
+    isValidFutureDate,
+  ),
 
     location: Yup.string()
       .trim()
       .required(t("validation.required")),
 
     additionalComments: Yup.string(),
+
+    privacyAcknowledged: Yup.boolean()
+  .oneOf([true], t("validation.privacyRequired"))
+  .required(t("validation.privacyRequired")),
   });

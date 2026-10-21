@@ -10,7 +10,7 @@ import type {
 } from "formik";
 
 import type { FormValues } from "../types";
-import type { SelectOption } from "../FormSelect";
+import type { SelectOption } from "../types";
 
 import FormInput from "../FormInput";
 import FormSelect from "../FormSelect";

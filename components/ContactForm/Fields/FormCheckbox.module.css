@@ -1,0 +1,80 @@
+.checkboxGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(70, 66, 58, 0.12);
+}
+
+.checkboxRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.checkbox {
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  margin: 2px 0 0;
+  accent-color: #181713;
+  cursor: pointer;
+}
+
+.checkbox:focus-visible {
+  outline: 2px solid #181713;
+  outline-offset: 3px;
+}
+
+.checkboxLabel {
+  color: rgba(24, 23, 19, 0.78);
+  font-family: "Barlow", sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.privacyLink {
+  align-self: flex-start;
+  margin-left: 30px;
+  color: rgba(24, 23, 19, 0.7);
+  font-family: "Barlow", sans-serif;
+  font-size: 0.8rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.privacyLink:hover {
+  color: #181713;
+}
+
+.privacyLink:focus-visible {
+  outline: 2px solid #181713;
+  outline-offset: 4px;
+}
+
+/* Validation message */
+
+.errorSlot {
+  min-height: 40px;
+  margin-left: 30px;
+}
+
+.error {
+  margin: 0;
+  color: transparent;
+  font-family: "Barlow", sans-serif;
+  font-size: 0.76rem;
+  line-height: 1.4;
+}
+
+.error.visible {
+  color: #8f322b;
+}
+
+@media (min-width: 768px) {
+  .checkboxGroup {
+    margin-top: 26px;
+  }
+}

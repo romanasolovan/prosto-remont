@@ -1,42 +1,20 @@
+
 "use client";
 
 import {
-  KeyboardEvent,
+  type KeyboardEvent,
   useCallback,
   useEffect,
   useId,
   useRef,
   useState,
 } from "react";
-import { useTranslations } from "next-intl";
+import type {SelectOption, FormSelectProps} from "./types";
+import { useFormikContext } from "formik";
+
 import fields from "./Fields/FormFields.module.css";
 import styles from "./Fields/FormSelect.module.css";
 
-export interface SelectOption {
-  value: string;
-  label: string;
-}
-
-interface FormSelectProps {
-  id: string;
-  name: string;
-  label: string;
-  placeholder: string;
-  value: string;
-  options: SelectOption[];
-  error?: string;
-  touched?: boolean;
-  required?: boolean;
-  onChange: (field: string, value: string, shouldValidate?: boolean) => void;
-  onBlur: (
-    field: string,
-    isTouched?: boolean,
-    shouldValidate?: boolean,
-  ) => void;
-  validateField: (
-    field: string,
-  ) => void | Promise<string | undefined> | Promise<void>;
-}
 
 export default function FormSelect({
   id,
@@ -52,13 +30,23 @@ export default function FormSelect({
   onBlur,
   validateField,
 }: FormSelectProps) {
-  const t = useTranslations("form");
+  
+  const { submitCount } = useFormikContext();
+
   const listId = useId();
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const optionRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
-  const selectedIndex = options.findIndex((option) => option.value === value);
-  const selectedOption = options.find((option) => option.value === value);
-  const visibleError = touched ? error : undefined;
+  const selectedIndex = options.findIndex(
+    (option) => option.value === value,
+  );
+  const selectedOption = options[selectedIndex];
+
+  const showError = Boolean(
+    error && (submitCount > 0 || (touched && Boolean(value))),
+  );
+  const visibleError = showError ? error : undefined;
 
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(
@@ -66,35 +54,63 @@ export default function FormSelect({
   );
 
   const closeSelect = useCallback(
-    (shouldTouch = true) => {
+    (shouldTouch = true, restoreFocus = false) => {
       setIsOpen(false);
 
       if (shouldTouch) {
         onBlur(name, true, true);
       }
+
+      if (restoreFocus) {
+        triggerRef.current?.focus();
+      }
     },
     [name, onBlur],
   );
 
-  const openSelect = () => {
-    setActiveIndex(selectedIndex >= 0 ? selectedIndex : 0);
-    setIsOpen(true);
-  };
+  const openSelect = useCallback(
+    (initialIndex?: number) => {
+      if (!options.length) return;
 
-  const chooseOption = async (option?: SelectOption) => {
-    if (!option) return;
+      setActiveIndex(
+        initialIndex ??
+          (selectedIndex >= 0 ? selectedIndex : 0),
+      );
+      setIsOpen(true);
+    },
+    [options.length, selectedIndex],
+  );
 
-    onChange(name, option.value, true);
-    onBlur(name, true, false);
-    setIsOpen(false);
+  const chooseOption = useCallback(
+    (option?: SelectOption, restoreFocus = false) => {
+      if (!option) return;
 
-    await validateField(name);
-  };
+      onChange(name, option.value, true);
+      onBlur(name, true, false);
+      setIsOpen(false);
+
+      void validateField(name);
+
+      if (restoreFocus) {
+        triggerRef.current?.focus();
+      }
+    },
+    [name, onChange, onBlur, validateField],
+  );
 
   useEffect(() => {
+    if (!isOpen) return;
+
+    const activeOption = optionRefs.current[activeIndex];
+
+    activeOption?.focus();
+  }, [activeIndex, isOpen]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
     const handleClickOutside = (event: MouseEvent) => {
       if (
-        isOpen &&
         wrapperRef.current &&
         !wrapperRef.current.contains(event.target as Node)
       ) {
@@ -105,53 +121,78 @@ export default function FormSelect({
     document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener(
+        "mousedown",
+        handleClickOutside,
+      );
     };
   }, [isOpen, closeSelect]);
 
-  const handleKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
+  const handleTriggerKeyDown = (
+    event: KeyboardEvent<HTMLButtonElement>,
+  ) => {
     if (!options.length) return;
 
     if (event.key === "ArrowDown") {
       event.preventDefault();
-
-      if (!isOpen) {
-        openSelect();
-        return;
-      }
-
-      setActiveIndex((current) =>
-        current + 1 >= options.length ? 0 : current + 1,
-      );
+      openSelect();
     }
 
     if (event.key === "ArrowUp") {
       event.preventDefault();
-
-      if (!isOpen) {
-        openSelect();
-        return;
-      }
-
-      setActiveIndex((current) =>
-        current - 1 < 0 ? options.length - 1 : current - 1,
+      openSelect(
+        selectedIndex >= 0
+          ? selectedIndex
+          : options.length - 1,
       );
+    }
+
+    if (event.key === "Home") {
+      event.preventDefault();
+      openSelect(0);
+    }
+
+    if (event.key === "End") {
+      event.preventDefault();
+      openSelect(options.length - 1);
+    }
+  };
+
+  const handleOptionKeyDown = (
+    event: KeyboardEvent<HTMLButtonElement>,
+    index: number,
+  ) => {
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      setActiveIndex((index + 1) % options.length);
+    }
+
+    if (event.key === "ArrowUp") {
+      event.preventDefault();
+      setActiveIndex(
+        (index - 1 + options.length) % options.length,
+      );
+    }
+
+    if (event.key === "Home") {
+      event.preventDefault();
+      setActiveIndex(0);
+    }
+
+    if (event.key === "End") {
+      event.preventDefault();
+      setActiveIndex(options.length - 1);
     }
 
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
-
-      if (!isOpen) {
-        openSelect();
-        return;
-      }
-
-      void chooseOption(options[activeIndex]);
+      chooseOption(options[index], true);
     }
 
     if (event.key === "Escape") {
       event.preventDefault();
-      closeSelect(false);
+      event.stopPropagation();
+      closeSelect(false, true);
     }
 
     if (event.key === "Tab") {
@@ -161,29 +202,47 @@ export default function FormSelect({
 
   return (
     <div className={fields.formGroup} ref={wrapperRef}>
-      <label htmlFor={id} className={fields.label}>
-        {label} {required && <span className={fields.required}>*</span>}
+      <label id={`${id}-label`} className={fields.label}>
+        {label}
+        {required && (
+          <span className={fields.required} aria-hidden="true">
+            *
+          </span>
+        )}
       </label>
 
       <div className={styles.customSelect}>
         <button
+          ref={triggerRef}
           id={id}
           type="button"
-          className={`${styles.selectButton} ${!value ? styles.isPlaceholder : ""} ${
-            visibleError ? styles.hasError : ""
-          }`}
+          className={`${styles.selectButton} ${
+            !value ? styles.isPlaceholder : ""
+          } ${showError ? styles.hasError : ""}`}
+          aria-labelledby={`${id}-label ${id}`}
           aria-haspopup="listbox"
           aria-expanded={isOpen}
           aria-controls={isOpen ? listId : undefined}
-          aria-describedby={visibleError ? `${id}-error` : undefined}
+          aria-describedby={
+            visibleError ? `${id}-error` : undefined
+          }
           onClick={() => {
-            if (isOpen) closeSelect(false);
-            else openSelect();
+            if (isOpen) {
+              closeSelect(false);
+            } else {
+              openSelect();
+            }
           }}
-          onKeyDown={handleKeyDown}
+          onKeyDown={handleTriggerKeyDown}
         >
-          <span>{selectedOption?.label || placeholder}</span>
-          <span className={styles.selectIcon} aria-hidden="true" />
+          <span className={styles.selectValue}>
+            {selectedOption?.label || placeholder}
+          </span>
+
+          <span
+            className={styles.selectIcon}
+            aria-hidden="true"
+          />
         </button>
 
         {isOpen && (
@@ -191,24 +250,40 @@ export default function FormSelect({
             id={listId}
             className={styles.selectMenu}
             role="listbox"
-            aria-label={t("select.chooseOption")}
+            aria-labelledby={`${id}-label`}
           >
             {options.map((option, index) => (
               <button
                 key={option.value}
+                ref={(element) => {
+                  optionRefs.current[index] = element;
+                }}
                 type="button"
                 role="option"
+                tabIndex={index === activeIndex ? 0 : -1}
                 aria-selected={option.value === value}
                 className={`${styles.selectOption} ${
-                  option.value === value ? styles.isSelected : ""
-                } ${index === activeIndex ? styles.isActive : ""}`}
+                  option.value === value
+                    ? styles.isSelected
+                    : ""
+                } ${
+                  index === activeIndex
+                    ? styles.isActive
+                    : ""
+                }`}
                 onMouseEnter={() => setActiveIndex(index)}
-                onClick={() => void chooseOption(option)}
+                onClick={() => chooseOption(option)}
+                onKeyDown={(event) =>
+                  handleOptionKeyDown(event, index)
+                }
               >
                 <span>{option.label}</span>
 
                 {option.value === value && (
-                  <span className={styles.optionMark} aria-hidden="true">
+                  <span
+                    className={styles.optionMark}
+                    aria-hidden="true"
+                  >
                     ✓
                   </span>
                 )}
@@ -218,12 +293,15 @@ export default function FormSelect({
         )}
       </div>
 
-      <div className={fields.errorSlot} id={`${id}-error`} aria-live="polite">
-        <div
-          className={`${fields.error} ${visibleError ? fields.visible : ""}`}
+      <div className={fields.errorSlot} aria-live="polite">
+        <p
+          id={`${id}-error`}
+          className={`${fields.error} ${
+            showError ? fields.visible : ""
+          }`}
         >
           {visibleError || "\u00A0"}
-        </div>
+        </p>
       </div>
     </div>
   );

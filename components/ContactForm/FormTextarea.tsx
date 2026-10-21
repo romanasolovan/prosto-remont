@@ -30,7 +30,7 @@ export default function FormTextarea({
   const errorId = visibleError ? `${id}-error` : undefined;
 
   return (
-    <div className={`${fields.formGroup} ${fields.fullWidth}`}>
+    <div className={fields.formGroup}>
       <label htmlFor={id} className={fields.label}>
         {label} {required && <span className={fields.required}>*</span>}
       </label>

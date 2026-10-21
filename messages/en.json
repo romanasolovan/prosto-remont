@@ -533,7 +533,8 @@
       "tooManyFiles": "You can upload a maximum of 10 files",
       "invalidFileType": "Only PDF, JPG, PNG, and DOCX files are allowed",
       "dateInvalid": "Please select a valid date",
-      "areaInvalid": "Enter a valid area in m²"
+      "areaInvalid": "Enter a valid area in m²",
+      "privacyRequired": "Please acknowledge the data processing information."
     },
     "fileUpload": {
       "sizeUnit": "MB",
@@ -545,7 +546,11 @@
     "submit": "Submit Request",
     "submitting": "Submitting...",
     "successMessage": "Thank you. Your request has been submitted successfully.",
-    "errorMessage": "Something went wrong. Please try again."
+    "errorMessage": "Something went wrong. Please try again.",
+    "privacy": {
+      "acknowledgment": "I acknowledge that my personal data will be processed to respond to my renovation inquiry.",
+      "learnMore": "Learn about RODO / GDPR"
+    }
   },
   "getContact": {
     "hero": {

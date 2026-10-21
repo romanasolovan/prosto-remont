@@ -17,7 +17,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 148px;
   padding: 24px 22px;
   border: 1px dashed rgba(70, 66, 58, 0.22);
   border-radius: 22px;
@@ -50,12 +49,10 @@
 
 .fileLabel:hover,
 .isDraggingFiles {
-  transform: translateY(-2px);
-  border-color: rgba(70, 66, 58, 0.34);
-  background-color: rgba(255, 255, 255, 0.68);
-  box-shadow:
-    0 16px 30px rgba(70, 66, 58, 0.12),
-    0 0 0 5px rgba(70, 66, 58, 0.04);
+  transform: none;
+  border-color: rgba(24, 23, 19, 0.5);
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: none;
 }
 
 .fileInput:focus-visible + .fileLabel {
@@ -64,10 +61,10 @@
 }
 
 .uploadIcon {
-  width: 36px;
-  height: 36px;
+  width: 25px;
+  height: 25px;
   margin-bottom: 10px;
-  color: rgba(24, 23, 19, 0.66);
+  color: rgba(24, 23, 19, 0.65);
 }
 
 .fileError {

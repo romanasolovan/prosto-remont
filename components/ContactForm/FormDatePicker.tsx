@@ -8,37 +8,14 @@ import {
   useRef,
   useState,
 } from "react";
+import type {FormDatePickerProps} from "./types";
 import { createPortal } from "react-dom";
 import { useLocale, useTranslations } from "next-intl";
 import { DayPicker } from "react-day-picker";
+import { useFormikContext } from "formik";
 import { enUS, pl, ru, uk } from "date-fns/locale";
 import fields from "./Fields/FormFields.module.css";
 import styles from "./Fields/FormDatePicker.module.css";
-
-interface FormDatePickerProps {
-  id: string;
-  name: string;
-  label: string;
-  value: string;
-  error?: string;
-  touched?: boolean;
-  required?: boolean;
-  hint?: string;
-  placeholder?: string;
-  setFieldValue: (
-    field: string,
-    value: string,
-    shouldValidate?: boolean,
-  ) => void;
-  setFieldTouched: (
-    field: string,
-    isTouched?: boolean,
-    shouldValidate?: boolean,
-  ) => void;
-  validateField: (
-    field: string,
-  ) => void | Promise<string | undefined> | Promise<void>;
-}
 
 const localeMap = {
   en: enUS,
@@ -57,15 +34,28 @@ const getToday = () => {
   return today;
 };
 
-const parseDateValue = (value: string) => {
+const parseDateValue = (value: string): Date | undefined => {
   const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
+
   if (!match) return undefined;
 
-  const [, year, month, day] = match;
-  const date = new Date(Number(year), Number(month) - 1, Number(day));
+  const year = Number(match[1]);
+  const month = Number(match[2]);
+  const day = Number(match[3]);
+
+  const date = new Date(0);
+  date.setFullYear(year, month - 1, day);
   date.setHours(0, 0, 0, 0);
 
-  return Number.isNaN(date.getTime()) ? undefined : date;
+  if (
+    date.getFullYear() !== year ||
+    date.getMonth() !== month - 1 ||
+    date.getDate() !== day
+  ) {
+    return undefined;
+  }
+
+  return date;
 };
 
 const formatDateValue = (date: Date) => {
@@ -93,13 +83,19 @@ export default function FormDatePicker({
   const t = useTranslations("form");
   const locale = useLocale();
 
+  const { submitCount } = useFormikContext();
+
   const wrapperRef = useRef<HTMLDivElement>(null);
   const inputWrapRef = useRef<HTMLDivElement>(null);
   const popoverRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const today = getToday();
   const selectedDate = parseDateValue(value);
-  const visibleError = touched ? error : undefined;
+  const showError = Boolean(
+  error && (submitCount > 0 || (touched && value.trim().length > 0)),
+);
+const visibleError = showError ? error : undefined;
   const hintId = hint ? `${id}-hint` : undefined;
   const errorId = visibleError ? `${id}-error` : undefined;
 
@@ -189,18 +185,30 @@ export default function FormDatePicker({
     };
   }, [isOpen, name, setFieldTouched]);
 
-  const openCalendar = () => {
-    setMonth(selectedDate ?? today);
-    setIsOpen(true);
+  useEffect(() => {
+  if (!isOpen) return;
 
-    window.requestAnimationFrame(() => {
-      inputWrapRef.current?.scrollIntoView({
-        block: "nearest",
-        inline: "nearest",
-        behavior: "smooth",
-      });
-    });
+  const handleEscape = (event: KeyboardEvent) => {
+    if (event.key !== "Escape") return;
+
+    event.preventDefault();
+    event.stopImmediatePropagation();
+
+    setIsOpen(false);
+    inputRef.current?.focus();
   };
+
+  document.addEventListener("keydown", handleEscape, true);
+
+  return () => {
+    document.removeEventListener("keydown", handleEscape, true);
+  };
+}, [isOpen]);
+
+  const openCalendar = () => {
+  setMonth(selectedDate ?? today);
+  setIsOpen(true);
+};
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const nextValue = event.target.value.replace(/[^\d-]/g, "").slice(0, 10);
@@ -208,19 +216,21 @@ export default function FormDatePicker({
   };
 
   const handleSelect = async (date: Date | undefined) => {
-    if (!date) return;
+  if (!date) return;
 
-    const normalizedDate = new Date(date);
-    normalizedDate.setHours(0, 0, 0, 0);
+  const normalizedDate = new Date(date);
+  normalizedDate.setHours(0, 0, 0, 0);
 
-    if (normalizedDate < today) return;
+  if (normalizedDate < getToday()) return;
 
-    setFieldValue(name, formatDateValue(normalizedDate), true);
-    setFieldTouched(name, true, false);
-    setIsOpen(false);
+  await setFieldValue(name, formatDateValue(normalizedDate), false);
+  await setFieldTouched(name, true, false);
+  await validateField(name);
 
-    await validateField(name);
-  };
+  setIsOpen(false);
+
+  inputRef.current?.focus();
+};
 
   const canUsePortal = typeof document !== "undefined";
 
@@ -287,6 +297,7 @@ export default function FormDatePicker({
 
       <div className={styles.dateInputWrap} ref={inputWrapRef}>
         <input
+          ref={inputRef}
           id={id}
           name={name}
           type="text"
@@ -295,14 +306,13 @@ export default function FormDatePicker({
           placeholder={placeholder}
           className={fields.input}
           aria-required={required}
-          aria-invalid={Boolean(visibleError)}
-          aria-describedby={
-            [hintId, errorId].filter(Boolean).join(" ") || undefined
-          }
-          onFocus={openCalendar}
-          onClick={openCalendar}
-          onChange={handleInputChange}
-          onBlur={() => setFieldTouched(name, true, true)}
+  aria-invalid={Boolean(visibleError)}
+  aria-describedby={
+    [hintId, errorId].filter(Boolean).join(" ") || undefined
+  }
+  onClick={openCalendar}
+  onChange={handleInputChange}
+  onBlur={() => setFieldTouched(name, true, true)}
         />
 
         <button

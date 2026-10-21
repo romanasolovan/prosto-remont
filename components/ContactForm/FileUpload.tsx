@@ -5,11 +5,7 @@ import { useTranslations } from "next-intl";
 import buttons from "./Buttons/Buttons.module.css";
 import fields from "./Fields/FormFields.module.css";
 import styles from "./Fields/FileUpload.module.css";
-
-interface FileUploadProps {
-  files: File[];
-  setFieldValue: (field: string, value: File[]) => void;
-}
+import type { FileUploadProps } from "./types";
 
 const MAX_FILE_SIZE = 100 * 1024 * 1024;
 const MAX_FILES = 10;
@@ -76,7 +72,7 @@ export default function FileUpload({ files, setFieldValue }: FileUploadProps) {
   };
 
   return (
-    <div className={`${fields.formGroup} ${fields.fullWidth}`}>
+    <div className={fields.formGroup}>
       <label htmlFor="attachments" className={fields.label}>
         {t("fields.attachments")}
       </label>

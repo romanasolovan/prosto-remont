@@ -13,4 +13,5 @@ export const initialContactFormValues: FormValues = {
   startDate: "",
   location: "",
   additionalComments: "",
+  privacyAcknowledged: false,
 };

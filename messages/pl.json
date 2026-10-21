@@ -548,7 +548,8 @@
       "tooManyFiles": "Możesz przesłać maksymalnie 10 plików",
       "invalidFileType": "Dozwolone są wyłącznie pliki PDF, JPG, PNG i DOCX",
       "dateInvalid": "Wybierz poprawną datę",
-      "areaInvalid": "Wprowadź poprawną powierzchnię w m²"
+      "areaInvalid": "Wprowadź poprawną powierzchnię w m²",
+      "privacyRequired": "Potwierdź zapoznanie się z informacją o przetwarzaniu danych."
     },
     "fileUpload": {
       "sizeUnit": "MB",
@@ -560,7 +561,11 @@
     "submit": "Wyślij zapytanie",
     "submitting": "Wysyłanie...",
     "successMessage": "Dziękujemy. Twoje zapytanie zostało wysłane pomyślnie.",
-    "errorMessage": "Coś poszło nie tak. Spróbuj ponownie."
+    "errorMessage": "Coś poszło nie tak. Spróbuj ponownie.",
+    "privacy": {
+      "acknowledgment": "Przyjmuję do wiadomości, że moje dane osobowe będą przetwarzane w celu udzielenia odpowiedzi na zapytanie dotyczące remontu.",
+      "learnMore": "Dowiedz się więcej o RODO i przetwarzaniu danych osobowych."
+    }
   },
   "getContact": {
     "hero": {
