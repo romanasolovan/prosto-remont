@@ -9,7 +9,7 @@
   min-height: 100svh;
   overflow: hidden;
   margin-top: calc(var(--header-height, 0px) * -1);
-  padding: calc(var(--header-height, 0px) + 72px) 0 88px;
+  padding: calc(var(--header-height, 0px) + 52px) 0 88px;
   background:
     radial-gradient(
       circle at 18% 0%,
@@ -56,10 +56,10 @@
   position: relative;
   z-index: 1;
   display: grid;
-  max-width: 760px;
+  max-width: 100%;
   margin: 0 auto;
   justify-items: center;
-  gap: 18px;
+  gap: 14px;
   text-align: center;
 }
 
@@ -87,31 +87,41 @@
   margin: 0;
   color: #f5f4f0;
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(44px, 9vw, 82px);
+  font-size: clamp(36px, 5vw, 60px);
   font-weight: 500;
-  letter-spacing: -0.05em;
-  line-height: 0.94;
+  letter-spacing: -0.045em;
+  line-height: 1.05;
   text-wrap: balance;
 }
 
 .description {
-  max-width: 580px;
+  max-width: 760px;
   margin: 0;
   color: rgba(245, 244, 240, 0.56);
   font-family: "Barlow", sans-serif;
-  font-size: 14px;
+  font-size: clamp(13px, 1.2vw, 15px);
   font-weight: 300;
-  line-height: 1.75;
+  line-height: 1.7;
   text-wrap: balance;
 }
 
-.postsGrid {
+/* Blog divider */
+
+.divider {
   position: relative;
   z-index: 1;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-  margin-top: clamp(42px, 7vw, 72px);
+  width: 100%;
+  height: 1px;
+  margin: clamp(36px, 5vw, 56px) 0 32px;
+  background: rgba(245, 244, 240, 0.18);
+}
+
+/* Blog content */
+
+.contentArea {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
 }
 
 .emptyState {
@@ -128,162 +138,6 @@
   font-size: 14px;
   line-height: 1.7;
   text-align: center;
-}
-
-.postCard {
-  min-width: 0;
-}
-
-.postLink {
-  position: relative;
-  display: block;
-  aspect-ratio: 1;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: 24px;
-  background: #111419;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.04),
-    0 18px 44px rgba(0, 0, 0, 0.18);
-  isolation: isolate;
-  transition:
-    border-color 220ms ease,
-    box-shadow 220ms ease,
-    transform 220ms ease;
-}
-
-.postImage {
-  object-fit: cover;
-  transition:
-    filter 420ms ease,
-    transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.postOverlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(4, 5, 6, 0.04) 0%,
-      rgba(4, 5, 6, 0.08) 58%,
-      rgba(4, 5, 6, 0.52) 100%
-    );
-  pointer-events: none;
-  transition: background 220ms ease;
-}
-
-.postArrow {
-  position: absolute;
-  right: 18px;
-  bottom: 18px;
-  z-index: 2;
-  display: grid;
-  width: 44px;
-  height: 44px;
-  place-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  background: rgba(8, 9, 11, 0.7);
-  color: #f5f4f0;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  transition:
-    background-color 220ms ease,
-    border-color 220ms ease,
-    transform 220ms ease;
-}
-
-.postArrow svg {
-  width: 18px;
-  height: 18px;
-}
-
-.postLink:focus-visible {
-  outline: 2px solid rgba(245, 244, 240, 0.68);
-  outline-offset: 4px;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .postLink:hover {
-    border-color: rgba(255, 255, 255, 0.22);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.06),
-      0 26px 60px rgba(0, 0, 0, 0.3);
-    transform: translateY(-4px);
-  }
-
-  .postLink:hover .postImage {
-    filter: brightness(0.9);
-    transform: scale(1.035);
-  }
-
-  .postLink:hover .postOverlay {
-    background:
-      linear-gradient(
-        180deg,
-        rgba(4, 5, 6, 0.02) 0%,
-        rgba(4, 5, 6, 0.08) 52%,
-        rgba(4, 5, 6, 0.6) 100%
-      );
-  }
-
-  .postLink:hover .postArrow {
-    border-color: rgba(255, 255, 255, 0.34);
-    background: rgba(8, 9, 11, 0.88);
-    transform: translate(2px, -2px);
-  }
-}
-
-@media (min-width: 560px) {
-  .postsGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 768px) {
-  .postsGrid {
-    gap: 18px;
-  }
-
-  .postLink {
-    border-radius: 26px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .postsGrid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px;
-  }
-}
-
-@media (min-width: 1440px) {
-  .postsGrid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .postLink,
-  .postImage,
-  .postOverlay,
-  .postArrow {
-    transition: none;
-  }
-
-  .postLink:hover {
-    transform: none;
-  }
-
-  .postLink:hover .postImage {
-    transform: none;
-  }
-
-  .postLink:hover .postArrow {
-    transform: none;
-  }
 }
 
 .routeLoader {

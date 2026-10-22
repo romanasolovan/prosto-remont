@@ -1,8 +1,8 @@
+
 import type { Metadata } from "next";
-import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 
-import { Link } from "@/navigation";
+import BlogContent from "@/components/Blog/BlogContent/BlogContent";
 import { getBlogPosts } from "@/lib/getBlogPosts";
 
 import styles from "./blog.module.css";
@@ -54,8 +54,8 @@ export default async function BlogPage({
             </span>
 
             <h1
-              className={styles.title}
               id="blog-page-title"
+              className={styles.title}
             >
               {t("title")}
             </h1>
@@ -65,62 +65,26 @@ export default async function BlogPage({
             </p>
           </header>
 
+          <div
+            className={styles.divider}
+            aria-hidden="true"
+          />
+
           {posts.length > 0 ? (
-            <div
-              className={styles.postsGrid}
-              aria-label={t("aria.posts")}
-            >
-              {posts.map((post) => (
-                <article
-                  className={styles.postCard}
-                  key={post.id}
-                >
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    className={styles.postLink}
-                    aria-label={t("aria.openPost", {
-                      title: post.title,
-                    })}
-                  >
-                    <Image
-                      src={post.coverImage.url}
-                      alt={post.coverImage.alt}
-                      fill
-                      sizes="
-                        (max-width: 559px) 100vw,
-                        (max-width: 1023px) 50vw,
-                        (max-width: 1439px) 33vw,
-                        25vw
-                      "
-                      className={styles.postImage}
-                    />
-
-                    <span
-                      className={styles.postOverlay}
-                      aria-hidden="true"
-                    />
-
-                    <span
-                      className={styles.postArrow}
-                      aria-hidden="true"
-                    >
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                      >
-                        <path
-                          d="M7 17L17 7M9 7h8v8"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </span>
-                  </Link>
-                </article>
-              ))}
-            </div>
+            <div className={styles.contentArea}>
+  <BlogContent
+    posts={posts}
+    translations={{
+      searchLabel: t("search.label"),
+      searchPlaceholder: t("search.placeholder"),
+      clearSearch: t("search.clear"),
+      noResults: t("search.noResults"),
+      openPost: t("aria.openPost", {
+        title: "{title}",
+      }),
+    }}
+  />
+</div>
           ) : (
             <p
               className={styles.emptyState}

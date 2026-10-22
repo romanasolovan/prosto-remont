@@ -701,23 +701,29 @@
     }
   },
   "blog": {
-    "eyebrow": "Blog",
-    "title": "Ideas, guidance and renovation knowledge.",
-    "description": "Explore practical advice, thoughtful inspiration and useful information for planning and completing a renovation.",
-    "empty": "No blog posts are available yet.",
+    "eyebrow": "Блог",
+    "title": "Поради та ідеї для ремонту",
+    "description": "Практичні поради та натхнення для вашого ремонту.",
+    "empty": "Статей поки немає.",
     "aria": {
-      "posts": "Blog posts",
-      "openPost": "Open blog post: {title}"
+      "posts": "Статті блогу",
+      "openPost": "Відкрити статтю: {title}"
+    },
+    "search": {
+      "label": "Пошук статей",
+      "placeholder": "Пошук за назвою...",
+      "clear": "Очистити пошук",
+      "noResults": "За вашим запитом статей не знайдено."
     },
     "post": {
-      "eyebrow": "Renovation guide",
-      "author": "By",
-      "published": "Published",
-      "backToBlog": "Back to blog",
-      "backToAllPosts": "Return to all posts",
-      "externalMedia": "Related external media",
-      "viewOnInstagram": "View on Instagram",
-      "viewOnYouTube": "View on YouTube"
+      "eyebrow": "Порадник із ремонту",
+      "author": "Автор:",
+      "published": "Опубліковано",
+      "backToBlog": "Повернутися до блогу",
+      "backToAllPosts": "Повернутися до всіх статей",
+      "externalMedia": "Пов’язані зовнішні матеріали",
+      "viewOnInstagram": "Переглянути в Instagram",
+      "viewOnYouTube": "Переглянути на YouTube"
     }
   },
   "callWidget": {

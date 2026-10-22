@@ -701,23 +701,29 @@
     }
   },
   "blog": {
-    "eyebrow": "Blog",
-    "title": "Ideas, guidance and renovation knowledge.",
-    "description": "Explore practical advice, thoughtful inspiration and useful information for planning and completing a renovation.",
-    "empty": "No blog posts are available yet.",
+    "eyebrow": "Блог",
+    "title": "Советы и идеи для ремонта",
+    "description": "Практические советы и вдохновение для вашего ремонта.",
+    "empty": "Статей пока нет.",
     "aria": {
-      "posts": "Blog posts",
-      "openPost": "Open blog post: {title}"
+      "posts": "Статьи блога",
+      "openPost": "Открыть статью: {title}"
+    },
+    "search": {
+      "label": "Поиск статей",
+      "placeholder": "Поиск по названию...",
+      "clear": "Очистить поиск",
+      "noResults": "По вашему запросу статьи не найдены."
     },
     "post": {
-      "eyebrow": "Renovation guide",
-      "author": "By",
-      "published": "Published",
-      "backToBlog": "Back to blog",
-      "backToAllPosts": "Return to all posts",
-      "externalMedia": "Related external media",
-      "viewOnInstagram": "View on Instagram",
-      "viewOnYouTube": "View on YouTube"
+      "eyebrow": "Руководство по ремонту",
+      "author": "Автор:",
+      "published": "Опубликовано",
+      "backToBlog": "Вернуться в блог",
+      "backToAllPosts": "Вернуться ко всем статьям",
+      "externalMedia": "Связанные внешние материалы",
+      "viewOnInstagram": "Посмотреть в Instagram",
+      "viewOnYouTube": "Посмотреть на YouTube"
     }
   },
   "callWidget": {

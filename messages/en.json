@@ -687,12 +687,18 @@
   },
   "blog": {
     "eyebrow": "Blog",
-    "title": "Ideas, guidance and renovation knowledge.",
-    "description": "Explore practical advice, thoughtful inspiration and useful information for planning and completing a renovation.",
+    "title": "Renovation ideas and advice",
+    "description": "Practical tips and inspiration for your renovation.",
     "empty": "No blog posts are available yet.",
     "aria": {
       "posts": "Blog posts",
       "openPost": "Open blog post: {title}"
+    },
+    "search": {
+      "label": "Search articles",
+      "placeholder": "Search by title...",
+      "clear": "Clear search",
+      "noResults": "No articles match your search."
     },
     "post": {
       "eyebrow": "Renovation guide",

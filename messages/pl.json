@@ -702,22 +702,28 @@
   },
   "blog": {
     "eyebrow": "Blog",
-    "title": "Ideas, guidance and renovation knowledge.",
-    "description": "Explore practical advice, thoughtful inspiration and useful information for planning and completing a renovation.",
-    "empty": "No blog posts are available yet.",
+    "title": "Porady i inspiracje remontowe",
+    "description": "Praktyczne wskazówki i inspiracje do Twojego remontu.",
+    "empty": "Brak dostępnych artykułów.",
     "aria": {
-      "posts": "Blog posts",
-      "openPost": "Open blog post: {title}"
+      "posts": "Artykuły na blogu",
+      "openPost": "Otwórz artykuł: {title}"
+    },
+    "search": {
+      "label": "Szukaj artykułów",
+      "placeholder": "Szukaj według tytułu...",
+      "clear": "Wyczyść wyszukiwanie",
+      "noResults": "Nie znaleziono artykułów pasujących do wyszukiwania."
     },
     "post": {
-      "eyebrow": "Renovation guide",
-      "author": "By",
-      "published": "Published",
-      "backToBlog": "Back to blog",
-      "backToAllPosts": "Return to all posts",
-      "externalMedia": "Related external media",
-      "viewOnInstagram": "View on Instagram",
-      "viewOnYouTube": "View on YouTube"
+      "eyebrow": "Poradnik remontowy",
+      "author": "Autor:",
+      "published": "Opublikowano",
+      "backToBlog": "Wróć do bloga",
+      "backToAllPosts": "Wróć do wszystkich artykułów",
+      "externalMedia": "Powiązane materiały zewnętrzne",
+      "viewOnInstagram": "Zobacz na Instagramie",
+      "viewOnYouTube": "Zobacz na YouTube"
     }
   },
   "callWidget": {
