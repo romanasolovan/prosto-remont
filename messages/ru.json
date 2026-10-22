@@ -23,8 +23,8 @@
     "viewPortfolio": "Посмотреть проекты",
     "understandProcess": "Посмотреть процесс",
     "requestQuote": "Запросить смету",
-    "viewMore": "View more",
-    "viewAllServices": "Zobacz wszystkie usługi",
+    "viewMore": "Посмотреть больше",
+    "viewAllServices": "Посмотреть все услуги",
     "loading": {
       "partners": "Загрузка партнёров...",
       "services": "Загрузка услуг...",
@@ -103,29 +103,29 @@
       "description": "Каждый реализованный проект — это результат опыта, внимания к деталям и тесного сотрудничества с клиентом. В нашем портфолио — современные квартиры, жилые интерьеры и коммерческие пространства, где сочетаются эстетика, функциональность и высокое качество исполнения."
     },
     "process": {
-      "eyebrow": "Proces",
-      "title": "Jak pracujemy?",
-      "description": "Prowadzimy klienta przez każdy etap realizacji — od pierwszej rozmowy, przez wycenę i planowanie, aż po wykonanie prac oraz odbiór gotowego projektu.",
+      "eyebrow": "Процесс работы",
+      "title": "Как мы работаем?",
+      "description": "Мы сопровождаем вас на каждом этапе ремонта — от первой консультации, составления сметы и планирования до выполнения работ и сдачи готового объекта.",
       "steps": {
         "consultation": {
-          "title": "Konsultacja",
-          "description": "Skontaktuj się z nami telefonicznie lub mailowo. Odpowiemy na pytania, doradzimy najlepsze rozwiązania i umówimy dogodny termin spotkania."
+          "title": "Консультация",
+          "description": "Свяжитесь с нами по телефону или электронной почте. Мы ответим на ваши вопросы, предложим оптимальные решения и договоримся о встрече в удобное для вас время."
         },
         "estimate": {
-          "title": "Wycena i planowanie",
-          "description": "Otrzymujemy projekt lub przyjeżdżamy na miejsce, oceniamy zakres prac i przygotowujemy wycenę oraz harmonogram realizacji."
+          "title": "Смета и планирование",
+          "description": "Мы изучаем ваш проект или выезжаем на объект, оцениваем объём работ и подготавливаем смету и график выполнения."
         },
         "start": {
-          "title": "Rozpoczęcie prac",
-          "description": "Po zaakceptowaniu oferty podpisujemy umowę, rezerwujemy termin i organizujemy dostawę niezbędnych materiałów."
+          "title": "Начало работ",
+          "description": "После согласования предложения мы подписываем договор, назначаем дату начала работ и организуем доставку необходимых материалов."
         },
         "realization": {
-          "title": "Realizacja",
-          "description": "Wykonujemy wszystkie prace zgodnie z ustalonym planem, dbając o jakość, terminowość i porządek na każdym etapie."
+          "title": "Выполнение работ",
+          "description": "Мы выполняем все работы в соответствии с согласованным планом, уделяя особое внимание качеству, соблюдению сроков и порядку на каждом этапе."
         },
         "handover": {
-          "title": "Odbiór i gwarancja",
-          "description": "Po zakończeniu prac przekazujemy gotową realizację do odbioru i zapewniamy wsparcie po zakończeniu projektu."
+          "title": "Сдача объекта и гарантия",
+          "description": "После завершения работ мы передаём готовый объект для приёмки и обеспечиваем поддержку после завершения проекта."
         }
       }
     },

@@ -24,7 +24,7 @@
     "understandProcess": "See the Process",
     "requestQuote": "Request a Quote",
     "viewMore": "View more",
-    "viewAllServices": "Zobacz wszystkie usługi",
+    "viewAllServices": "View All Services",
     "loading": {
       "partners": "Loading partners...",
       "services": "Loading services...",
@@ -88,29 +88,29 @@
       "description": "Every completed project tells a story of transformation. From modern apartments to commercial interiors, our portfolio reflects careful workmanship, functional thinking, and a commitment to creating spaces that look right, feel right, and work beautifully in everyday life."
     },
     "process": {
-      "eyebrow": "Proces",
-      "title": "Jak pracujemy?",
-      "description": "Prowadzimy klienta przez każdy etap realizacji — od pierwszej rozmowy, przez wycenę i planowanie, aż po wykonanie prac oraz odbiór gotowego projektu.",
+      "eyebrow": "Our Process",
+      "title": "How We Work?",
+      "description": "We guide you through every stage of your renovation — from the initial consultation to the estimate and planning, all the way through to completion and final handover.",
       "steps": {
         "consultation": {
-          "title": "Konsultacja",
-          "description": "Skontaktuj się z nami telefonicznie lub mailowo. Odpowiemy na pytania, doradzimy najlepsze rozwiązania i umówimy dogodny termin spotkania."
+          "title": "Consultation",
+          "description": "Contact us by phone or email. We'll answer your questions, recommend the best solutions, and arrange a meeting at a time that works for you."
         },
         "estimate": {
-          "title": "Wycena i planowanie",
-          "description": "Otrzymujemy projekt lub przyjeżdżamy na miejsce, oceniamy zakres prac i przygotowujemy wycenę oraz harmonogram realizacji."
+          "title": "Estimate & Planning",
+          "description": "We review your project plans or visit the site, assess the scope of work, and prepare a detailed estimate and project timeline."
         },
         "start": {
-          "title": "Rozpoczęcie prac",
-          "description": "Po zaakceptowaniu oferty podpisujemy umowę, rezerwujemy termin i organizujemy dostawę niezbędnych materiałów."
+          "title": "Getting Started",
+          "description": "Once you approve our offer, we sign the contract, schedule the work, and arrange delivery of the necessary materials."
         },
         "realization": {
-          "title": "Realizacja",
-          "description": "Wykonujemy wszystkie prace zgodnie z ustalonym planem, dbając o jakość, terminowość i porządek na każdym etapie."
+          "title": "Renovation Work",
+          "description": "We carry out all work according to the agreed plan, ensuring quality, timely completion, and a clean, organized workspace at every stage."
         },
         "handover": {
-          "title": "Odbiór i gwarancja",
-          "description": "Po zakończeniu prac przekazujemy gotową realizację do odbioru i zapewniamy wsparcie po zakończeniu projektu."
+          "title": "Final Handover",
+          "description": "Once the work is complete, we hand over the finished project for your inspection and provide ongoing support after completion."
         }
       }
     },

@@ -23,8 +23,8 @@
     "viewPortfolio": "Переглянути проєкти",
     "understandProcess": "Переглянути процес",
     "requestQuote": "Отримати кошторис",
-    "viewMore": "View more",
-    "viewAllServices": "Zobacz wszystkie usługi",
+    "viewMore": "Переглянути більше",
+    "viewAllServices": "Переглянути всі послуги",
     "loading": {
       "partners": "Завантаження партнерів...",
       "services": "Завантаження послуг...",
@@ -103,29 +103,29 @@
       "description": "Кожен завершений проєкт — це результат досвіду, уважності до деталей та співпраці з клієнтом. У нашому портфоліо — сучасні квартири, житлові інтер’єри та комерційні простори, де поєднуються естетика, функціональність і якісне виконання."
     },
     "process": {
-      "eyebrow": "Proces",
-      "title": "Jak pracujemy?",
-      "description": "Prowadzimy klienta przez każdy etap realizacji — od pierwszej rozmowy, przez wycenę i planowanie, aż po wykonanie prac oraz odbiór gotowego projektu.",
+      "eyebrow": "Процес роботи",
+      "title": "Як ми працюємо?",
+      "description": "Ми супроводжуємо вас на кожному етапі ремонту — від першої консультації, складання кошторису та планування до виконання робіт і здачі готового об'єкта.",
       "steps": {
         "consultation": {
-          "title": "Konsultacja",
-          "description": "Skontaktuj się z nami telefonicznie lub mailowo. Odpowiemy na pytania, doradzimy najlepsze rozwiązania i umówimy dogodny termin spotkania."
+          "title": "Консультація",
+          "description": "Зв'яжіться з нами телефоном або електронною поштою. Ми відповімо на ваші запитання, порадимо найкращі рішення та домовимося про зустріч у зручний для вас час."
         },
         "estimate": {
-          "title": "Wycena i planowanie",
-          "description": "Otrzymujemy projekt lub przyjeżdżamy na miejsce, oceniamy zakres prac i przygotowujemy wycenę oraz harmonogram realizacji."
+          "title": "Кошторис і планування",
+          "description": "Ми ознайомлюємося з вашим проєктом або виїжджаємо на об'єкт, оцінюємо обсяг робіт і готуємо кошторис та графік виконання."
         },
         "start": {
-          "title": "Rozpoczęcie prac",
-          "description": "Po zaakceptowaniu oferty podpisujemy umowę, rezerwujemy termin i organizujemy dostawę niezbędnych materiałów."
+          "title": "Початок робіт",
+          "description": "Після погодження пропозиції ми підписуємо договір, узгоджуємо дату початку робіт та організовуємо доставку необхідних матеріалів."
         },
         "realization": {
-          "title": "Realizacja",
-          "description": "Wykonujemy wszystkie prace zgodnie z ustalonym planem, dbając o jakość, terminowość i porządek na każdym etapie."
+          "title": "Виконання робіт",
+          "description": "Ми виконуємо всі роботи відповідно до узгодженого плану, дбаючи про якість, дотримання термінів і порядок на кожному етапі."
         },
         "handover": {
-          "title": "Odbiór i gwarancja",
-          "description": "Po zakończeniu prac przekazujemy gotową realizację do odbioru i zapewniamy wsparcie po zakończeniu projektu."
+          "title": "Здача об'єкта та гарантія",
+          "description": "Після завершення робіт ми передаємо готовий об'єкт для приймання та забезпечуємо підтримку після завершення проєкту."
         }
       }
     },
