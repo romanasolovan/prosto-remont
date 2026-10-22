@@ -76,6 +76,7 @@ export interface Config {
     'trusted-brands': TrustedBrand;
     partners: Partner;
     'blog-posts': BlogPost;
+    'project-categories': ProjectCategory;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -92,6 +93,7 @@ export interface Config {
     'trusted-brands': TrustedBrandsSelect<false> | TrustedBrandsSelect<true>;
     partners: PartnersSelect<false> | PartnersSelect<true>;
     'blog-posts': BlogPostsSelect<false> | BlogPostsSelect<true>;
+    'project-categories': ProjectCategoriesSelect<false> | ProjectCategoriesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -300,6 +302,10 @@ export interface Project {
    */
   slug: string;
   category: 'residential' | 'commercial';
+  /**
+   * Select one or more categories for this project.
+   */
+  categories?: (number | ProjectCategory)[] | null;
   description: string;
   /**
    * Images used on the projects listing page.
@@ -317,6 +323,33 @@ export interface Project {
    * Only published projects appear on the website.
    */
   status?: ('draft' | 'published') | null;
+  /**
+   * Lower numbers appear first.
+   */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Manage categories used to organize portfolio projects.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "project-categories".
+ */
+export interface ProjectCategory {
+  id: number;
+  /**
+   * The name displayed in the Projects navigation.
+   */
+  name: string;
+  /**
+   * Use lowercase letters and hyphens, for example: lokale-uslugowe.
+   */
+  slug: string;
+  /**
+   * Optional description for this category.
+   */
+  description?: string | null;
   /**
    * Lower numbers appear first.
    */
@@ -587,6 +620,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'blog-posts';
         value: number | BlogPost;
+      } | null)
+    | ({
+        relationTo: 'project-categories';
+        value: number | ProjectCategory;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -732,6 +769,7 @@ export interface ProjectsSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
   category?: T;
+  categories?: T;
   description?: T;
   coverImages?: T;
   galleryImages?: T;
@@ -824,6 +862,18 @@ export interface BlogPostsSelect<T extends boolean = true> {
   youtubeUrl?: T;
   status?: T;
   featured?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "project-categories_select".
+ */
+export interface ProjectCategoriesSelect<T extends boolean = true> {
+  name?: T;
+  slug?: T;
+  description?: T;
   order?: T;
   updatedAt?: T;
   createdAt?: T;

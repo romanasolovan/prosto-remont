@@ -1,19 +1,11 @@
-import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
-import styles from "./projects.module.css";
+import { getTranslations } from "next-intl/server";
+
 import ProjectCard from "@/components/Projects/ProjectCard/ProjectCard";
 import { getProjects } from "@/lib/getProjects";
+import type { PublicProject } from "@/types/projects";
 
-type PublicProject = {
-  id: string;
-  title: string;
-  slug: string;
-  category: "residential" | "commercial";
-  description: string;
-  coverImages: string[];
-  galleryImages: string[];
-  featured?: boolean;
-};
+import styles from "./projects.module.css";
 
 export async function generateMetadata({
   params,
@@ -21,7 +13,10 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "metadata.projects" });
+  const t = await getTranslations({
+    locale,
+    namespace: "metadata.projects",
+  });
 
   return {
     title: t("title"),
@@ -35,10 +30,9 @@ export default async function ProjectsPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "projects" });
-  const tCategories = await getTranslations({
+  const t = await getTranslations({
     locale,
-    namespace: "projects.categories",
+    namespace: "projects",
   });
 
   const projects: PublicProject[] = await getProjects();
@@ -51,24 +45,34 @@ export default async function ProjectsPage({
             <span className={styles.projectsEyebrow}>
               {t("section.eyebrow")}
             </span>
-            <h2 className={styles.projectsTitle}>{t("section.title")}</h2>
-            <p className={styles.projectsLead}>{t("section.description")}</p>
+
+            <h2 className={styles.projectsTitle}>
+              {t("section.title")}
+            </h2>
+
+            <p className={styles.projectsLead}>
+              {t("section.description")}
+            </p>
           </div>
 
           <div className={styles.projectsList}>
-            {projects.map((project, index) => (
-              <ProjectCard
-                key={project.slug}
-                locale={locale}
-                slug={project.slug}
-                title={project.title}
-                category={tCategories(project.category)}
-                description={project.description}
-                images={project.coverImages}
-                index={index}
-                isReversed={index % 2 !== 0}
-              />
-            ))}
+            {projects.map((project, index) => {
+              const primaryCategory = project.categories[0];
+
+              return (
+                <ProjectCard
+                  key={project.slug}
+                  locale={locale}
+                  slug={project.slug}
+                  title={project.title}
+                  category={primaryCategory?.name ?? ""}
+                  description={project.description}
+                  images={project.coverImages}
+                  index={index}
+                  isReversed={index % 2 !== 0}
+                />
+              );
+            })}
           </div>
         </div>
       </section>

@@ -15,6 +15,7 @@ import { Services } from "./app/collections/services";
 import { TrustedBrands } from "./app/collections/trustedBrands";
 import { Partners } from "./app/collections/partners";
 import { BlogPosts } from "./app/collections/blogPosts";
+import { ProjectCategories } from "./app/collections/projectCategories";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -36,6 +37,7 @@ export default buildConfig({
     TrustedBrands,
     Partners,
     BlogPosts,
+    ProjectCategories,
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",

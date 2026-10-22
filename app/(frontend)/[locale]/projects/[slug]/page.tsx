@@ -1,11 +1,13 @@
+
+import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
-import type { Metadata } from "next";
+
 import { getProjectBySlug } from "@/lib/getProjectBySlug";
+
 import styles from "./projectDetails.module.css";
-import Image from "next/image";
-import type { PublicProject } from "@/types/projects";
 
 type Props = {
   params: Promise<{
@@ -14,7 +16,9 @@ type Props = {
   }>;
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: Props): Promise<Metadata> {
   const { slug } = await params;
   const project = await getProjectBySlug(slug);
 
@@ -31,12 +35,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function ProjectDetailsPage({ params }: Props) {
+export default async function ProjectDetailsPage({
+  params,
+}: Props) {
   const { locale, slug } = await params;
-  const t = await getTranslations({ locale, namespace: "projects" });
-  const tCategories = await getTranslations({
+  const t = await getTranslations({
     locale,
-    namespace: "projects.categories",
+    namespace: "projects",
   });
 
   const project = await getProjectBySlug(slug);
@@ -45,30 +50,37 @@ export default async function ProjectDetailsPage({ params }: Props) {
     notFound();
   }
 
-  const typedProject: PublicProject = project;
+  const primaryCategory = project.categories[0];
 
   const detailImages =
-    typedProject.galleryImages.length > 0
-      ? typedProject.galleryImages
-      : typedProject.coverImages;
+    project.galleryImages.length > 0
+      ? project.galleryImages
+      : project.coverImages;
 
   return (
     <main className={styles.projectDetailsPage}>
       <section className={styles.projectHero}>
         <div className="container">
-          <Link href={`/${locale}/projects`} className={styles.backButton}>
+          <Link
+            href={`/${locale}/projects`}
+            className={styles.backButton}
+          >
             {t("navigation.backToProjects")}
           </Link>
 
           <div className={styles.heroInner}>
-            <span className={styles.categoryBadge}>
-              {tCategories(typedProject.category)}
-            </span>
+            {primaryCategory && (
+              <span className={styles.categoryBadge}>
+                {primaryCategory.name}
+              </span>
+            )}
 
-            <h1 className={styles.projectTitle}>{typedProject.title}</h1>
+            <h1 className={styles.projectTitle}>
+              {project.title}
+            </h1>
 
             <p className={styles.projectDescription}>
-              {typedProject.description}
+              {project.description}
             </p>
           </div>
         </div>
@@ -79,10 +91,13 @@ export default async function ProjectDetailsPage({ params }: Props) {
           <div className={styles.galleryGrid}>
             {detailImages.length > 0 ? (
               detailImages.map((image, index) => (
-                <div key={`${image}-${index}`} className={styles.galleryCard}>
+                <div
+                  key={`${image}-${index}`}
+                  className={styles.galleryCard}
+                >
                   <Image
                     src={image}
-                    alt={`${typedProject?.title} image ${index + 1}`}
+                    alt={`${project.title} image ${index + 1}`}
                     fill
                     className={styles.galleryImage}
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -99,49 +114,7 @@ export default async function ProjectDetailsPage({ params }: Props) {
           </div>
         </div>
       </section>
-
-      {/* {project.subprojects && project.subprojects.length > 0 ? (
-        <section className={styles.subprojectsSection}>
-          <div className="container">
-            <div className={styles.sectionIntro}>
-              <span className={styles.sectionEyebrow}>
-                {t("projectDetails.eyebrow")}
-              </span>
-              <h2 className={styles.sectionTitle}>
-                {t("projectDetails.subprojectsTitle")}
-              </h2>
-              <p className={styles.sectionText}>
-                {t("projectDetails.subprojectsDescription")}
-              </p>
-            </div>
-
-            <div className={styles.subprojectsGrid}>
-              {project.subprojects.map((item) => (
-                <article key={item.slug} className={styles.subprojectCard}>
-                  <div className={styles.subprojectMedia}>
-                    {item.images.length > 0 ? (
-                      <img
-                        src={item.images[0]}
-                        alt={item.title}
-                        className={styles.subprojectImage}
-                      />
-                    ) : (
-                      <div className={styles.subprojectPlaceholder} />
-                    )}
-                  </div>
-
-                  <div className={styles.subprojectContent}>
-                    <h3 className={styles.subprojectTitle}>{item.title}</h3>
-                    <p className={styles.subprojectDescription}>
-                      {item.description}
-                    </p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-      ) : null} */}
     </main>
   );
 }
+

@@ -58,6 +58,19 @@ export const Projects: CollectionConfig = {
     },
 
     {
+  name: "categories",
+  type: "relationship",
+  relationTo: "project-categories",
+  hasMany: true,
+  required: false,
+  label: "Project Categories",
+  admin: {
+    description:
+      "Select one or more categories for this project.",
+  },
+},
+
+    {
       name: "description",
       type: "textarea",
       required: true,

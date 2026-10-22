@@ -178,9 +178,11 @@ export default function ProjectsPreview() {
 
                     <div className={styles.projectInfo}>
                       <h4 className={styles.projectTitle}>{project.title}</h4>
-                      <span className={styles.projectType}>
-                        {project.category}
-                      </span>
+                      {project.categories[0] && (
+  <span className={styles.projectType}>
+    {project.categories[0].name}
+  </span>
+)}
                     </div>
                   </Link>
                 ))}
