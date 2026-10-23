@@ -61,7 +61,6 @@ export async function GET() {
         id: String(project.id),
         title: project.title,
         slug: project.slug,
-        category: project.category,
         categories: getProjectCategories(project.categories),
         description: project.description,
         coverImages: getMediaUrls(project.coverImages),

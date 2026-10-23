@@ -12,7 +12,7 @@ export const Projects: CollectionConfig = {
 
   admin: {
     useAsTitle: "title",
-    defaultColumns: ["title", "category", "featured", "status", "updatedAt"],
+    defaultColumns: ["title", "categories", "featured", "status", "updatedAt"],
     group: "Business",
     description: "Projects displayed on the portfolio page.",
   },
@@ -40,23 +40,6 @@ export const Projects: CollectionConfig = {
           "Use lowercase words separated by hyphens, for example: modern-kitchen-renovation.",
       },
     },
-
-    {
-      name: "category",
-      type: "select",
-      required: true,
-      options: [
-        {
-          label: "Residential",
-          value: "residential",
-        },
-        {
-          label: "Commercial",
-          value: "commercial",
-        },
-      ],
-    },
-
     {
   name: "categories",
   type: "relationship",

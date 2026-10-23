@@ -301,7 +301,6 @@ export interface Project {
    * Use lowercase words separated by hyphens, for example: modern-kitchen-renovation.
    */
   slug: string;
-  category: 'residential' | 'commercial';
   /**
    * Select one or more categories for this project.
    */
@@ -768,7 +767,6 @@ export interface ReviewsSelect<T extends boolean = true> {
 export interface ProjectsSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
-  category?: T;
   categories?: T;
   description?: T;
   coverImages?: T;
