@@ -256,8 +256,8 @@
       "description": "A curated overview of spaces shaped through careful execution, functional thinking, and a clear visual direction."
     },
     "categories": {
-      "residential": "Residential Projects",
-      "commercial": "Commercial Projects"
+      "all": "All Projects",
+      "empty": "No projects in this category yet."
     },
     "list": {
       "modernKitchen": "Modern Apartment Finishing",

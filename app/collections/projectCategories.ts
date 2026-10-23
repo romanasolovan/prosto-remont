@@ -1,4 +1,3 @@
-
 import type { CollectionConfig } from "payload";
 
 export const ProjectCategories: CollectionConfig = {

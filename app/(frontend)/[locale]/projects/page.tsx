@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
-import ProjectCard from "@/components/Projects/ProjectCard/ProjectCard";
+import ProjectsFilter from "@/components/Projects/ProjectsFilter/ProjectsFilter";
+import { getProjectCategories } from "@/lib/getProjectCategories";
 import { getProjects } from "@/lib/getProjects";
-import type { PublicProject } from "@/types/projects";
 
 import styles from "./projects.module.css";
 
@@ -13,6 +13,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+
   const t = await getTranslations({
     locale,
     namespace: "metadata.projects",
@@ -30,12 +31,16 @@ export default async function ProjectsPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+
   const t = await getTranslations({
     locale,
     namespace: "projects",
   });
 
-  const projects: PublicProject[] = await getProjects();
+  const [projects, categories] = await Promise.all([
+    getProjects(),
+    getProjectCategories(),
+  ]);
 
   return (
     <main className={styles.projectsPage}>
@@ -55,25 +60,13 @@ export default async function ProjectsPage({
             </p>
           </div>
 
-          <div className={styles.projectsList}>
-            {projects.map((project, index) => {
-              const primaryCategory = project.categories[0];
-
-              return (
-                <ProjectCard
-                  key={project.slug}
-                  locale={locale}
-                  slug={project.slug}
-                  title={project.title}
-                  category={primaryCategory?.name ?? ""}
-                  description={project.description}
-                  images={project.coverImages}
-                  index={index}
-                  isReversed={index % 2 !== 0}
-                />
-              );
-            })}
-          </div>
+          <ProjectsFilter
+            locale={locale}
+            projects={projects}
+            categories={categories}
+            allLabel={t("categories.all")}
+            emptyLabel={t("categories.empty")}
+          />
         </div>
       </section>
     </main>

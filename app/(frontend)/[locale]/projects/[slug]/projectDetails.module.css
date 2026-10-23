@@ -13,7 +13,9 @@
 }
 
 .projectHero {
-  padding: clamp(56px, 8vw, 96px) 0 40px;
+  position: relative;
+  margin-top: calc(var(--header-height, 0px) * -1);
+  padding: calc(var(--header-height, 0px) + 72px) 0 40px;
 }
 
 .backButton {

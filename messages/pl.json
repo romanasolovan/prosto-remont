@@ -271,8 +271,8 @@
       "description": "Starannie wybrany przegląd przestrzeni ukształtowanych przez dokładne wykonanie, funkcjonalne podejście i klarowny kierunek wizualny."
     },
     "categories": {
-      "residential": "Projekty mieszkaniowe",
-      "commercial": "Projekty komercyjne"
+      "all": "Wszystkie",
+      "empty": "Brak projektów w tej kategorii."
     },
     "list": {
       "modernKitchen": "Wykończenie nowoczesnego mieszkania",

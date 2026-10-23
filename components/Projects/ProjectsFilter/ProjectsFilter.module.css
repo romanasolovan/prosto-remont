@@ -1,0 +1,101 @@
+/* Category navigation */
+
+.categoryNav {
+  margin-bottom: clamp(28px, 4vw, 40px);
+}
+
+.categoryList {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  padding: 6px 2px 12px;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Category buttons */
+
+.categoryButton {
+  display: inline-flex;
+  flex: 0 0 auto;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.045);
+  color: rgba(245, 244, 240, 0.74);
+  font-family: "Barlow", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.4;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease;
+}
+
+.categoryButton:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #f5f4f0;
+}
+
+.categoryButton:focus-visible {
+  outline: 2px solid #f5f4f0;
+  outline-offset: 3px;
+}
+
+.categoryActive,
+.categoryActive:hover {
+  border-color: #f5f4f0;
+  background: #f5f4f0;
+  color: #11161b;
+}
+
+/* Project results */
+
+.projectsList {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 4vw, 34px);
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* Empty category */
+
+.emptyState {
+  display: flex;
+  min-height: 280px;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+  color: rgba(245, 244, 240, 0.74);
+  font-family: "Barlow", sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Tablet and desktop */
+
+@media (min-width: 768px) {
+  .categoryList {
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: visible;
+  }
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .categoryButton {
+    transition: none;
+  }
+}
