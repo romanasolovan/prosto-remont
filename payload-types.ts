@@ -315,6 +315,50 @@ export interface Project {
    */
   galleryImages?: (number | Media)[] | null;
   /**
+   * Organize project images and videos into separate gallery sections. Drag sections to change their order.
+   */
+  gallerySections?:
+    | {
+        /**
+         * For example: Mieszkanie 46 m², Łazienki, or Detale.
+         */
+        title: string;
+        /**
+         * Use lowercase letters, numbers, and hyphens. For example: lazienki.
+         */
+        slug: string;
+        /**
+         * Optional short description displayed below the section title.
+         */
+        description?: string | null;
+        /**
+         * Add images and uploaded videos in the order they should appear.
+         */
+        mediaItems?:
+          | {
+              /**
+               * Select an existing image or video, or upload a new one.
+               */
+              media: number | Media;
+              /**
+               * Select an image to display as the square thumbnail for a video.
+               */
+              poster?: (number | null) | Media;
+              /**
+               * Optional caption displayed inside the image/video viewer.
+               */
+              caption?: string | null;
+              /**
+               * Optional link to the original video on Instagram or another website.
+               */
+              sourceUrl?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
    * Use this later for homepage featured projects.
    */
   featured?: boolean | null;
@@ -771,6 +815,23 @@ export interface ProjectsSelect<T extends boolean = true> {
   description?: T;
   coverImages?: T;
   galleryImages?: T;
+  gallerySections?:
+    | T
+    | {
+        title?: T;
+        slug?: T;
+        description?: T;
+        mediaItems?:
+          | T
+          | {
+              media?: T;
+              poster?: T;
+              caption?: T;
+              sourceUrl?: T;
+              id?: T;
+            };
+        id?: T;
+      };
   featured?: T;
   status?: T;
   order?: T;

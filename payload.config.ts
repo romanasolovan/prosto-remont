@@ -4,6 +4,7 @@ import path from "path";
 import { buildConfig } from "payload";
 import { fileURLToPath } from "url";
 import sharp from "sharp";
+import { migrations } from "./migrations";
 
 import { Users } from "./app/collections/users";
 import { Media } from "./app/collections/media";
@@ -45,10 +46,11 @@ export default buildConfig({
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },
   db: postgresAdapter({
-    pool: {
-      connectionString: process.env.DATABASE_URL || "",
-    },
-  }),
+  pool: {
+    connectionString: process.env.DATABASE_URL || "",
+  },
+  prodMigrations: migrations,
+}),
   sharp,
   upload: {
     limits: {
