@@ -337,7 +337,14 @@
       "subprojectsDescription": "Każdy projekt może obejmować wiele obszarów wnętrz, stref funkcjonalnych lub etapów wykończenia. Taka struktura ułatwia eksplorację galerii i przygotowuje treści na przyszłe rozszerzenia."
     },
     "gallery": {
-      "empty": "Galeria projektu zostanie wkrótce dodana."
+      "empty": "Galeria projektu zostanie wkrótce dodana.",
+      "close": "Zamknij galerię",
+      "previous": "Poprzedni element",
+      "next": "Następny element",
+      "openImage": "Otwórz zdjęcie",
+      "openVideo": "Otwórz wideo",
+      "viewOriginal": "Zobacz oryginał",
+      "video": "Wideo"
     }
   },
   "process": {

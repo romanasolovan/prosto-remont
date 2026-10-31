@@ -322,7 +322,14 @@
       "subprojectsDescription": "Each project can include multiple interior areas, functional zones, or finishing stages. This structure makes the gallery easier to explore and prepares the content for future expansion."
     },
     "gallery": {
-      "empty": "Project gallery will be added soon."
+      "empty": "Project gallery will be added soon.",
+      "close": "Close gallery",
+      "previous": "Previous item",
+      "next": "Next item",
+      "openImage": "Open image",
+      "openVideo": "Open video",
+      "viewOriginal": "View original",
+      "video": "Video"
     }
   },
   "process": {

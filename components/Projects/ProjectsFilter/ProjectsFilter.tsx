@@ -110,7 +110,10 @@ export default function ProjectsFilter({
               locale={locale}
               slug={project.slug}
               title={project.title}
-              category={project.categories[0]?.name ?? ""}
+              categories={project.categories.map((category) => ({
+  id: category.id,
+  name: category.name,
+}))}
               description={project.description}
               images={project.coverImages}
               index={index}

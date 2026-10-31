@@ -1,0 +1,149 @@
+.gallery {
+  display: grid;
+  gap: 48px;
+}
+
+.section {
+  min-width: 0;
+}
+
+.sectionIntro {
+  margin-bottom: 18px;
+}
+
+.sectionTitle {
+  margin: 0 0 6px;
+  color: #f5f4f0;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(27px, 4vw, 38px);
+  font-weight: 300;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+}
+
+.sectionDescription {
+  max-width: 64ch;
+  margin: 0;
+  color: rgba(245, 244, 240, 0.7);
+  font-family: "Barlow", sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.65;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.tile {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 5px;
+  background: #1b2128;
+  color: #fff;
+  cursor: pointer;
+  appearance: none;
+}
+
+.tile:focus-visible {
+  outline: 2px solid #f5f4f0;
+  outline-offset: 4px;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 300ms ease;
+}
+
+.videoFallback {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  background: #242b32;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 22px;
+}
+
+.playIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  width: 50px;
+  height: 50px;
+  place-items: center;
+  padding-left: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 17px;
+  transform: translate(-50%, -50%);
+  backdrop-filter: blur(6px);
+  pointer-events: none;
+}
+
+.videoBadge {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  display: grid;
+  width: 30px;
+  height: 26px;
+  place-items: center;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.65);
+  pointer-events: none;
+}
+
+.videoBadge svg {
+  width: 17px;
+  height: 17px;
+}
+
+@media (max-width: 359px) {
+  .grid {
+    gap: 6px;
+  }
+
+  .playIcon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (min-width: 768px) {
+  .gallery {
+    gap: 58px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .gallery {
+    gap: 68px;
+  }
+
+  .tile:hover .image {
+    transform: scale(1.035);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image {
+    transition: none;
+  }
+}

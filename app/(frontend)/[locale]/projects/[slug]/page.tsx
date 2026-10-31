@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 
+import ProjectGallery from "@/components/Projects/ProjectGallery/ProjectGallery";
 import { getProjectBySlug } from "@/lib/getProjectBySlug";
 
 import styles from "./projectDetails.module.css";
@@ -38,6 +38,7 @@ export default async function ProjectDetailsPage({
   params,
 }: Props) {
   const { locale, slug } = await params;
+
   const t = await getTranslations({
     locale,
     namespace: "projects",
@@ -51,7 +52,7 @@ export default async function ProjectDetailsPage({
 
   const primaryCategory = project.categories[0];
 
-  const detailImages =
+  const fallbackImages =
     project.galleryImages.length > 0
       ? project.galleryImages
       : project.coverImages;
@@ -85,35 +86,29 @@ export default async function ProjectDetailsPage({
         </div>
       </section>
 
-      <section className={styles.gallerySection}>
+      <section
+        className={styles.gallerySection}
+        aria-label={project.title}
+      >
         <div className="container">
-          <div className={styles.galleryGrid}>
-            {detailImages.length > 0 ? (
-              detailImages.map((image, index) => (
-                <div
-                  key={`${image}-${index}`}
-                  className={styles.galleryCard}
-                >
-                  <Image
-                    src={image}
-                    alt={`${project.title} image ${index + 1}`}
-                    fill
-                    className={styles.galleryImage}
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-              ))
-            ) : (
-              <>
-                <div className={styles.galleryPlaceholder} />
-                <div className={styles.galleryPlaceholder} />
-                <div className={styles.galleryPlaceholder} />
-              </>
-            )}
-          </div>
+          <div className={styles.galleryDivider} />
+
+          <ProjectGallery
+            sections={project.gallerySections ?? []}
+            fallbackImages={fallbackImages}
+            projectTitle={project.title}
+            labels={{
+              close: t("gallery.close"),
+              previous: t("gallery.previous"),
+              next: t("gallery.next"),
+              openImage: t("gallery.openImage"),
+              openVideo: t("gallery.openVideo"),
+              viewOriginal: t("gallery.viewOriginal"),
+              video: t("gallery.video"),
+            }}
+          />
         </div>
       </section>
     </main>
   );
 }
-

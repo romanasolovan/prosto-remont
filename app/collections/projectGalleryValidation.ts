@@ -1,4 +1,3 @@
-
 import { APIError } from "payload";
 import type { CollectionBeforeValidateHook } from "payload";
 
