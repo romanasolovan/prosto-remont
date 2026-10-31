@@ -1,4 +1,3 @@
-
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
@@ -6,6 +5,8 @@ import BlogContent from "@/components/Blog/BlogContent/BlogContent";
 import { getBlogPosts } from "@/lib/getBlogPosts";
 
 import styles from "./blog.module.css";
+
+export const dynamic = "force-dynamic";
 
 type BlogPageProps = {
   params: Promise<{

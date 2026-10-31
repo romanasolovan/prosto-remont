@@ -7,6 +7,8 @@ import { getProjects } from "@/lib/getProjects";
 
 import styles from "./projects.module.css";
 
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata({
   params,
 }: {
