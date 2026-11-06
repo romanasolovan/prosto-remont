@@ -1,27 +1,124 @@
-import type { PublicProject } from "@/types/projects";
+import "server-only";
 
-export async function getProjects(): Promise<PublicProject[]> {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
-    ? process.env.NEXT_PUBLIC_SITE_URL
-    : process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : "http://localhost:3000";
+import { getPayload } from "payload";
+import config from "@payload-config";
 
-  try {
-    const response = await fetch(`${siteUrl}/api/public/projects`, {
-      cache: "no-store",
-    });
+import type {
+  Media,
+  Project,
+  ProjectCategory,
+} from "@/payload-types";
 
-    if (!response.ok) {
-      console.error("Failed to fetch projects:", response.status);
-      return [];
+import type {
+  PublicProject,
+  PublicProjectGallerySection,
+  PublicProjectMediaItem,
+} from "@/types/projects";
+
+const getMediaUrls = (
+  items?: (number | Media)[] | null,
+): string[] => {
+  if (!items) return [];
+
+  return items
+    .filter(
+      (item): item is Media =>
+        typeof item === "object" && item !== null,
+    )
+    .map((item) => item.url)
+    .filter((url): url is string => Boolean(url));
+};
+
+const getProjectCategories = (
+  items?: (number | ProjectCategory)[] | null,
+) => {
+  if (!items) return [];
+
+  return items
+    .filter(
+      (item): item is ProjectCategory =>
+        typeof item === "object" && item !== null,
+    )
+    .map((category) => ({
+      id: String(category.id),
+      name: category.name,
+      slug: category.slug,
+    }));
+};
+
+const getMedia = (
+  value: number | Media | null | undefined,
+): Media | null => {
+  return typeof value === "object" && value !== null
+    ? value
+    : null;
+};
+
+const getGallerySections = (
+  sections: Project["gallerySections"],
+): PublicProjectGallerySection[] => {
+  if (!sections) return [];
+
+  return sections.map((section) => {
+    const mediaItems: PublicProjectMediaItem[] = [];
+
+    for (const item of section.mediaItems ?? []) {
+      const media = getMedia(item.media);
+
+      if (!media?.url) continue;
+
+      const mimeType = media.mimeType ?? "";
+      const isImage = mimeType.startsWith("image/");
+      const isVideo = mimeType.startsWith("video/");
+
+      if (!isImage && !isVideo) continue;
+
+      const poster = getMedia(item.poster);
+
+      mediaItems.push({
+        id: String(item.id ?? media.id),
+        type: isVideo ? "video" : "image",
+        url: media.url,
+        posterUrl: poster?.url ?? null,
+        caption: item.caption ?? null,
+        sourceUrl: item.sourceUrl ?? null,
+      });
     }
 
-    const data = await response.json();
+    return {
+      id: String(section.id ?? section.slug),
+      title: section.title,
+      slug: section.slug,
+      description: section.description ?? null,
+      mediaItems,
+    };
+  });
+};
 
-    return data.projects || [];
-  } catch (error) {
-    console.error("Failed to fetch projects:", error);
-    return [];
-  }
+export async function getProjects(): Promise<PublicProject[]> {
+  const payload = await getPayload({ config });
+
+  const result = await payload.find({
+    collection: "projects",
+    where: {
+      status: {
+        equals: "published",
+      },
+    },
+    sort: "order",
+    depth: 2,
+    limit: 50,
+  });
+
+  return result.docs.map((project) => ({
+    id: String(project.id),
+    title: project.title,
+    slug: project.slug,
+    categories: getProjectCategories(project.categories),
+    description: project.description,
+    coverImages: getMediaUrls(project.coverImages),
+    galleryImages: getMediaUrls(project.galleryImages),
+    gallerySections: getGallerySections(project.gallerySections),
+    featured: project.featured ?? false,
+  }));
 }
