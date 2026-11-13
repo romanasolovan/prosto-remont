@@ -4,15 +4,15 @@ import { useLayoutEffect, useRef, useState } from "react";
 
 import ProjectCard from "@/components/Projects/ProjectCard/ProjectCard";
 import type {
-  PublicProject,
   PublicProjectCategory,
 } from "@/types/projects";
+import type { ProjectListingItem } from "@/lib/getProjectsForListing";
 
 import styles from "./ProjectsFilter.module.css";
 
 type ProjectsFilterProps = {
   locale: string;
-  projects: PublicProject[];
+  projects: ProjectListingItem[];
   categories: PublicProjectCategory[];
   allLabel: string;
   emptyLabel: string;

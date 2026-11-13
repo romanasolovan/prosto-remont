@@ -95,6 +95,20 @@ const getGallerySections = (
   });
 };
 
+export function mapProject(project: Project): PublicProject {
+  return {
+    id: String(project.id),
+    title: project.title,
+    slug: project.slug,
+    categories: getProjectCategories(project.categories),
+    description: project.description,
+    coverImages: getMediaUrls(project.coverImages),
+    galleryImages: getMediaUrls(project.galleryImages),
+    gallerySections: getGallerySections(project.gallerySections),
+    featured: project.featured ?? false,
+  };
+}
+
 export async function getProjects(): Promise<PublicProject[]> {
   const payload = await getPayload({ config });
 
@@ -110,15 +124,5 @@ export async function getProjects(): Promise<PublicProject[]> {
     limit: 50,
   });
 
-  return result.docs.map((project) => ({
-    id: String(project.id),
-    title: project.title,
-    slug: project.slug,
-    categories: getProjectCategories(project.categories),
-    description: project.description,
-    coverImages: getMediaUrls(project.coverImages),
-    galleryImages: getMediaUrls(project.galleryImages),
-    gallerySections: getGallerySections(project.gallerySections),
-    featured: project.featured ?? false,
-  }));
+  return result.docs.map(mapProject);
 }

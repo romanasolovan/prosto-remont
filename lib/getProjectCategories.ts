@@ -1,12 +1,13 @@
+import "server-only";
+
+import { unstable_cache } from "next/cache";
 import { getPayload } from "payload";
 import config from "@payload-config";
 
 import type { PublicProjectCategory } from "@/types/projects";
 
-export async function getProjectCategories(): Promise<
-  PublicProjectCategory[]
-> {
-  try {
+export const getProjectCategories = unstable_cache(
+  async (): Promise<PublicProjectCategory[]> => {
     const payload = await getPayload({ config });
 
     const result = await payload.find({
@@ -22,8 +23,10 @@ export async function getProjectCategories(): Promise<
       name: category.name,
       slug: category.slug,
     }));
-  } catch (error) {
-    console.error("Failed to fetch project categories:", error);
-    return [];
-  }
-}
+  },
+  ["project-categories"],
+  {
+    revalidate: 60,
+    tags: ["project-categories"],
+  },
+);

@@ -1,10 +1,38 @@
-import { getProjects } from "@/lib/getProjects";
+import "server-only";
+
+import { cache } from "react";
+import { getPayload } from "payload";
+import config from "@payload-config";
+
+import { mapProject } from "@/lib/getProjects";
 import type { PublicProject } from "@/types/projects";
 
-export async function getProjectBySlug(
-  slug: string,
-): Promise<PublicProject | null> {
-  const projects: PublicProject[] = await getProjects();
+export const getProjectBySlug = cache(
+  async (slug: string): Promise<PublicProject | null> => {
+    const payload = await getPayload({ config });
 
-  return projects.find((project) => project.slug === slug) || null;
-}
+    const result = await payload.find({
+      collection: "projects",
+      where: {
+        and: [
+          {
+            slug: {
+              equals: slug,
+            },
+          },
+          {
+            status: {
+              equals: "published",
+            },
+          },
+        ],
+      },
+      depth: 2,
+      limit: 1,
+    });
+
+    const project = result.docs[0];
+
+    return project ? mapProject(project) : null;
+  },
+);

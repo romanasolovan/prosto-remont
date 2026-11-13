@@ -3,7 +3,7 @@ import { getTranslations } from "next-intl/server";
 
 import ProjectsFilter from "@/components/Projects/ProjectsFilter/ProjectsFilter";
 import { getProjectCategories } from "@/lib/getProjectCategories";
-import { getProjects } from "@/lib/getProjects";
+import { getProjectsForListing } from "@/lib/getProjectsForListing";
 
 import styles from "./projects.module.css";
 
@@ -40,7 +40,7 @@ export default async function ProjectsPage({
   });
 
   const [projects, categories] = await Promise.all([
-    getProjects(),
+    getProjectsForListing(),
     getProjectCategories(),
   ]);
 
