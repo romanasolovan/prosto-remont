@@ -7,10 +7,8 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
-
 import type { PublicProjectMediaItem } from "@/types/projects";
 import type { GalleryLabels } from "./ProjectGallery";
-
 import styles from "./GalleryLightbox.module.css";
 
 type GalleryLightboxProps = {
@@ -230,8 +228,6 @@ export default function GalleryLightbox({
     )}
   </div>
 </div>
-
-
           {items.length > 1 && (
             <button
               type="button"
@@ -257,7 +253,6 @@ export default function GalleryLightbox({
       {caption}
     </p>
   )}
-
   {item.sourceUrl && (
     <a
       href={item.sourceUrl}

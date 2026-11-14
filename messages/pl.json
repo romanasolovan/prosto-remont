@@ -102,6 +102,23 @@
       "title": "Realizacje, które najlepiej pokazują naszą pracę",
       "description": "Każdy projekt to efekt współpracy, doświadczenia i dbałości o detale. W naszym portfolio znajdują się zarówno nowoczesne mieszkania, jak i przestrzenie komercyjne, które łączą estetykę, funkcjonalność i wysoką jakość wykonania."
     },
+    "projectsPreview": {
+      "videos": {
+        "title": "Projekty w ruchu",
+        "ariaLabel": "Filmy z realizacji",
+        "label": "Film z realizacji",
+        "previous": "Poprzedni film z realizacji",
+        "next": "Następny film z realizacji",
+        "play": "Odtwórz film: {title}",
+        "show": "Pokaż film {number}: {title}",
+        "empty": "Nie ma jeszcze filmów z realizacji."
+      },
+      "gallery": {
+        "title": "Galeria realizacji",
+        "viewAll": "Zobacz wszystkie projekty",
+        "scrollHint": "Przewiń galerię"
+      }
+    },
     "process": {
       "eyebrow": "Proces",
       "title": "Jak pracujemy?",
@@ -272,7 +289,8 @@
     },
     "categories": {
       "all": "Wszystkie",
-      "empty": "Brak projektów w tej kategorii."
+      "empty": "Brak projektów w tej kategorii.",
+      "loadError": "Nie udało się wczytać realizacji. Spróbuj ponownie później."
     },
     "list": {
       "modernKitchen": "Wykończenie nowoczesnego mieszkania",

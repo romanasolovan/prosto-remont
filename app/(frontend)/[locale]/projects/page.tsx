@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-
-import ProjectsFilter from "@/components/Projects/ProjectsFilter/ProjectsFilter";
-import { getProjectCategories } from "@/lib/getProjectCategories";
-import { getProjectsForListing } from "@/lib/getProjectsForListing";
+import ProjectsListing from "@/components/Projects/ProjectsListing/ProjectsListing";
 
 import styles from "./projects.module.css";
 
@@ -39,10 +36,10 @@ export default async function ProjectsPage({
     namespace: "projects",
   });
 
-  const [projects, categories] = await Promise.all([
-    getProjectsForListing(),
-    getProjectCategories(),
-  ]);
+  const tCommon = await getTranslations({
+    locale,
+    namespace: "common",
+  });
 
   return (
     <main className={styles.projectsPage}>
@@ -62,13 +59,13 @@ export default async function ProjectsPage({
             </p>
           </div>
 
-          <ProjectsFilter
-            locale={locale}
-            projects={projects}
-            categories={categories}
-            allLabel={t("categories.all")}
-            emptyLabel={t("categories.empty")}
-          />
+            <ProjectsListing
+  locale={locale}
+  allLabel={t("categories.all")}
+  emptyLabel={t("categories.empty")}
+  loadingLabel={tCommon("loading.projects")}
+  errorLabel={t("categories.loadError")}
+/>
         </div>
       </section>
     </main>

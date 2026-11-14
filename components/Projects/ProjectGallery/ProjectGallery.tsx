@@ -1,14 +1,11 @@
-
 "use client";
 
 import { useState } from "react";
 import Image from "next/image";
-
 import type {
   PublicProjectGallerySection,
   PublicProjectMediaItem,
 } from "@/types/projects";
-
 import GalleryLightbox from "./GalleryLightbox";
 import styles from "./ProjectGallery.module.css";
 

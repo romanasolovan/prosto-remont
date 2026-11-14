@@ -1,6 +1,5 @@
+import Image from "next/image";
 import Link from "next/link";
-
-import ProjectCardCarousel from "../ProjectCardCarousel/ProjectCardCarousel";
 import styles from "./ProjectCard.module.css";
 
 type ProjectCardProps = {
@@ -28,6 +27,7 @@ export default function ProjectCard({
   isReversed,
 }: ProjectCardProps) {
   const projectHref = `/${locale}/projects/${slug}`;
+  const coverImage = images[0];
 
   return (
     <article
@@ -37,20 +37,30 @@ export default function ProjectCard({
     >
       <div className={styles.projectFrame}>
         <Link
-  href={projectHref}
-  className={styles.projectLink}
-  aria-label={title}
-/>
+          href={projectHref}
+          className={styles.projectLink}
+          aria-label={title}
+        />
+
         <div className={styles.projectMedia}>
-          {images.length > 0 ? (
-            <ProjectCardCarousel images={images} alt={title} />
-          ) : (
-            <div className={styles.projectImage} />
-          )}
+          <div className={styles.projectImage}>
+            {coverImage && (
+              <Image
+                src={coverImage}
+                alt={title}
+                fill
+                sizes="(max-width: 899px) 100vw, 55vw"
+                className={styles.coverImage}
+              />
+            )}
+          </div>
         </div>
 
         <div className={styles.projectContent}>
-          <span className={styles.projectIndex} aria-hidden="true">
+          <span
+            className={styles.projectIndex}
+            aria-hidden="true"
+          >
             {(index + 1).toString().padStart(2, "0")}
           </span>
 
@@ -67,12 +77,15 @@ export default function ProjectCard({
             </div>
           )}
 
-          <h3 className={styles.projectTitle}>{title}</h3>
+          <h3 className={styles.projectTitle}>
+            {title}
+          </h3>
 
-          <p className={styles.projectText}>{description}</p>
+          <p className={styles.projectText}>
+            {description}
+          </p>
         </div>
       </div>
     </article>
   );
 }
-

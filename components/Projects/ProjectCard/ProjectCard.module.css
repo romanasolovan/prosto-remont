@@ -24,6 +24,15 @@
   background: rgba(255, 255, 255, 0.04);
 }
 
+.projectFrame:hover .coverImage,
+.projectFrame:focus-within .coverImage {
+  transform: scale(1.025);
+}
+
+.projectFrame:focus-within {
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
 /* Project media */
 
 .projectMedia {
@@ -34,14 +43,21 @@
 }
 
 .projectImage {
+  position: relative;
   width: 100%;
   aspect-ratio: 16 / 10;
+  overflow: hidden;
   border-radius: 6px;
   background: linear-gradient(
     135deg,
     #252a30 0%,
     #161b20 100%
   );
+}
+
+.coverImage {
+  object-fit: cover;
+  transition: transform 450ms ease;
 }
 
 /* Project information */
@@ -181,7 +197,13 @@
 /* Reduced motion */
 
 @media (prefers-reduced-motion: reduce) {
-  .projectFrame {
+  .projectFrame,
+  .coverImage {
     transition: none;
+  }
+
+  .projectFrame:hover .coverImage,
+  .projectFrame:focus-within .coverImage {
+    transform: none;
   }
 }

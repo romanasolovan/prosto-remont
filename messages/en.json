@@ -87,6 +87,23 @@
       "title": "Spaces That Speak for Themselves",
       "description": "Every completed project tells a story of transformation. From modern apartments to commercial interiors, our portfolio reflects careful workmanship, functional thinking, and a commitment to creating spaces that look right, feel right, and work beautifully in everyday life."
     },
+    "projectsPreview": {
+      "videos": {
+        "title": "Projects in motion",
+        "ariaLabel": "Project videos",
+        "label": "Project video",
+        "previous": "Previous project video",
+        "next": "Next project video",
+        "play": "Play video: {title}",
+        "show": "Show video {number}: {title}",
+        "empty": "No project videos available yet."
+      },
+      "gallery": {
+        "title": "Project gallery",
+        "viewAll": "View all projects",
+        "scrollHint": "Scroll gallery"
+      }
+    },
     "process": {
       "eyebrow": "Our Process",
       "title": "How We Work?",
@@ -257,7 +274,8 @@
     },
     "categories": {
       "all": "All Projects",
-      "empty": "No projects in this category yet."
+      "empty": "No projects in this category yet.",
+      "loadError": "We couldn't load the projects. Please try again later."
     },
     "list": {
       "modernKitchen": "Modern Apartment Finishing",
