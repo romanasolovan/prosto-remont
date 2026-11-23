@@ -41,13 +41,18 @@ const validateGoogleReviewUrl = (
   }
 
   try {
-    const url = new URL(value);
+    const url = new URL(value.trim());
 
     if (url.protocol !== "https:") {
       return "Google review links must use HTTPS.";
     }
 
+    if (url.username || url.password) {
+      return "Enter a valid public Google review URL.";
+    }
+
     const allowedHosts = [
+      "share.google",
       "google.com",
       "www.google.com",
       "maps.google.com",
@@ -57,15 +62,11 @@ const validateGoogleReviewUrl = (
 
     const hostname = url.hostname.toLowerCase();
 
-    const isAllowedHost = allowedHosts.some(
-      (host) =>
-        hostname === host ||
-        hostname.endsWith(`.${host}`),
-    );
+    if (!allowedHosts.includes(hostname)) {
+      return "Enter a valid Google or Google Maps review URL.";
+    }
 
-    return isAllowedHost
-      ? true
-      : "Enter a valid Google or Google Maps review URL.";
+    return true;
   } catch {
     return "Enter a valid URL.";
   }
