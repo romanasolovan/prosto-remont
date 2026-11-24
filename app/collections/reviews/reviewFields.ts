@@ -359,6 +359,29 @@ export const reviewFields: Field[] = [
     },
   },
   {
+  name: "order",
+  type: "number",
+  defaultValue: 0,
+  min: 0,
+  label: "Display Order",
+  admin: {
+    position: "sidebar",
+    description:
+      "Lower positive numbers appear first. Use 0 for automatic ordering.",
+  },
+  validate: (value: unknown) => {
+    if (value === undefined || value === null) {
+      return true;
+    }
+
+    return typeof value === "number" &&
+      Number.isInteger(value) &&
+      value >= 0
+      ? true
+      : "Enter a non-negative whole number.";
+  },
+},
+  {
     name: "internalNotes",
     type: "textarea",
     label: "Owner Notes",

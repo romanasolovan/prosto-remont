@@ -84,13 +84,14 @@ export const Reviews: CollectionConfig = {
   admin: {
     useAsTitle: "name",
     defaultColumns: [
-      "name",
-      "reviewType",
-      "rating",
-      "location",
-      "status",
-      "createdAt",
-    ],
+  "name",
+  "reviewType",
+  "rating",
+  "location",
+  "order",
+  "status",
+  "createdAt",
+],
     group: "Business",
     description:
       "Manage written and video client reviews. Only approved reviews appear publicly.",

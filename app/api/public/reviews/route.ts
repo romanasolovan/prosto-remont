@@ -1,3 +1,4 @@
+
 import { NextResponse } from "next/server";
 import { getPayload } from "payload";
 import config from "@payload-config";
@@ -82,20 +83,39 @@ export async function GET() {
   try {
     const payload = await getPayload({ config });
 
-   const reviews = await payload.find({
-  collection: "reviews",
-  where: {
-    status: {
-      equals: "approved",
-    },
-  },
-  sort: "-createdAt",
-  depth: 1,
-  pagination: false,
-});
+    const reviews = await payload.find({
+      collection: "reviews",
+      where: {
+        status: {
+          equals: "approved",
+        },
+      },
+      sort: "-createdAt",
+      depth: 1,
+      pagination: false,
+    });
+
+    // Prioritize manually ordered reviews and preserve chronological fallback.
+    const sortedReviews = [...reviews.docs].sort((a, b) => {
+      const orderA =
+        typeof a.order === "number" && a.order > 0
+          ? a.order
+          : Infinity;
+
+      const orderB =
+        typeof b.order === "number" && b.order > 0
+          ? b.order
+          : Infinity;
+
+      if (orderA === orderB) {
+        return 0;
+      }
+
+      return orderA < orderB ? -1 : 1;
+    });
 
     const publicReviews: PublicReview[] =
-      reviews.docs.map((review) => ({
+      sortedReviews.map((review) => ({
         id: String(review.id),
         reviewType: review.reviewType,
         name: review.name,

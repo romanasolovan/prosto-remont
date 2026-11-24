@@ -1,6 +1,7 @@
 import * as migration_20260511_131234 from './20260511_131234';
 import * as migration_20260923_173000_reviews_review_type from './20260923_173000_reviews_review_type';
 import * as migration_20261028_143041 from './20261028_143041';
+import * as migration_20261124_182950_reviews_display_order from './20261124_182950_reviews_display_order';
 
 export const migrations = [
   {
@@ -16,6 +17,11 @@ export const migrations = [
   {
     up: migration_20261028_143041.up,
     down: migration_20261028_143041.down,
-    name: '20261028_143041'
+    name: '20261028_143041',
+  },
+  {
+    up: migration_20261124_182950_reviews_display_order.up,
+    down: migration_20261124_182950_reviews_display_order.down,
+    name: '20261124_182950_reviews_display_order'
   },
 ];

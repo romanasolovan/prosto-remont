@@ -282,6 +282,10 @@ export interface Review {
    */
   featured?: boolean | null;
   /**
+   * Lower positive numbers appear first. Use 0 for automatic ordering.
+   */
+  order?: number | null;
+  /**
    * Private notes for the team. These are never shown on the website.
    */
   internalNotes?: string | null;
@@ -800,6 +804,7 @@ export interface ReviewsSelect<T extends boolean = true> {
   videoNote?: T;
   status?: T;
   featured?: T;
+  order?: T;
   internalNotes?: T;
   updatedAt?: T;
   createdAt?: T;
