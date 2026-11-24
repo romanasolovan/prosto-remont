@@ -672,7 +672,8 @@
       "nextReview": "Следующий отзыв",
       "closeReview": "Закрыть отзыв",
       "scrollPrevious": "Прокрутить назад",
-      "scrollNext": "Прокрутить вперёд"
+      "scrollNext": "Прокрутить вперёд",
+      "googleReview": "Отзыв из Google"
     },
     "success": {
       "reviewSubmitted": "Спасибо! Ваш отзыв отправлен и будет опубликован после небольшой проверки."

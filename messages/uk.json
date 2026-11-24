@@ -672,7 +672,8 @@
       "nextReview": "Наступний відгук",
       "closeReview": "Закрити відгук",
       "scrollPrevious": "Прокрутити назад",
-      "scrollNext": "Прокрутити вперед"
+      "scrollNext": "Прокрутити вперед",
+      "googleReview": "Відгук з Google"
     },
     "success": {
       "reviewSubmitted": "Дякуємо! Ваш відгук надіслано та буде опублікований після короткої перевірки."

@@ -672,7 +672,8 @@
       "nextReview": "Następna opinia",
       "closeReview": "Zamknij opinię",
       "scrollPrevious": "Przewiń do poprzedniej",
-      "scrollNext": "Przewiń do następnej"
+      "scrollNext": "Przewiń do następnej",
+      "googleReview": "Opinia z Google"
     },
     "success": {
       "reviewSubmitted": "Dziękujemy. Twoja opinia została przesłana i zostanie opublikowana po krótkiej weryfikacji."

@@ -188,20 +188,8 @@ const photoHeight = hasValidPhotoDimensions
     />
   </div>
 )}
-
-  {activeReview.googleReviewUrl && (
-    <a
-      href={activeReview.googleReviewUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={styles.googleLink}
-    >
-      {t("viewOnGoogle")}
-    </a>
-  )}
 </div>
           </div>
-
 
 {activeReview.photoUrl && (
   <div className={styles.modalPhotoColumn}>
@@ -216,51 +204,80 @@ const photoHeight = hasValidPhotoDimensions
   </div>
 )}
         </div>
-        {reviews.length > 1 && (
-          <div className={styles.modalNavRow}>
-            <button
-              type="button"
-              className={styles.modalNavButton}
-              onClick={onPrev}
-              aria-label={t("aria.previousReview")}
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M15 6l-6 6 6 6"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
 
-            <button
-              type="button"
-              className={styles.modalNavButton}
-              onClick={onNext}
-              aria-label={t("aria.nextReview")}
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M9 6l6 6-6 6"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
-          </div>
-        )}
+       {(activeReview.googleReviewUrl ||
+  reviews.length > 1) && (
+  <div className={styles.modalFooter}>
+    {activeReview.googleReviewUrl && (
+      <a
+        href={activeReview.googleReviewUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.googleLink}
+      >
+        <span>{t("viewOnGoogle")}</span>
+
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M7 17 17 7M7 7h10v10" />
+        </svg>
+      </a>
+    )}
+
+    {reviews.length > 1 && (
+      <div className={styles.modalNavRow}>
+        <button
+          type="button"
+          className={styles.modalNavButton}
+          onClick={onPrev}
+          aria-label={t("aria.previousReview")}
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M15 6l-6 6 6 6"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+
+        <button
+          type="button"
+          className={styles.modalNavButton}
+          onClick={onNext}
+          aria-label={t("aria.nextReview")}
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M9 6l6 6-6 6"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+      </div>
+    )}
+  </div>
+)}
       </div>
     </div>,
     document.body,

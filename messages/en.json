@@ -657,7 +657,8 @@
       "nextReview": "Next review",
       "closeReview": "Close review",
       "scrollPrevious": "Scroll to previous",
-      "scrollNext": "Scroll to next"
+      "scrollNext": "Scroll to next",
+      "googleReview": "Review from Google"
     },
     "success": {
       "reviewSubmitted": "Thank you. Your review has been submitted and will be published after a quick review."

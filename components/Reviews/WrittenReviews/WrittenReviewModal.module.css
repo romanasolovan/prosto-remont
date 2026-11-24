@@ -153,22 +153,47 @@
   overflow-wrap: anywhere;
 }
 
+.modalFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  gap: 12px;
+  margin-top: 14px;
+}
+
 .googleLink {
   display: inline-flex;
   align-items: center;
-  align-self: flex-start;
-  flex-shrink: 0;
-  gap: 6px;
-  width: fit-content;
-  margin-top: 14px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.24);
+  justify-content: center;
+  gap: 8px;
+  min-width: 0;
+  min-height: 36px;
+  padding: 8px 12px;
+  border: 1px solid rgba(215, 197, 173, 0.24);
+  border-radius: 999px;
+  background: rgba(215, 197, 173, 0.045);
+  color: #e1d7ca;
   font-family: "Barlow Condensed", sans-serif;
   font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1.3;
   text-transform: uppercase;
   text-decoration: none;
-  color: rgba(245, 244, 240, 0.85);
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease;
+}
+
+.googleLink svg {
+  display: block;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
 }
 
 .modalPhotoColumn {
@@ -209,10 +234,11 @@
 
 .modalNavRow {
   display: flex;
+  align-items: center;
   justify-content: flex-end;
   flex-shrink: 0;
   gap: 8px;
-  margin-top: 14px;
+  margin-left: auto;
 }
 
 .modalCloseButton,
@@ -255,6 +281,12 @@
     background: rgba(255, 255, 255, 0.09);
     border-color: rgba(255, 255, 255, 0.3);
   }
+
+  .googleLink:hover {
+  background: rgba(215, 197, 173, 0.12);
+  border-color: rgba(215, 197, 173, 0.5);
+  color: #f5f4f0;
+}
 }
 
 @media (max-width: 767px) {
@@ -316,9 +348,15 @@
     line-height: 1.7;
   }
 
-  .modalNavRow {
-    margin-top: 20px;
-  }
+  .modalFooter {
+  margin-top: 20px;
+}
+
+.googleLink {
+  min-height: 42px;
+  padding: 10px 16px;
+  font-size: 11px;
+}
 
   .modalCloseButton,
   .modalNavButton {
@@ -330,7 +368,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .modalCloseButton,
-  .modalNavButton {
+  .modalNavButton, 
+  .googleLink {
     transition: none;
   }
 }

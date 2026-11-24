@@ -82,17 +82,17 @@ export async function GET() {
   try {
     const payload = await getPayload({ config });
 
-    const reviews = await payload.find({
-      collection: "reviews",
-      where: {
-        status: {
-          equals: "approved",
-        },
-      },
-      sort: "-createdAt",
-      depth: 1,
-      limit: 12,
-    });
+   const reviews = await payload.find({
+  collection: "reviews",
+  where: {
+    status: {
+      equals: "approved",
+    },
+  },
+  sort: "-createdAt",
+  depth: 1,
+  pagination: false,
+});
 
     const publicReviews: PublicReview[] =
       reviews.docs.map((review) => ({
