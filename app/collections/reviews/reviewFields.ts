@@ -107,13 +107,19 @@ export const reviewFields: Field[] = [
     label: "Location",
   },
   {
-    name: "rating",
-    type: "number",
-    required: true,
-    min: 1,
-    max: 5,
-    label: "Rating",
+  name: "rating",
+  type: "number",
+  required: true,
+  min: 1,
+  max: 5,
+  label: "Rating",
+  admin: {
+    components: {
+      Field:
+        "/app/collections/reviews/RatingSelect#RatingSelect",
+    },
   },
+},
   {
     name: "comment",
     type: "textarea",
