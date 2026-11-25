@@ -1,6 +1,8 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
+
 import buttons from "./Buttons/Buttons.module.css";
 import styles from "./States/SuccessState.module.css";
 
@@ -15,8 +17,14 @@ export default function SuccessState({
 }: SuccessStateProps) {
   const t = useTranslations("form");
 
+  const messageRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    messageRef.current?.focus();
+  }, []);
+
   return (
-    <div className={styles.successState} role="status" aria-live="polite">
+    <div className={styles.successState}>
       <div className={styles.successMark} aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none">
           <path
@@ -29,7 +37,13 @@ export default function SuccessState({
         </svg>
       </div>
 
-      <p className={styles.successTextSimple}>{t("successMessage")}</p>
+      <p
+        ref={messageRef}
+        tabIndex={-1}
+        className={styles.successTextSimple}
+      >
+        {t("successMessage")}
+      </p>
 
       <div className={styles.successActions}>
         <button

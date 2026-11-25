@@ -1,4 +1,3 @@
-
 "use client";
 
 import {
@@ -14,7 +13,6 @@ import { useFormikContext } from "formik";
 
 import fields from "./Fields/FormFields.module.css";
 import styles from "./Fields/FormSelect.module.css";
-
 
 export default function FormSelect({
   id,
@@ -221,8 +219,9 @@ export default function FormSelect({
           } ${showError ? styles.hasError : ""}`}
           aria-labelledby={`${id}-label ${id}`}
           aria-haspopup="listbox"
-          aria-expanded={isOpen}
-          aria-controls={isOpen ? listId : undefined}
+aria-expanded={isOpen}
+data-invalid={showError}
+aria-controls={isOpen ? listId : undefined}
           aria-describedby={
             visibleError ? `${id}-error` : undefined
           }

@@ -41,6 +41,18 @@
   animation: dialogIn 160ms ease-out;
 }
 
+.modalDialog:focus {
+  outline: none;
+}
+
+.modalContent {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
 .modalGlow {
   position: absolute;
   inset: 0;
@@ -94,7 +106,7 @@
     box-shadow 220ms ease;
 }
 
-.closeButton:hover {
+.closeButton:hover:not(:disabled){
   transform: translateY(-2px);
   border-color: rgba(20, 20, 18, 0.22);
   background-color: rgba(255, 255, 255, 0.28);
@@ -103,7 +115,7 @@
     0 0 0 6px rgba(20, 20, 18, 0.045);
 }
 
-.closeButton:active {
+.closeButton:active:not(:disabled) {
   transform: scale(0.96);
 }
 
@@ -126,6 +138,12 @@
 
 .closeButtonLine:last-child {
   transform: rotate(-45deg);
+}
+
+.closeButton:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
 }
 
 .modalTopBar {

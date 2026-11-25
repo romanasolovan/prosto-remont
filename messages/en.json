@@ -575,6 +575,13 @@
     "privacy": {
       "acknowledgment": "I acknowledge that my personal data will be processed to respond to my renovation inquiry.",
       "learnMore": "Learn about RODO / GDPR"
+    },
+    "confirmation": {
+      "eyebrow": "Request a quote",
+      "title": "Discard your request?",
+      "description": "You have unsaved information. If you close this form, your entered details and attachments will be lost.",
+      "discard": "Discard request",
+      "continueEditing": "Continue editing"
     }
   },
   "getContact": {

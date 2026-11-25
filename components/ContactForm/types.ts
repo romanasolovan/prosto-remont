@@ -76,8 +76,18 @@ export interface DetailsSectionProps {
   setFieldValue: FormikHelpers<FormikValues>["setFieldValue"];
 }
 
+export interface ContactFormState {
+  dirty: boolean;
+  isSubmitting: boolean;
+}
+
 export interface ContactFormProps {
   onClose?: () => void;
+  onFormStateChange?: (state: ContactFormState) => void;
+}
+
+export interface FormStateObserverProps {
+  onStateChange?: (state: ContactFormState) => void;
 }
 
 export interface FileUploadProps {

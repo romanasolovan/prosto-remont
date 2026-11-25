@@ -80,6 +80,12 @@
   transform: translateY(0);
 }
 
+.secondaryButton:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
 /* ---------- Focus ---------- */
 
 .primaryButton:focus-visible,

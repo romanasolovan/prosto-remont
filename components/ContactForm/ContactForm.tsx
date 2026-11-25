@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Formik, Form, type FormikHelpers } from "formik";
 
@@ -8,7 +8,12 @@ import styles from "./ContactForm.module.css";
 import layout from "./ContactFormLayout.module.css";
 import buttons from "./Buttons/Buttons.module.css";
 
-import type { FormValues } from "./types";
+import type {
+  FormValues,
+  SelectOption,
+  ContactFormProps,
+} from "./types";
+
 import { initialContactFormValues } from "./constants/initialValues";
 import { createContactFormSchema } from "./validation/contactFormSchema";
 import { submitQuoteRequest } from "./services/submitQuoteRequest";
@@ -22,12 +27,17 @@ import {
 import SuccessState from "./SuccessState";
 import SubmitButton from "./SubmitButton";
 import SubmitError from "./SubmitError";
+import FormStateObserver from "./FormStateObserver";
+
 import ContactSection from "./Sections/ContactSection";
 import ProjectsSection from "./Sections/ProjectsSection";
 import DetailsSection from "./Sections/DetailsSection";
-import type { SelectOption, ContactFormProps } from "./types";
+import FormErrorFocus from "./FormErrorFocus";
 
-export default function ContactForm({ onClose }: ContactFormProps) {
+export default function ContactForm({
+  onClose,
+  onFormStateChange,
+}: ContactFormProps) {
   const t = useTranslations("form");
   const validationSchema = createContactFormSchema(t);
 
@@ -35,19 +45,26 @@ export default function ContactForm({ onClose }: ContactFormProps) {
     "idle" | "success" | "error"
   >("idle");
 
-  const interestedInOptions: SelectOption[] = interestedInOptionKeys.map(
-    (option) => ({
-      value: option.value,
-      label: t(option.labelKey),
-    }),
-  );
+  useEffect(() => {
+    if (submitStatus === "success") {
+      onFormStateChange?.({
+        dirty: false,
+        isSubmitting: false,
+      });
+    }
+  }, [submitStatus, onFormStateChange]);
 
-  const renovationTypeOptions: SelectOption[] = renovationTypeOptionKeys.map(
-    (option) => ({
+  const interestedInOptions: SelectOption[] =
+    interestedInOptionKeys.map((option) => ({
       value: option.value,
       label: t(option.labelKey),
-    }),
-  );
+    }));
+
+  const renovationTypeOptions: SelectOption[] =
+    renovationTypeOptionKeys.map((option) => ({
+      value: option.value,
+      label: t(option.labelKey),
+    }));
 
   const renovationObjectOptions: SelectOption[] =
     renovationObjectOptionKeys.map((option) => ({
@@ -59,11 +76,13 @@ export default function ContactForm({ onClose }: ContactFormProps) {
     values: FormValues,
     { setSubmitting, resetForm }: FormikHelpers<FormValues>,
   ) => {
+    setSubmitStatus("idle");
+
     try {
       await submitQuoteRequest(values);
 
-      setSubmitStatus("success");
       resetForm();
+      setSubmitStatus("success");
     } catch (error) {
       console.error("Submission error:", error);
       setSubmitStatus("error");
@@ -97,42 +116,59 @@ export default function ContactForm({ onClose }: ContactFormProps) {
             touched,
           }) => (
             <Form className={layout.form} noValidate>
+              <FormStateObserver
+                onStateChange={onFormStateChange}
+                />
+                
+                <FormErrorFocus />
+
               <div className={layout.formScrollArea}>
-                <ContactSection errors={errors} touched={touched} />
+  <div
+    className={layout.formFields}
+    inert={isSubmitting}
+  >
+    <ContactSection
+      errors={errors}
+      touched={touched}
+    />
 
-                <ProjectsSection
-                  values={values}
-                  errors={errors}
-                  touched={touched}
-                  interestedInOptions={interestedInOptions}
-                  renovationTypeOptions={renovationTypeOptions}
-                  renovationObjectOptions={renovationObjectOptions}
-                  setFieldValue={setFieldValue}
-                  setFieldTouched={setFieldTouched}
-                  validateField={validateField}
-                />
+    <ProjectsSection
+      values={values}
+      errors={errors}
+      touched={touched}
+      interestedInOptions={interestedInOptions}
+      renovationTypeOptions={renovationTypeOptions}
+      renovationObjectOptions={renovationObjectOptions}
+      setFieldValue={setFieldValue}
+      setFieldTouched={setFieldTouched}
+      validateField={validateField}
+    />
 
-                <DetailsSection
-                  files={values.attachments}
-                  setFieldValue={setFieldValue}
-                />
+    <DetailsSection
+      files={values.attachments}
+      setFieldValue={setFieldValue}
+    />
+  </div>
 
-                {submitStatus === "error" && <SubmitError />}
+  {submitStatus === "error" && <SubmitError />}
 
-                <div className={styles.formFooter}>
-                  {onClose && (
-                    <button
-                      type="button"
-                      onClick={onClose}
-                      className={buttons.secondaryButton}
-                    >
-                      {t("actions.close")}
-                    </button>
-                  )}
+  <div className={styles.formFooter}>
+    {onClose && (
+      <button
+        type="button"
+        onClick={onClose}
+        disabled={isSubmitting}
+        className={buttons.secondaryButton}
+      >
+        {t("actions.close")}
+      </button>
+    )}
 
-                  <SubmitButton isSubmitting={isSubmitting} />
-                </div>
-              </div>
+    <SubmitButton isSubmitting={isSubmitting} />
+  </div>
+</div>
+                
+
             </Form>
           )}
         </Formik>

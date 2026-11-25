@@ -86,7 +86,9 @@
   max-width: calc(100vw - 24px);
   max-height: calc(100vh - 24px);
   padding: 12px;
-  overflow: hidden;
+  overflow-y: auto;
+overflow-x: hidden;
+overscroll-behavior: contain;
   border: 1px solid rgba(70, 66, 58, 0.14);
   border-radius: 22px;
   background:
@@ -196,6 +198,12 @@
   border-color: rgba(70, 66, 58, 0.12);
   background: rgba(70, 66, 58, 0.07);
   color: #181713;
+}
+
+.calendarDayButton:focus-visible,
+.calendarNavButton:focus-visible {
+  outline: 2px solid rgba(24, 23, 19, 0.72);
+  outline-offset: 2px;
 }
 
 .calendarToday .calendarDayButton {

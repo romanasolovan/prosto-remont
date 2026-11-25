@@ -1,13 +1,24 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { useEffect, useRef } from "react";
 import styles from "./States/SubmitError.module.css";
 
 export default function SubmitError() {
   const t = useTranslations("form");
+  const errorRef = useRef<HTMLDivElement>(null);
+
+useEffect(() => {
+  errorRef.current?.focus();
+}, []);
 
   return (
-    <div className={styles.submitError} role="alert">
+    <div
+  ref={errorRef}
+  className={styles.submitError}
+  role="alert"
+  tabIndex={-1}
+>
       <div className={styles.submitErrorIcon} aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none">
           <path

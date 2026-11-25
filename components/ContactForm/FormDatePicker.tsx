@@ -1,19 +1,21 @@
 "use client";
 
 import {
-  ChangeEvent,
+  type ChangeEvent,
   useCallback,
   useEffect,
   useLayoutEffect,
   useRef,
   useState,
 } from "react";
-import type {FormDatePickerProps} from "./types";
 import { createPortal } from "react-dom";
 import { useLocale, useTranslations } from "next-intl";
 import { DayPicker } from "react-day-picker";
 import { useFormikContext } from "formik";
 import { enUS, pl, ru, uk } from "date-fns/locale";
+
+import type { FormDatePickerProps } from "./types";
+
 import fields from "./Fields/FormFields.module.css";
 import styles from "./Fields/FormDatePicker.module.css";
 
@@ -83,7 +85,7 @@ export default function FormDatePicker({
   const t = useTranslations("form");
   const locale = useLocale();
 
-  const { submitCount } = useFormikContext();
+  const { submitCount, isSubmitting } = useFormikContext();
 
   const wrapperRef = useRef<HTMLDivElement>(null);
   const inputWrapRef = useRef<HTMLDivElement>(null);
@@ -92,30 +94,50 @@ export default function FormDatePicker({
 
   const today = getToday();
   const selectedDate = parseDateValue(value);
+
   const showError = Boolean(
-  error && (submitCount > 0 || (touched && value.trim().length > 0)),
-);
-const visibleError = showError ? error : undefined;
+    error &&
+      (submitCount > 0 || (touched && value.trim().length > 0)),
+  );
+
+  const visibleError = showError ? error : undefined;
   const hintId = hint ? `${id}-hint` : undefined;
   const errorId = visibleError ? `${id}-error` : undefined;
 
   const [isOpen, setIsOpen] = useState(false);
+  const [openedAtSubmitCount, setOpenedAtSubmitCount] =
+    useState(0);
+  const [shouldFocusCalendar, setShouldFocusCalendar] =
+    useState(false);
 
-  const [month, setMonth] = useState<Date>(selectedDate ?? today);
+  const [month, setMonth] = useState<Date>(
+    selectedDate ?? today,
+  );
+
   const [popoverStyle, setPopoverStyle] = useState({
     top: 0,
     left: 0,
     width: 0,
   });
 
+  const isCalendarOpen =
+    isOpen &&
+    !isSubmitting &&
+    openedAtSubmitCount === submitCount;
+
+  // Position the calendar within the viewport.
   const updatePopoverPosition = useCallback(() => {
     if (!inputWrapRef.current) return;
 
     const rect = inputWrapRef.current.getBoundingClientRect();
-    const popoverHeight =
-      popoverRef.current?.offsetHeight || FALLBACK_CALENDAR_HEIGHT;
 
-    const maxWidth = window.innerWidth - VIEWPORT_PADDING * 2;
+    const popoverHeight =
+      popoverRef.current?.offsetHeight ||
+      FALLBACK_CALENDAR_HEIGHT;
+
+    const maxWidth =
+      window.innerWidth - VIEWPORT_PADDING * 2;
+
     const width = Math.min(rect.width, maxWidth);
 
     const left = Math.min(
@@ -123,19 +145,27 @@ const visibleError = showError ? error : undefined;
       window.innerWidth - width - VIEWPORT_PADDING,
     );
 
-    const spaceBelow = window.innerHeight - rect.bottom - VIEWPORT_PADDING;
+    const spaceBelow =
+      window.innerHeight - rect.bottom - VIEWPORT_PADDING;
+
     const spaceAbove = rect.top - VIEWPORT_PADDING;
 
     const shouldOpenAbove =
-      spaceBelow < popoverHeight + POPOVER_GAP && spaceAbove > spaceBelow;
+      spaceBelow < popoverHeight + POPOVER_GAP &&
+      spaceAbove > spaceBelow;
 
     const preferredTop = shouldOpenAbove
       ? rect.top - popoverHeight - POPOVER_GAP
       : rect.bottom + POPOVER_GAP;
 
-    const top = Math.min(
-      Math.max(preferredTop, VIEWPORT_PADDING),
-      window.innerHeight - popoverHeight - VIEWPORT_PADDING,
+    const top = Math.max(
+      VIEWPORT_PADDING,
+      Math.min(
+        preferredTop,
+        window.innerHeight -
+          popoverHeight -
+          VIEWPORT_PADDING,
+      ),
     );
 
     setPopoverStyle({
@@ -146,30 +176,50 @@ const visibleError = showError ? error : undefined;
   }, []);
 
   useLayoutEffect(() => {
-    if (!isOpen) return;
+    if (!isCalendarOpen) return;
+
+    let secondFrame = 0;
 
     const firstFrame = window.requestAnimationFrame(() => {
       updatePopoverPosition();
 
-      window.requestAnimationFrame(updatePopoverPosition);
+      secondFrame = window.requestAnimationFrame(
+        updatePopoverPosition,
+      );
     });
 
     window.addEventListener("resize", updatePopoverPosition);
-    window.addEventListener("scroll", updatePopoverPosition, true);
+    window.addEventListener(
+      "scroll",
+      updatePopoverPosition,
+      true,
+    );
 
     return () => {
       window.cancelAnimationFrame(firstFrame);
-      window.removeEventListener("resize", updatePopoverPosition);
-      window.removeEventListener("scroll", updatePopoverPosition, true);
-    };
-  }, [isOpen, updatePopoverPosition]);
+      window.cancelAnimationFrame(secondFrame);
 
+      window.removeEventListener(
+        "resize",
+        updatePopoverPosition,
+      );
+
+      window.removeEventListener(
+        "scroll",
+        updatePopoverPosition,
+        true,
+      );
+    };
+  }, [isCalendarOpen, updatePopoverPosition]);
+
+  // Close the calendar when clicking outside.
   useEffect(() => {
+    if (!isCalendarOpen) return;
+
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Node;
 
       if (
-        isOpen &&
         !wrapperRef.current?.contains(target) &&
         !popoverRef.current?.contains(target)
       ) {
@@ -178,87 +228,121 @@ const visibleError = showError ? error : undefined;
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener(
+      "mousedown",
+      handleClickOutside,
+    );
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener(
+        "mousedown",
+        handleClickOutside,
+      );
     };
-  }, [isOpen, name, setFieldTouched]);
+  }, [isCalendarOpen, name, setFieldTouched]);
 
+  // Close the calendar before handling the modal Escape key.
   useEffect(() => {
-  if (!isOpen) return;
+    if (!isCalendarOpen) return;
 
-  const handleEscape = (event: KeyboardEvent) => {
-    if (event.key !== "Escape") return;
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
 
-    event.preventDefault();
-    event.stopImmediatePropagation();
+      event.preventDefault();
+      event.stopImmediatePropagation();
+
+      setIsOpen(false);
+      inputRef.current?.focus();
+    };
+
+    document.addEventListener(
+      "keydown",
+      handleEscape,
+      true,
+    );
+
+    return () => {
+      document.removeEventListener(
+        "keydown",
+        handleEscape,
+        true,
+      );
+    };
+  }, [isCalendarOpen]);
+
+  const openCalendar = (focusCalendar = false) => {
+    if (isSubmitting) return;
+
+    setMonth(selectedDate ?? today);
+    setOpenedAtSubmitCount(submitCount);
+    setShouldFocusCalendar(focusCalendar);
+    setIsOpen(true);
+  };
+
+  const handleInputChange = (
+    event: ChangeEvent<HTMLInputElement>,
+  ) => {
+    const nextValue = event.target.value
+      .replace(/[^\d-]/g, "")
+      .slice(0, 10);
+
+    setFieldValue(name, nextValue, true);
+  };
+
+  const handleSelect = async (date: Date | undefined) => {
+    if (!date || isSubmitting) return;
+
+    const normalizedDate = new Date(date);
+    normalizedDate.setHours(0, 0, 0, 0);
+
+    if (normalizedDate < getToday()) return;
+
+    await setFieldValue(
+      name,
+      formatDateValue(normalizedDate),
+      false,
+    );
+
+    await setFieldTouched(name, true, false);
+    await validateField(name);
 
     setIsOpen(false);
     inputRef.current?.focus();
   };
 
-  document.addEventListener("keydown", handleEscape, true);
-
-  return () => {
-    document.removeEventListener("keydown", handleEscape, true);
-  };
-}, [isOpen]);
-
-  const openCalendar = () => {
-  setMonth(selectedDate ?? today);
-  setIsOpen(true);
-};
-
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const nextValue = event.target.value.replace(/[^\d-]/g, "").slice(0, 10);
-    setFieldValue(name, nextValue, true);
-  };
-
-  const handleSelect = async (date: Date | undefined) => {
-  if (!date) return;
-
-  const normalizedDate = new Date(date);
-  normalizedDate.setHours(0, 0, 0, 0);
-
-  if (normalizedDate < getToday()) return;
-
-  await setFieldValue(name, formatDateValue(normalizedDate), false);
-  await setFieldTouched(name, true, false);
-  await validateField(name);
-
-  setIsOpen(false);
-
-  inputRef.current?.focus();
-};
-
   const canUsePortal = typeof document !== "undefined";
 
   const calendarPopover =
-    canUsePortal && isOpen
+    canUsePortal && isCalendarOpen
       ? createPortal(
           <div
             ref={popoverRef}
             id={`${id}-calendar`}
+            data-modal-popover="true"
             className={styles.calendarPopover}
             style={{
               top: popoverStyle.top,
               left: popoverStyle.left,
               width: popoverStyle.width,
               opacity: popoverStyle.width > 0 ? 1 : 0,
-              pointerEvents: popoverStyle.width > 0 ? "auto" : "none",
+              pointerEvents:
+                popoverStyle.width > 0 ? "auto" : "none",
             }}
             role="dialog"
             aria-label={t("date.calendarLabel")}
           >
             <DayPicker
               mode="single"
+              autoFocus={shouldFocusCalendar}
               selected={selectedDate}
               month={month}
               onMonthChange={setMonth}
               onSelect={handleSelect}
               disabled={{ before: today }}
-              locale={localeMap[locale as keyof typeof localeMap] || enUS}
+              locale={
+                localeMap[locale as keyof typeof localeMap] ||
+                enUS
+              }
               weekStartsOn={1}
               showOutsideDays
               classNames={{
@@ -292,10 +376,21 @@ const visibleError = showError ? error : undefined;
       ref={wrapperRef}
     >
       <label htmlFor={id} className={fields.label}>
-        {label} {required && <span className={fields.required}>*</span>}
+        {label}
+        {required && (
+          <span
+            className={fields.required}
+            aria-hidden="true"
+          >
+            *
+          </span>
+        )}
       </label>
 
-      <div className={styles.dateInputWrap} ref={inputWrapRef}>
+      <div
+        className={styles.dateInputWrap}
+        ref={inputWrapRef}
+      >
         <input
           ref={inputRef}
           id={id}
@@ -305,25 +400,32 @@ const visibleError = showError ? error : undefined;
           value={value}
           placeholder={placeholder}
           className={fields.input}
-          aria-required={required}
-  aria-invalid={Boolean(visibleError)}
-  aria-describedby={
-    [hintId, errorId].filter(Boolean).join(" ") || undefined
-  }
-  onClick={openCalendar}
-  onChange={handleInputChange}
-  onBlur={() => setFieldTouched(name, true, true)}
+          aria-required={required || undefined}
+          aria-invalid={showError}
+          aria-describedby={
+            [hintId, errorId].filter(Boolean).join(" ") ||
+            undefined
+          }
+          onClick={() => openCalendar()}
+          onChange={handleInputChange}
+          onBlur={() => setFieldTouched(name, true, true)}
         />
 
         <button
           type="button"
           className={styles.dateToggle}
           aria-label={t("date.openCalendar")}
-          aria-expanded={isOpen}
-          aria-controls={`${id}-calendar`}
+          aria-haspopup="dialog"
+          aria-expanded={isCalendarOpen}
+          aria-controls={
+            isCalendarOpen ? `${id}-calendar` : undefined
+          }
           onClick={() => {
-            if (isOpen) setIsOpen(false);
-            else openCalendar();
+            if (isCalendarOpen) {
+              setIsOpen(false);
+            } else {
+              openCalendar(true);
+            }
           }}
         >
           <span aria-hidden="true" />
@@ -338,9 +440,15 @@ const visibleError = showError ? error : undefined;
         </p>
       )}
 
-      <div className={fields.errorSlot} id={`${id}-error`} aria-live="polite">
+      <div
+        className={fields.errorSlot}
+        id={`${id}-error`}
+        aria-live="polite"
+      >
         <div
-          className={`${fields.error} ${visibleError ? fields.visible : ""}`}
+          className={`${fields.error} ${
+            showError ? fields.visible : ""
+          }`}
         >
           {visibleError || "\u00A0"}
         </div>

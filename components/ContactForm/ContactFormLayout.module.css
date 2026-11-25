@@ -53,6 +53,10 @@
   min-width: 0;
 }
 
+.formFields {
+  min-width: 0;
+}
+
 @media (min-width: 768px) {
   .formScrollArea {
     padding: 16px 10px 26px;
