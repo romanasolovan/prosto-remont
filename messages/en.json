@@ -554,19 +554,20 @@
       "required": "This field is required",
       "emailInvalid": "Please enter a valid email address",
       "phoneInvalid": "Please enter a valid phone number",
-      "fileTooLarge": "File size must not exceed 100 MB",
       "tooManyFiles": "You can upload a maximum of 10 files",
       "invalidFileType": "Only PDF, JPG, PNG, and DOCX files are allowed",
       "dateInvalid": "Please select a valid date",
       "areaInvalid": "Enter a valid area in m²",
-      "privacyRequired": "Please acknowledge the data processing information."
+      "privacyRequired": "Please acknowledge the data processing information.",
+      "emptyFile": "The file is empty.",
+      "totalFilesTooLarge": "The combined attachment size cannot exceed 4 MB."
     },
     "fileUpload": {
       "sizeUnit": "MB",
       "dragDrop": "Drag and drop files here, or click to select",
       "selectedFiles": "Selected files",
       "removeFile": "Remove",
-      "supportedFormats": "Supported formats: PDF, JPG, PNG, DOCX (max 100 MB per file, up to 10 files)"
+      "supportedFormats": "PDF, JPG, PNG, DOCX • Max. 10 files, 4 MB total"
     },
     "submit": "Submit Request",
     "submitting": "Submitting...",

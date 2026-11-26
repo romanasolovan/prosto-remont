@@ -569,19 +569,20 @@
       "required": "To pole jest wymagane",
       "emailInvalid": "Wprowadź poprawny adres e-mail",
       "phoneInvalid": "Wprowadź poprawny numer telefonu",
-      "fileTooLarge": "Rozmiar pliku nie może przekraczać 100 MB",
       "tooManyFiles": "Możesz przesłać maksymalnie 10 plików",
       "invalidFileType": "Dozwolone są wyłącznie pliki PDF, JPG, PNG i DOCX",
       "dateInvalid": "Wybierz poprawną datę",
       "areaInvalid": "Wprowadź poprawną powierzchnię w m²",
-      "privacyRequired": "Potwierdź zapoznanie się z informacją o przetwarzaniu danych."
+      "privacyRequired": "Potwierdź zapoznanie się z informacją o przetwarzaniu danych.",
+      "emptyFile": "Plik jest pusty.",
+      "totalFilesTooLarge": "Łączny rozmiar załączników nie może przekraczać 4 MB."
     },
     "fileUpload": {
       "sizeUnit": "MB",
       "dragDrop": "Przeciągnij i upuść pliki tutaj lub kliknij, aby je wybrać",
       "selectedFiles": "Wybrane pliki",
       "removeFile": "Usuń",
-      "supportedFormats": "Obsługiwane formaty: PDF, JPG, PNG, DOCX (maks. 100 MB na plik, do 10 plików)"
+      "supportedFormats": "PDF, JPG, PNG, DOCX • Maks. 10 plików, łącznie 4 MB"
     },
     "submit": "Wyślij zapytanie",
     "submitting": "Wysyłanie...",

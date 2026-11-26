@@ -1,79 +1,126 @@
 "use client";
 
-import { ChangeEvent, DragEvent, useState } from "react";
+import {
+  type ChangeEvent,
+  type DragEvent,
+  useState,
+} from "react";
 import { useTranslations } from "next-intl";
+
+import type { FileUploadProps } from "./types";
+
+import {
+  MAX_ATTACHMENTS,
+  MAX_TOTAL_ATTACHMENT_SIZE,
+  ALLOWED_ATTACHMENT_MIME_TYPES,
+  ALLOWED_ATTACHMENT_EXTENSIONS,
+} from "./constants/attachmentLimits";
+
 import buttons from "./Buttons/Buttons.module.css";
 import fields from "./Fields/FormFields.module.css";
 import styles from "./Fields/FileUpload.module.css";
-import type { FileUploadProps } from "./types";
 
-const MAX_FILE_SIZE = 100 * 1024 * 1024;
-const MAX_FILES = 10;
-
-const ALLOWED_FILE_TYPES = [
-  "application/pdf",
-  "image/jpeg",
-  "image/png",
-  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-];
-
-export default function FileUpload({ files, setFieldValue }: FileUploadProps) {
+export default function FileUpload({
+  files,
+  setFieldValue,
+}: FileUploadProps) {
   const t = useTranslations("form");
+
   const [fileError, setFileError] = useState("");
-  const [isDraggingFiles, setIsDraggingFiles] = useState(false);
+  const [isDraggingFiles, setIsDraggingFiles] =
+    useState(false);
 
   const addFiles = (incomingFiles: File[]) => {
     setFileError("");
 
-    if (files.length + incomingFiles.length > MAX_FILES) {
+    if (incomingFiles.length === 0) return;
+
+    if (
+      files.length + incomingFiles.length >
+      MAX_ATTACHMENTS
+    ) {
       setFileError(t("validation.tooManyFiles"));
       return;
     }
 
-    const validFiles = incomingFiles.filter((file) => {
-      if (file.size > MAX_FILE_SIZE) {
-        setFileError(`${file.name}: ${t("validation.fileTooLarge")}`);
-        return false;
+    for (const file of incomingFiles) {
+      if (file.size === 0) {
+        setFileError(
+          `${file.name}: ${t("validation.emptyFile")}`,
+        );
+        return;
       }
 
-      if (!ALLOWED_FILE_TYPES.includes(file.type)) {
-        setFileError(`${file.name}: ${t("validation.invalidFileType")}`);
-        return false;
+      if (
+        !ALLOWED_ATTACHMENT_MIME_TYPES.includes(
+          file.type,
+        )
+      ) {
+        setFileError(
+          `${file.name}: ${t("validation.invalidFileType")}`,
+        );
+        return;
       }
-
-      return true;
-    });
-
-    if (validFiles.length > 0) {
-      setFieldValue("attachments", [...files, ...validFiles]);
     }
+
+    const nextFiles = [...files, ...incomingFiles];
+
+    const totalSize = nextFiles.reduce(
+      (total, file) => total + file.size,
+      0,
+    );
+
+    if (totalSize > MAX_TOTAL_ATTACHMENT_SIZE) {
+      setFileError(
+        t("validation.totalFilesTooLarge"),
+      );
+      return;
+    }
+
+    setFieldValue("attachments", nextFiles);
   };
 
-  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const selectedFiles = Array.from(event.target.files || []);
+  const handleFileChange = (
+    event: ChangeEvent<HTMLInputElement>,
+  ) => {
+    const selectedFiles = Array.from(
+      event.target.files || [],
+    );
 
     addFiles(selectedFiles);
     event.target.value = "";
   };
 
-  const handleFileDrop = (event: DragEvent<HTMLLabelElement>) => {
+  const handleFileDrop = (
+    event: DragEvent<HTMLLabelElement>,
+  ) => {
     event.preventDefault();
     setIsDraggingFiles(false);
 
-    const droppedFiles = Array.from(event.dataTransfer.files || []);
+    const droppedFiles = Array.from(
+      event.dataTransfer.files || [],
+    );
+
     addFiles(droppedFiles);
   };
 
   const removeFile = (index: number) => {
+    setFileError("");
+
     setFieldValue(
       "attachments",
-      files.filter((_, fileIndex) => fileIndex !== index),
+      files.filter(
+        (_, fileIndex) => fileIndex !== index,
+      ),
     );
   };
 
   return (
     <div className={fields.formGroup}>
-      <label htmlFor="attachments" className={fields.label}>
+      <label
+        htmlFor="attachments"
+        className={fields.label}
+      >
         {t("fields.attachments")}
       </label>
 
@@ -83,16 +130,20 @@ export default function FileUpload({ files, setFieldValue }: FileUploadProps) {
           name="attachments"
           id="attachments"
           multiple
-          accept=".pdf,.jpg,.jpeg,.png,.docx"
+          accept={ALLOWED_ATTACHMENT_EXTENSIONS}
           onChange={handleFileChange}
           className={styles.fileInput}
-          aria-describedby={fileError ? "attachments-error" : undefined}
+          aria-describedby={
+            fileError ? "attachments-error" : undefined
+          }
         />
 
         <label
           htmlFor="attachments"
           className={`${styles.fileLabel} ${
-            isDraggingFiles ? styles.isDraggingFiles : ""
+            isDraggingFiles
+              ? styles.isDraggingFiles
+              : ""
           }`}
           onDragEnter={(event) => {
             event.preventDefault();
@@ -124,7 +175,10 @@ export default function FileUpload({ files, setFieldValue }: FileUploadProps) {
           </svg>
 
           <span>{t("fileUpload.dragDrop")}</span>
-          <small>{t("fileUpload.supportedFormats")}</small>
+
+          <small>
+            {t("fileUpload.supportedFormats")}
+          </small>
         </label>
       </div>
 
@@ -132,7 +186,7 @@ export default function FileUpload({ files, setFieldValue }: FileUploadProps) {
         <p
           id="attachments-error"
           className={styles.fileError}
-          aria-live="polite"
+          role="alert"
         >
           {fileError}
         </p>
@@ -145,8 +199,13 @@ export default function FileUpload({ files, setFieldValue }: FileUploadProps) {
           </p>
 
           {files.map((file, index) => (
-            <div key={`${file.name}-${index}`} className={styles.fileItem}>
-              <span className={styles.fileName}>{file.name}</span>
+            <div
+              key={`${file.name}-${index}`}
+              className={styles.fileItem}
+            >
+              <span className={styles.fileName}>
+                {file.name}
+              </span>
 
               <span className={styles.fileSize}>
                 {(file.size / 1024 / 1024).toFixed(2)}{" "}
