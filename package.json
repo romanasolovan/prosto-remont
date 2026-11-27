@@ -21,6 +21,7 @@
     "@payloadcms/next": "^3.84.1",
     "@payloadcms/richtext-lexical": "^3.84.1",
     "@payloadcms/storage-vercel-blob": "^3.84.1",
+    "@vercel/blob": "2.3.1",
     "date-fns": "^4.4.0",
     "formik": "^2.4.9",
     "framer-motion": "^12.38.0",
